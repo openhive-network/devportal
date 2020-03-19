@@ -1,21 +1,14 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/steemit/devportal/master/images/steemdev.png" alt="Steemit API Portal" width="226">
-  <br>
-  <br>
-  
-</p>
+# HIVE API Portal
 
-# Steemit API Portal
+Hive is the social media platform where everyone gets paid for creating and curating content.
 
-Steemit is the social media platform where everyone gets paid for creating and curating content.
+The following API documents provide details on how to interact with the Hive blockchain database API which can get information on accounts, content, blocks and much more!
 
-The following API documents provide details on how to interact with the Steem blockchain database API which can get information on accounts, content, blocks and much more!
-
-The developer portal will also serve as a toolbox for steem clients, libraries, and language wrappers.
+The developer portal will also serve as a toolbox for Hive clients, libraries, and language wrappers.
 
 ## Develop
 
-Steemit Portal was built with [Jekyll](http://jekyllrb.com/) version 3.1.6, but should support newer versions as well.
+Hive Portal was built with [Jekyll](http://jekyllrb.com/) version 3.1.6, but should support newer versions as well.
 
 Install the dependencies with [Bundler](http://bundler.io/):
 
@@ -100,10 +93,10 @@ If you're interested in running the scrape against a different server, run the c
 $ TEST_NODE=<some server url> bundle exec rake scrape:api_defs
 ```
 
-An example pointing at the steemitdev testnet:
+An example pointing at the Hivedev testnet:
 
 ```bash
-$ TEST_NODE=https://testnet.steemitdev.com bundle exec rake scrape:api_defs
+$ TEST_NODE=https://testnet.Hivedev.com bundle exec rake scrape:api_defs
 ```
 
 ### Importing
@@ -114,7 +107,7 @@ To import all new tutorials from all known tutorial repositories, which is the t
 bundle exec rake scrape:tutorials
 ```
 
-#### Targeted Import: [devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials)
+#### Targeted Import: [devportal-tutorials-js](https://github.com/Hive/devportal-tutorials-js/tree/master/tutorials)
 
 This command will check for new tutorials in `devportal-tutorials-js` and import them into this project.
 
@@ -132,13 +125,13 @@ Where `1` represents the numerical prefix like in `01_blog_feed` and `true` inst
 
 Other Targeted imports supported are `:py` and `:js` using the same syntax.
 
-#### Targeted Import: [devportal-tutorials-py](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials)
+#### Targeted Import: [devportal-tutorials-py](https://github.com/Hive/devportal-tutorials-py/tree/master/tutorials)
 
 ```bash
 bundle exec rake scrape:tutorials:py
 ```
 
-#### Targeted Import: [devportal-tutorials-rb](https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials)
+#### Targeted Import: [devportal-tutorials-rb](https://github.com/Hive/devportal-tutorials-rb/tree/master/tutorials)
 
 ```bash
 bundle exec rake scrape:tutorials:rb
@@ -164,8 +157,8 @@ If you're interested in running this test against a different server, run the co
 $ TEST_NODE=<some server url> bundle exec rake test:curl
 ```
 
-An example pointing at the steemitdev testnet
+An example pointing at the Hivedev testnet
 
 ```bash
-$ TEST_NODE=https://testnet.steemitdev.com bundle exec rake test:curl
+$ TEST_NODE=https://testnet.Hivedev.com bundle exec rake test:curl
 ```

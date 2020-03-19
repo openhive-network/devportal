@@ -1,0 +1,50 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+brand-colour	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^$brand-colour: #E31337;$/;"	function	line:6
+nav-header-height	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^$nav-header-height: 100px;$/;"	function	line:8
+nav-background-color	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^$nav-background-color: #f5f5f5;$/;"	function	line:9
+nav-width	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^$nav-width: 210px;$/;"	function	line:10
+space	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^$space: 20px;$/;"	function	line:12
+mobile-break	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^$mobile-break: 700px;$/;"	function	line:14
+.highlight	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.highlight {$/;"	function	line:21
+pre	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^pre {$/;"	function	line:26
+.row	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.row {$/;"	function	line:30
+.right-code	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.right-code {$/;"	function	line:37
+.left-docs	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.left-docs {$/;"	function	line:41
+h3:first-child	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  h3:first-child {$/;"	function	line:43
+.left-docs img	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.left-docs img {$/;"	function	line:48
+section.doc-content.introductionwelcome > .left-docs	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^section.doc-content.introductionwelcome > .left-docs {$/;"	function	line:52
+.main:focus, .doc-content:focus	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.main:focus, .doc-content:focus {$/;"	function	line:58
+/*.hero	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^\/*.hero {$/;"	function	line:62
+&__img	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^    &__img {$/;"	function	line:71
+&__h1	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^    &__h1 {$/;"	function	line:74
+header h1	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^header h1 {$/;"	function	line:80
+.hero	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.hero {$/;"	function	line:84
+&__img	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  &__img {$/;"	function	line:87
+&__h1	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  &__h1 {$/;"	function	line:91
+@media (min-width: 700px)	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^@media (min-width: 700px) {$/;"	function	line:97
+.hero	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  .hero {$/;"	function	line:98
+&__img	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^    &__img {$/;"	function	line:103
+&__h1	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^    &__h1 {$/;"	function	line:106
+@media (min-width: 1000px)	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^@media (min-width: 1000px) {$/;"	function	line:113
+.hero	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  .hero {$/;"	function	line:115
+&__img	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^    &__img {$/;"	function	line:123
+header h1	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  header h1 {$/;"	function	line:128
+.footer	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.footer {$/;"	function	line:133
+a:hover	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  a:hover,$/;"	function	line:139
+a:visited	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  a:visited {$/;"	function	line:140
+.main-nav-section	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.main-nav-section {$/;"	function	line:145
+.title	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  .title {$/;"	function	line:146
+&.show-content	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  &.show-content {$/;"	function	line:155
+.content	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^    .content {$/;"	function	line:156
+.content	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  .content {$/;"	function	line:161
+.active, .accordion:hover	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.active, .accordion:hover {$/;"	function	line:168
+.top-of-tutorial-repo-link	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.top-of-tutorial-repo-link {$/;"	function	line:172
+.first-word	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^  .first-word {$/;"	function	line:174
+.warn.deprecated	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.warn.deprecated {$/;"	function	line:179
+.danger	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.danger {$/;"	function	line:190
+.danger.removed	/Users/roelandp/Documents/D N A L E O R/projects/blockchain/newchain/gitlab/devportal/css/style.scss	/^.danger.removed {$/;"	function	line:197

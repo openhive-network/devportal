@@ -1,0 +1,68 @@
+image: ruby:2.6
+
+stages:
+  - build
+  - deploy_staging
+  - deploy_master
+
+cache:
+  untracked: true
+  key: "$CI_PROJECT_ID"
+
+build:
+  image: ruby:2.6
+  stage: build
+  script:
+    - ls -l
+    - gem install bundler
+    - bundle install
+    - bundle exec jekyll build -d public
+    - echo "BUILD SUCCESSFULLY"
+  artifacts:
+    paths:
+      - public
+    expire_in: 20 mins
+  # environment:
+  #   name: development
+  # only:
+  #   - develop
+
+deploy_staging:
+  stage: deploy_staging
+  image: python:3.5
+  dependencies:
+    - build
+  script:
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    - export S3_BUCKET_NAME=$S3_BUCKET_NAME_STAGING
+    - export DISTRIBUTION_ID=$DISTRIBUTION_ID
+    - pip install awscli --upgrade --user
+    - export PATH=~/.local/bin:$PATH
+    - aws s3 sync --acl public-read --delete public $S3_BUCKET_NAME_STAGING
+    #- aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'
+    - echo "DEPLOYED SUCCESSFULLY TO STAGING - developers-staging.hive.io"
+  environment:
+    name: development
+  only:
+    - develop
+
+deploy_master:
+  stage: deploy_master
+  image: python:3.5
+  dependencies:
+    - build
+  script:
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    - export S3_BUCKET_NAME=$S3_BUCKET_NAME_PRODUCTION
+    - export DISTRIBUTION_ID=$DISTRIBUTION_ID
+    - pip install awscli --upgrade --user
+    - export PATH=~/.local/bin:$PATH
+    - aws s3 sync --acl public-read --delete public $S3_BUCKET_NAME_PRODUCTION
+    - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'
+    - echo "DEPLOYED SUCCESSFULLY TO PRODUCTION - developers.hive.io"
+  environment:
+    name: production
+  only:
+    - master
