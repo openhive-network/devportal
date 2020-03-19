@@ -1,4 +1,4 @@
-image: ruby:2.7
+image: ruby:2.6
 
 stages:
   - build
@@ -10,10 +10,11 @@ cache:
   key: "$CI_PROJECT_ID"
 
 build:
-  image: ruby:2.7
+  image: ruby:2.6
   stage: build
   script:
     - ls -l
+    - gem install bundler
     - bundle install
     - bundle exec jekyll build -d public
     - echo "BUILD SUCCESSFULLY"
