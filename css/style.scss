@@ -1,0 +1,203 @@
+---
+layout: null
+sitemap: false
+---
+
+$brand-colour: #4BA2F2;
+
+$nav-header-height: 100px;
+$nav-background-color: #f5f5f5;
+$nav-width: 210px;
+
+$space: 20px;
+
+$mobile-break: 700px;
+
+@import "mixins";
+@import "main";
+@import "borland";
+@import "monaki";
+
+.highlight {
+  padding: 5px;
+  background: #23323E;
+}
+
+pre {
+  color: white;
+}
+
+.row {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.right-code {
+  margin-top: 110px;
+}
+
+.left-docs {
+  border-top: 1px solid #eeeeee;
+  h3:first-child {
+    padding-top: 40px;
+  }
+}
+
+.left-docs img {
+  max-width: 100%;
+}
+
+section.doc-content.introductionwelcome > .left-docs {
+  border-top: none!important;
+}
+
+
+
+.main:focus, .doc-content:focus {
+  outline: none;
+}
+
+/*.hero {
+    text-align: left;
+    padding: 0 50px;
+    height: 110px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__img {
+
+    }
+    &__h1 {
+      margin-bottom: 0;
+    }
+}*/
+
+
+header h1 {
+  height: 60px;
+}
+
+.hero {
+  padding: 50px 24px 40px;
+  border-bottom: 1px solid #eee;
+  &__img {
+    display: block;
+    max-width: 100%;
+  }
+  &__h1 {
+    font-size: 2em;
+  }
+}
+
+
+@media (min-width: 700px) {
+  .hero {
+    padding: 0px 50px;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    &__img {
+      display: none;
+    }
+    &__h1 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+@media (min-width: 1000px) {
+
+  .hero {
+    text-align: left;
+    padding: 0 50px;
+    height: 111px;
+
+    position: relative;
+
+    justify-content: space-between;
+    &__img {
+      display: block;
+      max-width: 100%;
+    }
+  }
+  header h1 {
+    height: 107px;
+  }
+
+}
+.footer {
+  background-color:#3E4956;
+  border-top: 1px solid #eeeeee;
+  display:flex;
+  justify-content: center;
+  padding:10px;
+  a:hover,
+  a:visited {
+    color: #4BA2F2;
+  }
+
+}
+.main-nav-section {
+  .title {
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+
+  &.show-content {
+    .content {
+      display: block;
+    }
+  }
+
+  .content {
+    display: none;
+    overflow: hidden;
+  }
+}
+
+
+.active, .accordion:hover {
+  /*background-color: #ccc;*/
+}
+
+.top-of-tutorial-repo-link {
+  text-transform: lowercase;
+  .first-word {
+    text-transform: capitalize;
+  }
+}
+
+.warn.deprecated {
+  background: #FD0;
+  font-weight: bold;
+  font-size: small;
+  display:inline-block;
+  margin-left:5px;
+  padding:5px;
+  position: relative;
+  top:-3px;
+}
+
+.danger {
+  background: #dc3545;
+  color: #fff;
+  font-weight: bold;
+  padding:5px;
+}
+
+.danger.removed {
+  font-size: small;
+  display:inline-block;
+  margin-left:5px;
+  position: relative;
+  top:-3px;
+}

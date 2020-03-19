@@ -1,0 +1,44 @@
+toc:
+  - title: "Introduction"
+    collection: "introduction"
+    url: "/"
+    position: 1
+  - title: "Quickstart"
+    collection: "quickstart"
+    url: "/quickstart/"
+    position: 2
+    exclude: true
+  - title: "Tutorials"
+    collection: "tutorials"
+    url: "/tutorials/"
+    position: 4
+    exclude: true
+    docs:
+      - title: Javascript
+        collection: tutorials-javascript
+      - title: Python
+        collection: tutorials-python
+      - title: Ruby
+        collection: tutorials-ruby
+      - title: Recipes
+        collection: tutorials-recipes
+  - title: "Services"
+    collection: "services"
+    url: "/services/"
+    position: 6
+    exclude: true
+  - title: "Appbase API"
+    collection: apidefinitions    
+    url: "/apidefinitions/"
+    exclude: true
+    position: 7    
+  - title: "Resources"
+    collection: "resources"
+    url: "/resources/"
+    exclude: true
+    position: 8
+  - title: "Glossary"
+    collection: "glossary"
+    url: "/glossary/"
+    position: 9
+    exclude: true
