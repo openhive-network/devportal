@@ -4,11 +4,11 @@ position: 2
 exclude: true
 ---
 
-Applications that interface directly with the Steem blockchain will need to connect to a `steemd` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
+Applications that interface directly with the Steem blockchain will need to connect to a `hived` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
 
 ### Public Nodes
 
-Although `steemd` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `steemd` node or proxy WebSockets to HTTPS using [lineman](https://github.com/steemit/lineman).
+Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `hived` node or proxy WebSockets to HTTPS using [lineman](https://github.com/steemit/lineman).
 
 | URL                             | Owner          |
 | ------------------------------- | -------------- |
@@ -49,7 +49,7 @@ Both `block_log` files updated periodically, as of May 2018 uncompressed `block_
 
 Block log should be place in `blockchain` directory below `data_dir` and node should be started with `--replay-blockchain` to ensure block log is valid and continue to sync from the point of snapshot. Replay uses the downloaded block log file to build up the shared memory file up to the highest block stored in that snapshot and then continues with sync up to the head block.
 
-Replay helps to sync blockchain in much faster rate, but as blockchain grows in size replay might also take some time to verify blocks. 
+Replay helps to sync blockchain in much faster rate, but as blockchain grows in size replay might also take some time to verify blocks.
 
 There is another [trick which might help](https://github.com/steemit/steem/issues/2391) with faster sync/replay on smaller equipped servers:
 
@@ -63,7 +63,7 @@ done
 
 Above bash script drops `block_log` from the OS cache, leaving more memory free for backing the blockchain database. It might also help while running live, but measurement would be needed to determine this.
 
-##### Few other tricks that might help: 
+##### Few other tricks that might help:
 
 For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in steemd being slowed down by redundant IO operations. These settings are recommended to optimize reindex time.
 
@@ -82,7 +82,7 @@ docker run \
     steemit/steem
 
 docker logs -f steemd-default  # follow along
-``` 
+```
 ``` bash
 docker run \
     --env USE_WAY_TOO_MUCH_RAM=1 \
