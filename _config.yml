@@ -6,7 +6,7 @@ description: Hive Developer Documentation.
 baseurl: '/'
 url: https://developers.hive.io
 #google_analytics_key: UA-76480270-4
-permalink: /:categories/:title:output_ext
+permalink: /:categories/:title.html
 
 collections:
   introduction:
