@@ -5,8 +5,8 @@ title: Hive Developer
 description: Hive Developer Documentation.
 baseurl: '/'
 url: https://developers.hive.io
-google_analytics_key: UA-76480270-4
-permalink: /:categories/:title.html
+#google_analytics_key: UA-76480270-4
+permalink: /:categories/:title:output_ext
 
 collections:
   introduction:
@@ -105,5 +105,5 @@ types:
 
 kramdown:
   auto_ids: true
-  
+
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'CONTRIBUTING.md']
