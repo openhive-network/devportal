@@ -4,4 +4,6 @@ _site/
 vendor
 node_modules/
 .DS_Store
+.ruby-version
+.jekyll-cache
 
