@@ -20,11 +20,11 @@ $mobile-break: 700px;
 
 .highlight {
   padding: 5px;
-  background: #23323E;
+  background: #47535F;
 }
 
 pre {
-  color: white;
+  color: #f0f0f8;
 }
 
 .row {
@@ -131,7 +131,7 @@ header h1 {
 
 }
 .footer {
-  background-color:#3E4956;
+  background-color:#e7e7f1;
   border-top: 1px solid #eeeeee;
   display:flex;
   justify-content: center;
@@ -177,7 +177,7 @@ header h1 {
 }
 
 .warn.deprecated {
-  background: #FD0;
+  background: #F0E399;
   font-weight: bold;
   font-size: small;
   display:inline-block;
@@ -188,8 +188,8 @@ header h1 {
 }
 
 .danger {
-  background: #dc3545;
-  color: #fff;
+  background: #F09F99;
+  color: #f0f0f8;
   font-weight: bold;
   padding:5px;
 }
@@ -200,4 +200,23 @@ header h1 {
   margin-left:5px;
   position: relative;
   top:-3px;
+}
+
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  border: 1px solid #212529;
+  border-radius: 6px;
+  -webkit-box-shadow: inset 0 4px 4px rgba(0,0,0,.05);
+  box-shadow: inset 0 4px 4px rgba(0,0,0,.05);
+}
+
+blockquote {
+  min-height: 10px;
+  padding: 9px;
+  margin-bottom: 10px;
+  border: 1px solid #212529;
+  background: #e7e7f1;
+  border-radius: 6px;
 }

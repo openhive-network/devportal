@@ -166,7 +166,7 @@ data_defined_ids:
         {% if added %},{% endif %}
         {% assign added = false %}
         {% assign term_id = item.term | strip | slugify %}
-        {% assign glossary_url = '../glossary#' | append: term_id %}
+        {% assign glossary_url = '../glossary/#' | append: term_id %}
         
         "glossary_{{ item.term | strip | slugify }}": {
           "id": "glossary_{{ term_id }}",

@@ -10,15 +10,10 @@
   <link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
   <link rel="shortcut icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
 
-  {% if jekyll.environment == 'production' %}
   <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/css/css/fontawesome-all.min.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/css/work-sans-v7.css' | relative_url }}">
   <script src="{{ '/js/main.js' | relative_url }}"></script>
-  {% else %}
-  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/css/css/fontawesome-all.min.css' | relative_url }}">
-  <script src="{{ '/js/main.js' | relative_url }}"></script>
-  {% endif %}
 
   {% seo %}
 
@@ -38,7 +33,7 @@
 <header>
   <h1>
     <button type="button" class="open-nav" id="open-nav"></button>
-    <a href="{{ '/' | relative_url }}"  class="logo-link"><img src="{{ '/images/logotype_white.svg' | relative_url }}" height="40" alt="{{ site.title }} logo"></a>
+    <a href="{{ '/' | relative_url }}"  class="logo-link"><img src="{{ '/images/logotype_black.svg' | relative_url }}" height="40" alt="{{ site.title }} logo"></a>
   </h1>
 
   {% if jekyll.environment == 'production' %}
@@ -61,11 +56,7 @@
 <div class="main" id="top">
   <div class="hero">
     <h1 class="hero__h1">Hive Developer Portal {% if page.section %} - {{ page.section }}{% endif %}</h1>
-    {% if jekyll.environment == 'production' %}
-    <img class="hero__img" src="{{ '/images/hero.png' | relative_url }}">
-    {% else %}
-    <img class="hero__img" src="{{ '/images/hero.png' | relative_url }}">
-    {% endif %}
+    <img class="hero__img" src="{{ '/images/honey-comb-92.png' | relative_url }}" style="position: relative; top: 10px;" />
   </div>
   {{ content }}
 </div>

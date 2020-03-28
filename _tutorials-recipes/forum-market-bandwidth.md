@@ -8,7 +8,7 @@ layout: full
 
 ### Intro
 
-<h4 class="danger">
+<h4 class="danger well">
   Please note, Bandwidth has been replaced by <a href="{{ '/search/?q=resource+credits' | relative_url }}">Resource Credits</a>.  This document is outdated and will remain in place to give historical context prior to HF20.  Also see: <a href="https://github.com/steemit/steem/wiki/RC-Bandwidth-System">RC Bandwidth System</a>, <a href="https://github.com/steemit/steem/releases/tag/v0.20.2">0.20.2 Release Notes</a>, <a href="https://steemit.com/steem/@steemitdev/developer-guide-resource-credit-system">Developer Guide: Resource Credit System</a>
 </h4>
 
