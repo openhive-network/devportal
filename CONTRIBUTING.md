@@ -10,29 +10,9 @@ contributors.
 
 Please note that this contributing guide only applies to our development presence.
 
-## Repositories
+## Repository
 
-There are currently two repositories that you can contribute to:
-
-1.  Devportal [https://github.com/steemit/devportal](https://github.com/steemit/devportal)
-2.  Javascript Tutorials [https://github.com/steemit/devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js)
-
-All of the repositories have a package.json file included with them with script helpers setup. To use these you will need the following packages installed:
-
-1.  [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/en/)
-2.  [prettier](https://github.com/prettier/prettier)
-3.  [eslint](https://eslint.org/)
-
-These must all be installed in your development environment
-
-Each of the repositories have the following scripts
-
-`yarn lint` - performs linting validation on the codebase
-`yarn fmt` - executes prettier to format the codebase
-
-There is also a `precommit` script that will run both of these on committing of code to the repositoriy.
-
-When contributing to the **DevPortal** all code snippets must be added to the `_includes/<tutorial name>` folder since this will be linted on commit. You can also wrap all your code in the tutorial in <code>```</code> tags which will force them to be highlighted in the portal.
+Devportal [https://gitlab.syncad.com/hive/devportal](https://gitlab.syncad.com/hive/devportal)
 
 ## How to contribute
 

@@ -37,7 +37,7 @@ body {
 	font-size: 1.6rem;
 	line-height: 1.6;
 	font-weight: 400;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Work Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-webkit-tap-highlight-color: transparent;
 	background: #fcfcfc;
@@ -161,7 +161,7 @@ dl dd:after {
 }
 
 .button {
-  background-color: #ddd;
+  background-color: #e7e7f1;
   border: none;
   color: black;
   padding: 5px 10px;
@@ -214,12 +214,12 @@ dl dd:after {
 		transition: 0.3s color ease-in-out;
 
 		&.active {
-			color: #2196F3;
+			color: #E31337;
 			text-decoration: none;
 		}
 	}
 	a:hover, a:focus  {
-		color: #2196F3;
+		color: #E31337;
 	}
 }
 
@@ -272,12 +272,12 @@ h3 .endpoint {
 	}
 
 	.description {
-		color: #aaa;
+		color: #676771;
 		margin-top: -11px;
 	}
 
 	.overview {
-		color: #aaa;
+		color: #676771;
 		background: #fefefe;
 	}
 
@@ -288,29 +288,29 @@ h3 .endpoint {
 
 hr {
 	border: 0;
-	border-top: 1px solid #ddd;
+	border-top: 1px solid #e7e7f1;
 	margin: 20px 0;
 }
 
 .error, .warning, .info, .success	{
-	border-left: 5px solid #FD0;
+	border-left: 5px solid #F0E399;
 	padding: 10px 15px;
 	margin-left: -20px;
 	margin-right: -15px;
-	background-color: #FAFAFA;
+	background-color: #f0f0f8;
 	border-radius: 2px;
 }
 
 .info {
-	border-color: #56ADEC;
+	border-color: #B2D2EF;
 }
 
 .error {
-	border-color: #F20;
+	border-color: #F09F99;
 }
 
 .success {
-	border-color: #6c0;
+	border-color: #B8DD99;
 }
 
 .doc-content {
@@ -324,8 +324,8 @@ hr {
 	-webkit-border-image: -webkit-linear-gradient(left,	#eee 0%,#eee 50%,#333333 50%);
 	border-image-slice: 1;
 	padding: 30px 0;
-	background: -webkit-linear-gradient(left,#ffffff 0%, #ffffff 50%, #27313E 50%); /* Chrome10+,Safari5.1+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#232323',GradientType=1 ); /* IE6-9 */
+	background: -webkit-linear-gradient(left,#f0f0f8 0%, #f0f0f8 50%, #27313E 50%); /* Chrome10+,Safari5.1+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f8', endColorstr='#232323',GradientType=1 ); /* IE6-9 */
 }
 
 .doc-content:after {
@@ -365,12 +365,12 @@ hr {
 	box-sizing: border-box;				 /* Opera/IE 8+ */
 
 	code {
-		color: whitesmoke;
+		color: #f0f0f8;
 	}
 
 	pre {
-		background: white;
-		background: #3E4956;
+		background: #f0f0f8;
+		background: #e7e7f1;
 		padding: 10px;
 		border-radius: 5px;
 	}
@@ -379,7 +379,7 @@ hr {
 		border-color: #555;
 	}
 	p {
-		color: white;
+		color: #f0f0f8;
 	}
 }
 
@@ -413,7 +413,7 @@ hr {
 
 	a {
 		text-decoration: none;
-		color: #aaa;
+		color: #676771;
 
 		&:hover {
 			color: #222;
@@ -447,7 +447,7 @@ hr {
 	.right-code {
 		float: none;
 		width: 100%;
-		background: white;
+		background: #f0f0f8;
 		background: #232323;
 		padding: 30px 30px 10px;
 	}
@@ -477,12 +477,12 @@ header {
 	overflow-x: hidden;
 	z-index: 1;
 	background-color: $nav-background-color;
-	border-top: 4px solid #e7e7f1;
+	border-top: 4px solid #E31337;
 
 	h1 {
 		height: 107px;
 		box-sizing: border-box;
-		background-color: #3E4956;
+		background-color: #e7e7f1;
 		margin: 0;
 		font-size: 1.7rem;
 		line-height: 0.8;
@@ -593,9 +593,9 @@ header {
 }
 
 .logo-link {
-	color: #ffffff;
+	color: #f0f0f8;
 	font-weight: 600;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Work Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 	pointer-events: none;
 	cursor: default;
 }
