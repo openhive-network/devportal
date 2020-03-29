@@ -89,6 +89,7 @@ exclude:
   - LICENCE
   - vendor
   - Makefile
+  - tutorials
 
 defaults:
   -
