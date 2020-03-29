@@ -139,8 +139,8 @@ We encourage users to play around with different values and data types to fully 
 ### To Run the tutorial
 
 1.  [review dev requirements](../00_getting_started)
-1.  clone this repo
-1.  `cd tutorials/22_witness_listing_and_voting`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/22_witness_listing_and_voting`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see a prompt for input in terminal screen.

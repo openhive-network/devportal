@@ -4,7 +4,7 @@ position: 0
 description: "The official Steem library for Python is `steem-python`. It comes with a BIP38 encrypted wallet and a practical CLI utility called `steempy`."
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/00_getting_started) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/00_getting_started) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>
 
 

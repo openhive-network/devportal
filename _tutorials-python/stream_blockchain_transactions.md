@@ -4,7 +4,7 @@ position: 13
 description: "How to stream transactions on the live **Steem** blockchain"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Stream Blockchain Transactions](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/13_stream_blockchain_transactions) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>
 
 
@@ -70,10 +70,11 @@ That's it!
 ### To Run the tutorial
 
 1.  [review dev requirements](getting_started)
-1.  clone this repo
-1.  `cd tutorials/13_stream_blockchain_transactions`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/13_stream_blockchain_transactions`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see a prompt for input in terminal screen.
+
 
 ---

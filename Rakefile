@@ -1,10 +1,10 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'scrape/api_definitions_job'
-require 'scrape/tutorials_job/base'
-require 'scrape/tutorials_job/javascript'
-require 'scrape/tutorials_job/python'
-require 'scrape/tutorials_job/ruby'
+require 'generate/tutorials_job/base'
+require 'generate/tutorials_job/javascript'
+require 'generate/tutorials_job/python'
+require 'generate/tutorials_job/ruby'
 
 require 'rake/testtask'
 require 'net/https'
@@ -13,15 +13,6 @@ require 'yaml'
 require 'html-proofer'
 
 namespace :scrape do
-  desc "Scrape steemjs docs"
-  task :javascript do
-
-  end
-
-  desc "Scrape pysteem docs"
-  task :python do
-  end
-  
   desc "Scrape API Definitions"
   task :api_defs do
     url = ENV.fetch('TEST_NODE', 'https://api.steemit.com')
@@ -30,40 +21,42 @@ namespace :scrape do
     
     puts "Methods added or changed: #{count}"
   end
+end
   
-  desc 'Scrape all known tutorial repositories.'
+namespace :gen do
+  desc 'Generate all known tutorial README.md files.'
   task :tutorials do
     puts '=' * 80
     puts "JS-Tutorials:"
-    Rake::Task["scrape:tutorials:js"].invoke
+    Rake::Task["gen:tutorials:js"].invoke
     puts '=' * 80
     puts "PY-Tutorials:"
-    Rake::Task["scrape:tutorials:py"].invoke
+    Rake::Task["gen:tutorials:py"].invoke
     puts '=' * 80
     puts "RB-Tutorials:"
-    Rake::Task["scrape:tutorials:rb"].invoke
+    Rake::Task["gen:tutorials:rb"].invoke
   end
   
   namespace :tutorials do
-    desc 'Scrape JS-Tutorials'
+    desc 'Generate JS-Tutorials'
     task :js, [:num, :force] do |t, args|
-      job = Scrape::TutorialsJob::Javascript.new(num: args[:num], force: args[:force])
+      job = Generate::TutorialsJob::Javascript.new(num: args[:num], force: args[:force])
       count = job.perform
     
       puts "Tutorials added or changed: #{count}"
     end
     
-    desc 'Scrape PY-Tutorials'
+    desc 'Generate PY-Tutorials'
     task :py, [:num, :force] do |t, args|
-      job = Scrape::TutorialsJob::Python.new(num: args[:num], force: args[:force])
+      job = Generate::TutorialsJob::Python.new(num: args[:num], force: args[:force])
       count = job.perform
       
       puts "Tutorials added or changed: #{count}"
     end
     
-    desc 'Scrape RB-Tutorials'
+    desc 'Generate RB-Tutorials'
     task :rb, [:num, :force] do |t, args|
-      job = Scrape::TutorialsJob::Ruby.new(num: args[:num], force: args[:force])
+      job = Generate::TutorialsJob::Ruby.new(num: args[:num], force: args[:force])
       count = job.perform
       
       puts "Tutorials added or changed: #{count}"
