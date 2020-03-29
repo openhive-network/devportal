@@ -52,7 +52,7 @@ Dynamic Global Properties represents a set of values that are calculated during 
 {% if field.deprecated %}
 <li class="warning"><strong><small>Deprecated</small></strong></li>
 {% elsif field.removed %}
-<li class="danger"><strong><small>Removed</small></strong></li>
+<li class="error"><strong><small>Removed</small></strong></li>
 {% endif %}
 {% if field.since %}
 <li class="success"><strong><small>Since: {{field.since}}</small></strong></li>

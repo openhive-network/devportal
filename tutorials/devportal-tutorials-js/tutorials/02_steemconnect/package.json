@@ -1,0 +1,24 @@
+{
+    "name": "02_steemconnect",
+    "version": "1.0.0",
+    "description": "Getting started with Steemconnect",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack && node ./index.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev-server":
+            "./node_modules/.bin/webpack-dev-server --mode development --content-base ./public --port 3000"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "koa": "^2.5.3",
+        "koa-static": "^5.0.0",
+        "sc2-sdk": "^2.0.1"
+    },
+    "devDependencies": {
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.9"
+    }
+}

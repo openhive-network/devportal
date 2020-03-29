@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Get posts using filters & tags</title>
+        <script src="bundle.js"></script>
+    </head>
+    <body>
+    	<div class="container" id="content">
+			<div class="row">
+				<div class="col-md-4">
+					<label for="filters">Filters</label>
+					<!--List of filters-->
+					<select id="filters" class="form-control" >
+					  <option selected>Select filter</option>
+					  <option value="trending">Trending</option>
+					  <option value="hot">Hot</option>
+					  <option value="created">New</option>
+					  <option value="promoted">Promoted</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="tag">Tag</label>
+					<!-- tag input. Only one tag at a time can be searched -->
+					<input id="tag" class="form-control"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 mt-3">
+					<button class="btn btn-primary" onclick="getPosts()">Get Posts</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm list-group mt-3" id="postList"></div>
+			</div>
+    	</div>
+    </body>
+</html>

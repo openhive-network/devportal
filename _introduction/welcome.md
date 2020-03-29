@@ -9,9 +9,9 @@ This site is designed to aid those interested in developing applications on the 
 
 If you don't know about Hive yet, visit [hive.io](https://hive.io).
 
-The code for this site is on [gitlab](#soon). If you'd like to see a specific improvement
+The code for this site is on [gitlab](https://gitlab.syncad.com/hive/devportal). If you'd like to see a specific improvement
 you can either submit a pull request or file an issue. Please follow our
-[contribution guidelines](#soon)
+[contribution guidelines](https://gitlab.syncad.com/hive/devportal/-/blob/develop/CONTRIBUTING.md)
 
 
 

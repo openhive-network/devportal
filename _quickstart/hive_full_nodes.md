@@ -1,30 +1,25 @@
 ---
-title: steemd Nodes
+title: Hive Nodes
 position: 2
 exclude: true
 ---
 
-Applications that interface directly with the Steem blockchain will need to connect to a `hived` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
+Applications that interface directly with the Hive blockchain will need to connect to a `hived` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
 
 ### Public Nodes
 
-Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `hived` node or proxy WebSockets to HTTPS using [lineman](https://github.com/steemit/lineman).
+Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `hived` node or proxy WebSockets to HTTPS using [lineman](https://gitlab.syncad.com/hive/lineman).
 
 | URL                             | Owner          |
 | ------------------------------- | -------------- |
+| api.hive.blog                   | @blocktrades   |
+| api.openhive.network            | @gtg           |
 | anyx.io                         | @anyx          |
-| api.steemit.com                 | @steemit       |
-| api.steem.house                 | @gtg           |
-| appbasetest.timcliff.com        | @timcliff      |
-| gtg.steem.house:8090            | @gtg           |
-| hive.anyx.io                    | @anyx          |
-| rpc.steemviz.com                | @ausbitbank    |
-| rpc.usesteem.com                | @themarkymark  |
-| steemd.minnowsupportproject.org | @followbtcnews |
-| steemd.privex.io                | @privex        |
+| api.hivekings.com               | @drakos        |
+| hived.privex.io                 | @privex        |
 
 
-For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://steemit.com/@fullnodeupdate) by [@holger80](https://steemit.com/@holger80).  Another excellent tool for checking real-time full node status is [geo.steem.pl](https://geo.steem.pl) by [@jamzed](https://steemit.com/@jamzed).
+For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://hive.blog/@fullnodeupdate) by [@holger80](https://hive.blog/@holger80).
 
 
 ### Private Nodes
@@ -37,15 +32,17 @@ _To run a p2p node (ca. 2GB of memory is required at the moment):_
 
 ##### Dockerized Full Node
 
-_to run a node with all the data (e.g. for supporting a content website) that uses ca. 14GB of memory and growing:_
+_to run a node with all the data (e.g. for supporting a content website) that uses ca. 140GB of memory and growing:_
 
 ### Syncing blockchain
 
 Normally syncing blockchain starts from very first, `0` genesis block. It might take long time to catch up with live network. Because it connectes to various p2p nodes in the Steem network and requests blocks from 0 to head block. It stores blocks in block log file and builds up the current state in the shared memory file. But there is a way to bootstrap syncing by using trusted `block_log` file. The block log is an external append only log of the blocks. It contains blocks that are only added to the log after they are irreversible because the log is append only.
 
-Trusted block log file helps to download blocks faster. Steemit Inc, provides public block log file which can be downloaded from [here](https://s3.amazonaws.com/steemit-dev-blockchainstate/block_log-latest) and there is also option from community witness `@gtg` which can be downloaded from [here](https://gtg.steem.house/get/blockchain/).
+Trusted block log file helps to download blocks faster. Various operators provide public block log file which can be downloaded from:
+- http://files.privex.io
+- https://gtg.steem.house/get/blockchain
 
-Both `block_log` files updated periodically, as of May 2018 uncompressed `block_log` file size ~110 GB. Docker container on `stable` branch of Steem source code has option to use `USE_PUBLIC_BLOCKLOG=1` to download latest block log and start Steem node with replay.
+Both `block_log` files updated periodically, as of April 2020 uncompressed `block_log` file size ~260 GB. (Docker container on `stable` branch of Hive source code has option to use `USE_PUBLIC_BLOCKLOG=1` to download latest block log and start Steem node with replay.)
 
 Block log should be place in `blockchain` directory below `data_dir` and node should be started with `--replay-blockchain` to ensure block log is valid and continue to sync from the point of snapshot. Replay uses the downloaded block log file to build up the shared memory file up to the highest block stored in that snapshot and then continues with sync up to the head block.
 
@@ -76,6 +73,7 @@ echo 30000 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
 
 Another settings that can be changed in `config.ini` is `flush` - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.
 
+(below info is outdated - need updating)
 ``` bash
 docker run \
     -d -p 2001:2001 -p 8090:8090 --name steemd-default \
