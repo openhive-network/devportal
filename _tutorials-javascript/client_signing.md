@@ -4,7 +4,7 @@ position: 3
 description: "_By the end of this tutorial you would know how to sign, verify broadcast transactions locally on Steem._"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Client Signing](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/03_client_signing) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Client Signing](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/03_client_signing) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -36,7 +36,7 @@ Testnet and Production networks only differ with few settings which helps develo
 ```javascript
 opts.addressPrefix = 'TST';
 opts.chainId =
-    'd043ab83d223f25f37e1876fe48a240d49d8e4b1daa2342064990a8036a8bb5b';
+    '46d82ab7d8db682eb1959aed0ada039a6d49afa1602491f93dde9cac3e8e6c32';
 //connect to server which is connected to the network/testnet
 const client = new dsteem.Client('https://testnet.steemitdev.com', opts);
 ```
@@ -47,7 +47,7 @@ const client = new dsteem.Client('https://testnet.steemitdev.com', opts);
 
 To test connection as well as to get parameters of the connected network, we can use `getDynamicGlobalProperties` function from **dsteem** library. Only 2 fields are in our interesting for this tutorial, `head_block_number` - returns head or latest block number of the network, `head_block_id` - returns id of head block.
 
-![Overview](https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/03_client_signing/images/overview.png?raw=true)
+![Overview](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/03_client_signing/images/overview.png)
 
 #### 3. Account selection<a name="account-selection"></a>
 
@@ -116,8 +116,8 @@ That's it!
 
 ### To Run the tutorial
 
-1.  clone this repo
-1.  `cd tutorials/03_client_signing`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/03_client_signing`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

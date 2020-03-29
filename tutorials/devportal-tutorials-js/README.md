@@ -46,13 +46,13 @@ The tutorials build on each other. It's suggested you go through them in-order.
 
 Use the command line/terminal for the following instructions
 
-1.  clone this repo
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
 
-    `git clone git@github.com:steemit/devportal-tutorials-js.git`
+    `git clone https://gitlab.syncad.com/hive/devportal.git`
 
 1.  cd into the tutorial you wish to run
 
-    ex: `cd tutorials/01_blog_feed`
+    ex: `cd devportal/tutorials/devportal-tutorials-js/tutorials/01_blog_feed`
 
 1.  Use npm or yarn to install dependencies
 

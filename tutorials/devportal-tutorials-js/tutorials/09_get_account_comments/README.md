@@ -265,8 +265,8 @@ Each line is then pushed and displayed separately.
 
 ### To Run the tutorial
 
-1.  clone this repo
-1.  `cd tutorials/09_get_account_comments`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/09_get_account_comments`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

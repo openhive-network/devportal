@@ -19,7 +19,7 @@ The tutorials build on each other. It's suggested you go through them in-order.
 
 Use the command line/terminal for the following instructions
 
-1.  clone this repo
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
 
     `git clone git@github.com:steemit/devportal-tutorials-rb.git`
 

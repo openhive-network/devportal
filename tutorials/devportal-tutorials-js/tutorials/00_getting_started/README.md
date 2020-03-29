@@ -11,7 +11,7 @@ You can still learn a lot of these if they aren't in your base skill-set; it'll 
 
 ### Your Dev Environment
 
-These tutorials require [Node.js 8.7+](https://nodejs.org/en/download/). [Yarn](https://yarnpkg.com/en/) is nice, but not required. Runnable versions of the tutorials are located [in this github repo](https://github.com/steemit/devportal-tutorials-js).
+These tutorials require [Node.js 8.7+](https://nodejs.org/en/download/). [Yarn](https://yarnpkg.com/en/) is nice, but not required. Runnable versions of the tutorials are located [in this github repo](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).
 If you haven't chosen an editor, you can use [Atom](https://atom.io/), [Sublime](https://www.sublimetext.com/), [Intellij](https://www.jetbrains.com/idea/), [Vi](https://en.wikipedia.org/wiki/Vi), etc.
 
 If you want to keep multiple versions of Node on your system try [Node Version Manager](https://github.com/creationix/nvm).
@@ -20,17 +20,17 @@ If you want to keep multiple versions of Node on your system try [Node Version M
 
 Let's say you wanted to run the very [first tutorial](../01_blog_feed), `01_blog_feed`. Here's how you'd do it:
 
-1.  From Bash:
+From Bash:
 
-    ```bash
-    git clone https://github.com/steemit/devportal-tutorials-js.git
+```bash
+git clone https://gitlab.syncad.com/hive/devportal.git
 
-    cd devportal-tutorials-js/tutorials/01_blog_feed
-    npm i
-    npm run dev-server
-    ```
+cd devportal/tutorials/devportal-tutorials-js/tutorials/01_blog_feed
+npm i
+npm run dev-server
+```
 
-1.  open http://localhost:3000/ in your web browser
+Then open http://localhost:3000/ in your web browser:
 
 ```
 ### Github

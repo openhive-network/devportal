@@ -4,7 +4,7 @@ position: 30
 description: "_How to grant and revoke posting permission to another user._"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Posting Permission](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/30_grant_posting_permission) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Posting Permission](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/30_grant_posting_permission) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -168,8 +168,8 @@ This is similar to the steemconnect links that have been covered in previous tut
 
 ### To run this tutorial
 
-1.  clone this repo
-2.  `cd tutorials/28_grant_posting_permission`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+2.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/28_grant_posting_permission`
 3.  `npm i`
 4.  `npm run dev-server` or `npm run start`
 5.  After a few moments, the server should be running at http://localhost:3000/

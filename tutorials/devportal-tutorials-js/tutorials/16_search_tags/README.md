@@ -70,8 +70,8 @@ document.getElementById('tagList').innerHTML = posts.join('<br>');
 
 ### To run this tutorial
 
-1.  clone this repo
-1.  `cd tutorials/16_search_tags`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/16_search_tags`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at http://localhost:3000/

@@ -88,8 +88,8 @@ That's it!.
 ### To Run the tutorial
 
 1.  [review dev requirements](../00_getting_started)
-1.  clone this repo
-1.  `cd tutorials/15_search_accounts`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/15_search_accounts`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see output in terminal/command prompt screen.
