@@ -12,10 +12,10 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
 
 | URL                             | Owner          |
 | ------------------------------- | -------------- |
-| api.hive.blog                   | @              |
-| api.openhive.network            | @              |
+| api.hive.blog                   | @blocktrades   |
+| api.openhive.network            | @gtg           |
 | anyx.io                         | @anyx          |
-| api.hivekings.com               | @              |
+| api.hivekings.com               | @drakos        |
 | hived.privex.io                 | @privex        |
 
 
