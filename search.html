@@ -57,7 +57,7 @@ data_defined_ids:
   							"category": "{{ collection.label | strip | xml_escape }}",
   							"description": "{{ item.description | strip | xml_escape }}",
   			 				"type": "{{ item.type | strip | xml_escape }}",
-  							"url": "{{ item.url | strip }}",
+  							"url": "{{ item.url | strip }}.html",
   							"content": {{ item.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
   						}
   						{% assign added = true %}
