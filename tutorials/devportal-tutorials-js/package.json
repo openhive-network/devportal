@@ -1,0 +1,25 @@
+{
+    "scripts": {
+        "lint":
+            "eslint -c .eslintrc —ext .js --ignore-path .gitignore --fix ./tutorials/",
+        "fmt": "prettier --write ./tutorials/*/*",
+        "precommit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.{png,jpeg,jpg,gif,svg}": ["imagemin-lint-staged", "git add"],
+        "*.{js,json,css,md,lock}": ["prettier --write", "git add"]
+    },
+    "devDependencies": {
+        "babel-eslint": "^8.0.3",
+        "babel-jest": "^21.2.0",
+        "babel-preset-react-native": "^4.0.0",
+        "eslint": "^4.12.1",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-plugin-babel": "^4.1.2",
+        "eslint-plugin-import": "^2.10.0",
+        "husky": "^0.14.3",
+        "imagemin-lint-staged": "^0.3.0",
+        "lint-staged": "^7.1.0",
+        "prettier": "1.11.1"
+    }
+}
