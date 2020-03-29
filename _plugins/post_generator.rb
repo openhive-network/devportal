@@ -1,15 +1,15 @@
 require 'steem'
 
 module Jekyll
-  module SteemPostGenerator
-    def steem_post(slug)
+  module HivePostGenerator
+    def hive_post(slug)
       slug = slug.split('@').last
       slug = slug.split('/')
       author = slug[0]
       permlink = slug[1..-1].join('/')
       permlink = permlink.split('?').first
       permlink = permlink.split('#').first
-      api = Steem::CondenserApi.new
+      api = Steem::CondenserApi.new(url: 'https://api.openhive.network')
       
       api.get_content(author, permlink) do |content|
         body = content.body
@@ -18,8 +18,9 @@ module Jekyll
         # from another post.
         
         body = body.gsub(/https:\/\/steemitimages.com\/[0-9]+x0\/https:\/\//, 'https://')
+        body = body.gsub(/https:\/\/images.hive.blog\/[0-9]+x0\/https:\/\//, 'https://')
         
-        # Although it works on steemit.com and many other markdown interpretors,
+        # Although it works on hive.blog and many other markdown interpretors,
         # kramdown doesn't like this, so we have to fix it:
         # 
         # <div>
@@ -38,9 +39,9 @@ module Jekyll
         body + <<~DONE
         \n<hr />
         <p>
-          See: <a href="https://steemit.com/@#{author}/#{permlink}">#{content.title}</a>
+          See: <a href="https://hive.blog/@#{author}/#{permlink}">#{content.title}</a>
           by
-          <a href="https://steemit.com/@#{author}">@#{author}</a>
+          <a href="https://hive.blog/@#{author}">@#{author}</a>
         </p>
         DONE
       end
@@ -48,7 +49,13 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_filter(Jekyll::SteemPostGenerator)
+Liquid::Template.register_filter(Jekyll::HivePostGenerator)
 
 # USAGE:
-# {{'@stoodkev/how-to-set-up-and-use-multisignature-accounts-on-steem-blockchain' | steem_post}}
+# {{'@stoodkev/how-to-set-up-and-use-multisignature-accounts-on-steem-blockchain' | hive_post}}
+# 
+# NOTE:
+# For content prior to the Hive fork, please remember to maintain the correct
+# canonical_url, even if it appears on a Steem front-end, unless the original
+# author removed it from Steem.  SEO will still consider Steem as the origin,
+# even after the Hive fork.

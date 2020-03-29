@@ -3,7 +3,7 @@ title: 'MIRA: Performance Tuning'
 position: 1
 description: Provides a way to get the most performance on specific hardware.
 exclude: true
-layout: steem-post
+layout: hive-post
 canonical_url: https://steemit.com/steemit/@gerbino/mira-performance-tuning
 ---
 
@@ -13,4 +13,4 @@ canonical_url: https://steemit.com/steemit/@gerbino/mira-performance-tuning
 
 <hr />
 
-{{'@gerbino/mira-performance-tuning' | steem_post}}
+{{'@gerbino/mira-performance-tuning' | hive_post}}
