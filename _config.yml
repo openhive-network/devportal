@@ -89,7 +89,7 @@ exclude:
   - LICENCE
   - vendor
   - Makefile
-  - tutorials
+  - "tutorials"
 
 defaults:
   -
@@ -107,4 +107,4 @@ types:
 kramdown:
   auto_ids: true
 
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'CONTRIBUTING.md']
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'CONTRIBUTING.md','tutorials']
