@@ -117,9 +117,9 @@ data_defined_ids:
         {% assign added = false %}
         
         {% if field.purpose %}
-          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties#' | append: field.name %}
+          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#' | append: field.name %}
         {% else %}
-          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties#not-covered' %}
+          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#not-covered' %}
         {% endif %}
         
         "dgpo_{{ field.name | strip | slugify }}": {
@@ -142,9 +142,9 @@ data_defined_ids:
         {% assign added = false %}
         
         {% if field.purpose %}
-          {% assign config_url = '../tutorials-recipes/understanding-configuration-values#' | append: field.name %}
+          {% assign config_url = '../tutorials-recipes/understanding-configuration-values.html#' | append: field.name %}
         {% else %}
-          {% assign config_url = '../tutorials-recipes/understanding-configuration-values#not-covered' %}
+          {% assign config_url = '../tutorials-recipes/understanding-configuration-values.html#not-covered' %}
         {% endif %}
         
         "config_{{ field.name | strip | slugify }}": {
