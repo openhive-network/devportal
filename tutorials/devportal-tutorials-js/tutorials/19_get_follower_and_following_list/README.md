@@ -108,8 +108,8 @@ followlist.forEach(newObj => {
 
 ### To run this tutorial
 
-1.  clone this repo
-2.  `cd tutorials/19_get_follower_and_following_list`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+2.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/19_get_follower_and_following_list`
 3.  `npm i`
 4.  `npm run dev-server` or `npm run start`
 5.  After a few moments, the server should be running at http://localhost:3000/

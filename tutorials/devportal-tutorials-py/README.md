@@ -49,13 +49,11 @@ The tutorials build on each other. It's suggested you go through them in-order.
 
 Use the command line/terminal for the following instructions
 
-1.  clone this repo
-
-    `git clone git@github.com:steemit/devportal-tutorial-py.git`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
 
 1.  cd into the tutorial you wish to run
 
-    ex: `cd tutorials/04_get_posts`
+    ex: `cd devportal/tutorials/devportal-tutorials-py/tutorials/04_get_posts`
 
 1.  Use pip to install dependencies
 

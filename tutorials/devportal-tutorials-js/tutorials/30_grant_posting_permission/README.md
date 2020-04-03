@@ -161,8 +161,8 @@ This is similar to the steemconnect links that have been covered in previous tut
 
 ### To run this tutorial
 
-1.  clone this repo
-2.  `cd tutorials/28_grant_posting_permission`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+2.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/28_grant_posting_permission`
 3.  `npm i`
 4.  `npm run dev-server` or `npm run start`
 5.  After a few moments, the server should be running at http://localhost:3000/
