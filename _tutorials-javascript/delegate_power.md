@@ -4,7 +4,7 @@ position: 27
 description: "_Delegate power to other users using Steemconnect or Client-side signing._"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Delegate Power](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/27_delegate_power) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Delegate Power](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/27_delegate_power) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -106,8 +106,8 @@ That's it!
 
 ### To run this tutorial
 
-1.  clone this repo
-1.  `cd tutorials/25_delegate_power`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/25_delegate_power`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

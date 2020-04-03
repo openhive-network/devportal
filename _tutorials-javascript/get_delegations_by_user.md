@@ -4,7 +4,7 @@ position: 29
 description: "_View the vesting delegations made by a user as well as the delegations that are expiring._"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Delegations By User](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/29_get_delegations_by_user) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Delegations By User](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/29_get_delegations_by_user) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -155,8 +155,8 @@ delegationdata.forEach(newObj => {
 
 ### To run this tutorial
 
-1.  clone this repo
-2.  `cd tutorials/27_get_delegations_by_user`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+2.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/27_get_delegations_by_user`
 3.  `npm i`
 4.  `npm run dev-server` or `npm run start`
 5.  After a few moments, the server should be running at http://localhost:3000/

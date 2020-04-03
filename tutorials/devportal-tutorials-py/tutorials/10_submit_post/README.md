@@ -103,9 +103,8 @@ You can also check on the [testportal](http://condenser.steem.vc/blog/@cdemo) fo
 ### To Run the tutorial
 
 1.  [review dev requirements](../00_getting_started)
-1.  clone this repo
-2.  `cd tutorials/10_submit_post`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+2.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/10_submit_post`
 3.  `pip install -r requirements.txt`
 4.  `python index.py`
 5.  After a few moments, you should see a prompt for input in terminal screen.
-

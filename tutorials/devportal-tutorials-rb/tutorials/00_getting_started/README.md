@@ -76,4 +76,4 @@ api = Radiator::Api.new(options)
 
 ### Next Step
 
-If you'd like to dive right into the first tutorial, have a look at: [Blog Feed](https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials/01_blog_feed)
+If you'd like to dive right into the first tutorial, have a look at: [Blog Feed](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-rb/tutorials/01_blog_feed)

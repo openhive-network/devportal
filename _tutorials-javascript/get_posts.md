@@ -4,7 +4,7 @@ position: 4
 description: "Query for the most recent posts having a specific tag, using a Steem filter"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/04_get_posts) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/04_get_posts) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -49,7 +49,7 @@ There are three input components to the UI.
 *   Get Posts: It's a button. You click it, and we move on to assembling our post.
     `<button class="btn btn-primary" onclick="getPosts()">Get Posts</button>`
 
-![Step-01-UI.png](https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/04_get_posts/images/Step-01-UI.png?raw=true)
+![Step-01-UI.png](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/04_get_posts/images/Step-01-UI.png)
 
 #### 2. Construct query <a name="Construct-query"></a>
 
@@ -187,8 +187,8 @@ The result returned from the service is a `JSON` list. This is an example list w
 
 ### To Run the tutorial
 
-1.  clone this repo
-1.  `cd tutorials/04_get_posts`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/04_get_posts`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

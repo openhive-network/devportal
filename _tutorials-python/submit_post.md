@@ -4,7 +4,7 @@ position: 10
 description: "How to submit post on Steem blockchain using Python."
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://github.com/steemit/devportal-tutorials-py/tree/master/tutorials/10_submit_post) can be downloaded as part of the [PY tutorials repository](https://github.com/steemit/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/10_submit_post) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>
 
 
@@ -109,12 +109,11 @@ You can also check on the [testportal](http://condenser.steem.vc/blog/@cdemo) fo
 ### To Run the tutorial
 
 1.  [review dev requirements](getting_started)
-1.  clone this repo
-2.  `cd tutorials/10_submit_post`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+2.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/10_submit_post`
 3.  `pip install -r requirements.txt`
 4.  `python index.py`
 5.  After a few moments, you should see a prompt for input in terminal screen.
-
 
 
 ---

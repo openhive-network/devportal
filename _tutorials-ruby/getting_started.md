@@ -4,7 +4,7 @@ position: 0
 description: "To access the Steem blockchain using Ruby, install the Radiator gem: [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator).  Full documentation on Radiator api methods are hosted on [rubydoc.info](http://www.rubydoc.info/gems/radiator)."
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials/00_getting_started) can be downloaded as part of the [RB tutorials repository](https://github.com/steemit/devportal-tutorials-rb).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/00_getting_started) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
 <br>
 
 
@@ -83,7 +83,7 @@ api = Radiator::Api.new(options)
 
 ### Next Step
 
-If you'd like to dive right into the first tutorial, have a look at: [Blog Feed](https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials/01_blog_feed)
+If you'd like to dive right into the first tutorial, have a look at: [Blog Feed](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-rb/tutorials/01_blog_feed)
 
 
 ---

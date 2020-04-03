@@ -4,7 +4,7 @@ position: 12
 description: "_By the end of this tutorial you should know how to patch post edits to Steem._"
 layout: full
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://github.com/steemit/devportal-tutorials-js/tree/master/tutorials/12_edit_content_patching) can be downloaded as part of the [JS tutorials repository](https://github.com/steemit/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/12_edit_content_patching) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -176,8 +176,8 @@ After the post has been broadcasted to the network, we can simply set all the fi
 
 ### To Run the tutorial
 
-1.  clone this repo
-1.  `cd tutorials/12_edit_content_patching`
+1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
+1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/12_edit_content_patching`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at http://localhost:3000/
