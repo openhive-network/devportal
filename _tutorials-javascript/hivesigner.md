@@ -55,7 +55,7 @@ Here are the steps that helps you to setup new app:
 
 1c. Give your app name, description, icon image link, website (if available) and Redirect URI(s)
 
-Here is an example of [Esteem](https://esteem.app) form to give you idea to follow.
+Here is an example of [Esteem](https://esteem.app) form to give you idea how to fill form correctly.
 
 ![hivesigner_myapps](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/hivesigner_myapp.png)
 
