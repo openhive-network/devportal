@@ -5,7 +5,7 @@ position: 2
 
 **What is HiveSigner?**
 
-The goal of HiveSigner is to provide a safe way of connecting to the blockchain via 3rd party apps without compromising the security of your private keys and passwords. It's a simple identity layer built on top of the blockchain allowing users safe access and developers the freedom of not having to handle the authentication system, i.e. managing users' private keys and encryption. This means that devs won't have to opensource their projects in order to gain user trust. When connecting to apps in this manner, neither SteemConnect nor the authorised app store the private keys as the posting key is incrypted on your cookie.
+The goal of HiveSigner is to provide a safe way of connecting to the blockchain via 3rd party apps without compromising the security of your private keys and passwords. It's a simple identity layer built on top of the blockchain allowing users safe access and developers the freedom of not having to handle the authentication system, i.e. managing users' private keys and encryption. This means that devs won't have to opensource their projects in order to gain user trust. When connecting to apps in this manner, neither Hivesigner nor the authorised app store the private keys as the posting key is incrypted on your cookie.
 
 
 **How HiveSigner is implemented**
@@ -28,7 +28,7 @@ A full breakdown of OAuth2 and how it applies to Hive and HiveSigner can be foun
 **Useful Links**
 
 *   [HiveSigner Repo](https://github.com/ledgerconnect/hivesigner)
-*   [Community Resources]({{ '/resources/#community-hive-connect-libs' | relative_url }})
+*   [Community Resources]({{ '/resources/#community-hivesigner-libs' | relative_url }})
 
 
 For additional material you can refer to the original Hive [blog](https://hive.blog/hive/@good-karma/hivesigner-released-and-ready) post by [@good-karma](https://hive.blog/)
