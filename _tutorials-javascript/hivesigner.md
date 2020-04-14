@@ -28,15 +28,15 @@ Learn more about [Hivesigner operations here](https://github.com/ledgerconnect/h
 
 ## Steps
 
-1.  [**Hivesigner Dashboard**](#sc-dashboard) Create account for application and set up dashboard
-1.  [**Initialize Hivesigner**](#init-sc) Initialize SDK in your application code
+1.  [**Hivesigner Dashboard**](#dashboard) Create account for application and set up dashboard
+1.  [**Initialize Hivesigner**](#init) Initialize SDK in your application code
 1.  [**Login URL**](#login-url) Form login url for user
 1.  [**Request token**](#request-token) Request token with login url
 1.  [**Set token**](#set-token) Set or save token for future requests
 1.  [**Get user data**](#get-user) Get user details with token
 1.  [**Logout**](#logout) Logout user and clear token
 
-#### 1. Hivesigner Dashboard<a name="sc-dashboard"></a>
+#### 1. Hivesigner Dashboard<a name="dashboard"></a>
 
 Hivesigner is unified authentification system built on top of Hive.
 Layer to ensure easy access and setup for all application developers as well as secure way for users to interact with Hive apps.
@@ -45,29 +45,17 @@ Setting up Hivesigner in your app is straight-forward process and never been thi
 
 Here are the steps that helps you to setup new app:
 
-1a. Visit [Hivesigner Dashboard](https://hivesigner.com/dashboard) and login with your Hive credentials
+1a. Visit [Hivesigner Dashboard](https://hivesigner.com/profile) and login with your Hive credentials for your app
 
-![hivesigner_login](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/steemconnect_login.png)
+![hivesigner_login](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/hivesigner_login.png)
 
-1b. You will see Applications and Developers section, in Developers section click on `My Apps`
+1b. You will see Account type, User and Application section, in Application section fill out details of App
 
-![hivesigner_dashboard](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/steemconnect_dashboard.png)
+![hivesigner_dashboard](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/account_type_application.png)
 
-![hivesigner_new_app](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/steemconnect_new_app.png)
+1c. Give your app name, description, icon image link, website (if available) and Redirect URI(s)
 
-1c. Create New App using Hivesigner, which will help you create new Hive account for your application. Let's call it `demo-app` for this tutorial purpose.
-
-![hivesigner_account_create](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/steemconnect_account_create.png)
-
-Account creation fee will be deducted from your balance, make sure you have enough funds to complete account creation.
-
-Next step is to login with account which has enough balance to pay for account creation fee.
-
-![hivesigner_signin](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/steemconnect_signin.png)
-
-1d. Give your app name, description, icon image link, website (if available) and Redirect URI(s)
-
-![hivesigner_myapps](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/steemconnect_myapps.png)
+![hivesigner_myapps](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/02_hivesigner/images/hivesigner_myapp.png)
 
 Application name and description should give users clear understanding what permissions it requires and what is the purpose of the app.
 
@@ -80,7 +68,7 @@ This is typical backend web development, we hope you know how to set up your bac
 
 *   Disclaimer: All images/screenshots of user interface may change as Hivesigner evolves
 
-#### 2. Initialize Hivesigner<a name="init-sc"></a>
+#### 2. Initialize Hivesigner<a name="init"></a>
 
 Once you have setup account for new application, you can setup application with Hivesigner authentification and API processes.
 To do that, you will need to install `hivesigner` nodejs package with `npm i hivesigner`.
@@ -111,7 +99,7 @@ Now that `hivesigner` is initialized we can start authentication and perform sim
 
 #### 7. Logout<a name="logout"></a>
 
-> In order to logout, you can use `revokeToken` function from sc2-sdk.
+> In order to logout, you can use `revokeToken` function from hivesigner.
 
 **That's all there is to it.**
 
