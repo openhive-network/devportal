@@ -5,7 +5,7 @@ position: 5
 
 #### Intro
 
-The DHF (Decentralized Hive Fund) is an account on the Hive blockchain (currently [@steem.dao](https://hiveblocks.com/@steem.dao)) that receives 10% of the [annual new supply]({{ '/tutorials-recipes/understanding-configuration-values#HIVE_INFLATION_NARROWING_PERIOD' | relative_url }}).  These funds are dedicated to Hive platform improvements.
+The DHF (Decentralized Hive Fund) is an account on the Hive blockchain (currently [@steem.dao](https://hiveblocks.com/@steem.dao)) that receives 10% of the [annual new supply]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_INFLATION_NARROWING_PERIOD' | relative_url }}).  These funds are dedicated to Hive platform improvements.
 
 Every day a portion of the HBD fund managed by the DHF is distributed to various proposals, depending on **a)** how much the proposal is asking for and **b)** how much approval the proposal has.
 
