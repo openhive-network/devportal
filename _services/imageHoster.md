@@ -4,15 +4,15 @@ position: 4
 ---
 # Definition
 
-Imagehoster is a Steem-powered image hosting and proxying service. Any image uploaded to, or proxied through, your Imagehoster has a copy stored within it. This means that the image continues to be available even if 3rd party sites go down or change their URLs. For as long as your instance of imagehoster is running the image will be available, anytime you need it.
+Imagehoster is a Hive-powered image hosting and proxying service. Any image uploaded to, or proxied through, your Imagehoster has a copy stored within it. This means that the image continues to be available even if 3rd party sites go down or change their URLs. For as long as your instance of imagehoster is running the image will be available, anytime you need it.
 
-The purpose of this tool is to provide a way to host and proxy images used by [condenser](https://github.com/steemit/condenser#condenser) to help maintain the privacy of the authors and general users accessing the images.
+The purpose of this tool is to provide a way to host and proxy images used by [condenser](https://gitlab.syncad.com/hive/condenser#condenser) to help maintain the privacy of the authors and general users accessing the images.
 
 Using ImageHoster will help limit access to IP addresses of the general user.  It will also strip [image metadata](https://en.wikipedia.org/wiki/Exif) related to the author's geographical location.  It also helps to verify that the original author uploaded the image they intended.
 
 The ability to upload images on steemit.com was originally added in January, 2017.  Please note that this tool **does not** store any image data on the blockchain.
 
-Detaied information on Imagehoster can be found in its [repository](https://github.com/steemit/imagehoster/blob/master/README.md)
+Detaied information on Imagehoster can be found in its [repository](https://gitlab.syncad.com/hive/imagehoster/-/blob/master/README.md#imagehoster)
 
 ## The API
 
@@ -37,7 +37,7 @@ This returns a JSON object container the URL to the uploaded image, ex:
 }
 ```
 
-For this to succeed it requires a signature from a Steem account in good standing.
+For this to succeed it requires a signature from a Hive account in good standing.
 
 #### 2. Fetch an uploaded image <a name="fetch-upload"></a>
 
@@ -70,12 +70,12 @@ The avatars follow the same sizing rules as proxied images, so you not guarantee
 
 #### 5. Signing uploads <a name="signing"></a>
 
-Uploads also require a signature made by a Steem account's posting authority. The account has to also be above a certain (service configurable) reputation threshold.
+Uploads also require a signature made by a Hive account's posting authority. The account has to also be above a certain (service configurable) reputation threshold.
 
-Creating a signature for `node.js` and with `dsteem`:
+Creating a signature for `node.js` and with `dhive`:
 
 ```javascript
-const dsteem = require('dsteem')
+const dhive = require('dhive')
 const crypto = require('crypto')
 const fs = require('fs')
 
@@ -87,7 +87,7 @@ if (!wif || !file) {
 }
 
 const data = fs.readFileSync(file)
-const key = dsteem.PrivateKey.fromString(wif)
+const key = dhive.PrivateKey.fromString(wif)
 const imageHash = crypto.createHash('sha256')
     .update('ImageSigningChallenge')
     .update(data)
@@ -101,7 +101,7 @@ process.stdout.write(key.sign(imageHash).toString() + '\n')
 This imagehoster demo must be run through linux due to a dependency on the `make` commandline.
 You will also require `node.js` and `yarn` to run
 
-* git clone https://github.com/steemit/imagehoster
+* git clone https://gitlab.syncad.com/hive/imagehoster
 
 * Run `make devserver`
 

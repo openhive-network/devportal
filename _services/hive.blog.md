@@ -1,17 +1,17 @@
 ---
-title: Steemit.com
+title: hive.blog
 position: 1
 ---
 
 #### steemit.com endpoints
 
-Steemit.com offers a few endpoints for getting common data. User profile and post JSON data is very convenient and simple by appending .json
+Hive.blog offers a few endpoints for getting common data. User profile and post JSON data is very convenient and simple by appending .json
 to your request. 
 
 Getting a particular user profile JSON:
 
 ```
-https://steemit.com/@curie.json
+https://hive.blog/@curie.json
 ```
 
 User object
@@ -112,51 +112,76 @@ User object
 Getting a particular post JSON:
 
 ```
-https://steemit.com/curation/@curie/the-daily-curie-12-13-feb-2017.json
+https://hive.blog/curation/@curie/the-daily-curie-12-13-feb-2017.json
 ```
 
 Post object
 ```json
 {
-   "post":{
-      "id":1720643,
-      "author":"curie",
-      "permlink":"the-daily-curie-08-09-jan-2017",
-      "category":"curation",
-      "parent_author":"",
-      "parent_permlink":"curation",
-      "title":"The Daily Curie (08-09 Jan 2017)",
-      "body":"<center>https://s29.postimg.org/dgtsfe7if/curie2.png</center>\n## Introduction\n[Curie](https://steemit.com/steemit/@donkeypong/announcing-project-curie-bringing-rewards-and-recognition-to-steemit-s-undiscovered-and-emerging-authors)  is a commu ...",
-      "last_update":"2017-01-09T12:20:15",
-      "created":"2017-01-09T12:20:15",
-      "active":"2017-01-11T22:44:57",
-      "last_payout":"2017-02-09T14:40:54",
-      "depth":0,
-      "children":36,
-      "children_rshares2":"0",
-      "net_rshares":0,
-      "abs_rshares":0,
-      "vote_rshares":0,
-      "children_abs_rshares":0,
-      "cashout_time":"1969-12-31T23:59:59",
-      "max_cashout_time":"1969-12-31T23:59:59",
-      "total_vote_weight":0,
-      "reward_weight":10000,
-      "total_payout_value":"0.000 SBD",
-      "curator_payout_value":"0.000 SBD",
-      "author_rewards":0,
-      "net_votes":519,
-      "root_comment":1720643,
-      "mode":"archived",
-      "max_accepted_payout":"0.000 SBD",
-      "percent_steem_dollars":10000,
-      "allow_replies":true,
-      "allow_votes":true,
-      "allow_curation_rewards":true,
-      "url":"/curation/@curie/the-daily-curie-08-09-jan-2017",
-      "root_title":"The Daily Curie (08-09 Jan 2017)",
-      "pending_payout_value":"0.000 SBD",
-      "total_pending_payout_value":"0.000 SBD"
-   }
+  "post": {
+    "id": 1965592,
+    "author": "curie",
+    "permlink": "the-daily-curie-12-13-feb-2017",
+    "category": "curation",
+    "parent_author": "",
+    "parent_permlink": "curation",
+    "title": "The Daily Curie (12-13 Feb 2017)",
+    "body": "...",
+    "json_metadata": {
+      "tags": ["curation", "curie"],
+      "users": [
+        "nextgencrypto",
+        "berniesanders",
+        "val",
+        "silversteem",
+        "clayop",
+        "hendrikdegrote",
+        "proskynneo",
+        "kushed",
+        "curie"
+      ],
+      "image": [],
+      "links": [],
+      "app": "steemit/0.1",
+      "format": "markdown"
+    },
+    "last_update": "2017-02-13T18:00:51",
+    "created": "2017-02-13T18:00:51",
+    "active": "2017-02-14T16:19:24",
+    "last_payout": "2017-03-16T19:08:27",
+    "depth": 0,
+    "children": 9,
+    "net_rshares": 0,
+    "abs_rshares": 0,
+    "vote_rshares": 0,
+    "children_abs_rshares": 0,
+    "cashout_time": "1969-12-31T23:59:59",
+    "max_cashout_time": "1969-12-31T23:59:59",
+    "total_vote_weight": 0,
+    "reward_weight": 10000,
+    "total_payout_value": "23.678 HBD",
+    "curator_payout_value": "1.196 HBD",
+    "author_rewards": 167726,
+    "net_votes": 465,
+    "root_author": "curie",
+    "root_permlink": "the-daily-curie-12-13-feb-2017",
+    "max_accepted_payout": "1000000.000 HBD",
+    "percent_steem_dollars": 0,
+    "allow_replies": true,
+    "allow_votes": true,
+    "allow_curation_rewards": true,
+    "beneficiaries": [],
+    "url": "/curation/@curie/the-daily-curie-12-13-feb-2017",
+    "root_title": "The Daily Curie (12-13 Feb 2017)",
+    "pending_payout_value": "0.000 HBD",
+    "total_pending_payout_value": "0.000 HBD",
+    "active_votes": [],
+    "replies": [],
+    "author_reputation": "545477526857484",
+    "promoted": "0.000 HBD",
+    "body_length": 0,
+    "reblogged_by": []
+  },
+  "status": "200"
 }
 ```
