@@ -105,7 +105,7 @@
       examples:
         - '`250000`'
       links:
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
+        - <a href="{{ '/services/#services-dhf' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: HIVE_MAX_ACCOUNT_NAME_LENGTH
@@ -463,7 +463,7 @@
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_update_proposal_votes' | relative_url }}">`update_proposal_votes`</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
+        - <a href="{{ '/services/#services-dhf' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: HIVE_TREASURY_FEE
@@ -474,7 +474,7 @@
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_update_proposal_votes' | relative_url }}">`update_proposal_votes`</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
+        - <a href="{{ '/services/#services-dhf' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: HIVE_PROPOSAL_MAINTENANCE_PERIOD
@@ -482,7 +482,7 @@
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
+        - <a href="{{ '/services/#services-dhf' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: HIVE_PROPOSAL_MAINTENANCE_CLEANUP
@@ -492,7 +492,7 @@
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
+        - <a href="{{ '/services/#services-dhf' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: HIVE_PROPOSAL_SUBJECT_MAX_LENGTH
@@ -502,7 +502,7 @@
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
+        - <a href="{{ '/services/#services-dhf' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: HIVE_PROPOSAL_MAX_IDS_NUMBER
@@ -513,7 +513,7 @@
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_update_proposal_votes' | relative_url }}">`update_proposal_votes`</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
+        - <a href="{{ '/services/#services-dhf' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: SMT_MAX_VOTABLE_ASSETS
