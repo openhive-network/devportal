@@ -21,7 +21,21 @@
       | `8675309` | Queries block number 8,675,309. |
       | `62396745` | Queries block number 62,396,745. |
     parameter_json: '{"block_num":0}'
-    expected_response_json: "{}"
+    expected_response_json: |
+      {
+        "block": {
+          "previous": "0000000000000000000000000000000000000000",
+          "timestamp": "2016-03-24T16:05:00",
+          "witness": "",
+          "transaction_merkle_root": "0000000000000000000000000000000000000000",
+          "extensions": [],
+          "witness_signature": "",
+          "transactions": [],
+          "block_id": "",
+          "signing_key": "",
+          "transaction_ids": []
+        }
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"block_api.get_block", "params":{"block_num":1},
       "id":1}'
@@ -37,7 +51,16 @@
       block headers for block number 8,675,309. |\n| `62396745` | Queries block headers
       for block number 62,396,745. |\n"
     parameter_json: '{"block_num":0}'
-    expected_response_json: "{}"
+    expected_response_json: |
+      {
+        "header": {
+          "previous": "0000000000000000000000000000000000000000",
+          "timestamp": "2016-03-24T16:05:00",
+          "witness": "",
+          "transaction_merkle_root": "0000000000000000000000000000000000000000",
+          "extensions": []
+        }
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"block_api.get_block_header", "params":{"block_num":1},
       "id":1}'

@@ -10,7 +10,7 @@
     purpose: |
       **Disabled since 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844)**
       
-      Returns the available bandwidth of an account.  See: [Forum/Market Bandwidth]({{ '/tutorials-recipes/forum-market-bandwidth' | relative_url }})
+      Returns the available bandwidth of an account.  See: [Forum/Market Bandwidth]({{ '/tutorials-recipes/forum-market-bandwidth.html' | relative_url }})
     parameter_json: '{"account":"","type":"post"}'
     expected_response_json: "{}"
   - api_method: witness_api.get_reserve_ratio
@@ -22,7 +22,7 @@
     parameter_json: "{}"
     expected_response_json: '{"id":0,"average_block_size":0,"current_reserve_ratio":1,"max_virtual_bandwidth":"0"}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"witness_api.get_account_bandwidth", "params":{"account":"steemit","type":"forum"},
+    - '{"jsonrpc":"2.0", "method":"witness_api.get_account_bandwidth", "params":{"account":"hiveio","type":"forum"},
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"witness_api.get_account_bandwidth", "params":{"account":"alice","type":"market"},
       "id":1}'
