@@ -3,7 +3,7 @@ title: Hivesigner Libs
 position: 4
 ---
 
-Most people who will be implementing OAuth2 will want to find and utilize a library in the language of their choice. These libraries, while not necessarily built by Steemit, should support the Hivesigner API.
+Most people who will be implementing OAuth2 will want to find and utilize a library in the language of their choice.
 
 If you're wondering what Hivesigner is, go [here]({{ '/services/#services-hivesigner' | relative_url }}).
 
@@ -14,4 +14,3 @@ If you're wondering what Hivesigner is, go [here]({{ '/services/#services-hivesi
 An official javascript library for utilizing Hivesigner.
 
 ---
-

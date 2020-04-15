@@ -15,9 +15,9 @@ Interactive Steem API swagger, [open-source](https://github.com/eSteemApp/steema
 
 ---
 
-**SteemSQL** - [http://www.steemsql.com/](http://www.steemsql.com/)
+**HiveSQL** - [https://hivesql.io/](https://hivesql.io/)
 
-A private Microsoft SQL server database with Steem blockchain data, subscription based, allows you to do flexible queries and analyze blockchain data.
+A private Microsoft SQL server database with Hive blockchain data, subscription based, allows you to do flexible queries and analyze blockchain data.
 
 ---
 
@@ -33,6 +33,6 @@ SteemPress is a WordPress plugin to allow you to automatically publish your arti
 
 ---
 
-_**Many more projects and tools can be found at [https://steemprojects.com](https://steemprojects.com)**_
+_**Many more projects and tools can be found at [https://hiveprojects.io](https://hiveprojects.io)**_
 
 ---
