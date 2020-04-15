@@ -1,6 +1,6 @@
 - name: broadcast_ops
   description: |
-    An operation on Steem is a way of expressing intention on the blockchain.
+    An operation on Hive is a way of expressing intention on the blockchain.
     They are also known as Broadcast Operations.  They have types, like `vote`
     or `comment`.  They pass parameters like `author` and `permlink`, depending
     on what their purpose is.
@@ -24,7 +24,7 @@
                 [
                    "vote",
                    {
-                      "voter":"steemit",
+                      "voter":"hiveio",
                       "author":"alice",
                       "permlink":"a-post-by-alice",
                       "weight":10000
@@ -75,7 +75,7 @@
           permlink
           weight
       json_examples:
-        - '["vote", {"voter":"steemit","author":"alice","permlink":"a-post-by-alice","weight":10000}]'
+        - '["vote", {"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]'
     - name: comment
       virtual: false
       purpose: |
@@ -100,7 +100,7 @@
           - `permlink` - Two authors may have the same permlink as it's unique to the author only. For example, there could be two authors, alice and bob, and both could have a permlink of `firstpost`
           - `json_metadata` - There is no blockchain enforced validation on `json_metadata`, but the community has adopted a particular structure.  It should contain a JSON object with the following keys:
             - `tags` - An array of up to 5 strings. Although the blockchain will accept more than 5, the tags plugin only looks at the first five
-            - `app` - A user agent style application identifier. Typically `app_name/version`, e.g. `steemit/0.1`
+            - `app` - A user agent style application identifier. Typically `app_name/version`, e.g. `hiveblog/0.1`
             - `format` - The format of the body, e.g. markdown
             - In addition to the above keys, application developers are free to add any other keys they want to help manage the content they broadcast.
         
@@ -112,9 +112,9 @@
           "title": "A post by Joe",
           "body": "Look at my awesome post",
           "parent_author": "",
-          "parent_permlink": "steem",
+          "parent_permlink": "hiveio",
           "permlink": "a-post-by-joe",
-          "json_metadata": "{\"tags\":[\"steemit\",\"example\",\"tags\"]}"
+          "json_metadata": "{\"tags\":[\"hiveio\",\"example\",\"tags\"]}"
         }
         ```
         
@@ -124,11 +124,11 @@
       
         For example, if we have a paragraph that has already been broadcast:
           
-        > "It's been quite a lot of fun working with these wonderful folk at Steemit, Inc"
+        > "It's been quite a lot of fun working with these wonderful folk on the Open Hive Network"
       
         And we want to change it to:
           
-        > "It's been quite a lot of fun working with these wonderful people at Steemit, Inc"
+        > "It's been quite a lot of fun working with these wonderful people on the Open Hive Network"
       
         We can broadcast the `comment` operation with the following `body`:
           
@@ -160,7 +160,7 @@
           body
           json_metadata
       json_examples:
-        - '["comment",{"parent_author":"","parent_permlink":"steem","author":"alice","permlink":"a-post-by-alice","title":"A Post By Alice","body":"This is my post.","json_metadata":"{\"tags\":[\"steemit\",\"example\",\"tags\"]}"}]'
+        - '["comment",{"parent_author":"","parent_permlink":"steem","author":"alice","permlink":"a-post-by-alice","title":"A Post By Alice","body":"This is my post.","json_metadata":"{\"tags\":[\"hiveio\",\"example\",\"tags\"]}"}]'
     - name: transfer
       virtual: false
       purpose: |
@@ -168,7 +168,7 @@
         any encryption on the memo is up to a higher level protocol.
         
         **Notes:**
-        * Transferring of Steem Power (VESTS) is not allowed.
+        * Transferring of Hive Power (VESTS) is not allowed.
         * Cannot transfer a negative amount (aka: stealing).
         * Memo must be less than 2048 bytes.
         * Memo must be UTF-8.
@@ -181,17 +181,17 @@
           amount
           memo
       json_examples:
-        - '["transfer",{"from":"steemit","to":"alice","amount":{"amount":"10","precision":3,"nai":"@@000000021"},"memo":"Thanks for all the fish."}]'
+        - '["transfer",{"from":"hiveio","to":"alice","amount":{"amount":"10","precision":3,"nai":"@@000000021"},"memo":"Thanks for all the fish."}]'
     - name: transfer_to_vesting
       virtual: false
       purpose: |
-        This operation converts STEEM into VFS (Vesting Fund Shares) at the
+        This operation converts HIVE into VFS (Vesting Fund Shares) at the
         current exchange rate. With this operation it is possible to give
         another account vesting shares so that faucets can pre-fund new accounts
         with vesting shares.
         
         **Notes:**
-        * Amount must be in STEEM.
+        * Amount must be in HIVE.
         * Must transfer a nonzero amount.
       roles:
         - active
@@ -224,7 +224,7 @@
         - account
           vesting_shares
       json_examples:
-        - '["withdraw_vesting",{"account":"steemit","vesting_shares":{"amount":"200000000000","precision":6,"nai":"@@000000037"}}]'
+        - '["withdraw_vesting",{"account":"hiveio","vesting_shares":{"amount":"200000000000","precision":6,"nai":"@@000000037"}}]'
     - name: limit_order_create
       virtual: false
       purpose: |
@@ -241,7 +241,7 @@
           fill_or_kill
           expiration
       json_examples:
-        - '["limit_order_create",{"owner":"steemit","orderid":10,"amount_to_sell":{"amount":"9950","precision":3,"nai":"@@000000021"},"min_to_receive":{"amount":"3500","precision":3,"nai":"@@000000013"},"fill_or_kill":false,"expiration":"2035-10-29T06:32:22"}]'
+        - '["limit_order_create",{"owner":"hiveio","orderid":10,"amount_to_sell":{"amount":"9950","precision":3,"nai":"@@000000021"},"min_to_receive":{"amount":"3500","precision":3,"nai":"@@000000013"},"fill_or_kill":false,"expiration":"2035-10-29T06:32:22"}]'
     - name: limit_order_cancel
       virtual: false
       purpose: |
@@ -253,7 +253,7 @@
         - owner
           orderid
       json_examples:
-        - '["limit_order_cancel",{"owner":"steemit","orderid":10}]'
+        - '["limit_order_cancel",{"owner":"hiveio","orderid":10}]'
     - name: price
       virtual: false
       purpose:
@@ -281,7 +281,7 @@
       virtual: false
       purpose: |
         This operation instructs the blockchain to start a conversion between
-        STEEM and SBD, the funds are deposited after 3.5 days.
+        HIVE and HBD, the funds are deposited after 3.5 days.
       roles:
         - active
           owner
@@ -290,7 +290,7 @@
           requestid
           amount
       json_examples:
-        - '["convert",{"owner":"steemit","requestid":1467592156,"amount":{"amount":"5000","precision":3,"nai":"@@000000013"}}]'
+        - '["convert",{"owner":"hiveio","requestid":1467592156,"amount":{"amount":"5000","precision":3,"nai":"@@000000013"}}]'
     - name: account_create
       virtual: false
       purpose:
@@ -307,7 +307,7 @@
           memo_key
           json_metadata
       json_examples:
-        - '["account_create",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"steemit","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
+        - '["account_create",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
     - name: create_claimed_account
       since: HF20
       virtual: false
@@ -325,7 +325,7 @@
           memo_key
           json_metadata
       json_examples:
-        - '["create_claimed_account",{"creator":"steemit","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
+        - '["create_claimed_account",{"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
     - name: claim_account
       since: HF20
       virtual: false
@@ -339,7 +339,7 @@
           creator
           extensions
       json_examples:
-        - '["claim_account",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"steemit","extensions":[]}]'
+        - '["claim_account",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"hiveio","extensions":[]}]'
     - name: witness_set_properties
       since: HF20
       virtual: false
@@ -354,7 +354,7 @@
           props
           extensions
       json_examples:
-        - '["witness_set_properties",{"owner":"alice", "props":{"account_creation_fee":"0.000 STEEM","account_subsidy_budget":10000,"account_subsidy_decay":330782,"maximum_block_size":65536,"sbd_interest_rate": "0.000 STEEM","sbd_exchange_rate":{"base": "0.000 SBD", "quote": "0.000 STEEM"}, "url": "68747470733A2F2F737465656D69742E636F6D", "new_signing_key": "25688bbe7b1204f26e40be054c8b2ff1997eec6d4e7be6a105aab8a0e6f11c616d7cb6066"}, "extensions": []}]'
+        - '["witness_set_properties",{"owner":"alice", "props":{"account_creation_fee":"0.000 HIVE","account_subsidy_budget":10000,"account_subsidy_decay":330782,"maximum_block_size":65536,"sbd_interest_rate": "0.000 HIVE","sbd_exchange_rate":{"base": "0.000 HBD", "quote": "0.000 HIVE"}, "url": "68747470733A2F2F737465656D69742E636F6D", "new_signing_key": "25688bbe7b1204f26e40be054c8b2ff1997eec6d4e7be6a105aab8a0e6f11c616d7cb6066"}, "extensions": []}]'
     - name: account_update
       virtual: false
       purpose:
@@ -369,7 +369,7 @@
           memo_key
           json_metadata
       json_examples:
-        - '["account_update",{"account":"steemit","posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo",1],["STM76EQNV2RTA6yF9TnBvGSV71mW7eW36MM7XQp24JxdoArTfKA76",1]]},"memo_key":"STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo","json_metadata":""}]'
+        - '["account_update",{"account":"hiveio","posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo",1],["STM76EQNV2RTA6yF9TnBvGSV71mW7eW36MM7XQp24JxdoArTfKA76",1]]},"memo_key":"STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo","json_metadata":""}]'
     - name: report_over_production
       disabled: true
       purpose: |
@@ -377,14 +377,14 @@
         
         This operation is used to report a miner who signs two blocks
         at the same time. To be valid, the violation must be reported within
-        STEEM_MAX_WITNESSES blocks of the head block (1 round) and the
+        HIVE_MAX_WITNESSES blocks of the head block (1 round) and the
         producer must be in the ACTIVE witness set.
         
         Users not in the ACTIVE witness set should not have to worry about their
         key getting compromised and being used to produced multiple blocks so
         the attacker can report it and steel their vesting steem.
         
-        The result of the operation is to transfer the full VESTING STEEM balance
+        The result of the operation is to transfer the full VESTING HIVE balance
         of the block producer to the reporter.
       roles:
         - active
@@ -430,7 +430,7 @@
       virtual: false
       purpose: |
         All accounts with a VFS (Vesting Fund Shares) can vote for or against
-        any witness.  See: [`STEEM_MAX_ACCOUNT_WITNESS_VOTES`]({{ '/tutorials-recipes/understanding-configuration-values#STEEM_MAX_ACCOUNT_WITNESS_VOTES' | relative_url }})
+        any witness.  See: [`HIVE_MAX_ACCOUNT_WITNESS_VOTES`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MAX_ACCOUNT_WITNESS_VOTES' | relative_url }})
         
         If a proxy is specified then all existing votes are removed.
       roles:
@@ -449,7 +449,7 @@
         
         If a proxy is specified then all existing witness votes are removed.
       
-        Note, as of HF21, setting a witness proxy also applies to Steem.DAO
+        Note, as of HF21, setting a witness proxy also applies to Hive DHF
         proposal approval.  If you trust someone to cast your witness votes, it
         is assumed that you would also trust them to cast your proposal votes.
       roles:
@@ -540,7 +540,7 @@
           id
           json
       json_examples:
-        - '["custom_json",{"required_auths":[],"required_posting_auths":["steemit"],"id":"follow","json":"[\"follow\",{\"follower\":\"steemit\",\"following\":\"alice\",\"what\":[\"blog\"]}]"}]'
+        - '["custom_json",{"required_auths":[],"required_posting_auths":["hiveio"],"id":"follow","json":"[\"follow\",{\"follower\":\"hiveio\",\"following\":\"alice\",\"what\":[\"blog\"]}]"}]'
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"follow","json":"[\"follow\",{\"follower\":\"alice\",\"following\":\"eve\",\"what\":[\"ignore\"]}]"}]'
         - '["custom_json",{"required_auths":[],"required_posting_auths":["bob"],"id":"reblog","json":"{\"account\":\"bob\",\"author\":\"alice\",\"permlink\":\"a-post-by-alice\"}"}]'
         - '["custom_json",{"required_auths":["alice"],"required_posting_auths":[],"id":"witness","json":"[\"enable_content_editing\", {\"account\": \"alice\", \"relock_time\": \"2100-01-01T12:00:00\"}]"}]'
@@ -568,9 +568,9 @@
         * Part of `comment_option` validation process, to be called when
         `allowed_vote_assets` object has been added as comment option extension are:
           * When votable assets are greater than maximum votable assets: *"Too much votable assets specified"*
-          * When the symbol is not allowed in the list for votable assets: *"STEEM can not be explicitly specified as one of allowed_vote_assets"*
-        * `max_accepted_payout`: SBD value of the maximum payout this post will receive
-        * `percent_steem_dollars`: the percent of Steem Dollars to key, unkept amounts will be received as Steem Power
+          * When the symbol is not allowed in the list for votable assets: *"HIVE can not be explicitly specified as one of allowed_vote_assets"*
+        * `max_accepted_payout`: HBD value of the maximum payout this post will receive
+        * `percent_steem_dollars`: the percent of Hive Dollars to key, unkept amounts will be received as Hive Power
         * `allow_votes`: allows/disallows a post to receive votes;
         * `allow_curation_rewards`: allows/disllows voters to recieve curation rewards. Rewards return to reward fund.
         * `beneficiaries`
@@ -621,6 +621,12 @@
       purpose: |
         This operation is identical to `limit_order_create` except it serializes
         the price rather than calculating it from other fields. The maximum expiration time for any limit order is 28 days from `head_block_time()`.
+        
+        - For prices involving Hive Dollars (HBD), the base asset must be HBD.
+        - For prices involving SMT assets, the base asset must be HIVE.
+        - The quote must be a power of 10.
+        
+        See: [#1573](https://github.com/steemit/steem/issues/1573)
       roles:
         - active
           owner
@@ -879,7 +885,7 @@
       since: HF14
       virtual: false
       purpose: |
-        For time locked savings accounts. A user can place Steem and Steem
+        For time locked savings accounts. A user can place Hive and Hive
         Dollars into time locked savings balances. Funds can be withdrawn from
         these balances after a three day delay. The point of this addition is to
         mitigate loss from hacked and compromised account. The max a user can
@@ -1036,19 +1042,19 @@
       deprecated: true
       virtual: false
       purpose: |
-        **Deprecated as of HF20** If an account creation service would still like to provide a delegation of Steem Power
+        **Deprecated as of HF20** If an account creation service would still like to provide a delegation of Hive Power
         to the accounts they create, they can still follow the account creation operation with an additional call to
         `delegate_vesting_shares` to add a delegation of SP to the account.
 
-        >Instead of paying the entire account creation fee with Steem, creators
-        can now pay a smaller fee (30x less) and delegate some Steem Power for
-        30 days. The exact amount is 5 * min_fee + STEEM_POWER == 150 * min_fee.
-        You can pay any combination of STEEM and Steem Power along that curve
+        >Instead of paying the entire account creation fee with Hive, creators
+        can now pay a smaller fee (30x less) and delegate some Hive Power for
+        30 days. The exact amount is 5 * min_fee + HIVE_POWER == 150 * min_fee.
+        You can pay any combination of HIVE and Hive Power along that curve
         (so long as the minimum fee is paid).
 
-        >*The witness voted STEEM fee is now the minimum required STEEM fee for
+        >*The witness voted HIVE fee is now the minimum required HIVE fee for
         delegation. Witnesses should reduce their fee by 30x when the hardfork
-        goes live to preserve the same required fee for an all STEEM account
+        goes live to preserve the same required fee for an all HIVE account
         creation.*
         
         Also see:
@@ -1069,7 +1075,7 @@
           json_metadata
           extensions
       json_examples:
-        - '["account_create_with_delegation",{"fee":{"amount":"3000","precision":3,"nai":"@@000000021"},"delegation":{"amount":"0","precision":6,"nai":"@@000000037"},"creator":"steemit","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5Tki3ecCdCCHCjhhwvQvXuKryL2s34Ma6CXsRzntSUTYVYxCQ9",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LUoAA8gCL9tHRz7v9xcwR4ZWD3KDRHP5t1U7UAZHdfanLxyBE",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM8anmpHdfVE4AmwsDpcSXpRsydHysEbv6vGJkRQy1d1CC83zeTA",1]]},"memo_key":"STM67RYDyEkP1Ja1jFehJ45BFGA9oHHUnRnYbxKJEtMhVQiHW3S3k","json_metadata":"{}","extensions":[]}]'
+        - '["account_create_with_delegation",{"fee":{"amount":"3000","precision":3,"nai":"@@000000021"},"delegation":{"amount":"0","precision":6,"nai":"@@000000037"},"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5Tki3ecCdCCHCjhhwvQvXuKryL2s34Ma6CXsRzntSUTYVYxCQ9",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LUoAA8gCL9tHRz7v9xcwR4ZWD3KDRHP5t1U7UAZHdfanLxyBE",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM8anmpHdfVE4AmwsDpcSXpRsydHysEbv6vGJkRQy1d1CC83zeTA",1]]},"memo_key":"STM67RYDyEkP1Ja1jFehJ45BFGA9oHHUnRnYbxKJEtMhVQiHW3S3k","json_metadata":"{}","extensions":[]}]'
     - name: create_proposal
       since: HF21
       deprecated: false
@@ -1122,7 +1128,7 @@
       json_examples:
         - '["update_proposal_votes",{"voter":"alice","proposal_ids":[0],"approve":true}]'
     - name: claim_reward_balance2
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         Differs with original operation with extensions field and a container of tokens that will be rewarded to an account.
@@ -1141,7 +1147,7 @@
       json_examples:
         - '["claim_reward_balance2",{"account":"alice","reward_tokens":[{"amount":"1","precision":0,"nai":"@@904705667"}],"extensions":[]}]'
     - name: vote2
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         This operation is used to cast a vote on a post/comment using multiple votable assets.
@@ -1158,9 +1164,9 @@
           weight
           extensions
       json_examples:
-        - '["vote2",{"voter":"steemit","author":"alice","permlink":"a-post-by-alice","rshares":[[{"nai":"@@904705667","decimals":0},0]],"extensions":[]}]'
+        - '["vote2",{"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","rshares":[[{"nai":"@@904705667","decimals":0},0]],"extensions":[]}]'
     - name: smt_setup
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         Setup a Smart Media Token.  Each SMT has an associated descriptor object which has *permanent* configuration data. This data cannot be changed after launch.
@@ -1175,7 +1181,7 @@
         * `steem_units_min` - The minimum steem units required for a successful ICO.
         * `steem_units_soft_cap` - The steem unit cap in which the pre_soft_cap_unit generation policy applies.
         * `steem_units_hard_cap` - The steem unit cap in which the post_soft_cap_unit generation policy applies.
-        * `initial_generation_policy` - A JSON string of the STEEM and token destination routes of the ICO process.
+        * `initial_generation_policy` - A JSON string of the HIVE and token destination routes of the ICO process.
        
         **Example Initial Generation Policy JSON:**
         
@@ -1227,7 +1233,7 @@
       json_examples:
         - '["smt_setup",{"control_account":"alice","symbol":{"nai": "@@000000000", "decimals": 0},"contribution_begin_time":"2019-08-26T11:22:39","contribution_end_time":"2019-08-26T11:22:39","launch_time":"2019-09-26T11:22:39","max_supply":1000000000000000,"steem_units_hard_cap":10000,"steem_units_soft_cap":1000,"steem_units_min":0,"initial_generation_policy":"{\"type\":\"smt_capped_generation_policy\",\"value\":{\"pre_soft_cap_unit\":{\"steem_unit\":[[\"alice\",100]],\"token_unit\":[[\"$from\",5],[\"alice\",1]]},\"post_soft_cap_unit\":{\"steem_unit\":[[\"alice\",100]],\"token_unit\":[[\"$from\",5],[\"alice\",1]]},\"min_steem_units_commitment\":{\"lower_bound\":1,\"upper_bound\":1,\"hash\":\"32edb6022c0921d99aa347e9cda5dc2db413f5574eebaaa8592234308ffebd2b\"},\"hard_cap_steem_units_commitment\":{\"lower_bound\":\"166666666666\",\"upper_bound\":\"166666666666\",\"hash\":\"93c5a6b892de788c5b54b63b91c4b692e36099b05d3af0d16d01c854723dda21\"},\"soft_cap_percent\":10000,\"min_unit_ratio\":1000,\"max_unit_ratio\":1000,\"extensions\":[]}}","extensions":[]}]'
     - name: smt_setup_emissions
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         Create Smart Media Token emissions (inflation).
@@ -1273,7 +1279,7 @@
       json_examples:
         - '["smt_setup_emissions",{"control_account":"alice","symbol":{"nai":"@@904705667","decimals":0},"schedule_time":"2019-08-26T11:22:39","emissions_unit":{"token_unit":[["alice",1]]},"interval_seconds":21600,"interval_count":1,"lep_time":"2019-08-26T11:22:39","rep_time":"2019-08-26T11:22:39","lep_abs_amount":{"amount":"1","precision":0,"nai":"@@904705667"},"rep_abs_amount":{"amount":"1","precision":0,"nai":"@@904705667"},"lep_rel_amount_numerator":0,"rep_rel_amount_numerator":0,"rel_amount_denom_bits":0,"remove":false,"floor_emissions":false,"extensions":[]}]'
     - name: smt_set_setup_parameters
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         Creates Smart Media Token setup parameters.
@@ -1297,7 +1303,7 @@
       json_examples:
         - '["smt_set_setup_parameters",{"control_account":"alice","symbol":{"nai": "@@000000000", "decimals": 0},"setup_parameters":[{"type":"smt_param_allow_voting","value":{"value":true}}],"extensions":[]}]'
     - name: smt_set_runtime_parameters
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         Creates Smart Media Token runtime parameters.
@@ -1329,7 +1335,7 @@
       json_examples:
         - '["smt_set_runtime_parameters",{"control_account":"alice","symbol":{"nai": "@@000000000", "decimals": 0},"runtime_parameters":[{"type":"smt_param_windows_v1","value":{"cashout_window_seconds":90001,"reverse_auction_window_seconds":110}},{"type":"smt_param_vote_regeneration_period_seconds_v1","value":{"vote_regeneration_period_seconds":7000,"votes_per_regeneration_period":1}},{"type":"smt_param_rewards_v1","value":{"content_constant":9005,"percent_curation_rewards":9006,"author_reward_curve":"quadratic","curation_reward_curve":"bounded_curation"}},{"type":"smt_param_allow_downvotes","value":{"value":true}}],"extensions":[]}]'
     - name: smt_create
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         Create a Smart Media Token.
@@ -1351,7 +1357,7 @@
         **Parameters:**
         * `control_account` - The name of the controlling account.
         * `symbol` - The asset symbol of the created token.
-        * `smt_creation_fee` - The amount to be transfered from @account to null account as elevation fee.  The amount required is set by the `smt_creation_fee` field of the `dynamic_global_properties` object.  This field may contain a value in STEEM or SBD.
+        * `smt_creation_fee` - The amount to be transfered from @account to null account as elevation fee.  The amount required is set by the `smt_creation_fee` field of the `dynamic_global_properties` object.  This field may contain a value in HIVE or HBD.
         * `precision` - Separately provided precision for clarity and redundancy.
         
         See: [SMT Object Creation](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smt-object-creation)
@@ -1368,7 +1374,7 @@
       json_examples:
         - '["smt_create",{"control_account":"alice","symbol":{"nai": "@@000000000", "decimals": 0},"smt_creation_fee":{"amount":"3000","precision":3,"nai":"@@000000013"},"precision":0,"extensions":[]}]'
     - name: smt_contribute
-      since: HF23
+      since: Mysterious Future
       virtual: false
       purpose: |
         Contribute to a token ICO.
@@ -1377,7 +1383,7 @@
         * `contributor` The name of the contributor
         * `symbol` The asset symbol of the SMT
         * `contribution_id` A unique contribution ID number
-        * `contribution` The contribution (in STEEM)
+        * `contribution` The contribution (in HIVE)
         
         See: [#2730](https://github.com/steemit/steem/issues/2730), [Token Units](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#token-units)
         
@@ -1421,12 +1427,12 @@
           trx_id
           op_in_trx
       json_examples:
-        - '["proposal_pay",{"receiver":"steem.dao","payment":"1.637 SBD","trx_id":"0000000000000000000000000000000000000000","op_in_trx":0}]'
+        - '["proposal_pay",{"receiver":"steem.dao","payment":"1.637 HBD","trx_id":"0000000000000000000000000000000000000000","op_in_trx":0}]'
     - name: sps_fund
       since: HF21
       virtual: true
       purpose: |
-         Created once per maintenance interval to document how much SBD was
+         Created once per maintenance interval to document how much HBD was
          added to the threasury from inflation in that maintenance interval
          (i.e., to track the funding of the SPS).
       roles:
@@ -1435,7 +1441,7 @@
       params:
         - additional_funds
       json_examples:
-        - '["sps_fund",{"additional_funds":"71.460 SBD"}]'
+        - '["sps_fund",{"additional_funds":"71.460 HBD"}]'
     - name: fill_convert_request
       virtual: true
       purpose: |
@@ -1509,7 +1515,7 @@
         - owner
           interest
       json_examples:
-        - '["interest",{"owner":"alice","interest":"0.001 SBD"}]'
+        - '["interest",{"owner":"alice","interest":"0.001 HBD"}]'
     - name: fill_vesting_withdraw
       since: HF6
       virtual: true
@@ -1524,7 +1530,7 @@
           withdrawn
           deposited
       json_examples:
-        - '["fill_vesting_withdraw",{"from_account":"alice","to_account":"alice","withdrawn":"0.026475 VESTS","deposited":"0.710 STEEM"}]'
+        - '["fill_vesting_withdraw",{"from_account":"alice","to_account":"alice","withdrawn":"0.026475 VESTS","deposited":"0.710 HIVE"}]'
     - name: fill_order
       virtual: true
       purpose:
@@ -1540,7 +1546,7 @@
           open_orderid
           open_pays
       json_examples:
-        - '["fill_order",{"current_owner":"alice","current_orderid":42896,"current_pays":"94.999 SBD","open_owner":"bob","open_orderid":10001,"open_pays":"500.000 STEEM"}]'
+        - '["fill_order",{"current_owner":"alice","current_orderid":42896,"current_pays":"94.999 HBD","open_owner":"bob","open_orderid":10001,"open_pays":"500.000 HIVE"}]'
     - name: shutdown_witness
       since: HF14
       virtual: true

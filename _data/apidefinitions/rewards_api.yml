@@ -21,7 +21,7 @@
   - api_method: rewards_api.simulate_curve_payouts
     purpose: 
     parameter_json: '{"curve":"quadratic","var1":"2000000000000"}'
-    expected_response_json: '{"recent_claims":"","payouts":[]}'
+    expected_response_json: '{"recent_claims":"","payouts":[]}' # TODO - recheck in HF23
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"rewards_api.simulate_curve_payouts", "params": {"curve": "quadratic", "var1": "2000000000000"}, "id":1}'
       - '{"jsonrpc":"2.0", "method":"rewards_api.simulate_curve_payouts", "params": {"curve": "bounded_curation", "var1": "2000000000000"}, "id":1}'

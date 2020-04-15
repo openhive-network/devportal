@@ -10,7 +10,7 @@ A reply is differentiated from a post by whether or not a `parent_author` exists
 
 ### Script
 
-You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](https://developers.steem.io/apidefinitions/broadcast-ops#broadcast_ops_comment):
+You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](https://developers.steem.io/apidefinitions/broadcast-ops.html#broadcast_ops_comment):
 
 * `author` - Account name of the author currently replying.
 * `permlink` - Value unique to the author 
