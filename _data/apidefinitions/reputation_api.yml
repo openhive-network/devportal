@@ -4,7 +4,7 @@
 - name: :reputation_api
   description: |
     Needed by `condenser_api` to optionally use `follow_api` or `reputation_api`
-    for account reputations (the latter if [`hivemind`]({{ '/tutorials-recipes/using-hivemind' | relative_url }}) is fronting `follow_api`)
+    for account reputations (the latter if [`hivemind`]({{ '/tutorials-recipes/using-hivemind.html' | relative_url }}) is fronting `follow_api`)
   methods:
   - api_method: reputation_api.get_account_reputations
     since: HF20
@@ -15,13 +15,13 @@
 
       | `account` (string) | `limit` (int) | |
       |--------------------|-|
-      | `"steemit"` | 10 | Queries the reputation for account named "steemit". |
+      | `"hiveio"` | 10 | Queries the reputation for account named "hiveio". |
 
       See [#1425](https://github.com/steemit/steem/issues/1425)
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#reputation_apiget_account_reputations' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#reputation_apiget_account_reputations' | relative_url }})
     parameter_json: '{"account_lower_bound":"","limit":1000}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {
         "account": "steem",
         "reputation": 0

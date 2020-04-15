@@ -24,26 +24,26 @@
 
       | `account` (string) | |
       |--------------------|-|
-      | `"steemit"` | Queries the recovery requests for account named "steemit". |
+      | `"hiveio"` | Queries the recovery requests for account named "hiveio". |
     parameter_json: '{"accounts":[]}'
-    expected_response_json: '{"requests":[]}'
+    expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_account_recovery_requests", "params": {"accounts":["steemit"]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_account_recovery_requests", "params": {"accounts":["hiveio"]}, "id":1}'
   - api_method: database_api.find_accounts
     purpose: |
       Returns accounts, queried by name.  Parameters: `account:string array`
 
       | `account` (string array) | |
       |-------------------|-|
-      | `["steemit"]` | Queries for account named "steemit". |
-      | `["steemit", "alice"]` | Queries for accounts named "steemit" and "alice". |
+      | `["hiveio"]` | Queries for account named "hiveio". |
+      | `["hiveio", "alice"]` | Queries for accounts named "hiveio" and "alice". |
     parameter_json: '{"accounts":[]}'
     expected_response_json: |
       {
         "accounts": [
           {
             "id": 28,
-            "name": "steemit",
+            "name": "hiveio",
             "owner": {
               "weight_threshold": 1,
               "account_auths": [],
@@ -88,6 +88,7 @@
             },
             "memo_key": "STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH",
             "json_metadata": "",
+            "posting_json_metadata": "",
             "proxy": "",
             "last_owner_update": "2018-05-31T23:32:06",
             "last_account_update": "2018-05-31T23:32:06",
@@ -103,6 +104,10 @@
             "voting_manabar": {
               "current_mana": "69835912701503862",
               "last_update_time": 1538171805
+            },
+            "downvote_manabar": {
+              "current_mana": "14309515566616031",
+              "last_update_time": 1573774416
             },
             "balance": {
               "amount": "2806644634",
@@ -186,6 +191,7 @@
             "witnesses_voted_for": 0,
             "last_post": "2016-03-30T18:30:18",
             "last_root_post": "2016-03-30T18:30:18",
+            "last_post_edit": "2016-03-30T18:30:18",
             "last_vote_time": "2016-12-04T23:10:57",
             "post_bandwidth": 0,
             "pending_claimed_accounts": 0,
@@ -194,8 +200,8 @@
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["steemit"]}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["steemit", "alice"]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio"]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio", "alice"]}, "id":1}'
   - api_method: database_api.find_change_recovery_account_requests
     since: HF11
     purpose: |
@@ -203,11 +209,21 @@
 
       | `account` (array) | |
       |--------------------|-|
-      | `["steemit"]` | Queries the recovery requests for account named "steemit". |
+      | `["hiveio"]` | Queries the recovery requests for account named "hiveio". |
     parameter_json: '{"accounts":[]}'
-    expected_response_json: '{"requests":[]}'
+    expected_response_json: |
+      {
+        "requests": [
+          {
+            "id": 0,
+            "account_to_recover": "",
+            "recovery_account": "",
+            "effective_on": "2020-01-08T00:45:18"
+          }
+        ]
+      }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_change_recovery_account_requests", "params": {"accounts":["steemit"]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_change_recovery_account_requests", "params": {"accounts":["hiveio"]}, "id":1}'
   - api_method: database_api.find_comments
     purpose: Search for comments.
     parameter_json: '{"start":[["",""]], "limit":0, "order":""}'
@@ -218,7 +234,7 @@
     since: HF14
     purpose: Returns a list of requests to decline voting rights.
     parameter_json: '{"accounts":[]}'
-    expected_response_json: '{"requests":[]}'
+    expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_decline_voting_rights_requests", "params": {"accounts":["temp","null"]}, "id":1}'
   - api_method: database_api.find_escrows
@@ -262,7 +278,31 @@
   - api_method: database_api.find_limit_orders
     purpose: Returns a list of limit orders.
     parameter_json: '{"account":""}'
-    expected_response_json: '{"orders":[]}'
+    expected_response_json: |
+      {
+        "orders": [
+          {
+            "id": 0,
+            "created": "2019-12-14T04:05:39",
+            "expiration": "2019-12-15T05:05:21",
+            "seller": "",
+            "orderid": 0,
+            "for_sale": 0,
+            "sell_price": {
+              "base": {
+                "amount": "0",
+                "precision": 3,
+                "nai": "@@000000013"
+              },
+              "quote": {
+                "amount": "0",
+                "precision": 3,
+                "nai": "@@000000021"
+              }
+            }
+          }
+        ]
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_limit_orders", "params": {"account":"temp"}, "id":1}'
   - api_method: database_api.find_owner_histories
@@ -271,12 +311,12 @@
 
       | `owner` (string) | |
       |--------------------|-|
-      | `"steemit"` | Queries the owner history for account named "steemit". |
+      | `"hiveio"` | Queries the owner history for account named "hiveio". |
       | `"alice"` | Queries the owner history for account named "alice". |
     parameter_json: '{"owner":""}'
-    expected_response_json: '{"owner_auths":[]}'
+    expected_response_json: '{"owner_auths":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_owner_histories", "params": {"owner":"steemit"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_owner_histories", "params": {"owner":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_owner_histories", "params": {"owner":"alice"}, "id":1}'
   - api_method: database_api.find_savings_withdrawals
     since: HF14
@@ -285,24 +325,24 @@
 
       | `account` (string) | |
       |--------------------|-|
-      | `"steemit"` | Queries the savings withdraw for account named "steemit". |
+      | `"hiveio"` | Queries the savings withdraw for account named "hiveio". |
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     parameter_json: '{"account":""}'
-    expected_response_json: '{"withdrawals":[]}'
+    expected_response_json: '{"withdrawals":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_savings_withdrawals", "params": {"start":"temp"}, "id":1}'
   - api_method: database_api.find_sbd_conversion_requests
     purpose: |
-      Returns the list of SBD conversion requests for an account.  Parameters: `account:string`
+      Returns the list of HBD conversion requests for an account.  Parameters: `account:string`
 
       | `account` (string) | |
       |-------------------|-|
-      | `"steemit"` | Queries a conversion request for steemit. |
+      | `"hiveio"` | Queries a conversion request for hiveio. |
       | `"alice"` | Queries a conversion request for alice. |
     parameter_json: '{"account":""}'
-    expected_response_json: '{"requests":[]}'
+    expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_sbd_conversion_requests", "params": {"account":"steemit"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_sbd_conversion_requests", "params": {"account":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_sbd_conversion_requests", "params": {"account":"alice"}, "id":1}'
   - api_method: database_api.find_vesting_delegation_expirations
     since: HF17
@@ -311,7 +351,7 @@
 
       | `account` (string) | | |
       |----------------------------|---------------|-|
-      | `"steemit"` | | Queries for expiring vesting for `steemit`. |
+      | `"hiveio"` | | Queries for expiring vesting for `hiveio`. |
       | `"alice"` | | Queries for expiring vesting for `alice`. |
     parameter_json: '{"account":""}'
     expected_response_json: |
@@ -330,7 +370,7 @@
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegation_expirations", "params": {"account":"steemit"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegation_expirations", "params": {"account":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegation_expirations", "params": {"account":"alice"}, "id":1}'
   - api_method: database_api.find_vesting_delegations
     since: HF17
@@ -339,12 +379,27 @@
 
       | `account` (string) | | |
       |----------------------------|---------------|-|
-      | `"steemit"` | | Queries for vesting for `steemit`. |
+      | `"hiveio"` | | Queries for vesting for `hiveio`. |
       | `"alice"` | | Queries for vesting for `alice`. |
     parameter_json: '{"account":""}'
-    expected_response_json: '{"delegations":[]}'
+    expected_response_json: |
+      {
+        "delegations": [
+          {
+            "id": 0,
+            "delegator": "",
+            "delegatee": "",
+            "vesting_shares": {
+              "amount": "0",
+              "precision": 6,
+              "nai": "@@000000037"
+            },
+            "min_delegation_time": "2018-02-28T15:36:51"
+          }
+        ]
+      }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegations", "params": {"account":"steemit"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegations", "params": {"account":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegations", "params": {"account":"alice"}, "id":1}'
   - api_method: database_api.find_votes
     purpose: |
@@ -352,38 +407,27 @@
 
       | `author` (string) | `permlink` (string) | |
       |----------------------------|---------------|-|
-      | `"steemit"` | `"firstpost"` | Queries votes for content with a slug `@steemit/firstpost` |
+      | `"hiveio"` | `"firstpost"` | Queries votes for content with a slug `@hiveio/firstpost` |
       | `"alice"` | `"a-post-by-alice"` | Queries votes for content with a slug `@alice/a-post-by-alice` |
     parameter_json: '{"author":"","permlink":""}'
     expected_response_json: |
       {
         "votes": [
           {
-            "id": 546191,
-            "voter": "anonymous",
-            "author": "temp",
-            "permlink": "test1",
-            "weight": "1799071158042053295",
-            "rshares": "432321664017",
-            "vote_percent": 10000,
-            "last_update": "2016-07-18T09:25:51",
-            "num_changes": -1
-          },
-          {
-            "id": 546192,
-            "voter": "xeroc",
-            "author": "temp",
-            "permlink": "test1",
-            "weight": "1763636725870082814",
-            "rshares": "525258058869",
-            "vote_percent": 10000,
-            "last_update": "2016-07-18T09:25:54",
+            "id": 0,
+            "voter": "",
+            "author": "",
+            "permlink": "",
+            "weight": "0",
+            "rshares": 0,
+            "vote_percent": 0,
+            "last_update": "2016-04-07T19:15:36",
             "num_changes": -1
           }
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"steemit", "permlink":"firstpost"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"hiveio", "permlink":"firstpost"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"alice", "permlink":"a-post-by-alice"}, "id":1}'
     expected_curl_responses:
     - 
@@ -391,7 +435,18 @@
   - api_method: database_api.find_withdraw_vesting_routes
     purpose: Returns the list of vesting withdraw routes for an account.
     parameter_json: '{"account":"","order":"by_name"}'
-    expected_response_json: '{"routes":[]}'
+    expected_response_json: |
+      {
+        "routes": [
+          {
+            "id": 0,
+            "from_account": "",
+            "to_account": "",
+            "percent": 0,
+            "auto_vest": true
+          }
+        ]
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_withdraw_vesting_routes", "params": {"account":"temp", "order":"by_destination"}, "id":1}'
   - api_method: database_api.find_witnesses
@@ -439,10 +494,10 @@
             },
             "last_sbd_exchange_update": "1970-01-01T00:00:00",
             "last_work": "0000000000000000000000000000000000000000000000000000000000000000",
-            "running_version": "0.0.0",
-            "hardfork_version_vote": "0.0.0",
-            "hardfork_time_vote": "2016-03-24T16:00:00",
-            "available_witness_account_subsidies": 0
+            "running_version": "0.23.0",
+            "hardfork_version_vote": "0.23.0",
+            "hardfork_time_vote": "2019-10-14T15:00:00",
+            "available_witness_account_subsidies": 9379874
           }
         ]
       }
@@ -482,267 +537,468 @@
   - api_method: database_api.get_config
     purpose: |
       Returns information about compile-time constants. Some properties may
-      not be present.  See: [Understanding Configuration Values]({{ '/tutorials-recipes/understanding-configuration-values' | relative_url}})
+      not be present.  See: [Understanding Configuration Values]({{ '/tutorials-recipes/understanding-configuration-values.html' | relative_url}})
     parameter_json: "{}"
     expected_response_json: |
       {
-        "IS_TEST_NET": false,
-        "STEEM_ENABLE_SMT": false,
-        "SBD_SYMBOL": null,
-        "STEEM_INITIAL_VOTE_POWER_RATE": 40,
-        "STEEM_REDUCED_VOTE_POWER_RATE": 10,
-        "STEEM_100_PERCENT": 10000,
-        "STEEM_1_PERCENT": 100,
-        "STEEM_ACCOUNT_RECOVERY_REQUEST_EXPIRATION_PERIOD": "86400000000",
-        "STEEM_ACTIVE_CHALLENGE_COOLDOWN": "86400000000",
-        "STEEM_ACTIVE_CHALLENGE_FEE": {
+        "IS_TEST_NET": true,
+        "TESTNET_BLOCK_LIMIT": 3000000,
+        "SMT_MAX_VOTABLE_ASSETS": 2,
+        "SMT_VESTING_WITHDRAW_INTERVAL_SECONDS": 604800,
+        "SMT_UPVOTE_LOCKOUT": 43200,
+        "SMT_EMISSION_MIN_INTERVAL_SECONDS": 21600,
+        "SMT_EMIT_INDEFINITELY": 4294967295,
+        "SMT_MAX_NOMINAL_VOTES_PER_DAY": 1000,
+        "SMT_MAX_VOTES_PER_REGENERATION": 7000,
+        "SMT_DEFAULT_VOTES_PER_REGEN_PERIOD": 50,
+        "SMT_DEFAULT_PERCENT_CURATION_REWARDS": 2500,
+        "SMT_INITIAL_VESTING_PER_UNIT": 1000000,
+        "SMT_BALLAST_SUPPLY_PERCENT": 10,
+        "SMT_MAX_ICO_TIERS": 10,
+        "HBD_SYMBOL": {
+          "nai": "@@000000013",
+          "precision": 3
+        },
+        "HIVE_INITIAL_VOTE_POWER_RATE": 40,
+        "HIVE_REDUCED_VOTE_POWER_RATE": 10,
+        "HIVE_100_PERCENT": 10000,
+        "HIVE_1_PERCENT": 100,
+        "HIVE_ACCOUNT_RECOVERY_REQUEST_EXPIRATION_PERIOD": 12000000,
+        "HIVE_ACTIVE_CHALLENGE_COOLDOWN": "86400000000",
+        "HIVE_ACTIVE_CHALLENGE_FEE": {
           "amount": "2000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_ADDRESS_PREFIX": "STM",
-        "STEEM_APR_PERCENT_MULTIPLY_PER_BLOCK": "102035135585887",
-        "STEEM_APR_PERCENT_MULTIPLY_PER_HOUR": "119577151364285",
-        "STEEM_APR_PERCENT_MULTIPLY_PER_ROUND": "133921203762304",
-        "STEEM_APR_PERCENT_SHIFT_PER_BLOCK": 87,
-        "STEEM_APR_PERCENT_SHIFT_PER_HOUR": 77,
-        "STEEM_APR_PERCENT_SHIFT_PER_ROUND": 83,
-        "STEEM_BANDWIDTH_AVERAGE_WINDOW_SECONDS": 604800,
-        "STEEM_BANDWIDTH_PRECISION": 1000000,
-        "STEEM_BLOCKCHAIN_PRECISION": 1000,
-        "STEEM_BLOCKCHAIN_PRECISION_DIGITS": 3,
-        "STEEM_BLOCKCHAIN_HARDFORK_VERSION": "0.20.0",
-        "STEEM_BLOCKCHAIN_VERSION": "0.20.6",
-        "STEEM_BLOCK_INTERVAL": 3,
-        "STEEM_BLOCKS_PER_DAY": 28800,
-        "STEEM_BLOCKS_PER_HOUR": 1200,
-        "STEEM_BLOCKS_PER_YEAR": 10512000,
-        "STEEM_CASHOUT_WINDOW_SECONDS": 604800,
-        "STEEM_CASHOUT_WINDOW_SECONDS_PRE_HF12": 86400,
-        "STEEM_CASHOUT_WINDOW_SECONDS_PRE_HF17": 43200,
-        "STEEM_CHAIN_ID": "0000000000000000000000000000000000000000000000000000000000000000",
-        "STEEM_COMMENT_REWARD_FUND_NAME": "comment",
-        "STEEM_CONTENT_APR_PERCENT": 3875,
-        "STEEM_CONTENT_CONSTANT_HF0": "2000000000000",
-        "STEEM_CONTENT_REWARD_PERCENT": 7500,
-        "STEEM_CONVERSION_DELAY": "302400000000",
-        "STEEM_CONVERSION_DELAY_PRE_HF_16": "604800000000",
-        "STEEM_CREATE_ACCOUNT_DELEGATION_RATIO": 5,
-        "STEEM_CREATE_ACCOUNT_DELEGATION_TIME": "2592000000000",
-        "STEEM_CREATE_ACCOUNT_WITH_STEEM_MODIFIER": 30,
-        "STEEM_CURATE_APR_PERCENT": 3875,
-        "STEEM_DEFAULT_SBD_INTEREST_RATE": 1000,
-        "STEEM_EQUIHASH_K": 6,
-        "STEEM_EQUIHASH_N": 140,
-        "STEEM_FEED_HISTORY_WINDOW": 84,
-        "STEEM_FEED_HISTORY_WINDOW_PRE_HF_16": 168,
-        "STEEM_FEED_INTERVAL_BLOCKS": 1200,
-        "STEEM_GENESIS_TIME": "2016-03-24T16:00:00",
-        "STEEM_HARDFORK_REQUIRED_WITNESSES": 17,
-        "STEEM_INFLATION_NARROWING_PERIOD": 250000,
-        "STEEM_INFLATION_RATE_START_PERCENT": 978,
-        "STEEM_INFLATION_RATE_STOP_PERCENT": 95,
-        "STEEM_INIT_MINER_NAME": "initminer",
-        "STEEM_INIT_PUBLIC_KEY_STR": "STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
-        "STEEM_INIT_SUPPLY": 0,
-        "STEEM_INIT_TIME": "1970-01-01T00:00:00",
-        "STEEM_IRREVERSIBLE_THRESHOLD": 7500,
-        "STEEM_LIQUIDITY_APR_PERCENT": 750,
-        "STEEM_LIQUIDITY_REWARD_BLOCKS": 1200,
-        "STEEM_LIQUIDITY_REWARD_PERIOD_SEC": 3600,
-        "STEEM_LIQUIDITY_TIMEOUT_SEC": "604800000000",
-        "STEEM_MAX_ACCOUNT_CREATION_FEE": 1000000000,
-        "STEEM_MAX_ACCOUNT_NAME_LENGTH": 16,
-        "STEEM_MAX_ACCOUNT_WITNESS_VOTES": 30,
-        "STEEM_MAX_ASSET_WHITELIST_AUTHORITIES": 10,
-        "STEEM_MAX_AUTHORITY_MEMBERSHIP": 40,
-        "STEEM_MAX_BLOCK_SIZE": 393216000,
-        "STEEM_SOFT_MAX_BLOCK_SIZE": 2097152,
-        "STEEM_MAX_CASHOUT_WINDOW_SECONDS": 1209600,
-        "STEEM_MAX_COMMENT_DEPTH": 65535,
-        "STEEM_MAX_COMMENT_DEPTH_PRE_HF17": 6,
-        "STEEM_MAX_FEED_AGE_SECONDS": 604800,
-        "STEEM_MAX_INSTANCE_ID": "281474976710655",
-        "STEEM_MAX_MEMO_SIZE": 2048,
-        "STEEM_MAX_WITNESSES": 21,
-        "STEEM_MAX_MINER_WITNESSES_HF0": 1,
-        "STEEM_MAX_MINER_WITNESSES_HF17": 0,
-        "STEEM_MAX_PERMLINK_LENGTH": 256,
-        "STEEM_MAX_PROXY_RECURSION_DEPTH": 4,
-        "STEEM_MAX_RATION_DECAY_RATE": 1000000,
-        "STEEM_MAX_RESERVE_RATIO": 20000,
-        "STEEM_MAX_RUNNER_WITNESSES_HF0": 1,
-        "STEEM_MAX_RUNNER_WITNESSES_HF17": 1,
-        "STEEM_MAX_SATOSHIS": "4611686018427387903",
-        "STEEM_MAX_SHARE_SUPPLY": "1000000000000000",
-        "STEEM_MAX_SIG_CHECK_DEPTH": 2,
-        "STEEM_MAX_SIG_CHECK_ACCOUNTS": 125,
-        "STEEM_MAX_TIME_UNTIL_EXPIRATION": 3600,
-        "STEEM_MAX_TRANSACTION_SIZE": 65536,
-        "STEEM_MAX_UNDO_HISTORY": 10000,
-        "STEEM_MAX_URL_LENGTH": 127,
-        "STEEM_MAX_VOTE_CHANGES": 5,
-        "STEEM_MAX_VOTED_WITNESSES_HF0": 19,
-        "STEEM_MAX_VOTED_WITNESSES_HF17": 20,
-        "STEEM_MAX_WITHDRAW_ROUTES": 10,
-        "STEEM_MAX_WITNESS_URL_LENGTH": 2048,
-        "STEEM_MIN_ACCOUNT_CREATION_FEE": 1,
-        "STEEM_MIN_ACCOUNT_NAME_LENGTH": 3,
-        "STEEM_MIN_BLOCK_SIZE_LIMIT": 65536,
-        "STEEM_MIN_BLOCK_SIZE": 115,
-        "STEEM_MIN_CONTENT_REWARD": {
+        "HIVE_ADDRESS_PREFIX": "TST",
+        "HIVE_APR_PERCENT_MULTIPLY_PER_BLOCK": "102035135585887",
+        "HIVE_APR_PERCENT_MULTIPLY_PER_HOUR": "119577151364285",
+        "HIVE_APR_PERCENT_MULTIPLY_PER_ROUND": "133921203762304",
+        "HIVE_APR_PERCENT_SHIFT_PER_BLOCK": 87,
+        "HIVE_APR_PERCENT_SHIFT_PER_HOUR": 77,
+        "HIVE_APR_PERCENT_SHIFT_PER_ROUND": 83,
+        "HIVE_BANDWIDTH_AVERAGE_WINDOW_SECONDS": 604800,
+        "HIVE_BANDWIDTH_PRECISION": 1000000,
+        "HIVE_BENEFICIARY_LIMIT": 128,
+        "HIVE_BLOCKCHAIN_PRECISION": 1000,
+        "HIVE_BLOCKCHAIN_PRECISION_DIGITS": 3,
+        "HIVE_BLOCKCHAIN_HARDFORK_VERSION": "0.23.0",
+        "HIVE_BLOCKCHAIN_VERSION": "0.23.0",
+        "HIVE_BLOCK_INTERVAL": 3,
+        "HIVE_BLOCKS_PER_DAY": 28800,
+        "HIVE_BLOCKS_PER_HOUR": 1200,
+        "HIVE_BLOCKS_PER_YEAR": 10512000,
+        "HIVE_CASHOUT_WINDOW_SECONDS": 3600,
+        "HIVE_CASHOUT_WINDOW_SECONDS_PRE_HF12": 3600,
+        "HIVE_CASHOUT_WINDOW_SECONDS_PRE_HF17": 3600,
+        "HIVE_CHAIN_ID": "18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e",
+        "HIVE_COMMENT_REWARD_FUND_NAME": "comment",
+        "HIVE_COMMENT_TITLE_LIMIT": 256,
+        "HIVE_CONTENT_APR_PERCENT": 3875,
+        "HIVE_CONTENT_CONSTANT_HF0": "2000000000000",
+        "HIVE_CONTENT_CONSTANT_HF21": "2000000000000",
+        "HIVE_CONTENT_REWARD_PERCENT_HF16": 7500,
+        "HIVE_CONTENT_REWARD_PERCENT_HF21": 6500,
+        "HIVE_CONVERSION_DELAY": "302400000000",
+        "HIVE_CONVERSION_DELAY_PRE_HF_16": "604800000000",
+        "HIVE_CREATE_ACCOUNT_DELEGATION_RATIO": 5,
+        "HIVE_CREATE_ACCOUNT_DELEGATION_TIME": "2592000000000",
+        "HIVE_CREATE_ACCOUNT_WITH_HIVE_MODIFIER": 30,
+        "HIVE_CURATE_APR_PERCENT": 3875,
+        "HIVE_CUSTOM_OP_DATA_MAX_LENGTH": 8192,
+        "HIVE_CUSTOM_OP_ID_MAX_LENGTH": 32,
+        "HIVE_DEFAULT_HBD_INTEREST_RATE": 1000,
+        "HIVE_DOWNVOTE_POOL_PERCENT_HF21": 2500,
+        "HIVE_EQUIHASH_K": 6,
+        "HIVE_EQUIHASH_N": 140,
+        "HIVE_FEED_HISTORY_WINDOW": 84,
+        "HIVE_FEED_HISTORY_WINDOW_PRE_HF_16": 168,
+        "HIVE_FEED_INTERVAL_BLOCKS": 1200,
+        "HIVE_GENESIS_TIME": "2016-01-01T00:00:00",
+        "HIVE_HARDFORK_REQUIRED_WITNESSES": 17,
+        "HIVE_HF21_CONVERGENT_LINEAR_RECENT_CLAIMS": "503600561838938636",
+        "HIVE_INFLATION_NARROWING_PERIOD": 250000,
+        "HIVE_INFLATION_RATE_START_PERCENT": 978,
+        "HIVE_INFLATION_RATE_STOP_PERCENT": 95,
+        "HIVE_INIT_MINER_NAME": "initminer",
+        "HIVE_INIT_PUBLIC_KEY_STR": "TST6LLegbAgLAy28EHrffBVuANFWcFgmqRMW13wBmTExqFE9SCkg4",
+        "HIVE_INIT_SUPPLY": "250000000000",
+        "HIVE_HBD_INIT_SUPPLY": "7000000000",
+        "HIVE_INIT_TIME": "1970-01-01T00:00:00",
+        "HIVE_IRREVERSIBLE_THRESHOLD": 7500,
+        "HIVE_LIQUIDITY_APR_PERCENT": 750,
+        "HIVE_LIQUIDITY_REWARD_BLOCKS": 1200,
+        "HIVE_LIQUIDITY_REWARD_PERIOD_SEC": 3600,
+        "HIVE_LIQUIDITY_TIMEOUT_SEC": "604800000000",
+        "HIVE_MAX_ACCOUNT_CREATION_FEE": 1000000000,
+        "HIVE_MAX_ACCOUNT_NAME_LENGTH": 16,
+        "HIVE_MAX_ACCOUNT_WITNESS_VOTES": 30,
+        "HIVE_MAX_ASSET_WHITELIST_AUTHORITIES": 10,
+        "HIVE_MAX_AUTHORITY_MEMBERSHIP": 40,
+        "HIVE_MAX_BLOCK_SIZE": 393216000,
+        "HIVE_SOFT_MAX_BLOCK_SIZE": 2097152,
+        "HIVE_MAX_CASHOUT_WINDOW_SECONDS": 86400,
+        "HIVE_MAX_COMMENT_DEPTH": 65535,
+        "HIVE_MAX_COMMENT_DEPTH_PRE_HF17": 6,
+        "HIVE_MAX_FEED_AGE_SECONDS": 604800,
+        "HIVE_MAX_INSTANCE_ID": "281474976710655",
+        "HIVE_MAX_MEMO_SIZE": 2048,
+        "HIVE_MAX_WITNESSES": 21,
+        "HIVE_MAX_MINER_WITNESSES_HF0": 1,
+        "HIVE_MAX_MINER_WITNESSES_HF17": 0,
+        "HIVE_MAX_PERMLINK_LENGTH": 256,
+        "HIVE_MAX_PROXY_RECURSION_DEPTH": 4,
+        "HIVE_MAX_RATION_DECAY_RATE": 1000000,
+        "HIVE_MAX_RESERVE_RATIO": 20000,
+        "HIVE_MAX_RUNNER_WITNESSES_HF0": 1,
+        "HIVE_MAX_RUNNER_WITNESSES_HF17": 1,
+        "HIVE_MAX_SATOSHIS": "4611686018427387903",
+        "HIVE_MAX_SHARE_SUPPLY": "1000000000000000",
+        "HIVE_MAX_SIG_CHECK_DEPTH": 2,
+        "HIVE_MAX_SIG_CHECK_ACCOUNTS": 125,
+        "HIVE_MAX_TIME_UNTIL_EXPIRATION": 3600,
+        "HIVE_MAX_TRANSACTION_SIZE": 65536,
+        "HIVE_MAX_UNDO_HISTORY": 10000,
+        "HIVE_MAX_URL_LENGTH": 127,
+        "HIVE_MAX_VOTE_CHANGES": 5,
+        "HIVE_MAX_VOTED_WITNESSES_HF0": 19,
+        "HIVE_MAX_VOTED_WITNESSES_HF17": 20,
+        "HIVE_MAX_WITHDRAW_ROUTES": 10,
+        "HIVE_MAX_WITNESS_URL_LENGTH": 2048,
+        "HIVE_MIN_ACCOUNT_CREATION_FEE": 0,
+        "HIVE_MIN_ACCOUNT_NAME_LENGTH": 3,
+        "HIVE_MIN_BLOCK_SIZE_LIMIT": 65536,
+        "HIVE_MIN_BLOCK_SIZE": 115,
+        "HIVE_MIN_CONTENT_REWARD": {
           "amount": "1000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_MIN_CURATE_REWARD": {
+        "HIVE_MIN_CURATE_REWARD": {
           "amount": "1000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_MIN_PERMLINK_LENGTH": 0,
-        "STEEM_MIN_REPLY_INTERVAL": 20000000,
-        "STEEM_MIN_REPLY_INTERVAL_HF20": 3000000,
-        "STEEM_MIN_ROOT_COMMENT_INTERVAL": 300000000,
-        "STEEM_MIN_VOTE_INTERVAL_SEC": 3,
-        "STEEM_MINER_ACCOUNT": "miners",
-        "STEEM_MINER_PAY_PERCENT": 100,
-        "STEEM_MIN_FEEDS": 7,
-        "STEEM_MINING_REWARD": {
+        "HIVE_MIN_PERMLINK_LENGTH": 0,
+        "HIVE_MIN_REPLY_INTERVAL": 20000000,
+        "HIVE_MIN_REPLY_INTERVAL_HF20": 3000000,
+        "HIVE_MIN_ROOT_COMMENT_INTERVAL": 300000000,
+        "HIVE_MIN_COMMENT_EDIT_INTERVAL": 3000000,
+        "HIVE_MIN_VOTE_INTERVAL_SEC": 3,
+        "HIVE_MINER_ACCOUNT": "miners",
+        "HIVE_MINER_PAY_PERCENT": 100,
+        "HIVE_MIN_FEEDS": 7,
+        "HIVE_MINING_REWARD": {
           "amount": "1000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_MINING_TIME": "2016-03-24T17:00:00",
-        "STEEM_MIN_LIQUIDITY_REWARD": {
+        "HIVE_MINING_TIME": "2016-01-01T00:00:00",
+        "HIVE_MIN_LIQUIDITY_REWARD": {
           "amount": "1200000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_MIN_LIQUIDITY_REWARD_PERIOD_SEC": 60000000,
-        "STEEM_MIN_PAYOUT_SBD": {
+        "HIVE_MIN_LIQUIDITY_REWARD_PERIOD_SEC": 60000000,
+        "HIVE_MIN_PAYOUT_HBD": {
           "amount": "20",
           "precision": 3,
           "nai": "@@000000013"
         },
-        "STEEM_MIN_POW_REWARD": {
+        "HIVE_MIN_POW_REWARD": {
           "amount": "1000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_MIN_PRODUCER_REWARD": {
+        "HIVE_MIN_PRODUCER_REWARD": {
           "amount": "1000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_MIN_TRANSACTION_EXPIRATION_LIMIT": 15,
-        "STEEM_MIN_TRANSACTION_SIZE_LIMIT": 1024,
-        "STEEM_MIN_UNDO_HISTORY": 10,
-        "STEEM_NULL_ACCOUNT": "null",
-        "STEEM_NUM_INIT_MINERS": 1,
-        "STEEM_OWNER_AUTH_HISTORY_TRACKING_START_BLOCK_NUM": 3186477,
-        "STEEM_OWNER_AUTH_RECOVERY_PERIOD": "2592000000000",
-        "STEEM_OWNER_CHALLENGE_COOLDOWN": "86400000000",
-        "STEEM_OWNER_CHALLENGE_FEE": {
+        "HIVE_MIN_TRANSACTION_EXPIRATION_LIMIT": 15,
+        "HIVE_MIN_TRANSACTION_SIZE_LIMIT": 1024,
+        "HIVE_MIN_UNDO_HISTORY": 10,
+        "HIVE_NULL_ACCOUNT": "null",
+        "HIVE_NUM_INIT_MINERS": 1,
+        "HIVE_OWNER_AUTH_HISTORY_TRACKING_START_BLOCK_NUM": 1,
+        "HIVE_OWNER_AUTH_RECOVERY_PERIOD": 60000000,
+        "HIVE_OWNER_CHALLENGE_COOLDOWN": "86400000000",
+        "HIVE_OWNER_CHALLENGE_FEE": {
           "amount": "30000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "STEEM_OWNER_UPDATE_LIMIT": 3600000000,
-        "STEEM_POST_AVERAGE_WINDOW": 86400,
-        "STEEM_POST_REWARD_FUND_NAME": "post",
-        "STEEM_POST_WEIGHT_CONSTANT": 1600000000,
-        "STEEM_POW_APR_PERCENT": 750,
-        "STEEM_PRODUCER_APR_PERCENT": 750,
-        "STEEM_PROXY_TO_SELF_ACCOUNT": "",
-        "STEEM_SBD_INTEREST_COMPOUND_INTERVAL_SEC": 2592000,
-        "STEEM_SECONDS_PER_YEAR": 31536000,
-        "STEEM_RECENT_RSHARES_DECAY_TIME_HF19": "1296000000000",
-        "STEEM_RECENT_RSHARES_DECAY_TIME_HF17": "2592000000000",
-        "STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF6": 1800,
-        "STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF20": 900,
-        "STEEM_ROOT_POST_PARENT": "",
-        "STEEM_SAVINGS_WITHDRAW_REQUEST_LIMIT": 100,
-        "STEEM_SAVINGS_WITHDRAW_TIME": "259200000000",
-        "STEEM_SBD_START_PERCENT_HF14": 200,
-        "STEEM_SBD_START_PERCENT_HF20": 900,
-        "STEEM_SBD_STOP_PERCENT_HF14": 500,
-        "STEEM_SBD_STOP_PERCENT_HF20": 1000,
-        "STEEM_SECOND_CASHOUT_WINDOW": 2592000,
-        "STEEM_SOFT_MAX_COMMENT_DEPTH": 255,
-        "STEEM_START_MINER_VOTING_BLOCK": 864000,
-        "STEEM_START_VESTING_BLOCK": 201600,
-        "STEEM_TEMP_ACCOUNT": "temp",
-        "STEEM_UPVOTE_LOCKOUT_HF7": 60000000,
-        "STEEM_UPVOTE_LOCKOUT_HF17": "43200000000",
-        "STEEM_UPVOTE_LOCKOUT_SECONDS": 43200,
-        "STEEM_VESTING_FUND_PERCENT": 1500,
-        "STEEM_VESTING_WITHDRAW_INTERVALS": 13,
-        "STEEM_VESTING_WITHDRAW_INTERVALS_PRE_HF_16": 104,
-        "STEEM_VESTING_WITHDRAW_INTERVAL_SECONDS": 604800,
-        "STEEM_VOTE_DUST_THRESHOLD": 50000000,
-        "STEEM_VOTING_MANA_REGENERATION_SECONDS": 432000,
-        "STEEM_SYMBOL": null,
-        "VESTS_SYMBOL": null,
-        "STEEM_VIRTUAL_SCHEDULE_LAP_LENGTH": "18446744073709551615",
-        "STEEM_VIRTUAL_SCHEDULE_LAP_LENGTH2": "340282366920938463463374607431768211455",
-        "STEEM_MAX_LIMIT_ORDER_EXPIRATION": 2419200,
-        "STEEM_DELEGATION_RETURN_PERIOD_HF0": 604800,
-        "STEEM_DELEGATION_RETURN_PERIOD_HF20": 432000,
-        "STEEM_RD_MIN_DECAY_BITS": 6,
-        "STEEM_RD_MAX_DECAY_BITS": 32,
-        "STEEM_RD_DECAY_DENOM_SHIFT": 36,
-        "STEEM_RD_MAX_POOL_BITS": 64,
-        "STEEM_RD_MAX_BUDGET_1": "17179869183",
-        "STEEM_RD_MAX_BUDGET_2": 268435455,
-        "STEEM_RD_MAX_BUDGET_3": 2147483647,
-        "STEEM_RD_MAX_BUDGET": 268435455,
-        "STEEM_RD_MIN_DECAY": 64,
-        "STEEM_RD_MIN_BUDGET": 1,
-        "STEEM_RD_MAX_DECAY": 4294967295,
-        "STEEM_ACCOUNT_SUBSIDY_PRECISION": 10000,
-        "STEEM_WITNESS_SUBSIDY_BUDGET_PERCENT": 12500,
-        "STEEM_WITNESS_SUBSIDY_DECAY_PERCENT": 210000,
-        "STEEM_DEFAULT_ACCOUNT_SUBSIDY_DECAY": 347321,
-        "STEEM_DEFAULT_ACCOUNT_SUBSIDY_BUDGET": 797,
-        "STEEM_DECAY_BACKSTOP_PERCENT": 9000
+        "HIVE_OWNER_UPDATE_LIMIT": 0,
+        "HIVE_POST_AVERAGE_WINDOW": 86400,
+        "HIVE_POST_REWARD_FUND_NAME": "post",
+        "HIVE_POST_WEIGHT_CONSTANT": 1600000000,
+        "HIVE_POW_APR_PERCENT": 750,
+        "HIVE_PRODUCER_APR_PERCENT": 750,
+        "HIVE_PROXY_TO_SELF_ACCOUNT": "",
+        "HIVE_SBD_INTEREST_COMPOUND_INTERVAL_SEC": 2592000,
+        "HIVE_SECONDS_PER_YEAR": 31536000,
+        "HIVE_PROPOSAL_FUND_PERCENT_HF0": 0,
+        "HIVE_PROPOSAL_FUND_PERCENT_HF21": 1000,
+        "HIVE_RECENT_RSHARES_DECAY_TIME_HF19": "1296000000000",
+        "HIVE_RECENT_RSHARES_DECAY_TIME_HF17": "2592000000000",
+        "HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6": 1800,
+        "HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20": 900,
+        "HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21": 300,
+        "HIVE_ROOT_POST_PARENT": "",
+        "HIVE_SAVINGS_WITHDRAW_REQUEST_LIMIT": 100,
+        "HIVE_SAVINGS_WITHDRAW_TIME": "259200000000",
+        "HIVE_HBD_START_PERCENT_HF14": 200,
+        "HIVE_HBD_START_PERCENT_HF20": 900,
+        "HIVE_HBD_STOP_PERCENT_HF14": 500,
+        "HIVE_HBD_STOP_PERCENT_HF20": 1000,
+        "HIVE_SECOND_CASHOUT_WINDOW": 259200,
+        "HIVE_SOFT_MAX_COMMENT_DEPTH": 255,
+        "HIVE_START_MINER_VOTING_BLOCK": 864000,
+        "HIVE_START_VESTING_BLOCK": 201600,
+        "HIVE_TEMP_ACCOUNT": "temp",
+        "HIVE_UPVOTE_LOCKOUT_HF7": 60000000,
+        "HIVE_UPVOTE_LOCKOUT_HF17": 300000000,
+        "HIVE_UPVOTE_LOCKOUT_SECONDS": 300,
+        "HIVE_VESTING_FUND_PERCENT_HF16": 1500,
+        "HIVE_VESTING_WITHDRAW_INTERVALS": 13,
+        "HIVE_VESTING_WITHDRAW_INTERVALS_PRE_HF_16": 104,
+        "HIVE_VESTING_WITHDRAW_INTERVAL_SECONDS": 604800,
+        "HIVE_VOTE_DUST_THRESHOLD": 50000000,
+        "HIVE_VOTING_MANA_REGENERATION_SECONDS": 432000,
+        "HIVE_SYMBOL": {
+          "nai": "@@000000021",
+          "precision": 3
+        },
+        "VESTS_SYMBOL": {
+          "nai": "@@000000037",
+          "precision": 6
+        },
+        "HIVE_VIRTUAL_SCHEDULE_LAP_LENGTH": "18446744073709551615",
+        "HIVE_VIRTUAL_SCHEDULE_LAP_LENGTH2": "340282366920938463463374607431768211455",
+        "HIVE_VOTES_PER_PERIOD_SMT_HF": 50,
+        "HIVE_MAX_LIMIT_ORDER_EXPIRATION": 2419200,
+        "HIVE_DELEGATION_RETURN_PERIOD_HF0": 3600,
+        "HIVE_DELEGATION_RETURN_PERIOD_HF20": 432000,
+        "HIVE_RD_MIN_DECAY_BITS": 6,
+        "HIVE_RD_MAX_DECAY_BITS": 32,
+        "HIVE_RD_DECAY_DENOM_SHIFT": 36,
+        "HIVE_RD_MAX_POOL_BITS": 64,
+        "HIVE_RD_MAX_BUDGET_1": "17179869183",
+        "HIVE_RD_MAX_BUDGET_2": 268435455,
+        "HIVE_RD_MAX_BUDGET_3": 2147483647,
+        "HIVE_RD_MAX_BUDGET": 268435455,
+        "HIVE_RD_MIN_DECAY": 64,
+        "HIVE_RD_MIN_BUDGET": 1,
+        "HIVE_RD_MAX_DECAY": 4294967295,
+        "HIVE_ACCOUNT_SUBSIDY_PRECISION": 10000,
+        "HIVE_WITNESS_SUBSIDY_BUDGET_PERCENT": 12500,
+        "HIVE_WITNESS_SUBSIDY_DECAY_PERCENT": 210000,
+        "HIVE_DEFAULT_ACCOUNT_SUBSIDY_DECAY": 347321,
+        "HIVE_DEFAULT_ACCOUNT_SUBSIDY_BUDGET": 797,
+        "HIVE_DECAY_BACKSTOP_PERCENT": 9000,
+        "HIVE_BLOCK_GENERATION_POSTPONED_TX_LIMIT": 5,
+        "HIVE_PENDING_TRANSACTION_EXECUTION_LIMIT": 200000,
+        "HIVE_TREASURY_ACCOUNT": "steem.dao",
+        "HIVE_TREASURY_FEE": 10000,
+        "HIVE_PROPOSAL_MAINTENANCE_PERIOD": 3600,
+        "HIVE_PROPOSAL_MAINTENANCE_CLEANUP": 86400,
+        "HIVE_PROPOSAL_SUBJECT_MAX_LENGTH": 80,
+        "HIVE_PROPOSAL_MAX_IDS_NUMBER": 5,
+        "HIVE_NETWORK_TYPE": "testnet",
+        "HIVE_DB_FORMAT_VERSION": "1"
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_config", "id":1}'
   - api_method: database_api.get_current_price_feed
     purpose: Returns the current price feed.
     parameter_json: "{}"
-    expected_response_json: '{"base":{"amount":"0","precision":3,"nai":"@@000000021"},"quote":{"amount":"0","precision":3,"nai":"@@000000021"}}'
+    expected_response_json: |
+      {
+        "base": {
+          "amount": "1",
+          "precision": 3,
+          "nai": "@@000000013"
+        },
+        "quote": {
+          "amount": "1",
+          "precision": 3,
+          "nai": "@@000000021"
+        }
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_current_price_feed", "id":1}'
   - api_method: database_api.get_dynamic_global_properties
     purpose: |
       Returns the current dynamic global properties.  See: [Understanding
-      Dynamic Global Properties]({{ '/tutorials-recipes/understanding-dynamic-global-properties' | relative_url }})
+      Dynamic Global Properties]({{ '/tutorials-recipes/understanding-dynamic-global-properties.html' | relative_url }})
     parameter_json: "{}"
-    expected_response_json: '{"id":0,"head_block_number":0,"head_block_id":"0000000000000000000000000000000000000000","time":"1970-01-01T00:00:00","current_witness":"","total_pow":"18446744073709551615","num_pow_witnesses":0,"virtual_supply":{"amount":"0","precision":3,"nai":"@@000000021"},"current_supply":{"amount":"0","precision":3,"nai":"@@000000021"},"confidential_supply":{"amount":"0","precision":3,"nai":"@@000000021"},"init_sbd_supply":{"amount":"0","precision":3,"nai":"@@000000013"},"current_sbd_supply":{"amount":"0","precision":3,"nai":"@@000000013"},"confidential_sbd_supply":{"amount":"0","precision":3,"nai":"@@000000013"},"total_vesting_fund_steem":{"amount":"0","precision":3,"nai":"@@000000021"},"total_vesting_shares":{"amount":"0","precision":6,"nai":"@@000000037"},"total_reward_fund_steem":{"amount":"0","precision":3,"nai":"@@000000021"},"total_reward_shares2":"0","pending_rewarded_vesting_shares":{"amount":"0","precision":6,"nai":"@@000000037"},"pending_rewarded_vesting_steem":{"amount":"0","precision":3,"nai":"@@000000021"},"sbd_interest_rate":0,"sbd_print_rate":10000,"maximum_block_size":0,"required_actions_partition_percent":0,"current_aslot":0,"recent_slots_filled":"0","participation_count":0,"last_irreversible_block_num":0,"vote_power_reserve_rate":40,"delegation_return_period":3600,"reverse_auction_seconds":0,"available_account_subsidies":0,"sbd_stop_percent":0,"sbd_start_percent":0,"sbd_stop_adjust":0,"next_maintenance_time":"1970-01-01T00:00:00","last_budget_time":"1970-01-01T00:00:00","content_reward_percent":7500,"vesting_reward_percent":1500,"sps_fund_percent":0,"sps_interval_ledger":{"amount":"0","precision":3,"nai":"@@000000013"},"downvote_pool_percent":0,"smt_creation_fee":{"amount":"1000","precision":3,"nai":"@@000000013"}}'
+    expected_response_json: |
+      {
+        "id": 0,
+        "head_block_number": 293261,
+        "head_block_id": "0004798df7357f23b9e6d4b6739e4ca9eac2f403",
+        "time": "2019-12-14T22:58:51",
+        "current_witness": "init-0",
+        "total_pow": "18446744073709551615",
+        "num_pow_witnesses": 0,
+        "virtual_supply": {
+          "amount": "286041551516",
+          "precision": 3,
+          "nai": "@@000000021"
+        },
+        "current_supply": {
+          "amount": "250990841260",
+          "precision": 3,
+          "nai": "@@000000021"
+        },
+        "confidential_supply": {
+          "amount": "0",
+          "precision": 3,
+          "nai": "@@000000021"
+        },
+        "init_sbd_supply": {
+          "amount": "7000000000",
+          "precision": 3,
+          "nai": "@@000000013"
+        },
+        "current_sbd_supply": {
+          "amount": "35050710256",
+          "precision": 3,
+          "nai": "@@000000013"
+        },
+        "confidential_sbd_supply": {
+          "amount": "0",
+          "precision": 3,
+          "nai": "@@000000013"
+        },
+        "total_vesting_fund_steem": {
+          "amount": "146016220388",
+          "precision": 3,
+          "nai": "@@000000021"
+        },
+        "total_vesting_shares": {
+          "amount": "52556676118700",
+          "precision": 6,
+          "nai": "@@000000037"
+        },
+        "total_reward_fund_steem": {
+          "amount": "0",
+          "precision": 3,
+          "nai": "@@000000021"
+        },
+        "total_reward_shares2": "0",
+        "pending_rewarded_vesting_shares": {
+          "amount": "55809356614",
+          "precision": 6,
+          "nai": "@@000000037"
+        },
+        "pending_rewarded_vesting_steem": {
+          "amount": "154999023",
+          "precision": 3,
+          "nai": "@@000000021"
+        },
+        "sbd_interest_rate": 1000,
+        "sbd_print_rate": 0,
+        "maximum_block_size": 131072,
+        "required_actions_partition_percent": 2500,
+        "current_aslot": 41585977,
+        "recent_slots_filled": "340282366920938463463374607431768211455",
+        "participation_count": 128,
+        "last_irreversible_block_num": 293240,
+        "target_votes_per_period": 50,
+        "delegation_return_period": 432000,
+        "reverse_auction_seconds": 300,
+        "available_account_subsidies": 120334411,
+        "sbd_stop_percent": 1000,
+        "sbd_start_percent": 900,
+        "next_maintenance_time": "2019-12-14T23:18:24",
+        "last_budget_time": "2019-12-14T22:18:24",
+        "content_reward_percent": 6500,
+        "vesting_reward_percent": 1500,
+        "sps_fund_percent": 1000,
+        "sps_interval_ledger": {
+          "amount": "213590",
+          "precision": 3,
+          "nai": "@@000000013"
+        },
+        "downvote_pool_percent": 2500,
+        "smt_creation_fee": {
+          "amount": "1000",
+          "precision": 3,
+          "nai": "@@000000013"
+        }
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_dynamic_global_properties", "id":1}'
   - api_method: database_api.get_feed_history
     purpose: Returns the history of price feed values.
     parameter_json: "{}"
-    expected_response_json: '{"id":0,"current_median_history":{"base":{"amount":"0","precision":3,"nai":"@@000000021"},"quote":{"amount":"0","precision":3,"nai":"@@000000021"}},"price_history":[]}'
+    expected_response_json: |
+      {
+        "id": 0,
+        "current_median_history": {
+          "base": {
+            "amount": "1",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "quote": {
+            "amount": "1",
+            "precision": 3,
+            "nai": "@@000000021"
+          }
+        },
+        "price_history": []
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_feed_history", "id":1}'
   - api_method: database_api.get_hardfork_properties
     purpose: Returns the current properties about the blockchain's hardforks.
     parameter_json: "{}"
-    expected_response_json: '{"id":0,"processed_hardforks":[],"last_hardfork":0,"current_hardfork_version":"0.0.0","next_hardfork":"0.0.0","next_hardfork_time":"1970-01-01T00:00:00"}'
+    expected_response_json: |
+      {
+        "id": 0,
+        "processed_hardforks": [
+          "2016-01-01T00:00:00",
+          "2016-01-01T00:00:00",
+          "2016-01-01T00:00:00",
+          "2016-01-01T00:00:00",
+          "2016-01-01T00:00:00",
+          "2016-01-01T00:00:00",
+          "2016-06-30T14:00:00",
+          "2016-07-04T00:00:00",
+          "2016-07-04T01:00:00",
+          "2016-07-14T00:00:00",
+          "2016-07-15T12:00:00",
+          "2016-07-17T15:00:00",
+          "2016-07-26T15:00:00",
+          "2016-08-15T14:00:00",
+          "2016-09-20T15:00:00",
+          "2016-11-08T16:00:00",
+          "2016-12-06T16:00:00",
+          "2017-03-30T15:00:00",
+          "2017-03-30T15:00:00",
+          "2017-06-20T15:00:00",
+          "2018-09-25T15:00:00",
+          "2019-08-27T15:00:00",
+          "2019-08-29T15:00:00",
+          "2019-10-14T15:00:00"
+        ],
+        "last_hardfork": 23,
+        "current_hardfork_version": "0.23.0",
+        "next_hardfork": "0.23.0",
+        "next_hardfork_time": "2019-10-14T15:00:00"
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_hardfork_properties", "id":1}'
   - api_method: database_api.get_order_book
     purpose: Returns the order book.
-    parameter_json: '{"limit":0}'
-    expected_response_json: '{"asks":[],"bids":[]}'
+    parameter_json: '{"limit":0,"base":{"amount":"1000","precision":3,"nai":"@@000000021"},"quote":{"amount":"1","precision":3,"nai":"@@000000013"}}'
+    expected_response_json: '{"asks":[],"bids":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.get_order_book", "params":{"limit":10},
+    - '{"jsonrpc":"2.0", "method":"database_api.get_order_book", "params":{"limit":10,"base":{"amount":"1000","precision":3,"nai":"@@000000021"},"quote":{"amount":"1","precision":3,"nai":"@@000000013"}},
       "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.get_order_book", "params":{"limit":50},
+    - '{"jsonrpc":"2.0", "method":"database_api.get_order_book", "params":{"limit":50,"base":{"amount":"1000","precision":3,"nai":"@@000000021"},"quote":{"amount":"1","precision":3,"nai":"@@000000013"}},
       "id":1}'
   - api_method: database_api.get_potential_signatures
     purpose: |
@@ -751,7 +1007,7 @@
       their set of public keys to just the relevant subset prior to calling
       `get_required_signatures` to get the minimum subset.
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]}}'
-    expected_response_json: '{"keys":[]}'
+    expected_response_json: '{"keys":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_potential_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
       "id":1}'
@@ -760,7 +1016,7 @@
       keys that the owner has the ability to sign for and return the minimal subset
       of public keys that should add signatures to the transaction.
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]},"available_keys":[]}'
-    expected_response_json: '{"keys":[]}'
+    expected_response_json: '{"keys":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_required_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}}],"extensions":[],"signatures":[]},"available_keys":[]},
       "id":1}'
@@ -768,7 +1024,27 @@
     since: HF17
     purpose: Returns information about the current reward funds.
     parameter_json: "{}"
-    expected_response_json: '{"funds":[]}'
+    expected_response_json: |
+      {
+        "funds": [
+          {
+            "id": 0,
+            "name": "post",
+            "reward_balance": {
+              "amount": "189101553",
+              "precision": 3,
+              "nai": "@@000000021"
+            },
+            "recent_claims": "2723043883497",
+            "last_update": "2019-12-14T23:10:42",
+            "content_constant": "2000000000000",
+            "percent_curation_rewards": 5000,
+            "percent_content_rewards": 10000,
+            "author_reward_curve": "convergent_linear",
+            "curation_reward_curve": "convergent_square_root"
+          }
+        ]
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_reward_funds", "id":1}'
   - api_method: database_api.get_transaction_hex
@@ -784,13 +1060,91 @@
       the boot time version of the chain id (*may* be different from compile time
       value only when looking at a testnet)
     parameter_json: "{}"
-    expected_response_json: '{"blockchain_version":"","steem_revision":"","fc_revision":"","chain_id":"0000000000000000000000000000000000000000000000000000000000000000"}'
+    expected_response_json: |
+      {
+        "blockchain_version": "0.23.0",
+        "steem_revision": "5cda10a488cf77f68549ec6d3a6be9af2ea9351b",
+        "fc_revision": "5cda10a488cf77f68549ec6d3a6be9af2ea9351b",
+        "chain_id": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_version", "id":1}'
   - api_method: database_api.get_witness_schedule
     purpose: Returns the current witness schedule.
     parameter_json: "{}"
-    expected_response_json: '{"id":0,"current_virtual_time":"0","next_shuffle_block_num":76479392,"current_shuffled_witnesses":[],"num_scheduled_witnesses":0,"elected_weight":132,"timeshare_weight":86,"miner_weight":125,"witness_pay_normalization_factor":32767,"median_props":{"account_creation_fee":{"amount":"1","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000,"account_subsidy_budget":797,"account_subsidy_decay":347321},"majority_version":"0.0.0","max_voted_witnesses":0,"max_miner_witnesses":0,"max_runner_witnesses":0,"hardfork_required_witnesses":0,"account_subsidy_rd":{"resource_unit":0,"budget_per_time_unit":0,"pool_eq":0,"max_pool_size":0,"decay_params":{"decay_per_time_unit":0,"decay_per_time_unit_denom_shift":0},"min_decay":0},"account_subsidy_witness_rd":{"resource_unit":0,"budget_per_time_unit":0,"pool_eq":0,"max_pool_size":0,"decay_params":{"decay_per_time_unit":0,"decay_per_time_unit_denom_shift":0},"min_decay":0},"min_witness_account_subsidy_decay":0}'
+    expected_response_json: |
+      {
+        "id": 0,
+        "current_virtual_time": "55892543567970911424442556665819",
+        "next_shuffle_block_num": 293580,
+        "current_shuffled_witnesses": [
+          "init-2",
+          "init-11",
+          "init-18",
+          "init-16",
+          "init-1",
+          "init-10",
+          "init-0",
+          "init-14",
+          "init-13",
+          "gandalf",
+          "init-3",
+          "init-12",
+          "init-5",
+          "init-17",
+          "initminer",
+          "init-19",
+          "init-4",
+          "init-15",
+          "drakos",
+          "gtg",
+          "init-7"
+        ],
+        "num_scheduled_witnesses": 21,
+        "elected_weight": 1,
+        "timeshare_weight": 5,
+        "miner_weight": 1,
+        "witness_pay_normalization_factor": 25,
+        "median_props": {
+          "account_creation_fee": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "maximum_block_size": 131072,
+          "sbd_interest_rate": 1000,
+          "account_subsidy_budget": 797,
+          "account_subsidy_decay": 347321
+        },
+        "majority_version": "0.23.0",
+        "max_voted_witnesses": 20,
+        "max_miner_witnesses": 0,
+        "max_runner_witnesses": 1,
+        "hardfork_required_witnesses": 17,
+        "account_subsidy_rd": {
+          "resource_unit": 10000,
+          "budget_per_time_unit": 797,
+          "pool_eq": 157691079,
+          "max_pool_size": 157691079,
+          "decay_params": {
+            "decay_per_time_unit": 347321,
+            "decay_per_time_unit_denom_shift": 36
+          },
+          "min_decay": 0
+        },
+        "account_subsidy_witness_rd": {
+          "resource_unit": 10000,
+          "budget_per_time_unit": 996,
+          "pool_eq": 9384019,
+          "max_pool_size": 9384019,
+          "decay_params": {
+            "decay_per_time_unit": 7293741,
+            "decay_per_time_unit_denom_shift": 36
+          },
+          "min_decay": 612
+        },
+        "min_witness_account_subsidy_decay": 0
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_witness_schedule", "id":1}'
   - api_method: database_api.list_account_recovery_requests
@@ -805,10 +1159,10 @@
 
       | `account` (string) | `limit` (int) | `order` (string) | |
       |--------------------|-|
-      | `"steemit"` | 10 | `"by_account"` | Queries the recovery requests for account named "steemit", ordered by account name. |
+      | `"hiveio"` | 10 | `"by_account"` | Queries the recovery requests for account named "hiveio", ordered by account name. |
       | `["1960-01-01T00:00:00"]` | 10 | `"by_expiration"`| Queries the recovery requests for date, ordered by expiration. |
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
-    expected_response_json: '{"requests":[]}'
+    expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_account_recovery_requests", "params": {"start":"", "limit":10, "order":"by_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_account_recovery_requests", "params": {"start":["1960-01-01T00:00:00"], "limit":10, "order":"by_expiration"}, "id":1}'
@@ -828,7 +1182,7 @@
       | `["", ""]` | `10` | `"by_proxy"` Queries for up to 10 accounts starting at the beginning, sorted by proxy. |
       | `["1960-01-01T00:00:00", ""]` | `10` | `"by_next_vesting_withdrawal"` Queries for up to 10 accounts starting at the beginning, sorted by next vesting withdrawl. |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_accounts' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_accounts' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -868,6 +1222,7 @@
             },
             "memo_key": "STM5RrTRNDhhrMaA24SzSeE5AvmUcutb1q1VZp1imnT8p871s3UjN",
             "json_metadata": "",
+            "posting_json_metadata": "",
             "proxy": "",
             "last_owner_update": "1970-01-01T00:00:00",
             "last_account_update": "1970-01-01T00:00:00",
@@ -883,6 +1238,10 @@
             "voting_manabar": {
               "current_mana": 10000,
               "last_update_time": 1462019232
+            },
+            "downvote_manabar": {
+              "current_mana": 389748,
+              "last_update_time": 1570346718
             },
             "balance": {
               "amount": "1",
@@ -966,6 +1325,7 @@
             "witnesses_voted_for": 0,
             "last_post": "1970-01-01T00:00:00",
             "last_root_post": "1970-01-01T00:00:00",
+            "last_post_edit": "1970-01-01T00:00:00",
             "last_vote_time": "1970-01-01T00:00:00",
             "post_bandwidth": 0,
             "pending_claimed_accounts": 0,
@@ -995,9 +1355,9 @@
       | `""` | 10 | `"by_account"` | Queries first 10 requests, sort by account |
       | `["1960-01-01T00:00:00", ""]` | 10 | `"by_effective_date"` | Queries first 10 requests, sort by effective date |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_change_recovery_account_requests' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_change_recovery_account_requests' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {
         "requests": [
           {
@@ -1031,10 +1391,10 @@
       |----------------------------|---------------|-|
       | `["1970-01-01T00:00:00", "", ""]` | 10 | `"by_cashout_time"` | Queries first 10 comments, sort by cashout time |
       | `["", ""]` | 10 | `"by_permlink"` | Queries first 10 comments, sort by permlink |
-      | `["steemit","firstpost", "", ""]` | 10 | `"by_root"` | Queries next 10 comments starting at @steemit/firstpost, sort by root |
-      | `["steemit","firstpost", "", ""]` | 10 | `"by_parent"` | Queries next 10 comments starting at @steemit/firstpost, sort by parent |
+      | `["hiveio","firstpost", "", ""]` | 10 | `"by_root"` | Queries next 10 comments starting at @hiveio/firstpost, sort by root |
+      | `["hiveio","firstpost", "", ""]` | 10 | `"by_parent"` | Queries next 10 comments starting at @hiveio/firstpost, sort by parent |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_comments' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_comments' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -1093,8 +1453,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["1970-01-01T00:00:00","",""], "limit":10, "order":"by_cashout_time"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["",""], "limit":10, "order":"by_permlink"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["steemit","firstpost","",""], "limit":10, "order":"by_root"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["steemit","firstpost","",""], "limit":10, "order":"by_parent"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_root"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_parent"}, "id":1}'
   - api_method: database_api.list_decline_voting_rights_requests
     since: HF14
     purpose: |
@@ -1113,9 +1473,9 @@
       | `""` | 10 | `"by_account"` | Queries first 10 requests, sort by account |
       | `["1960-01-01T00:00:00", ""]` | 10 | `"by_effective_date"` | Queries first 10 requests, sort by effective date |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_decline_voting_rights_requests' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_decline_voting_rights_requests' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
-    expected_response_json: '{"requests":[]}'
+    expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_decline_voting_rights_requests", "params": {"start":"", "limit":10, "order":"by_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_decline_voting_rights_requests", "params": {"start":["1970-01-01T00:00:00","",""], "limit":10, "order":"by_effective_date"}, "id":1}'
@@ -1137,9 +1497,9 @@
       | `["alice", 99]` | 10 | `"by_from_id"` | Queries first 10 requests, sort by id |
       | `[true, "1960-01-01T00:00:00", 99]` | 10 | `"by_ratification_deadline"` | Queries first 10 requests, sort by ratification deadline |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_escrows' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_escrows' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {
         "escrows": [
           {
@@ -1191,9 +1551,9 @@
       | `[{"base": {"amount": "85405", "precision": 3, "nai": "@@000000021"}, "quote": {"amount": "17192", "precision": 3, "nai": "@@000000013"}}, 0]` | 10 | `"by_price"` | Queries first 10 requests, sort by price |
       | `["alice", 0]` | 10 | `"by_effective_date"` | Queries first 10 requests, sort by account |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_limit_orders' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_limit_orders' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {
         "orders": [
           {
@@ -1227,12 +1587,12 @@
 
       | `start` (array) | `limit` (int) | |
       |--------------------|-|-|
-      | `["steemit", "1970-01-01T00:00:00"]` | 10 | Queries the owner history starting from account named "steemit" on "1970-01-01T00:00:00", limit 10 results. |
+      | `["hiveio", "1970-01-01T00:00:00"]` | 10 | Queries the owner history starting from account named "hiveio" on "1970-01-01T00:00:00", limit 10 results. |
       | `["alice", "1970-01-01T00:00:00"]` | 10 | Queries the owner history starting from account named "alice", limit 10 results. |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_owner_histories' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_owner_histories' | relative_url }})
     parameter_json: '{"start":null,"limit":0}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {
         "owner_auths": [
           {
@@ -1253,7 +1613,7 @@
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.list_owner_histories", "params": {"start":["steemit","1970-01-01T00:00:00"], "limit":10}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_owner_histories", "params": {"start":["hiveio","1970-01-01T00:00:00"], "limit":10}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_owner_histories", "params": {"start":["alice","1970-01-01T00:00:00"], "limit":10}, "id":1}'
   - api_method: database_api.list_savings_withdrawals
     since: HF14
@@ -1272,10 +1632,10 @@
       | `start` (object) | `limit` (int) | `order` (string) | |
       |--------------------|-|-|-|
       | `[0]` | `10` | `"by_from_id"` | Queries the savings withdraw for id. |
-      | `["2018-12-07T16:54:03", "steemit", 0]` | `10` | `"by_complete_from_id"` | Queries the savings withdraw for id (completed). |
+      | `["2018-12-07T16:54:03", "hiveio", 0]` | `10` | `"by_complete_from_id"` | Queries the savings withdraw for id (completed). |
       | `["", "1970-01-01T00:00:00", 0]` | `10` | `"by_to_complete"` | Queries the savings withdraw completed. |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_savings_withdrawals' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_savings_withdrawals' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -1297,11 +1657,11 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":[0], "limit":10, "order":"by_from_id"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":["2018-12-07T16:54:03", "steemit", 0], "limit":10, "order":"by_complete_from_id"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":["2018-12-07T16:54:03", "hiveio", 0], "limit":10, "order":"by_complete_from_id"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":["", "1970-01-01T00:00:00", 0], "limit":10, "order":"by_to_complete"}, "id":1}'
   - api_method: database_api.list_sbd_conversion_requests
     purpose: |
-      Returns the list of SBD conversion requests for an account.  Parameters: `start:array`, `limit:int`, `order:string`
+      Returns the list of HBD conversion requests for an account.  Parameters: `start:array`, `limit:int`, `order:string`
 
       * `limit` is up to 1000.
       * `order` can be one of:
@@ -1312,12 +1672,12 @@
 
       | `start` (array) | `limit` (int) | `order` (string) | |
       |-------------------|-|-|-|
-      | `["steemit", 0]` | 10 | `by_account` | Queries a conversion request for steemit, limit to 10 results, order by account name. |
+      | `["hiveio", 0]` | 10 | `by_account` | Queries a conversion request for hiveio, limit to 10 results, order by account name. |
       | `["2018-12-07T16:54:03", 0]` | 10 | `by_conversion_date`| Queries a conversion request from this date, limit to 10 results, order by conversion date. |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_sbd_conversion_requests' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_sbd_conversion_requests' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {
         "requests": [
           {
@@ -1334,7 +1694,7 @@
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.list_sbd_conversion_requests", "params": {"start":["steemit", 0], "limit":10, "order":"by_account"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_sbd_conversion_requests", "params": {"start":["hiveio", 0], "limit":10, "order":"by_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_sbd_conversion_requests", "params": {"start":["2018-12-07T16:54:03", 0], "limit":10, "order":"by_conversion_date"}, "id":1}'
   - api_method: database_api.list_vesting_delegation_expirations
     since: HF17
@@ -1353,7 +1713,7 @@
       | `["1970-01-01T00:00:00", 0]` | 10 | `by_expiration` | Queries delegations, limit to 10 results, order by expiration. |
       | `["alice", "1970-01-01T00:00:00", 0]` | 10 | `by_account_expiration`| Queries delegation from this date, limit to 10 results, order by account expiration. |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_vesting_delegation_expirations' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_vesting_delegation_expirations' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -1387,7 +1747,7 @@
       |-------------------|-|-|-|
       | `["", ""]` | 10 | `by_delegation` | Queries delegations, limit to 10 results, order by delegations. |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_vesting_delegations' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_vesting_delegations' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -1428,7 +1788,7 @@
       | `["xeroc", "vanteem-config", ""]` | 10 | `"by_comment_voter"` | Queries next 10 votes starting on the post `@xeroc/vanteem-config`, sort by comment voter |
       | `["alice", "xeroc", "vanteem-config"]` | 10 | `"by_voter_comment"` | Queries next 10 votes starting at alice on the post `@xeroc/vanteem-config`, sort by voter comment |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_votes' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_votes' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_comment_voter"}'
     expected_response_json: |
       {
@@ -1436,7 +1796,7 @@
           {
             "id": 9,
             "voter": "dantheman",
-            "author": "steemit",
+            "author": "hiveio",
             "permlink": "firstpost",
             "weight": "32866333630",
             "rshares": 375241,
@@ -1449,7 +1809,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["", "", ""], "limit":10, "order":"by_comment_voter"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["", "", ""], "limit":10, "order":"by_voter_comment"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["", "", "steemit"], "limit":10, "order":"by_comment_voter"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["", "", "hiveio"], "limit":10, "order":"by_comment_voter"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["alice", "xeroc", "vanteem-config"], "limit":10, "order":"by_voter_comment"}, "id":1}'
   - api_method: database_api.list_withdraw_vesting_routes
     purpose: |
@@ -1468,7 +1828,7 @@
       | `["temp", ""]` | 10 | `"by_withdraw_route"` | Queries first 10 routes, sort by withdraw route |
       | `["", 0]` | 10 | `"by_destination"` | Queries first 10 routes, sort by destination |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_withdraw_vesting_routes' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_withdraw_vesting_routes' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -1502,7 +1862,7 @@
       | `["", ""]` | 10 | `"by_withdraw_route"` | Queries first 10 votes, sort by account witness |
       | `["", ""]` | 10 | `"by_destination"` | Queries first 10 votes, sort by witness account |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_witness_votes' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_witness_votes' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -1537,7 +1897,7 @@
       | `[0, ""]` | 10 | `"by_vote_name"` | Queries first 10 witnesses, sort by votes |
       | `["473718186844702107410533306", "alice"]` | 10 | `"by_schedule_time"` | Queries first 10 witnesses, sort by schedule |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_witnesses' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_witnesses' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: |
       {
@@ -1601,7 +1961,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.verify_account_authority", "params":{"account":"temp","signers":["STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"]}, "id":1}'
     expected_curl_responses:
-    - Missing Active Authority steemit
+    - Missing Active Authority hiveio
   - api_method: database_api.verify_authority
     purpose: |
       Returns true if the transaction has all of the required signatures,
@@ -1668,7 +2028,7 @@
       | `["alice"]` | 10 | `by_voter_proposal` | `ascending` | `active` | list 10 proposals with active status, ordered by voter, ascending |
       | `[10]` | 1000 | `by_proposal_voter` | `ascending` | `votable` | list 1000 votes on proposal 10, ordered by `proposal.id`, ascending |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_proposal_votes' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_proposal_votes' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name","order_direction":"ascending","status":"all"}'
     expected_response_json: |
       {"proposal_votes":[{
@@ -1729,7 +2089,7 @@
       | `[""]` | 1000 | `by_creator` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending |
       | `[10]` | 1000 | `by_total_votes` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending, having at least 10 votes |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_proposals' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_proposals' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name","order_direction":"ascending","status":"all"}'
     expected_response_json: |
       {"proposals":[
@@ -1759,19 +2119,19 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposals", "params":{"start": [""], "limit": 1000, "order": "by_creator", "order_direction": "ascending", "status": "votable"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposals", "params":{"start": [10], "limit": 1000, "order": "by_total_votes", "order_direction": "ascending", "status": "votable"}, "id":1}'
   - api_method: database_api.find_smt_contributions
-    since: HF23
+    since: Mysterious Future
     purpose: |
       Find SMT contributions.  Contributions are needed to track individual contributions on an SMT during the ICO phase.
       
       See: [Token Units](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#token-units), [Vesting Contributions](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#vesting-contributions)
     parameter_json: '{"symbol_contributors":[]}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {"contributions": [
         {
           "id": 0,
           "symbol": {
             "nai": "@@422838704",
-            "decimals": 0
+            "precision": 0
           },
           "contributor": "alice",
           "contribution_id": 0,
@@ -1785,37 +2145,81 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_smt_contributions", "params":{"symbol_contributors": []}, "id":1}'
   - api_method: database_api.find_smt_token_emissions
-    since: HF23
+    since: Mysterious Future
     purpose: |
       Find SMT emissions.
       
       See: [Content Rewards](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#content-rewards), [Qualitative Discussion](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#qualitative-discussion)
-    parameter_json: '{"asset_symbol":{"nai":"@@422838704","decimals":0}}'
-    expected_response_json: '{"token_emissions":[]}'
+    parameter_json: '{"asset_symbol":{"nai":"@@422838704","precision":0}}'
+    expected_response_json: '{"token_emissions":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_smt_token_emissions", "params":{"asset_symbol":{"nai":"@@422838704","decimals":0}}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_smt_token_emissions", "params":{"asset_symbol":{"nai":"@@422838704","precision":0}}, "id":1}'
   - api_method: database_api.find_smt_tokens
-    since: HF23
+    since: Mysterious Future
     purpose: |
       Find SMT.
       
       See: [Smart Media Tokens (SMTs)](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smart-media-tokens-smts)
     parameter_json: '{"symbols":[],"ignore_precision":false}'
-    expected_response_json: '{"tokens":[]}'
+    expected_response_json: '{"tokens":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_smt_tokens", "params":{"symbols":[],"ignore_precision":false}, "id":1}'
   - api_method: database_api.get_nai_pool
-    since: HF23
+    since: Mysterious Future
     purpose: |
       Return an array of Numeric Asset Identifier (NAI) available to be used for new SMT to be created.
       
       See: [Numerical Asset Identifiers](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#numerical-asset-identifiers)
     parameter_json: "{}"
-    expected_response_json: '{"nai_pool":[]}'
+    expected_response_json: |
+      {
+        "nai_pool": [
+          {
+            "nai": "@@456173464",
+            "precision": 0
+          },
+          {
+            "nai": "@@483570188",
+            "precision": 0
+          },
+          {
+            "nai": "@@262899546",
+            "precision": 0
+          },
+          {
+            "nai": "@@651791780",
+            "precision": 0
+          },
+          {
+            "nai": "@@695960327",
+            "precision": 0
+          },
+          {
+            "nai": "@@337834146",
+            "precision": 0
+          },
+          {
+            "nai": "@@465565260",
+            "precision": 0
+          },
+          {
+            "nai": "@@528352042",
+            "precision": 0
+          },
+          {
+            "nai": "@@326426201",
+            "precision": 0
+          },
+          {
+            "nai": "@@960128623",
+            "precision": 0
+          }
+        ]
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_nai_pool", "params":{}, "id":1}'
   - api_method: database_api.list_smt_contributions
-    since: HF23
+    since: Mysterious Future
     purpose: |
       List SMT contributions.  Contributions are needed to track individual contributions on an SMT during the ICO phase.  Parameters: `start:array`; `limit:int`; `order:string`
       
@@ -1827,20 +2231,20 @@
       
       | `start` (array) | `limit` (int) | `order` (string) |
       |-------------------|-|-|-|-|-|
-      | `[{"nai": "@@422838704", "decimals": 0}, 0]` | 10 | `by_symbol_id` | list 10 contributions, ordered by symbol, id |
-      | `[{"nai": "@@422838704", "decimals": 0}, "alice", 0]` | 10 | `by_symbol_contributor` | list 10 contributions, ordered by symbol, contributor, id |
+      | `[{"nai": "@@422838704", "precision": 0}, 0]` | 10 | `by_symbol_id` | list 10 contributions, ordered by symbol, id |
+      | `[{"nai": "@@422838704", "precision": 0}, "alice", 0]` | 10 | `by_symbol_contributor` | list 10 contributions, ordered by symbol, contributor, id |
       
       See: [Token Units](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#token-units), [Vesting Contributions](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#vesting-contributions)
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_smt_contributions' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_smt_contributions' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_symbol_id"}'
-    expected_response_json: |
+    expected_response_json: | # TODO - recheck in HF23
       {"contributions": [
         {
           "id": 0,
           "symbol": {
             "nai": "@@422838704",
-            "decimals": 0
+            "precision": 0
           },
           "contributor": "alice",
           "contribution_id": 0,
@@ -1852,10 +2256,10 @@
         }
       ]}
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_contributions", "params":{"start":[{"nai": "@@422838704", "decimals": 0}, 0],"limit":10,"order":"by_symbol_id"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_contributions", "params":{"start":[{"nai": "@@422838704", "decimals": 0}, "alice", 0],"limit":10,"order":"by_symbol_contributor"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_contributions", "params":{"start":[{"nai": "@@422838704", "precision": 0}, 0],"limit":10,"order":"by_symbol_id"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_contributions", "params":{"start":[{"nai": "@@422838704", "precision": 0}, "alice", 0],"limit":10,"order":"by_symbol_contributor"}, "id":1}'
   - api_method: database_api.list_smt_token_emissions
-    since: HF23
+    since: Mysterious Future
     purpose: |
       List SMT emissions.  Parameters: `start:array`; `limit:int`; `order:string`
       
@@ -1866,17 +2270,47 @@
       
       | `start` (array) | `limit` (int) | `order` (string) |
       |-------------------|-|-|-|-|-|
-      | `[{"nai": "@@422838704", "decimals": 0}, "2019-08-07T16:54:03"]` | 10 | `by_symbol_time` | list 10 emissions, ordered by symbol, timestamp |
+      | `[{"nai": "@@422838704", "precision": 0}, "2019-08-07T16:54:03"]` | 10 | `by_symbol_time` | list 10 emissions, ordered by symbol, timestamp |
       
       See: [Content Rewards](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#content-rewards), [Qualitative Discussion](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#qualitative-discussion)
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_smt_token_emissions' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_smt_token_emissions' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_symbol_time"}'
-    expected_response_json: '{"token_emissions":[]}'
+    expected_response_json: |
+      {
+        "token_emissions": [
+          {
+            "id": 0,
+            "symbol": {
+              "nai": "@@918753685",
+              "precision": 3
+            },
+            "schedule_time": "2019-12-12T01:00:00",
+            "emissions_unit": {
+              "token_unit": [
+                [
+                  "extratest4",
+                  1
+                ]
+              ]
+            },
+            "interval_seconds": 21600,
+            "interval_count": 1,
+            "lep_time": "2019-12-12T01:01:00",
+            "rep_time": "2019-12-12T01:02:00",
+            "lep_abs_amount": 1000000,
+            "rep_abs_amount": 1000000,
+            "lep_rel_amount_numerator": 1,
+            "rep_rel_amount_numerator": 1,
+            "rel_amount_denom_bits": 1,
+            "floor_emissions": false
+          }
+        ]
+      }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_token_emissions", "params":{"start":[{"nai": "@@422838704", "decimals": 0}, "2019-08-07T16:54:03"],"limit":10,"order":"by_symbol_time"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_token_emissions", "params":{"start":[{"nai": "@@422838704", "precision": 0}, "2019-08-07T16:54:03"],"limit":10,"order":"by_symbol_time"}, "id":1}'
   - api_method: database_api.list_smt_tokens
-    since: HF23
+    since: Mysterious Future
     purpose: |
       List SMTs.  Parameters: `start:object`; `limit:int`; `order:string`
       
@@ -1888,24 +2322,24 @@
       
       | `start` (object) | `limit` (int) | `order` (string) |
       |-------------------|-|-|-|-|-|
-      | `{"nai": "@@422838704", "decimals": 0}` | 10 | `by_symbol` | list 10 tokens, ordered by symbol |
+      | `{"nai": "@@422838704", "precision": 0}` | 10 | `by_symbol` | list 10 tokens, ordered by symbol |
       | `""` | 10 | `by_control_account` | list 10 tokens, ordered by control account |
-      | `["", {"nai": "@@422838704", "decimals": 0}]` | 10 | `by_control_account` | list 10 tokens, ordered by control account, symbol |
+      | `["", {"nai": "@@422838704", "precision": 0}]` | 10 | `by_control_account` | list 10 tokens, ordered by control account, symbol |
       
       See: [Smart Media Tokens (SMTs)](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smart-media-tokens-smts)
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods#database_apilist_smt_tokens' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_smt_tokens' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_symbol"}'
     expected_response_json: |
       {"tokens": [
         {
           "token": {
-            "id": 0,
+            "id": 177,
             "liquid_symbol": {
-              "nai": "@@422838704",
-              "decimals": 0
+              "nai": "@@423920664",
+              "precision": 3
             },
-            "control_account": "alice",
+            "control_account": "petanque",
             "phase": "setup",
             "current_supply": 0,
             "total_vesting_fund_smt": 0,
@@ -1917,7 +2351,7 @@
             "reward_balance": {
               "amount": "0",
               "precision": 3,
-              "nai": "@@000000021"
+              "nai": "@@423920664"
             },
             "recent_claims": "0",
             "last_reward_update": "1970-01-01T00:00:00",
@@ -1931,8 +2365,8 @@
               },
               "token_balance": {
                 "amount": "0",
-                "precision": 0,
-                "nai": "@@422838704"
+                "precision": 3,
+                "nai": "@@423920664"
               },
               "reserve_ratio": 0
             },
@@ -1950,6 +2384,6 @@
         }
       ]}
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":{"nai": "@@422838704", "decimals": 0},"limit":10,"order":"by_symbol"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":{"nai": "@@422838704", "precision": 0},"limit":10,"order":"by_symbol"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":"","limit":10,"order":"by_control_account"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":["", {"nai": "@@422838704", "decimals": 0}],"limit":10,"order":"by_control_account"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":["", {"nai": "@@422838704", "precision": 0}],"limit":10,"order":"by_control_account"}, "id":1}'

@@ -5,29 +5,29 @@
       purpose: |
         Indicates if this node is running on testnet.
       links:
-        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Steem Testnet</a>
-    # - name: STEEM_ENABLE_SMT
+        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
+    # - name: HIVE_ENABLE_SMT
     #   purpose: Indicates if Smart Media Tokens have been enabled (future hardfork).
     - name: TESTNET_BLOCK_LIMIT
       purpose: |
         Maxumum blocks (testnet only: 3,000,000 blocks, ~3.5 months).
       links:
-        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Steem Testnet</a>
-    - name: STEEM_INITIAL_VOTE_POWER_RATE
+        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
+    - name: HIVE_INITIAL_VOTE_POWER_RATE
       purpose: The rate used prior to HF19.  The number of votes an account may cast per day before voting power is impacted (originally 40 votes per day).
-    - name: STEEM_REDUCED_VOTE_POWER_RATE
+    - name: HIVE_REDUCED_VOTE_POWER_RATE
       purpose: The rate used since HF19.  The number of votes an account may cast per day before voting power is impacted (10 votes per day).
-    - name: STEEM_ADDRESS_PREFIX
+    - name: HIVE_ADDRESS_PREFIX
       purpose: |
         Address prefix used on mainnet is `STM` and on testnet is `TST`.
       examples:
         - '`STM` - mainnet'
         - '`TST` - mainnet'
       links:
-        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Steem Testnet</a>
-    - name: STEEM_BLOCK_INTERVAL
+        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
+    - name: HIVE_BLOCK_INTERVAL
       purpose: Block interval in seconds is `3`.  This is the target for block production.  This constant is also used as a component for determining valid peer inventory, bandwidth calculations, and block production gaps.
-    - name: STEEM_CASHOUT_WINDOW_SECONDS
+    - name: HIVE_CASHOUT_WINDOW_SECONDS
       purpose: |
         This value was simply set to 7 days, [since HF17](https://github.com/steemit/steem/releases/tag/v0.17.0).
 
@@ -38,50 +38,50 @@
         - '`604800` - mainnet'
         - '`3600` - testnet'
       links:
-        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Steem Testnet</a>
-    - name: STEEM_CHAIN_ID
+        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
+    - name: HIVE_CHAIN_ID
       purpose: |
         The chain ID to connect to, which is used to seed signing and prevent transaction crosstalk between two chains, typically mainnet and testnet.
       examples:
         - "`0000000000000000000000000000000000000000000000000000000000000000` - mainnet"
         - "`18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e` - testnet"
       links:
-        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Steem Testnet</a>
-    - name: STEEM_CHAIN_ID_NAME
+        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
+    - name: HIVE_CHAIN_ID_NAME
       purpose: |
         Tyically used to automatically get a unique chain id for a testnet.
       links:
-        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Steem Testnet</a>
-    - name: STEEM_CREATE_ACCOUNT_DELEGATION_RATIO
+        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
+    - name: HIVE_CREATE_ACCOUNT_DELEGATION_RATIO
       purpose: |
         This ratio is set to 5 and is used to determine the cost of an account created with delegation.
 
-        As an example, imagine the account creation fee is currently `3.000 STEEM`.  Instead of creating the account using pure STEEM, there is an option to use delegation so that the blockchain would reduce the creation fee to `0.100 STEEM`.  Going this route would require a delegation of `15.000 STEEM`, that can be revoked at any time, but will stay in limbo for 30 days after the creation date ([`STEEM_CREATE_ACCOUNT_DELEGATION_TIME`](#STEEM_CREATE_ACCOUNT_DELEGATION_TIME)).
+        As an example, imagine the account creation fee is currently `3.000 HIVE`.  Instead of creating the account using pure HIVE, there is an option to use delegation so that the blockchain would reduce the creation fee to `0.100 HIVE`.  Going this route would require a delegation of `15.000 HIVE`, that can be revoked at any time, but will stay in limbo for 30 days after the creation date ([`HIVE_CREATE_ACCOUNT_DELEGATION_TIME`](#HIVE_CREATE_ACCOUNT_DELEGATION_TIME)).
 
-        This minimum STEEM ensures that those accounts can transact if the delegation is removed.
+        This minimum HIVE ensures that those accounts can transact if the delegation is removed.
       links:
         - <a href="https://github.com/steemit/steem/issues/818">#818</a>
-    - name: STEEM_CREATE_ACCOUNT_DELEGATION_TIME
+    - name: HIVE_CREATE_ACCOUNT_DELEGATION_TIME
       purpose: |
-        There is a minimum delegation period (30 days) and a minimum fee in STEEM even when delegating for account creation (derived with [`STEEM_CREATE_ACCOUNT_DELEGATION_RATIO`](#STEEM_CREATE_ACCOUNT_DELEGATION_RATIO)).  The minimum period enforces a rate limit on account creation.
+        There is a minimum delegation period (30 days) and a minimum fee in HIVE even when delegating for account creation (derived with [`HIVE_CREATE_ACCOUNT_DELEGATION_RATIO`](#HIVE_CREATE_ACCOUNT_DELEGATION_RATIO)).  The minimum period enforces a rate limit on account creation.
 
         Note that delegation can be revoked before 30 days have elapsed from the creation date, but stays in limbo.
       links:
         - <a href="https://github.com/steemit/steem/issues/818">#818</a>
-    - name: STEEM_FEED_HISTORY_WINDOW
+    - name: HIVE_FEED_HISTORY_WINDOW
       purpose: Price feed history window, which is 3.5 days since HF16.
-    - name: STEEM_GENESIS_TIME
+    - name: HIVE_GENESIS_TIME
       purpose: |
         Scheduled time that the blockchain waited until the first block was produced.  It is represented as the unix epoch of `1458835200`, which is `Thu Mar 24 16:00:00 UTC 2016`.  About five seconds later, the first block was produced.
       links: <a href="https://steemd.com/b/1">https://steemd.com/b/1</a>
-    - name: STEEM_HARDFORK_REQUIRED_WITNESSES
+    - name: HIVE_HARDFORK_REQUIRED_WITNESSES
       purpose: |
         The minimum number of Delegated Proof of Stake witnesses required for hardfork.  This guarantees 75% participation on all subsequent rounds.
 
         By default it is set to 17, but when running a testnet, we can change it to 1 so that only one node instance would be sufficient and the network will be still functional and fast.
       links:
-        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Steem Testnet</a>
-    - name: STEEM_INFLATION_NARROWING_PERIOD
+        - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
+    - name: HIVE_INFLATION_NARROWING_PERIOD
       purpose: |
         Inflation narrows 0.01% every 250k blocks, since HF16.  At block 7,000,000, there was a 9.5% instantaneous inflation rate, decreasing to 0.95% at this rate of 0.01% every 250k blocks.  This narrowing will take approximately 20.5 years and will complete on block 220,750,000.
 
@@ -105,10 +105,10 @@
       examples:
         - '`250000`'
       links:
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Steem.DAO</a>
+        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
-    - name: STEEM_MAX_ACCOUNT_NAME_LENGTH
+    - name: HIVE_MAX_ACCOUNT_NAME_LENGTH
       purpose: |
         Names must comply with the following grammar ([RFC 1035](https://tools.ietf.org/html/rfc1035#section-2.3.1)), i.e.: a valid name consists of a dot-separated sequence of one or more labels consisting of the following rules:
 
@@ -120,44 +120,44 @@
         In addition we require the following:
 
         - All letters are lowercase
-        - Length is between (inclusive) [STEEM_MIN_ACCOUNT_NAME_LENGTH](#STEEM_MIN_ACCOUNT_NAME_LENGTH) (3 characters) and STEEM_MAX_ACCOUNT_NAME_LENGTH (16 characters)
+        - Length is between (inclusive) [HIVE_MIN_ACCOUNT_NAME_LENGTH](#HIVE_MIN_ACCOUNT_NAME_LENGTH) (3 characters) and HIVE_MAX_ACCOUNT_NAME_LENGTH (16 characters)
       links:
         - <a href="{{ '/apidefinitions/#broadcast_ops_account_create' | relative_url }}">`account_create`</a>
         - <del><a href="{{ '/apidefinitions/#broadcast_ops_account_create_with_delegation' | relative_url }}">`account_create_with_delegation`</a></del>
         - <a href="{{ '/apidefinitions/#broadcast_ops_create_claimed_account' | relative_url }}">`create_claimed_account`</a>
-    - name: STEEM_MAX_ACCOUNT_WITNESS_VOTES
+    - name: HIVE_MAX_ACCOUNT_WITNESS_VOTES
       purpose: Each account may cast up to 30 witness votes.
       links:
         - <a href="{{ '/apidefinitions/#broadcast_ops_account_witness_vote' | relative_url }}">`account_witness_vote`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_account_witness_proxy' | relative_url }}">`account_witness_proxy`</a>
-    - name: STEEM_MAX_WITNESSES
+    - name: HIVE_MAX_WITNESSES
       purpose: |
         This value is set to 21, which means there are 21 witnesses cycling to produce blocks.
 
         Every round of block production begins with the shuffling of 21 witnesses: the top 20 witnesses (by vote), plus one randomly-selected standby witness.  Each is given a turn to produce a single block at a fixed rate of one block every 3 seconds.  If a witness does not produce a block in their time slot, then that time slot is skipped, and the next witness produces the next block.
-    - name: STEEM_MAX_PERMLINK_LENGTH
+    - name: HIVE_MAX_PERMLINK_LENGTH
       purpose: A permlink is a unique string identifier for a post/comment, linked to the author of the post/comment.  It must not exceed 256 characters.
-    - name: STEEM_MAX_WITNESS_URL_LENGTH
+    - name: HIVE_MAX_WITNESS_URL_LENGTH
       purpose: Witnesses may provide a URL in their witness proposal.  It must not exceed 2,048 characters.
-    - name: STEEM_MIN_REPLY_INTERVAL
+    - name: HIVE_MIN_REPLY_INTERVAL
       purpose: Prior to HF20, comments (replies) could only be broadcasted once every 20 seconds, per account.
-    - name: STEEM_MIN_REPLY_INTERVAL_HF20
+    - name: HIVE_MIN_REPLY_INTERVAL_HF20
       purpose: |
         In HF20, comments (replies) can be broadcasted once every 3 seconds, per account (one comment per account per block).
       links:
         - <a href="https://github.com/steemit/steem/issues/2019">#2019</a>
-    - name: STEEM_MIN_ROOT_COMMENT_INTERVAL
+    - name: HIVE_MIN_ROOT_COMMENT_INTERVAL
       purpose: Posts (root comments) can only be broadcasted once every 5 minutes, per account.
-    - name: STEEM_MIN_PAYOUT_SBD
-      purpose: Rewards of less than `0.020 SBD` are considered "dust" and will not receive payout.
-    - name: STEEM_NULL_ACCOUNT
+    - name: HIVE_MIN_PAYOUT_HBD
+      purpose: Rewards of less than `0.020 HBD` are considered "dust" and will not receive payout.
+    - name: HIVE_NULL_ACCOUNT
       purpose: |
         This defines the `null` account used by the blockchain as the canonical account designated to burn assets.
 
         The blockchain checks *all* asset types transferred to this account, thus, even reward balances and VESTS are burned.
       links:
         - <a href="https://github.com/steemit/steem/blob/d04a62953c3b9ec9aab8ba8051848d8d1da18f0c/tests/tests/operation_time_tests.cpp#L2854">operation_time_tests.cpp</a>
-    - name: STEEM_REVERSE_AUCTION_WINDOW_SECONDS
+    - name: HIVE_REVERSE_AUCTION_WINDOW_SECONDS
       removed: true
       purpose: |
         **Removed in HF21, see: [#1874](https://github.com/steemit/steem/issues/1874)**
@@ -168,293 +168,293 @@
         
         In HF21, the reverse action is being reduced to 5 minutes.
       links:
-        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF6' | relative_url }}"><code>STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF6</code></a>
-        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF20' | relative_url }}"><code>STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF20</code></a>
-        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF21' | relative_url }}"><code>STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF21</code></a>
+        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6</code></a>
+        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20</code></a>
+        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21</code></a>
         - <a href="{{ '/tutorials-recipes/understanding-dynamic-global-properties#reverse_auction_seconds' | relative_url }}"><code>reverse_auction_seconds</code></a>
         - <a href="https://github.com/steemit/steem/issues/1874">#1874</a>
         - <a href="https://github.com/steemit/steem/issues/1878">#1878</a>
-    - name: STEEM_SOFT_MAX_COMMENT_DEPTH
+    - name: HIVE_SOFT_MAX_COMMENT_DEPTH
       purpose: |
         A comment is nested at a maximum depth of 255.  As a soft limit, it is enforced by the `witness_plugin`.
 
         Prior to HF17, the maximum comment depth was 6.
       links:
         - <a href="https://github.com/steemit/steem/issues/767">#767</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#STEEM_MAX_COMMENT_DEPTH' | relative_url }}"><code>STEEM_MAX_COMMENT_DEPTH</code></a>
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_MAX_COMMENT_DEPTH' | relative_url }}"><code>HIVE_MAX_COMMENT_DEPTH</code></a>
         - <a href="https://github.com/steemit/steem/blob/62b48877d9f731c3fe00ef818e3324a0a3de3e63/libraries/plugins/witness/witness_plugin.cpp#L224">witness_plugin.cpp</a>
-    - name: STEEM_SAVINGS_WITHDRAW_TIME
+    - name: HIVE_SAVINGS_WITHDRAW_TIME
       purpose: This value sets the timelock of 3 days for funds being withdrawn from savings.  Funds can be transferred into savings instantly, but require 72 hours (3 days) to withdraw from savings. This will guarantee there is at least 1 business day during which you can contact your recovery agent.
-    - name: STEEM_UPVOTE_LOCKOUT_HF17
+    - name: HIVE_UPVOTE_LOCKOUT_HF17
       purpose: Accounts may not increase payout within last 12 hours before payout, since HF17.
-    - name: STEEM_VESTING_WITHDRAW_INTERVALS
+    - name: HIVE_VESTING_WITHDRAW_INTERVALS
       purpose: |
         Sets the power-down rate, which is fulfilled once a week over 13 weeks.
 
         Prior to HF16, this value was 104 weeks.
       links:
         - <a href="https://github.com/steemit/steem/issues/551">#551</a>
-    - name: SBD_SYMBOL
+    - name: HBD_SYMBOL
       examples:
         - '`{"nai": "@@000000013", "decimals": 3}`'
-    - name: STEEM_100_PERCENT
-    - name: STEEM_1_PERCENT
-    - name: STEEM_ACCOUNT_RECOVERY_REQUEST_EXPIRATION_PERIOD
-    - name: STEEM_ACTIVE_CHALLENGE_COOLDOWN
-    - name: STEEM_ACTIVE_CHALLENGE_FEE
-    - name: STEEM_APR_PERCENT_MULTIPLY_PER_BLOCK
-    - name: STEEM_APR_PERCENT_MULTIPLY_PER_HOUR
-    - name: STEEM_APR_PERCENT_MULTIPLY_PER_ROUND
-    - name: STEEM_APR_PERCENT_SHIFT_PER_BLOCK
-    - name: STEEM_APR_PERCENT_SHIFT_PER_HOUR
-    - name: STEEM_APR_PERCENT_SHIFT_PER_ROUND
-    - name: STEEM_BANDWIDTH_AVERAGE_WINDOW_SECONDS
-    - name: STEEM_BANDWIDTH_PRECISION
-    - name: STEEM_BLOCKCHAIN_PRECISION
-    - name: STEEM_BLOCKCHAIN_PRECISION_DIGITS
-    - name: STEEM_BLOCKCHAIN_HARDFORK_VERSION
-    - name: STEEM_BLOCKCHAIN_VERSION
-    - name: STEEM_BLOCKS_PER_DAY
-    - name: STEEM_BLOCKS_PER_HOUR
+    - name: HIVE_100_PERCENT
+    - name: HIVE_1_PERCENT
+    - name: HIVE_ACCOUNT_RECOVERY_REQUEST_EXPIRATION_PERIOD
+    - name: HIVE_ACTIVE_CHALLENGE_COOLDOWN
+    - name: HIVE_ACTIVE_CHALLENGE_FEE
+    - name: HIVE_APR_PERCENT_MULTIPLY_PER_BLOCK
+    - name: HIVE_APR_PERCENT_MULTIPLY_PER_HOUR
+    - name: HIVE_APR_PERCENT_MULTIPLY_PER_ROUND
+    - name: HIVE_APR_PERCENT_SHIFT_PER_BLOCK
+    - name: HIVE_APR_PERCENT_SHIFT_PER_HOUR
+    - name: HIVE_APR_PERCENT_SHIFT_PER_ROUND
+    - name: HIVE_BANDWIDTH_AVERAGE_WINDOW_SECONDS
+    - name: HIVE_BANDWIDTH_PRECISION
+    - name: HIVE_BLOCKCHAIN_PRECISION
+    - name: HIVE_BLOCKCHAIN_PRECISION_DIGITS
+    - name: HIVE_BLOCKCHAIN_HARDFORK_VERSION
+    - name: HIVE_BLOCKCHAIN_VERSION
+    - name: HIVE_BLOCKS_PER_DAY
+    - name: HIVE_BLOCKS_PER_HOUR
       purpose: |
-        `60*60/STEEM_BLOCK_INTERVAL`
-    - name: STEEM_BLOCKS_PER_YEAR
-    - name: STEEM_CASHOUT_WINDOW_SECONDS_PRE_HF12
-    - name: STEEM_CASHOUT_WINDOW_SECONDS_PRE_HF17
-    - name: STEEM_COMMENT_REWARD_FUND_NAME
-    - name: STEEM_CONTENT_APR_PERCENT
-    - name: STEEM_CONTENT_CONSTANT_HF0
-    - name: STEEM_CONTENT_REWARD_PERCENT
+        `60*60/HIVE_BLOCK_INTERVAL`
+    - name: HIVE_BLOCKS_PER_YEAR
+    - name: HIVE_CASHOUT_WINDOW_SECONDS_PRE_HF12
+    - name: HIVE_CASHOUT_WINDOW_SECONDS_PRE_HF17
+    - name: HIVE_COMMENT_REWARD_FUND_NAME
+    - name: HIVE_CONTENT_APR_PERCENT
+    - name: HIVE_CONTENT_CONSTANT_HF0
+    - name: HIVE_CONTENT_REWARD_PERCENT
       removed: true
-    - name: STEEM_CONTENT_REWARD_PERCENT_HF16
-    - name: STEEM_CONTENT_REWARD_PERCENT_HF21
-    - name: STEEM_CONVERSION_DELAY
+    - name: HIVE_CONTENT_REWARD_PERCENT_HF16
+    - name: HIVE_CONTENT_REWARD_PERCENT_HF21
+    - name: HIVE_CONVERSION_DELAY
       purpose: Prior to HF16, 7 day conversion.  After HF16 3.5 day conversion
       links:
         - <a href="https://github.com/steemit/steem/issues/551">#551</a>
-    - name: STEEM_CONVERSION_DELAY_PRE_HF_16
+    - name: HIVE_CONVERSION_DELAY_PRE_HF_16
       links:
         - <a href="https://github.com/steemit/steem/issues/551">#551</a>
-    - name: STEEM_CREATE_ACCOUNT_WITH_STEEM_MODIFIER
+    - name: HIVE_CREATE_ACCOUNT_WITH_HIVE_MODIFIER
       links:
         - <a href="https://github.com/steemit/steem/issues/818">#818</a>
-    - name: STEEM_CURATE_APR_PERCENT
-    - name: STEEM_DEFAULT_SBD_INTEREST_RATE
+    - name: HIVE_CURATE_APR_PERCENT
+    - name: HIVE_DEFAULT_HBD_INTEREST_RATE
       purpose: < 10% APR
-    - name: STEEM_EQUIHASH_K
+    - name: HIVE_EQUIHASH_K
       since: HF16
       deprecated: true
       links:
         - <a href="https://github.com/steemit/steem/issues/551">#551</a>
-    - name: STEEM_EQUIHASH_N
+    - name: HIVE_EQUIHASH_N
       since: HF16
       deprecated: true
       links:
         - <a href="https://github.com/steemit/steem/issues/551">#551</a>
-    - name: STEEM_FEED_HISTORY_WINDOW_PRE_HF_16
-    - name: STEEM_FEED_INTERVAL_BLOCKS
-    - name: STEEM_INFLATION_RATE_START_PERCENT
-    - name: STEEM_INFLATION_RATE_STOP_PERCENT
-    - name: STEEM_INIT_MINER_NAME
-    - name: STEEM_INIT_PUBLIC_KEY_STR
-    - name: STEEM_INIT_SUPPLY
-    - name: STEEM_INIT_TIME
-    - name: STEEM_IRREVERSIBLE_THRESHOLD
+    - name: HIVE_FEED_HISTORY_WINDOW_PRE_HF_16
+    - name: HIVE_FEED_INTERVAL_BLOCKS
+    - name: HIVE_INFLATION_RATE_START_PERCENT
+    - name: HIVE_INFLATION_RATE_STOP_PERCENT
+    - name: HIVE_INIT_MINER_NAME
+    - name: HIVE_INIT_PUBLIC_KEY_STR
+    - name: HIVE_INIT_SUPPLY
+    - name: HIVE_INIT_TIME
+    - name: HIVE_IRREVERSIBLE_THRESHOLD
       purpose: |
         75%
       examples:
         - '`7500`'
       links:
         - <a href="https://github.com/steemit/steem/issues/320">#320</a>
-    - name: STEEM_LIQUIDITY_APR_PERCENT
-    - name: STEEM_LIQUIDITY_REWARD_BLOCKS
-    - name: STEEM_LIQUIDITY_REWARD_PERIOD_SEC
-    - name: STEEM_LIQUIDITY_TIMEOUT_SEC
-    - name: STEEM_MAX_ASSET_WHITELIST_AUTHORITIES
-    - name: STEEM_MAX_AUTHORITY_MEMBERSHIP
+    - name: HIVE_LIQUIDITY_APR_PERCENT
+    - name: HIVE_LIQUIDITY_REWARD_BLOCKS
+    - name: HIVE_LIQUIDITY_REWARD_PERIOD_SEC
+    - name: HIVE_LIQUIDITY_TIMEOUT_SEC
+    - name: HIVE_MAX_ASSET_WHITELIST_AUTHORITIES
+    - name: HIVE_MAX_AUTHORITY_MEMBERSHIP
       purpose: 40 auths
-    - name: STEEM_MAX_BLOCK_SIZE
-    - name: STEEM_SOFT_MAX_BLOCK_SIZE
+    - name: HIVE_MAX_BLOCK_SIZE
+    - name: HIVE_SOFT_MAX_BLOCK_SIZE
       since: HF20
       purpose: |
         Max block size cannot be more than 2MiB (`2*1024*1024`).
       links:
         - <a href="https://github.com/steemit/steem/issues/1655">#1655</a>
-    - name: STEEM_MAX_CASHOUT_WINDOW_SECONDS
-    - name: STEEM_MAX_COMMENT_DEPTH
+    - name: HIVE_MAX_CASHOUT_WINDOW_SECONDS
+    - name: HIVE_MAX_COMMENT_DEPTH
       purpose: 
         Prior to HF17, the limit was 6.  After HF17, the internal limit became 65,535, but with a soft limit of 255.
       links:
         - <a href="https://github.com/steemit/steem/issues/767">#767</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#STEEM_SOFT_MAX_COMMENT_DEPTH' | relative_url }}"><code>STEEM_SOFT_MAX_COMMENT_DEPTH</code></a>
-    - name: STEEM_MAX_COMMENT_DEPTH_PRE_HF17
-    - name: STEEM_MAX_FEED_AGE_SECONDS
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_SOFT_MAX_COMMENT_DEPTH' | relative_url }}"><code>HIVE_SOFT_MAX_COMMENT_DEPTH</code></a>
+    - name: HIVE_MAX_COMMENT_DEPTH_PRE_HF17
+    - name: HIVE_MAX_FEED_AGE_SECONDS
       since: HF19
       purpose: 7 days
       examples:
         - '`604800`'
       links:
         - <a href="https://github.com/steemit/steem/issues/822">#822</a>
-    - name: STEEM_MAX_INSTANCE_ID
-    - name: STEEM_MAX_MEMO_SIZE
+    - name: HIVE_MAX_INSTANCE_ID
+    - name: HIVE_MAX_MEMO_SIZE
       purpose: 2048 bytes
-    - name: STEEM_MAX_MINER_WITNESSES_HF0
-    - name: STEEM_MAX_MINER_WITNESSES_HF17
-    - name: STEEM_MAX_PROXY_RECURSION_DEPTH
+    - name: HIVE_MAX_MINER_WITNESSES_HF0
+    - name: HIVE_MAX_MINER_WITNESSES_HF17
+    - name: HIVE_MAX_PROXY_RECURSION_DEPTH
       purpose: |
         depth: 4
       examples:
         - '`4`'
-    - name: STEEM_MAX_RATION_DECAY_RATE
-    - name: STEEM_MAX_RESERVE_RATIO
-    - name: STEEM_MAX_RUNNER_WITNESSES_HF0
-    - name: STEEM_MAX_RUNNER_WITNESSES_HF17
-    - name: STEEM_MAX_SATOSHIS
-    - name: STEEM_MAX_SHARE_SUPPLY
-    - name: STEEM_MAX_SIG_CHECK_DEPTH
-    - name: STEEM_MAX_TIME_UNTIL_EXPIRATION
-    - name: STEEM_MAX_TRANSACTION_SIZE
-    - name: STEEM_MAX_UNDO_HISTORY
-    - name: STEEM_MAX_URL_LENGTH
-    - name: STEEM_MAX_VOTE_CHANGES
+    - name: HIVE_MAX_RATION_DECAY_RATE
+    - name: HIVE_MAX_RESERVE_RATIO
+    - name: HIVE_MAX_RUNNER_WITNESSES_HF0
+    - name: HIVE_MAX_RUNNER_WITNESSES_HF17
+    - name: HIVE_MAX_SATOSHIS
+    - name: HIVE_MAX_SHARE_SUPPLY
+    - name: HIVE_MAX_SIG_CHECK_DEPTH
+    - name: HIVE_MAX_TIME_UNTIL_EXPIRATION
+    - name: HIVE_MAX_TRANSACTION_SIZE
+    - name: HIVE_MAX_UNDO_HISTORY
+    - name: HIVE_MAX_URL_LENGTH
+    - name: HIVE_MAX_VOTE_CHANGES
       links:
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote' | relative_url }}">`vote`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
-    - name: STEEM_MAX_VOTED_WITNESSES_HF0
-    - name: STEEM_MAX_VOTED_WITNESSES_HF17
-    - name: STEEM_MAX_WITHDRAW_ROUTES
-    - name: STEEM_MIN_ACCOUNT_CREATION_FEE
-    - name: STEEM_MIN_ACCOUNT_NAME_LENGTH
-    - name: STEEM_MIN_BLOCK_SIZE_LIMIT
-    - name: STEEM_MIN_BLOCK_SIZE
-    - name: STEEM_MIN_CONTENT_REWARD
-    - name: STEEM_MIN_CURATE_REWARD
-    - name: STEEM_MIN_PERMLINK_LENGTH
-    - name: STEEM_MIN_VOTE_INTERVAL_SEC
+    - name: HIVE_MAX_VOTED_WITNESSES_HF0
+    - name: HIVE_MAX_VOTED_WITNESSES_HF17
+    - name: HIVE_MAX_WITHDRAW_ROUTES
+    - name: HIVE_MIN_ACCOUNT_CREATION_FEE
+    - name: HIVE_MIN_ACCOUNT_NAME_LENGTH
+    - name: HIVE_MIN_BLOCK_SIZE_LIMIT
+    - name: HIVE_MIN_BLOCK_SIZE
+    - name: HIVE_MIN_CONTENT_REWARD
+    - name: HIVE_MIN_CURATE_REWARD
+    - name: HIVE_MIN_PERMLINK_LENGTH
+    - name: HIVE_MIN_VOTE_INTERVAL_SEC
       examples:
         - '`3`'
-    - name: STEEM_MINER_ACCOUNT
-    - name: STEEM_MINER_PAY_PERCENT
-    - name: STEEM_MIN_FEEDS
-    - name: STEEM_MINING_REWARD
-    - name: STEEM_MINING_TIME
-    - name: STEEM_MIN_LIQUIDITY_REWARD
-    - name: STEEM_MIN_LIQUIDITY_REWARD_PERIOD_SEC
-    - name: STEEM_MIN_POW_REWARD
+    - name: HIVE_MINER_ACCOUNT
+    - name: HIVE_MINER_PAY_PERCENT
+    - name: HIVE_MIN_FEEDS
+    - name: HIVE_MINING_REWARD
+    - name: HIVE_MINING_TIME
+    - name: HIVE_MIN_LIQUIDITY_REWARD
+    - name: HIVE_MIN_LIQUIDITY_REWARD_PERIOD_SEC
+    - name: HIVE_MIN_POW_REWARD
       links:
         - <a href="https://github.com/steemit/steem/issues/770">#770</a>
-    - name: STEEM_MIN_PRODUCER_REWARD
-    - name: STEEM_MIN_TRANSACTION_EXPIRATION_LIMIT
-    - name: STEEM_MIN_TRANSACTION_SIZE_LIMIT
-    - name: STEEM_MIN_UNDO_HISTORY
-    - name: STEEM_NUM_INIT_MINERS
-    - name: STEEM_OWNER_AUTH_HISTORY_TRACKING_START_BLOCK_NUM
-    - name: STEEM_OWNER_AUTH_RECOVERY_PERIOD
-    - name: STEEM_OWNER_CHALLENGE_COOLDOWN
-    - name: STEEM_OWNER_CHALLENGE_FEE
-    - name: STEEM_OWNER_UPDATE_LIMIT
-    - name: STEEM_POST_AVERAGE_WINDOW
-    - name: STEEM_POST_REWARD_FUND_NAME
-    - name: STEEM_POST_WEIGHT_CONSTANT
-    - name: STEEM_POW_APR_PERCENT
+    - name: HIVE_MIN_PRODUCER_REWARD
+    - name: HIVE_MIN_TRANSACTION_EXPIRATION_LIMIT
+    - name: HIVE_MIN_TRANSACTION_SIZE_LIMIT
+    - name: HIVE_MIN_UNDO_HISTORY
+    - name: HIVE_NUM_INIT_MINERS
+    - name: HIVE_OWNER_AUTH_HISTORY_TRACKING_START_BLOCK_NUM
+    - name: HIVE_OWNER_AUTH_RECOVERY_PERIOD
+    - name: HIVE_OWNER_CHALLENGE_COOLDOWN
+    - name: HIVE_OWNER_CHALLENGE_FEE
+    - name: HIVE_OWNER_UPDATE_LIMIT
+    - name: HIVE_POST_AVERAGE_WINDOW
+    - name: HIVE_POST_REWARD_FUND_NAME
+    - name: HIVE_POST_WEIGHT_CONSTANT
+    - name: HIVE_POW_APR_PERCENT
       links:
         - <a href="https://github.com/steemit/steem/issues/770">#770</a>
-    - name: STEEM_PRODUCER_APR_PERCENT
-    - name: STEEM_PROXY_TO_SELF_ACCOUNT
+    - name: HIVE_PRODUCER_APR_PERCENT
+    - name: HIVE_PROXY_TO_SELF_ACCOUNT
       purpose: An empty string represents the canonical account for specifying you will vote for directly (as opposed to a proxy).
-    - name: STEEM_SBD_INTEREST_COMPOUND_INTERVAL_SEC
-    - name: STEEM_SECONDS_PER_YEAR
-    - name: STEEM_RECENT_RSHARES_DECAY_TIME_HF19
-    - name: STEEM_RECENT_RSHARES_DECAY_TIME_HF17
-    - name: STEEM_ROOT_POST_PARENT
-    - name: STEEM_SAVINGS_WITHDRAW_REQUEST_LIMIT
-    - name: STEEM_SBD_START_PERCENT
+    - name: HIVE_SBD_INTEREST_COMPOUND_INTERVAL_SEC
+    - name: HIVE_SECONDS_PER_YEAR
+    - name: HIVE_RECENT_RSHARES_DECAY_TIME_HF19
+    - name: HIVE_RECENT_RSHARES_DECAY_TIME_HF17
+    - name: HIVE_ROOT_POST_PARENT
+    - name: HIVE_SAVINGS_WITHDRAW_REQUEST_LIMIT
+    - name: HIVE_HBD_START_PERCENT
       removed: true
-    - name: STEEM_SBD_START_PERCENT_HF14
-    - name: STEEM_SBD_START_PERCENT_HF20
-    - name: STEEM_SBD_STOP_PERCENT
+    - name: HIVE_HBD_START_PERCENT_HF14
+    - name: HIVE_HBD_START_PERCENT_HF20
+    - name: HIVE_HBD_STOP_PERCENT
       removed: true
-    - name: STEEM_SECOND_CASHOUT_WINDOW
-    - name: STEEM_SBD_STOP_PERCENT_HF14
-    - name: STEEM_SBD_STOP_PERCENT_HF20
-    - name: STEEM_START_MINER_VOTING_BLOCK
-    - name: STEEM_START_VESTING_BLOCK
-    - name: STEEM_TEMP_ACCOUNT
-    - name: STEEM_UPVOTE_LOCKOUT_HF7
-    - name: STEEM_VESTING_FUND_PERCENT
+    - name: HIVE_SECOND_CASHOUT_WINDOW
+    - name: HIVE_HBD_STOP_PERCENT_HF14
+    - name: HIVE_HBD_STOP_PERCENT_HF20
+    - name: HIVE_START_MINER_VOTING_BLOCK
+    - name: HIVE_START_VESTING_BLOCK
+    - name: HIVE_TEMP_ACCOUNT
+    - name: HIVE_UPVOTE_LOCKOUT_HF7
+    - name: HIVE_VESTING_FUND_PERCENT
       removed: true
-    - name: STEEM_VESTING_FUND_PERCENT_HF16
-    - name: STEEM_VESTING_WITHDRAW_INTERVALS_PRE_HF_16
-    - name: STEEM_VESTING_WITHDRAW_INTERVAL_SECONDS
+    - name: HIVE_VESTING_FUND_PERCENT_HF16
+    - name: HIVE_VESTING_WITHDRAW_INTERVALS_PRE_HF_16
+    - name: HIVE_VESTING_WITHDRAW_INTERVAL_SECONDS
       purpose: 1 week per interval
-    - name: STEEM_VOTE_DUST_THRESHOLD
+    - name: HIVE_VOTE_DUST_THRESHOLD
       since: HF17
       purpose: Used to determine when `abs_rshares` is too small while evaluating vote operation.
       links:
         - <a href="https://github.com/steemit/steem/issues/774">#774</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote' | relative_url }}">`vote`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
-    - name: STEEM_VOTING_MANA_REGENERATION_SECONDS
+    - name: HIVE_VOTING_MANA_REGENERATION_SECONDS
       purpose: |
-        Renamed from `STEEM_VOTE_REGENERATION_SECONDS`
-    - name: STEEM_SYMBOL
+        Renamed from `HIVE_VOTE_REGENERATION_SECONDS`
+    - name: HIVE_SYMBOL
     - name: VESTS_SYMBOL
-    - name: STEEM_VIRTUAL_SCHEDULE_LAP_LENGTH
-    - name: STEEM_VIRTUAL_SCHEDULE_LAP_LENGTH2
-    - name: STEEM_MAX_LIMIT_ORDER_EXPIRATION
+    - name: HIVE_VIRTUAL_SCHEDULE_LAP_LENGTH
+    - name: HIVE_VIRTUAL_SCHEDULE_LAP_LENGTH2
+    - name: HIVE_MAX_LIMIT_ORDER_EXPIRATION
       since: HF20
       purpose: Limit Order Expiration must not be more than 28 days in the future
       links:
         - <a href="https://github.com/steemit/steem/issues/1449">#1449</a>
-    - name: STEEM_DELEGATION_RETURN_PERIOD_HF0
-    - name: STEEM_DELEGATION_RETURN_PERIOD_HF20
-    - name: STEEM_BENEFICIARY_LIMIT
-    - name: STEEM_COMMENT_TITLE_LIMIT
-    - name: STEEM_CONTENT_CONSTANT_HF21
-    - name: STEEM_CUSTOM_OP_DATA_MAX_LENGTH
-    - name: STEEM_CUSTOM_OP_ID_MAX_LENGTH
-    - name: STEEM_DOWNVOTE_POOL_PERCENT_HF21
-    - name: STEEM_HF21_CONVERGENT_LINEAR_RECENT_CLAIMS
-    - name: STEEM_SBD_INIT_SUPPLY
-    - name: STEEM_MAX_ACCOUNT_CREATION_FEE
-    - name: STEEM_MAX_SIG_CHECK_ACCOUNTS
-    - name: STEEM_MIN_COMMENT_EDIT_INTERVAL
-    - name: STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF6
-    - name: STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF20
-    - name: STEEM_REVERSE_AUCTION_WINDOW_SECONDS_HF21
-    - name: STEEM_UPVOTE_LOCKOUT_SECONDS
-    - name: STEEM_RD_MIN_DECAY_BITS
-    - name: STEEM_RD_MAX_DECAY_BITS
-    - name: STEEM_RD_DECAY_DENOM_SHIFT
-    - name: STEEM_RD_MAX_POOL_BITS
-    - name: STEEM_RD_MAX_BUDGET_1
-    - name: STEEM_RD_MAX_BUDGET_2
-    - name: STEEM_RD_MAX_BUDGET_3
-    - name: STEEM_RD_MAX_BUDGET
-    - name: STEEM_RD_MIN_DECAY
-    - name: STEEM_RD_MIN_BUDGET
-    - name: STEEM_RD_MAX_DECAY
-    - name: STEEM_ACCOUNT_SUBSIDY_PRECISION
-    - name: STEEM_WITNESS_SUBSIDY_BUDGET_PERCENT
-    - name: STEEM_WITNESS_SUBSIDY_DECAY_PERCENT
+    - name: HIVE_DELEGATION_RETURN_PERIOD_HF0
+    - name: HIVE_DELEGATION_RETURN_PERIOD_HF20
+    - name: HIVE_BENEFICIARY_LIMIT
+    - name: HIVE_COMMENT_TITLE_LIMIT
+    - name: HIVE_CONTENT_CONSTANT_HF21
+    - name: HIVE_CUSTOM_OP_DATA_MAX_LENGTH
+    - name: HIVE_CUSTOM_OP_ID_MAX_LENGTH
+    - name: HIVE_DOWNVOTE_POOL_PERCENT_HF21
+    - name: HIVE_HF21_CONVERGENT_LINEAR_RECENT_CLAIMS
+    - name: HIVE_HBD_INIT_SUPPLY
+    - name: HIVE_MAX_ACCOUNT_CREATION_FEE
+    - name: HIVE_MAX_SIG_CHECK_ACCOUNTS
+    - name: HIVE_MIN_COMMENT_EDIT_INTERVAL
+    - name: HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6
+    - name: HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20
+    - name: HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21
+    - name: HIVE_UPVOTE_LOCKOUT_SECONDS
+    - name: HIVE_RD_MIN_DECAY_BITS
+    - name: HIVE_RD_MAX_DECAY_BITS
+    - name: HIVE_RD_DECAY_DENOM_SHIFT
+    - name: HIVE_RD_MAX_POOL_BITS
+    - name: HIVE_RD_MAX_BUDGET_1
+    - name: HIVE_RD_MAX_BUDGET_2
+    - name: HIVE_RD_MAX_BUDGET_3
+    - name: HIVE_RD_MAX_BUDGET
+    - name: HIVE_RD_MIN_DECAY
+    - name: HIVE_RD_MIN_BUDGET
+    - name: HIVE_RD_MAX_DECAY
+    - name: HIVE_ACCOUNT_SUBSIDY_PRECISION
+    - name: HIVE_WITNESS_SUBSIDY_BUDGET_PERCENT
+    - name: HIVE_WITNESS_SUBSIDY_DECAY_PERCENT
       purpose: |
         Since witness decay only procs once per round, multiplying the decay
         constant by the number of witnesses means the per-witness pools have the
         same effective decay rate in real-time terms.
-    - name: STEEM_DEFAULT_ACCOUNT_SUBSIDY_DECAY
+    - name: HIVE_DEFAULT_ACCOUNT_SUBSIDY_DECAY
       purpose: 347321 corresponds to a 5-day halflife
-    - name: STEEM_DEFAULT_ACCOUNT_SUBSIDY_BUDGET
+    - name: HIVE_DEFAULT_ACCOUNT_SUBSIDY_BUDGET
       purpose: Default rate is 0.5 accounts per block
-    - name: STEEM_DECAY_BACKSTOP_PERCENT
-    - name: STEEM_BLOCK_GENERATION_POSTPONED_TX_LIMIT
-      since: HF23
+    - name: HIVE_DECAY_BACKSTOP_PERCENT
+    - name: HIVE_BLOCK_GENERATION_POSTPONED_TX_LIMIT
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/pull/3333">PR#3333</a>
-    - name: STEEM_PENDING_TRANSACTION_EXECUTION_LIMIT
-      since: HF23
+    - name: HIVE_PENDING_TRANSACTION_EXECUTION_LIMIT
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/pull/3333">PR#3333</a>
-    - name: STEEM_TREASURY_ACCOUNT
+    - name: HIVE_TREASURY_ACCOUNT
       since: HF21
       purpose: Account dedicated to holding treasury debt asset balance to distribute.
       examples:
@@ -463,49 +463,49 @@
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_update_proposal_votes' | relative_url }}">`update_proposal_votes`</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Steem.DAO</a>
+        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
-    - name: STEEM_TREASURY_FEE
+    - name: HIVE_TREASURY_FEE
       since: HF21
       purpose: |
-        `10.000 SBD`
+        `10.000 HBD`
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_update_proposal_votes' | relative_url }}">`update_proposal_votes`</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Steem.DAO</a>
+        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
-    - name: STEEM_PROPOSAL_MAINTENANCE_PERIOD
+    - name: HIVE_PROPOSAL_MAINTENANCE_PERIOD
       since: HF21
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Steem.DAO</a>
+        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
-    - name: STEEM_PROPOSAL_MAINTENANCE_CLEANUP
+    - name: HIVE_PROPOSAL_MAINTENANCE_CLEANUP
       since: HF21
       purpose: |
         1 day
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Steem.DAO</a>
+        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
-    - name: STEEM_PROPOSAL_SUBJECT_MAX_LENGTH
+    - name: HIVE_PROPOSAL_SUBJECT_MAX_LENGTH
       since: HF21
       purpose: |
         Maximum: 80
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Steem.DAO</a>
+        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
-    - name: STEEM_PROPOSAL_MAX_IDS_NUMBER
+    - name: HIVE_PROPOSAL_MAX_IDS_NUMBER
       since: HF21
       purpose: |
         Max number of IDs passed at once to the [`update_proposal_votes`]({{ '/apidefinitions/#broadcast_ops_update_proposal_votes' | relative_url }}) or [`remove_proposal`]({{ '/apidefinitions/#broadcast_ops_remove_proposal' | relative_url }}).  Maximum: 5
@@ -513,67 +513,67 @@
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_update_proposal_votes' | relative_url }}">`update_proposal_votes`</a>
-        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Steem.DAO</a>
+        - <a href="{{ '/services/#services-steem-dao' | relative_url }}">Decentralized Hive Fund</a>
         - <a href="{{ '/apidefinitions/#database_api.get_reward_funds' | relative_url }}">`database_api.get_reward_funds`</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}">`sps_fund`</a>
     - name: SMT_MAX_VOTABLE_ASSETS
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/1855">#1855</a>
         - <a href="https://github.com/steemit/steem/issues/2747">#2747</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
     - name: SMT_VESTING_WITHDRAW_INTERVAL_SECONDS
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/1517">#1517</a>
     - name: SMT_UPVOTE_LOCKOUT
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2726">#2726</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
     - name: SMT_EMISSION_MIN_INTERVAL_SECONDS
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2726">#2726</a>
     - name: SMT_EMIT_INDEFINITELY
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2726">#2726</a>
     - name: SMT_MAX_NOMINAL_VOTES_PER_DAY
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2728">#2728</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
     - name: SMT_MAX_VOTES_PER_REGENERATION
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2728">#2728</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
     - name: SMT_DEFAULT_VOTES_PER_REGEN_PERIOD
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2728">#2728</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
     - name: SMT_DEFAULT_PERCENT_CURATION_REWARDS
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2728">#2728</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
     - name: SMT_INITIAL_VESTING_PER_UNIT
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2746">#2746</a>
     - name: SMT_BALLAST_SUPPLY_PERCENT
-      since: HF23
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2746">#2746</a>
-    - name: STEEM_VOTES_PER_PERIOD_SMT_HF
-      since: HF23
+    - name: HIVE_VOTES_PER_PERIOD_SMT_HF
+      since: Mysterious Future
       links:
         - <a href="https://github.com/steemit/steem/issues/2748">#2748</a>
         - <a href="{{ '/apidefinitions/#broadcast_ops_vote2' | relative_url }}">`vote2`</a>
-    - name: STEEM_NETWORK_TYPE
-      since: HF23
+    - name: HIVE_NETWORK_TYPE
+      since: Mysterious Future
       purpose: |
         Used by platform independent state files to indicate:
           
@@ -581,21 +581,21 @@
         * `mainnet`
       links:
         - <a href="https://github.com/steemit/steem/issues/3084">#3084</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#STEEM_DB_FORMAT_VERSION' | relative_url }}"><code>STEEM_DB_FORMAT_VERSION</code></a>
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_DB_FORMAT_VERSION' | relative_url }}"><code>HIVE_DB_FORMAT_VERSION</code></a>
         - <a href="{{ '/tutorials-recipes/node-config#state-format' | relative_url }}">state-format</a>
         - <a href="{{ '/tutorials-recipes/node-config#from-state' | relative_url }}">from-state</a>
         - <a href="{{ '/tutorials-recipes/node-config#to-state' | relative_url }}">to-state</a>
-    - name: STEEM_DB_FORMAT_VERSION
-      since: HF23
+    - name: HIVE_DB_FORMAT_VERSION
+      since: Mysterious Future
       purpose: |
-        Version format string for platform independent state files.  The Steem binary will refuse to load a state file where this does not match the built-in version.
+        Version format string for platform independent state files.  The Hive binary will refuse to load a state file where this does not match the built-in version.
         
-        * `db_format_version` - Must match [STEEM_DB_FORMAT_VERSION](#STEEM_DB_FORMAT_VERSION)
-        * `network_type` - Must match [STEEM_NETWORK_TYPE](#STEEM_NETWORK_TYPE)
+        * `db_format_version` - Must match [HIVE_DB_FORMAT_VERSION](#HIVE_DB_FORMAT_VERSION)
+        * `network_type` - Must match [HIVE_NETWORK_TYPE](#HIVE_NETWORK_TYPE)
         * `chain_id` - Must match requested [chain ID]({{ '/apidefinitions/#database_api.get_version' | relative_url }}) and value of embedded GPO
       links:
         - <a href="https://github.com/steemit/steem/issues/3084">#3084</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#STEEM_NETWORK_TYPE' | relative_url }}"><code>STEEM_NETWORK_TYPE</code></a>
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_NETWORK_TYPE' | relative_url }}"><code>HIVE_NETWORK_TYPE</code></a>
         - <a href="{{ '/tutorials-recipes/node-config#state-format' | relative_url }}">state-format</a>
         - <a href="{{ '/tutorials-recipes/node-config#from-state' | relative_url }}">from-state</a>
         - <a href="{{ '/tutorials-recipes/node-config#to-state' | relative_url }}">to-state</a>
