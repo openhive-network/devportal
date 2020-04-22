@@ -3,28 +3,28 @@
   items:
     - term: Blockchain
       def: Decentralized ledger and consensus protocol
-    - term: Steem (blockchain)
+    - term: Hive (blockchain)
       def: Name of the blockchain and platform
     - term: Bandwidth
       def: formerly the limit of data each account can send/use (replaced by Resource Credits)
     - term: Resource Credits
       def: is the limit of data each account can utilize resources on the blockchain (also known as RC)
     - term: VESTS
-      def: The fundamental unit of accounting that STEEM Power is derived from
-    - term: STEEM (currency)
-      def: Currency of the blockchain, liquid version of Steem Power
-    - term: SBD
-      def: Steem Backed Dollar, $1 worth of STEEM
-    - term: Steem Power
-      def: Locked version of STEEM which gives account influence on the platform
+      def: The fundamental unit of accounting that Hive Power is derived from
+    - term: HIVE (currency)
+      def: Currency of the blockchain, liquid version of Hive Power
+    - term: HBD
+      def: Hive Backed Dollar, $1 worth of Hive
+    - term: Hive Power
+      def: Locked version of HIVE which gives account influence on the platform
     - term: Transaction
-      def: Operations/Activity/Write requests to the blockchain.  A transaction is a submitted update to the Steem blockchain.  This can include token transfers, posts/comments, votes, etc.
+      def: Operations/Activity/Write requests to the blockchain.  A transaction is a submitted update to the Hive blockchain.  This can include token transfers, posts/comments, votes, etc.
     - term: Block
-      def: Every three seconds, the Steem blockchain produces a new block. Each time a new block is produced, the distributed network is updated with all of the transactions that occurred within that block.
+      def: Every three seconds, the Hive blockchain produces a new block. Each time a new block is produced, the distributed network is updated with all of the transactions that occurred within that block.
     - term: Block Header
       def: Information about block, root, and witness who signed, etc.
     - term: Price feed 
-      def: Feed that is maintained by witnesses to ensure SBD/STEEM price stability
+      def: Feed that is maintained by witnesses to ensure HBD/HIVE price stability
     - term: Account 
       def: An account is a container for all of the activity associated with a particular user's wallet on the blockchain. This includes all of their tokens, posts, comments, upvotes, transfers, etc.
     - term: Authority
@@ -32,7 +32,7 @@
     - term: Owner
       def: Owner authority/permission of a given account
     - term: Key
-      def: Keys are used to authenticate transactions. Each key contains a public/private pair. When a transaction is submitted to the Steem blockchain, it is signed by the account owner using their private key. The blockchain is able to determine that the transaction is valid by validating the signature against the public key from the pair.
+      def: Keys are used to authenticate transactions. Each key contains a public/private pair. When a transaction is submitted to the Hive blockchain, it is signed by the account owner using their private key. The blockchain is able to determine that the transaction is valid by validating the signature against the public key from the pair.
     - term: Public Key
       def: Public key of account's certain authority
     - term: Private Key
@@ -50,32 +50,32 @@
     - term: Comment
       def: A comment is text content that is stored on the blockchain. Comments can be linked to other comments as "replies" through parent/child relationships.
     - term: Vote
-      def: A vote is an expression of like (upvote) or dislike (downvote) for a post/comment. The Steem blockchain uses the votes that a post/comment has received to determine its share of the rewards.
+      def: A vote is an expression of like (upvote) or dislike (downvote) for a post/comment. The Hive blockchain uses the votes that a post/comment has received to determine its share of the rewards.
     - term: Reputation
       def: Account's reputation on the platform
     - term: Markdown language
-      def: Easy to read and write, plain text format language commonly used to create Steemit articles
+      def: Easy to read and write, plain text format language commonly used to create Hive articles
     - term: Permlink
       def: Unique identifier of every comment or post of an author, within the context of that author. ('@author/permlink' combos are globally unique)
     - term: Mainnet
-      def: The 'production' Steem blockchain network wherein real STEEM is held and actual transactions take place.
+      def: The 'production' Hive blockchain network wherein real HIVE is held and actual transactions take place.
     - term: Delegation
-      def: The assignment of STEEM Power for content influence by another account (cannot be spent, can be revoked by the delegator in 5 days)
+      def: The assignment of Hive Power for content influence by another account (cannot be spent, can be revoked by the delegator in 5 days)
     - term: PowerUp
-      def: Convert STEEM to Steem Power and vice-versa with PowerDown
+      def: Convert HIVE to Hive Power and vice-versa with PowerDown
     - term: Reward Pool
-      def: Every day, a fixed amount of STEEM tokens are allocated to the network reward fund, commonly called the "reward pool." These get distributed to authors and curators for posting and voting on content.
+      def: Every day, a fixed amount of HIVE tokens are allocated to the network reward fund, commonly called the "reward pool." These get distributed to authors and curators for posting and voting on content.
     - term: AppBase
-      def: Plug-in architecture that provides a robust foundation for scaling.  It enables many components of the Steem blockchain to become modular by creating additional non-consensus blockchains as dedicated plugins.
+      def: Plug-in architecture that provides a robust foundation for scaling.  It enables many components of the Hive blockchain to become modular by creating additional non-consensus blockchains as dedicated plugins.
     - term: RocksDB
       def: A fast-on-disk data store with an advanced caching layer, which minimizes latency when reading/writing to and from disk.
     - term: MIRA
-      def: Multi Index Rocksdb Adapter that updates the database backend of Steem from memory mapped files to a disk log-structured merge-tree implemented via the RocksDB library.
+      def: Multi Index Rocksdb Adapter that updates the database backend of Hive from memory mapped files to a disk log-structured merge-tree implemented via the RocksDB library.
     - term: Manabar
       def: |
         <p>
           Tracked voting power that is regenerated from 0 to 100% of max
-          linearly over 5 days.  It is a function of STEEM Power, delegations,
+          linearly over 5 days.  It is a function of Hive Power, delegations,
           and active power down that tracks unspent reward fund shares.
         </p>
         
@@ -91,8 +91,8 @@
         </p>
     - term: Reverse Auction
       def: The window of 5 minutes where curation rewards are sent back to reward pool.
-    - term: SPS
-      def: Also known as Steem Proposal System.  An on-chain decentralized autonomous organization (DAO) that allows users to submit proposals for funding and use stake weighted voting to select which proposals should be funded.
+    - term: DHF
+      def: Also known as Decentralized Hive Fund.  An on-chain decentralized autonomous organization (DAO) that allows users to submit proposals for funding and use stake weighted voting to select which proposals should be funded.
       
 - name: Governance
   id: glossary-governance
@@ -100,11 +100,11 @@
     - term: DPOS
       def: Delegated Proof of Stake
     - term: Proxy
-      def: The assignment of STEEM Power for DPOS governance and SPS approval by another account (cannot be spent, can be revoked instantly)
+      def: The assignment of Hive Power for DPOS governance and DHF approval by another account (cannot be spent, can be revoked instantly)
     - term: Node
-      def: A node is an instance of the Steem blockchain running on a server.
+      def: A node is an instance of the Hive blockchain running on a server.
     - term: Witness
-      def: Witness is a position/role for the people who are chosen by community (delegate trust) to support platform and run consensus protocol to ensure security and validity of transactions/blocks on the blockchain.  A witness is responsible for signing and validating blocks for the Steem blockchain.
+      def: Witness is a position/role for the people who are chosen by community (delegate trust) to support platform and run consensus protocol to ensure security and validity of transactions/blocks on the blockchain.  A witness is responsible for signing and validating blocks for the Hive blockchain.
     - term: Hardfork
       def: Process to release protocol/blockchain consensus upgrades
     - term: Softfork
@@ -112,9 +112,9 @@
     - term: Witness Vote
       def: Voting/electing witnesses with account's stake
     - term: DAO
-      def: 'Decentralized Autonomous Organization (see: SPS).'
-    - term: SBD Haircut
-      def: 'Rules to stop printing SBD when the supply is too high.  Note: SBD printing for the SPS (@steem.dao) does not follow these rules and will continue to print SBD regardless of the supply.'
+      def: 'Decentralized Autonomous Organization (see: DHF).'
+    - term: HBD Haircut
+      def: 'Rules to stop printing HBD when the supply is too high.  Note: HBD printing for the DHF (@steem.dao) does not follow these rules and will continue to print HBD regardless of the supply.'
 
 - name: Transactions
   id: glossary-transactions
@@ -130,7 +130,7 @@
     - term: Signatures
       def: Transaction signature signed by an account with a private key
     - term: Canonical Signatures
-      def: Reduce entropy Signatures that follow the BIP-0062 specification to prevent transaction malleability.  All Signatures on Steem are Canonical Signatures, since 0.20.2.
+      def: Reduce entropy Signatures that follow the BIP-0062 specification to prevent transaction malleability.  All Signatures on Hive are Canonical Signatures, since 0.20.2.
     - term: Broadcast Transaction
       def: Event where a signed transaction is broadcasted to the p2p network so that witnesses could validate and include in a block
     - term: Virtual operation
@@ -152,7 +152,7 @@
     - term: Cashout
       def: Posts which was paid out recently
     - term: Promoted
-      def: Posts which was promoted by burning SBD to get more visibility
+      def: Posts which was promoted by burning HBD to get more visibility
     - term: Pending Payout
       def: Estimated pending payout for blog posts/comments
     - term: Tags
@@ -170,19 +170,19 @@
     - term: Median Price
       def: Median Price feed provided by all witnesses
     - term: Curator
-      def: A steem user who upvotes a post by using their daily voting power to assign value to a post that they believe has good quality content and should be seen and the author rewarded
+      def: A Hive user who upvotes a post by using their daily voting power to assign value to a post that they believe has good quality content and should be seen and the author rewarded
     - term: Curation reward
       def: The reward given to a curator, which is their portion of the 50% allocated to all curators that have upvoted a post
-    - term: Resteem
-      def: (Reblog) re-posting another authors' post in your blog feed for your followers list
+    - term: Reblog
+      def: Re-posting another author's post in your blog feed for your followers list
 
 - name: Market
   id: glossary-market
   items:
     - term: Conversion Requests
-      def: Request submitted for Converting SBD to STEEM
+      def: Request submitted for Converting HBD to HIVE
     - term: Order Book
-      def: Internal market order book to exchange SBD&lt;-&gt;STEEM
+      def: Internal market order book to exchange HBD &lt;-&gt HIVE
     - term: SMT
       def: Smart Media Tokens
     - term: Limit Order
