@@ -33,13 +33,13 @@ A python library to interact with the Hive blockchain. It includes the CLI tool 
 
 ---
 
-**PHP Steem** - [https://github.com/lukestokes/php-steem-tools](https://github.com/lukestokes/php-steem-tools)
+**PHP Hive** - [https://github.com/lukestokes/php-steem-tools](https://github.com/lukestokes/php-steem-tools)
 
 Various tools and scripts written in PHP for exploring the STEEM blockchain.
 
 ---
 
-**SteemJ** - [https://github.com/marvin-we/steem-java-api-wrapper](https://github.com/marvin-we/steem-java-api-wrapper)
+<!-- **SteemJ** - [https://github.com/marvin-we/steem-java-api-wrapper](https://github.com/marvin-we/steem-java-api-wrapper)
 
 An API Wrapper for Steem written in Java
 
@@ -53,4 +53,4 @@ Golang RPC client library for Steem
 
 **SteemClientRS** - [https://github.com/cyberpunk-ventures/steem-client-rs](https://github.com/cyberpunk-ventures/steem-client-rs)
 
-Client library for Steem blockchain built with Rust
+Client library for Steem blockchain built with Rust -->
