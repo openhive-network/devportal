@@ -2,6 +2,7 @@
 position: 1
 group: communities
 exclude: true
+canonical_url: .#apidefinitions-bridge
 ---
 
 {% include api-template.html api_data=site.data.apidefinitions.bridge %}
