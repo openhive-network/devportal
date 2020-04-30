@@ -3,8 +3,9 @@ title: 'RB: Submit Comment Reply'
 position: 11
 description: "_By the end of this tutorial you should know how to prepare comments for Steem and then submit using Radiator._"
 layout: full
+canonical_url: submit_comment_reply.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/11_submit_comment_reply) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/11_submit_comment_reply) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
 <br>
 
 
@@ -17,7 +18,7 @@ A reply is differentiated from a post by whether or not a `parent_author` exists
 
 ### Script
 
-You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](https://developers.steem.io/apidefinitions/broadcast-ops#broadcast_ops_comment):
+You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](https://developers.steem.io/apidefinitions/broadcast-ops.html#broadcast_ops_comment):
 
 * `author` - Account name of the author currently replying.
 * `permlink` - Value unique to the author 

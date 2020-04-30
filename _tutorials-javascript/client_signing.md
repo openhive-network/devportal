@@ -3,8 +3,9 @@ title: 'JS: Client Signing'
 position: 3
 description: "_By the end of this tutorial you would know how to sign, verify broadcast transactions locally on Steem._"
 layout: full
+canonical_url: client_signing.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Client Signing](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/03_client_signing) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Client Signing](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/03_client_signing) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
@@ -47,7 +48,7 @@ const client = new dsteem.Client('https://testnet.steemitdev.com', opts);
 
 To test connection as well as to get parameters of the connected network, we can use `getDynamicGlobalProperties` function from **dsteem** library. Only 2 fields are in our interesting for this tutorial, `head_block_number` - returns head or latest block number of the network, `head_block_id` - returns id of head block.
 
-![Overview](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/03_client_signing/images/overview.png)
+![Overview](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/03_client_signing/images/overview.png)
 
 #### 3. Account selection<a name="account-selection"></a>
 
@@ -117,7 +118,7 @@ That's it!
 ### To Run the tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/03_client_signing`
+1.  `cd devportal/tutorials/javascript/03_client_signing`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

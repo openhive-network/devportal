@@ -187,7 +187,7 @@ backtrace = yes
 
 Plugin(s) to enable, may be specified multiple times.
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list' | relative_url }})
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html' | relative_url }})
 
 ```ini
 # default
@@ -198,7 +198,7 @@ plugin = witness account_by_key account_by_key_api condenser_api
 
 Defines a range of accounts to track as a JSON pair `["from","to"]`.  Can be specified multiple times.
 
-See: [Exchange Node]({{ '/tutorials-recipes/exchange_node' | relative_url }}), [`exchangequickstart.md`](https://github.com/steemit/steem/blob/970f599655465b65bbe939b78db348a21af982e0/doc/exchangequickstart.md#configuration-files-when-not-using-a-docker-image), [#862](https://github.com/steemit/steem/issues/862#issuecomment-285432626)
+See: [Exchange Node]({{ '/tutorials-recipes/exchange_node.html' | relative_url }}), [`exchangequickstart.md`](https://github.com/steemit/steem/blob/970f599655465b65bbe939b78db348a21af982e0/doc/exchangequickstart.md#configuration-files-when-not-using-a-docker-image), [#862](https://github.com/steemit/steem/issues/862#issuecomment-285432626)
 
 ```ini
 # examples
@@ -602,7 +602,7 @@ edit-script =
 
 Set the maximum size of cached feed for an account.
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#follow_api' | relative_url }}), [#192](https://github.com/steemit/steem/issues/192)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#follow_api' | relative_url }}), [#192](https://github.com/steemit/steem/issues/192)
 
 ```ini
 # default
@@ -613,7 +613,7 @@ follow-max-feed-size = 500
 
 Block time (in epoch seconds) when to start calculating feeds.
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#follow_api' | relative_url }}), [#1162](https://github.com/steemit/steem/issues/1162)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#follow_api' | relative_url }}), [#1162](https://github.com/steemit/steem/issues/1162)
 
 ```ini
 # default
@@ -770,7 +770,7 @@ p2p-user-agent = Graphene Reference Implementation
 
 Skip rejecting transactions when account has insufficient RCs. This is not recommended.
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
 
 ```ini
 # default
@@ -781,7 +781,7 @@ rc-skip-reject-not-enough-rc = 0
 
 Generate historical resource credits.
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
 
 ```ini
 # default
@@ -792,7 +792,7 @@ rc-compute-historical-rc = 0
 
 Start calculating RCs at a specific block.  **Testnet only.**
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
 
 ```ini
 # default
@@ -803,7 +803,7 @@ rc-start-at-block = 0
 
 Ignore RC calculations for the whitelist.  **Testnet only.**
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
 
 ```ini
 # default
@@ -866,7 +866,7 @@ statsd-blacklist =
 
 Block time (in epoch seconds) when to start calculating promoted content. Should be 1 week prior to current time.
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#tags_api' | relative_url }}), See: [#1612](https://github.com/steemit/steem/issues/1612)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#tags_api' | relative_url }}), See: [#1612](https://github.com/steemit/steem/issues/1612)
 
 ```ini
 # default
@@ -877,7 +877,7 @@ tags-start-promoted = 0
 
 Skip updating tags on startup. Can safely be skipped when starting a previously running node. Should not be skipped when reindexing.
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#tags_api' | relative_url }}), See: [#1612](https://github.com/steemit/steem/issues/1612)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#tags_api' | relative_url }}), See: [#1612](https://github.com/steemit/steem/issues/1612)
 
 ```ini
 # default
@@ -910,7 +910,7 @@ Defines the number of blocks from the head block that transaction statuses will 
  */
 ```
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#transaction_status_api' | relative_url }}), [#2458](https://github.com/steemit/steem/issues/2458)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#transaction_status_api' | relative_url }}), [#2458](https://github.com/steemit/steem/issues/2458)
  
 ```ini
 transaction-status-block-depth = 64000
@@ -922,7 +922,7 @@ Defines the block number the transaction status plugin will begin tracking.
 
 Used by plugin: `transaction_status`
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#transaction_status_api' | relative_url }}), See: [#2458](https://github.com/steemit/steem/issues/2458)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#transaction_status_api' | relative_url }}), See: [#2458](https://github.com/steemit/steem/issues/2458)
  
 ```ini
 transaction-status-track-after-block = 0

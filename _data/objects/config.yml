@@ -168,10 +168,10 @@
         
         In HF21, the reverse action is being reduced to 5 minutes.
       links:
-        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6</code></a>
-        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20</code></a>
-        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21</code></a>
-        - <a href="{{ '/tutorials-recipes/understanding-dynamic-global-properties#reverse_auction_seconds' | relative_url }}"><code>reverse_auction_seconds</code></a>
+        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF6</code></a>
+        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF20</code></a>
+        # - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21' | relative_url }}"><code>HIVE_REVERSE_AUCTION_WINDOW_SECONDS_HF21</code></a>
+        - <a href="{{ '/tutorials-recipes/understanding-dynamic-global-properties.html#reverse_auction_seconds' | relative_url }}"><code>reverse_auction_seconds</code></a>
         - <a href="https://github.com/steemit/steem/issues/1874">#1874</a>
         - <a href="https://github.com/steemit/steem/issues/1878">#1878</a>
     - name: HIVE_SOFT_MAX_COMMENT_DEPTH
@@ -181,7 +181,7 @@
         Prior to HF17, the maximum comment depth was 6.
       links:
         - <a href="https://github.com/steemit/steem/issues/767">#767</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_MAX_COMMENT_DEPTH' | relative_url }}"><code>HIVE_MAX_COMMENT_DEPTH</code></a>
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MAX_COMMENT_DEPTH' | relative_url }}"><code>HIVE_MAX_COMMENT_DEPTH</code></a>
         - <a href="https://github.com/steemit/steem/blob/62b48877d9f731c3fe00ef818e3324a0a3de3e63/libraries/plugins/witness/witness_plugin.cpp#L224">witness_plugin.cpp</a>
     - name: HIVE_SAVINGS_WITHDRAW_TIME
       purpose: This value sets the timelock of 3 days for funds being withdrawn from savings.  Funds can be transferred into savings instantly, but require 72 hours (3 days) to withdraw from savings. This will guarantee there is at least 1 business day during which you can contact your recovery agent.
@@ -286,7 +286,7 @@
         Prior to HF17, the limit was 6.  After HF17, the internal limit became 65,535, but with a soft limit of 255.
       links:
         - <a href="https://github.com/steemit/steem/issues/767">#767</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_SOFT_MAX_COMMENT_DEPTH' | relative_url }}"><code>HIVE_SOFT_MAX_COMMENT_DEPTH</code></a>
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_SOFT_MAX_COMMENT_DEPTH' | relative_url }}"><code>HIVE_SOFT_MAX_COMMENT_DEPTH</code></a>
     - name: HIVE_MAX_COMMENT_DEPTH_PRE_HF17
     - name: HIVE_MAX_FEED_AGE_SECONDS
       since: HF19
@@ -581,10 +581,10 @@
         * `mainnet`
       links:
         - <a href="https://github.com/steemit/steem/issues/3084">#3084</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_DB_FORMAT_VERSION' | relative_url }}"><code>HIVE_DB_FORMAT_VERSION</code></a>
-        - <a href="{{ '/tutorials-recipes/node-config#state-format' | relative_url }}">state-format</a>
-        - <a href="{{ '/tutorials-recipes/node-config#from-state' | relative_url }}">from-state</a>
-        - <a href="{{ '/tutorials-recipes/node-config#to-state' | relative_url }}">to-state</a>
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_DB_FORMAT_VERSION' | relative_url }}"><code>HIVE_DB_FORMAT_VERSION</code></a>
+        - <a href="{{ '/tutorials-recipes/node-config.html#state-format' | relative_url }}">state-format</a>
+        - <a href="{{ '/tutorials-recipes/node-config.html#from-state' | relative_url }}">from-state</a>
+        - <a href="{{ '/tutorials-recipes/node-config.html#to-state' | relative_url }}">to-state</a>
     - name: HIVE_DB_FORMAT_VERSION
       since: Mysterious Future
       purpose: |
@@ -595,8 +595,8 @@
         * `chain_id` - Must match requested [chain ID]({{ '/apidefinitions/#database_api.get_version' | relative_url }}) and value of embedded GPO
       links:
         - <a href="https://github.com/steemit/steem/issues/3084">#3084</a>
-        - <a href="{{ '/tutorials-recipes/understanding-configuration-values#HIVE_NETWORK_TYPE' | relative_url }}"><code>HIVE_NETWORK_TYPE</code></a>
-        - <a href="{{ '/tutorials-recipes/node-config#state-format' | relative_url }}">state-format</a>
-        - <a href="{{ '/tutorials-recipes/node-config#from-state' | relative_url }}">from-state</a>
-        - <a href="{{ '/tutorials-recipes/node-config#to-state' | relative_url }}">to-state</a>
+        - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_NETWORK_TYPE' | relative_url }}"><code>HIVE_NETWORK_TYPE</code></a>
+        - <a href="{{ '/tutorials-recipes/node-config.html#state-format' | relative_url }}">state-format</a>
+        - <a href="{{ '/tutorials-recipes/node-config.html#from-state' | relative_url }}">from-state</a>
+        - <a href="{{ '/tutorials-recipes/node-config.html#to-state' | relative_url }}">to-state</a>
     # - name: 

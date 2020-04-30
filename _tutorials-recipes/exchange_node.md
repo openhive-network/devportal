@@ -12,7 +12,7 @@ canonical_url: exchange_node.html
 
 By defining a range of accounts to track as a JSON pair `["from", "to"]`, we can instruct `steemd` to only track the exact accounts that involve the exchange.
 
-These instructions are similar to setting up a [Get Transaction Node]({{ '/tutorials-recipes/get_transaction_node' | relative_url }}), but requires far less time to sync because it is configured to focus on only the exchange account(s).
+These instructions are similar to setting up a [Get Transaction Node]({{ '/tutorials-recipes/get_transaction_node.html' | relative_url }}), but requires far less time to sync because it is configured to focus on only the exchange account(s).
 
 If you prefer a docker version of these instructions, please refer to:
 
@@ -94,7 +94,7 @@ webserver-http-endpoint = 0.0.0.0:8751
 webserver-ws-endpoint = 0.0.0.0:8752
 ```
 
-Note that `account-history-track-account-range` can be a range of accounts, or multiple ranges, if specified more than once (see: [`account-history-track-account-range`]({{ '/tutorials-recipes/node-config#account-history-track-account-range' | relative_url }})).
+Note that `account-history-track-account-range` can be a range of accounts, or multiple ranges, if specified more than once (see: [`account-history-track-account-range`]({{ '/tutorials-recipes/node-config.html#account-history-track-account-range' | relative_url }})).
 
 Save `config.ini`.
 

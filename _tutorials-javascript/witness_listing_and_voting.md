@@ -3,8 +3,9 @@ title: 'JS: Witness Listing And Voting'
 position: 22
 description: "_Create a list of available witnesses as well as vote for and remove your vote for a witness._"
 layout: full
+canonical_url: witness_listing_and_voting.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Witness Listing And Voting](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/22_witness_listing_and_voting) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Witness Listing And Voting](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/22_witness_listing_and_voting) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
@@ -184,7 +185,7 @@ The option buttons (continue with voting process or stop) are disabled at the en
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/22_witness_listing_and_voting`
+1.  `cd devportal/tutorials/javascript/22_witness_listing_and_voting`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

@@ -3,8 +3,9 @@ title: 'PY: Get Account Replies'
 position: 8
 description: "List of replies received by account to its content, post, comment."
 layout: full
+canonical_url: get_account_replies.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Account Replies](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/08_get_account_replies) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Account Replies](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/tutorials/08_get_account_replies) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
 <br>
 
 
@@ -90,9 +91,9 @@ Next, we will print the details obtained from the function. Because we only want
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started)
+1.  [review dev requirements](getting_started.html)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/08_get_account_replies`
+1.  `cd devportal/tutorials/python/08_get_account_replies`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see output in terminal/command prompt screen.

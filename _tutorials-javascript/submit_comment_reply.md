@@ -3,8 +3,9 @@ title: 'JS: Submit Comment Reply'
 position: 11
 description: "_By the end of this tutorial you should know how to post a simple comment to Steem._"
 layout: full
+canonical_url: submit_comment_reply.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/11_submit_comment_reply) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/11_submit_comment_reply) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
@@ -58,7 +59,7 @@ In this case. `dsf0yxlox2d` will be our parent permlink and `@demo` will be the 
 #### 3. Add content<a name="add-content"></a>
 
 We've added the parent post info and `Some amazing content` in our UI via the keyboard.
-![comment_reply_user_input.png](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/11_submit_comment_reply/images/comment_reply_user_input.png)
+![comment_reply_user_input.png](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/11_submit_comment_reply/images/comment_reply_user_input.png)
 
 #### 4. Get Comment Data<a name="get-comment"></a>
 
@@ -133,7 +134,7 @@ client.broadcast.comment(comment, privateKey).then(
 ```
 
 A successful comment will output something like the following to the console:
-![successful console output](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/devportal-tutorials-js/tutorials/11_submit_comment_reply/images/comment_reply_successful_console_output.png)
+![successful console output](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/11_submit_comment_reply/images/comment_reply_successful_console_output.png)
 
 That's all there is to it.
 
@@ -142,7 +143,7 @@ The `broadcast` operation has more to offer than just committing a post/comment 
 ### To Run the tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/11_submit_comment_reply`
+1.  `cd devportal/tutorials/javascript/11_submit_comment_reply`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at http://localhost:3000/
