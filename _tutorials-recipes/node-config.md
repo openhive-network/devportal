@@ -4,6 +4,7 @@ position: 1
 description: All `config.ini` options available to `steemd`
 exclude: true
 layout: full
+canonical_url: node-config.html
 ---
 
 When running `steemd` for the first time, once the startup banner appears, press `Ctrl+C` to exit.  Running `steemd` like this will generate a data directory and a pristine copy of `config.ini`.

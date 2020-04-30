@@ -5,6 +5,7 @@ description: |
   Setting up a node for exchanges.
 exclude: true
 layout: full
+canonical_url: exchange_node.html
 ---
 
 ### Intro

@@ -4,6 +4,7 @@ position: 1
 description: Querying multiple pages of results from the API.
 exclude: true
 layout: full
+canonical_url: paginated-api-methods.html
 ---
 
 ### Intro

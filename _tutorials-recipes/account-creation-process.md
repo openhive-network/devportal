@@ -4,6 +4,7 @@ position: 1
 description: The methods on how to create a new account.
 exclude: true
 layout: full
+canonical_url: account-creation-process.html
 ---
 
 This recipe will take you through the different options when creating accounts on the Steem blockchain.

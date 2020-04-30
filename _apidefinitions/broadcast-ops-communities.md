@@ -1,6 +1,7 @@
 ---
 position: 100
 exclude: true
+canonical_url: .#apidefinitions-broadcast-ops-communities
 ---
 
 Ops:

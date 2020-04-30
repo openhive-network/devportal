@@ -4,6 +4,7 @@ position: 1
 description: Low level blockchain constants
 exclude: true
 layout: full
+canonical_url: understanding-configuration-values.html
 ---
 
 ### Intro

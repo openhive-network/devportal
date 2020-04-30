@@ -4,6 +4,7 @@ position: 1
 description: Hivemind setup and API functionality
 exclude: true
 layout: full
+canonical_url: using-hivemind.html
 ---
 
 ## Intro

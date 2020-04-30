@@ -4,6 +4,7 @@ position: 1
 description: How to use the Steem API to check the status of a transaction for a given `trx_id` value.
 exclude: true
 layout: full
+canonical_url: understanding-transaction-status.html
 ---
 
 The overarching goal is to stop using [`condenser_api.broadcast_transaction_synchronous`]({{ '/apidefinitions/#condenser_api.broadcast_transaction_synchronous' | relative_url }}) but we still want the benefits.
