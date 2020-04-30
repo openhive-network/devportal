@@ -129,7 +129,7 @@ A simple confirmation of the chosen action is printed on the screen.
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started)
+1.  [review dev requirements](getting_started.html)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
 1.  `cd devportal/tutorials/python/17_vote_on_content`
 1.  `pip install -r requirements.txt`
