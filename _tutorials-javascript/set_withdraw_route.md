@@ -5,7 +5,7 @@ description: "_Set routes to an account's power downs or withdraws._"
 layout: full
 canonical_url: set_withdraw_route.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Set Withdraw Route](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/28_set_withdraw_route) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Set Withdraw Route](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/28_set_withdraw_route) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
