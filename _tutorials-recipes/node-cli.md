@@ -13,7 +13,7 @@ Command line options are typically expressed with double-dash (e.g., `--replay-b
 steemd --data-dir=. --replay-blockchain
 ```
 
-Note that nearly all options available from `config.ini` can be set as command-line options.  See: [Node Config]({{ '/tutorials-recipes/node-config' | relative_url }})
+Note that nearly all options available from `config.ini` can be set as command-line options.  See: [Node Config]({{ '/tutorials-recipes/node-config.html' | relative_url }})
 
 The following are *only* available as command-line options.
 
@@ -64,7 +64,7 @@ Indicates that the transaction status plugin must re-build its state upon startu
 
 Used by plugin: `transaction_status`
 
-See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list#transaction_status_api' | relative_url }}), [#2458](https://github.com/steemit/steem/issues/2458)
+See: [Plugin & API List]({{ '/tutorials-recipes/plugin-and-api-list.html#transaction_status_api' | relative_url }}), [#2458](https://github.com/steemit/steem/issues/2458)
 
 ```bash
 --transaction-status-rebuild-state

@@ -184,7 +184,7 @@ The result returned from the service is a `JSON` list. This is an example list w
 ]
 ```
 
-**And that's all there is to getting top-level posts.** _See [Get post comments](get_post_comments) for getting comments_
+**And that's all there is to getting top-level posts.** _See [Get post comments](get_post_comments.html) for getting comments_
 
 ### To Run the tutorial
 

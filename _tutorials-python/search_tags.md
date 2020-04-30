@@ -10,6 +10,6 @@ canonical_url: search_tags.html
 
 
 
-Please refer to [15_search_accounts](search_accounts) which includes a tutorial for `trending tags` as well.
+Please refer to [15_search_accounts](search_accounts.html) which includes a tutorial for `trending tags` as well.
 
 ---
