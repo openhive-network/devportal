@@ -3,8 +3,9 @@ title: 'PY: Get Post Comments'
 position: 7
 description: "Fetch comments made on each content or post using Python."
 layout: full
+canonical_url: get_post_comments.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Comments](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/07_get_post_comments) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Comments](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py/tutorials/07_get_post_comments) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py).</span>
 <br>
 
 
@@ -188,7 +189,7 @@ That's it!
 
 1.  [review dev requirements](getting_started)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/07_get_post_comments`
+1.  `cd devportal/tutorials/python/07_get_post_comments`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see output in terminal/command prompt screen.

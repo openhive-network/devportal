@@ -3,8 +3,9 @@ title: 'JS: Search Tags'
 position: 16
 description: "_By the end of this tutorial you should know how to run a search for trending tags_"
 layout: full
+canonical_url: search_tags.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Tags](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/16_search_tags) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Tags](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/16_search_tags) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -78,7 +79,7 @@ document.getElementById('tagList').innerHTML = posts.join('<br>');
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/16_search_tags`
+1.  `cd devportal/tutorials/javascript/16_search_tags`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at http://localhost:3000/

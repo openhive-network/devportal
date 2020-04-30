@@ -3,8 +3,9 @@ title: 'JS: Get State Replacement Api'
 position: 34
 description: "This is a list of replacement API calls for each of the different _routes_ available from the `getState` function."
 layout: full
+canonical_url: get_state_replacement_api.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/34_get_state_replacement_api) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/34_get_state_replacement_api) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -492,7 +493,7 @@ This detailed information can be used to track the performance of a specific wit
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/34_get_state_replacement_api`
+1.  `cd devportal/tutorials/javascript/34_get_state_replacement_api`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at http://localhost:3000/

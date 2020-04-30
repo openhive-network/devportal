@@ -3,8 +3,9 @@ title: 'JS: Account Reputation'
 position: 20
 description: "_Learn how to interpret account reputation._"
 layout: full
+canonical_url: account_reputation.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Account Reputation](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/20_account_reputation) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Account Reputation](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/20_account_reputation) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -105,7 +106,7 @@ That's it!
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/20_account_reputation`
+1.  `cd devportal/tutorials/javascript/20_account_reputation`
 1.  `npm i`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`

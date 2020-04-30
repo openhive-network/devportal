@@ -3,8 +3,9 @@ title: 'PY: Search Accounts'
 position: 15
 description: "How to pull a list of the active user accounts or trending tags from the blockchain using Python."
 layout: full
+canonical_url: search_accounts.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/15_search_accounts) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py/tutorials/15_search_accounts) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py).</span>
 <br>
 
 
@@ -95,7 +96,7 @@ That's it!.
 
 1.  [review dev requirements](getting_started)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/15_search_accounts`
+1.  `cd devportal/tutorials/python/15_search_accounts`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see output in terminal/command prompt screen.

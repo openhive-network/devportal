@@ -3,8 +3,9 @@ title: 'JS: Get Posts'
 position: 4
 description: "Query for the most recent posts having a specific tag, using a Steem filter"
 layout: full
+canonical_url: get_posts.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/04_get_posts) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/04_get_posts) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -188,7 +189,7 @@ The result returned from the service is a `JSON` list. This is an example list w
 ### To Run the tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/04_get_posts`
+1.  `cd devportal/tutorials/javascript/04_get_posts`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

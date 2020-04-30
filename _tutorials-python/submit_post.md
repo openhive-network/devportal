@@ -3,8 +3,9 @@ title: 'PY: Submit Post'
 position: 10
 description: "How to submit post on Steem blockchain using Python."
 layout: full
+canonical_url: submit_post.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/10_submit_post) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py/tutorials/10_submit_post) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py).</span>
 <br>
 
 
@@ -110,7 +111,7 @@ You can also check on the [testportal](http://condenser.steem.vc/blog/@cdemo) fo
 
 1.  [review dev requirements](getting_started)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/10_submit_post`
+2.  `cd devportal/tutorials/python/10_submit_post`
 3.  `pip install -r requirements.txt`
 4.  `python index.py`
 5.  After a few moments, you should see a prompt for input in terminal screen.

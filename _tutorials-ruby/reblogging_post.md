@@ -3,8 +3,9 @@ title: 'RB: Reblogging Post'
 position: 14
 description: "To reblog ('resteem') a post, we can use a custom json operation that is handled by the follow plugin."
 layout: full
+canonical_url: reblogging_post.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/14_reblogging_post) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/14_reblogging_post) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
 <br>
 
 

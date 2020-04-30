@@ -3,8 +3,9 @@ title: 'JS: Create Account'
 position: 26
 description: "_Create Steem account using Steemconnect as well as with client-side signing._"
 layout: full
+canonical_url: create_account.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Create Account](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/26_create_account) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Create Account](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/26_create_account) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -198,7 +199,7 @@ That's it!
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/26_create_account`
+1.  `cd devportal/tutorials/javascript/26_create_account`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

@@ -3,8 +3,9 @@ title: 'RB: Submit Post'
 position: 10
 description: "This example will broadcast a new post to the blockchain using the values provided.  To create a post in `ruby`, we will use a `Radiator::Transaction` containing a `comment` operation, which is how all content is stored internally."
 layout: full
+canonical_url: submit_post.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/10_submit_post) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/10_submit_post) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
 <br>
 
 
@@ -13,7 +14,7 @@ A post is differentiated from a comment by whether or not a `parent_author` exis
 
 ### Script
 
-You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](/apidefinitions/broadcast-ops#broadcast_ops_comment):
+You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](/apidefinitions/broadcast-ops.html#broadcast_ops_comment):
 
 * `author` - Account name of the author currently posting.
 * `permlink` - Value unique to the author 
