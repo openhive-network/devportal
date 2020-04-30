@@ -2,6 +2,7 @@
 title: Tutorials
 section: Tutorials
 exclude: true
+canonical_url: .
 ---
 {% assign nav = site.data.nav.toc | where: "collection", "tutorials" | first %}
 <section id="{{ doc.id | slugify }}" class="row {{ doc.id | slugify }}">

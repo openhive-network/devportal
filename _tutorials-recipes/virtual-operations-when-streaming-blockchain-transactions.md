@@ -4,7 +4,7 @@ position: 1
 description: Including virtual operations when streaming blockchain transactions
 exclude: true
 layout: full
-
+canonical_url: virtual-operations-when-streaming-blockchain-transactions.html
 ---
 
 This recipe will take you through the process of streaming blockchain transactions, both from `head_block_num` and `last_irreversible_block_num`, and explain the presence/absence of virtual operations in the streamed transactions.

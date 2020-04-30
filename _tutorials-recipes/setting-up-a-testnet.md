@@ -5,6 +5,7 @@ description: |
   "Quick-start" for deploying a Steem-based Testnet.
 exclude: true
 layout: full
+canonical_url: setting-up-a-testnet.html
 ---
 
 ### Intro

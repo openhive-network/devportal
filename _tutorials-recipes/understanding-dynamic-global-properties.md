@@ -4,6 +4,7 @@ position: 1
 description: Maintains global state information
 exclude: true
 layout: full
+canonical_url: understanding-dynamic-global-properties.html
 ---
 
 ### Intro

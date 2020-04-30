@@ -4,6 +4,7 @@ position: 1
 description: All options available to `steemd` at command line interface
 exclude: true
 layout: full
+canonical_url: node-cli.html
 ---
 
 Command line options are typically expressed with double-dash (e.g., `--replay-blockchain`):
