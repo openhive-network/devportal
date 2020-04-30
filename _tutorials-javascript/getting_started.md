@@ -26,7 +26,7 @@ If you want to keep multiple versions of Node on your system try [Node Version M
 
 ### Running a typical Tutorial
 
-Let's say you wanted to run the very [first tutorial](blog_feed), `01_blog_feed`. Here's how you'd do it:
+Let's say you wanted to run the very [first tutorial](blog_feed.html), `01_blog_feed`. Here's how you'd do it:
 
 From Bash:
 
