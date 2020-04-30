@@ -5,7 +5,7 @@ description: "_How to grant and revoke posting permission to another user._"
 layout: full
 canonical_url: grant_posting_permission.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Posting Permission](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/30_grant_posting_permission) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Posting Permission](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/30_grant_posting_permission) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
