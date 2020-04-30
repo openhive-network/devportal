@@ -3,7 +3,7 @@ title: hive.blog
 position: 1
 ---
 
-#### steemit.com endpoints
+#### Hive.blog endpoints
 
 Hive.blog offers a few endpoints for getting common data. User profile and post JSON data is very convenient and simple by appending .json
 to your request. 
@@ -59,21 +59,21 @@ User object
       "can_vote":true,
       "voting_power":8927,
       "last_vote_time":"2018-06-21T19:42:33",
-      "balance":"24.519 STEEM",
-      "savings_balance":"0.000 STEEM",
-      "sbd_balance":"36.736 SBD",
+      "balance":"24.519 HIVE",
+      "savings_balance":"0.000 HIVE",
+      "sbd_balance":"36.736 HBD",
       "sbd_seconds":"11732264931",
       "sbd_seconds_last_update":"2018-06-21T19:35:00",
       "sbd_last_interest_payment":"2018-06-15T14:05:03",
-      "savings_sbd_balance":"0.000 SBD",
+      "savings_sbd_balance":"0.000 HBD",
       "savings_sbd_seconds":"0",
       "savings_sbd_seconds_last_update":"1970-01-01T00:00:00",
       "savings_sbd_last_interest_payment":"1970-01-01T00:00:00",
       "savings_withdraw_requests":0,
-      "reward_sbd_balance":"0.000 SBD",
-      "reward_steem_balance":"0.000 STEEM",
+      "reward_sbd_balance":"0.000 HBD",
+      "reward_steem_balance":"0.000 HIVE",
       "reward_vesting_balance":"481.354811 VESTS",
-      "reward_vesting_steem":"0.237 STEEM",
+      "reward_vesting_steem":"0.237 HIVE",
       "vesting_shares":"128367480.795804 VESTS",
       "delegated_vesting_shares":"0.000000 VESTS",
       "received_vesting_shares":"17069919.621493 VESTS",
@@ -94,7 +94,7 @@ User object
       "average_market_bandwidth":"83841450748",
       "lifetime_market_bandwidth":"8042800000000",
       "last_market_bandwidth_update":"2018-06-19T04:21:42",
-      "vesting_balance":"0.000 STEEM",
+      "vesting_balance":"0.000 HIVE",
       "reputation":"418378051905700",
       "transfer_history":[],
       "market_history":[],
