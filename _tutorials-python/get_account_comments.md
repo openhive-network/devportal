@@ -203,7 +203,7 @@ That's it!
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started)
+1.  [review dev requirements](getting_started.html)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
 1.  `cd devportal/tutorials/python/09_get_account_comments`
 1.  `pip install -r requirements.txt`

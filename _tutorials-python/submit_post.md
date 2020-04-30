@@ -109,7 +109,7 @@ You can also check on the [testportal](http://condenser.steem.vc/blog/@cdemo) fo
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started)
+1.  [review dev requirements](getting_started.html)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
 2.  `cd devportal/tutorials/python/10_submit_post`
 3.  `pip install -r requirements.txt`

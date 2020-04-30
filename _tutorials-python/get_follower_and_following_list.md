@@ -117,7 +117,7 @@ This is a fairly simple example of how to use these functions but we encourage y
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started)
+1.  [review dev requirements](getting_started.html)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
 1.  `cd devportal/tutorials/python/19_get_follower_and_following_list`
 1.  `pip install -r requirements.txt`
