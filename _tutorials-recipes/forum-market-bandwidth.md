@@ -4,6 +4,7 @@ position: 1
 description: How to interpret raw bandwidth data.
 exclude: true
 layout: full
+canonical_url: forum-market-bandwidth.html
 ---
 
 ### Intro

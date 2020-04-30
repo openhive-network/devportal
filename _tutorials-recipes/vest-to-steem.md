@@ -4,6 +4,7 @@ position: 1
 description: How to convert VESTS to STEEM or STEEM POWER
 exclude: true
 layout: full
+canonical_url: vest-to-steem.html
 ---
 
 ### Intro

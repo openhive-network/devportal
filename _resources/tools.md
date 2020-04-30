@@ -9,9 +9,9 @@ A simple library to stream blocks and operations for digesting into other medium
 
 ---
 
-**SteemIAPI** - [http://steem.esteem.ws/](http://steem.esteem.ws/)
+**Interactive Hive API** - [https://hive.hivesigner.com/](https://hive.hivesigner.com/)
 
-Interactive Steem API swagger, [open-source](https://github.com/eSteemApp/steemapi) script allows you to interact with blockchain.
+Interactive Hive API swagger, [open-source](https://github.com/ledgerconnect/hiveapi) script allows you to simply studying Hive API + Hivesigner API so you can start building decentralized apps in matter of hours.
 
 ---
 

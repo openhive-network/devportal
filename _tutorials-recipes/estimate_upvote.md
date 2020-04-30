@@ -4,7 +4,7 @@ position: 1
 description: Calculate the approximate value of an upvote on Steem
 exclude: true
 layout: full
-
+canonical_url: estimate_upvote.html
 ---
 
 *By the end of this recipe you should know how to estimate value of each vote on Steem.*

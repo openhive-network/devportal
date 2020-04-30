@@ -4,6 +4,7 @@ position: 1
 description: Run a `steemd` node with your preferred APIs.
 exclude: true
 layout: full
+canonical_url: plugin-and-api-list.html
 ---
 
 *This is a list of the plugins, and their associated dependencies, required to enable specific apis.*

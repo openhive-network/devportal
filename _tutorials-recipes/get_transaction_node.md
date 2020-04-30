@@ -5,6 +5,7 @@ description: |
   Setting up a node that supports `*.get_transaction`.
 exclude: true
 layout: full
+canonical_url: get_transaction_node.html
 ---
 
 ### Intro
