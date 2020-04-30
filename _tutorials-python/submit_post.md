@@ -3,6 +3,7 @@ title: 'PY: Submit Post'
 position: 10
 description: "How to submit post on Steem blockchain using Python."
 layout: full
+canonical_url: submit_post.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/10_submit_post) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

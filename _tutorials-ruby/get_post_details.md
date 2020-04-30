@@ -3,6 +3,7 @@ title: 'RB: Get Post Details'
 position: 5
 description: "Understand and use the most common fields of the requested content."
 layout: full
+canonical_url: get_post_details.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/05_get_post_details) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
 <br>

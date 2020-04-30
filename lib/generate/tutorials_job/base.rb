@@ -45,6 +45,7 @@ module Generate
               position: #{num}
               description: #{description}
               layout: full
+              canonical_url: #{name}.html
               ---              
               #{tutorial_repo_links title, include_name, tutorial_title_prefix}
               <br>

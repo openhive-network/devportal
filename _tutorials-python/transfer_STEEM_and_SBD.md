@@ -3,6 +3,7 @@ title: 'PY: Transfer Steem And Sbd'
 position: 21
 description: "How to transfer STEEM and SBD to another account using Python."
 layout: full
+canonical_url: transfer_steem_and_sbd.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Transfer Steem And Sbd](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/21_transfer_steem_and_sbd) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

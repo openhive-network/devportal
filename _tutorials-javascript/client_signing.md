@@ -3,6 +3,7 @@ title: 'JS: Client Signing'
 position: 3
 description: "_By the end of this tutorial you would know how to sign, verify broadcast transactions locally on Steem._"
 layout: full
+canonical_url: client_signing.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Client Signing](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/03_client_signing) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

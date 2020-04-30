@@ -3,6 +3,7 @@ title: 'JS: Get State Replacement Api'
 position: 34
 description: "This is a list of replacement API calls for each of the different _routes_ available from the `getState` function."
 layout: full
+canonical_url: get_state_replacement_api.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/34_get_state_replacement_api) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

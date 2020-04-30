@@ -3,6 +3,7 @@ title: 'JS: Power Up Steem'
 position: 24
 description: "_Power up an account's Steem using either Steemconnect or a client-side signing._"
 layout: full
+canonical_url: power_up_steem.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up Steem](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/24_power_up_steem) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

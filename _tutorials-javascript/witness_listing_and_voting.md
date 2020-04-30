@@ -3,6 +3,7 @@ title: 'JS: Witness Listing And Voting'
 position: 22
 description: "_Create a list of available witnesses as well as vote for and remove your vote for a witness._"
 layout: full
+canonical_url: witness_listing_and_voting.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Witness Listing And Voting](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/22_witness_listing_and_voting) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

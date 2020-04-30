@@ -3,6 +3,7 @@ title: 'JS: Follow A User'
 position: 18
 description: "_Follow and unfollow a user / author._"
 layout: full
+canonical_url: follow_a_user.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Follow A User](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/18_follow_a_user) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

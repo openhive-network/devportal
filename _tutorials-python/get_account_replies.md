@@ -3,6 +3,7 @@ title: 'PY: Get Account Replies'
 position: 8
 description: "List of replies received by account to its content, post, comment."
 layout: full
+canonical_url: get_account_replies.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Account Replies](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/08_get_account_replies) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

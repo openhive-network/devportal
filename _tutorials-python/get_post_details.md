@@ -3,6 +3,7 @@ title: 'PY: Get Post Details'
 position: 5
 description: "Get post details from list of posts from the blockchain with `created` filter and tag then display selected post details."
 layout: full
+canonical_url: get_post_details.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/05_get_post_details) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

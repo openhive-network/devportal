@@ -3,6 +3,7 @@ title: 'JS: Search Accounts'
 position: 15
 description: "_By the end of this tutorial you should know how to call a list of user names from the steem blockchain_"
 layout: full
+canonical_url: search_accounts.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/15_search_accounts) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

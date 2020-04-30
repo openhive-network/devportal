@@ -3,6 +3,7 @@ title: 'PY: Password Key Change'
 position: 33
 description: "How to change your accounts password and keys"
 layout: full
+canonical_url: password_key_change.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Password Key Change](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/33_password_key_change) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

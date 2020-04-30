@@ -3,6 +3,7 @@ title: 'PY: Grant Posting Permission'
 position: 30
 description: "How to give another user posting permission on your account using Python."
 layout: full
+canonical_url: grant_posting_permission.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Posting Permission](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/30_grant_posting_permission) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

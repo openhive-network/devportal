@@ -3,6 +3,7 @@ title: 'JS: Get Posts'
 position: 4
 description: "Query for the most recent posts having a specific tag, using a Steem filter"
 layout: full
+canonical_url: get_posts.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/04_get_posts) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

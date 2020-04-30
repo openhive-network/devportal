@@ -3,6 +3,7 @@ title: 'PY: Get Follower And Following List'
 position: 19
 description: "Tutorial pulls a list of the followers or authors being followed from the blockchain then displays the result."
 layout: full
+canonical_url: get_follower_and_following_list.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

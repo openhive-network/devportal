@@ -3,6 +3,7 @@ title: 'RB: Get Follower And Following List'
 position: 19
 description: "_How to create a list of followers and accounts that you are following._"
 layout: full
+canonical_url: get_follower_and_following_list.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
 <br>

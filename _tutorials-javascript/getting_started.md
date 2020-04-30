@@ -3,6 +3,7 @@ title: 'JS: Getting Started'
 position: 0
 description: "Prepare your development environment to use Javascript with the Steem blockchain."
 layout: full
+canonical_url: getting_started.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/00_getting_started) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

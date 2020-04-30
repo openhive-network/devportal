@@ -3,6 +3,7 @@ title: 'PY: Power Down'
 position: 25
 description: "How to power down (withdraw) your vesting shares using Python."
 layout: full
+canonical_url: power_down.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Down](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/25_power_down) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

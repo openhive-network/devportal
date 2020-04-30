@@ -3,6 +3,7 @@ title: 'JS: Claim Rewards'
 position: 23
 description: "_Learn how to claim rewards from unclaimed reward balance using Steemconnect as well as client signing method._"
 layout: full
+canonical_url: claim_rewards.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Claim Rewards](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/23_claim_rewards) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

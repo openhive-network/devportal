@@ -3,6 +3,7 @@ title: 'JS: Account Reputation'
 position: 20
 description: "_Learn how to interpret account reputation._"
 layout: full
+canonical_url: account_reputation.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Account Reputation](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/20_account_reputation) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

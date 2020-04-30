@@ -3,6 +3,7 @@ title: 'JS: Grant Active Permission'
 position: 31
 description: "_How to grant and revoke active permission to another user._"
 layout: full
+canonical_url: grant_active_permission.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Active Permission](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/31_grant_active_permission) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

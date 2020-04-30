@@ -3,6 +3,7 @@ title: 'JS: Get Follower And Following List'
 position: 19
 description: "_Get the followers of a user/author & the authors that user is following._"
 layout: full
+canonical_url: get_follower_and_following_list.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

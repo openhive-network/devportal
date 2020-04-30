@@ -3,6 +3,7 @@ title: 'PY: Get Posts'
 position: 4
 description: "Tutorial pulls a list of the posts from the blockchain with selected filter and tag then displays output."
 layout: full
+canonical_url: get_posts.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Posts](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/04_get_posts) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

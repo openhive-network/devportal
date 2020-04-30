@@ -3,6 +3,7 @@ title: 'JS: Submit Post'
 position: 10
 description: "_By the end of this tutorial you should know how to prepare comments for Steem and then submit using the broadcast.comment function._"
 layout: full
+canonical_url: submit_post.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/10_submit_post) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

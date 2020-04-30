@@ -3,6 +3,7 @@ title: 'JS: Get Voters List On Post'
 position: 6
 description: "_By the end of this tutorial you would know how to get voters list on any content._"
 layout: full
+canonical_url: get_voters_list_on_post.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Voters List On Post](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/06_get_voters_list_on_post) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

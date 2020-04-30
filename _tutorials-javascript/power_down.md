@@ -3,6 +3,7 @@ title: 'JS: Power Down'
 position: 25
 description: "_Perform a power down on all or part of an account's VESTS using either Steemconnect or client-side signing._"
 layout: full
+canonical_url: power_down.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Down](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/25_power_down) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

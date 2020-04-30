@@ -3,6 +3,7 @@ title: 'JS: Edit Content Patching'
 position: 12
 description: "_By the end of this tutorial you should know how to patch post edits to Steem._"
 layout: full
+canonical_url: edit_content_patching.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/12_edit_content_patching) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

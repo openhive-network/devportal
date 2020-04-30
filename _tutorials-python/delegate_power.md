@@ -3,6 +3,7 @@ title: 'PY: Delegate Power'
 position: 27
 description: "How to delegate or remove delegation of STEEM POWER to another user using Python."
 layout: full
+canonical_url: delegate_power.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Delegate Power](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/27_delegate_power) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

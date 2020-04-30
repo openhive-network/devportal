@@ -3,6 +3,7 @@ title: 'PY: Using Keys Securely'
 position: 1
 description: "Learn how Steem-Python library handles transaction signing with user's key and how to securely manage your private keys."
 layout: full
+canonical_url: using_keys_securely.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Using Keys Securely](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/001_using_keys_securely) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

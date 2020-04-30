@@ -3,6 +3,7 @@ title: 'JS: Get Post Details'
 position: 5
 description: "_By the end of this tutorial you would know how to get post details and use them appropriately._"
 layout: full
+canonical_url: get_post_details.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/05_get_post_details) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

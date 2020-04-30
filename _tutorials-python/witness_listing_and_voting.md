@@ -3,6 +3,7 @@ title: 'PY: Witness Listing And Voting'
 position: 22
 description: "How to vote for or remove a vote for a witness user using Python."
 layout: full
+canonical_url: witness_listing_and_voting.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Witness Listing And Voting](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/22_witness_listing_and_voting) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

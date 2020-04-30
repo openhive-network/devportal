@@ -3,6 +3,7 @@ title: 'JS: Get Delegations By User'
 position: 29
 description: "_View the vesting delegations made by a user as well as the delegations that are expiring._"
 layout: full
+canonical_url: get_delegations_by_user.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Delegations By User](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/29_get_delegations_by_user) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

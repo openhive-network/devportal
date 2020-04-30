@@ -3,6 +3,7 @@ title: 'PY: Transfer Steem And Sbd To Savings Balance'
 position: 33
 description: "How to transfer STEEM and SBD to savings using Python."
 layout: full
+canonical_url: transfer_steem_and_sbd_to_savings_balance.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Transfer Steem And Sbd To Savings Balance](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/33_transfer_steem_and_sbd_to_savings_balance) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

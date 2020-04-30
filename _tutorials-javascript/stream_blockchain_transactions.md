@@ -3,6 +3,7 @@ title: 'JS: Stream Blockchain Transactions'
 position: 13
 description: "_By the end of this tutorial you should know how to stream transactions and blocks from Steem blockchain._"
 layout: full
+canonical_url: stream_blockchain_transactions.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

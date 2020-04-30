@@ -3,6 +3,7 @@ title: 'JS: Convert Sbd To Steem'
 position: 32
 description: "_How to convert SBD to STEEM for a specified account._"
 layout: full
+canonical_url: convert_sbd_to_steem.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Convert Sbd To Steem](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/32_convert_sbd_to_steem) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>

@@ -3,6 +3,7 @@ title: 'PY: Edit Content Patching'
 position: 12
 description: "How to edit post content with diff_match_patch using Python."
 layout: full
+canonical_url: edit_content_patching.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/12_edit_content_patching) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
 <br>

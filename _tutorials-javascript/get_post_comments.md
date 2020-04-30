@@ -3,6 +3,7 @@ title: 'JS: Get Post Comments'
 position: 7
 description: "_By the end of this tutorial you would know how to get comments made by others on any post._"
 layout: full
+canonical_url: get_post_comments.html
 ---              
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Comments](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/07_get_post_comments) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
 <br>
