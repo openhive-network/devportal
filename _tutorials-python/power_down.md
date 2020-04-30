@@ -5,7 +5,7 @@ description: "How to power down (withdraw) your vesting shares using Python."
 layout: full
 canonical_url: power_down.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Down](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/25_power_down) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Down](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py/tutorials/25_power_down) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py).</span>
 <br>
 
 
@@ -131,7 +131,7 @@ We encourage users to play around with different values and data types to fully 
 
 1.  [review dev requirements](getting_started)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/25_power_down`
+1.  `cd devportal/tutorials/python/25_power_down`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see a prompt for input in terminal screen.

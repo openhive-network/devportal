@@ -5,7 +5,7 @@ description: "_By the end of this tutorial you should know how to prepare commen
 layout: full
 canonical_url: submit_comment_reply.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/11_submit_comment_reply) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/11_submit_comment_reply) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
 <br>
 
 

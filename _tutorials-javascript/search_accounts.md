@@ -5,7 +5,7 @@ description: "_By the end of this tutorial you should know how to call a list of
 layout: full
 canonical_url: search_accounts.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials/15_search_accounts) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js/tutorials/15_search_accounts) can be downloaded as part of: [tutorials/devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-js).</span>
 <br>
 
 
@@ -75,7 +75,7 @@ document.getElementById('accList').innerHTML = _accounts.join('<br>');
 ## To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/devportal-tutorials-js/tutorials/15_search_accounts`
+2.  `cd devportal/tutorials/javascript/15_search_accounts`
 3.  `npm i`
 4.  `npm run dev-server` or `npm run start`
 5.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

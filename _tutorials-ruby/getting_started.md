@@ -5,7 +5,7 @@ description: "To access the Steem blockchain using Ruby, install the Radiator ge
 layout: full
 canonical_url: getting_started.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials/00_getting_started) can be downloaded as part of: [tutorials/devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Getting Started](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/00_getting_started) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
 <br>
 
 
@@ -84,7 +84,7 @@ api = Radiator::Api.new(options)
 
 ### Next Step
 
-If you'd like to dive right into the first tutorial, have a look at: [Blog Feed](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-rb/tutorials/01_blog_feed)
+If you'd like to dive right into the first tutorial, have a look at: [Blog Feed](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/01_blog_feed)
 
 
 ---

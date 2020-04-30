@@ -99,44 +99,6 @@ An example pointing at the Hivedev testnet:
 $ TEST_NODE=https://testnet.Hivedev.com bundle exec rake scrape:api_defs
 ```
 
-### Generating Tutorials
-
-To generate all new tutorials from all known tutorial paths, which is the typical use case:
-
-```bash
-bundle exec rake gen:tutorials
-```
-
-#### Targeted Generate: [devportal-tutorials-js](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-js/tutorials)
-
-This command will check for new tutorials in `devportal-tutorials-js` and import them into this project.
-
-```bash
-bundle exec rake gen:tutorials:js
-```
-
-To force update on a particular tutorial, use the following command:
-
-```bash
-bundle exec rake gen:tutorials:js[1,true]
-```
-
-Where `1` represents the numerical prefix like in `01_blog_feed` and `true` instructs the task to overwrite what's there, even if it exists.
-
-Other Targeted imports supported are `:py` and `:js` using the same syntax.
-
-#### Targeted Import: [devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials)
-
-```bash
-bundle exec rake gen:tutorials:py
-```
-
-#### Targeted Import: [devportal-tutorials-rb](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-rb/tutorials)
-
-```bash
-bundle exec rake gen:tutorials:rb
-```
-
 ### Tests
 
 To test all `curl` examples, use the following `rake` task:

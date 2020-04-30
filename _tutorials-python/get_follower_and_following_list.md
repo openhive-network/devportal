@@ -5,7 +5,7 @@ description: "Tutorial pulls a list of the followers or authors being followed f
 layout: full
 canonical_url: get_follower_and_following_list.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py/tutorials/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/devportal-tutorials-py).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py/tutorials/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/devportal-tutorials-py](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/devportal-tutorials-py).</span>
 <br>
 
 
@@ -119,7 +119,7 @@ This is a fairly simple example of how to use these functions but we encourage y
 
 1.  [review dev requirements](getting_started)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/devportal-tutorials-py/tutorials/19_get_follower_and_following_list`
+1.  `cd devportal/tutorials/python/19_get_follower_and_following_list`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see output in terminal/command prompt screen.
