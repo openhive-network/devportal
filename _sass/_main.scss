@@ -502,7 +502,7 @@ header {
 
 	.open-nav {
 		background-image: url(../images/menu.svg);
-		background-color: transparent;
+		background-color: rgba(227, 19, 55, 1);
 		background-repeat: no-repeat;
 		background-size: 50%;
 		background-position:center;
@@ -514,11 +514,11 @@ header {
 		width:60px;
 		&:focus {
 			outline: none;
-			background-color: rgba(0, 0, 0, 0.05);
+			background-color: rgba(227, 19, 55, 1);
 		}
 
 		&:hover {
-			background-color: rgba(0, 0, 0, 0.1);
+			background-color: rgba(227, 19, 55, 0.5);
 		}
 	}
 
