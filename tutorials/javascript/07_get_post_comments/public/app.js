@@ -1,4 +1,4 @@
-const dsteem = require('dsteem');
+const dhive = require('@hivechain/dhive');
 const Remarkable = require('remarkable');
 
 let opts = {};
@@ -8,7 +8,7 @@ opts.addressPrefix = 'STM';
 opts.chainId =
     '0000000000000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dhive.Client('https://api.steemit.com');
 
 //fetch list of trending posts
 async function main() {

@@ -1,7 +1,7 @@
-const sc2 = require('sc2-sdk');
+const hivesigner = require('hivesigner');
 
-// init steemconnect
-let api = sc2.Initialize({
+// init hivesigner
+let api = hivesigner.Initialize({
     app: 'demo-app',
     callbackURL: 'http://localhost:3000',
     accessToken: 'access_token',
@@ -54,7 +54,7 @@ window.logOut = () => {
     return false;
 };
 
-// Get User details function, returns user data via Steemconnect API
+// Get User details function, returns user data via Hivesigner API
 window.getUserDetails = () => {
     api.me(function(err, res) {
         if (res) {
