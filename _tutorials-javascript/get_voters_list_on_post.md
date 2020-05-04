@@ -4,11 +4,8 @@ position: 6
 description: "_By the end of this tutorial you would know how to get voters list on any content._"
 layout: full
 canonical_url: get_voters_list_on_post.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Voters List On Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/06_get_voters_list_on_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Get Voters List On Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/06_get_voters_list_on_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-06_get_voters_list_on_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/06_get_voters_list_on_post)).
 
 The purpose of this tutorial is to **a)** demonstrate how to get a list of articles from the trending list on the blockchain, and **b)** fetch the voters of the selected post to display the account and date at which they voted.
 
@@ -16,13 +13,13 @@ We will also explain the most commonly used fields from the response object.
 
 ## Intro
 
-Each post has voters that support content and play big role in reward distribution. Getting details of each voter and their vote value, time, etc. is another crucial information for authors and app developers. We will be using `get_active_votes` API call to retrieve that information right from Steem blockchain.
+Each post has voters that support content and play big role in reward distribution. Getting details of each voter and their vote value, time, etc. is another crucial information for authors and app developers. We will be using `get_active_votes` API call to retrieve that information right from Hive blockchain.
 
 ## Steps
 
-1.  [**Fetching posts**](#fetching-posts) Get trending post list
-1.  [**Voter information**](#voter-info) Voters information on selected post
-1.  [**Query result**](#query-result) Example of result from query
+1. [**Fetching posts**](#fetching-posts) Get trending post list
+1. [**Voter information**](#voter-info) Voters information on selected post
+1. [**Query result**](#query-result) Example of result from query
 
 #### 1. Fetching posts<a name="fetching-posts"></a>
 
@@ -94,20 +91,17 @@ The result is returned from the post content as a `JSON` object with the followi
 
 From this result, you have access to everything associated with the selected post, including additional metadata which is a `JSON` string that must be decoded to use.
 
-*   `voter` - The author account name of the vote.
-*   `weight` - Weight of the voting power.
-*   `rshares` - Reward shares.
-*   `percent` - Percent of vote.
-*   `reputation` - The [reputation](https://developers.steem.io/glossary/#reputation) of the account that voted.
-*   `time` - Time the vote was submitted.
+* `voter` - The author account name of the vote.
+* `weight` - Weight of the voting power.
+* `rshares` - Reward shares.
+* `percent` - Percent of vote.
+* `reputation` - The [reputation](https://developers.hive.io/glossary/#reputation) of the account that voted.
+* `time` - Time the vote was submitted.
 
 ### To Run the tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/06_get_voters_list_on_post`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/06_get_voters_list_on_post`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

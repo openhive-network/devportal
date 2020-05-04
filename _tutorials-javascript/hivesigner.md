@@ -1,14 +1,11 @@
 ---
 title: 'JS: Hivesigner'
 position: 2
-description: "_Understand the basics of using Hivesigner with your Hive application._"
+description: Understand the basics of using Hivesigner with your Hive application.
 layout: full
 canonical_url: hivesigner.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Hivesigner](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/02_hivesigner) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Hivesigner](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/02_hivesigner) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-02_hivesigner.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/02_hivesigner)).
 
 In this tutorial we will setup Hivesigner for demo application and step by step show the process of setting up dedicated account for your app to use Hivesigner Dashboard and setup backend of your application to use Hivesigner authorization properly.
 
@@ -19,23 +16,23 @@ Purpose is to allow any application request permission from user and perform act
 
 Some other calls that require an access token (or login) are:
 
-*   Vote
-*   Comment
-*   Post
-*   Follow
-*   Reblog
+* Vote
+* Comment
+* Post
+* Follow
+* Reblog
 
 Learn more about [Hivesigner operations here](https://github.com/ledgerconnect/hivesigner.js)
 
 ## Steps
 
-1.  [**Hivesigner Dashboard**](#dashboard) Create account for application and set up dashboard
-1.  [**Initialize Hivesigner**](#init) Initialize SDK in your application code
-1.  [**Login URL**](#login-url) Form login url for user
-1.  [**Request token**](#request-token) Request token with login url
-1.  [**Set token**](#set-token) Set or save token for future requests
-1.  [**Get user data**](#get-user) Get user details with token
-1.  [**Logout**](#logout) Logout user and clear token
+1. [**Hivesigner Dashboard**](#dashboard) Create account for application and set up dashboard
+1. [**Initialize Hivesigner**](#init) Initialize SDK in your application code
+1. [**Login URL**](#login-url) Form login url for user
+1. [**Request token**](#request-token) Request token with login url
+1. [**Set token**](#set-token) Set or save token for future requests
+1. [**Get user data**](#get-user) Get user details with token
+1. [**Logout**](#logout) Logout user and clear token
 
 #### 1. Hivesigner Dashboard<a name="dashboard"></a>
 
@@ -48,17 +45,17 @@ Here are the steps that helps you to setup new app:
 
 1a. Visit [Hivesigner Dashboard](https://hivesigner.com/profile) and login with your Hive credentials for your app
 
-![hivesigner_login](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/02_hivesigner/images/hivesigner_login.png)
+![hivesigner_login](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/hivesigner_login.png)
 
 1b. You will see Account type, User and Application section, in Application section fill out details of App
 
-![hivesigner_dashboard](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/02_hivesigner/images/account_type_application.png)
+![hivesigner_dashboard](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/account_type_application.png)
 
 1c. Give your app name, description, icon image link, website (if available) and Redirect URI(s)
 
 Here is an example of [Esteem](https://esteem.app) form to give you idea how to fill form correctly.
 
-![hivesigner_myapps](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/02_hivesigner/images/hivesigner_myapp.png)
+![hivesigner_myapps](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/hivesigner_myapp.png)
 
 Application name and description should give users clear understanding what permissions it requires and what is the purpose of the app.
 
@@ -108,11 +105,8 @@ Now that `hivesigner` is initialized we can start authentication and perform sim
 
 ### To Run the tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/02_hivesigner`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/02_hivesigner`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

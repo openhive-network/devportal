@@ -1,10 +1,10 @@
-import { Client } from 'dsteem';
+const { Client } = require("@hivechain/dhive");
 
-const client = new Client('https://api.steemit.com');
+const client = new Client('https://api.openhive.network');
 
 function fetchBlog() {
     const query = {
-        tag: 'steemitblog',
+        tag: 'hiveio',
         limit: 5,
     };
     client.database

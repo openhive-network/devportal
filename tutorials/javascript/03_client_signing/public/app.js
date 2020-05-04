@@ -1,5 +1,5 @@
-import { Client, PrivateKey } from 'dsteem'; //import the api client library
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Client, PrivateKey } from '@hivechain/dhive'; //import the api client library
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 const client = new Client(NetConfig.url, opts);

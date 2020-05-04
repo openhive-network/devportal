@@ -14,7 +14,7 @@
     "dependencies": {
         "koa": "^2.5.3",
         "koa-static": "^5.0.0",
-        "sc2-sdk": "^2.0.1"
+        "hivesigner": "^3.1.5"
     },
     "devDependencies": {
         "webpack": "^4.20.2",
