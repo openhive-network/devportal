@@ -1,14 +1,11 @@
 ---
 title: 'JS: Get Post Comments'
 position: 7
-description: "_By the end of this tutorial you would know how to get comments made by others on any post._"
+description: By the end of this tutorial you would know how to get comments made by others on any post.
 layout: full
 canonical_url: get_post_comments.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Comments](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/07_get_post_comments) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Get Post Comments](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/07_get_post_comments) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-07_get_post_comments.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/07_get_post_comments)).
 
 The purpose of this tutorial is to **a)** demonstrate how to get a list of articles from the trending list on the blockchain, and **b)** fetch the contents of the selected post to display its title and body and **c)** fetch comments of the post and display them with author, body, created time and number of votes.
 
@@ -16,13 +13,13 @@ We will also explain the most commonly used fields from the response object as w
 
 ## Intro
 
-Each post might have comments/replies that is interesting and contributes to the topic and discussion. Steem offers out of box API for pulling replies for particular post with `get_content_replies`. We will fetch replies and list them in simple user interface.
+Each post might have comments/replies that is interesting and contributes to the topic and discussion. Hive offers out of box API for pulling replies for particular post with `get_content_replies`. We will fetch replies and list them in simple user interface.
 
 ## Steps
 
-1.  [**Fetching posts**](#fetching-posts) Getting trending posts
-1.  [**Post comments**](#post-comments) Open post and fetch comments
-1.  [**Query result**](#query-result) Result of the query
+1. [**Fetching posts**](#fetching-posts) Getting trending posts
+1. [**Post comments**](#post-comments) Open post and fetch comments
+1. [**Query result**](#query-result) Result of the query
 
 #### 1. Fetching post<a name="fetching-posts"></a>
 
@@ -71,75 +68,84 @@ The result is returned from the post content as a `JSON` object with the followi
 
 ```json
 [
-    {
-        "id": 37338948,
-        "author": "demo",
-        "permlink": "re-join-team-steemit-at-tokenfest-20180500t181413163z",
-        "category": "steemit",
-        "parent_author": "steemit",
-        "parent_permlink": "join-team-steemit-at-tokenfest",
-        "title": "",
-        "body": "Thank you for sharing",
-        "json_metadata":
-            "{\"tags\":[\"steemit\"],\"app\":\"steemit/0.1\",\"format\":\"markdown\"}",
-        "last_update": "2018-03-07T23:22:54",
-        "created": "2018-05-00T20:56:36",
-        "active": "2018-05-06T01:40:21",
-        "last_payout": "1970-01-01T00:00:00",
-        "depth": 1,
-        "children": 1,
-        "net_rshares": "11453442114933",
-        "abs_rshares": "11454054795840",
-        "vote_rshares": "11454054795840",
-        "children_abs_rshares": "13568695606090",
-        "cashout_time": "2018-05-07T20:56:36",
-        "max_cashout_time": "1969-12-31T23:59:59",
-        "total_vote_weight": 3462435,
-        "reward_weight": 10000,
-        "total_payout_value": "0.000 SBD",
-        "curator_payout_value": "0.000 SBD",
-        "author_rewards": 0,
-        "net_votes": 77,
-        "root_comment": 37338948,
-        "max_accepted_payout": "0.000 SBD",
-        "percent_steem_dollars": 10000,
-        "allow_replies": true,
-        "allow_votes": true,
-        "allow_curation_rewards": true,
-        "beneficiaries": [],
-        "url":
-            "/steemit/@steemitblog/join-team-steemit-at-tokenfest#@demo/re-join-team-steemit-at-tokenfest-20180500t181413163z",
-        "root_title": "Join Team Steemit at TokenFest!",
-        "pending_payout_value": "0.436 SBD",
-        "total_pending_payout_value": "0.000 STEEM",
-        "active_votes": [
-            {
-                "voter": "steemitblog",
-                "weight": 0,
-                "rshares": "1870813909383",
-                "percent": 10000,
-                "reputation": "128210130644387",
-                "time": "2018-03-07T20:56:36"
-            },
-            {
-                "voter": "kevinwong",
-                "weight": 526653,
-                "rshares": "2208942520687",
-                "percent": 5000,
-                "reputation": "374133832002581",
-                "time": "2018-03-08T04:27:00"
-            }
-        ],
-        "replies": [],
-        "author_reputation": "128210130644387",
-        "promoted": "0.000 SBD",
-        "body_length": 0,
-        "reblogged_by": []
+  {
+    "abs_rshares": 0,
+    "active": "2020-04-29T06:08:18",
+    "active_votes": [],
+    "allow_curation_rewards": true,
+    "allow_replies": true,
+    "allow_votes": true,
+    "author": "hiveio",
+    "author_reputation": "34879294456530",
+    "author_rewards": 0,
+    "beneficiaries": [],
+    "body": "![#HuobiHive2020 ... an asset shining bright, provided by community member @nateaguila](https://files.peakd.com/file/peakd-hive/hiveio/XsnzlWHl-social_hive_flare.jpg)\n\n## Huobi has listed Hive! ...",
+    "body_length": 0,
+    "cashout_time": "1969-12-31T23:59:59",
+    "category": "hiveblockchain",
+    "children": 26,
+    "children_abs_rshares": 0,
+    "created": "2020-04-24T00:41:06",
+    "curator_payout_value": "0.000 HBD",
+    "depth": 0,
+    "id": 85763874,
+    "json_metadata": {
+      "app": "peakd/2020.04.4",
+      "format": "markdown",
+      "description": "Hive is now listed on Huobi Global! This post contains all official links and AMA transcripts.",
+      "tags": [
+        "hiveblockchain",
+        "exchangenews",
+        "hiveama"
+      ],
+      "users": [
+        "nateaguila",
+        "roelandp"
+      ],
+      "links": [
+        "/trending/huobihive2020",
+        "/@nateaguila",
+        "https://twitter.com/HuobiGlobal/status/1253210569194090497",
+        "https://huobiglobal.zendesk.com/hc/en-us/articles/900000684263",
+        "https://huobiglobal.zendesk.com/hc/en-us/articles/900000687166--EXCLUSIVE-Deposit-HIVE-on-Huobi-Global-to-Share-100-000-HIVE-",
+        "https://twitter.com/HuobiGlobal/status/1252566140431130624",
+        "/@roelandp",
+        "/trending/notfinancialadvice",
+        "https://developers.hive.io/",
+        "https://hiveprojects.io/"
+      ],
+      "image": [
+        "https://files.peakd.com/file/peakd-hive/hiveio/XsnzlWHl-social_hive_flare.jpg",
+        "https://files.peakd.com/file/peakd-hive/hiveio/9tEYm2I9-image.png",
+        "https://files.peakd.com/file/peakd-hive/hiveio/AXkoBSE3-image.png",
+        "https://files.peakd.com/file/peakd-hive/hiveio/djdRACpx-image.png"
+      ]
     },
-    {
-        "id": 37338987,
-        "etc.": "etc"
-    }
+    "last_payout": "2020-05-01T00:41:06",
+    "last_update": "2020-04-24T00:41:06",
+    "max_accepted_payout": "0.000 HBD",
+    "max_cashout_time": "1969-12-31T23:59:59",
+    "net_rshares": 0,
+    "net_votes": 182,
+    "parent_author": "",
+    "parent_permlink": "hiveblockchain",
+    "pending_payout_value": "0.000 HBD",
+    "percent_steem_dollars": 10000,
+    "permlink": "huobi-global-official-hive-listing-announcement-giveaways-ama-chat-transcripts",
+    "promoted": "0.000 HBD",
+    "reblogged_by": [],
+    "replies": [],
+    "reward_weight": 10000,
+    "root_author": "hiveio",
+    "root_permlink": "huobi-global-official-hive-listing-announcement-giveaways-ama-chat-transcripts",
+    "root_title": "Huobi Global Official Hive Listing Announcement, Giveaways, and AMA Chat Transcripts",
+    "title": "Huobi Global Official Hive Listing Announcement, Giveaways, and AMA Chat Transcripts",
+    "total_payout_value": "0.000 HBD",
+    "total_pending_payout_value": "0.000 HBD",
+    "total_vote_weight": 0,
+    "url": "/hiveblockchain/@hiveio/huobi-global-official-hive-listing-announcement-giveaways-ama-chat-transcripts",
+    "vote_rshares": 0
+  }
 ]
 ```
 
@@ -147,11 +153,8 @@ From this result, you have access to comments made on selected post.
 
 ### To Run the tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/07_get_post_comments`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/07_get_post_comments`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

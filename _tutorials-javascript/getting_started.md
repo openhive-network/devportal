@@ -1,16 +1,13 @@
 ---
 title: 'JS: Getting Started'
 position: 0
-description: "Prepare your development environment to use Javascript with the Steem blockchain."
+description: "Prepare your development environment to use Javascript with the Hive blockchain."
 layout: full
 canonical_url: getting_started.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of these tutorials can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
+---
+Full, runnable src of these tutorials can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just the JavaScript tutorials: [devportal-master-tutorials-javascript.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript)).
 
-
-
-For Javascript tutorials, we will use the opensource library [dsteem](https://github.com/steemit/dsteem).
+For Javascript tutorials, we will use the opensource library [@hivechain/dhive](https://gitlab.syncad.com/hive/dhive).
 
 ### Node.js
 
@@ -32,19 +29,13 @@ From Bash:
 
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git
-
 cd devportal/tutorials/javascript/01_blog_feed
 npm i
 npm run dev-server
 ```
 
-Then open http://localhost:3000/ in your web browser:
+Then open http://localhost:3000/ in your web browser.
 
-```
 ### Github
 
 If you'd rather clone projects in a windowed environment rather than the terminal, consider [Github Desktop](https://desktop.github.com/).
-```
-
-
----
