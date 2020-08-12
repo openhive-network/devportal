@@ -1,5 +1,5 @@
-import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Client, PrivateKey } from '@hiveio/dhive';
+import { Mainnet as NetConfig } from '../../configuration';
 
 let opts = { ...NetConfig.net };
 
@@ -49,7 +49,7 @@ window.submitPost = async () => {
                 'postLink'
             ).innerHTML = `<br/><p>Included in block: ${
                 result.block_num
-            }</p><br/><br/><a href="http://condenser.steem.vc/${
+            }</p><br/><br/><a href="http://hive.blog/${
                 taglist[0]
             }/@${account}/${permlink}">Check post here</a>`;
         },
