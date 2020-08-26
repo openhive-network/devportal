@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="/favicon.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" integrity="sha256-iM4Yzi/zLj/IshPWMC1IluRxTtRjMqjPGd97TZ9yYpU=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
 
-	
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
-	<script src="/js/main.js"></script>
-	
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="/css/css/work-sans-v7.css">
+  <script src="/js/main.js"></script>
 
-	<!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>RB: Vote On Content | Steem Developer</title>
-<meta name="generator" content="Jekyll v3.8.4" />
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>RB: Vote On Content | Hive Developer</title>
+<meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="RB: Vote On Content" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast)." />
 <meta property="og:description" content="To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast)." />
-<link rel="canonical" href="https://developers.steem.io/tutorials-ruby/vote_on_content" />
-<meta property="og:url" content="https://developers.steem.io/tutorials-ruby/vote_on_content" />
-<meta property="og:site_name" content="Steem Developer" />
+<link rel="canonical" href="vote_on_content.html" />
+<meta property="og:url" content="vote_on_content.html" />
+<meta property="og:site_name" content="Hive Developer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-11-15T17:18:46-06:00" />
+<meta property="article:published_time" content="2020-08-26T11:52:22-07:00" />
 <script type="application/ld+json">
-{"description":"To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast).","@type":"BlogPosting","url":"https://developers.steem.io/tutorials-ruby/vote_on_content","headline":"RB: Vote On Content","dateModified":"2018-11-15T17:18:46-06:00","datePublished":"2018-11-15T17:18:46-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://developers.steem.io/tutorials-ruby/vote_on_content"},"@context":"http://schema.org"}</script>
+{"description":"To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast).","mainEntityOfPage":{"@type":"WebPage","@id":"vote_on_content.html"},"@type":"BlogPosting","url":"vote_on_content.html","headline":"RB: Vote On Content","dateModified":"2020-08-26T11:52:22-07:00","datePublished":"2020-08-26T11:52:22-07:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-	
+  
 </head>
 <body>
 <header>
-	<h1>
-		<button type="button" class="open-nav" id="open-nav"></button>
-		<a href="/"  class="logo-link"><img src="/images/logotype_white.svg" height="40" alt="Steem Developer logo"></a>
-	</h1>
+  <h1>
+    <button type="button" class="open-nav" id="open-nav"></button>
+    <a href="/"  class="logo-link"><img src="/images/logotype_black.svg" height="40" alt="Hive Developer logo"></a>
+  </h1>
 
-	
-	<form action="/search/" method="get">
-		<input type="text" name="q" id="search-input" placeholder="Search">
-		<input type="submit" value="Search" style="display: none;">
-	</form>
-	
+  
+  <form action="/search/" method="get">
+    <input type="text" name="q" id="search-input" placeholder="Search">
+    <input type="submit" value="Search" style="display: none;">
+  </form>
+  
 
-	<div id="sidebar" class="sidebar">
+  <div id="sidebar" class="sidebar">
 	
 	
 	
@@ -61,7 +61,7 @@
 					
 					
 						
-						<li><a href="/#introduction-welcome">Welcome to Steem</a></li>
+						<li><a href="/#introduction-welcome">Welcome to Hive</a></li>
 						
 					
 				
@@ -82,11 +82,11 @@
 						
 					
 						
-						<li><a href="/quickstart/#quickstart-steemd-nodes">steemd Nodes</a></li>
+						<li><a href="/quickstart/#quickstart-hive-full-nodes">Hive Nodes</a></li>
 						
 					
 						
-						<li><a href="/quickstart/#quickstart-testnet">Steem Testnet</a></li>
+						<li><a href="/quickstart/#quickstart-testnet">Hive Testnet</a></li>
 						
 					
 				
@@ -129,11 +129,11 @@
 					
 					
 						
-						<li><a href="/services/#services-steemit">Steemit.com</a></li>
+						<li><a href="/services/#services-hive-blog">hive.blog</a></li>
 						
 					
 						
-						<li><a href="/services/#services-hivesigner">Hivesigner</a></li>
+						<li><a href="/services/#services-hivesigner">HiveSigner</a></li>
 						
 					
 						
@@ -145,7 +145,7 @@
 						
 					
 						
-						<li><a href="/services/#services-sbds">SBDS</a></li>
+						<li><a href="/services/#services-dhf">DHF</a></li>
 						
 					
 				
@@ -166,7 +166,7 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-comment">Broadcast Ops Comment</a></li>
+						<li><a href="/apidefinitions/#apidefinitions-bridge">Bridge</a></li>
 						
 					
 						
@@ -178,7 +178,15 @@
 						
 					
 						
+						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
+						
+					
+						
 						<li><a href="/apidefinitions/#apidefinitions-database-api">Database Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
 						
 					
 						
@@ -202,7 +210,19 @@
 						
 					
 						
+						<li><a href="/apidefinitions/#apidefinitions-reputation-api">Reputation Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-rewards-api">Rewards Api</a></li>
+						
+					
+						
 						<li><a href="/apidefinitions/#apidefinitions-tags-api">Tags Api</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-transaction-status-api">Transaction Status Api</a></li>
 						
 					
 						
@@ -210,15 +230,11 @@
 						
 					
 						
-						<li><a href="/apidefinitions/#apidefinitions-block-api">Block Api</a></li>
-						
-					
-						
-						<li><a href="/apidefinitions/#apidefinitions-debug-node-api">Debug Node Api</a></li>
-						
-					
-						
 						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops">Broadcast Ops</a></li>
+						
+					
+						
+						<li><a href="/apidefinitions/#apidefinitions-broadcast-ops-communities">Broadcast Ops Communities</a></li>
 						
 					
 				
@@ -243,11 +259,23 @@
 						
 					
 						
+						<li><a href="/resources/#resources-bluepaper">Bluepaper</a></li>
+						
+					
+						
+						<li><a href="/resources/#resources-whitepaper">Whitepaper</a></li>
+						
+					
+						
 						<li><a href="/resources/#resources-tools">Tools</a></li>
 						
 					
 						
 						<li><a href="/resources/#resources-hivesigner-libs">Hivesigner Libs</a></li>
+						
+					
+						
+						<li><a href="/resources/#resources-hive-keychain">Hive Keychain</a></li>
 						
 					
 						
@@ -297,21 +325,15 @@
 </div>
 
 
-	<!--<p class="copyright">-->
-	<!--<a href="https://steemit.com.com/">-->
-	<!--steemit-->
-	<!--</a>-->
-	<!--</p>-->
-	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </header>
 <div class="main" id="top">
-	<div class="hero">
-		<h1 class="hero__h1">Steem Developer Portal </h1>
-		
-		<img class="hero__img" src="/images/hero.png">
-		
-	</div>
-	<section id="tutorials-ruby-vote-on-content" class="row tutorials-ruby-vote-on-content">
+  <div class="hero">
+    <h1 class="hero__h1">Hive Developer Portal </h1>
+    <img class="hero__img" src="/images/honey-comb-92.png" style="position: relative; top: 10px;" />
+  </div>
+  <section id="tutorials-ruby-vote-on-content" class="row tutorials-ruby-vote-on-content">
 	<h3>
 		<a id="tutorials-ruby-vote-on-content">
 			RB: Vote On Content
@@ -323,7 +345,7 @@
 </span>
 	
 
-	<p><span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of <a href="https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials/17_vote_on_content">Vote On Content</a> can be downloaded as part of the <a href="https://github.com/steemit/devportal-tutorials-rb">RB tutorials repository</a>.</span>
+	<p><span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of <a href="https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/17_vote_on_content">Vote On Content</a> can be downloaded as part of: <a href="https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby">tutorials/ruby</a>.</span>
 <br /></p>
 
 <h3 id="sections">Sections</h3>
@@ -378,14 +400,14 @@
 <p>From the example we get the following output from our script:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"244a67bf1e64f05fb2ab52a0652a8edd30c5d273"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"block_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">27035223</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"trx_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expired"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="nl">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"244a67bf1e64f05fb2ab52a0652a8edd30c5d273"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"block_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">27035223</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -401,93 +423,93 @@
 <p>If an invalid vote weight is given (e.g.: <code class="highlighter-rouge">101 %</code>), we will get back an error:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-32000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assert Exception:abs(weight) &lt;= STEEM_100_PERCENT: Weight is not a STEEMIT percentage"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assert_exception"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assert Exception"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stack"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-32000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assert Exception:abs(weight) &lt;= STEEM_100_PERCENT: Weight is not a STEEMIT percentage"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assert_exception"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assert Exception"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stack"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steem_operations.cpp"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"line"</span><span class="p">:</span><span class="w"> </span><span class="mi">179</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validate"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:09:50"</span><span class="w">
+          </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steem_operations.cpp"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"line"</span><span class="p">:</span><span class="w"> </span><span class="mi">179</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validate"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:09:50"</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abs(weight) &lt;= STEEM_100_PERCENT: Weight is not a STEEMIT percentage"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abs(weight) &lt;= STEEM_100_PERCENT: Weight is not a STEEMIT percentage"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warn"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"database.cpp"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"line"</span><span class="p">:</span><span class="w"> </span><span class="mi">3491</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_apply_transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:09:50"</span><span class="w">
+          </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warn"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"database.cpp"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"line"</span><span class="p">:</span><span class="w"> </span><span class="mi">3491</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_apply_transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:09:50"</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"trx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"ref_block_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">34171</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ref_block_prefix"</span><span class="p">:</span><span class="w"> </span><span class="mi">1240848906</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:19:48"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"trx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"ref_block_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">34171</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ref_block_prefix"</span><span class="p">:</span><span class="w"> </span><span class="mi">1240848906</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:19:48"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vote_operation"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"voter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inertia"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"permlink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kinda-spooky"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10100</span><span class="w">
+                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vote_operation"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"voter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inertia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"permlink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kinda-spooky"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10100</span><span class="w">
                   </span><span class="p">}</span><span class="w">
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="nl">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
 
               </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"signatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="nl">"signatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"1c50556b312dd71446621fc3b509da3f5596ab20e8846edd7e55ce5fb13f51742c77d1ab021afa43e039ed2655f28beb1859924ddc6db1087742f3e63e4bc2502b"</span><span class="w">
               </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warn"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"database.cpp"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"line"</span><span class="p">:</span><span class="w"> </span><span class="mi">817</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"push_transaction"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:09:50"</span><span class="w">
+          </span><span class="nl">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"warn"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"database.cpp"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"line"</span><span class="p">:</span><span class="w"> </span><span class="mi">817</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"push_transaction"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:09:50"</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"trx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"ref_block_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">34171</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ref_block_prefix"</span><span class="p">:</span><span class="w"> </span><span class="mi">1240848906</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:19:48"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"trx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"ref_block_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">34171</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ref_block_prefix"</span><span class="p">:</span><span class="w"> </span><span class="mi">1240848906</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-22T16:19:48"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vote_operation"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"voter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inertia"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"permlink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kinda-spooky"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10100</span><span class="w">
+                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vote_operation"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"voter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inertia"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"permlink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kinda-spooky"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">10100</span><span class="w">
                   </span><span class="p">}</span><span class="w">
                 </span><span class="p">}</span><span class="w">
               </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="nl">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
 
               </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"signatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="nl">"signatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"1c50556b312dd71446621fc3b509da3f5596ab20e8846edd7e55ce5fb13f51742c77d1ab021afa43e039ed2655f28beb1859924ddc6db1087742f3e63e4bc2502b"</span><span class="w">
               </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -496,7 +518,7 @@
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -534,7 +556,7 @@ bundle <span class="nb">install
 
 </div>
 <div class="footer">
-	<a href="#">Back to top</a>
+  <a href="#">Back to top</a>
 </div>
 <script>
     document.getElementById("open-nav").addEventListener("click", function () {
