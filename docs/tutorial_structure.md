@@ -4,7 +4,7 @@ This document describes the general structure of the README.md of each tutorial 
 
 If you're contributing a tutorial to one of those repositories, it's much more likely to be accepted if it conforms to these guidelines.
 
-Use [devportal#46](https://github.com/steemit/devportal/issues/46) as partial reference where this doc is ambiguous (referred to after as `46`). 
+Use [devportal#46](https://github.com/hive/devportal/issues/46) as partial reference where this doc is ambiguous (referred to after as `46`). 
 
 **Please note that all visible is contained in the STRUCTURE section.**
 
@@ -46,7 +46,7 @@ There are three elements
     titled and numbered list of steps (must use `1.` for each step). 
     A brief description is recommended but not needed. If there are 
     'complication' scenarios as described in 
-    [#46](https://github.com/steemit/devportal/issues/46), those are enumerated here.
+    [#46](https://github.com/hive/devportal/issues/46), those are enumerated here.
 *   Each step should have its name bolded. And should link to the tutorial step
 
 
@@ -87,7 +87,7 @@ There are three elements
 Any issues that may require troubleshooting
 
 #### FOOTNOTES - optional
-A section for any caveat, gotchas, references. The `46` _Simple Arguments_, _Advanced Arguments_, & _Expanded Results_ should be able to point to Steem's API specification in the devportal for the relevant calls. If the specification isn't clear enough, it needs to be updated.
+A section for any caveat, gotchas, references. The `46` _Simple Arguments_, _Advanced Arguments_, & _Expanded Results_ should be able to point to Hive's API specification in the devportal for the relevant calls. If the specification isn't clear enough, it needs to be updated.
 
 
 ### LINGUISTIC PRECISION

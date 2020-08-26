@@ -18,6 +18,10 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
 | api.hivekings.com               | @drakos        |
 | hived.privex.io                 | @privex        |
 | rpc.ausbit.dev                  | @ausbitbank    |
+| api.pharesim.me                 | @pharesim      |
+| techcoderx.com                  | @techcoderx    |
+| rpc.esteem.app                  | @esteem        |
+| hive.roelandp.nl                | @roelandp      |
 
 For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://hive.blog/@fullnodeupdate) by [@holger80](https://hive.blog/@holger80).
 
