@@ -1,7 +1,7 @@
 ---
 title: Understanding Transaction Status
 position: 1
-description: How to use the Steem API to check the status of a transaction for a given `trx_id` value.
+description: How to use the Hive API to check the status of a transaction for a given `trx_id` value.
 exclude: true
 layout: full
 canonical_url: understanding-transaction-status.html
@@ -81,7 +81,7 @@ The combination of [`condenser_api.broadcast_transaction`]({{ '/apidefinitions/#
 Now that we have `trx_id`, we can poll `transaction_status_api.find_transaction`, for example:
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params":{"transaction_id":"eba610257ad6c60d89f84ce54d3e10b52c18d4cc"}, "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params":{"transaction_id":"eba610257ad6c60d89f84ce54d3e10b52c18d4cc"}, "id":1}' https://api.hive.blog
 ```
 
 Which returns:
@@ -93,7 +93,7 @@ Which returns:
 We can provide the expiration:
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params":{"transaction_id":"eba610257ad6c60d89f84ce54d3e10b52c18d4cc","expiration":"2018-10-15T19:52:09"}, "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params":{"transaction_id":"eba610257ad6c60d89f84ce54d3e10b52c18d4cc","expiration":"2018-10-15T19:52:09"}, "id":1}' https://api.hive.blog
 ```
 
 Which returns:

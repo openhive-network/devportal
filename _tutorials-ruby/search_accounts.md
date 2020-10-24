@@ -60,7 +60,7 @@ alice alice-22 alice-is alice-labardo alice-mikhaylova alice-n-chains alice-rads
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 * `<lower-bound-name>`
 * `[limit]` (optional)

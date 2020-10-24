@@ -12,7 +12,7 @@ title: How to edit a Post
 position: 5
 exclude: true
 layout: main-script
-description: Patching changes to a post on Steem.
+description: Patching changes to a post on Hive.
 main_script: tutorials-ruby/edit_content_patching.rb
 main_type: ruby
 main_script_anchor: Script
@@ -37,7 +37,7 @@ As stated earlier, you will need to change `broadcast` to `true`.  You can also 
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git

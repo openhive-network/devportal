@@ -25,17 +25,17 @@ Account reputation is long integer string which requires special function or for
 
 In this tutorial we will use 4 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format and `math` to perform some math calculations.
 
-First we import all libraries and initialize Steem class
+First we import all libraries and initialize Hive class
 
 ```python
     import pprint
     import math
     from pick import pick
 
-    # initialize Steem class
-    from steem import Steem
+    # initialize Hive class
+    from steem import Hive
 
-    s = Steem()
+    s = Hive()
 ```
 
 #### 2. Account list <a name="account-list"></a>
@@ -66,7 +66,7 @@ Next we will define reputation interpreter:
 
 ```python
 def rep_log10(rep):
-    """Convert raw steemd rep into a UI-ready value centered at 25."""
+    """Convert raw hived rep into a UI-ready value centered at 25."""
     def log10(string):
         leading_digits = int(string[0:4])
         log = math.log10(leading_digits) + 0.00000001

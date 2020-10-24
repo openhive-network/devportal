@@ -53,15 +53,15 @@
       purpose: Total asset held in confidential balances.
       examples:
         - "`0.000 HIVE`"
-    - name: current_sbd_supply
+    - name: current_hbd_supply
       purpose: HBD currently in existence.
       examples:
         - "`15478883.968 HBD`"
-    - name: confidential_sbd_supply
+    - name: confidential_hbd_supply
       purpose: Total asset held in confidential balances.
       examples:
         - "`0.000 HBD`"
-    - name: total_vesting_fund_steem
+    - name: total_vesting_fund_hive
       deprecated: true
       purpose: |
         *Now deprecated way to get HIVE that is invested in HIVE POWER (powered up).*
@@ -73,7 +73,7 @@
       purpose: VESTS that are invested in HIVE POWER (powered up).
       examples:
         - "`390950506702.452773 VESTS`"
-    - name: total_reward_fund_steem
+    - name: total_reward_fund_hive
       purpose: HIVE available in the reward pool.
       examples:
         - "`0.000 HIVE`"
@@ -85,7 +85,7 @@
         Use [`condenser_api.get_reward_fund`]({{ '/apidefinitions/#condenser_api.get_reward_fund' | relative_url }}) instead.
       examples:
         - "`0`"
-    - name: sbd_interest_rate
+    - name: hbd_interest_rate
       purpose: This property defines the interest rate that HBD deposits receive.
       examples:
         - "`0`"
@@ -139,9 +139,9 @@
         The maximum bandwidth the blockchain can support is `max_bandwidth = maximum_block_size * HIVE_BANDWIDTH_AVERAGE_WINDOW_SECONDS / HIVE_BLOCK_INTERVAL`; The maximum virtual bandwidth is: `max_bandwidth * current_reserve_ratio`
       examples:
         - "`264241152000000000000`"
-    - name: init_sbd_supply
+    - name: init_hbd_supply
       since: HF19
-      # purpose: Originally called `virtual_sbd_supply`, ... TODO
+      # purpose: Originally called `virtual_hbd_supply`, ... TODO
       examples:
         - "`0.000 HBD`"
     - name: required_actions_partition_percent
@@ -169,14 +169,14 @@
         - "`23985882`"
       links:
         - <a href="https://github.com/steemit/steem/issues/1770">#1770</a>
-    - name: sbd_stop_percent
+    - name: hbd_stop_percent
       since: HF20
       purpose: Stop printing HBD at *n*% marketcap.
       examples:
         - "`1000`"
       links:
         - <a href="https://github.com/steemit/steem/issues/2140">#2140</a>
-    - name: sbd_start_percent
+    - name: hbd_start_percent
       since: HF20
       purpose: Start reducing printing of HBD at *n*% marketcap.
       examples:
@@ -241,7 +241,7 @@
       links:
         - <a href="https://github.com/steemit/steem/issues/3328">#3328</a>
         - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
-    - name: pending_rewarded_vesting_steem
+    - name: pending_rewarded_vesting_hive
       since: HF17
       examples:
         - "`185294.019 HIVE`"
@@ -249,7 +249,7 @@
         - <a href="https://github.com/steemit/steem/issues/659">#659</a>
         - <a href="https://github.com/steemit/steem/issues/3328">#3328</a>
         - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
-    - name: sbd_print_rate
+    - name: hbd_print_rate
       since: HF14
       examples:
         - "`2933`"

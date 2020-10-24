@@ -3,9 +3,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 
 // const dsteem = require('dsteem');
 // //define network parameters
@@ -34,7 +34,7 @@ window.searchAcc = async () => {
     document.getElementById('accInfo').innerHTML = avail;
 };
 
-//create with STEEM function
+//create with HIVE function
 window.submitTx = async () => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -155,7 +155,7 @@ window.submitDisc = async () => {
             'claim_account',
             {
                 creator: creator,
-                fee: '0.000 STEEM',
+                fee: '0.000 HIVE',
                 extensions: [],
             },
         ];

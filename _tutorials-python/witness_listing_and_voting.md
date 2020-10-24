@@ -10,11 +10,11 @@ canonical_url: witness_listing_and_voting.html
 
 
 
-In this tutorial we show you how to create a list of active witnesses from the **Steem** blockchain and then vote or unvote for a witness using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to create a list of active witnesses from the **Hive** blockchain and then vote or unvote for a witness using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `approve_witness` and `disapprove_witness` method found within the `commit` class in the library. We also use the `get_active_witnesses` function to query the blockchain for a list of available witnesses. Before we vote, we use the `get_account` function to check for all the witnesses that the user has currently voted for. This is not strictly necessary but adds to the useability of the process. The `approve_witness` method has 3 parameters:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `approve_witness` and `disapprove_witness` method found within the `commit` class in the library. We also use the `get_active_witnesses` function to query the blockchain for a list of available witnesses. Before we vote, we use the `get_account` function to check for all the witnesses that the user has currently voted for. This is not strictly necessary but adds to the useability of the process. The `approve_witness` method has 3 parameters:
 
 1.  _witness_ - The witness to approve
 1.  _account_ - The source user account for the voting
@@ -25,7 +25,7 @@ The `disapprove_witness` has the same parameters except for `_approve_` which is
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Steem node
+1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
 1.  [**Active witness list**](#list) - Create a list of active as well as already voted for witnesses
 1.  [**Vote / Unvote**](#commit) - Input witness name and commite vote/unvote to blockchain
 
@@ -45,9 +45,9 @@ import steem
 from pick import pick
 import pprint
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -63,7 +63,7 @@ username = input('Enter username: ') #demo account: cdemo
 wif = input('Enter private ACTIVE key: ') #demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
 
 #connect node and private active key
-client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 
 #check valid user
 userinfo = client.get_account(username)

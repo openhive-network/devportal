@@ -183,7 +183,7 @@ The result returned from the service is a `JSON` list. This is an example list w
     "parent_author": "",
     "parent_permlink": "hiveblockchain",
     "pending_payout_value": "0.000 HBD",
-    "percent_steem_dollars": 10000,
+    "percent_hbd": 10000,
     "permlink": "huobi-global-official-hive-listing-announcement-giveaways-ama-chat-transcripts",
     "promoted": "0.000 HBD",
     "reblogged_by": [],

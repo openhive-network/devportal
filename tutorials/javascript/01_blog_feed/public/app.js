@@ -1,6 +1,6 @@
 const { Client } = require("@hivechain/dhive");
 
-const client = new Client('https://api.openhive.network');
+const client = new Client('https://api.hive.blog');
 
 function fetchBlog() {
     const query = {

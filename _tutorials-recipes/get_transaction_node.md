@@ -15,7 +15,7 @@ This tutorial will show how to setup the lowest possible resource node that can 
 ### Sections
 
 * [Minimum Requirements](#minimum-requirements)
-* [Building `steemd`](#building-steemd)
+* [Building `hived`](#building-hived)
 * [Configure Node](#configure-node)
 * [Latest Block Log](#latest-block-log)
 * [Sync Node](#sync-node)
@@ -25,7 +25,7 @@ This tutorial will show how to setup the lowest possible resource node that can 
 
 This tutorial assumes Ubuntu Server 18.04 LTS 16GB RAM and 320GB SSD/HDD.
 
-### Building `steemd`
+### Building `hived`
 
 ```bash
 sudo apt-get update
@@ -47,7 +47,7 @@ cmake \
   -DLOW_MEMORY_NODE=ON \
   -DCLEAR_VOTES=ON \
   -DSKIP_BY_TX_ID=OFF \
-  -DSTEEM_LINT_LEVEL=OFF \
+  -DHIVE_LINT_LEVEL=OFF \
   -DENABLE_MIRA=OFF \
   ..
 make -j$(nproc)
@@ -57,12 +57,12 @@ sudo make install
 ### Configure Node
 
 ```bash
-mkdir -p ~/steem_data
-cd ~/steem_data
-steemd --data-dir=.
+mkdir -p ~/hive_data
+cd ~/hive_data
+hived --data-dir=.
 ```
 
-At the startup banner, press `^C` (Ctrl+C) to exit `steemd`.  As a side effect, a default data-dir is created.  Now we can purge the empty blockchain and create `config.ini` as follows:
+At the startup banner, press `^C` (Ctrl+C) to exit `hived`.  As a side effect, a default data-dir is created.  Now we can purge the empty blockchain and create `config.ini` as follows:
 
 ```bash
 rm -Rf blockchain
@@ -95,10 +95,10 @@ Save `config.ini`.
 Download the block log (optional but recommended).
 
 ```bash
-cd ~/steem_data
+cd ~/hive_data
 mkdir -p blockchain
 wget -O blockchain/block_log https://s3.amazonaws.com/steemit-dev-blockchainstate/block_log-latest
-steemd --data-dir=. --replay-blockchain
+hived --data-dir=. --replay-blockchain
 ```
 
 ### Sync Node
@@ -106,20 +106,20 @@ steemd --data-dir=. --replay-blockchain
 If you did not download the latest block log:
 
 ```bash
-cd ~/steem_data
-steemd --data-dir=. --resync-blockchain
+cd ~/hive_data
+hived --data-dir=. --resync-blockchain
 ```
 
-After *replay* or *resync* is complete, the console will display `Got ## transactions from  ...`.  It's possible to close `steemd` with `^C` (Ctrl+C).  Then, to start the node again:
+After *replay* or *resync* is complete, the console will display `Got ## transactions from  ...`.  It's possible to close `hived` with `^C` (Ctrl+C).  Then, to start the node again:
 
 ```bash
-cd ~/steem_data
-steemd --data-dir=.
+cd ~/hive_data
+hived --data-dir=.
 ```
 
 ### Troubleshooting<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-**Problem:** Got an error while trying to compile `steemd`:
+**Problem:** Got an error while trying to compile `hived`:
 
 `c++: internal compiler error: Killed (program cc1plus)`
 
@@ -138,9 +138,9 @@ sudo swapon /var/swap.img
 
 **Problem:** Got an error while replaying:
 
-`IO error: While open a file for appending: /root/steem_data/./blockchain/rocksdb_witness_object/012590.sst: Too many open files`
+`IO error: While open a file for appending: /root/hive_data/./blockchain/rocksdb_witness_object/012590.sst: Too many open files`
 
-**Solution:** You're using MIRA, but this tutorial recommends *not* to (`-DENABLE_MIRA=OFF`).  If you really *intend* to try MIRA, you will need to set higher limits.  Note, if you are also running `steemd` as `root` (not recommended), you must explicitly set hard/soft nofile/nproc lines for `root` instead of `*` in `/etc/security/limits.conf`.
+**Solution:** You're using MIRA, but this tutorial recommends *not* to (`-DENABLE_MIRA=OFF`).  If you really *intend* to try MIRA, you will need to set higher limits.  Note, if you are also running `hived` as `root` (not recommended), you must explicitly set hard/soft nofile/nproc lines for `root` instead of `*` in `/etc/security/limits.conf`.
 
 To set the open file limit ...
 

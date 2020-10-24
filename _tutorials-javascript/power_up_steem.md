@@ -1,27 +1,27 @@
 ---
-title: 'JS: Power Up Steem'
+title: 'JS: Power Up Hive'
 position: 24
-description: "_Power up an account's Steem using either Steemconnect or a client-side signing._"
+description: "_Power up an account's Hive using either Hiveconnect or a client-side signing._"
 layout: full
-canonical_url: power_up_steem.html
+canonical_url: power_up_hive.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up Steem](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/24_power_up_steem) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up Hive](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/24_power_up_hive) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
 
-This tutorial runs on the main Steem blockchain. And accounts queried are real users with liquid STEEM balances.
+This tutorial runs on the main Hive blockchain. And accounts queried are real users with liquid HIVE balances.
 
 ## Intro
 
-This tutorial will show few functions such as querying account by name and getting account balance. We are using the `call` function provided by the `dsteem` library to pull account from the Steem blockchain. A simple HTML interface is used to capture the account and its STEEM balance as well as allowing interactively power up part or all of STEEM to choose account.
+This tutorial will show few functions such as querying account by name and getting account balance. We are using the `call` function provided by the `dsteem` library to pull account from the Hive blockchain. A simple HTML interface is used to capture the account and its HIVE balance as well as allowing interactively power up part or all of HIVE to choose account.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Fill form**](#fill-form) Fill form with account reward balances
-4.  [**Power up**](#power-up) Power up STEEM with Steemconnect or Client-side signing.
+4.  [**Power up**](#power-up) Power up HIVE with Hiveconnect or Client-side signing.
 
 #### 1. App setup <a name="app-setup"></a>
 
@@ -33,9 +33,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -50,20 +50,20 @@ After account name field is filled with some name, we do automatic search for ac
 
 #### 3. Fill form <a name="fill-form"></a>
 
-After we fetched account data, we will fill form with STEEM balance and show current balance details.
+After we fetched account data, we will fill form with HIVE balance and show current balance details.
 
 ```javascript
 const name = _account[0].name;
-const steem_balance = _account[0].balance;
-const balance = `Available Steem balance for ${name}: ${steem_balance}<br/>`;
+const hive_balance = _account[0].balance;
+const balance = `Available Hive balance for ${name}: ${hive_balance}<br/>`;
 document.getElementById('accBalance').innerHTML = balance;
-document.getElementById('steem').value = steem_balance;
+document.getElementById('steem').value = hive_balance;
 const receiver = document.getElementById('receiver').value;
 ```
 
 #### 4. Power up <a name="power-up"></a>
 
-We have 2 options on how to Power up. Steemconnect and Client-side signing options. By default we generate Steemconnect link to Power up (transfer to vesting), but you can use client signing option to Power up right inside tutorial, note client-side signing will require Active private key to perform operation.
+We have 2 options on how to Power up. Hiveconnect and Client-side signing options. By default we generate Hiveconnect link to Power up (transfer to vesting), but you can use client signing option to Power up right inside tutorial, note client-side signing will require Active private key to perform operation.
 
 In order to enable client signing, we will generate operation and also show Active Private key (wif) field to sign transaction right there client side.
 Below you can see example of operation and signing transaction, after successful operation broadcast result will be shown in user interface. It will be block number that transaction was included.
@@ -102,7 +102,7 @@ That's it!
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/22_power_up_steem`
+1.  `cd devportal/tutorials/javascript/22_power_up_hive`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

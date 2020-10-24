@@ -1,7 +1,7 @@
 ---
-title: Steem Node Command Line Options
+title: Hive Node Command Line Options
 position: 1
-description: All options available to `steemd` at command line interface
+description: All options available to `hived` at command line interface
 exclude: true
 layout: full
 canonical_url: node-cli.html
@@ -10,7 +10,7 @@ canonical_url: node-cli.html
 Command line options are typically expressed with double-dash (e.g., `--replay-blockchain`):
 
 ```bash
-steemd --data-dir=. --replay-blockchain
+hived --data-dir=. --replay-blockchain
 ```
 
 Note that nearly all options available from `config.ini` can be set as command-line options.  See: [Node Config]({{ '/tutorials-recipes/node-config.html' | relative_url }})

@@ -13,10 +13,10 @@ dockerized container.  Both common binary types are included.
 To run a p2p node (ca. 2GB of memory is required at the moment):
 
     docker run \
-        -d -p 2001:2001 -p 8090:8090 --name steemd-default \
+        -d -p 2001:2001 -p 8090:8090 --name hived-default \
         steemit/steem
 
-    docker logs -f steemd-default  # follow along
+    docker logs -f hived-default  # follow along
 
 #### Dockerized Full Node
 
@@ -25,10 +25,10 @@ that uses ca. 14GB of memory and growing:
 
     docker run \
         --env USE_WAY_TOO_MUCH_RAM=1 \
-        -d -p 2001:2001 -p 8090:8090 --name steemd-full \
+        -d -p 2001:2001 -p 8090:8090 --name hived-full \
         steemit/steem
 
-    docker logs -f steemd-full
+    docker logs -f hived-full
 
 #### Seed Nodes
 
@@ -36,5 +36,5 @@ A list of some seed nodes to get you started can be found in
 [doc/seednodes.txt](doc/seednodes.txt).
 
 This same file is baked into the docker images and can be overridden by
-setting `STEEMD_SEED_NODES` in the container environment at `docker run`
+setting `HIVED_SEED_NODES` in the container environment at `docker run`
 time to a whitespace delimited list of seed nodes (with port).

@@ -312,7 +312,7 @@
       since: HF20
       virtual: false
       purpose: |
-        When used with `claim_account`, works identically to `account_create`.  See: [Steem 0.20.2 Release Notes](https://github.com/steemit/steem/releases/tag/v0.20.2)
+        When used with `claim_account`, works identically to `account_create`.  See: [Hive 0.20.2 Release Notes](https://github.com/steemit/steem/releases/tag/v0.20.2)
       roles:
         - active
           owner
@@ -330,7 +330,7 @@
       since: HF20
       virtual: false
       purpose: |
-        When used with `create_claimed_account`, works identically to `account_create`.  See: [Steem 0.20.2 Release Notes](https://github.com/steemit/steem/releases/tag/v0.20.2)
+        When used with `create_claimed_account`, works identically to `account_create`.  See: [Hive 0.20.2 Release Notes](https://github.com/steemit/steem/releases/tag/v0.20.2)
       roles:
         - active
           owner
@@ -354,7 +354,7 @@
           props
           extensions
       json_examples:
-        - '["witness_set_properties",{"owner":"alice", "props":{"account_creation_fee":"0.000 HIVE","account_subsidy_budget":10000,"account_subsidy_decay":330782,"maximum_block_size":65536,"sbd_interest_rate": "0.000 HIVE","sbd_exchange_rate":{"base": "0.000 HBD", "quote": "0.000 HIVE"}, "url": "68747470733A2F2F737465656D69742E636F6D", "new_signing_key": "25688bbe7b1204f26e40be054c8b2ff1997eec6d4e7be6a105aab8a0e6f11c616d7cb6066"}, "extensions": []}]'
+        - '["witness_set_properties",{"owner":"alice", "props":{"account_creation_fee":"0.000 HIVE","account_subsidy_budget":10000,"account_subsidy_decay":330782,"maximum_block_size":65536,"hbd_interest_rate": "0.000 HIVE","hbd_exchange_rate":{"base": "0.000 HBD", "quote": "0.000 HIVE"}, "url": "68747470733A2F2F737465656D69742E636F6D", "new_signing_key": "25688bbe7b1204f26e40be054c8b2ff1997eec6d4e7be6a105aab8a0e6f11c616d7cb6066"}, "extensions": []}]'
     - name: account_update
       virtual: false
       purpose:
@@ -425,7 +425,7 @@
           props
           fee
       json_examples:
-        - '["witness_update",{"owner":"alice","url":"witness-category/my-witness","block_signing_key":"STM8LoQjQqJHvotqBo7HjnqmUbFW9oJ2theyqonzUd9DdJ7YYHsvD","props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000},"fee":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
+        - '["witness_update",{"owner":"alice","url":"witness-category/my-witness","block_signing_key":"STM8LoQjQqJHvotqBo7HjnqmUbFW9oJ2theyqonzUd9DdJ7YYHsvD","props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000},"fee":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
     - name: account_witness_vote
       virtual: false
       purpose: |
@@ -474,7 +474,7 @@
           signature
           work
       json_examples:
-        - '["pow",{"worker_account":"admin","block_id":"000004433bd4602cf5f74dbb564183837df9cef8","nonce":82,"work":{"worker":"STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G","input":"59b009f89477919f95914151cef06f28bf344dd6fb7670aca1c1f4323c80446b","signature":"1f3f83209097efcd01b7d6f27ce726164323d503d6fcf4d55bfb7cb3032796f6766738b36062b5850d69447fdf9c091cbc70825df5eeacc4710a0b11ffdbf0912a","work":"0b62f4837801cd857f01d6a541faeb13d6bb95f1c36c6b4b14a47df632aa6c92"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}]'
+        - '["pow",{"worker_account":"admin","block_id":"000004433bd4602cf5f74dbb564183837df9cef8","nonce":82,"work":{"worker":"STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G","input":"59b009f89477919f95914151cef06f28bf344dd6fb7670aca1c1f4323c80446b","signature":"1f3f83209097efcd01b7d6f27ce726164323d503d6fcf4d55bfb7cb3032796f6766738b36062b5850d69447fdf9c091cbc70825df5eeacc4710a0b11ffdbf0912a","work":"0b62f4837801cd857f01d6a541faeb13d6bb95f1c36c6b4b14a47df632aa6c92"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]'
     - name: custom
       virtual: false
       purpose: |
@@ -564,13 +564,13 @@
         **Notes:**
         
         * The max_accepted_payout may be decreased, but never increased.
-        * The percent_steem_dollars may be decreased, but never increased.
+        * The percent_hbd may be decreased, but never increased.
         * Part of `comment_option` validation process, to be called when
         `allowed_vote_assets` object has been added as comment option extension are:
           * When votable assets are greater than maximum votable assets: *"Too much votable assets specified"*
           * When the symbol is not allowed in the list for votable assets: *"HIVE can not be explicitly specified as one of allowed_vote_assets"*
         * `max_accepted_payout`: HBD value of the maximum payout this post will receive
-        * `percent_steem_dollars`: the percent of Hive Dollars to key, unkept amounts will be received as Hive Power
+        * `percent_hbd`: the percent of Hive Dollars to key, unkept amounts will be received as Hive Power
         * `allow_votes`: allows/disallows a post to receive votes;
         * `allow_curation_rewards`: allows/disllows voters to recieve curation rewards. Rewards return to reward fund.
         * `beneficiaries`
@@ -587,14 +587,14 @@
         - author
           permlink
           max_accepted_payout
-          percent_steem_dollars
+          percent_hbd
           allow_votes
           allow_curation_rewards
           extensions
       json_examples:
-        - '["comment_options",{"author":"alice","permlink":"a-post-by-alice","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_steem_dollars":5000,"allow_votes":true,"allow_curation_rewards":true,"extensions":[]}]'
-        - '["comment_options",{"author":"bob","permlink":"a-post-with-a-beneficiary","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_steem_dollars":63,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"charlie","weight":1000}]}]]}]'
-        - '["comment_options",{"author":"charlie","permlink":"a-post-with-multiple-beneficiaries","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_steem_dollars":62688,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"david","weight":500},{"account":"erin","weight":500},{"account":"faythe","weight":1000},{"account":"frank","weight":500}]}]]}]'
+        - '["comment_options",{"author":"alice","permlink":"a-post-by-alice","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":5000,"allow_votes":true,"allow_curation_rewards":true,"extensions":[]}]'
+        - '["comment_options",{"author":"bob","permlink":"a-post-with-a-beneficiary","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":63,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"charlie","weight":1000}]}]]}]'
+        - '["comment_options",{"author":"charlie","permlink":"a-post-with-multiple-beneficiaries","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":62688,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"david","weight":500},{"account":"erin","weight":500},{"account":"faythe","weight":1000},{"account":"frank","weight":500}]}]]}]'
     - name: set_withdraw_vesting_route
       virtual: false
       purpose: |
@@ -779,7 +779,7 @@
         Escrow transactions are uniquely identified by `from` and `escrow_id`,
         the `escrow_id` is defined by the sender.
         
-        See: [steem_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/steem_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
       roles:
         - active
           owner
@@ -788,14 +788,14 @@
           to
           agent
           escrow_id
-          sbd_amount
-          steem_amount
+          hbd_amount
+          hive_amount
           fee
           ratification_deadline
           escrow_expiration
           json_meta
       json_examples:
-        - '["escrow_transfer",{"from":"alice","to":"bob","sbd_amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"steem_amount":{"amount":"0","precision":3,"nai":"@@000000021"},"escrow_id":23456789,"agent":"charlie","fee":{"amount":"100","precision":3,"nai":"@@000000013"},"json_meta":"{}","ratification_deadline":"2017-02-26T11:22:39","escrow_expiration":"2017-02-28T11:22:39"}]'
+        - '["escrow_transfer",{"from":"alice","to":"bob","hbd_amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"hive_amount":{"amount":"0","precision":3,"nai":"@@000000021"},"escrow_id":23456789,"agent":"charlie","fee":{"amount":"100","precision":3,"nai":"@@000000013"},"json_meta":"{}","ratification_deadline":"2017-02-26T11:22:39","escrow_expiration":"2017-02-28T11:22:39"}]'
     - name: escrow_dispute
       since: HF14
       virtual: false
@@ -804,7 +804,7 @@
         can raise it for dispute. Once a payment is in dispute, the agent has
         authority over who gets what.
         
-        See: [steem_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/steem_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
       roles:
         - active
           owner
@@ -831,7 +831,7 @@
           * If there is a dispute regardless of expiration, the agent can
             release funds to either party following whichever agreement was in place between the parties.
         
-        See: [steem_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/steem_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
       roles:
         - active
           owner
@@ -842,10 +842,10 @@
           who
           receiver
           escrow_id
-          sbd_amount
-          steem_amount
+          hbd_amount
+          hive_amount
       json_examples:
-        - '["escrow_release",{"from":"alice","to":"bob","agent":"charlie","who":"charlie","receiver":"bob","escrow_id":72526562,"sbd_amount":{"amount":"5000","precision":3,"nai":"@@000000013"},"steem_amount":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
+        - '["escrow_release",{"from":"alice","to":"bob","agent":"charlie","who":"charlie","receiver":"bob","escrow_id":72526562,"hbd_amount":{"amount":"5000","precision":3,"nai":"@@000000013"},"hive_amount":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
     - name: pow2
       disabled: true
       virtual: false
@@ -858,7 +858,7 @@
         - input
           pow_summary
       json_examples:
-        - '["pow2",{"work":[0,{"input":{"worker_account":"alice","prev_block":"003ea604345523c344fbadab605073ea712dd76f","nonce":"1052853013628665497"},"pow_summary":3817904373}],"props":{"account_creation_fee":{"amount":"1","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}]'
+        - '["pow2",{"work":[0,{"input":{"worker_account":"alice","prev_block":"003ea604345523c344fbadab605073ea712dd76f","nonce":"1052853013628665497"},"pow_summary":3817904373}],"props":{"account_creation_fee":{"amount":"1","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]'
     - name: escrow_approve
       since: HF14
       virtual: false
@@ -868,7 +868,7 @@
         cannot revoke their approval. Subsequent escrow approve operations,
         regardless of the approval, will be rejected.
         
-        See: [steem_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/steem_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
       roles:
         - active
           owner
@@ -893,7 +893,7 @@
         Assuming an account can be recovered quickly, loss in such situations
         can be kept to a minimum.
         
-        See: [steem_operations.hpp:868](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/steem_operations.hpp#L868-L895)
+        See: [hive_operations.hpp:868](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L868-L895)
       roles:
         - active
           owner
@@ -941,7 +941,7 @@
         binary deserialization of plugin operations and should improve overall
         performance of plugins that chose to use it.
         
-        See: [steem_operations.hpp:491](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/steem_operations.hpp#L491-L506)
+        See: [hive_operations.hpp:491](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L491-L506)
       roles:
         - posting
           active
@@ -959,7 +959,7 @@
         formalize a smart contract between certain accounts and the community
         that currently only exists as a social contract.
         
-        See: [steem_operations.hpp:897](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/steem_operations.hpp#L897-L905)
+        See: [hive_operations.hpp:897](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L897-L905)
       roles:
         - owner
       params:
@@ -1008,11 +1008,11 @@
           owner
       params:
         - account
-          reward_steem
-          reward_sbd
+          reward_hive
+          reward_hbd
           reward_vests
       json_examples:
-        - '["claim_reward_balance",{"account":"alice","reward_steem":{"amount":"17","precision":3,"nai":"@@000000021"},"reward_sbd":{"amount":"11","precision":3,"nai":"@@000000013"},"reward_vests":{"amount":"185025103","precision":6,"nai":"@@000000037"}}]'
+        - '["claim_reward_balance",{"account":"alice","reward_hive":{"amount":"17","precision":3,"nai":"@@000000021"},"reward_hbd":{"amount":"11","precision":3,"nai":"@@000000013"},"reward_vests":{"amount":"185025103","precision":6,"nai":"@@000000037"}}]'
     - name: delegate_vesting_shares
       since: HF17
       virtual: false
@@ -1027,7 +1027,7 @@
         to prevent a satoshi of VESTS from voting on the same content twice.
         
         Also see:
-          * [steem_evaluator.cpp:2309](https://github.com/steemit/steem/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/chain/steem_evaluator.cpp#L2309)
+          * [hive_evaluator.cpp:2309](https://github.com/steemit/steem/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/chain/hive_evaluator.cpp#L2309)
       roles:
         - active
           owner
@@ -1059,7 +1059,7 @@
         
         Also see:
           * [config.hpp:145](https://github.com/steemit/steem/blob/65c58af34971416057e142ac1332421e2228749b/libraries/protocol/include/steem/protocol/config.hpp#L145)
-          * [steem_evaluator.cpp:400](https://github.com/steemit/steem/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/chain/steem_evaluator.cpp#L400)
+          * [hive_evaluator.cpp:400](https://github.com/steemit/steem/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/chain/hive_evaluator.cpp#L400)
       roles:
         - active
           owner
@@ -1152,7 +1152,7 @@
       purpose: |
         This operation is used to cast a vote on a post/comment using multiple votable assets.
         
-        See: [#2748](https://github.com/steemit/steem/issues/2748), [SMT Voting Mana Deep Dive](https://steemit.com/smt/@vandeberg/smt-voting-mana-deep-dive)
+        See: [#2748](https://github.com/steemit/steem/issues/2748), [SMT Voting Mana Deep Dive](https://hive.blog/smt/@vandeberg/smt-voting-mana-deep-dive)
       roles:
         - posting
           active
@@ -1178,9 +1178,9 @@
         * `contribution_begin_time` - The start time of the ICO contribution process.
         * `contribution_end_time` - The end time of the ICO contribution process.
         * `launch_time` - The time in which a token should launch.
-        * `steem_units_min` - The minimum steem units required for a successful ICO.
-        * `steem_units_soft_cap` - The steem unit cap in which the pre_soft_cap_unit generation policy applies.
-        * `steem_units_hard_cap` - The steem unit cap in which the post_soft_cap_unit generation policy applies.
+        * `hive_units_min` - The minimum steem units required for a successful ICO.
+        * `hive_units_soft_cap` - The steem unit cap in which the pre_soft_cap_unit generation policy applies.
+        * `hive_units_hard_cap` - The steem unit cap in which the post_soft_cap_unit generation policy applies.
         * `initial_generation_policy` - A JSON string of the HIVE and token destination routes of the ICO process.
        
         **Example Initial Generation Policy JSON:**
@@ -1188,19 +1188,19 @@
         ```json
         {"type": "smt_capped_generation_policy", "value": {
           "pre_soft_cap_unit": {
-            "steem_unit": [["alice", 100]],
+            "hive_unit": [["alice", 100]],
             "token_unit": [["$from", 5], ["alice", 1]]
           },
           "post_soft_cap_unit": {
-            "steem_unit": [["alice", 100]],
+            "hive_unit": [["alice", 100]],
             "token_unit": [["$from", 5], ["alice", 1]]
           },
-          "min_steem_units_commitment": {
+          "min_hive_units_commitment": {
             "lower_bound": 1,
             "upper_bound": 1,
             "hash": "32edb6022c0921d99aa347e9cda5dc2db413f5574eebaaa8592234308ffebd2b"
           },
-          "hard_cap_steem_units_commitment": {
+          "hard_cap_hive_units_commitment": {
             "lower_bound": "166666666666",
             "upper_bound": "166666666666",
             "hash": "93c5a6b892de788c5b54b63b91c4b692e36099b05d3af0d16d01c854723dda21"
@@ -1225,13 +1225,13 @@
           contribution_end_time
           launch_time
           max_supply
-          steem_units_hard_cap
-          steem_units_soft_cap
-          steem_units_min
+          hive_units_hard_cap
+          hive_units_soft_cap
+          hive_units_min
           initial_generation_policy
           extensions
       json_examples:
-        - '["smt_setup",{"control_account":"alice","symbol":{"nai": "@@000000000", "decimals": 0},"contribution_begin_time":"2019-08-26T11:22:39","contribution_end_time":"2019-08-26T11:22:39","launch_time":"2019-09-26T11:22:39","max_supply":1000000000000000,"steem_units_hard_cap":10000,"steem_units_soft_cap":1000,"steem_units_min":0,"initial_generation_policy":"{\"type\":\"smt_capped_generation_policy\",\"value\":{\"pre_soft_cap_unit\":{\"steem_unit\":[[\"alice\",100]],\"token_unit\":[[\"$from\",5],[\"alice\",1]]},\"post_soft_cap_unit\":{\"steem_unit\":[[\"alice\",100]],\"token_unit\":[[\"$from\",5],[\"alice\",1]]},\"min_steem_units_commitment\":{\"lower_bound\":1,\"upper_bound\":1,\"hash\":\"32edb6022c0921d99aa347e9cda5dc2db413f5574eebaaa8592234308ffebd2b\"},\"hard_cap_steem_units_commitment\":{\"lower_bound\":\"166666666666\",\"upper_bound\":\"166666666666\",\"hash\":\"93c5a6b892de788c5b54b63b91c4b692e36099b05d3af0d16d01c854723dda21\"},\"soft_cap_percent\":10000,\"min_unit_ratio\":1000,\"max_unit_ratio\":1000,\"extensions\":[]}}","extensions":[]}]'
+        - '["smt_setup",{"control_account":"alice","symbol":{"nai": "@@000000000", "decimals": 0},"contribution_begin_time":"2019-08-26T11:22:39","contribution_end_time":"2019-08-26T11:22:39","launch_time":"2019-09-26T11:22:39","max_supply":1000000000000000,"hive_units_hard_cap":10000,"hive_units_soft_cap":1000,"hive_units_min":0,"initial_generation_policy":"{\"type\":\"smt_capped_generation_policy\",\"value\":{\"pre_soft_cap_unit\":{\"hive_unit\":[[\"alice\",100]],\"token_unit\":[[\"$from\",5],[\"alice\",1]]},\"post_soft_cap_unit\":{\"hive_unit\":[[\"alice\",100]],\"token_unit\":[[\"$from\",5],[\"alice\",1]]},\"min_hive_units_commitment\":{\"lower_bound\":1,\"upper_bound\":1,\"hash\":\"32edb6022c0921d99aa347e9cda5dc2db413f5574eebaaa8592234308ffebd2b\"},\"hard_cap_hive_units_commitment\":{\"lower_bound\":\"166666666666\",\"upper_bound\":\"166666666666\",\"hash\":\"93c5a6b892de788c5b54b63b91c4b692e36099b05d3af0d16d01c854723dda21\"},\"soft_cap_percent\":10000,\"min_unit_ratio\":1000,\"max_unit_ratio\":1000,\"extensions\":[]}}","extensions":[]}]'
     - name: smt_setup_emissions
       since: Mysterious Future
       virtual: false
@@ -1427,7 +1427,7 @@
           trx_id
           op_in_trx
       json_examples:
-        - '["proposal_pay",{"receiver":"steem.dao","payment":"1.637 HBD","trx_id":"0000000000000000000000000000000000000000","op_in_trx":0}]'
+        - '["proposal_pay",{"receiver":"hive.fund","payment":"1.637 HBD","trx_id":"0000000000000000000000000000000000000000","op_in_trx":0}]'
     - name: sps_fund
       since: HF21
       virtual: true
@@ -1446,7 +1446,7 @@
       virtual: true
       purpose: |
         Fills when conversion requests with a conversion date before the head
-        block time and then converts them to/from steem/sbd at the current
+        block time and then converts them to/from steem/hbd at the current
         median price feed history price times the premium.
       roles:
         - active
@@ -1466,8 +1466,8 @@
       params:
         - author
           permlink
-          sbd_payout
-          steem_payout
+          hbd_payout
+          hive_payout
           vesting_payout
     - name: curation_reward
       virtual: true

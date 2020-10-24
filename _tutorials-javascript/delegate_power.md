@@ -1,7 +1,7 @@
 ---
 title: 'JS: Delegate Power'
 position: 27
-description: "_Delegate power to other users using Steemconnect or Client-side signing._"
+description: "_Delegate power to other users using Hiveconnect or Client-side signing._"
 layout: full
 canonical_url: delegate_power.html
 ---              
@@ -10,18 +10,18 @@ canonical_url: delegate_power.html
 
 
 
-This tutorial runs on the main Steem blockchain. And accounts queried/searched are real accounts with their available VESTS balances and estimated STEEM POWER holdings.
+This tutorial runs on the main Hive blockchain. And accounts queried/searched are real accounts with their available VESTS balances and estimated HIVE POWER holdings.
 
 ## Intro
 
-This tutorial will show few functions such as querying account by name and getting account vesting balance. We then convert VESTS to STEEM POWER for convenience of user. And allow user to choose portion or all holdings of VESTS to delegate other users. A simple HTML interface is provided to capture the account with search and its VESTS balance as well as allowing interactively delegate. It should be noted that when a delegation is cancelled, the VESTS will only be available again after a 5 day cool-down period.
+This tutorial will show few functions such as querying account by name and getting account vesting balance. We then convert VESTS to HIVE POWER for convenience of user. And allow user to choose portion or all holdings of VESTS to delegate other users. A simple HTML interface is provided to capture the account with search and its VESTS balance as well as allowing interactively delegate. It should be noted that when a delegation is cancelled, the VESTS will only be available again after a 5 day cool-down period.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Calculate and Fill form**](#fill-form) Calculate available vesting shares and Fill form with details
-4.  [**Delegate power**](#delegate-power) Delegate VESTS with Steemconnect or Client-side signing.
+4.  [**Delegate power**](#delegate-power) Delegate VESTS with Hiveconnect or Client-side signing.
 
 #### 1. App setup <a name="app-setup"></a>
 
@@ -33,9 +33,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -50,17 +50,17 @@ After account name field is filled with some name, we do automatic search for ac
 
 #### 3. Calculate and Fill form <a name="fill-form"></a>
 
-After we fetched account data, we will fill form with VESTS balance and show current balance details. Note, that in order to get available VESTS balance we will have to check if account is already powering down and how much is powering down, how much of VESTS were delegated out which locks them from being powered down. Available balance will be in `avail` variable, next for convenience of user, we convert available VESTS to STEEM with `getDynamicGlobalProperties` function and fill form fields accordingly.
+After we fetched account data, we will fill form with VESTS balance and show current balance details. Note, that in order to get available VESTS balance we will have to check if account is already powering down and how much is powering down, how much of VESTS were delegated out which locks them from being powered down. Available balance will be in `avail` variable, next for convenience of user, we convert available VESTS to HIVE with `getDynamicGlobalProperties` function and fill form fields accordingly.
 
 ```javascript
     const name = _account[0].name;
     const avail = parseFloat(_account[0].vesting_shares) - (parseFloat(_account[0].to_withdraw) - parseFloat(_account[0].withdrawn)) / 1e6 - parseFloat(_account[0].delegated_vesting_shares);
 
     const props = await client.database.getDynamicGlobalProperties();
-    const vestSteem = parseFloat(parseFloat(props.total_vesting_fund_steem) *
+    const vestHive = parseFloat(parseFloat(props.total_vesting_fund_hive) *
         (parseFloat(avail) / parseFloat(props.total_vesting_shares)),6);
 
-    const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestSteem} STEEM POWER<br/><br/>`;
+    const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestHive} HIVE POWER<br/><br/>`;
     document.getElementById('accBalance').innerHTML = balance;
     document.getElementById('steem').value = avail+' VESTS';
 ```
@@ -69,7 +69,7 @@ Once form is filled with maximum available VESTS balance, you can choose portion
 
 #### 4. Delegate power <a name="delegate-power"></a>
 
-We have 2 options on how to delegate others. Steemconnect and Client-side signing options. By default we generate Steemconnect link to delegate power (delegate vesting shares), but you can choose client signing option to delegate right inside tutorial, note client-side signing will require Active Private key to perform the operation.
+We have 2 options on how to delegate others. Hiveconnect and Client-side signing options. By default we generate Hiveconnect link to delegate power (delegate vesting shares), but you can choose client signing option to delegate right inside tutorial, note client-side signing will require Active Private key to perform the operation.
 
 In order to enable client signing, we will generate operation and also show Active Private key (wif) field to sign transaction client side.
 Below you can see example of operation and signing transaction, after successful operation broadcast result will be shown in user interface. It will be block number that transaction was included.

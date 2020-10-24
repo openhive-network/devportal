@@ -30,7 +30,7 @@ In first couple lines we require package and define connection server:
 ```javascript
 const { Client } = require("@hivechain/dhive");
 
-const client = new Client('https://api.openhive.network');
+const client = new Client('https://api.hive.blog');
 ```
 
 #### 2. Query format<a name="Query-format"></a>
@@ -138,7 +138,7 @@ The result returned form the service is a `JSON` object with the following prope
     "parent_author": "",
     "parent_permlink": "hiveblockchain",
     "pending_payout_value": "0.000 HBD",
-    "percent_steem_dollars": 10000,
+    "percent_hbd": 10000,
     "permlink": "huobi-global-official-hive-listing-announcement-giveaways-ama-chat-transcripts",
     "promoted": "0.000 HBD",
     "reblogged_by": [],

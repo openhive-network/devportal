@@ -26,7 +26,7 @@
               "nai": "@@000000013",
               "precision": 3
             },
-            "non_steem": {
+            "non_hive": {
               "high": 100000,
               "low": 100000,
               "open": 100000,
@@ -85,7 +85,7 @@
             },
             "real_price": "0.10000000000000001",
             "steem": 100000,
-            "sbd": 10000,
+            "hbd": 10000,
             "created": "2019-12-18T01:24:42"
           },
           {
@@ -103,7 +103,7 @@
             },
             "real_price": "1.00000000000000000",
             "steem": 1000,
-            "sbd": 1000,
+            "hbd": 1000,
             "created": "2019-12-18T01:22:12"
           },
           {
@@ -121,7 +121,7 @@
             },
             "real_price": "100000000.00000000000000000",
             "steem": 1000,
-            "sbd": "100000000000",
+            "hbd": "100000000000",
             "created": "2019-12-18T01:20:21"
           }
         ]
@@ -166,12 +166,12 @@
         "lowest_ask": "0.10000000000000001",
         "highest_bid": "0.00000000000000000",
         "percent_change": "0.00000000000000000",
-        "steem_volume": {
+        "hive_volume": {
           "amount": "100000",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "sbd_volume": {
+        "hbd_volume": {
           "amount": "100000",
           "precision": 3,
           "nai": "@@000000013"
@@ -208,12 +208,12 @@
     parameter_json: "{}"
     expected_response_json: |
       {
-        "steem_volume": {
+        "hive_volume": {
           "amount": "0",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "sbd_volume": {
+        "hbd_volume": {
           "amount": "0",
           "precision": 3,
           "nai": "@@000000013"

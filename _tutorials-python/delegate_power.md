@@ -1,7 +1,7 @@
 ---
 title: 'PY: Delegate Power'
 position: 27
-description: "How to delegate or remove delegation of STEEM POWER to another user using Python."
+description: "How to delegate or remove delegation of HIVE POWER to another user using Python."
 layout: full
 canonical_url: delegate_power.html
 ---              
@@ -10,11 +10,11 @@ canonical_url: delegate_power.html
 
 
 
-In this tutorial we show you how to delegate a portion of an accounts available VESTS (STEEM POWER) to another user on the **Steem** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to delegate a portion of an accounts available VESTS (HIVE POWER) to another user on the **Hive** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `delegate_vesting_shares` method found within the `commit` class in the library. When you delegate power you make a portion of your VESTS available to another user. This can empower an application, author, or curator to make higher votes. Before we do the delegation, we use the `get_account` function to check the current VESTS balance of the account to see what is available. This is not strictly necessary but adds to the useability of the process. It should be noted that when a delegation is cancelled the VESTS will only be available again after 7 days. The `delegate_vesting_shares` method has 3 parameters:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `delegate_vesting_shares` method found within the `commit` class in the library. When you delegate power you make a portion of your VESTS available to another user. This can empower an application, author, or curator to make higher votes. Before we do the delegation, we use the `get_account` function to check the current VESTS balance of the account to see what is available. This is not strictly necessary but adds to the useability of the process. It should be noted that when a delegation is cancelled the VESTS will only be available again after 7 days. The `delegate_vesting_shares` method has 3 parameters:
 
 1.  _to_account_ - The account we are delegating shares to (delegatee)
 1.  _vesting_shares_ - The amount of VESTS to delegate. This is required to be a string value
@@ -23,7 +23,7 @@ The Steem python library has a built-in function to transmit transactions to the
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Steem node
+1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
 1.  [**Check balance**](#balance) - Check current VESTS balance of user account
 1.  [**Delegation amount and commit**](#delegate) - Input delegation amount and commit to blockchain
 
@@ -44,9 +44,9 @@ from pick import pick
 import pprint
 from steem.amount import Amount
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -62,7 +62,7 @@ username = input('Enter username: ') #demo account: cdemo
 wif = input('Enter private ACTIVE key: ') #demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
 
 #connect node and private active key
-client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 
 #check valid user
 userinfo = client.get_account(username)
@@ -116,7 +116,7 @@ if(delegatee_userinfo is None) :
     exit()
 ```
 
-Any amount of VESTS delegated to a user will overwrite the amount of VESTS currently delegated to that user. This means that to cancel a delegation we transmit to the blockchain a `vesting_shares` value of zero. The inputs and function execution is based on the users choice. If you are using one of Steemit's demo accounts, please leave some VESTS for others to delegate!
+Any amount of VESTS delegated to a user will overwrite the amount of VESTS currently delegated to that user. This means that to cancel a delegation we transmit to the blockchain a `vesting_shares` value of zero. The inputs and function execution is based on the users choice. If you are using one of Hive's demo accounts, please leave some VESTS for others to delegate!
 
 ```python
 if (option == 'DELEGATE POWER') :

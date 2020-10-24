@@ -10,19 +10,19 @@ canonical_url: grant_active_permission.html
 
 
 
-In this tutorial we show you how to check if someone has got active permission for an account on the **Steem** blockchain and how to grant or revoke that permission using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to check if someone has got active permission for an account on the **Hive** blockchain and how to grant or revoke that permission using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 Providing another user active permission for your account enables them to do fund transfers from your account. This can be useful in setting up a secondary account(s) to manage funds for a main account or having a backup should you lose passwords for the main account.
 
 One of the common practice nowadays is to lend/delegate SP to another account, above same technique can be used to create market around it with minimum 3rd party trust. All your funds stay in your account. You can use/create automated system where you can lease for certain period of time and system can take care of payments and release of delegations (notify clients). Even better, you can use multi-signature feature to establish 100% trust where clients will have to confirm, approve transactions.
 
-Active permissions and authority should be used with utmost care, you don't want to lose your funds. It is really not easy to hack Steem accounts, let alone take control over it. But without careful use (revealing private keys) losing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
+Active permissions and authority should be used with utmost care, you don't want to lose your funds. It is really not easy to hack Hive accounts, let alone take control over it. But without careful use (revealing private keys) losing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
 
-[this article](https://steemit.com/steem/@good-karma/steem-multi-authority-permissions-and-how-active-authority-works-part-2-f158813ec0ec1) has more detail around active authorities
+[this article](https://hive.blog/steem/@good-karma/steem-multi-authority-permissions-and-how-active-authority-works-part-2-f158813ec0ec1) has more detail around active authorities
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `allow` and `disallow` methods found within the `commit` class in the library. Before we grant or revoke permission, we use the `get_account` function to check whether the requested user already has that permission or not. This is not strictly necessary but adds to the useability of the process. The `allow` method has 5 parameters:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `allow` and `disallow` methods found within the `commit` class in the library. Before we grant or revoke permission, we use the `get_account` function to check whether the requested user already has that permission or not. This is not strictly necessary but adds to the useability of the process. The `allow` method has 5 parameters:
 
 1.  _foreign_ - The foreign account that will obtain access
 1.  _weight_ - This is an optional parameter defining the weight to use. If not defined, the threshold value will be used. If the weight is smaller than the threshold, additional signatures will be required.
@@ -64,7 +64,7 @@ username = input('Enter username: ')
 wif = input('Enter private ACTIVE key: ')
 
 #connect to production server with active key
-client = steem.Steem(keys=[wif])
+client = steem.Hive(keys=[wif])
 ```
 
 #### 2. Username validation <a name="username"></a>

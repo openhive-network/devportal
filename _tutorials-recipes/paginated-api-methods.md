@@ -39,7 +39,7 @@ curl -s --data '{
     "order": "by_comment_voter"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 ### Start (primarily `database_api.list_*`)
@@ -56,7 +56,7 @@ curl -s --data '{
     "order": "by_comment_voter"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Using this pattern, it is possible to get the entire list of votes, given enough time.
@@ -77,7 +77,7 @@ curl -s --data '{
     "order": "by_comment_voter"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Using `by_comment_voter` sorts by the `author/permlink`, then the `voter`, so the start param consists of `author`, `permlink`, `voter`.
@@ -104,7 +104,7 @@ The following methods have various forms of pagination:
   * [`list_limit_orders`](#database_apilist_limit_orders)
   * [`list_owner_histories`](#database_apilist_owner_histories)
   * [`list_savings_withdrawals`](#database_apilist_savings_withdrawals)
-  * [`list_sbd_conversion_requests`](#database_apilist_sbd_conversion_requests)
+  * [`list_hbd_conversion_requests`](#database_apilist_hbd_conversion_requests)
   * [`list_vesting_delegation_expirations`](#database_apilist_vesting_delegation_expirations)
   * [`list_vesting_delegations`](#database_apilist_vesting_delegations)
   * [`list_votes`](#database_apilist_votes)
@@ -161,7 +161,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To get the next page of objects (`"start": 20`):
@@ -176,7 +176,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To get the latest 10 objects (`"start": -1`):
@@ -191,7 +191,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#account_history_api.get_account_history' | relative_url }})
@@ -216,7 +216,7 @@ curl -s --data '{
     "order": "by_name"
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of accounts by name (assuming `alice` is the last entry in the previous page):
@@ -231,7 +231,7 @@ curl -s --data '{
     "order": "by_name"
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 When using `order` of `by_proxy`, the `start` param must be an array with the first element of the account being proxied to and the second being the first account to page from.  Thus, to get the first page of accounts that proxy to `alice`:
@@ -246,7 +246,7 @@ curl -s --data '{
     "order": "by_proxy"
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Then, to get the second page, assuming `bob` is the last account in the first result:
@@ -261,7 +261,7 @@ curl -s --data '{
     "order": "by_proxy"
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 **Note:** Using `order` of `by_proxy` only orders the objects by proxy, it does not filter them (nor should it).
@@ -278,7 +278,7 @@ curl -s --data '{
     "order": "by_next_vesting_withdrawal"
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of accounts by next vesting withdrawal:
@@ -293,7 +293,7 @@ curl -s --data '{
     "order": "by_next_vesting_withdrawal"
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_accounts' | relative_url }})
@@ -317,7 +317,7 @@ curl -s --data '{
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of accounts by name (assuming `alice` is the last entry in the previous page):
@@ -332,7 +332,7 @@ curl -s --data '{
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 accounts by effective date then by name with an relevant recovery account request:
@@ -347,7 +347,7 @@ curl -s --data '{
     "order": "by_effective_date"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_change_recovery_account_requests' | relative_url }})
@@ -371,7 +371,7 @@ curl -s --data '{
     "order": "by_cashout_time"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of posts/comments by cashout time (assuming `2019-09-11T03:13:03`, `alice`, `alice-permlink` is the last `timestamp`, `author`, `permlink` entry in the previous page):
@@ -386,7 +386,7 @@ curl -s --data '{
     "order": "by_cashout_time"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 posts/comments by permlink:
@@ -401,7 +401,7 @@ curl -s --data '{
     "order": "by_permlink"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of posts/comments by permlink (assuming `alice`, `alice-permlink` is the last entry in the previous page):
@@ -416,7 +416,7 @@ curl -s --data '{
     "order": "by_permlink"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 posts/comments by root post:
@@ -431,7 +431,7 @@ curl -s --data '{
     "order": "by_root"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of posts/comments by root post:
@@ -446,7 +446,7 @@ curl -s --data '{
     "order": "by_root"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 posts/comments by parent post:
@@ -461,7 +461,7 @@ curl -s --data '{
     "order": "by_parent"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of posts/comments by parent post:
@@ -476,7 +476,7 @@ curl -s --data '{
     "order": "by_parent"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_comments' | relative_url }})
@@ -498,7 +498,7 @@ curl -s --data '{
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of accounts (assuming `alice` is the last entry in the previous page):
@@ -513,7 +513,7 @@ curl -s --data '{
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 accounts by effective date:
@@ -528,7 +528,7 @@ curl -s --data '{
     "order": "by_effective_date"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of accounts (assuming `2019-09-12T00:00:00`, `alice` is the last entry in the previous page):
@@ -543,7 +543,7 @@ curl -s --data '{
     "order": "by_effective_date"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_decline_voting_rights_requests' | relative_url }})
@@ -565,7 +565,7 @@ curl -s --data '{
     "order": "by_from_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of accounts (assuming `alice`, `99` is the last entry in the previous page):
@@ -580,7 +580,7 @@ curl -s --data '{
     "order": "by_from_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 escrows ordered by `ratification_deadline`:
@@ -595,7 +595,7 @@ curl -s --data '{
     "order": "by_ratification_deadline"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of escrows (assuming `true`, `2019-09-12T00:00:00`, `99` is the last entry in the previous page):
@@ -610,7 +610,7 @@ curl -s --data '{
     "order": "by_ratification_deadline"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_escrows' | relative_url }})
@@ -632,10 +632,10 @@ curl -s --data '{
     "order": "by_price"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
-To list the next page of limit orders (assuming `base` of `85.405 STEEM`, `quote` of `17.192 SBD` is the last price entry in the previous page):
+To list the next page of limit orders (assuming `base` of `85.405 HIVE`, `quote` of `17.192 HBD` is the last price entry in the previous page):
 
 ```bash
 curl -s --data '{
@@ -650,7 +650,7 @@ curl -s --data '{
     "order": "by_price"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 limit ordered by `account`, `order_id`:
@@ -665,7 +665,7 @@ curl -s --data '{
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of limit orders (assuming `alice`, `1567828370` is the last entry in the previous page):
@@ -680,7 +680,7 @@ curl -s --data '{
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_limit_orders' | relative_url }})
@@ -698,7 +698,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of owner histories (assuming `alice`, `2019-09-12T00:00:00` is the last entry in the previous page):
@@ -712,7 +712,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_owner_histories' | relative_url }})
@@ -735,7 +735,7 @@ curl -s --data '{
     "order": "by_from_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of withdrawals (assuming `alice`, `1567828370` is the last entry in the previous page):
@@ -750,7 +750,7 @@ curl -s --data '{
     "order": "by_from_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 withdrawals ordered by `completed`, `from`:
@@ -765,7 +765,7 @@ curl -s --data '{
     "order": "by_complete_from_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of withdrawals (assuming `2019-09-12T00:00:00`, `alice`, `1567828370` is the last entry in the previous page):
@@ -780,7 +780,7 @@ curl -s --data '{
     "order": "by_complete_from_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 withdrawals ordered by `to`, `completed`:
@@ -795,7 +795,7 @@ curl -s --data '{
     "order": "by_to_complete"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of withdrawals (assuming `alice`, `2019-09-12T00:00:00`, `1567828370` is the last entry in the previous page):
@@ -810,12 +810,12 @@ curl -s --data '{
     "order": "by_to_complete"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_savings_withdrawals' | relative_url }})
 
-### `database_api.list_sbd_conversion_requests`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### `database_api.list_hbd_conversion_requests`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 * `by_account` - `start` requires 2 values: `account`, `request_id`
 * `by_conversion_date` - `start` requires 2 values: `timestamp`, `request_id`
@@ -825,14 +825,14 @@ To list the first 10 conversions ordered by `from`:
 ```bash
 curl -s --data '{
   "jsonrpc": "2.0",
-  "method": "database_api.list_sbd_conversion_requests",
+  "method": "database_api.list_hbd_conversion_requests",
   "params": {
     "start": ["", 0],
     "limit": 10,
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of conversions (assuming `alice`, `1567828370` is the last entry in the previous page):
@@ -840,14 +840,14 @@ To list the next page of conversions (assuming `alice`, `1567828370` is the last
 ```bash
 curl -s --data '{
   "jsonrpc": "2.0",
-  "method": "database_api.list_sbd_conversion_requests",
+  "method": "database_api.list_hbd_conversion_requests",
   "params": {
     "start": ["alice", 1567828370],
     "limit": 10,
     "order": "by_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 conversions ordered by `from`:
@@ -855,14 +855,14 @@ To list the first 10 conversions ordered by `from`:
 ```bash
 curl -s --data '{
   "jsonrpc": "2.0",
-  "method": "database_api.list_sbd_conversion_requests",
+  "method": "database_api.list_hbd_conversion_requests",
   "params": {
     "start": ["1970-01-01T00:00:00", 0],
     "limit": 10,
     "order": "by_conversion_date"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of conversions (assuming `2019-09-12T00:00:00`, `1567828370` is the last entry in the previous page):
@@ -870,17 +870,17 @@ To list the next page of conversions (assuming `2019-09-12T00:00:00`, `156782837
 ```bash
 curl -s --data '{
   "jsonrpc": "2.0",
-  "method": "database_api.list_sbd_conversion_requests",
+  "method": "database_api.list_hbd_conversion_requests",
   "params": {
     "start": ["2019-09-12T00:00:00", 1567828370],
     "limit": 10,
     "order": "by_conversion_date"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
-Also see: [API Definition]({{ '/apidefinitions/#database_api.list_sbd_conversion_requests' | relative_url }})
+Also see: [API Definition]({{ '/apidefinitions/#database_api.list_hbd_conversion_requests' | relative_url }})
 
 ### `database_api.list_vesting_delegation_expirations`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -899,7 +899,7 @@ curl -s --data '{
     "order": "by_expiration"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of delegation expirations (assuming `2019-09-12T00:00:00`, `1567828370` is the last entry in the previous page):
@@ -914,7 +914,7 @@ curl -s --data '{
     "order": "by_expiration"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 delegation expirations ordered by `account`, `expiration`:
@@ -929,7 +929,7 @@ curl -s --data '{
     "order": "by_account_expiration"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of delegation expirations (assuming `alice`, `2019-09-12T00:00:00`, `1567828370` is the last entry in the previous page):
@@ -944,7 +944,7 @@ curl -s --data '{
     "order": "by_account_expiration"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_vesting_delegation_expirations' | relative_url }})
@@ -965,7 +965,7 @@ curl -s --data '{
     "order": "by_delegation"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of delegations (assuming `alice`, `bob` is the last entry in the previous page):
@@ -980,7 +980,7 @@ curl -s --data '{
     "order": "by_delegation"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_vesting_delegations' | relative_url }})
@@ -1006,7 +1006,7 @@ curl -s --data '{
     "order": "by_comment_voter"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes:
@@ -1021,7 +1021,7 @@ curl -s --data '{
     "order": "by_comment_voter"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 votes ordered by `comment`, `voter`, `symbol`:
@@ -1036,7 +1036,7 @@ curl -s --data '{
     "order": "by_comment_voter_symbol"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes:
@@ -1046,12 +1046,12 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_votes",
   "params": {
-    "start": ["steemit", "firstpost", "red", "STEEM"],
+    "start": ["steemit", "firstpost", "red", "HIVE"],
     "limit": 10,
     "order": "by_comment_voter_symbol"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 votes ordered by `voter`, `comment`:
@@ -1066,7 +1066,7 @@ curl -s --data '{
     "order": "by_voter_comment"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes:
@@ -1081,7 +1081,7 @@ curl -s --data '{
     "order": "by_voter_comment"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 votes ordered by `voter`, `comment`, `symbol`:
@@ -1096,7 +1096,7 @@ curl -s --data '{
     "order": "by_voter_comment_symbol"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes:
@@ -1106,12 +1106,12 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_votes",
   "params": {
-    "start": ["nxt2", "dan", "is-the-dao-going-to-be-doa", "STEEM"],
+    "start": ["nxt2", "dan", "is-the-dao-going-to-be-doa", "HIVE"],
     "limit": 10,
     "order": "by_voter_comment_symbol"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 votes ordered by `comment`, `symbol`, `voter`:
@@ -1126,7 +1126,7 @@ curl -s --data '{
     "order": "by_comment_symbol_voter"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes:
@@ -1136,12 +1136,12 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_votes",
   "params": {
-    "start": ["dan", "is-the-dao-going-to-be-doa", "STEEM", "nxt2"],
+    "start": ["dan", "is-the-dao-going-to-be-doa", "HIVE", "nxt2"],
     "limit": 10,
     "order": "by_comment_symbol_voter"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 votes ordered by `voter`, `symbol`, `comment`:
@@ -1156,7 +1156,7 @@ curl -s --data '{
     "order": "by_voter_symbol_comment"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes:
@@ -1166,12 +1166,12 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_votes",
   "params": {
-    "start": ["nxt2", "STEEM", "dan", "is-the-dao-going-to-be-doa"],
+    "start": ["nxt2", "HIVE", "dan", "is-the-dao-going-to-be-doa"],
     "limit": 10,
     "order": "by_voter_symbol_comment"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_votes' | relative_url }})
@@ -1193,7 +1193,7 @@ curl -s --data '{
     "order": "by_withdraw_route"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of routes (assuming `alice`, `bob` is the last entry in the previous page):
@@ -1208,7 +1208,7 @@ curl -s --data '{
     "order": "by_withdraw_route"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 routes ordered by `to_account`, `route_id`:
@@ -1223,7 +1223,7 @@ curl -s --data '{
     "order": "by_destination"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of routes (assuming `bob`, `1567828370` is the last entry in the previous page):
@@ -1238,7 +1238,7 @@ curl -s --data '{
     "order": "by_destination"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_withdraw_vesting_routes' | relative_url }})
@@ -1260,7 +1260,7 @@ curl -s --data '{
     "order": "by_account_witness"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes (assuming `alice`, `bob` is the last entry in the previous page):
@@ -1275,7 +1275,7 @@ curl -s --data '{
     "order": "by_account_witness"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 votes ordered by `account`, `witness`:
@@ -1290,7 +1290,7 @@ curl -s --data '{
     "order": "by_witness_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes (assuming `bob`, `alice` is the last entry in the previous page):
@@ -1305,7 +1305,7 @@ curl -s --data '{
     "order": "by_witness_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_witness_votes' | relative_url }})
@@ -1328,7 +1328,7 @@ curl -s --data '{
     "order": "by_name"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of witnesses (assuming `alice` is the last entry in the previous page):
@@ -1343,7 +1343,7 @@ curl -s --data '{
     "order": "by_name"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 witnesses ordered by `votes`, `account`:
@@ -1358,7 +1358,7 @@ curl -s --data '{
     "order": "by_vote_name"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of witnesses (assuming `0`, `alice` is the last entry in the previous page):
@@ -1373,7 +1373,7 @@ curl -s --data '{
     "order": "by_vote_name"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 witnesses ordered by `virtual_scheduled_time`, `account`:
@@ -1388,7 +1388,7 @@ curl -s --data '{
     "order": "by_schedule_time"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of witnesses (assuming `473718186844702107410533306`, `alice` is the last entry in the previous page):
@@ -1403,7 +1403,7 @@ curl -s --data '{
     "order": "by_schedule_time"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_witnesses' | relative_url }})
@@ -1427,7 +1427,7 @@ curl -s --data '{
     "status": "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes (assuming `alice`, `99` is the last entry in the previous page):
@@ -1444,7 +1444,7 @@ curl -s --data '{
     "status": "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 votes ordered ascending by `proposal_id`, `voter` filtered by status `active`:
@@ -1461,7 +1461,7 @@ curl -s --data '{
     "status": "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of votes (assuming `99`, `alice` is the last entry in the previous page):
@@ -1478,7 +1478,7 @@ curl -s --data '{
     "status": "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_proposal_votes' | relative_url }})
@@ -1505,7 +1505,7 @@ curl -s --data '{
     "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of proposals (assuming `alice`, `99` is the last entry in the previous page):
@@ -1523,7 +1523,7 @@ curl -s --data '{
     "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 proposals ordered ascending by `start_date`, `proposal_id`, filtered by status `active` (identical pattern to `by_end_date`):
@@ -1541,7 +1541,7 @@ curl -s --data '{
     "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of proposals (assuming `2019-09-12T00:00:00`, `99` is the last entry in the previous page):
@@ -1559,7 +1559,7 @@ curl -s --data '{
     "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 proposals ordered ascending by `vests`, `proposal_id`, filtered by status `active`:
@@ -1577,7 +1577,7 @@ curl -s --data '{
     "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of proposals (assuming `1272060680484393`, `99` is the last entry in the previous page):
@@ -1595,7 +1595,7 @@ curl -s --data '{
     "active"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_proposals' | relative_url }})
@@ -1617,7 +1617,7 @@ curl -s --data '{
     "order": "by_symbol_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of contributions (assuming `{"nai": "@@422838704", "decimals": 0}`, `99` is the last entry in the previous page):
@@ -1632,7 +1632,7 @@ curl -s --data '{
     "order": "by_symbol_id"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 contributions ordered by symbol, id:
@@ -1647,7 +1647,7 @@ curl -s --data '{
     "order": "by_symbol_contributor"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of contributions (assuming `{"nai": "@@422838704", "decimals": 0}`, `alice`, `99` is the last entry in the previous page):
@@ -1662,7 +1662,7 @@ curl -s --data '{
     "order": "by_symbol_contributor"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_smt_contributions' | relative_url }})
@@ -1683,7 +1683,7 @@ curl -s --data '{
     "order": "by_symbol_time"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of emissions (assuming `{"nai": "@@422838704", "decimals": 0}`, `"2019-08-07T16:54:03"` is the last entry in the previous page):
@@ -1698,7 +1698,7 @@ curl -s --data '{
     "order": "by_symbol_time"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_smt_token_emissions' | relative_url }})
@@ -1720,7 +1720,7 @@ curl -s --data '{
     "order": "by_symbol"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of tokens (assuming `{"nai": "@@422838704", "decimals": 0}` is the last entry in the previous page):
@@ -1735,7 +1735,7 @@ curl -s --data '{
     "order": "by_symbol"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the first 10 tokens ordered by control account:
@@ -1750,7 +1750,7 @@ curl -s --data '{
     "order": "by_control_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page of tokens (assuming `alice`, `{"nai": "@@422838704", "decimals": 0}` is the last entry in the previous page):
@@ -1765,7 +1765,7 @@ curl -s --data '{
     "order": "by_control_account"
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#database_api.list_smt_tokens' | relative_url }})
@@ -1783,7 +1783,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice` is the last entry in the previous page):
@@ -1797,7 +1797,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_account_reputations' | relative_url }})
@@ -1816,7 +1816,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice`, `99` is the last entry in the previous page):
@@ -1831,7 +1831,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_blog' | relative_url }})
@@ -1850,7 +1850,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice`, `99` is the last entry in the previous page):
@@ -1865,7 +1865,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_blog_entries' | relative_url }})
@@ -1884,7 +1884,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice`, `99` is the last entry in the previous page):
@@ -1899,7 +1899,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_feed' | relative_url }})
@@ -1918,7 +1918,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice`, `99` is the last entry in the previous page):
@@ -1933,7 +1933,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_feed_entries' | relative_url }})
@@ -1953,7 +1953,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice`, `bob` is the last entry in the previous page):
@@ -1969,7 +1969,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_followers' | relative_url }})
@@ -1989,7 +1989,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice`, `bob` is the last entry in the previous page):
@@ -2005,7 +2005,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_following' | relative_url }})
@@ -2023,7 +2023,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice` is the last entry in the previous page):
@@ -2037,7 +2037,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#reputation_api.get_account_reputations' | relative_url }})
@@ -2060,7 +2060,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice-permlink` is the last entry in the previous page):
@@ -2076,7 +2076,7 @@ curl -s --data '{
     "limit": 10
   },
   "id": 1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#tags_api.get_discussions_by_author_before_date' | relative_url }})
@@ -2095,7 +2095,7 @@ curl -s --data '{
     "limit": 10
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `alice-permlink` is the last entry in the previous page):
@@ -2110,7 +2110,7 @@ curl -s --data '{
     "limit": 10
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#tags_api.get_replies_by_last_update' | relative_url }})
@@ -2128,7 +2128,7 @@ curl -s --data '{
     "limit": 10
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 To list the next page (assuming `photography` is the last entry in the previous page):
@@ -2142,7 +2142,7 @@ curl -s --data '{
     "limit": 10
   },
   "id":1
-}' https://api.steemit.com | jq
+}' https://api.hive.blog | jq
 ```
 
 Also see: [API Definition]({{ '/apidefinitions/#tags_api.get_trending_tags' | relative_url }})

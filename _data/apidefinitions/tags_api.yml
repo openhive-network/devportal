@@ -95,7 +95,7 @@
           "precision": 3,
           "nai": "@@000000021"
         },
-        "percent_steem_dollars": 0,
+        "percent_hbd": 0,
         "allow_replies": false,
         "allow_votes": false,
         "allow_curation_rewards": false,
@@ -177,7 +177,7 @@
               "precision": 3,
               "nai": "@@000000013"
             },
-            "percent_steem_dollars": 10000,
+            "percent_hbd": 10000,
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,
@@ -264,7 +264,7 @@
               "precision": 3,
               "nai": "@@000000013"
             },
-            "percent_steem_dollars": 0,
+            "percent_hbd": 0,
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,
@@ -361,7 +361,7 @@
               "precision": 3,
               "nai": "@@000000013"
             },
-            "percent_steem_dollars": 0,
+            "percent_hbd": 0,
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,
@@ -468,7 +468,7 @@
               "precision": 3,
               "nai": "@@000000013"
             },
-            "percent_steem_dollars": 0,
+            "percent_hbd": 0,
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,
@@ -566,7 +566,7 @@
               "precision": 3,
               "nai": "@@000000013"
             },
-            "percent_steem_dollars": 10000,
+            "percent_hbd": 10000,
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,

@@ -1,7 +1,7 @@
 ---
 title: 'RB: Getting Started'
 position: 0
-description: "To access the Steem blockchain using Ruby, install the Radiator gem: [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator).  Full documentation on Radiator api methods are hosted on [rubydoc.info](http://www.rubydoc.info/gems/radiator)."
+description: "To access the Hive blockchain using Ruby, install the Radiator gem: [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator).  Full documentation on Radiator api methods are hosted on [rubydoc.info](http://www.rubydoc.info/gems/radiator)."
 layout: full
 canonical_url: getting_started.html
 ---              
@@ -75,8 +75,8 @@ options = {
   url: 'https://rpc.steemliberator.com',
   failover_urls: [
     'https://gtg.steem.house:8090',
-    'https://steemd.minnowsupportproject.org',
-    'https://steemd.privex.io',
+    'https://hived.minnowsupportproject.org',
+    'https://hived.privex.io',
   ]
 }
 api = Radiator::Api.new(options)

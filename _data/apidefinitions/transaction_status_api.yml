@@ -5,7 +5,7 @@
   description: |
     This API is intended to evaluate a transaction status after calling [`condenser_api.broadcast_transaction`]({{ '/apidefinitions/#condenser_api.broadcast_transaction' | relative_url }}).
     
-    To enable this API for `steemd`, the following is required in `config.ini` by specifying:
+    To enable this API for `hived`, the following is required in `config.ini` by specifying:
     
     ```ini
     plugin = transaction_status_api

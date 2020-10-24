@@ -1,7 +1,7 @@
 ---
 title: 'RB: Stream Blockchain Transactions'
 position: 13
-description: "*How to stream transactions and operations from Steem blockchain.*"
+description: "*How to stream transactions and operations from Hive blockchain.*"
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---              
@@ -28,7 +28,7 @@ ruby stream_blockchain_transactions.rb head transactions
 
 This will instruct the script to follow transactions at head `block_num` instead of irreversible.
 
-See: [`head_block_number`](https://developers.steem.io/tutorials-recipes/understanding-dynamic-global-properties#head_block_number) vs. [`last_irreversible_block_num`](https://developers.steem.io/tutorials-recipes/understanding-dynamic-global-properties#last_irreversible_block_num)
+See: [`head_block_number`](https://developers.hive.io/tutorials-recipes/understanding-dynamic-global-properties#head_block_number) vs. [`last_irreversible_block_num`](https://developers.hive.io/tutorials-recipes/understanding-dynamic-global-properties#last_irreversible_block_num)
 
 This is done by using the following ruby:
 
@@ -80,7 +80,7 @@ The `type` variable can be `nil` or the type of ops we're looking for whereas `a
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git

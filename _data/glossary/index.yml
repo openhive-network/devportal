@@ -114,7 +114,7 @@
     - term: DAO
       def: 'Decentralized Autonomous Organization (see: DHF).'
     - term: HBD Haircut
-      def: 'Rules to stop printing HBD when the supply is too high.  Note: HBD printing for the DHF (@steem.dao) does not follow these rules and will continue to print HBD regardless of the supply.'
+      def: 'Rules to stop printing HBD when the supply is too high.  Note: HBD printing for the DHF (@hive.fund) does not follow these rules and will continue to print HBD regardless of the supply.'
 
 - name: Transactions
   id: glossary-transactions

@@ -1,4 +1,4 @@
-require 'steem'
+require 'hive'
 
 module Jekyll
   module HivePostGenerator
@@ -9,7 +9,7 @@ module Jekyll
       permlink = slug[1..-1].join('/')
       permlink = permlink.split('?').first
       permlink = permlink.split('#').first
-      api = Steem::CondenserApi.new(url: 'https://api.openhive.network')
+      api = Hive::CondenserApi.new(url: 'https://api.hive.blog')
       
       api.get_content(author, permlink) do |content|
         body = content.body
@@ -56,6 +56,6 @@ Liquid::Template.register_filter(Jekyll::HivePostGenerator)
 # 
 # NOTE:
 # For content prior to the Hive fork, please remember to maintain the correct
-# canonical_url, even if it appears on a Steem front-end, unless the original
-# author removed it from Steem.  SEO will still consider Steem as the origin,
+# canonical_url, even if it appears on a Hive front-end, unless the original
+# author removed it from Hive.  SEO will still consider Hive as the origin,
 # even after the Hive fork.

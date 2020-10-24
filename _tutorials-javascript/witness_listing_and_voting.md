@@ -12,7 +12,7 @@ canonical_url: witness_listing_and_voting.html
 
 This tutorial will take you through the process of preparing and submitting a `vote` using the `broadcast` operation. A demo account is provided to use on the `testnet` but all variables can be easily changed and applied to the `production server`.
 
-There is also an alternative method to vote for a witness using a `hot signing` link that can be generated via [Steemconnect](https://steemconnect.com/sign/). You create a link using the `witness` name and the `approve` fields which denotes whether you want to vote for or remove the vote. This [link](https://v2.steemconnect.com/sign/account-witness-vote?witness=grg&approve=approve) then allows you to vote simply by signing in with your account details. This is a very simple way to send a vote request to any other user with the correct details already provided by the link.
+There is also an alternative method to vote for a witness using a `hot signing` link that can be generated via [Hiveconnect](https://steemconnect.com/sign/). You create a link using the `witness` name and the `approve` fields which denotes whether you want to vote for or remove the vote. This [link](https://v2.steemconnect.com/sign/account-witness-vote?witness=grg&approve=approve) then allows you to vote simply by signing in with your account details. This is a very simple way to send a vote request to any other user with the correct details already provided by the link.
 
 ## Intro
 
@@ -26,7 +26,7 @@ We are using the `account witness vote` function to create the vote which we the
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
 1.  [**Create witness list**](#createlist) Displaying a list of active witnesses
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Voting status**](#status) Confirming the current vote status for the selected witness
@@ -38,7 +38,7 @@ As usual, we have a `public/app.js` file which holds the Javascript segment of t
 
 ```javascript
 import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 //connect to a steem node, testnet in this case

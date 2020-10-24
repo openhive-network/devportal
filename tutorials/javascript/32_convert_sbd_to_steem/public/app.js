@@ -1,5 +1,5 @@
 import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
@@ -12,10 +12,10 @@ window.submitAcc = async () => {
     const _account = await client.database.call('get_accounts', [[accSearch]]);
     console.log(`_account:`, _account);
 
-    const availSBD = _account[0].sbd_balance 
-    const availSTEEM = _account[0].balance
+    const availHBD = _account[0].hbd_balance 
+    const availHIVE = _account[0].balance
 
-    const balance = `Available balance: ${availSBD} and ${availSTEEM} <br/>`;
+    const balance = `Available balance: ${availHBD} and ${availHIVE} <br/>`;
     document.getElementById('accBalance').innerHTML = balance;
 
     //create random number for requestid paramter
@@ -35,7 +35,7 @@ window.submitConvert = async () => {
     //get convert amount
     const quantity = document.getElementById('quantity').value;
     //create correct format
-    const convert = quantity.concat(' SBD');
+    const convert = quantity.concat(' HBD');
     //assign integer value of ID
     const requestid = parseInt(document.getElementById('requestID').value);
 

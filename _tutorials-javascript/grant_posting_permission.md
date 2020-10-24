@@ -32,7 +32,7 @@ The tutorial is set up with three individual functions for each of the required 
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI.
 3.  [**Database query**](#query) Sending a query to the blockchain for the posting permissions (status)
 4.  [**Object creation**](#object) Create the array and subsequent data object for the broadcast operation
@@ -163,7 +163,7 @@ client.broadcast.updateAccount(accObj, privateKey).then(
 
 The results of the operation is displayed on the UI along with a block number in the console to confirm a successful operation. If you add permission to an account that already has permission will display an error of "Missing Active Authority".
 
-Steemconnect offers an alternative to revoking posting permission with a "simple link" solution. Instead of running through a list of opetions on your account, you can simply use a link similar to the one below. You will be prompted to enter your usename and password and the specified user will have their posting permission removed instantly.
+Hiveconnect offers an alternative to revoking posting permission with a "simple link" solution. Instead of running through a list of opetions on your account, you can simply use a link similar to the one below. You will be prompted to enter your usename and password and the specified user will have their posting permission removed instantly.
 https://v2.steemconnect.com/revoke/@username
 This is similar to the steemconnect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.steemconnect.com/sign
 

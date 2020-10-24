@@ -1,7 +1,7 @@
 ---
 title: 'PY: Submit Comment Reply'
 position: 11
-description: "How to submit a comment on a post to the Steem blockchain."
+description: "How to submit a comment on a post to the Hive blockchain."
 layout: full
 canonical_url: submit_comment_reply.html
 ---              
@@ -10,11 +10,11 @@ canonical_url: submit_comment_reply.html
 
 
 
-This tutorial will explain and show you how to submit a new comment to the `Steem` blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+This tutorial will explain and show you how to submit a new comment to the `Hive` blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `post` method found within the `commit` class in the the library. It should be noted that comments and post are both treated as a `commit.post` operation with the only difference being that a comment/reply has an additional parameter containing the `parent post/comment`. There are 11 parameters within the `post` method:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `post` method found within the `commit` class in the the library. It should be noted that comments and post are both treated as a `commit.post` operation with the only difference being that a comment/reply has an additional parameter containing the `parent post/comment`. There are 11 parameters within the `post` method:
 
 1. _title_ - The title of the post. This is a required parameter but comments don't have a title so the parameter is assigned an empty string value
 1. _body_ - The body of the post
@@ -34,7 +34,7 @@ A comment made on a post is defined as a `root comment`. You can also comment on
 
 ## Steps
 
-1.  [**App setup**](#setup) - Library install and import. Connection to Steem node
+1.  [**App setup**](#setup) - Library install and import. Connection to Hive node
 1.  [**Variable input and format**](#input) - Input and creation of varialbes
 1.	[**Initialize steem class**](#steem) - Initialize the steem class with the relevant node and private key
 1.  [**Post submission and result**](#submit) - Committing of transaction to the blockchain
@@ -55,9 +55,9 @@ import string
 import steembase
 import steem
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -94,7 +94,7 @@ We initialize the steem class by connecting to the specific `testnet` node. We a
 
 ```python
 #connect node and private posting key
-client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 ```
 
 #### 4. Post submission and result<a name="submit"></a>

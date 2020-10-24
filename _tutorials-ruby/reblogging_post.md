@@ -62,7 +62,7 @@ tx.operations << {
 And to do the same with our tutorial script:
 
 ```bash
-ruby reblogging_post.rb https://steemit.com/@inertia/kinda-spooky
+ruby reblogging_post.rb https://hive.blog/@inertia/kinda-spooky
 ```
 
 #### Example Output
@@ -82,7 +82,7 @@ From the example we get the following output from our script:
 }
 ```
 
-The response we get after broadcasting the transaction gives us the transaction id ([`0aa41e0...`](https://steemd.com/tx/0aa41e06b2612315d32cadeb671eb1201f266dd7)), block number ([`24063620`](https://steemd.com/b/24063620)), and the transaction number of that block (`19`).
+The response we get after broadcasting the transaction gives us the transaction id ([`0aa41e0...`](https://hiveblocks.com/tx/0aa41e06b2612315d32cadeb671eb1201f266dd7)), block number ([`24063620`](https://hiveblocks.com/b/24063620)), and the transaction number of that block (`19`).
 
 ### Example Error
 
@@ -282,7 +282,7 @@ Broadcasting a `custom_json` operation will require the following fields:
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 * `<url>`
 

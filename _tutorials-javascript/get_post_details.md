@@ -130,7 +130,7 @@ The result is returned from the post content as a `JSON` object with the followi
     "parent_author": "",
     "parent_permlink": "hiveblockchain",
     "pending_payout_value": "0.000 HBD",
-    "percent_steem_dollars": 10000,
+    "percent_hbd": 10000,
     "permlink": "huobi-global-official-hive-listing-announcement-giveaways-ama-chat-transcripts",
     "promoted": "0.000 HBD",
     "reblogged_by": [],
@@ -180,7 +180,7 @@ From this result, you have access to everything associated with the selected pos
 * `net_votes` - Net positive votes
 * `root_comment` - ID of the original content.
 * `max_accepted_payout` - Value of the maximum payout this content will receive.
-* `percent_steem_dollars` - The percent of Hive Dollars to key, unkept amounts will be received as HIVE Power.
+* `percent_hbd` - The percent of Hive Dollars to key, unkept amounts will be received as HIVE Power.
 * `allow_replies` - Allows content to disable replies.
 * `allow_votes` - Allows content to receive votes.
 * `allow_curation_rewards` - Allows curators of this content receive rewards.

@@ -30,9 +30,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dhive.Client('https://api.openhive.network');
+const client = new dhive.Client('https://api.hive.blog');
 
 const Remarkable = require('remarkable');
 const md = new Remarkable({ html: true, linkify: true });
@@ -70,16 +70,16 @@ The following is an example of the returned object:
         "virtual_supply":"271970374.699 HIVE",
         "current_supply":"268140818.508 HIVE",
         "confidential_supply":"0.000 HIVE",
-        "current_sbd_supply":"13342173.771 HBD",
-        "confidential_sbd_supply":"0.000 HBD",
-        "total_vesting_fund_steem":"191002132.498 HIVE",
+        "current_hbd_supply":"13342173.771 HBD",
+        "confidential_hbd_supply":"0.000 HBD",
+        "total_vesting_fund_hive":"191002132.498 HIVE",
         "total_vesting_shares":"388786707656.308148 VESTS",
-        "total_reward_fund_steem":"0.000 HIVE",
+        "total_reward_fund_hive":"0.000 HIVE",
         "total_reward_shares2":"0",
         "pending_rewarded_vesting_shares":"366359809.533218 VESTS",
-        "pending_rewarded_vesting_steem":"178575.754 HIVE",
-        "sbd_interest_rate":0,
-        "sbd_print_rate":10000,
+        "pending_rewarded_vesting_hive":"178575.754 HIVE",
+        "hbd_interest_rate":0,
+        "hbd_print_rate":10000,
         "maximum_block_size":65536,
         "current_aslot":22373110,
         "recent_slots_filled":"340282366920938463463374607431768211455",
@@ -124,7 +124,7 @@ The following is an example of the returned object:
             "root_author":"hiveio",
             "root_permlink":"devportal-update-3-ux-improvements-more-javascript-tutorials-and-more",
             "max_accepted_payout":"1000000.000 HBD",
-            "percent_steem_dollars":10000,
+            "percent_hbd":10000,
             "allow_replies":true,
             "allow_votes":true,
             "allow_curation_rewards":true,
@@ -171,7 +171,7 @@ The following is an example of the returned object:
             "root_author":"hiveio",
             "root_permlink":"devportal-update-3-ux-improvements-more-javascript-tutorials-and-more",
             "max_accepted_payout":"1000000.000 HBD",
-            "percent_steem_dollars":10000,
+            "percent_hbd":10000,
             "allow_replies":true,
             "allow_votes":true,
             "allow_curation_rewards":true,
@@ -205,7 +205,7 @@ The following is an example of the returned object:
         "median_props":{
             "account_creation_fee":"0.100 HIVE",
             "maximum_block_size":65536,
-            "sbd_interest_rate":0
+            "hbd_interest_rate":0
         },
         "majority_version":"0.19.3",
         "max_voted_witnesses":20,

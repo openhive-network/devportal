@@ -1,7 +1,7 @@
 ---
 title: 'RB: Submit Comment Reply'
 position: 11
-description: "_By the end of this tutorial you should know how to prepare comments for Steem and then submit using Radiator._"
+description: "_By the end of this tutorial you should know how to prepare comments for Hive and then submit using Radiator._"
 layout: full
 canonical_url: submit_comment_reply.html
 ---              
@@ -18,7 +18,7 @@ A reply is differentiated from a post by whether or not a `parent_author` exists
 
 ### Script
 
-You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](https://developers.steem.io/apidefinitions/broadcast-ops.html#broadcast_ops_comment):
+You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](https://developers.hive.io/apidefinitions/broadcast-ops.html#broadcast_ops_comment):
 
 * `author` - Account name of the author currently replying.
 * `permlink` - Value unique to the author 
@@ -30,7 +30,7 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git
@@ -54,7 +54,7 @@ ruby submit_comment_reply.rb
 }
 ```
 
-The response we get after broadcasting the transaction gives us the transaction id ([`3fef14c...`](https://steemd.com/tx/3fef14cac921e9baa7b31e43245e5380f3fb4332)), block number ([`22867626`](https://steemd.com/b/23355115)), and the transaction number of that block (`13`).
+The response we get after broadcasting the transaction gives us the transaction id ([`3fef14c...`](https://hiveblocks.com/tx/3fef14cac921e9baa7b31e43245e5380f3fb4332)), block number ([`22867626`](https://hiveblocks.com/b/23355115)), and the transaction number of that block (`13`).
 
 #### Error Handling
 

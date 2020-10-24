@@ -26,7 +26,7 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git
@@ -50,7 +50,7 @@ ruby submit_a_new_post.rb
 }
 ```
 
-The response we get after broadcasting the transaction gives us the transaction id ([`768f7f6...`](https://steemd.com/tx/768f7f64cee94413da0017ef79f592bb4da86baf)), block number ([`22867626`](https://steemd.com/b/22867626)), and the transaction number of that block (`43`).
+The response we get after broadcasting the transaction gives us the transaction id ([`768f7f6...`](https://hiveblocks.com/tx/768f7f64cee94413da0017ef79f592bb4da86baf)), block number ([`22867626`](https://hiveblocks.com/b/22867626)), and the transaction number of that block (`43`).
 
 #### Error Handling
 

@@ -10,11 +10,11 @@ canonical_url: password_key_change.html
 
 
 
-In this tutorial we will explain and show you how to change your account password and keys on the **Steem** blockchain using the `steem` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we will explain and show you how to change your account password and keys on the **Hive** blockchain using the `steem` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to update your account details on the blockchain. We are using the `AccountUpdate` and `commit.finalizeOp` to make these changes. The `AccountUpdate` function creates the operation that we will be committing to the blockchain using the `commit.finalizeOp` function. We first get the existing keys from your account then recreate these from your new password. Once these have been created using your new password we commit them to the blockchain. The initial parameters we need to complete this operation are:
+The Hive python library has a built-in function to update your account details on the blockchain. We are using the `AccountUpdate` and `commit.finalizeOp` to make these changes. The `AccountUpdate` function creates the operation that we will be committing to the blockchain using the `commit.finalizeOp` function. We first get the existing keys from your account then recreate these from your new password. Once these have been created using your new password we commit them to the blockchain. The initial parameters we need to complete this operation are:
 
 1.  _account_ - The user account that we will be changing
 1.  _old_password_ - Your existing password for the account we are changing
@@ -60,19 +60,19 @@ new_password = input('New password: ')
 
 ### 3. Connect to the blockchain<a name="connection"></a>
 
-From the parameters that have been collected we will generate the private key for the account and connect to the **Steem** blockchain. 
+From the parameters that have been collected we will generate the private key for the account and connect to the **Hive** blockchain. 
 
 ```python
 old_owner_key = str(
     PasswordKey(account, old_password, "owner").get_private_key()
 )
 
-client = steem.Steem(keys=[old_owner_key])
+client = steem.Hive(keys=[old_owner_key])
 ```
 
 ### 4. Configure new keys<a name="configure"></a>
 
-We will now generate new keys for each role using the new password as well as create the json that will be committed to the **Steem** blockchain. We generate new keys using the new password for each of these roles.
+We will now generate new keys for each role using the new password as well as create the json that will be committed to the **Hive** blockchain. We generate new keys using the new password for each of these roles.
 
 ```python
 new_public_keys = {}
@@ -129,7 +129,7 @@ print(result)
 If you update your password and attempt to update it again to quickly you will receive the following error.
 
 ```
-Assert Exception:_db.head_block_time() - account_auth.last_owner_update > STEEM_OWNER_UPDATE_LIMIT: Owner authority can only be updated once an hour.
+Assert Exception:_db.head_block_time() - account_auth.last_owner_update > HIVE_OWNER_UPDATE_LIMIT: Owner authority can only be updated once an hour.
 ```
 
 You will need to wait at least an hour before attempting this again.

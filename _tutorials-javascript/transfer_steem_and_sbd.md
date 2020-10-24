@@ -1,18 +1,18 @@
 ---
-title: 'JS: Transfer Steem And Sbd'
+title: 'JS: Transfer Hive And Hbd'
 position: 21
-description: "_Transfer both STEEM and SBD from one account to another._"
+description: "_Transfer both HIVE and HBD from one account to another._"
 layout: full
-canonical_url: transfer_steem_and_sbd.html
+canonical_url: transfer_hive_and_hbd.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Transfer Steem And Sbd](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/21_transfer_steem_and_sbd) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Transfer Hive And Hbd](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/21_transfer_hive_and_hbd) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
 
 This tutorial will take you through the process of preparing and submitting a `transfer` using the `broadcast` operation. Two demo accounts are provided to use on the `testnet` but all variables can be easily changed and applied to the `production server`.
 
-There is also an alternative method to transfer from one account to another using a `hot signing` link that can be generated via [Steemconnect](https://steemconnect.com/sign/). You create a link using the `to` account, the amount, and a `memo` (optional comments). This [link](https://steemconnect.com/sign/transfer?to=steemitblog&amount=1.000%20STEEM) then allows you to do a transfer simply by adding the login details of the `from` account. This is a very simple way to send a payment request to any other user with the correct details already provided by the link.
+There is also an alternative method to transfer from one account to another using a `hot signing` link that can be generated via [Hiveconnect](https://steemconnect.com/sign/). You create a link using the `to` account, the amount, and a `memo` (optional comments). This [link](https://steemconnect.com/sign/transfer?to=steemitblog&amount=1.000%20HIVE) then allows you to do a transfer simply by adding the login details of the `from` account. This is a very simple way to send a payment request to any other user with the correct details already provided by the link.
 
 ## Intro
 
@@ -20,16 +20,16 @@ We are using the `broadcast.transfer` function provided by the `dsteem` library 
 
 1.  _Username_ - The username of the account making the transfer (`from` account)
 2.  _Privatekey_ - This is the private `active` key of the sender
-3.  _Recipient_ - The account that is receiving the STEEM or SBD (`to` account)
+3.  _Recipient_ - The account that is receiving the HIVE or HBD (`to` account)
 4.  _Memo_ - This is a text field which can be used for a comment on the transfer or it can be left empty
-5.  _Amount_ - This is the amount of STEEM to transfer. This has to be a positive value with 3 decimals in order for the transaction to be completed
-6.  _Type_ - This is the currency of the transfer, STEEM or SBD. This value has to be written ALL CAPS in order for the transaction to be completed
+5.  _Amount_ - This is the amount of HIVE to transfer. This has to be a positive value with 3 decimals in order for the transaction to be completed
+6.  _Type_ - This is the currency of the transfer, HIVE or HBD. This value has to be written ALL CAPS in order for the transaction to be completed
 
-It is noteworthy that Steem Power (VESTS) cannot be transferred with this operation.
+It is noteworthy that Hive Power (VESTS) cannot be transferred with this operation.
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 3.  [**Object creation**](#object) Creating an object to use in the broadcast operation
 4.  [**Broadcast**](#broadcast) Broadcasting the transfer to the blockchain
@@ -54,7 +54,7 @@ Because this tutorial modifies the blockchain, we will use a testnet and predefi
 
 #### 2. Input variables<a name="input"></a>
 
-The required parameters for the transfer operation is recorded via an HTML UI that can be found in the `public/index.html` file. The values are prepopulated in this case with testnet `demo` accounts. The transfer amount is set to `1.000` but any value can be input as long as the sender has enough STEEM to send.
+The required parameters for the transfer operation is recorded via an HTML UI that can be found in the `public/index.html` file. The values are prepopulated in this case with testnet `demo` accounts. The transfer amount is set to `1.000` but any value can be input as long as the sender has enough HIVE to send.
 
 The parameter values are allocated as seen below, once the user clicks on the "Transfer" button.
 
@@ -124,7 +124,7 @@ client.broadcast.transfer(transf, privateKey).then(
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/javascript/20_transfer_STEEM_and_SBD`
+2.  `cd devportal/tutorials/javascript/20_transfer_HIVE_and_HBD`
 3.  `npm i`
 4.  `npm run dev-server` or `npm run start`
 5.  After a few moments, the server should be running at http://localhost:3000/

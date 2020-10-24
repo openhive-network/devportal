@@ -59,7 +59,7 @@ We also specify `blog` to tell the API method that we're looking for followed, n
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git

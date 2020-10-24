@@ -1,7 +1,7 @@
 ---
 title: 'PY: Getting Started'
 position: 0
-description: "The official Steem library for Python is `steem-python`. It comes with a BIP38 encrypted wallet and a practical CLI utility called `steempy`."
+description: "The official Hive library for Python is `steem-python`. It comes with a BIP38 encrypted wallet and a practical CLI utility called `steempy`."
 layout: full
 canonical_url: getting_started.html
 ---              

@@ -14,7 +14,7 @@ api.get_account_history(account_name, -1, 10000) do |history|
     next if op.parent_author.empty? # skip posts
     next unless op.parent_author == account_name # skip comments by account
     
-    url = "https://steemit.com/@#{op.author}/#{op.permlink}"
+    url = "https://hive.blog/@#{op.author}/#{op.permlink}"
     api.get_content(op.author, op.permlink) do |reply|
       puts "Reply by @#{op.author} in discussion: \"#{reply.root_title}\""
       

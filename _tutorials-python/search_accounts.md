@@ -10,18 +10,18 @@ canonical_url: search_accounts.html
 
 
 
-This tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch a list of active authors or trending tags, starting the search from a specified value, and displaying the results on the console.
+This tutorial will explain and show you how to access the **Hive** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch a list of active authors or trending tags, starting the search from a specified value, and displaying the results on the console.
 
 ## Intro
 
-We are using the `lookup_accounts` and `get_trending_tags` functions that are built-in in the official library `steem-python`. These functions allow us to query the Steem blockchain in order to retrieve either a list of active authors or a list of trending tags. The option is available to either get a complete list starting from the first value on the blockchain or starting the list from any other closest match string value as provided by the user. Both of these functions have only two parameters:
+We are using the `lookup_accounts` and `get_trending_tags` functions that are built-in in the official library `steem-python`. These functions allow us to query the Hive blockchain in order to retrieve either a list of active authors or a list of trending tags. The option is available to either get a complete list starting from the first value on the blockchain or starting the list from any other closest match string value as provided by the user. Both of these functions have only two parameters:
 
 1.  _account/aftertag_ - The string value from where to start the search. If this value is left empty the search will start from the first value available
 1.  _limit_ - The maximum number of names/tags that the query retrieves
 
 ## Steps
 
-1.  [**App setup**](#setup) - Library import and Steem class initialisation
+1.  [**App setup**](#setup) - Library import and Hive class initialisation
 1.  [**List selection**](#list) - Selection of the type of list
 1.  [**Get and display account names**](#accounts) - Get a list of account names from the blockchain
 1.  [**Get and display trending tags**](#tags) - Get a list of trending tags from the blockchain
@@ -30,14 +30,14 @@ We are using the `lookup_accounts` and `get_trending_tags` functions that are bu
 
 In this tutorial we use 2 packages, `pick` - helps us to select the query type interactively. `steem` - steem-python library for interaction with the Blockchain.
 
-First we import both libraries and initialize Steem class
+First we import both libraries and initialize Hive class
 
 ```python
-from steem import Steem
+from steem import Hive
 from pick import pick
 
 
-s = Steem()
+s = Hive()
 ```
 
 #### 2. List selection<a name="list"></a>

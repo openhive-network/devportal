@@ -1,10 +1,6 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'scrape/api_definitions_job'
-require 'generate/tutorials_job/base'
-require 'generate/tutorials_job/javascript'
-require 'generate/tutorials_job/python'
-require 'generate/tutorials_job/ruby'
 
 require 'rake/testtask'
 require 'net/https'
@@ -15,52 +11,11 @@ require 'html-proofer'
 namespace :scrape do
   desc "Scrape API Definitions"
   task :api_defs do
-    url = ENV.fetch('TEST_NODE', 'https://api.openhive.network')
+    url = ENV.fetch('TEST_NODE', 'https://api.hive.blog')
     job = Scrape::ApiDefinitionsJob.new(url: url)
     count = job.perform
     
     puts "Methods added or changed: #{count}"
-  end
-end
-  
-namespace :gen do
-  desc 'Generate all known tutorial README.md files.'
-  task :tutorials do
-    puts '=' * 80
-    puts "JS-Tutorials:"
-    Rake::Task["gen:tutorials:js"].invoke
-    puts '=' * 80
-    puts "PY-Tutorials:"
-    Rake::Task["gen:tutorials:py"].invoke
-    puts '=' * 80
-    puts "RB-Tutorials:"
-    Rake::Task["gen:tutorials:rb"].invoke
-  end
-  
-  namespace :tutorials do
-    desc 'Generate JS-Tutorials'
-    task :js, [:num, :force] do |t, args|
-      job = Generate::TutorialsJob::Javascript.new(num: args[:num], force: args[:force])
-      count = job.perform
-    
-      puts "Tutorials added or changed: #{count}"
-    end
-    
-    desc 'Generate PY-Tutorials'
-    task :py, [:num, :force] do |t, args|
-      job = Generate::TutorialsJob::Python.new(num: args[:num], force: args[:force])
-      count = job.perform
-      
-      puts "Tutorials added or changed: #{count}"
-    end
-    
-    desc 'Generate RB-Tutorials'
-    task :rb, [:num, :force] do |t, args|
-      job = Generate::TutorialsJob::Ruby.new(num: args[:num], force: args[:force])
-      count = job.perform
-      
-      puts "Tutorials added or changed: #{count}"
-    end
   end
 end
 
@@ -145,16 +100,16 @@ namespace :test do
   desc "Tests the curl examples of api definitions.  Known APIs: #{KNOWN_APIS.join(' ')}"
   task :curl, [:apis] do |t, args|
     smoke = 0
-    url = ENV.fetch('TEST_NODE', 'https://api.openhive.network')
+    url = ENV.fetch('TEST_NODE', 'https://api.hive.blog')
     apis = [args[:apis].split(' ').map(&:to_sym)].flatten if !!args[:apis]
     apis ||= KNOWN_APIS
     
     version = `curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_version", "params":[], "id":1}' #{url}`
     version = JSON[version]['result']
     blockchain_version = version['blockchain_version']
-    steem_rev = version['steem_revision'][0..5]
+    hive_rev = version['hive_revision'][0..5]
     fc_rev = version['fc_revision'][0..5]
-    puts "node: #{url}; blockchain_version: #{blockchain_version}; steem_rev: #{steem_rev}; fc_rev: #{fc_rev}"
+    puts "node: #{url}; blockchain_version: #{blockchain_version}; hive_rev: #{hive_rev}; fc_rev: #{fc_rev}"
     
     apis.each do |api|
       file_name = "_data/apidefinitions/#{api}.yml"

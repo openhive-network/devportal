@@ -4,7 +4,7 @@ position: 1
 description: Provides a way to get the most performance on specific hardware.
 exclude: true
 layout: hive-post
-canonical_url: https://steemit.com/steemit/@gerbino/mira-performance-tuning
+canonical_url: https://hive.blog/steemit/@gerbino/mira-performance-tuning
 ---
 
 <center>

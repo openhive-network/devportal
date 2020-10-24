@@ -4,7 +4,7 @@ gem 'jekyll'
 gem 'neatjson'
 gem 'rake'
 gem 'git'
-gem 'steem-ruby'
+gem 'hive-ruby'
 gem 'html-proofer'
 
 group :jekyll_plugins do

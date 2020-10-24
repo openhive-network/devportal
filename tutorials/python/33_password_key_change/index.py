@@ -12,9 +12,9 @@ old_owner_key = str(
     PasswordKey(account, old_password, "owner").get_private_key()
 )
 
-client = steem.Steem(keys=[old_owner_key])
+client = steem.Hive(keys=[old_owner_key])
 
-#client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+#client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 
 new_public_keys = {}
 

@@ -4,9 +4,9 @@ import { Client, PrivateKey } from 'dsteem';
 let opts = {};
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
-//connect to a Steem node. This is currently setup on production, but we recommend using a testnet like https://testnet.steem.vc
-const client = new Client('https://api.steemit.com', opts);
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+//connect to a Hive node. This is currently setup on production, but we recommend using a testnet like https://testnet.steem.vc
+const client = new Client('https://api.hive.blog', opts);
 window.client = client;
 
 //This is a convenience function for the UI.

@@ -7,7 +7,7 @@
 
 
 
-    To enable this API for `steemd`, the following is required in `config.ini`
+    To enable this API for `hived`, the following is required in `config.ini`
     by specifying:
 
     ```ini
@@ -119,29 +119,29 @@
               "precision": 3,
               "nai": "@@000000021"
             },
-            "sbd_balance": {
+            "hbd_balance": {
               "amount": "8716535",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "sbd_seconds": "0",
-            "sbd_seconds_last_update": "2018-11-12T02:39:39",
-            "sbd_last_interest_payment": "2018-11-12T02:39:39",
-            "savings_sbd_balance": {
+            "hbd_seconds": "0",
+            "hbd_seconds_last_update": "2018-11-12T02:39:39",
+            "hbd_last_interest_payment": "2018-11-12T02:39:39",
+            "savings_hbd_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "savings_sbd_seconds": "0",
-            "savings_sbd_seconds_last_update": "1970-01-01T00:00:00",
-            "savings_sbd_last_interest_payment": "1970-01-01T00:00:00",
+            "savings_hbd_seconds": "0",
+            "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+            "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
             "savings_withdraw_requests": 0,
-            "reward_sbd_balance": {
+            "reward_hbd_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "reward_steem_balance": {
+            "reward_hive_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000021"
@@ -151,7 +151,7 @@
               "precision": 6,
               "nai": "@@000000037"
             },
-            "reward_vesting_steem": {
+            "reward_vesting_hive": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000021"
@@ -252,12 +252,12 @@
             "agent": "smitop",
             "ratification_deadline": "2038-01-19T03:14:06",
             "escrow_expiration": "2038-01-19T03:14:07",
-            "sbd_balance": {
+            "hbd_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "steem_balance": {
+            "hive_balance": {
               "amount": "1",
               "precision": 3,
               "nai": "@@000000021"
@@ -331,7 +331,7 @@
     expected_response_json: '{"withdrawals":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_savings_withdrawals", "params": {"start":"temp"}, "id":1}'
-  - api_method: database_api.find_sbd_conversion_requests
+  - api_method: database_api.find_hbd_conversion_requests
     purpose: |
       Returns the list of HBD conversion requests for an account.  Parameters: `account:string`
 
@@ -342,8 +342,8 @@
     parameter_json: '{"account":""}'
     expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_sbd_conversion_requests", "params": {"account":"hiveio"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.find_sbd_conversion_requests", "params": {"account":"alice"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_hbd_conversion_requests", "params": {"account":"hiveio"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_hbd_conversion_requests", "params": {"account":"alice"}, "id":1}'
   - api_method: database_api.find_vesting_delegation_expirations
     since: HF17
     purpose: |
@@ -476,11 +476,11 @@
                 "nai": "@@000000021"
               },
               "maximum_block_size": 131072,
-              "sbd_interest_rate": 1000,
+              "hbd_interest_rate": 1000,
               "account_subsidy_budget": 797,
               "account_subsidy_decay": 347321
             },
-            "sbd_exchange_rate": {
+            "hbd_exchange_rate": {
               "base": {
                 "amount": "0",
                 "precision": 3,
@@ -492,7 +492,7 @@
                 "nai": "@@000000021"
               }
             },
-            "last_sbd_exchange_update": "1970-01-01T00:00:00",
+            "last_hbd_exchange_update": "1970-01-01T00:00:00",
             "last_work": "0000000000000000000000000000000000000000000000000000000000000000",
             "running_version": "0.23.0",
             "hardfork_version_vote": "0.23.0",
@@ -735,7 +735,7 @@
         "HIVE_POW_APR_PERCENT": 750,
         "HIVE_PRODUCER_APR_PERCENT": 750,
         "HIVE_PROXY_TO_SELF_ACCOUNT": "",
-        "HIVE_SBD_INTEREST_COMPOUND_INTERVAL_SEC": 2592000,
+        "HIVE_HBD_INTEREST_COMPOUND_INTERVAL_SEC": 2592000,
         "HIVE_SECONDS_PER_YEAR": 31536000,
         "HIVE_PROPOSAL_FUND_PERCENT_HF0": 0,
         "HIVE_PROPOSAL_FUND_PERCENT_HF21": 1000,
@@ -798,7 +798,7 @@
         "HIVE_DECAY_BACKSTOP_PERCENT": 9000,
         "HIVE_BLOCK_GENERATION_POSTPONED_TX_LIMIT": 5,
         "HIVE_PENDING_TRANSACTION_EXECUTION_LIMIT": 200000,
-        "HIVE_TREASURY_ACCOUNT": "steem.dao",
+        "HIVE_TREASURY_ACCOUNT": "hive.fund",
         "HIVE_TREASURY_FEE": 10000,
         "HIVE_PROPOSAL_MAINTENANCE_PERIOD": 3600,
         "HIVE_PROPOSAL_MAINTENANCE_CLEANUP": 86400,
@@ -856,22 +856,22 @@
           "precision": 3,
           "nai": "@@000000021"
         },
-        "init_sbd_supply": {
+        "init_hbd_supply": {
           "amount": "7000000000",
           "precision": 3,
           "nai": "@@000000013"
         },
-        "current_sbd_supply": {
+        "current_hbd_supply": {
           "amount": "35050710256",
           "precision": 3,
           "nai": "@@000000013"
         },
-        "confidential_sbd_supply": {
+        "confidential_hbd_supply": {
           "amount": "0",
           "precision": 3,
           "nai": "@@000000013"
         },
-        "total_vesting_fund_steem": {
+        "total_vesting_fund_hive": {
           "amount": "146016220388",
           "precision": 3,
           "nai": "@@000000021"
@@ -881,7 +881,7 @@
           "precision": 6,
           "nai": "@@000000037"
         },
-        "total_reward_fund_steem": {
+        "total_reward_fund_hive": {
           "amount": "0",
           "precision": 3,
           "nai": "@@000000021"
@@ -892,13 +892,13 @@
           "precision": 6,
           "nai": "@@000000037"
         },
-        "pending_rewarded_vesting_steem": {
+        "pending_rewarded_vesting_hive": {
           "amount": "154999023",
           "precision": 3,
           "nai": "@@000000021"
         },
-        "sbd_interest_rate": 1000,
-        "sbd_print_rate": 0,
+        "hbd_interest_rate": 1000,
+        "hbd_print_rate": 0,
         "maximum_block_size": 131072,
         "required_actions_partition_percent": 2500,
         "current_aslot": 41585977,
@@ -909,8 +909,8 @@
         "delegation_return_period": 432000,
         "reverse_auction_seconds": 300,
         "available_account_subsidies": 120334411,
-        "sbd_stop_percent": 1000,
-        "sbd_start_percent": 900,
+        "hbd_stop_percent": 1000,
+        "hbd_start_percent": 900,
         "next_maintenance_time": "2019-12-14T23:18:24",
         "last_budget_time": "2019-12-14T22:18:24",
         "content_reward_percent": 6500,
@@ -1009,7 +1009,7 @@
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]}}'
     expected_response_json: '{"keys":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.get_potential_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
+    - '{"jsonrpc":"2.0", "method":"database_api.get_potential_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
       "id":1}'
   - api_method: database_api.get_required_signatures
     purpose: This API will take a partially signed transaction and a set of public
@@ -1018,7 +1018,7 @@
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]},"available_keys":[]}'
     expected_response_json: '{"keys":[]}' # TODO - recheck in HF23
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.get_required_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}}],"extensions":[],"signatures":[]},"available_keys":[]},
+    - '{"jsonrpc":"2.0", "method":"database_api.get_required_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]},"available_keys":[]},
       "id":1}'
   - api_method: database_api.get_reward_funds
     since: HF17
@@ -1052,7 +1052,7 @@
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]}}'
     expected_response_json: '{"hex":"00000000000000000000000000"}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.get_transaction_hex", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
+    - '{"jsonrpc":"2.0", "method":"database_api.get_transaction_hex", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
       "id":1}'
   - api_method: database_api.get_version
     since: HF20
@@ -1063,9 +1063,9 @@
     expected_response_json: |
       {
         "blockchain_version": "0.23.0",
-        "steem_revision": "5cda10a488cf77f68549ec6d3a6be9af2ea9351b",
+        "hive_revision": "5cda10a488cf77f68549ec6d3a6be9af2ea9351b",
         "fc_revision": "5cda10a488cf77f68549ec6d3a6be9af2ea9351b",
-        "chain_id": "0000000000000000000000000000000000000000000000000000000000000000"
+        "chain_id": "beeab0de00000000000000000000000000000000000000000000000000000000"
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_version", "id":1}'
@@ -1112,7 +1112,7 @@
             "nai": "@@000000021"
           },
           "maximum_block_size": 131072,
-          "sbd_interest_rate": 1000,
+          "hbd_interest_rate": 1000,
           "account_subsidy_budget": 797,
           "account_subsidy_decay": 347321
         },
@@ -1253,29 +1253,29 @@
               "precision": 3,
               "nai": "@@000000021"
             },
-            "sbd_balance": {
+            "hbd_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "sbd_seconds": "0",
-            "sbd_seconds_last_update": "1970-01-01T00:00:00",
-            "sbd_last_interest_payment": "1970-01-01T00:00:00",
-            "savings_sbd_balance": {
+            "hbd_seconds": "0",
+            "hbd_seconds_last_update": "1970-01-01T00:00:00",
+            "hbd_last_interest_payment": "1970-01-01T00:00:00",
+            "savings_hbd_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "savings_sbd_seconds": "0",
-            "savings_sbd_seconds_last_update": "1970-01-01T00:00:00",
-            "savings_sbd_last_interest_payment": "1970-01-01T00:00:00",
+            "savings_hbd_seconds": "0",
+            "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+            "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
             "savings_withdraw_requests": 0,
-            "reward_sbd_balance": {
+            "reward_hbd_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "reward_steem_balance": {
+            "reward_hive_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000021"
@@ -1285,7 +1285,7 @@
               "precision": 6,
               "nai": "@@000000037"
             },
-            "reward_vesting_steem": {
+            "reward_vesting_hive": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000021"
@@ -1407,7 +1407,7 @@
             "parent_author": "runicar",
             "parent_permlink": "re-libert-libert-re-runicar-re-libert-libert-re-runicar-ykwyxgj6-20181128t063100538z",
             "title": "",
-            "body": "13\n\nPosted using [Partiko Android](https://steemit.com/@partiko-android)",
+            "body": "13\n\nPosted using [Partiko Android](https://hive.blog/@partiko-android)",
             "json_metadata": "{\"app\":\"partiko\"}",
             "last_update": "2018-11-28T06:33:57",
             "created": "2018-11-28T06:33:57",
@@ -1442,7 +1442,7 @@
               "precision": 3,
               "nai": "@@000000013"
             },
-            "percent_steem_dollars": 10000,
+            "percent_hbd": 10000,
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,
@@ -1510,12 +1510,12 @@
             "agent": "ongame",
             "ratification_deadline": "2018-11-23T17:31:26",
             "escrow_expiration": "2018-11-24T17:31:26",
-            "sbd_balance": {
+            "hbd_balance": {
               "amount": "0",
               "precision": 3,
               "nai": "@@000000013"
             },
-            "steem_balance": {
+            "hive_balance": {
               "amount": "4832",
               "precision": 3,
               "nai": "@@000000021"
@@ -1659,7 +1659,7 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":[0], "limit":10, "order":"by_from_id"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":["2018-12-07T16:54:03", "hiveio", 0], "limit":10, "order":"by_complete_from_id"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":["", "1970-01-01T00:00:00", 0], "limit":10, "order":"by_to_complete"}, "id":1}'
-  - api_method: database_api.list_sbd_conversion_requests
+  - api_method: database_api.list_hbd_conversion_requests
     purpose: |
       Returns the list of HBD conversion requests for an account.  Parameters: `start:array`, `limit:int`, `order:string`
 
@@ -1675,7 +1675,7 @@
       | `["hiveio", 0]` | 10 | `by_account` | Queries a conversion request for hiveio, limit to 10 results, order by account name. |
       | `["2018-12-07T16:54:03", 0]` | 10 | `by_conversion_date`| Queries a conversion request from this date, limit to 10 results, order by conversion date. |
 
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_sbd_conversion_requests' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_hbd_conversion_requests' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: | # TODO - recheck in HF23
       {
@@ -1694,8 +1694,8 @@
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.list_sbd_conversion_requests", "params": {"start":["hiveio", 0], "limit":10, "order":"by_account"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_sbd_conversion_requests", "params": {"start":["2018-12-07T16:54:03", 0], "limit":10, "order":"by_conversion_date"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_hbd_conversion_requests", "params": {"start":["hiveio", 0], "limit":10, "order":"by_account"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_hbd_conversion_requests", "params": {"start":["2018-12-07T16:54:03", 0], "limit":10, "order":"by_conversion_date"}, "id":1}'
   - api_method: database_api.list_vesting_delegation_expirations
     since: HF17
     purpose: |
@@ -1923,11 +1923,11 @@
                 "nai": "@@000000021"
               },
               "maximum_block_size": 131072,
-              "sbd_interest_rate": 1000,
+              "hbd_interest_rate": 1000,
               "account_subsidy_budget": 797,
               "account_subsidy_decay": 347321
             },
-            "sbd_exchange_rate": {
+            "hbd_exchange_rate": {
               "base": {
                 "amount": "0",
                 "precision": 3,
@@ -1939,7 +1939,7 @@
                 "nai": "@@000000021"
               }
             },
-            "last_sbd_exchange_update": "1970-01-01T00:00:00",
+            "last_hbd_exchange_update": "1970-01-01T00:00:00",
             "last_work": "000000127cb0e335667f30100bc1a061175c2d789f808e0e9ac82ee70fa8e604",
             "running_version": "0.0.0",
             "hardfork_version_vote": "0.0.0",
@@ -1969,7 +1969,7 @@
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]}}'
     expected_response_json: '{"valid":false}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.verify_authority", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
+    - '{"jsonrpc":"2.0", "method":"database_api.verify_authority", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
       "id":1}'
   - api_method: database_api.verify_signatures
     purpose: This is a general purpose API that checks signatures against accounts
@@ -2358,7 +2358,7 @@
             "last_virtual_emission_time": "1970-01-01T00:00:00",
             "allow_downvotes": true,
             "market_maker": {
-              "steem_balance": {
+              "hive_balance": {
                 "amount": "0",
                 "precision": 3,
                 "nai": "@@000000021"

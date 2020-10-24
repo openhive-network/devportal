@@ -10,11 +10,11 @@ canonical_url: get_follower_and_following_list.html
 
 
 
-This tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of authors being followed or authors that a specified user is following.
+This tutorial will explain and show you how to access the **Hive** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of authors being followed or authors that a specified user is following.
 
 ## Intro
 
-We are using the `get_followers` and `get_following` functions that are built into the official library `steem-python`. These functions allow us to query the Steem blockchain in order to retrieve either a list of authors that are being followed or a list of authors that are currently following a specified user. There are 4 parameters required to execute these functions:
+We are using the `get_followers` and `get_following` functions that are built into the official library `steem-python`. These functions allow us to query the Hive blockchain in order to retrieve either a list of authors that are being followed or a list of authors that are currently following a specified user. There are 4 parameters required to execute these functions:
 
 1.  _account_ - The specific user for which the follower(ing) list will be retrieved
 1.  _start follower(ing)_ - The starting letter(s) or name for the search query. This value can be set as an empty string in order to include all authors starting from "a"
@@ -32,13 +32,13 @@ We are using the `get_followers` and `get_following` functions that are built in
 
 In this tutorial we use 2 packages, `pick` - helps us to select the query type interactively. `steem` - steem-python library, interaction with Blockchain.
 
-First we import both libraries and initialize Steem class
+First we import both libraries and initialize Hive class
 
 ```python
 from pick import pick
-from steem import Steem
+from steem import Hive
 
-s = Steem()
+s = Hive()
 ```
 
 #### 2. Input variables <a name="input"></a>

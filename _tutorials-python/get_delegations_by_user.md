@@ -10,11 +10,11 @@ canonical_url: get_delegations_by_user.html
 
 
 
-In this tutorial we will explain and show you how to pull a list of both active and expiring vesting delegations from the **Steem** blockchain using the `steem` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we will explain and show you how to pull a list of both active and expiring vesting delegations from the **Hive** blockchain using the `steem` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to pull information from the blockchain. We are using the `get_vesting_delegations` and `get_expiring_vesting_delegations` methods found within the `steem` class in the library. Each of these functions are executed separately. It should be noted that when a delegation is cancelled the VESTS will only be available again after 7 days. The value of the delegation can also be changed at any time, either decreased or increased. To get active delegations we need the following parameters:
+The Hive python library has a built-in function to pull information from the blockchain. We are using the `get_vesting_delegations` and `get_expiring_vesting_delegations` methods found within the `steem` class in the library. Each of these functions are executed separately. It should be noted that when a delegation is cancelled the VESTS will only be available again after 7 days. The value of the delegation can also be changed at any time, either decreased or increased. To get active delegations we need the following parameters:
 
 1.  _account_ - The user account that the delegation list is being queried for
 1.  _from-account_ - The account name from where to start the search. This parameter can be left empty to pull a list from the first delegatee
@@ -39,11 +39,11 @@ We import the libraries and connect to the `production` server.
 
 ```python
 from pick import pick
-from steem import Steem
+from steem import Hive
 
 import pprint
 
-client = Steem()
+client = Hive()
 ```
 
 `pprint` is used to print the query results in an easier to read format

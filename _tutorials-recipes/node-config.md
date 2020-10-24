@@ -1,13 +1,13 @@
 ---
-title: Steem Node Config
+title: Hive Node Config
 position: 1
-description: All `config.ini` options available to `steemd`
+description: All `config.ini` options available to `hived`
 exclude: true
 layout: full
 canonical_url: node-config.html
 ---
 
-When running `steemd` for the first time, once the startup banner appears, press `Ctrl+C` to exit.  Running `steemd` like this will generate a data directory and a pristine copy of `config.ini`.
+When running `hived` for the first time, once the startup banner appears, press `Ctrl+C` to exit.  Running `hived` like this will generate a data directory and a pristine copy of `config.ini`.
 
 Also refer to:
 
@@ -700,7 +700,7 @@ See: [seednodes.txt](https://github.com/steemit/steem/blob/master/doc/seednodes.
 
 ```ini
 # example, override compiled seeds
-p2p-seed-node = seed-east.steemit.com:2001 seed-central.steemit.com:2001 seed-west.steemit.com:2001 steem-seed1.abit-more.com:2001 52.74.152.79:2001 seed.steemd.com:34191 anyx.co:2001 seed.xeldal.com:12150 seed.steemnodes.com:2001 seed.liondani.com:2016 gtg.steem.house:2001 seed.jesta.us:2001 steemd.pharesim.me:2001 5.9.18.213:2001 lafonasteem.com:2001 seed.rossco99.com:2001 steem-seed.altcap.io:40696 seed.roelandp.nl:2001 steem.global:2001 seed.esteem.ws:2001 94.23.33.61:2001 104.199.118.92:2001 192.99.4.226:2001 seed.bhuz.info:2001 seed.steemviz.com:2001 steem-seed.lukestokes.info:2001 seed.blackrift.net:2001 seed.followbtcnews.com:2001 node.mahdiyari.info:2001 seed.jerrybanfield.com:2001 seed.windforce.farm:2001 seed.curiesteem.com:2001 seed.riversteem.com:2001 steem-seed.furion.me:2001 148.251.237.104:2001 seed1.blockbrothers.io:2001 
+p2p-seed-node = seed-east.hive.blog:2001 seed-central.hive.blog:2001 seed-west.hive.blog:2001 steem-seed1.abit-more.com:2001 52.74.152.79:2001 seed.hiveblocks.com:34191 anyx.co:2001 seed.xeldal.com:12150 seed.steemnodes.com:2001 seed.liondani.com:2016 gtg.steem.house:2001 seed.jesta.us:2001 hived.pharesim.me:2001 5.9.18.213:2001 lafonasteem.com:2001 seed.rossco99.com:2001 steem-seed.altcap.io:40696 seed.roelandp.nl:2001 steem.global:2001 seed.esteem.ws:2001 94.23.33.61:2001 104.199.118.92:2001 192.99.4.226:2001 seed.bhuz.info:2001 seed.steemviz.com:2001 steem-seed.lukestokes.info:2001 seed.blackrift.net:2001 seed.followbtcnews.com:2001 node.mahdiyari.info:2001 seed.jerrybanfield.com:2001 seed.windforce.farm:2001 seed.curiesteem.com:2001 seed.riversteem.com:2001 steem-seed.furion.me:2001 148.251.237.104:2001 seed1.blockbrothers.io:2001 
 ```
 
 ```ini
@@ -716,7 +716,7 @@ p2p-seed-node = 104.236.82.250:2001
 p2p-seed-node = 212.47.249.84:40696
 p2p-seed-node = 162.213.199.171:34191
 p2p-seed-node = steem.kushed.com:2001
-p2p-seed-node = steemd.pharesim.me:2001
+p2p-seed-node = hived.pharesim.me:2001
 p2p-seed-node = seed.steemed.net:2001
 p2p-seed-node = steem.clawmap.com:2001
 p2p-seed-node = seed.steemnodes.com:2001
@@ -964,9 +964,9 @@ webserver-ws-endpoint = 0.0.0.0:8752
 
 Unix http endpoint for webserver requests (in addition to http and ws).
 
-Intended for node operators who use nginx or jussi on their front ends and `steemd` running on the same box.  Since TCP over localhost is inefficient, the ability to use unix-sockets was added.
+Intended for node operators who use nginx or jussi on their front ends and `hived` running on the same box.  Since TCP over localhost is inefficient, the ability to use unix-sockets was added.
 
-Example usage (assuming option set to `/tmp/steemd.sock`):
+Example usage (assuming option set to `/tmp/hived.sock`):
 
 ```bash
 curl -s --data '{
@@ -974,14 +974,14 @@ curl -s --data '{
   "method": "condenser_api.get_account_count",
   "params": [],
   "id": 1
-}' --unix-socket /tmp/steemd.sock http:
+}' --unix-socket /tmp/hived.sock http:
 ```
 
 See: [#3205](https://github.com/steemit/steem/pull/3205)
 
 ```ini
 # example
-webserver-unix-endpoint = /tmp/steemd.sock
+webserver-unix-endpoint = /tmp/hived.sock
 ```
 
 ### `rpc-endpoint`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
@@ -1009,7 +1009,7 @@ webserver-thread-pool-size = 32
 
 ### `enable-stale-production`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-Enable block production, even if the chain is stale.  Leaving this `false` will keep `steemd` from producing blocks until we receive a recent block.
+Enable block production, even if the chain is stale.  Leaving this `false` will keep `hived` from producing blocks until we receive a recent block.
 
 ```ini
 # default

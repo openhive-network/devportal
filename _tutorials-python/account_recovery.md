@@ -10,13 +10,13 @@ canonical_url: account_recovery.html
 
 
 
-In this tutorial we show you how to request account recovery for a user and also recover that account on the **Steem** blockchain using the [beem-python](https://github.com/holgern/beem) library.
+In this tutorial we show you how to request account recovery for a user and also recover that account on the **Hive** blockchain using the [beem-python](https://github.com/holgern/beem) library.
 
 The recovery system is used to recover hacked accounts. In the event that you lose your password, your account is lost forever. You must know at least one old password that was used on your account within 30 days. This recovery process can only be executed once an hour. Stolen Account Recovery gives the rightful account owner 30 days to recover their account from the moment the thief changed their owner key.
 
 ## Intro
 
-There are two parties involved in recovering an account. The user that requires their account to be recovered, and the recovery account (or trustee) which is the account that created the username on the blockchain. For anyone creating their account through the main Steemit webiste, their recovery account would be Steemit. If however your account was created for you by another user, that user is the one that would have to initialize your account recovery. The recovery account can be changed however to whichever user you require.
+There are two parties involved in recovering an account. The user that requires their account to be recovered, and the recovery account (or trustee) which is the account that created the username on the blockchain. For anyone creating their account through the main Hive webiste, their recovery account would be Hive. If however your account was created for you by another user, that user is the one that would have to initialize your account recovery. The recovery account can be changed however to whichever user you require.
 
 For this tutorial we are using the `beem-python` library which contains the required functions to execute this recovery process. There are two main sections to this process. Firstly, there is the `request_account_recovery` function where the owner is verified and the intent for account recovery is transmitted to the blockchain. The second part is the actual `recover_account` process. Along with this we also create a complete set of new account keys (posting, active, owner and memo) in order for the account to function properly. If these keys are not generated you will receive an error when trying to log in with your new password: `This password is bound to your account's owner key and can not be used to login to this site. However, you can use it to update your password to obtain a more secure set of keys`
 
@@ -58,7 +58,7 @@ We import the libraries for the application.
 ```python
 import beembase
 from beem.account import Account
-from beem import Steem
+from beem import Hive
 from beem.transactionbuilder import TransactionBuilder
 from beemgraphenebase.account import PasswordKey
 from beembase.objects import Permission
@@ -76,14 +76,14 @@ recovery_account = input('account owner (recovery account): ')
 recovery_account_private_key = input('account owner private ACTIVE key: ')
 
 #connect to production server with active key
-s = Steem(node=['https://api.steemit.com'], keys=[recovery_account_private_key])
+s = Hive(node=['https://api.hive.blog'], keys=[recovery_account_private_key])
 ```
 
 The new password for the account to be recovered must be at least 32 characters long.
 
 #### 2. Owner key creation <a name="owner_key"></a>
 
-Both new and old owner keys are generated from the passwords supplied in the first step. For a more in depth look at creating keys please refer to [this](https://developers.steem.io/tutorials-python/password_key_change) tutorial on changing your password and keys.
+Both new and old owner keys are generated from the passwords supplied in the first step. For a more in depth look at creating keys please refer to [this](https://developers.hive.io/tutorials-python/password_key_change) tutorial on changing your password and keys.
 
 ```python
 #create new account owner keys
@@ -97,7 +97,7 @@ old_account_owner_private_key_string = str(old_account_owner_private_key)
 old_account_owner_public_key = str(old_account_owner_private_key.pubkey)
 ```
 
-The Steem blockchain knows the history of your account, and every owner key that has ever been used for it. When you enter your recent password, it uses that to generate an owner key that can match up to a previous owner public key on the account. Without that password and owner key, the recovery account can't do anything to recover your account.
+The Hive blockchain knows the history of your account, and every owner key that has ever been used for it. When you enter your recent password, it uses that to generate an owner key that can match up to a previous owner public key on the account. Without that password and owner key, the recovery account can't do anything to recover your account.
 
 #### 3. Recovery request operation and transmission <a name="recovery_request"></a>
 
@@ -183,7 +183,7 @@ op_account_update_data = {
 The steem class is initialised once more but with the required WIF for this specific section. This is necessary when different keys are required at various steps. The `recover_account` function is transmitted to the blockchain via the `TransactionBuilder` operation in order to append the new private keys. The operation is then broadcast.
 
 ```python
-s = Steem(node=['https://api.steemit.com'], keys=[recovery_account_private_key])
+s = Hive(node=['https://api.hive.blog'], keys=[recovery_account_private_key])
 
 op_recover_account = beembase.operations.Recover_account(**op_recover_account_data)
 
@@ -206,7 +206,7 @@ print(result)
 The same basic process is followed as in the previous step. For this step however we require the new owner private key which is initialised in the steem class. The `TransactionBuilder` operation is used once more for the transmission to the blockchain.
 
 ```python
-s = Steem(node=['https://api.steemit.com'], keys=[new_account_owner_private_key])
+s = Hive(node=['https://api.hive.blog'], keys=[new_account_owner_private_key])
 
 op_account_update = beembase.operations.Account_update(**op_account_update_data)
 

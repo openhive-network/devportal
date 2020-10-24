@@ -1,7 +1,7 @@
 ---
 title: 'JS: Create Account'
 position: 26
-description: "_Create Steem account using Steemconnect as well as with client-side signing._"
+description: "_Create Hive account using Hiveconnect as well as with client-side signing._"
 layout: full
 canonical_url: create_account.html
 ---              
@@ -10,18 +10,18 @@ canonical_url: create_account.html
 
 
 
-This tutorial will show how to search for a valid account name and then create a new account by means of Resource Credits or STEEM. This tutorial runs on the main Steem blockchain so extra care needs to be taken as any operation will affect real accounts.
+This tutorial will show how to search for a valid account name and then create a new account by means of Resource Credits or HIVE. This tutorial runs on the main Hive blockchain so extra care needs to be taken as any operation will affect real accounts.
 
 ## Intro
 
-This tutorial will show few functions such as querying account by name and check if username is taken or available to register. We are using the `call` function provided by the `dsteem` library to pull account from the Steem blockchain. We then create proper private keys for new account. A simple HTML interface is used to enter payment of account creation fee and create account right inside tutorial. We use the `account_create` function to commit the transaction to the blockchain. This function is used to create what is called a "non-discounted account". This means that the creator account needs to supply the exact `account_creation_fee` in STEEM in order for the transaction to process successfully. Currently this value is set to 3 STEEM. There is a second method of creating accounts using tokens. These are called "discounted accounts". In stead of STEEM, the `account_creation_fee` is paid in RC (resource credits). There are however a limited amount of discounted accounts that can be claimed which is decided upon by the witnesses. This account creation process is done in two steps, first claiming an account and then creating the account.
+This tutorial will show few functions such as querying account by name and check if username is taken or available to register. We are using the `call` function provided by the `dsteem` library to pull account from the Hive blockchain. We then create proper private keys for new account. A simple HTML interface is used to enter payment of account creation fee and create account right inside tutorial. We use the `account_create` function to commit the transaction to the blockchain. This function is used to create what is called a "non-discounted account". This means that the creator account needs to supply the exact `account_creation_fee` in HIVE in order for the transaction to process successfully. Currently this value is set to 3 HIVE. There is a second method of creating accounts using tokens. These are called "discounted accounts". In stead of HIVE, the `account_creation_fee` is paid in RC (resource credits). There are however a limited amount of discounted accounts that can be claimed which is decided upon by the witnesses. This account creation process is done in two steps, first claiming an account and then creating the account.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Generate private keys**](#generate-keys) Generate proper keys for new account
-4.  [**Create account**](#create-account) Create account via Client-side or Steemconnect
+4.  [**Create account**](#create-account) Create account via Client-side or Hiveconnect
 
 #### 1. App setup <a name="app-setup"></a>
 
@@ -33,9 +33,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -62,7 +62,7 @@ We will then do simple check if account is taken or not.
 
 #### 3. Generate private keys <a name="generate-keys"></a>
 
-After we know that account is available to register, we will fill form with password we wish for that account and enter creation fee. Note, that creation fees are "burned" once the new account is created. The creator account wishes to provide the new account with VEST (as per previous account creation process) they can do so by following the `delegate_vesting_shares` process (refer tutorial [#27](https://developers.steem.io/tutorials-javascript/delegate_power)). Irrespective of which account creation method is being followed, the process for generating new accounts keys is the same for both.
+After we know that account is available to register, we will fill form with password we wish for that account and enter creation fee. Note, that creation fees are "burned" once the new account is created. The creator account wishes to provide the new account with VEST (as per previous account creation process) they can do so by following the `delegate_vesting_shares` process (refer tutorial [#27](https://developers.hive.io/tutorials-javascript/delegate_power)). Irrespective of which account creation method is being followed, the process for generating new accounts keys is the same for both.
 
 ```javascript
 const username = document.getElementById('username').value;
@@ -154,7 +154,7 @@ if (_account[0].pending_claimed_accounts == 0) {
         'claim_account',
         {
             creator: creator,
-            fee: '0.000 STEEM',
+            fee: '0.000 HIVE',
             extensions: [],
         }
     ];

@@ -1,7 +1,7 @@
 ---
 title: 'JS: Power Down'
 position: 25
-description: "_Perform a power down on all or part of an account's VESTS using either Steemconnect or client-side signing._"
+description: "_Perform a power down on all or part of an account's VESTS using either Hiveconnect or client-side signing._"
 layout: full
 canonical_url: power_down.html
 ---              
@@ -10,18 +10,18 @@ canonical_url: power_down.html
 
 
 
-This tutorial runs on the main Steem blockchain. Therefore, any accounts used here will affect real funds on the live network. **Use with caution.**
+This tutorial runs on the main Hive blockchain. Therefore, any accounts used here will affect real funds on the live network. **Use with caution.**
 
 ## Intro
 
-This tutorial will demonstrate a few functions such as querying account by name and determining the vesting balance of the related account. We are using the `call` function provided by the `dsteem` library to pull account data from the Steem blockchain. We then calculate STEEM Power from the VESTS (vesting shares) for the convenience of the user. We will use a simple HTML interface to capture the account and its VESTS. It also has an interactive UI to perform a power down in full or in part.
+This tutorial will demonstrate a few functions such as querying account by name and determining the vesting balance of the related account. We are using the `call` function provided by the `dsteem` library to pull account data from the Hive blockchain. We then calculate HIVE Power from the VESTS (vesting shares) for the convenience of the user. We will use a simple HTML interface to capture the account and its VESTS. It also has an interactive UI to perform a power down in full or in part.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Calculate and Fill form**](#fill-form) Calculate available vesting shares and fill the form with details
-4.  [**Power down**](#power-down) Power down VESTS with Steemconnect or client-side signing.
+4.  [**Power down**](#power-down) Power down VESTS with Hiveconnect or client-side signing.
 
 #### 1. App setup <a name="app-setup"></a>
 
@@ -33,9 +33,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -58,17 +58,17 @@ Once the account data has been fetched, we will fill the form with VESTS balance
 
 Available balance will be in the `avail` variable.
 
-For the convenience of the user, we will convert available VESTS to STEEM with `getDynamicGlobalProperties` function and fill the form fields accordingly.
+For the convenience of the user, we will convert available VESTS to HIVE with `getDynamicGlobalProperties` function and fill the form fields accordingly.
 
 ```javascript
     const name = _account[0].name;
     const avail = parseFloat(_account[0].vesting_shares) - (parseFloat(_account[0].to_withdraw) - parseFloat(_account[0].withdrawn)) / 1e6 - parseFloat(_account[0].delegated_vesting_shares);
 
     const props = await client.database.getDynamicGlobalProperties();
-    const vestSteem = parseFloat(parseFloat(props.total_vesting_fund_steem) *
+    const vestHive = parseFloat(parseFloat(props.total_vesting_fund_hive) *
         (parseFloat(avail) / parseFloat(props.total_vesting_shares)),6);
 
-    const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestSteem} STEEM POWER<br/><br/>`;
+    const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestHive} HIVE POWER<br/><br/>`;
     document.getElementById('accBalance').innerHTML = balance;
     document.getElementById('steem').value = avail+' VESTS';
 ```
@@ -77,7 +77,7 @@ Once form is filled with the maximum available VESTS balance, we can choose the 
 
 #### 4. Power down <a name="power-down"></a>
 
-We have two options on how to Power down: Steemconnect and client-side signing. By default we generate a Steemconnect link to Power down (withdraw vesting), but we can also choose the client signing option to Power down right inside tutorial. **Note:** client-side signing will require Active Private key to perform the operation.
+We have two options on how to Power down: Hiveconnect and client-side signing. By default we generate a Hiveconnect link to Power down (withdraw vesting), but we can also choose the client signing option to Power down right inside tutorial. **Note:** client-side signing will require Active Private key to perform the operation.
 
 In order to enable client signing, we will generate the operation and also show Active Private key (wif) field to sign transaction right there, client side.
 

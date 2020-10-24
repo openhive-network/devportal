@@ -18,13 +18,13 @@ Then, we sort the votes by `rshares` to find the top voter.
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git
 cd devportal-tutorials-rb/tutorials/06_get_voters_list_on_post
 bundle install
-ruby voter_list.rb https://steemit.com/steemdev/@steemitdev/announcing-the-steem-developer-portal
+ruby voter_list.rb https://hive.blog/hivedev/@steemitdev/announcing-the-steem-developer-portal
 ```
 
 ### Example Output

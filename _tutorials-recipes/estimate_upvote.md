@@ -1,24 +1,24 @@
 ---
 title: Estimate the value of an upvote
 position: 1
-description: Calculate the approximate value of an upvote on Steem
+description: Calculate the approximate value of an upvote on Hive
 exclude: true
 layout: full
 canonical_url: estimate_upvote.html
 ---
 
-*By the end of this recipe you should know how to estimate value of each vote on Steem.*
+*By the end of this recipe you should know how to estimate value of each vote on Hive.*
 
 This recipe will take you through the process of fetching necessary data and formulating estimation.
 
 ## Intro 
 
-Calculating value of each vote depends on multiple factors. Reward fund, recent claims, account's total vests, rate of the sbd, voting power and weight of the vote. It is quite useful information for users to see and estimate. All of the data is possible to get via available APIs.
+Calculating value of each vote depends on multiple factors. Reward fund, recent claims, account's total vests, rate of the hbd, voting power and weight of the vote. It is quite useful information for users to see and estimate. All of the data is possible to get via available APIs.
 
 ## Steps
 
 1. **Get Reward Fund** Current reward fund information is crucial part of estimation
-1. **Get Account** Steem power and voting power is another important info
+1. **Get Account** Hive power and voting power is another important info
 1. **Feed history** To get price rate reported by witnesses
 1. **Final calculation** Formulate all information we have
 
@@ -33,7 +33,7 @@ The response we're working with will look like:
 {
 	"id":0,
 	"name":"post",
-	"reward_balance":"741222.051 STEEM",
+	"reward_balance":"741222.051 HIVE",
 	"recent_claims":"457419472820935017",
 	"last_update":"2018-05-23T12:08:36",
 	"content_constant":"2000000000000",
@@ -123,21 +123,21 @@ The response example will look like:
     "can_vote": true,
     "voting_power": 9800,
     "last_vote_time": "2018-05-22T20:10:45",
-    "balance": "810.371 STEEM",
-    "savings_balance": "0.000 STEEM",
-    "sbd_balance": "4613.426 SBD",
-    "sbd_seconds": "10828300402329",
-    "sbd_seconds_last_update": "2018-05-22T22:34:24",
-    "sbd_last_interest_payment": "2018-04-25T18:26:15",
-    "savings_sbd_balance": "0.000 SBD",
-    "savings_sbd_seconds": "0",
-    "savings_sbd_seconds_last_update": "1970-01-01T00:00:00",
-    "savings_sbd_last_interest_payment": "1970-01-01T00:00:00",
+    "balance": "810.371 HIVE",
+    "savings_balance": "0.000 HIVE",
+    "hbd_balance": "4613.426 HBD",
+    "hbd_seconds": "10828300402329",
+    "hbd_seconds_last_update": "2018-05-22T22:34:24",
+    "hbd_last_interest_payment": "2018-04-25T18:26:15",
+    "savings_hbd_balance": "0.000 HBD",
+    "savings_hbd_seconds": "0",
+    "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+    "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
     "savings_withdraw_requests": 0,
-    "reward_sbd_balance": "79.490 SBD",
-    "reward_steem_balance": "0.000 STEEM",
+    "reward_hbd_balance": "79.490 HBD",
+    "reward_hive_balance": "0.000 HIVE",
     "reward_vesting_balance": "608341.169185 VESTS",
-    "reward_vesting_steem": "293.101 STEEM",
+    "reward_vesting_hive": "293.101 HIVE",
     "vesting_shares": "93540695.469156 VESTS",
     "delegated_vesting_shares": "0.000000 VESTS",
     "received_vesting_shares": "0.000000 VESTS",
@@ -163,7 +163,7 @@ The response example will look like:
     "average_market_bandwidth": 1170000000,
     "lifetime_market_bandwidth": 1170000000,
     "last_market_bandwidth_update": "2016-07-27T15:10:09",
-    "vesting_balance": "0.000 STEEM",
+    "vesting_balance": "0.000 HIVE",
     "reputation": "146151592482665",
     "transfer_history": [],
     "market_history": [],
@@ -187,8 +187,8 @@ The response example will look like:
 
 ```json
 {
-  "base": "3.029 SBD",
-  "quote": "1.000 STEEM"
+  "base": "3.029 HBD",
+  "quote": "1.000 HIVE"
 }
 ```
 
@@ -201,7 +201,7 @@ total_vests = vesting_shares + received_vesting_shares - delegated_vesting_share
 final_vest = total_vests * 1e6
 power = (voting_power * weight / 10000) / 50
 rshares = power * final_vest / 10000
-estimate = rshares / recent_claims * reward_balance * sbd_median_price
+estimate = rshares / recent_claims * reward_balance * hbd_median_price
 ```
 
 That's all there is to it.
