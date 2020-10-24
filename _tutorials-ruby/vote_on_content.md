@@ -52,7 +52,7 @@ tx.operations << {
 And to do the same with our tutorial script:
 
 ```bash
-ruby vote_on_content.rb https://steemit.com/@inertia/kinda-spooky
+ruby vote_on_content.rb https://hive.blog/@inertia/kinda-spooky
 ```
 
 #### Example Output
@@ -72,12 +72,12 @@ From the example we get the following output from our script:
 }
 ```
 
-The response we get after broadcasting the transaction gives us the transaction id ([`244a67b...`](https://steemd.com/tx/244a67bf1e64f05fb2ab52a0652a8edd30c5d273)), block number ([`27035223`](https://steemd.com/b/27035223)), and the transaction number of that block (`15`).
+The response we get after broadcasting the transaction gives us the transaction id ([`244a67b...`](https://hiveblocks.com/tx/244a67bf1e64f05fb2ab52a0652a8edd30c5d273)), block number ([`27035223`](https://hiveblocks.com/b/27035223)), and the transaction number of that block (`15`).
 
 Note, this script accepts accepts an optional percentage (defaulting `100.0 %`).  To set the vote to `50.0 %`:
 
 ```bash
-ruby vote_on_content.rb https://steemit.com/@inertia/kinda-spooky 50
+ruby vote_on_content.rb https://hive.blog/@inertia/kinda-spooky 50
 ```
 
 ### Example Error
@@ -89,7 +89,7 @@ If an invalid vote weight is given (e.g.: `101 %`), we will get back an error:
   "jsonrpc": "2.0",
   "error": {
     "code": -32000,
-    "message": "Assert Exception:abs(weight) <= STEEM_100_PERCENT: Weight is not a STEEMIT percentage",
+    "message": "Assert Exception:abs(weight) <= HIVE_100_PERCENT: Weight is not a HIVE percentage",
     "data": {
       "code": 10,
       "name": "assert_exception",
@@ -98,13 +98,13 @@ If an invalid vote weight is given (e.g.: `101 %`), we will get back an error:
         {
           "context": {
             "level": "error",
-            "file": "steem_operations.cpp",
+            "file": "hive_operations.cpp",
             "line": 179,
             "method": "validate",
             "hostname": "",
             "timestamp": "2018-10-22T16:09:50"
           },
-          "format": "abs(weight) <= STEEM_100_PERCENT: Weight is not a STEEMIT percentage",
+          "format": "abs(weight) <= HIVE_100_PERCENT: Weight is not a HIVE percentage",
           "data": {
           }
         },
@@ -198,7 +198,7 @@ Broadcasting a `vote` operation will require the following fields:
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository) with the following arguments:
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository) with the following arguments:
 
 * `<url>` - the URL to vote on
 * `[weight]` - the weight of the vote as percentage, optional (default `100.0 %`)

@@ -1,10 +1,10 @@
 import pprint
 from pick import pick
-# initialize Steem class
-from steem import Steem
+# initialize Hive class
+from steem import Hive
 from steem.commit import Commit
 
-s = Steem()
+s = Hive()
 
 query = {
 	"limit":5, #number of posts
@@ -27,7 +27,7 @@ account = input("Enter your username? ")
 wif = input("Enter your Posting private key? ")
 
 # commit or build transaction
-c = Commit(steem=Steem(keys=[wif]))
+c = Commit(steem=Hive(keys=[wif]))
 
 # broadcast transaction
 c.resteem(option, account=account)

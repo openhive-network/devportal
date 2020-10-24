@@ -25,7 +25,7 @@ A simple HTML UI is used to capture the required information, after which the br
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with the Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with the Hive blockchain
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Get status**](#status) Get the follow status for the specified author
 1.  [**Follow operation**](#follow) Execute the `follow` operation
@@ -36,7 +36,7 @@ As usual, we have a `public/app.js` file which holds the Javascript segment of t
 
 ```javascript
 import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 

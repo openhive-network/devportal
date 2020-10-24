@@ -11,7 +11,7 @@ canonical_url: vote_on_content.html
 
 
 This tutorial will take you through the process of preparing and submitting a `vote` using the `broadcast` operation.
-Because this tutorial essentially produces spam, it will be pointed at a Steem testnet. The testnet is an open resource,
+Because this tutorial essentially produces spam, it will be pointed at a Hive testnet. The testnet is an open resource,
 so the default account and posting key in this tutorial may have been changed by another developer learning the ropes.
 If that happens, you'll want to create a new account on the testnet and use that account's credentials instead.
 
@@ -20,7 +20,7 @@ To learn more about the testnet, including an easy way to create a play account,
 ## Intro
 
 We are using the `broadcast.vote` function provided by the `dsteem` library to send the transaction through to the
-network. On the Steem platform, posts and comments are all internally stored as a `comment` object, differentiated by
+network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by
 whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, when there is, it's a
 comment. Voting is done on either of the two based on the author and permlink of the comment. There are 5 parameters
 required for the voting operation:
@@ -31,11 +31,11 @@ required for the voting operation:
 1.  _Permlink_ - The unique identifier of the comment/post of the author
 1.  _Weight_ - This is the weight that the vote will carry. The value ranges from -10000 (100% flag) to 10000 (100% upvote)
 
-Due to the low amount of posts on the testnet we added an additional step to create a post before we vote on it. The values are auto loaded in the respective input boxes. A full tutorial on how to create a new post can be found on the [Steem Devportal](https://developers.steem.io/tutorials-javascript/submit_post)
+Due to the low amount of posts on the testnet we added an additional step to create a post before we vote on it. The values are auto loaded in the respective input boxes. A full tutorial on how to create a new post can be found on the [Hive Devportal](https://developers.hive.io/tutorials-javascript/submit_post)
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
 1.  [**Create new post**](#createpost) Creating a new post on the testnet
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Broadcast**](#broadcast) Creating an object and broadcasting the vote to the blockchain
@@ -46,7 +46,7 @@ As usual, we have a `public/app.js` file which holds the Javascript segment of t
 
 ```javascript
 import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
@@ -79,9 +79,9 @@ window.createPost = async () => {
     //for content
     const time = new Date().getTime();
     //get title
-    const title = `developers.steem.io - JS-T:17 ${time}`;
+    const title = `developers.hive.io - JS-T:17 ${time}`;
     //get body
-    const body = `Go to [developers.steem.io](https://developers.steem.io) for the latest in Steem tutorials! This post was created by someone using the active version of those tutorials at  [https://github.com/steemit/devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js)
+    const body = `Go to [developers.hive.io](https://developers.hive.io) for the latest in Hive tutorials! This post was created by someone using the active version of those tutorials at  [https://github.com/steemit/devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js)
         
         ${time}`;
     //get tags and convert to array list
@@ -216,7 +216,7 @@ window.onload = () => {
     };
 ```
 
-More information on how to use the `broadcast` operation and options surrounding the operation can be found on the [Steem Devportal](https://developers.steem.io/apidefinitions/#broadcast_ops_vote)
+More information on how to use the `broadcast` operation and options surrounding the operation can be found on the [Hive Devportal](https://developers.hive.io/apidefinitions/#broadcast_ops_vote)
 
 ### To run this tutorial
 

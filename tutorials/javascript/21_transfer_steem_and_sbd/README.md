@@ -1,1 +1,1 @@
-See: https://developers.hive.io/tutorials-javascript/transfer_steem_and_sbd.html
+See: https://developers.hive.io/tutorials-javascript/transfer_hive_and_hbd.html

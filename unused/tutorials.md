@@ -3,7 +3,7 @@ title: Tutorials
 position: 2
 ---
 
-##### __steem-py examples__
+##### __hive-py examples__
 Install steem-py:
 
 ~~~
@@ -27,10 +27,10 @@ Example for operation Stream:
 Example for decentralized exchange:
 
 ~~~ python
-from steem import Steem
+from steem import Hive
 import os
 import json
-steem = Steem(wif="<posting-key-for-default-author>")
+steem = Hive(wif="<posting-key-for-default-author>")
 for c in steem.stream_comments():
 if "Anything you want" in c["body"]:
     print(c.reply(".. anything you want"))
@@ -57,13 +57,13 @@ for a in blockchain.ops()
     
 ~~~ python
 from pprint import pprint
-from steem import Steem
+from steem import Hive
 from steem.dex import Dex
 
-steem = Steem()
+steem = Hive()
 dex = Dex(steem)
-pprint(dex.buy(10, "SBD", 100))
-pprint(dex.sell(10, "SBD", 100))
+pprint(dex.buy(10, "HBD", 100))
+pprint(dex.sell(10, "HBD", 100))
 pprint(dex.cancel("24432422"))
 pprint(dex.returnTicker())
 pprint(dex.return24Volume())
@@ -74,7 +74,7 @@ pprint(dex.returnMarketHistoryBuckets())
 pprint(dex.returnMarketHistory(300))
 pprint(dex.get_lowest_ask())
 pprint(dex.get_higest_bid())
-pprint(dex.transfer(10, "SBD", "fabian", "foobar"))
+pprint(dex.transfer(10, "HBD", "fabian", "foobar"))
 ~~~
 {: title="Decentralized Exchange"} 
     

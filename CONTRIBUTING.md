@@ -4,7 +4,7 @@ position: 1
 layout: full
 ---
 
-Everyone is welcome to contribute code to Steemit, Inc. projects. We have a Code of Conduct;
+Everyone is welcome to contribute code to Hive projects. We have a Code of Conduct;
 we ask that you please follow it in all your interactions with our team and your fellow
 contributors.
 
@@ -60,7 +60,7 @@ We will clarify standards of acceptable behavior and we will take appropriate
 and fair corrective action in response to any instances of unacceptable behavior.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting us at github.abuse@steemit.com. All
+reported by contacting us at github.abuse@hive.blog. All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. We
 maintain strict confidentiality with regard to the reporter of an incident.

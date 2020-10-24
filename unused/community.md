@@ -3,23 +3,23 @@ title: Community
 position: 4
 ---
 
-#### Steemdata
+#### Hivedata
 
 Mongo database for accessing steem data. 
 
 ```
-Host: mongo0.steemdata.com
+Host: mongo0.hivedata.com
 Port: 27017
 
-Database: Steem
+Database: Hive
 Username: steemit
 Password: steemit
 ```
 
-Official site: [steemdata](http://www.steemsql.com/)
+Official site: [hivedata](http://www.steemsql.com/)
 
 
-#### SteemSQL
+#### HiveSQL
 
 Microsoft SQL database for accessing steem data
 

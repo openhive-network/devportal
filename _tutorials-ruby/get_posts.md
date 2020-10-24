@@ -39,7 +39,7 @@ For each post we retrieve, we are going to build up a summary to display the int
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git
@@ -52,13 +52,13 @@ ruby get_posts_by_category.rb trending 1 steem
 
 ```
 2018-05-24 06:38:33 UTC
-  Post: New Phone App For Steemit - Wow!
+  Post: New Phone App For Hive - Wow!
   By: happymoneyman
   Votes: 1087
   Replies: 332
-  Promoted: 0.001 SBD
+  Promoted: 0.001 HBD
   Words: 190
-  https://steemit.com/steemit/@happymoneyman/new-phone-app-for-steemit-wow
+  https://hive.blog/steemit/@happymoneyman/new-phone-app-for-steemit-wow
 ```
 
 #### Error Handling

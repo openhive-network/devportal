@@ -1,9 +1,9 @@
 import pprint
 from pick import pick
-# initialize Steem class
-from steem import Steem
+# initialize Hive class
+from steem import Hive
 
-s = Steem()
+s = Hive()
 
 query = {
 	"limit":5, #number of posts

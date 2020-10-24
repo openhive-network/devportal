@@ -1,7 +1,7 @@
 ---
 title: 'JS: Stream Blockchain Transactions'
 position: 13
-description: "_By the end of this tutorial you should know how to stream transactions and blocks from Steem blockchain._"
+description: "_By the end of this tutorial you should know how to stream transactions and blocks from Hive blockchain._"
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---              
@@ -14,7 +14,7 @@ This tutorial will take you through the process of preparing and streaming block
 
 ## Intro
 
-Tutorial is demonstrating the typical process of streaming blocks on Steem. We will show some information from each block that is being streamed to give you an idea. Each block contains transactions objects as well but we will not show each of this data in user interface.
+Tutorial is demonstrating the typical process of streaming blocks on Hive. We will show some information from each block that is being streamed to give you an idea. Each block contains transactions objects as well but we will not show each of this data in user interface.
 
 We are using the `blockchain.getBlockStream` function provided by `dsteem` which returns each block after it has been accepted by witnesses. By default it follows irreversible blocks which was accepted by all witnesses. Function follows or gets blocks every 3 seconds so it would not miss any new blocks. We will then extract part of this data and show it in list.
 
@@ -36,10 +36,10 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 Above, we have `dsteem` pointing to the live network with the proper chainId, addressPrefix, and endpoint. Because this tutorial requires active transactions to see some data.

@@ -1,39 +1,39 @@
 ---
-title: 'JS: Convert Sbd To Steem'
+title: 'JS: Convert Hbd To Hive'
 position: 32
-description: "_How to convert SBD to STEEM for a specified account._"
+description: "_How to convert HBD to HIVE for a specified account._"
 layout: full
-canonical_url: convert_sbd_to_steem.html
+canonical_url: convert_hbd_to_hive.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Convert Sbd To Steem](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/32_convert_sbd_to_steem) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Convert Hbd To Hive](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/32_convert_hbd_to_hive) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
 
 
 
-This tutorial will take you through the process of checking a specific users' balances and then broadcasting the intended SBD conversion to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
+This tutorial will take you through the process of checking a specific users' balances and then broadcasting the intended HBD conversion to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
 
-It should be noted that the converted STEEM will not be available instantly as it takes 3.5 days for the transaction to be processed. It is also not possible to stop a conversion once initialised. During the 3.5 days for it to be converted and as the conversion price fluctuates you could actually be receiving less STEEM than what you should. Because of this, the method in this tutorial is NOT the preferred or most efficient way of converting SBD to STEEM. This tutorial just illustrates that it can be done in this manner.
+It should be noted that the converted HIVE will not be available instantly as it takes 3.5 days for the transaction to be processed. It is also not possible to stop a conversion once initialised. During the 3.5 days for it to be converted and as the conversion price fluctuates you could actually be receiving less HIVE than what you should. Because of this, the method in this tutorial is NOT the preferred or most efficient way of converting HBD to HIVE. This tutorial just illustrates that it can be done in this manner.
 
-There is a marketplace on Steemit that allows you to "sell" your SBD instantly. With this process you can get your STEEM immediately and at the exact price that you expect. The market place is the better way to convert your SBD. [This article](https://steemit.com/steem/@epico/convert-sbd-to-steem-and-steem-power-guide-2017625t103821622z) provides more information on using the market to exchange your SBD to STEEM
+There is a marketplace on Hive that allows you to "sell" your HBD instantly. With this process you can get your HIVE immediately and at the exact price that you expect. The market place is the better way to convert your HBD. [This article](https://hive.blog/steem/@epico/convert-hbd-to-steem-and-steem-power-guide-2017625t103821622z) provides more information on using the market to exchange your HBD to HIVE
 
-Steemconnect offers an alternative to converting SBD with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below substituting the three parameters for your own details. You will be prompted to enter your username and password before the transaction will be executed.
-https://steemconnect.com/sign/convert?owner=username&requestid=1234567&amount=0.000%20SBD
+Hiveconnect offers an alternative to converting HBD with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below substituting the three parameters for your own details. You will be prompted to enter your username and password before the transaction will be executed.
+https://steemconnect.com/sign/convert?owner=username&requestid=1234567&amount=0.000%20HBD
 This is similar to the steemconnect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.steemconnect.com/sign
-[This article](https://steemit.com/sbd/@timcliff/how-to-convert-sbd-into-steem-using-steemconnect) has more information on using steemconnect
+[This article](https://hive.blog/hbd/@timcliff/how-to-convert-hbd-into-steem-using-steemconnect) has more information on using steemconnect
 
 ## Intro
 
-This tutorial uses the `database API` to gather account information for the current SBD and STEEM balances of the specified user. This information is then used to assist the user in completing the conversion request. The values are then captured and the operation is transmitted via the `broadcast` API. The parameters for this `convert` function are:
+This tutorial uses the `database API` to gather account information for the current HBD and HIVE balances of the specified user. This information is then used to assist the user in completing the conversion request. The values are then captured and the operation is transmitted via the `broadcast` API. The parameters for this `convert` function are:
 
 1.  _owner_ - The account for which the conversion is being done
 1.  _requestid_ - Integer identifier for tracking the conversion. This needs to be a unique number for a specified user
-1.  _amount_ - The amount of SBD to withdraw
+1.  _amount_ - The amount of HBD to withdraw
 
 The only other information required is the private active key of the user.
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
 1.  [**User account**](#user) User account is captured and balances displayed
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Broadcast operation**](#broadcast) Broadcasting the operation to the blockchain
@@ -44,7 +44,7 @@ As usual, we have a `public/app.js` file which holds the Javascript segment of t
 
 ```javascript
 import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
@@ -56,7 +56,7 @@ Above, we have `dsteem` pointing to the testnet with the proper chainId, address
 
 #### 2. User account<a name="user"></a>
 
-The user account is input through the UI. Once entered, the user can select the `search` button to display the SBD and STEEM balances for that account. During this step, a random number is also generated for the `requestid`. This value can be changed to any integer value as long as it is unique for the specific account. If the requestid is duplicated an error to do with "uniqueness constraint" will be displayed in the console. For ease of use values for a demo account has already been entered in the relevant fields once the page loads.
+The user account is input through the UI. Once entered, the user can select the `search` button to display the HBD and HIVE balances for that account. During this step, a random number is also generated for the `requestid`. This value can be changed to any integer value as long as it is unique for the specific account. If the requestid is duplicated an error to do with "uniqueness constraint" will be displayed in the console. For ease of use values for a demo account has already been entered in the relevant fields once the page loads.
 
 ```javascript
 window.onload = async () => {
@@ -75,10 +75,10 @@ window.submitAcc = async () => {
     const _account = await client.database.call('get_accounts', [[accSearch]]);
     console.log(`_account:`, _account);
 
-    const availSBD = _account[0].sbd_balance 
-    const availSTEEM = _account[0].balance
+    const availHBD = _account[0].hbd_balance 
+    const availHIVE = _account[0].balance
 
-    const balance = `Available balance: ${availSBD} and ${availSTEEM} <br/>`;
+    const balance = `Available balance: ${availHBD} and ${availHIVE} <br/>`;
     document.getElementById('accBalance').innerHTML = balance;
 
     //create random number for requestid paramter
@@ -102,7 +102,7 @@ const privateKey = PrivateKey.fromString(
 //get convert amount
 const quantity = document.getElementById('quantity').value;
 //create correct format
-const convert = quantity.concat(' SBD');
+const convert = quantity.concat(' HBD');
 //assign integer value of ID
 const requestid = parseInt(document.getElementById('requestID').value);
 ```
@@ -145,7 +145,7 @@ The results of the operation is displayed on the UI along with a block number in
 ### To run this tutorial
 
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/32_convert_sbd_to_steem`
+1.  `cd devportal/tutorials/javascript/32_convert_hbd_to_hive`
 1.  `npm i`
 1.  `npm run dev-server` or `npm run start`
 1.  After a few moments, the server should be running at http://localhost:3000/

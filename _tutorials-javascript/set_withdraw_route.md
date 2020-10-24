@@ -10,18 +10,18 @@ canonical_url: set_withdraw_route.html
 
 
 
-We will learn how to allocate a percentage for withdrawal to other accounts using Steemconnect as well as with the client-side signing method. This tutorial runs on the main Steem blockchain. Therefore, any accounts used here will affect real funds on the live network. **Use with caution.**
+We will learn how to allocate a percentage for withdrawal to other accounts using Hiveconnect as well as with the client-side signing method. This tutorial runs on the main Hive blockchain. Therefore, any accounts used here will affect real funds on the live network. **Use with caution.**
 
 ## Intro
 
-This tutorial will demonstrate a few functions such as querying account by name and determining the vesting balance of the related account. This will allow us to set "withdraw routes" to other accounts with a percent selection and auto power up function. This feature is quite useful if you want to withdraw a portion of your STEEM to a separate account or POWER UP other accounts as you withdraw from one account.
+This tutorial will demonstrate a few functions such as querying account by name and determining the vesting balance of the related account. This will allow us to set "withdraw routes" to other accounts with a percent selection and auto power up function. This feature is quite useful if you want to withdraw a portion of your HIVE to a separate account or POWER UP other accounts as you withdraw from one account.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
 2.  [**Get account routes**](#search-account) Get account's current routes
 3.  [**Fill form**](#fill-form) Fill form with appropriate data
-4.  [**Set withdraw route**](#withdraw-route) Set route with Steemconnect or client-side signing
+4.  [**Set withdraw route**](#withdraw-route) Set route with Hiveconnect or client-side signing
 
 #### 1. App setup <a name="app-setup"></a>
 
@@ -33,9 +33,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 #### 2. Get account routes <a name="search-account"></a>
@@ -70,7 +70,7 @@ document.getElementById('accInfo').innerHTML = info;
 
 Previous routes can be overwritten by changing and submitting a new transaction to the same account.
 
-We also generate a Steemconnect signing link.
+We also generate a Hiveconnect signing link.
 
 ```javascript
 window.openSC = async () => {
@@ -85,7 +85,7 @@ window.openSC = async () => {
 
 #### 4. Set withdraw route <a name="withdraw-route"></a>
 
-We have two options on how to Power down: Steemconnect and client-side signing. Since this action requires Active authority, both client-side and Stemconnect signing will require the Active Private key to sign the transaction. The transaction submission function appears as follows:
+We have two options on how to Power down: Hiveconnect and client-side signing. Since this action requires Active authority, both client-side and Stemconnect signing will require the Active Private key to sign the transaction. The transaction submission function appears as follows:
 
 ```javascript
 window.submitTx = async () => {

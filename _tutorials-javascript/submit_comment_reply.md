@@ -1,7 +1,7 @@
 ---
 title: 'JS: Submit Comment Reply'
 position: 11
-description: "_By the end of this tutorial you should know how to post a simple comment to Steem._"
+description: "_By the end of this tutorial you should know how to post a simple comment to Hive._"
 layout: full
 canonical_url: submit_comment_reply.html
 ---              
@@ -11,15 +11,15 @@ canonical_url: submit_comment_reply.html
 
 
 This tutorial will take you through the process of preparing and posting comment using the `broadcast.comment` operation.
-Being able to post a comment is critical to most social applications built on Steem.
+Being able to post a comment is critical to most social applications built on Hive.
 
 ## Intro
 
-We are using the `broadcast.comment` function provided by the `dsteem` library which generates, signs, and broadcasts the transaction to the network. On the Steem platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, the it's a post, when there is, it's a comment. An account can broadcast a comment on the blockchain every 3 seconds (with every new block) enabling the user to comment as they wish with almost no wait time between commits.
+We are using the `broadcast.comment` function provided by the `dsteem` library which generates, signs, and broadcasts the transaction to the network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, the it's a post, when there is, it's a comment. An account can broadcast a comment on the blockchain every 3 seconds (with every new block) enabling the user to comment as they wish with almost no wait time between commits.
 
 ## Steps
 
-1.  [**App setup**](#app-setup) Import `dsteem` into `app.js` and prepare it to communicate with a Steem blockchain
+1.  [**App setup**](#app-setup) Import `dsteem` into `app.js` and prepare it to communicate with a Hive blockchain
 1.  [**Choose parent post**](#choose-post) Choose a parent post on which to comment. Parse the author and permlink from it.
 1.  [**Add content**](#add-content) Add `body` content to your comment
 1.  [**Get comment data**](#get-comment) Collect values from the UI
@@ -138,7 +138,7 @@ A successful comment will output something like the following to the console:
 
 That's all there is to it.
 
-The `broadcast` operation has more to offer than just committing a post/comment to the blockchain. It provides a mulititude of options that can accompany this commit. The max payout and percent of steem dollars can be set. When authors don't want all of the benifits from a post, they can set the payout factors to zero or beneficiaries can be set to receive part of the rewards. You can also set whether votes are allowed or not. The broadcast to the blockchain can be modified to meet the exact requirements of the author. More information on how to use the `broadcast` operation can be found on the Steem [Devportal](https://developers.steem.io/apidefinitions/#apidefinitions-broadcast-ops-comment) with a list of the available broadcast options under the specific [Appbase API](https://developers.steem.io/apidefinitions/#broadcast_ops_comment_options)
+The `broadcast` operation has more to offer than just committing a post/comment to the blockchain. It provides a mulititude of options that can accompany this commit. The max payout and percent of steem dollars can be set. When authors don't want all of the benifits from a post, they can set the payout factors to zero or beneficiaries can be set to receive part of the rewards. You can also set whether votes are allowed or not. The broadcast to the blockchain can be modified to meet the exact requirements of the author. More information on how to use the `broadcast` operation can be found on the Hive [Devportal](https://developers.hive.io/apidefinitions/#apidefinitions-broadcast-ops-comment) with a list of the available broadcast options under the specific [Appbase API](https://developers.hive.io/apidefinitions/#broadcast_ops_comment_options)
 
 ### To Run the tutorial
 

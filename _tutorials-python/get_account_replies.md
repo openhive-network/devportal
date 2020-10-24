@@ -10,11 +10,11 @@ canonical_url: get_account_replies.html
 
 
 
-Tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch a list of comments made on a specific accounts content.
+Tutorial will explain and show you how to access the **Hive** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch a list of comments made on a specific accounts content.
 
 ## Intro
 
-In Steem there are built-in functions in the official library `steem-python` that we are going to use throughout all Python tutorials. For this one we are using the `get_replies` function.
+In Hive there are built-in functions in the official library `steem-python` that we are going to use throughout all Python tutorials. For this one we are using the `get_replies` function.
 
 ## Steps
 
@@ -27,15 +27,15 @@ In Steem there are built-in functions in the official library `steem-python` tha
 
 In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Steem class
+First we import all three library and initialize Hive class
 
 ```python
     import pprint
     from pick import pick
-    # initialize Steem class
-    from steem import Steem
+    # initialize Hive class
+    from steem import Hive
 
-    s = Steem()
+    s = Hive()
 ```
 
 #### 2. Post list <a name="post-list"></a>

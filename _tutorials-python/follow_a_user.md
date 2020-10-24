@@ -10,11 +10,11 @@ canonical_url: follow_a_user.html
 
 
 
-In this tutorial we will explain and show you how to follow or unfollow any author on the **Steem** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we will explain and show you how to follow or unfollow any author on the **Hive** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `follow` and `unfollow` methods found within the `commit` class in the the library. Before we can follow/unfollow we first have to check what the current 'follow status' is of the author. We use another function for this which is explained in the tutorial entitled `get_following_and_follower_list`. There are 3 parameters within the `follow/unfollow` methods:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `follow` and `unfollow` methods found within the `commit` class in the the library. Before we can follow/unfollow we first have to check what the current 'follow status' is of the author. We use another function for this which is explained in the tutorial entitled `get_following_and_follower_list`. There are 3 parameters within the `follow/unfollow` methods:
 
 1.  _follow/unfollow_ - The name of the author that will be followed/unfollowed
 1.  _what_ - The list of states to be followed. Currently this defaults to `blog` as it's the only option available on the block chain at this stage
@@ -23,7 +23,7 @@ The Steem python library has a built-in function to transmit transactions to the
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Steem node
+1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
 1.  [**Check author status**](#authorstat) - Validity check on requested autor to follow
 1.  [**Follow status**](#followstat) - Check whether specified author is already followed
 1.  [**Follow/Unfollow commit**](#commit) - Follow/unfollow commit to the blockchain
@@ -42,9 +42,9 @@ import steembase
 import steem
 from pick import pick
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -60,7 +60,7 @@ username = input('Please enter your username: ')
 postingkey = input('Please enter your private posting key: ')
 
 #connect node and private posting key, demo account being used: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-s = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[postingkey])
+s = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[postingkey])
 ```
 
 #### 3. Check author status<a name="authorstat"></a>

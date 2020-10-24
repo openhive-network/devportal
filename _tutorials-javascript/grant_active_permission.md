@@ -16,9 +16,9 @@ Providing another user active permission for your account enables them to do fun
 
 One of the common practice nowadays is to lend/delegate SP to another account, above same technique can be used to create market around it with minimum 3rd party trust. All your funds stay in your account. You can use/create automated system where you can lease for certain period of time and system can take care of payments and release of delegations (notify clients). Even better, you can use multi-signature feature to establish 100% trust where clients will have to confirm, approve transactions.
 
-Active permissions and authority should be used with utmost care, you don't want to loose your funds. It is really not easy to hack Steem accounts, let alone take control over it. But without careful use (revealing private keys) loosing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
+Active permissions and authority should be used with utmost care, you don't want to loose your funds. It is really not easy to hack Hive accounts, let alone take control over it. But without careful use (revealing private keys) loosing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
 
-[this article](https://steemit.com/steem/@good-karma/steem-multi-authority-permissions-and-how-active-authority-works-part-2-f158813ec0ec1) has more detail around active authorities
+[this article](https://hive.blog/steem/@good-karma/steem-multi-authority-permissions-and-how-active-authority-works-part-2-f158813ec0ec1) has more detail around active authorities
 
 ## Intro
 
@@ -38,7 +38,7 @@ The tutorial is set up with three individual functions for each of the required 
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI.
 1.  [**Database query**](#query) Sending a query to the blockchain for the active permissions (status)
 1.  [**Object creation**](#object) Create the array and subsequent data object for the broadcast operation
@@ -50,7 +50,7 @@ As usual, we have a `public/app.js` file which holds the Javascript segment of t
 
 ```javascript
 import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
@@ -134,7 +134,7 @@ activeAuth.account_auths.sort();
 activeAuth.account_auths.splice(arrayindex, 1);
 ```
 
-When adding to the array (creaing permission) it is required to sort the array before we can broadcast. The Steem blockchain does not accept the new fields in the array if it's not alphabetically sorted.
+When adding to the array (creaing permission) it is required to sort the array before we can broadcast. The Hive blockchain does not accept the new fields in the array if it's not alphabetically sorted.
 After the active array has been defined, the broadcast object can be created. This holds all the required information for a successful transaction to be sent to the blockchain. Where there is no change in the authority types, the parameter can be omitted or in the case of required parameters, allocated directly from the database query.
 
 ```javascript
@@ -174,7 +174,7 @@ client.broadcast.updateAccount(accObj, privateKey).then(
 
 The results of the operation is displayed on the UI along with a block number in the console to confirm a successful operation. If you add permission to an account that already has permission, or if your private key has been entered incorrectly, an error of "Missing Active Authority" will be displayed.
 
-Steemconnect offers an alternative to revoking active permission with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below. You will be prompted to enter your usename and password and the specified user will have their permissions removed instantly.
+Hiveconnect offers an alternative to revoking active permission with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below. You will be prompted to enter your usename and password and the specified user will have their permissions removed instantly.
 https://v2.steemconnect.com/revoke/@username
 This is similar to the steemconnect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.steemconnect.com/sign
 

@@ -22,7 +22,7 @@ Finally, it creates the canonical URL by combining `parent_permlink`, `author`, 
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git
@@ -35,30 +35,30 @@ ruby blog_feed.rb steemitblog
 
 ```
 2018-03-24 17:30:36 UTC
-  Post: Happy 2nd Birthday Steem Blockchain
+  Post: Happy 2nd Birthday Hive Blockchain
   By: steemitblog
   Words: 301
-  https://steemit.com/steem/@steemitblog/happy-2nd-birthday-steem-blockchain
+  https://hive.blog/steem/@steemitblog/happy-2nd-birthday-steem-blockchain
 2018-03-07 20:56:36 UTC
-  Post: Join Team Steemit at TokenFest!
+  Post: Join Team Hive at TokenFest!
   By: steemitblog
   Words: 104
-  https://steemit.com/steemit/@steemitblog/join-team-steemit-at-tokenfest
+  https://hive.blog/steemit/@steemitblog/join-team-steemit-at-tokenfest
 2018-02-27 20:18:36 UTC
   Post: Smart Media Token Development
   By: steemitblog
   Words: 699
-  https://steemit.com/smt/@steemitblog/smart-media-token-development
+  https://hive.blog/smt/@steemitblog/smart-media-token-development
 2018-02-25 20:55:24 UTC
-  Reblog: I filmed this video of @ned @pkattera and @sneak talking about the SMTs and the future of Steemit
+  Reblog: I filmed this video of @ned @pkattera and @sneak talking about the SMTs and the future of Hive
   By: ruwan
   Words: 89
-  https://steemit.com/steemit/@ruwan/i-filmed-this-video-of-ned-pkattera-and-sneak-talking-about-the-smts-and-the-future-of-steemit
+  https://hive.blog/steemit/@ruwan/i-filmed-this-video-of-ned-pkattera-and-sneak-talking-about-the-smts-and-the-future-of-steemit
 2018-02-22 17:41:00 UTC
-  Post: STEEM 및 SBD가 GOPAX에 상장되었습니다
+  Post: HIVE 및 HBD가 GOPAX에 상장되었습니다
   By: steemitblog
   Words: 317
-  https://steemit.com/gopax/@steemitblog/steem-sbd-gopa
+  https://hive.blog/gopax/@steemitblog/steem-hbd-gopa
 ```
 
 

@@ -4,9 +4,9 @@ import steembase
 import steem
 
 # connect to testnet
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 
 #capture variables
@@ -23,7 +23,7 @@ reply_identifier = '/'.join([parentAuthor,parentPermlink])
 permlink = ''.join(random.choices(string.digits, k=10))
 
 #connect node and private posting key
-client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 
 #commit post to blockchain
 client.commit.post(title='', body=body, author=author, permlink=permlink, reply_identifier=reply_identifier)

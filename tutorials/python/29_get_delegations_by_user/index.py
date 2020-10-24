@@ -1,9 +1,9 @@
 from pick import pick
-from steem import Steem
+from steem import Hive
 
 import pprint
 
-client = Steem()
+client = Hive()
 
 #capture username
 username = input('Username: ')

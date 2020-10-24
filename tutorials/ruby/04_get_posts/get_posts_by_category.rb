@@ -51,6 +51,6 @@ api.send("get_discussions_by_#{category}", options) do |posts, error|
     puts "  Replies: #{post.children}"
     puts "  Promoted: #{promoted}"
     puts "  Words: #{words.size}"
-    puts "  https://steemit.com/#{uri.join('/')}"
+    puts "  https://hive.blog/#{uri.join('/')}"
   end
 end

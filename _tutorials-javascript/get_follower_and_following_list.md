@@ -10,7 +10,7 @@ canonical_url: get_follower_and_following_list.html
 
 
 
-This tutorial will take you through the process of calling both the `follower` and `following` functions from the STEEM API.
+This tutorial will take you through the process of calling both the `follower` and `following` functions from the HIVE API.
 
 ## Intro
 
@@ -25,7 +25,7 @@ A simple HTML interface is used to capture the required information after which 
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with the Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with the Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 3.  [**Get followers/following**](#query) Get the followers or users being followed
 4.  [**Display**](#display) Display the array of results on the UI
@@ -40,9 +40,9 @@ let opts = {};
 //define network parameters
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to a steem node, production in this case
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 Above, we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint.
@@ -70,7 +70,7 @@ window.submitFollower = async () => {
 
 #### 3. Get followers/following<a name="query"></a>
 
-A list of followers or users being followed is called from the database with the `follow_api` available in the `SteemJS` library.
+A list of followers or users being followed is called from the database with the `follow_api` available in the `HiveJS` library.
 
 ```javascript
 //get list of followers

@@ -10,11 +10,11 @@ canonical_url: account_reputation.html
 
 
 
-This tutorial runs on the main Steem blockchain. And accounts queried are real users with reputation.
+This tutorial runs on the main Hive blockchain. And accounts queried are real users with reputation.
 
 ## Intro
 
-This tutorial will show the method of capturing a queried tag name and matching it to the Steem. We are using the `call` function provided by the `dsteem` library to pull accounts from the Steem blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
+This tutorial will show the method of capturing a queried tag name and matching it to the Hive. We are using the `call` function provided by the `dsteem` library to pull accounts from the Hive blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
 
 ## steps
 
@@ -33,9 +33,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -56,7 +56,7 @@ In order to get accounts, we run the search with the `search field` and `maximum
 const _accounts = await client.database.call('lookup_accounts',[accSearch, max]);
 ```
 
-The result of the search is an array of accounts. After that we use `get_accounts` to pull account data from Steem.
+The result of the search is an array of accounts. After that we use `get_accounts` to pull account data from Hive.
 
 ```javascript
 const acc = await client.database.call('get_accounts',[_accounts]);

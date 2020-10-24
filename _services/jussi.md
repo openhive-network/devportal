@@ -4,13 +4,13 @@ position: 3
 description: A reverse proxy that forwards json-rpc requests.
 ---
 
-Jussi is a custom-built caching layer for use with `steemd` and other various services (such as [SBDS]({{ '/services/#services-sbds' | relative_url }})).
+Jussi is a custom-built caching layer for use with `hived` and other various services (such as [HBDS]({{ '/services/#services-hbds' | relative_url }})).
 
 The purpose of this document is to help developers and node operators set up their own jussi node within a docker container.
 
 ### Intro
 
-Jussi is a reverse proxy that is situation between the API client and the `steemd` server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.
+Jussi is a reverse proxy that is situation between the API client and the `hived` server.  It allows node operators to route an API call to nodes that are optimized for the particular call, as if they are all hosted from the same place.
 
 ### Sections
 
@@ -43,7 +43,7 @@ docker run -itp 9000:8080 "$USER/jussi:$(git rev-parse --abbrev-ref HEAD)"
 curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[8675309], "id":1}' http://localhost:9000
 ```
 
-See: [Running Condenser, Jussi and a new service locally + adding feature flags to Condenser](https://steemit.com/steemdev/@maitland/running-condenser-jussi-and-a-new-service-locally-adding-feature-flags-to-condenser)
+See: [Running Condenser, Jussi and a new service locally + adding feature flags to Condenser](https://hive.blog/hivedev/@maitland/running-condenser-jussi-and-a-new-service-locally-adding-feature-flags-to-condenser)
 
 ---
 
@@ -56,40 +56,40 @@ The default `DEV_config.json` is:
    "limits":{"blacklist_accounts":["non-steemit"]},
    "upstreams":[
       {
-         "name":"steemd",
+         "name":"hived",
          "translate_to_appbase":false,
-         "urls":[["steemd", "https://steemd.steemitdev.com"]],
+         "urls":[["hived", "https://hived.steemitdev.com"]],
          "ttls":[
-            ["steemd", 3],
-            ["steemd.login_api", -1],
-            ["steemd.network_broadcast_api", -1],
-            ["steemd.follow_api", 10],
-            ["steemd.market_history_api", 1],
-            ["steemd.database_api", 3],
-            ["steemd.database_api.get_block", -2],
-            ["steemd.database_api.get_block_header", -2],
-            ["steemd.database_api.get_content", 1],
-            ["steemd.database_api.get_state", 1],
-            ["steemd.database_api.get_state.params=['/trending']", 30],
-            ["steemd.database_api.get_state.params=['trending']", 30],
-            ["steemd.database_api.get_state.params=['/hot']", 30],
-            ["steemd.database_api.get_state.params=['/welcome']", 30],
-            ["steemd.database_api.get_state.params=['/promoted']", 30],
-            ["steemd.database_api.get_state.params=['/created']", 10],
-            ["steemd.database_api.get_dynamic_global_properties", 1]
+            ["hived", 3],
+            ["hived.login_api", -1],
+            ["hived.network_broadcast_api", -1],
+            ["hived.follow_api", 10],
+            ["hived.market_history_api", 1],
+            ["hived.database_api", 3],
+            ["hived.database_api.get_block", -2],
+            ["hived.database_api.get_block_header", -2],
+            ["hived.database_api.get_content", 1],
+            ["hived.database_api.get_state", 1],
+            ["hived.database_api.get_state.params=['/trending']", 30],
+            ["hived.database_api.get_state.params=['trending']", 30],
+            ["hived.database_api.get_state.params=['/hot']", 30],
+            ["hived.database_api.get_state.params=['/welcome']", 30],
+            ["hived.database_api.get_state.params=['/promoted']", 30],
+            ["hived.database_api.get_state.params=['/created']", 10],
+            ["hived.database_api.get_dynamic_global_properties", 1]
          ],
          "timeouts":[
-            ["steemd", 5],
-            ["steemd.network_broadcast_api", 0]
+            ["hived", 5],
+            ["hived.network_broadcast_api", 0]
          ],
          "retries": [
-            ["steemd", 3],
-            ["steemd.network_broadcast_api", 0]
+            ["hived", 3],
+            ["hived.network_broadcast_api", 0]
          ]
       },
       {
          "name":"appbase",
-         "urls":[["appbase", "https://steemd.steemitdev.com"]],
+         "urls":[["appbase", "https://hived.steemitdev.com"]],
          "ttls":[
             ["appbase", -2],
             ["appbase.block_api", -2],
@@ -136,25 +136,25 @@ Jussi can be configured with various `TTL` (Time To Live) schemes. A `TTL` is an
 
 | Upstream   | API                     | Method                          | Parameters         | TTL (seconds) |
 |------------|-------------------------|---------------------------------|--------------------|---------------|
-| `steemd`   | `login_api`             | _all_                           | _all_              | -1            |
-| `steemd`   | `network_broadcast_api` | _all_                           | _all_              | -1            |
-| `steemd`   | `follow_api`            | _all_                           | _all_              | 10            |
-| `steemd`   | `market_history_api`    | _all_                           | _all_              | 1             |
-| `steemd`   | `database_api`          | _all_                           | _all_              | 3             |
-| `steemd`   | `database_api`          | `get_block`                     | _all_              | -2            |
-| `steemd`   | `database_api`          | `get_block_header`              | _all_              | -2            |
-| `steemd`   | `database_api`          | `get_content`                   | _all_              | 1             |
-| `steemd`   | `database_api`          | `get_state`                     | _all_              | 1             |
-| `steemd`   | `database_api`          | `get_state`                     | `'/trending'`      | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'trending'`       | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/hot'`           | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/welcome'`       | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/promoted'`      | 30            |
-| `steemd`   | `database_api`          | `get_state`                     | `'/created'`       | 10            |
-| `steemd`   | `database_api`          | `get_dynamic_global_properties` | _all_              | 1             |
+| `hived`   | `login_api`             | _all_                           | _all_              | -1            |
+| `hived`   | `network_broadcast_api` | _all_                           | _all_              | -1            |
+| `hived`   | `follow_api`            | _all_                           | _all_              | 10            |
+| `hived`   | `market_history_api`    | _all_                           | _all_              | 1             |
+| `hived`   | `database_api`          | _all_                           | _all_              | 3             |
+| `hived`   | `database_api`          | `get_block`                     | _all_              | -2            |
+| `hived`   | `database_api`          | `get_block_header`              | _all_              | -2            |
+| `hived`   | `database_api`          | `get_content`                   | _all_              | 1             |
+| `hived`   | `database_api`          | `get_state`                     | _all_              | 1             |
+| `hived`   | `database_api`          | `get_state`                     | `'/trending'`      | 30            |
+| `hived`   | `database_api`          | `get_state`                     | `'trending'`       | 30            |
+| `hived`   | `database_api`          | `get_state`                     | `'/hot'`           | 30            |
+| `hived`   | `database_api`          | `get_state`                     | `'/welcome'`       | 30            |
+| `hived`   | `database_api`          | `get_state`                     | `'/promoted'`      | 30            |
+| `hived`   | `database_api`          | `get_state`                     | `'/created'`       | 10            |
+| `hived`   | `database_api`          | `get_dynamic_global_properties` | _all_              | 1             |
 | `overseer` | _all_                   | _all_                           | _all_              | 5             |
 | `conveyor` | _all_                   | _all_                           | _all_              | -1            |
-| `sbds`     | _all_                   | _all_                           | _all_              | 3             |
+| `hbds`     | _all_                   | _all_                           | _all_              | 3             |
 | `hivemind` | _all_                   | _all_                           | _all_              | 3             |
 | `yo`       | _all_                   | _all_                           | _all_              | 3             |
 
@@ -200,7 +200,7 @@ In these examples, the methods `get_account_history` and `get_ops_in_block` rout
 
 Adding a `retries` element defines the number of retry attempts, where `0` (or absent) means no retry.  The maximum number of retries is `3`.
 
-Note that retrying broadcast methods is not recommended, which is why the example explicitly sets `steemd.network_broadcast_api` to `0`.
+Note that retrying broadcast methods is not recommended, which is why the example explicitly sets `hived.network_broadcast_api` to `0`.
 
 #### json-rpc batch<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -209,7 +209,7 @@ Normally, a request is made with a JSON Object (`{}`).  But jussi also supports 
 For example, this would be a typical, non-batched JSON Object request that asks for a single block:
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1}' https://api.hive.blog
 ```
 
 ```json
@@ -240,7 +240,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[
 To request more than one block using the batch construct, wrap each call in a JSON Array, that asks for two blocks in one request:
 
 ```bash
-curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[2], "id":2}]' https://api.steemit.com
+curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[2], "id":2}]' https://api.hive.blog
 ```
 
 ```json
@@ -295,7 +295,7 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 Error responses are returned in the JSON Array response as well.  Notice the `"WRONG"` parameter in the second element.  The first block is returned as expected, the second one generates an error.
 
 ```bash
-curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":["WRONG"], "id":2}]' https://api.steemit.com
+curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[1], "id":1},{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":["WRONG"], "id":2}]' https://api.hive.blog
 ```
 
 ```json

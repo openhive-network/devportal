@@ -72,17 +72,17 @@ Reply by @steemitboard in discussion: "The Empire has sent you a friend request.
 	body_length: 677 (99 words)
 	replied at: 2018-04-28T04:32:42
 	net_votes: 0
-	https://steemit.com/@steemitboard/steemitboard-notify-lordvader-20180428t043241000z
+	https://hive.blog/@steemitboard/steemitboard-notify-lordvader-20180428t043241000z
 Reply by @jedimasteryoda in discussion: "The Empire has sent you a friend request."
 	body_length: 65 (11 words)
 	replied at: 2018-06-07T18:47:54
 	net_votes: 0
-	https://steemit.com/@jedimasteryoda/re-lordvader-the-empire-has-sent-you-a-friend-request-20180607t184754944z
+	https://hive.blog/@jedimasteryoda/re-lordvader-the-empire-has-sent-you-a-friend-request-20180607t184754944z
 Reply by @koinbot in discussion: "The Empire has sent you a friend request."
 	body_length: 15 (2 words)
 	replied at: 2018-06-23T07:58:51
 	net_votes: 0
-	https://steemit.com/@koinbot/re-lordvader-the-empire-has-sent-you-a-friend-request-20180623t075851464z
+	https://hive.blog/@koinbot/re-lordvader-the-empire-has-sent-you-a-friend-request-20180623t075851464z
 ```
 
 ### Comment fields
@@ -101,7 +101,7 @@ In our example script, we want more detail than this, so for every `comment`, we
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 * `<account-name>`
 

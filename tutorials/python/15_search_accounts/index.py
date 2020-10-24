@@ -1,9 +1,9 @@
-from steem import Steem
+from steem import Hive
 from pick import pick
 
-# initialize Steem class
+# initialize Hive class
 
-s = Steem()
+s = Hive()
 
 #choose list type
 title = 'Please select type of list:'

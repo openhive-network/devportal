@@ -1,5 +1,5 @@
 import { Client, PrivateKey } from 'dsteem';
-import { Mainnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Mainnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 //connect to a steem node, testnet in this case
@@ -13,17 +13,17 @@ window.submitAcc = async () => {
     const _account = await client.database.call('get_accounts', [[accSearch]]);
     console.log(`_account:`, _account);
     const name = _account[0].name;
-    const steem_balance = _account[0].balance;
-    const balance = `Available Steem balance for ${name}: ${steem_balance}<br/>`;
+    const hive_balance = _account[0].balance;
+    const balance = `Available Hive balance for ${name}: ${hive_balance}<br/>`;
     document.getElementById('accBalance').innerHTML = balance;
-    document.getElementById('steem').value = steem_balance;
+    document.getElementById('steem').value = hive_balance;
     const receiver = document.getElementById('receiver').value;
 
     document.getElementById('sc').style.display = 'block';
-    const link = `https://steemconnect.com/sign/transfer-to-vesting?from=${name}&to=${receiver}&amount=${steem_balance}`;
+    const link = `https://steemconnect.com/sign/transfer-to-vesting?from=${name}&to=${receiver}&amount=${hive_balance}`;
     document.getElementById('sc').innerHTML = `<br/><a href=${encodeURI(
         link
-    )} target="_blank">Steemconnect signing</a>`;
+    )} target="_blank">Hiveconnect signing</a>`;
 };
 
 window.submitTx = async () => {

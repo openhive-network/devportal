@@ -3,9 +3,9 @@ let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dhive.Client('https://api.openhive.network');
+const client = new dhive.Client('https://api.hive.blog');
 
 const Remarkable = require('remarkable');
 const md = new Remarkable({ html: true, linkify: true });

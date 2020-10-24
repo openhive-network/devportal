@@ -1,7 +1,7 @@
 ---
-title: Converting VESTS to STEEM
+title: Converting VESTS to HIVE
 position: 1
-description: How to convert VESTS to STEEM or STEEM POWER
+description: How to convert VESTS to HIVE or HIVE POWER
 exclude: true
 layout: full
 canonical_url: vest-to-steem.html
@@ -9,12 +9,12 @@ canonical_url: vest-to-steem.html
 
 ### Intro
 
-Steem's has base unit is VESTS and usually user doesn't know about this unit because everything is dynamically calucated and presented in STEEM form for convenience of the user. In this recipe we will talk about how converting is working behind the scenes on all Steem apps. Dynamic Global Properties are used in this recipe to fetch the current values of global blockchain properties.
+Hive's has base unit is VESTS and usually user doesn't know about this unit because everything is dynamically calucated and presented in HIVE form for convenience of the user. In this recipe we will talk about how converting is working behind the scenes on all Hive apps. Dynamic Global Properties are used in this recipe to fetch the current values of global blockchain properties.
 
 ## Steps
 
 1. [**Get Dynamic Global Properties**](#get-global) Fetch current values of global blockchain properties
-1. [**Formulate VESTS_TO_STEEM**](#formula) Formulate function that will convert given VESTS to STEEM.    
+1. [**Formulate VESTS_TO_HIVE**](#formula) Formulate function that will convert given VESTS to HIVE.    
 
 
 #### 1. Get Dynamic Global Properties <a name="get-global"></a>
@@ -22,7 +22,7 @@ Steem's has base unit is VESTS and usually user doesn't know about this unit bec
 Following method can be used to fetch global values
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[], "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[], "id":1}' https://api.hive.blog
 ```
 
 ##### Example Output<a style="float: right" href="#steps"><i class="fas fa-chevron-up fa-sm" /></a>
@@ -38,19 +38,19 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_pro
       "current_witness":"xeldal",
       "total_pow":514415,
       "num_pow_witnesses":172,
-      "virtual_supply":"283434761.199 STEEM",
-      "current_supply":"271729171.190 STEEM",
-      "confidential_supply":"0.000 STEEM",
-      "current_sbd_supply":"15498201.173 SBD",
-      "confidential_sbd_supply":"0.000 SBD",
-      "total_vesting_fund_steem":"192913644.627 STEEM",
+      "virtual_supply":"283434761.199 HIVE",
+      "current_supply":"271729171.190 HIVE",
+      "confidential_supply":"0.000 HIVE",
+      "current_hbd_supply":"15498201.173 HBD",
+      "confidential_hbd_supply":"0.000 HBD",
+      "total_vesting_fund_hive":"192913644.627 HIVE",
       "total_vesting_shares":"391296886352.617261 VESTS",
-      "total_reward_fund_steem":"0.000 STEEM",
+      "total_reward_fund_hive":"0.000 HIVE",
       "total_reward_shares2":"0",
       "pending_rewarded_vesting_shares":"379159224.860656 VESTS",
-      "pending_rewarded_vesting_steem":"185294.019 STEEM",
-      "sbd_interest_rate":0,
-      "sbd_print_rate":2933,
+      "pending_rewarded_vesting_hive":"185294.019 HIVE",
+      "hbd_interest_rate":0,
+      "hbd_print_rate":2933,
       "maximum_block_size":65536,
       "current_aslot":24315228,
       "recent_slots_filled":"340282366920938463463374607431768211400",
@@ -64,14 +64,14 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_pro
 }
 ```
 
-#### 2. Formulate VESTS_TO_STEEM <a name="formula"></a><a style="float: right" href="#steps"><i class="fas fa-chevron-up fa-sm" /></a>
+#### 2. Formulate VESTS_TO_HIVE <a name="formula"></a><a style="float: right" href="#steps"><i class="fas fa-chevron-up fa-sm" /></a>
 
-From above results we have everything we need to calculate STEEM from given VESTS value.
+From above results we have everything we need to calculate HIVE from given VESTS value.
 
-Let's say we have been given `availableVESTS` variable, value in VESTS and we want to convert that to STEEM. By using values from above returned object our formula would be as follows:
+Let's say we have been given `availableVESTS` variable, value in VESTS and we want to convert that to HIVE. By using values from above returned object our formula would be as follows:
 
 ```
-vestSteem = ( result.total_vesting_fund_steem x availableVESTS ) / result.total_vesting_shares
+vestHive = ( result.total_vesting_fund_hive x availableVESTS ) / result.total_vesting_shares
 ```
 
 That's it!

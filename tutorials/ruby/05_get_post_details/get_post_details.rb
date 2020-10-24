@@ -64,9 +64,9 @@ api.get_content(author, permlink) do |content|
   # Value of the maximum payout this content will receive.
   puts "\t\tmax_accepted_payout: #{content.max_accepted_payout}"
   
-  # The percent of Steem Dollars to keep, unkept amounts will be received as
-  # STEEM Power.
-  puts "\t\tpercent_steem_dollars: #{'%.2f %%' % (content.percent_steem_dollars / 100.0)}"
+  # The percent of Hive Dollars to keep, unkept amounts will be received as
+  # HIVE Power.
+  puts "\t\tpercent_hbd: #{'%.2f %%' % (content.percent_hbd / 100.0)}"
     
   # 7 days from the created date.
   if (cashout = Time.parse(content.cashout_time + 'Z') - Time.now.utc) > 0
@@ -88,7 +88,7 @@ api.get_content(author, permlink) do |content|
   
     # Tracks the author payout this content has received over time, measured in
     # the debt asset.
-    puts "\t\tauthor_rewards: #{('%.3f SBD' % (content.author_rewards / 1000.0))}"
+    puts "\t\tauthor_rewards: #{('%.3f HBD' % (content.author_rewards / 1000.0))}"
     
     # Tracks the curator payout this content has received over time, measured in
     # the debt asset.
@@ -103,7 +103,7 @@ api.get_content(author, permlink) do |content|
   puts "\tpromoted: #{content.promoted}"
   
   # The list of up to 8 beneficiary accounts for this content as well as the
-  # percentage of the author reward they will receive in STEEM Power.
+  # percentage of the author reward they will receive in HIVE Power.
   if content.beneficiaries.any?
     puts "\tbeneficiaries:"
     

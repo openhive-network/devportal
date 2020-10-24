@@ -10,11 +10,11 @@ canonical_url: power_down.html
 
 
 
-In this tutorial we will explain and show you how to power down some or all of your available vesting shares (STEEM POWER) on the **Steem** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we will explain and show you how to power down some or all of your available vesting shares (HIVE POWER) on the **Hive** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `withdraw_vesting` method found within the `commit` class in the library. When you power down, the converted VESTS (STEEM POWER) will not be available as STEEM immediately. It is converted in 13 equal parts and transferred into your STEEM wallet weekly, the first portion only being available a week after the power down was initiated. Before we do the conversion, we check the current balance of the account to check how much STEEM POWER is available. This is not strictly necessary as the process will automatically abort with the corresponding error, but it does give some insight into the process as a whole. We use the `get_account` function to check for this. The `withdraw_vesting` method has 2 parameters:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `withdraw_vesting` method found within the `commit` class in the library. When you power down, the converted VESTS (HIVE POWER) will not be available as HIVE immediately. It is converted in 13 equal parts and transferred into your HIVE wallet weekly, the first portion only being available a week after the power down was initiated. Before we do the conversion, we check the current balance of the account to check how much HIVE POWER is available. This is not strictly necessary as the process will automatically abort with the corresponding error, but it does give some insight into the process as a whole. We use the `get_account` function to check for this. The `withdraw_vesting` method has 2 parameters:
 
 1.  _amount_ - The amount of VESTS that will be withdrawn. This must be of the `float` data type
 1.  _account_ - The specified user account for the transfer
@@ -22,7 +22,7 @@ The Steem python library has a built-in function to transmit transactions to the
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Steem node
+1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
 1.  [**Check balance**](#balance) - Check current vesting balance of user account
 1.  [**Conversion amount and commit**](#convert) - Input of VESTS amount to convert and commit to blockchain
 
@@ -41,9 +41,9 @@ import steem
 from pick import pick
 from steem.amount import Amount
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -59,7 +59,7 @@ username = input('Enter username: ') #demo account: cdemo
 wif = input('Enter private ACTIVE key: ') #demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
 
 #connect node and private active key
-client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 ```
 
 #### 3. Check balance <a name="balance"></a>

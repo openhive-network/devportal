@@ -1,7 +1,7 @@
 {
     "name": "03_client_signing",
     "version": "1.0.0",
-    "description": "Client signing on Steem",
+    "description": "Client signing on Hive",
     "main": "index.js",
     "scripts": {
         "start": "webpack && node ./index.js",

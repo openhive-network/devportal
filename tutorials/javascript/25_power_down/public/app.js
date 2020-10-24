@@ -1,5 +1,5 @@
 import { Client, PrivateKey } from 'dsteem';
-import { Mainnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Mainnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 //connect to a steem node, testnet in this case
@@ -22,13 +22,13 @@ window.submitAcc = async () => {
         parseFloat(_account[0].delegated_vesting_shares);
 
     const props = await client.database.getDynamicGlobalProperties();
-    const vestSteem = parseFloat(
-        parseFloat(props.total_vesting_fund_steem) *
+    const vestHive = parseFloat(
+        parseFloat(props.total_vesting_fund_hive) *
             (parseFloat(avail) / parseFloat(props.total_vesting_shares)),
         6
     );
 
-    const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestSteem} STEEM POWER<br/><br/>`;
+    const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestHive} HIVE POWER<br/><br/>`;
     document.getElementById('accBalance').innerHTML = balance;
     document.getElementById('steem').value = avail + ' VESTS';
 
@@ -38,7 +38,7 @@ window.submitAcc = async () => {
     }`;
     document.getElementById('sc').innerHTML = `<br/><a href=${encodeURI(
         link
-    )} target="_blank">Steemconnect signing</a>`;
+    )} target="_blank">Hiveconnect signing</a>`;
 };
 
 window.submitTx = async () => {

@@ -23,7 +23,7 @@ In `radiator`, we can request follow results using `condenser_api.get_following`
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `radiator` to communicate with the Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `radiator` to communicate with the Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via command line arguments
 3.  [**Get followers/following**](#query) Get the followers or accounts being followed
 4.  [**Display**](#display) Return the array of results to the console
@@ -84,7 +84,7 @@ end
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone git@github.com:steemit/devportal-tutorials-rb.git

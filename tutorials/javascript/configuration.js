@@ -1,5 +1,5 @@
 /**
- * This is the main configuration file for the Steem developer Javascript tutorials
+ * This is the main configuration file for the Hive developer Javascript tutorials
  *
  * In this configuration file we use 'address' to refer to what in many other contexts are called
  * user,
@@ -11,7 +11,7 @@
  *
  */
 
-export const TestnetSteemit = {
+export const TestnetHive = {
     accounts: [
         {
             address: 'demo',
@@ -71,11 +71,11 @@ export const Testnet = TestnetVC;
 
 export const Mainnet = {
     accounts: [],
-    url: 'https://api.openhive.network',
+    url: 'https://api.hive.blog',
     net: {
         addressPrefix: 'STM',
         chainId:
-            '0000000000000000000000000000000000000000000000000000000000000000',
+            'beeab0de00000000000000000000000000000000000000000000000000000000',
     },
 };
 

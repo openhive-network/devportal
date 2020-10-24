@@ -1,7 +1,7 @@
 ---
 title: 'JS: Reblogging Post'
 position: 14
-description: "_By the end of this tutorial you should know how to reblog (resteem) a blog from steem_"
+description: "_By the end of this tutorial you should know how to reblog (resteem) a blog from hive_"
 layout: full
 canonical_url: reblogging_post.html
 ---              
@@ -21,7 +21,7 @@ We are using the `client.broadcast` function provided by `dsteem` to reblog the 
 *   The author of the post that is being reblogged
 *   The title of the post that is being reblogged
 
-A simple HTML interface is used to capture the required information after which the transaction is submitted. There are two prerequisites within the reblog process in Steem that have to be adhered to, namely, the post must not be older than 7 days, and the post can only be reblogged once by a specific account. The fields have been populated with information to give an example of what it would look like but care has to be taken to provide correct details before the function is executed.
+A simple HTML interface is used to capture the required information after which the transaction is submitted. There are two prerequisites within the reblog process in Hive that have to be adhered to, namely, the post must not be older than 7 days, and the post can only be reblogged once by a specific account. The fields have been populated with information to give an example of what it would look like but care has to be taken to provide correct details before the function is executed.
 
 This tutorial makes use of the This function is taken from the tutorial [Blog Feed](https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/01_blog_feed/) to get a list of trending posts.
 
@@ -43,9 +43,9 @@ const dsteem = require('dsteem');
 let opts = {};
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
-//connect to a Steem node. This is currently setup on production, but we recommend using a testnet like https://testnet.steem.vc
-const client = new dsteem.Client('https://api.steemit.com', opts);
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+//connect to a Hive node. This is currently setup on production, but we recommend using a testnet like https://testnet.steem.vc
+const client = new dsteem.Client('https://api.hive.blog', opts);
 ```
 
 #### 2. Collecting information<a name="collecting_information"></a>
@@ -134,7 +134,7 @@ If the reblog fails the `console.log` will present a long line of error code:
 
 There is a line in the error log indicating "Account has already reblogged this post" indicating exactly that. This process can be run until a positive result is found.
 
-It should be noted that reblogging a post does not create a new post on the blockchain but merely shares the post to whomever is following the user doing the reblog. Along with `reblogging` the `custom_json` broadcast operation also includes options for following users and editing blog content. More information on how to use the `broadcast` operation and options surrounding the operation can be found on the Steem [Devportal](https://developers.steem.io/apidefinitions/#apidefinitions-broadcast-ops-comment)
+It should be noted that reblogging a post does not create a new post on the blockchain but merely shares the post to whomever is following the user doing the reblog. Along with `reblogging` the `custom_json` broadcast operation also includes options for following users and editing blog content. More information on how to use the `broadcast` operation and options surrounding the operation can be found on the Hive [Devportal](https://developers.hive.io/apidefinitions/#apidefinitions-broadcast-ops-comment)
 
 ## To run this tutorial
 

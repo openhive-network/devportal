@@ -1,6 +1,6 @@
 import beembase
 from beem.account import Account
-from beem import Steem
+from beem import Hive
 from beem.transactionbuilder import TransactionBuilder
 from beemgraphenebase.account import PasswordKey
 from beembase.objects import Permission
@@ -13,7 +13,7 @@ new_password = input('new password for account: ')
 recovery_account = input('account owner (recovery account): ')
 recovery_account_private_key = input('account owner private ACTIVE key: ')
 
-s = Steem(node=['https://api.steemit.com'], keys=[recovery_account_private_key])
+s = Hive(node=['https://api.hive.blog'], keys=[recovery_account_private_key])
 
 #create new account owner keys
 new_account_owner_private_key = PasswordKey(username, new_password, role='owner').get_private_key()
@@ -93,7 +93,7 @@ op_account_update_data = {
 }
 
 #recover account initialisation and transmission
-s = Steem(node=['https://api.steemit.com'], keys=[recovery_account_private_key])
+s = Hive(node=['https://api.hive.blog'], keys=[recovery_account_private_key])
 
 op_recover_account = beembase.operations.Recover_account(**op_recover_account_data)
 
@@ -111,7 +111,7 @@ print('result')
 print(result)
 
 #update account keys initialisation and transmission
-s = Steem(node=['https://api.steemit.com'], keys=[new_account_owner_private_key])
+s = Hive(node=['https://api.hive.blog'], keys=[new_account_owner_private_key])
 
 op_account_update = beembase.operations.Account_update(**op_account_update_data)
 

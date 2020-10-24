@@ -10,11 +10,11 @@ canonical_url: reblogging_post.html
 
 
 
-Tutorial will also explain and show you how to sign/broadcast transaction on **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library.
+Tutorial will also explain and show you how to sign/broadcast transaction on **Hive** blockchain using the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-Steem python library has built-in function to commit transaction and broadcast it to the network. 
+Hive python library has built-in function to commit transaction and broadcast it to the network. 
 
 ## Steps
 
@@ -26,15 +26,15 @@ Steem python library has built-in function to commit transaction and broadcast i
 
 In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Steem class
+First we import all three library and initialize Hive class
 
 ```python
     import pprint
     from pick import pick
-    # initialize Steem class
-    from steem import Steem
+    # initialize Hive class
+    from steem import Hive
 
-    s = Steem()
+    s = Hive()
 ```
 
 #### 2. Post list <a name="post-list"></a>
@@ -73,7 +73,7 @@ Next in order to sign transaction, application asks for username and posting pri
   wif = input("Enter your Posting private key? ")
 
   # commit or build transaction
-  c = Commit(steem=Steem(keys=[wif]))
+  c = Commit(steem=Hive(keys=[wif]))
 
   # broadcast transaction
   c.resteem(option, account=account)

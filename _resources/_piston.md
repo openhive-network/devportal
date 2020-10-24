@@ -3,7 +3,7 @@ title: PistonCLI
 position: 4
 ---
 
-Piston is a command line tool to interact with the STEEM network.  Piston is
+Piston is a command line tool to interact with the HIVE network.  Piston is
 written in Python and highly customizable for building steem tools and performing
 wallet operations. 
 

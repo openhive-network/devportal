@@ -4,9 +4,9 @@ from pick import pick
 from steembase.exceptions import RPCError, RPCErrorRecoverable
 
 # connect to testnet
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 
 #capture user information
@@ -14,7 +14,7 @@ username = input('Please enter your username: ') #'cdemo'
 postingkey = input('Please enter your private posting key: ') #'5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz'
 
 #connect node and private posting key, demo account being used: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-s = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[postingkey])
+s = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[postingkey])
 
 #capture variables
 author = input('Author of post/comment that you wish to vote for: ')

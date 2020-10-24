@@ -10,7 +10,7 @@ The purpose of this tool is to provide a way to host and proxy images used by [c
 
 Using ImageHoster will help limit access to IP addresses of the general user.  It will also strip [image metadata](https://en.wikipedia.org/wiki/Exif) related to the author's geographical location.  It also helps to verify that the original author uploaded the image they intended.
 
-The ability to upload images on steemit.com was originally added in January, 2017.  Please note that this tool **does not** store any image data on the blockchain.
+The ability to upload images on hive.blog was originally added in January, 2017.  Please note that this tool **does not** store any image data on the blockchain.
 
 Detaied information on Imagehoster can be found in its [repository](https://gitlab.syncad.com/hive/imagehoster/-/blob/master/README.md#imagehoster)
 

@@ -1,29 +1,29 @@
 ---
-title: 'PY: Power Up Steem'
+title: 'PY: Power Up Hive'
 position: 24
-description: "How to power up your STEEM to STEEM POWER using Python."
+description: "How to power up your HIVE to HIVE POWER using Python."
 layout: full
-canonical_url: power_up_steem.html
+canonical_url: power_up_hive.html
 ---              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up Steem](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/tutorials/24_power_up_steem) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up Hive](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/tutorials/24_power_up_hive) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
 <br>
 
 
 
-In this tutorial we show you how to check the STEEM balance of an account on the **Steem** blockchain and how to power up your STEEM into STEEM POWER using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to check the HIVE balance of an account on the **Hive** blockchain and how to power up your HIVE into HIVE POWER using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `transfer_to_vesting` method found within the `commit` class in the library. When you power up you convert your STEEM into STEEM POWER to increase your influence on Steemit. Before we do the conversion, we use the `get_account` function to check the current STEEM balance of the account to see what is available to power up. This is not strictly necessary but adds to the useability of the process. The `transfer_to_vesting` method has 3 parameters:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `transfer_to_vesting` method found within the `commit` class in the library. When you power up you convert your HIVE into HIVE POWER to increase your influence on Hive. Before we do the conversion, we use the `get_account` function to check the current HIVE balance of the account to see what is available to power up. This is not strictly necessary but adds to the useability of the process. The `transfer_to_vesting` method has 3 parameters:
 
-1.  _amount_ - The amount of STEEM to power up. This must be of the `float` data type
-1.  _to_ - The account to where the STEEM will be powered up
+1.  _amount_ - The amount of HIVE to power up. This must be of the `float` data type
+1.  _to_ - The account to where the HIVE will be powered up
 1.  _account_ - The source user account for the transfer
 
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Steem node
+1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
 1.  [**Check balance**](#balance) - Check current vesting balance of user account
 1.  [**Conversion amount**](#convert) - Input power up amount and check valid transfer
 1.  [**Commit to blockchain**](#commit) - Commit transaction to blockchain
@@ -43,9 +43,9 @@ import steem
 from steem.amount import Amount
 from pick import pick
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -61,7 +61,7 @@ username = input('Enter username: ') #demo account: cdemo
 wif = input('Enter private ACTIVE key: ') #demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
 
 #connect node and private active key
-client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 ```
 
 #### 3. Check balance <a name="balance"></a>
@@ -76,7 +76,7 @@ if(userinfo is None) :
     exit()
 balance = userinfo['balance']
 
-print('Available STEEM balance: ' + balance + '\n')
+print('Available HIVE balance: ' + balance + '\n')
 
 input('Press any key to continue')
 ```
@@ -85,7 +85,7 @@ The results of the query are displayed in the console/terminal.
 
 #### 4. Conversion amount <a name="convert"></a>
 
-Both the `amount` and the `to` parameters are assigned via input from the terminal/console. The user is given the option to power up the STEEM to their own account or to another user's account. The amount has to be greater than zero and no more than the total available STEEM of the user. If you are using one of Steemit's demo accounts, please leave some STEEM for others to power up! We also check the `to account` to make sure it's a valid account name.
+Both the `amount` and the `to` parameters are assigned via input from the terminal/console. The user is given the option to power up the HIVE to their own account or to another user's account. The amount has to be greater than zero and no more than the total available HIVE of the user. If you are using one of Hive's demo accounts, please leave some HIVE for others to power up! We also check the `to account` to make sure it's a valid account name.
 
 ```python
 #choice of account
@@ -95,18 +95,18 @@ option, index = pick(options, title)
 
 if (option == 'OTHER') :
     #account to power up to
-    to_account = input('Please enter the ACCOUNT to where the STEEM will be transferred: ')
+    to_account = input('Please enter the ACCOUNT to where the HIVE will be transferred: ')
     #check valid username
     result = client.get_account(to_account)
     if (not result) :
         print(to_account + ' doesn\'t exist on this chain!')
         exit()
 else :
-    print('\n' + 'Power up STEEM to own account' + '\n')
+    print('\n' + 'Power up HIVE to own account' + '\n')
     to_account = username
 
 #amount to power up
-amount = float(input('Please enter the amount of STEEM to power up: '))
+amount = float(input('Please enter the amount of HIVE to power up: '))
 ```
 
 #### 5. Commit to blockchain <a name="commit"></a>
@@ -116,7 +116,7 @@ Now that all the parameters have been assigned we can continue with the actual t
 ```python
 #parameters: amount, to, account
 if (amount == 0) :
-    print('\n' + 'No STEEM entered for powering up')
+    print('\n' + 'No HIVE entered for powering up')
     exit()
 else :
     if (amount > Amount(balance).amount) :
@@ -124,18 +124,18 @@ else :
         exit()
     else :
         client.transfer_to_vesting(amount, to_account, username)
-        print('\n' + str(amount) + ' STEEM has been powered up successfully')
+        print('\n' + str(amount) + ' HIVE has been powered up successfully')
 ```
 
 The result of the power up transfer is displayed on the console/terminal.
 
-As an added check we also display the new STEEM balance of the user on the terminal/console
+As an added check we also display the new HIVE balance of the user on the terminal/console
 
 ```python
 #get new account balance
 userinfo = client.get_account(username)
 balance = userinfo['balance']
-print('New STEEM balance: ' + balance)
+print('New HIVE balance: ' + balance)
 ```
 
 We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the [testnet portal](http://condenser.steem.vc/).
@@ -144,7 +144,7 @@ We encourage users to play around with different values and data types to fully 
 
 1.  [review dev requirements](getting_started.html)
 1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/python/24_power_up_steem`
+1.  `cd devportal/tutorials/python/24_power_up_hive`
 1.  `pip install -r requirements.txt`
 1.  `python index.py`
 1.  After a few moments, you should see a prompt for input in terminal screen.

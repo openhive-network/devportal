@@ -1,5 +1,5 @@
 import { Client, PrivateKey } from 'dsteem';
-import { Testnet as NetConfig } from '../../configuration'; //A Steem Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Steem blockchain.
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
@@ -28,9 +28,9 @@ window.createPost = async () => {
     //for content
     const time = new Date().getTime();
     //get title
-    const title = `developers.steem.io - JS-T:17 ${time}`;
+    const title = `developers.hive.io - JS-T:17 ${time}`;
     //get body
-    const body = `Go to [developers.steem.io](https://developers.steem.io) for the latest in Steem tutorials! This post was created by someone using the active version of those tutorials at  [https://github.com/steemit/devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js)
+    const body = `Go to [developers.hive.io](https://developers.hive.io) for the latest in Hive tutorials! This post was created by someone using the active version of those tutorials at  [https://github.com/steemit/devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js)
         
         ${time}`;
     //get tags and convert to array list

@@ -10,13 +10,13 @@ canonical_url: grant_posting_permission.html
 
 
 
-In this tutorial we show you how to check if someone has posting permission for an account on the **Steem** blockchain and how to grant or revoke that permission using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to check if someone has posting permission for an account on the **Hive** blockchain and how to grant or revoke that permission using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 Providing another user posting permission for your account can be used to allow multiple users to submit posts on a single steemit community. @Utopian-Io is an example of such a community. There are also applications that allows you to schedule posts by automatically publishing on your behalf.
 
 ## Intro
 
-The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `allow` and `disallow` methods found within the `commit` class in the library. Before we grant or revoke permission, we use the `get_account` function to check whether the requested user already has that permission or not. This is not strictly necessary but adds to the useability of the process. The `allow` method has 5 parameters:
+The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `allow` and `disallow` methods found within the `commit` class in the library. Before we grant or revoke permission, we use the `get_account` function to check whether the requested user already has that permission or not. This is not strictly necessary but adds to the useability of the process. The `allow` method has 5 parameters:
 
 1.  _foreign_ - The foreign account that will obtain access
 1.  _weight_ - This is an optional parameter defining the weight to use. If not defined, the threshold value will be used. If the weight is smaller than the threshold, additional signatures will be required.
@@ -58,7 +58,7 @@ username = input('Enter username: ')
 wif = input('Enter private ACTIVE key: ')
 
 #connect to production server with active key
-client = steem.Steem(keys=[wif])
+client = steem.Hive(keys=[wif])
 ```
 
 #### 2. Username validation <a name="username"></a>

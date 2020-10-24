@@ -1,7 +1,7 @@
 ---
 title: 'JS: Submit Post'
 position: 10
-description: "_By the end of this tutorial you should know how to prepare comments for Steem and then submit using the broadcast.comment function._"
+description: "_By the end of this tutorial you should know how to prepare comments for Hive and then submit using the broadcast.comment function._"
 layout: full
 canonical_url: submit_post.html
 ---              
@@ -14,12 +14,12 @@ This tutorial will show the method of properly formatting content followed by br
 
 ## Intro
 
-We are using the `client.broadcast.comment` function provided by `dsteem` which generates, signs, and broadcasts the transaction to the network. On the Steem platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, otherwise it's a comment.
+We are using the `client.broadcast.comment` function provided by `dsteem` which generates, signs, and broadcasts the transaction to the network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, otherwise it's a comment.
 
 ## Steps
 
 1.  [**App setup**](#app-setup) Configuration of `dsteem` to use the proper connection and network.
-1.  [**Fetch Steem Post or Comment data**](#fetch-content) Defining information variables with the `submitpost` function.
+1.  [**Fetch Hive Post or Comment data**](#fetch-content) Defining information variables with the `submitpost` function.
 1.  [**Format and Broadcast**](#format-broadcast) Formatting the comments and submitting to the blockchain.
 
 #### 1. App setup<a name="app-setup"></a>
@@ -38,7 +38,7 @@ opts.chainId =
 const client = new dsteem.Client('https://testnet.steem.vc', opts);
 ```
 
-#### 2. Fetch Steem Post or Comment data<a name="fetch-content"></a>
+#### 2. Fetch Hive Post or Comment data<a name="fetch-content"></a>
 
 Next, we have the `submitPost` function which executes when the Submit post button is clicked.
 
@@ -109,7 +109,7 @@ Note that the `parent_author` and `parent_permlink` fields are used for replies 
 
 After the post has been broadcast to the network, we can simply set all the fields to empty strings and show the post link to check it from a condenser instance running on the selected testnet.
 
-The `broadcast` operation has more to offer than just committing a post/comment to the blockchain. It provides a mulititude of options that can accompany this commit. The max payout and percent of steem dollars can be set. When authors don't want all of the benifits from a post, they can set the payout factors to zero or beneficiaries can be set to receive part of the rewards. You can also set whether votes are allowed or not. The broadcast to the blockchain can be modified to meet the exact requirements of the author. More information on how to use the `broadcast` operation can be found on the Steem [Devportal](https://developers.steem.io/apidefinitions/#apidefinitions-broadcast-ops-comment) with a list of the available broadcast options under the specific [Appbase API](https://developers.steem.io/apidefinitions/#broadcast_ops_comment_options)
+The `broadcast` operation has more to offer than just committing a post/comment to the blockchain. It provides a mulititude of options that can accompany this commit. The max payout and percent of steem dollars can be set. When authors don't want all of the benifits from a post, they can set the payout factors to zero or beneficiaries can be set to receive part of the rewards. You can also set whether votes are allowed or not. The broadcast to the blockchain can be modified to meet the exact requirements of the author. More information on how to use the `broadcast` operation can be found on the Hive [Devportal](https://developers.hive.io/apidefinitions/#apidefinitions-broadcast-ops-comment) with a list of the available broadcast options under the specific [Appbase API](https://developers.hive.io/apidefinitions/#broadcast_ops_comment_options)
 
 ### To Run the tutorial
 

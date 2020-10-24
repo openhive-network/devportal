@@ -55,7 +55,7 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["vote",{"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]],"extensions":[],"signatures":[]}],
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":"100.000
-      HIVE","maximum_block_size":131072,"sbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
+      HIVE","maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
       "id":1}'
     expected_curl_responses:
     - missing required posting authority
@@ -80,7 +80,7 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction_synchronous",
       "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":"100.000
-      HIVE","maximum_block_size":131072,"sbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
+      HIVE","maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
       "id":1}'
     expected_curl_responses:
     - missing required posting authority
@@ -243,19 +243,19 @@
       last_vote_time: '2016-12-04T23:10:57'
       balance: 0.000 HIVE
       savings_balance: 0.0 HIVE
-      sbd_balance: 0.0 HBD
-      sbd_seconds: ''
-      sbd_seconds_last_update: '2018-04-10T04:08:36'
-      sbd_last_interest_payment: '2018-03-15T17:58:24'
-      savings_sbd_balance: 0.000 HBD
-      savings_sbd_seconds: ''
-      savings_sbd_seconds_last_update: '1970-01-01T00:00:00'
-      savings_sbd_last_interest_payment: '1970-01-01T00:00:00'
+      hbd_balance: 0.0 HBD
+      hbd_seconds: ''
+      hbd_seconds_last_update: '2018-04-10T04:08:36'
+      hbd_last_interest_payment: '2018-03-15T17:58:24'
+      savings_hbd_balance: 0.000 HBD
+      savings_hbd_seconds: ''
+      savings_hbd_seconds_last_update: '1970-01-01T00:00:00'
+      savings_hbd_last_interest_payment: '1970-01-01T00:00:00'
       savings_withdraw_requests: 0
-      reward_sbd_balance: 0.000 HBD
-      reward_steem_balance: 0.000 HIVE
+      reward_hbd_balance: 0.000 HBD
+      reward_hive_balance: 0.000 HIVE
       reward_vesting_balance: 0.000000 VESTS
-      reward_vesting_steem: 0.000 HIVE
+      reward_vesting_hive: 0.000 HIVE
       vesting_shares: 0.000 VESTS
       delegated_vesting_shares: 0.000000 VESTS
       received_vesting_shares: 0.000000 VESTS
@@ -439,7 +439,7 @@
           amount: '1000000000'
           pecision: 3
           nai: "@@000000013"
-        percent_steem_dollars: 10000
+        percent_hbd: 10000
         allow_replies: true
         allow_votes: true
         allow_curation_rewards: true
@@ -503,7 +503,7 @@
     expected_response_json:
       account_creation_fee: 0.100 HIVE
       maximum_block_size: 131072
-      sbd_interest_rate: 1000
+      hbd_interest_rate: 1000
       account_subsidy_limit: 0
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_chain_properties", "params":[],
@@ -579,7 +579,7 @@
       root_author: ''
       root_permlink: ''
       max_accepted_payout: 0.000 HIVE
-      percent_steem_dollars: 0
+      percent_hbd: 0
       allow_replies: false
       allow_votes: false
       allow_curation_rewards: false
@@ -644,7 +644,7 @@
       root_author: ''
       root_permlink: ''
       max_accepted_payout: 0.000 HIVE
-      percent_steem_dollars: 0
+      percent_hbd: 0
       allow_replies: false
       allow_votes: false
       allow_curation_rewards: false
@@ -672,7 +672,7 @@
       |-------------------|-|
       | `1234` | Queries a conversion request with the id of 1234. |
       
-      Also see: [database_api.list_sbd_conversion_requests]({{ '/apidefinitions/#database_api.list_sbd_conversion_requests' | relative_url }})
+      Also see: [database_api.list_hbd_conversion_requests]({{ '/apidefinitions/#database_api.list_hbd_conversion_requests' | relative_url }})
     parameter_json:
     - 0
     expected_response_json: []
@@ -917,16 +917,16 @@
       virtual_supply: 0.000 HIVE
       current_supply: 0.000 HIVE
       confidential_supply: 0.000 HIVE
-      current_sbd_supply: 0.000 HIVE
-      confidential_sbd_supply: 0.000 HIVE
-      total_vesting_fund_steem: 0.000 HIVE
+      current_hbd_supply: 0.000 HIVE
+      confidential_hbd_supply: 0.000 HIVE
+      total_vesting_fund_hive: 0.000 HIVE
       total_vesting_shares: 0.000 HIVE
-      total_reward_fund_steem: 0.000 HIVE
+      total_reward_fund_hive: 0.000 HIVE
       total_reward_shares2: '0'
       pending_rewarded_vesting_shares: 0.000 HIVE
-      pending_rewarded_vesting_steem: 0.000 HIVE
-      sbd_interest_rate: 0
-      sbd_print_rate: 10000
+      pending_rewarded_vesting_hive: 0.000 HIVE
+      hbd_interest_rate: 0
+      hbd_print_rate: 10000
       maximum_block_size: 0
       current_aslot: 0
       recent_slots_filled: '0'
@@ -1149,7 +1149,7 @@
         open: 0
         close: 0
         volume: 0
-      non_steem:
+      non_hive:
         high: 0
         low: 0
         open: 0
@@ -1301,7 +1301,7 @@
       signatures: []
     expected_response_json: []
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_potential_signatures", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_potential_signatures", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
       "id":1}'
   - api_method: condenser_api.get_reblogged_by
     since: HF14
@@ -1391,7 +1391,7 @@
     - []
     expected_response_json: []
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_required_signatures", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}]],"extensions":[],"signatures":[]},[]],
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_required_signatures", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]},[]],
       "id":1}'
   - api_method: condenser_api.get_reward_fund
     since: HF17
@@ -1466,16 +1466,16 @@
         virtual_supply: 0.000 HIVE
         current_supply: 0.000 HIVE
         confidential_supply: 0.000 HIVE
-        current_sbd_supply: 0.000 HIVE
-        confidential_sbd_supply: 0.000 HIVE
-        total_vesting_fund_steem: 0.000 HIVE
+        current_hbd_supply: 0.000 HIVE
+        confidential_hbd_supply: 0.000 HIVE
+        total_vesting_fund_hive: 0.000 HIVE
         total_vesting_shares: 0.000 HIVE
-        total_reward_fund_steem: 0.000 HIVE
+        total_reward_fund_hive: 0.000 HIVE
         total_reward_shares2: '0'
         pending_rewarded_vesting_shares: 0.000 HIVE
-        pending_rewarded_vesting_steem: 0.000 HIVE
-        sbd_interest_rate: 0
-        sbd_print_rate: 10000
+        pending_rewarded_vesting_hive: 0.000 HIVE
+        hbd_interest_rate: 0
+        hbd_print_rate: 10000
         maximum_block_size: 0
         current_aslot: 0
         recent_slots_filled: '0'
@@ -1505,7 +1505,7 @@
         median_props:
           account_creation_fee: 0.000 HIVE
           maximum_block_size: 131072
-          sbd_interest_rate: 1000
+          hbd_interest_rate: 1000
         majority_version: 0.0.0
         max_voted_witnesses: 19
         max_miner_witnesses: 1
@@ -1544,8 +1544,8 @@
       lowest_ask: '0.00000000000000000'
       highest_bid: '0.00000000000000000'
       percent_change: '0.00000000000000000'
-      steem_volume: 0.000 HIVE
-      sbd_volume: 0.000 HIVE
+      hive_volume: 0.000 HIVE
+      hbd_volume: 0.000 HIVE
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_ticker", "params":[], "id":1}'
   - api_method: condenser_api.get_trade_history
@@ -1608,7 +1608,7 @@
       signatures: []
     expected_response_json: ''
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_transaction_hex", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_transaction_hex", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
       "id":1}'
   - api_method: condenser_api.get_trending_tags
     purpose: |
@@ -1643,7 +1643,7 @@
     parameter_json: []
     expected_response_json:
       blockchain_version: ''
-      steem_revision: ''
+      hive_revision: ''
       fc_revision: ''
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_version", "params":[], "id":1}'
@@ -1677,8 +1677,8 @@
       Also see: [market_history_api.get_volume]({{ '/apidefinitions/#market_history_api.get_volume' | relative_url }})
     parameter_json: []
     expected_response_json:
-      steem_volume: 0.000 HIVE
-      sbd_volume: 0.000 HIVE
+      hive_volume: 0.000 HIVE
+      hbd_volume: 0.000 HIVE
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_volume", "params":[], "id":1}'
   - api_method: condenser_api.get_withdraw_routes
@@ -1736,11 +1736,11 @@
       props:
         account_creation_fee: 0.000 HIVE
         maximum_block_size: 65536
-        sbd_interest_rate: 0
-      sbd_exchange_rate:
+        hbd_interest_rate: 0
+      hbd_exchange_rate:
         base: 0.000 HBD
         quote: 0.000 HIVE
-      last_sbd_exchange_update: '1970-01-01T00:00:00'
+      last_hbd_exchange_update: '1970-01-01T00:00:00'
       last_work: ''
       running_version: ''
       hardfork_version_vote: ''
@@ -1774,7 +1774,7 @@
       median_props:
         account_creation_fee: 0.000 HIVE
         maximum_block_size: 131072
-        sbd_interest_rate: 1000
+        hbd_interest_rate: 1000
       majority_version: 0.0.0
       max_voted_witnesses: 19
       max_miner_witnesses: 1
@@ -1869,19 +1869,19 @@
       last_vote_time: '2016-12-04T23:10:57'
       balance: 0.006 HIVE
       savings_balance: 11006644.632 HIVE
-      sbd_balance: 8581.890 HBD
-      sbd_seconds: '18846158467785'
-      sbd_seconds_last_update: '2018-04-10T04:08:36'
-      sbd_last_interest_payment: '2018-03-15T17:58:24'
-      savings_sbd_balance: 0.000 HBD
-      savings_sbd_seconds: '0'
-      savings_sbd_seconds_last_update: '1970-01-01T00:00:00'
-      savings_sbd_last_interest_payment: '1970-01-01T00:00:00'
+      hbd_balance: 8581.890 HBD
+      hbd_seconds: '18846158467785'
+      hbd_seconds_last_update: '2018-04-10T04:08:36'
+      hbd_last_interest_payment: '2018-03-15T17:58:24'
+      savings_hbd_balance: 0.000 HBD
+      savings_hbd_seconds: '0'
+      savings_hbd_seconds_last_update: '1970-01-01T00:00:00'
+      savings_hbd_last_interest_payment: '1970-01-01T00:00:00'
       savings_withdraw_requests: 0
-      reward_sbd_balance: 0.000 HBD
-      reward_steem_balance: 0.000 HIVE
+      reward_hbd_balance: 0.000 HBD
+      reward_hive_balance: 0.000 HIVE
       reward_vesting_balance: 0.000000 VESTS
-      reward_vesting_steem: 0.000 HIVE
+      reward_vesting_hive: 0.000 HIVE
       vesting_shares: 90039851836.689703 VESTS
       delegated_vesting_shares: 0.000000 VESTS
       received_vesting_shares: 0.000000 VESTS
@@ -1964,7 +1964,7 @@
       signatures: []
     expected_response_json: false
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.verify_authority", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"sbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
+    - '{"jsonrpc":"2.0", "method":"condenser_api.verify_authority", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
       "id":1}'
   - api_method: condenser_api.get_account_references
     disabled: true

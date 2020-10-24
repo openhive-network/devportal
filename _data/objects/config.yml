@@ -43,7 +43,7 @@
       purpose: |
         The chain ID to connect to, which is used to seed signing and prevent transaction crosstalk between two chains, typically mainnet and testnet.
       examples:
-        - "`0000000000000000000000000000000000000000000000000000000000000000` - mainnet"
+        - "`beeab0de00000000000000000000000000000000000000000000000000000000` - mainnet"
         - "`18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e` - testnet"
       links:
         - <a href="{{ '/quickstart/#quickstart-testnet' | relative_url }}">Hive Testnet</a>
@@ -73,7 +73,7 @@
     - name: HIVE_GENESIS_TIME
       purpose: |
         Scheduled time that the blockchain waited until the first block was produced.  It is represented as the unix epoch of `1458835200`, which is `Thu Mar 24 16:00:00 UTC 2016`.  About five seconds later, the first block was produced.
-      links: <a href="https://steemd.com/b/1">https://steemd.com/b/1</a>
+      links: <a href="https://hiveblocks.com/b/1">https://hiveblocks.com/b/1</a>
     - name: HIVE_HARDFORK_REQUIRED_WITNESSES
       purpose: |
         The minimum number of Delegated Proof of Stake witnesses required for hardfork.  This guarantees 75% participation on all subsequent rounds.
@@ -362,7 +362,7 @@
     - name: HIVE_PRODUCER_APR_PERCENT
     - name: HIVE_PROXY_TO_SELF_ACCOUNT
       purpose: An empty string represents the canonical account for specifying you will vote for directly (as opposed to a proxy).
-    - name: HIVE_SBD_INTEREST_COMPOUND_INTERVAL_SEC
+    - name: HIVE_HBD_INTEREST_COMPOUND_INTERVAL_SEC
     - name: HIVE_SECONDS_PER_YEAR
     - name: HIVE_RECENT_RSHARES_DECAY_TIME_HF19
     - name: HIVE_RECENT_RSHARES_DECAY_TIME_HF17
@@ -458,7 +458,7 @@
       since: HF21
       purpose: Account dedicated to holding treasury debt asset balance to distribute.
       examples:
-        - '`steem.dao`'
+        - '`hive.fund`'
       links:
         - <a href="https://github.com/steemit/steem/pull/3272">PR#3272</a>
         - <a href="https://github.com/steemit/steem/pull/3278">PR#3278</a>

@@ -1,7 +1,7 @@
 ---
 title: 'PY: Stream Blockchain Transactions'
 position: 13
-description: "How to stream transactions on the live **Steem** blockchain"
+description: "How to stream transactions on the live **Hive** blockchain"
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---              
@@ -10,11 +10,11 @@ canonical_url: stream_blockchain_transactions.html
 
 
 
-In this tutorial we show you how to stream transactions on the **Steem** blockchain using the `blockchain` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to stream transactions on the **Hive** blockchain using the `blockchain` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-Tutorial is demonstrating the typical process of streaming blocks on Steem. We will show some information from each block that is being streamed to give you an idea. Each block contains transactions objects as well but we will not show each of this data in user interface.
+Tutorial is demonstrating the typical process of streaming blocks on Hive. We will show some information from each block that is being streamed to give you an idea. Each block contains transactions objects as well but we will not show each of this data in user interface.
 
 We are using the `blockchain.stream()` function provided by `steem-python` which returns each block after it has been accepted by witnesses. By default it follows irreversible blocks which was accepted by all witnesses.
 

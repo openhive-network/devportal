@@ -10,11 +10,11 @@ canonical_url: vote_on_content.html
 
 
 
-In this tutorial we will explain and show you how to to check if a user has voted on specified content and also how to submit a vote on the **Steem** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we will explain and show you how to to check if a user has voted on specified content and also how to submit a vote on the **Hive** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-Voting is a way of promoting good content via an `upvote` or reporting misuse, spam or other unfit content by `downvoting`. The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `vote` method found within the `commit` class in the the library. Before we vote on content we first check whether the user has already voted. This is not strictly necessary as a voting operation overrides the previous vote value. We use the `get_active_votes` function to check for this. This function only requires two parameters, the `author` and the `permlink` for the comment/post that the query is for. This returns a list of the current voters for that comment. The `vote` function has 3 parameters:
+Voting is a way of promoting good content via an `upvote` or reporting misuse, spam or other unfit content by `downvoting`. The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `vote` method found within the `commit` class in the the library. Before we vote on content we first check whether the user has already voted. This is not strictly necessary as a voting operation overrides the previous vote value. We use the `get_active_votes` function to check for this. This function only requires two parameters, the `author` and the `permlink` for the comment/post that the query is for. This returns a list of the current voters for that comment. The `vote` function has 3 parameters:
 
 1.  _identifier_ - This is a combination of the author and permink of the post/comment that the vote will be on
 1.  _weight_ - This value determines whether the vote is an upvote (+100.0) or a downvote (-100.0) but this value cannot be 0
@@ -23,7 +23,7 @@ Voting is a way of promoting good content via an `upvote` or reporting misuse, s
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Steem node
+1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
 1.  [**Check vote status**](#votestat) - Vote status of post/comment
 1.  [**Commit vote**](#commit) - Commit vote to the blockchain
 
@@ -41,9 +41,9 @@ import steembase
 import steem
 from pick import pick
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -59,7 +59,7 @@ username = input('Please enter your username: ')
 postingkey = input('Please enter your private posting key: ')
 
 #connect node and private posting key, demo account name: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-s = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[postingkey])
+s = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[postingkey])
 ```
 
 #### 3. Check vote status<a name="votestat"></a>

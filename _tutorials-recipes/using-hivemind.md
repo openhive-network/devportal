@@ -9,9 +9,9 @@ canonical_url: using-hivemind.html
 
 ## Intro
 
-Hive is a "consensus interpretation" layer for the Steem blockchain, maintaining the state of social features such as post feeds, follows, and communities. Written in Python, it synchronizes an SQL database with chain state, providing developers with a more flexible/extensible alternative to the raw steemd API. This means that you can bypass steemd and access data in a more traditional way, for example, with SQL. But you can't use SQL on steemd. So Hivemind solves that problem. Hive does not support any queries to do with wallets, orders, escrow, keys, recovery, or account history.
+Hive is a "consensus interpretation" layer for the Hive blockchain, maintaining the state of social features such as post feeds, follows, and communities. Written in Python, it synchronizes an SQL database with chain state, providing developers with a more flexible/extensible alternative to the raw hived API. This means that you can bypass hived and access data in a more traditional way, for example, with SQL. But you can't use SQL on hived. So Hivemind solves that problem. Hive does not support any queries to do with wallets, orders, escrow, keys, recovery, or account history.
 
-A good source of additional information on hive and how to use it can be found in [this Steemit article](https://steemit.com/hivemind/@inertia/hivemind-queries) by @inertia.
+A good source of additional information on hive and how to use it can be found in [this Hive article](https://hive.blog/hivemind/@inertia/hivemind-queries) by @inertia.
 
 #### Supported API functionality:
 
@@ -33,7 +33,7 @@ A good source of additional information on hive and how to use it can be found i
 
 **Additional functions available within hive-steem library**
 
-The majority of these functions are reliant on steemd so any changes to steemd would affect these function calls. The only two functions not directly reliant on steemd are `stream_blocks` and `get_steem_per_mvest`.
+The majority of these functions are reliant on hived so any changes to hived would affect these function calls. The only two functions not directly reliant on hived are `stream_blocks` and `get_hive_per_mvest`.
 
 *   get_accounts
 *   get_all_account_names
@@ -45,9 +45,9 @@ The majority of these functions are reliant on steemd so any changes to steemd w
 *   head_block
 *   last_irreversible
 *   gdgp_extended
-*   get_steem_per_mvest
+*   get_hive_per_mvest
 *   get_feed_price
-*   get_steem_price
+*   get_hive_price
 *   get_blocks_range
 
 Detailed information on the hive-steem library can be found in the [Hivemind repo](https://github.com/steemit/hivemind/blob/master/hive/steem/client.py).
@@ -83,10 +83,10 @@ $ createdb hive
 $ export DATABASE_URL=postgresql://user:pass@localhost:5432/hive
 ```
 
-By default Hivemind will connect to the mainnet [https://api.steemit.com](https://api.steemit.com) but if required you can change this to connect to a testnet. To do this set the environment variable as described below.
+By default Hivemind will connect to the mainnet [https://api.hive.blog](https://api.hive.blog) but if required you can change this to connect to a testnet. To do this set the environment variable as described below.
 
 ```bash
-$ export STEEMD_URL=https://testnet.steem.vc
+$ export HIVED_URL=https://testnet.steem.vc
 ```
 
 Now that the basic setup is done you are able to sync the database.

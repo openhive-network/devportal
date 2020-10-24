@@ -1,7 +1,7 @@
 ---
 title: Plugin & API List
 position: 1
-description: Run a `steemd` node with your preferred APIs.
+description: Run a `hived` node with your preferred APIs.
 exclude: true
 layout: full
 canonical_url: plugin-and-api-list.html
@@ -9,7 +9,7 @@ canonical_url: plugin-and-api-list.html
 
 *This is a list of the plugins, and their associated dependencies, required to enable specific apis.*
 
-**When setting up the config file `steemd` will enable the `chain`, `p2p`, and `webserver` plugins regardless of other dependencies.**
+**When setting up the config file `hived` will enable the `chain`, `p2p`, and `webserver` plugins regardless of other dependencies.**
 
 ## API's with their respective plugin dependencies
 
@@ -155,7 +155,7 @@ plugin = follow_api
 
 ### `market_history_api`
 
-* **Purpose:** Used to lookup market history information. Can return the market and trade history of the internal STEEM:SBD market. The order book, recent trades and the market volume is made available through this plugin.
+* **Purpose:** Used to lookup market history information. Can return the market and trade history of the internal HIVE:HBD market. The order book, recent trades and the market volume is made available through this plugin.
 * **Requires:** `market_history` (automatic)
 * **Exposed Methods:** [`market_history_api.*`]({{ '/apidefinitions/#apidefinitions-market-history-api' | relative_url}})
 

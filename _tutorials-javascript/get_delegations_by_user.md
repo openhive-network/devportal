@@ -28,7 +28,7 @@ The second function is `getExpiringVestingDelegations` with parameters:
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Steem blockchain
+1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 3.  [**Database query**](#query) Sending a query to the blockchain for the user delegations
 4.  [**Display results**](#display) Display the results of the blockchain query
@@ -43,9 +43,9 @@ let opts = {};
 //define network parameters
 opts.addressPrefix = 'STM';
 opts.chainId =
-    '0000000000000000000000000000000000000000000000000000000000000000';
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to a steem node, production in this case
-const client = new dsteem.Client('https://api.steemit.com');
+const client = new dsteem.Client('https://api.hive.blog');
 ```
 
 Above, we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint.

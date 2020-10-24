@@ -2,11 +2,11 @@ import pprint
 import math
 from pick import pick
 
-# initialize Steem class
-from steem import Steem
+# initialize Hive class
+from steem import Hive
 
 
-s = Steem()
+s = Hive()
 
 title = 'Please choose account: '
 options = ["steemitblog","esteemapp","busy.org","demo"]
@@ -20,7 +20,7 @@ pprint.pprint("Selected: "+option)
 user = s.get_accounts([option])
 
 def rep_log10(rep):
-    """Convert raw steemd rep into a UI-ready value centered at 25."""
+    """Convert raw hived rep into a UI-ready value centered at 25."""
     def log10(string):
         leading_digits = int(string[0:4])
         log = math.log10(leading_digits) + 0.00000001

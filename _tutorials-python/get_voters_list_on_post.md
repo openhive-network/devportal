@@ -10,11 +10,11 @@ canonical_url: get_voters_list_on_post.html
 
 
 
-Tutorial will explain and show you how to access the **Steem** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of posts and get voters info on selected post.
+Tutorial will explain and show you how to access the **Hive** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of posts and get voters info on selected post.
 
 ## Intro
 
-Steem python library has built-in function to get active voters information if post with author and permlink as an argument. Since we don't have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one post to get its active voters. `get_active_votes` function fetches list of active voters on content. Note that `get_discussions_by_active` filter is used for fetching 5 posts which by default contains `active_votes` of each post, but for purpose of this tutorial we will use `get_active_votes` function to fetch voters info.
+Hive python library has built-in function to get active voters information if post with author and permlink as an argument. Since we don't have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one post to get its active voters. `get_active_votes` function fetches list of active voters on content. Note that `get_discussions_by_active` filter is used for fetching 5 posts which by default contains `active_votes` of each post, but for purpose of this tutorial we will use `get_active_votes` function to fetch voters info.
 
 ## Steps
 
@@ -27,15 +27,15 @@ Steem python library has built-in function to get active voters information if p
 
 In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Steem class
+First we import all three library and initialize Hive class
 
 ```python
     import pprint
     from pick import pick
-    # initialize Steem class
-    from steem import Steem
+    # initialize Hive class
+    from steem import Hive
 
-    s = Steem()
+    s = Hive()
 ```
 
 #### 2. Post list <a name="post-list"></a>

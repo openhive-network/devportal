@@ -1,4 +1,4 @@
-require 'steem'
+require 'hive'
 
 module Scrape
 
@@ -12,7 +12,7 @@ module Scrape
     def initialize(options = {url: DEFAULT_URL, api_data_path: DEFAULT_API_DATA_PATH})
       @url = options[:url] || DEFAULT_URL
       @api_data_path = options[:api_data_path] || DEFAULT_API_DATA_PATH
-      @jsonrpc = Steem::Jsonrpc.new(url: @url)
+      @jsonrpc = Hive::Jsonrpc.new(url: @url)
     end
 
     # Execute the job.

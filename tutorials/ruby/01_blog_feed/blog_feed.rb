@@ -26,6 +26,6 @@ api.get_discussions_by_blog(query) do |posts|
     puts "  #{type}: #{post.title}"
     puts "  By: #{author}"
     puts "  Words: #{words.size}"
-    puts "  https://steemit.com/#{uri.join('/')}"
+    puts "  https://hive.blog/#{uri.join('/')}"
   end
 end

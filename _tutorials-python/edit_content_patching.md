@@ -10,11 +10,11 @@ canonical_url: edit_content_patching.html
 
 
 
-In this tutorial we show you how to patch and update posts/comments on the **Steem** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to patch and update posts/comments on the **Hive** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
 
 ## Intro
 
-Being able to patch a post is critical to save resources on Steem. The Steem python library has a built-in function to transmit transactions to the blockchain. We are using the `diff_match_patch` class for python to create a `patch` for a post or comment. We then use the `post` method found within the `commit` class in the library. It should be noted that comments and new post are both treated as `commit.post` operation with the only difference being that a comment/reply has got an additional parameter containing the `parent post/comment`. There is already a tutorial on how to create a new post so the focus of this tutorial will be on `patching` the content of the post. We will be using a couple of methods within the `diff_match_patch` class.
+Being able to patch a post is critical to save resources on Hive. The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `diff_match_patch` class for python to create a `patch` for a post or comment. We then use the `post` method found within the `commit` class in the library. It should be noted that comments and new post are both treated as `commit.post` operation with the only difference being that a comment/reply has got an additional parameter containing the `parent post/comment`. There is already a tutorial on how to create a new post so the focus of this tutorial will be on `patching` the content of the post. We will be using a couple of methods within the `diff_match_patch` class.
 
 `diff_main` - This compares two text fields to find the differences.
 `diff_cleanupSemantic` - This reduces the number of edits by eliminating semantically trivial equalities.
@@ -25,7 +25,7 @@ Being able to patch a post is critical to save resources on Steem. The Steem pyt
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Steem node
+1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
 1.  [**Post to update**](#post) - Input and retrieve post information
 1.  [**Patching**](#patch) - Create the patch to update the post
 1.  [**New post commit**](#commit) - Commit the post to the blockchain
@@ -44,9 +44,9 @@ import steembase
 import steem
 from diff_match_patch import diff_match_patch
 
-steembase.chains.known_chains['STEEM'] = {
+steembase.chains.known_chains['HIVE'] = {
     'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'steem_symbol': 'STEEM', 'sbd_symbol': 'SBD', 'vests_symbol': 'VESTS'
+    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
 }
 ```
 
@@ -62,7 +62,7 @@ username = input('Enter username: ') #demo account: cdemo
 wif = input('Enter private POSTING key: ') #demo account: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
 
 #connect node and private active key
-client = steem.Steem(nodes=['https://testnet.steem.vc'], keys=[wif])
+client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
 ```
 
 #### 3. Post to update <a name="post"></a>

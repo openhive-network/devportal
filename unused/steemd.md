@@ -1,4 +1,4 @@
 ---
-title: Steemd
+title: Hived
 position: 3
 ---

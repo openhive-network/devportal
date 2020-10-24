@@ -130,7 +130,7 @@ The result is returned from the post content as a `JSON` object with the followi
     "parent_author": "",
     "parent_permlink": "hiveblockchain",
     "pending_payout_value": "0.000 HBD",
-    "percent_steem_dollars": 10000,
+    "percent_hbd": 10000,
     "permlink": "huobi-global-official-hive-listing-announcement-giveaways-ama-chat-transcripts",
     "promoted": "0.000 HBD",
     "reblogged_by": [],

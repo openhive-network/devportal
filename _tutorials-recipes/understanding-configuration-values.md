@@ -13,7 +13,7 @@ These values underpin the behavior of the entire blockchain.  In a sense, each w
 
 See: [config.hpp](https://github.com/steemit/steem/blob/master/libraries/protocol/include/steem/protocol/config.hpp)
 
-Usually, these configuration values are universally adhered to, but there are situations where these values can and should be altered, like in the case of deploying a new blockchain (typically a testnet).  Some of the values that do not affect consensus, like [`STEEM_SOFT_MAX_COMMENT_DEPTH`](#STEEM_SOFT_MAX_COMMENT_DEPTH), are allowed to change to some extent.
+Usually, these configuration values are universally adhered to, but there are situations where these values can and should be altered, like in the case of deploying a new blockchain (typically a testnet).  Some of the values that do not affect consensus, like [`HIVE_SOFT_MAX_COMMENT_DEPTH`](#HIVE_SOFT_MAX_COMMENT_DEPTH), are allowed to change to some extent.
 
 ### Sections
 
@@ -105,7 +105,7 @@ Fields not covered in this recipe are:
 ### Example Method Call<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 ```bash
-curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":[], "id":1}' https://api.steemit.com
+curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":[], "id":1}' https://api.hive.blog
 ```
 
 ### Example Output<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
@@ -127,7 +127,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":
       "SMT_DEFAULT_PERCENT_CURATION_REWARDS":2500,
       "SMT_INITIAL_VESTING_PER_UNIT":1000000,
       "SMT_BALLAST_SUPPLY_PERCENT":10,
-      "SBD_SYMBOL":{"nai":"@@000000013", "precision":3},
+      "HBD_SYMBOL":{"nai":"@@000000013", "precision":3},
       "HIVE_INITIAL_VOTE_POWER_RATE":40,
       "HIVE_REDUCED_VOTE_POWER_RATE":10,
       "HIVE_100_PERCENT":10000,
@@ -168,11 +168,11 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":
       "HIVE_CONVERSION_DELAY_PRE_HF_16":"604800000000",
       "HIVE_CREATE_ACCOUNT_DELEGATION_RATIO":5,
       "HIVE_CREATE_ACCOUNT_DELEGATION_TIME":"2592000000000",
-      "HIVE_CREATE_ACCOUNT_WITH_STEEM_MODIFIER":30,
+      "HIVE_CREATE_ACCOUNT_WITH_HIVE_MODIFIER":30,
       "HIVE_CURATE_APR_PERCENT":3875,
       "HIVE_CUSTOM_OP_DATA_MAX_LENGTH":8192,
       "HIVE_CUSTOM_OP_ID_MAX_LENGTH":32,
-      "HIVE_DEFAULT_SBD_INTEREST_RATE":1000,
+      "HIVE_DEFAULT_HBD_INTEREST_RATE":1000,
       "HIVE_DOWNVOTE_POOL_PERCENT_HF21":2500,
       "HIVE_EQUIHASH_K":6,
       "HIVE_EQUIHASH_N":140,
@@ -188,7 +188,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":
       "HIVE_INIT_MINER_NAME":"initminer",
       "HIVE_INIT_PUBLIC_KEY_STR":"TST6LLegbAgLAy28EHrffBVuANFWcFgmqRMW13wBmTExqFE9SCkg4",
       "HIVE_INIT_SUPPLY":"250000000000",
-      "HIVE_SBD_INIT_SUPPLY":"7000000000",
+      "HIVE_HBD_INIT_SUPPLY":"7000000000",
       "HIVE_INIT_TIME":"1970-01-01T00:00:00",
       "HIVE_IRREVERSIBLE_THRESHOLD":7500,
       "HIVE_LIQUIDITY_APR_PERCENT":750,
@@ -249,7 +249,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":
       "HIVE_MINING_TIME":"2016-01-01T00:00:00",
       "HIVE_MIN_LIQUIDITY_REWARD":{"amount":"1200000", "precision":3, "nai":"@@000000021"},
       "HIVE_MIN_LIQUIDITY_REWARD_PERIOD_SEC":60000000,
-      "HIVE_MIN_PAYOUT_SBD":{"amount":"20", "precision":3, "nai":"@@000000013"},
+      "HIVE_MIN_PAYOUT_HBD":{"amount":"20", "precision":3, "nai":"@@000000013"},
       "HIVE_MIN_POW_REWARD":{"amount":"1000", "precision":3, "nai":"@@000000021"},
       "HIVE_MIN_PRODUCER_REWARD":{"amount":"1000", "precision":3, "nai":"@@000000021"},
       "HIVE_MIN_TRANSACTION_EXPIRATION_LIMIT":15,
@@ -268,7 +268,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":
       "HIVE_POW_APR_PERCENT":750,
       "HIVE_PRODUCER_APR_PERCENT":750,
       "HIVE_PROXY_TO_SELF_ACCOUNT":"",
-      "HIVE_SBD_INTEREST_COMPOUND_INTERVAL_SEC":2592000,
+      "HIVE_HBD_INTEREST_COMPOUND_INTERVAL_SEC":2592000,
       "HIVE_SECONDS_PER_YEAR":31536000,
       "HIVE_PROPOSAL_FUND_PERCENT_HF0":0,
       "HIVE_PROPOSAL_FUND_PERCENT_HF21":1000,
@@ -280,10 +280,10 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":
       "HIVE_ROOT_POST_PARENT":"",
       "HIVE_SAVINGS_WITHDRAW_REQUEST_LIMIT":100,
       "HIVE_SAVINGS_WITHDRAW_TIME":"259200000000",
-      "HIVE_SBD_START_PERCENT_HF14":200,
-      "HIVE_SBD_START_PERCENT_HF20":900,
-      "HIVE_SBD_STOP_PERCENT_HF14":500,
-      "HIVE_SBD_STOP_PERCENT_HF20":1000,
+      "HIVE_HBD_START_PERCENT_HF14":200,
+      "HIVE_HBD_START_PERCENT_HF20":900,
+      "HIVE_HBD_STOP_PERCENT_HF14":500,
+      "HIVE_HBD_STOP_PERCENT_HF20":1000,
       "HIVE_SECOND_CASHOUT_WINDOW":259200,
       "HIVE_SOFT_MAX_COMMENT_DEPTH":255,
       "HIVE_START_MINER_VOTING_BLOCK":864000,
@@ -325,7 +325,7 @@ curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":
       "HIVE_DECAY_BACKSTOP_PERCENT":9000,
       "HIVE_BLOCK_GENERATION_POSTPONED_TX_LIMIT":5,
       "HIVE_PENDING_TRANSACTION_EXECUTION_LIMIT":200000,
-      "HIVE_TREASURY_ACCOUNT":"steem.dao",
+      "HIVE_TREASURY_ACCOUNT":"hive.fund",
       "HIVE_TREASURY_FEE":10000,
       "HIVE_PROPOSAL_MAINTENANCE_PERIOD":3600,
       "HIVE_PROPOSAL_MAINTENANCE_CLEANUP":86400,

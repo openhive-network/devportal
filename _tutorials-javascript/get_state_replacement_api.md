@@ -39,19 +39,19 @@ The call `routes` that will be covered are for:
     "current_witness": "",
     "total_pow": "18446744073709551615",
     "num_pow_witnesses": 0,
-    "virtual_supply": "0.000 STEEM",
-    "current_supply": "0.000 STEEM",
-    "confidential_supply": "0.000 STEEM",
-    "current_sbd_supply": "0.000 STEEM",
-    "confidential_sbd_supply": "0.000 STEEM",
-    "total_vesting_fund_steem": "0.000 STEEM",
-    "total_vesting_shares": "0.000 STEEM",
-    "total_reward_fund_steem": "0.000 STEEM",
+    "virtual_supply": "0.000 HIVE",
+    "current_supply": "0.000 HIVE",
+    "confidential_supply": "0.000 HIVE",
+    "current_hbd_supply": "0.000 HIVE",
+    "confidential_hbd_supply": "0.000 HIVE",
+    "total_vesting_fund_hive": "0.000 HIVE",
+    "total_vesting_shares": "0.000 HIVE",
+    "total_reward_fund_hive": "0.000 HIVE",
     "total_reward_shares2": "0",
-    "pending_rewarded_vesting_shares": "0.000 STEEM",
-    "pending_rewarded_vesting_steem": "0.000 STEEM",
-    "sbd_interest_rate": 0,
-    "sbd_print_rate": 10000,
+    "pending_rewarded_vesting_shares": "0.000 HIVE",
+    "pending_rewarded_vesting_hive": "0.000 HIVE",
+    "hbd_interest_rate": 0,
+    "hbd_print_rate": 10000,
     "maximum_block_size": 0,
     "current_aslot": 0,
     "recent_slots_filled": "0",
@@ -79,9 +79,9 @@ The call `routes` that will be covered are for:
     "miner_weight": 1,
     "witness_pay_normalization_factor": 25,
     "median_props": {
-      "account_creation_fee": "0.000 STEEM",
+      "account_creation_fee": "0.000 HIVE",
       "maximum_block_size": 131072,
-      "sbd_interest_rate": 1000
+      "hbd_interest_rate": 1000
     },
     "majority_version": "0.0.0",
     "max_voted_witnesses": 19,
@@ -89,7 +89,7 @@ The call `routes` that will be covered are for:
     "max_runner_witnesses": 1,
     "hardfork_required_witnesses": 17
   },
-  "feed_price": {"base": "0.000 STEEM", "quote": "0.000 STEEM"},
+  "feed_price": {"base": "0.000 HIVE", "quote": "0.000 HIVE"},
   "error": ""
 }
 ```
@@ -119,7 +119,7 @@ In order to get the full compliment of account information for a specified accou
   },
   "average_bandwidth": 0,
   "average_market_bandwidth": 0,
-  "balance": "0.000 STEEM",
+  "balance": "0.000 HIVE",
   "can_vote": true,
   "comment_count": 0,
   "created": "2016-03-26T08:26:21",
@@ -166,24 +166,24 @@ In order to get the full compliment of account information for a specified accou
   "recovery_account": "steem",
   "reputation": "",
   "reset_account": "null",
-  "reward_sbd_balance": "0.000 SBD",
-  "reward_steem_balance": "0.000 STEEM",
+  "reward_hbd_balance": "0.000 HBD",
+  "reward_hive_balance": "0.000 HIVE",
   "reward_vesting_balance": "967.889424 VESTS",
-  "reward_vesting_steem": "0.479 STEEM",
-  "savings_balance": "0.000 STEEM",
-  "savings_sbd_balance": "0.000 SBD",
-  "savings_sbd_last_interest_payment": "1970-01-01T00:00:00",
-  "savings_sbd_seconds": "0",
-  "savings_sbd_seconds_last_update": "1970-01-01T00:00:00",
+  "reward_vesting_hive": "0.479 HIVE",
+  "savings_balance": "0.000 HIVE",
+  "savings_hbd_balance": "0.000 HBD",
+  "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
+  "savings_hbd_seconds": "0",
+  "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
   "savings_withdraw_requests": 0,
-  "sbd_balance": "0.000 SBD",
-  "sbd_last_interest_payment": "2018-09-08T13:46:15",
-  "sbd_seconds": "79984344",
-  "sbd_seconds_last_update": "2018-09-26T17:36:15",
+  "hbd_balance": "0.000 HBD",
+  "hbd_last_interest_payment": "2018-09-08T13:46:15",
+  "hbd_seconds": "79984344",
+  "hbd_seconds_last_update": "2018-09-26T17:36:15",
   "tags_usage": [],
   "to_withdraw": 0,
   "transfer_history": [],
-  "vesting_balance": "0.000 STEEM",
+  "vesting_balance": "0.000 HIVE",
   "vesting_shares": "26772189.757016 VESTS",
   "vesting_withdraw_rate": "0.000000 VESTS",
   "vote_history": [],
@@ -206,7 +206,7 @@ In order to get the full compliment of account information for a specified accou
 databaseAPI.call('get_discussions_by_trending',[{limit:20}])
 ```
 
-While `getState()` truncates the post body at 1024 characters, `getDiscussionsBy` will not truncate the body unless you provide a truncate_body value in the query structure. `getDiscussionsBy` can be executed by trending, created, active, cashout, payout, votes, children, hot, feed, blog or comments. This provides a wide range by which the posts can be called depending on the specific needs. Within the `query` parameter specific tags, filters, authors and permlinks can be provided. The limit can also be increased to a maximum of 100 posts where `getState` is limited to the first 20. You can also refer to the [get post](https://developers.steem.io/tutorials-javascript/get_posts) tutorial for a simplified database call for posts. The detail provided by this statement can be used to track pending payouts, curator rewards and votes for the trending, or specified posts.
+While `getState()` truncates the post body at 1024 characters, `getDiscussionsBy` will not truncate the body unless you provide a truncate_body value in the query structure. `getDiscussionsBy` can be executed by trending, created, active, cashout, payout, votes, children, hot, feed, blog or comments. This provides a wide range by which the posts can be called depending on the specific needs. Within the `query` parameter specific tags, filters, authors and permlinks can be provided. The limit can also be increased to a maximum of 100 posts where `getState` is limited to the first 20. You can also refer to the [get post](https://developers.hive.io/tutorials-javascript/get_posts) tutorial for a simplified database call for posts. The detail provided by this statement can be used to track pending payouts, curator rewards and votes for the trending, or specified posts.
 
 - Expected result:
 
@@ -229,22 +229,22 @@ While `getState()` truncates the post body at 1024 characters, `getDiscussionsBy
   "children": 7,
   "children_abs_rshares": "60493226759117",
   "created": "2018-09-25T13:52:24",
-  "curator_payout_value": "0.000 SBD",
+  "curator_payout_value": "0.000 HBD",
   "depth": 0,
   "id": 63318715,
   "json_metadata": {"tags":[]},
   "last_payout": "1970-01-01T00:00:00",
   "last_update": "2018-09-26T19:17:33",
-  "max_accepted_payout": "100000.000 SBD",
+  "max_accepted_payout": "100000.000 HBD",
   "max_cashout_time": "1969-12-31T23:59:59",
   "net_rshares": "60411661082705",
   "net_votes": 179,
   "parent_author": "",
   "parent_permlink": "witness-update",
-  "pending_payout_value": "80.490 SBD",
-  "percent_steem_dollars": 10000,
+  "pending_payout_value": "80.490 HBD",
+  "percent_hbd": 10000,
   "permlink": "witness-essentials-hf20-ready",
-  "promoted": "0.000 SBD",
+  "promoted": "0.000 HBD",
   "reblogged_by": [],
   "replies": [],
   "reward_weight": 10000,
@@ -252,8 +252,8 @@ While `getState()` truncates the post body at 1024 characters, `getDiscussionsBy
   "root_permlink": "witness-essentials-hf20-ready",
   "root_title": "Witness Essentials: HF20 Ready",
   "title": "Witness Essentials: HF20 Ready",
-  "total_payout_value": "0.000 SBD",
-  "total_pending_payout_value": "0.000 STEEM",
+  "total_payout_value": "0.000 HBD",
+  "total_pending_payout_value": "0.000 HIVE",
   "total_vote_weight": 7795119,
   "url": "/witness-update/@therealwolf/witness-essentials-hf20-ready",
   "vote_rshares": "60411661082705"
@@ -262,7 +262,7 @@ While `getState()` truncates the post body at 1024 characters, `getDiscussionsBy
 
 #### Route: getState('feed_price')<a name="price"></a>
 
-- Purpose: The price feed is used by the Steem blockchain when it calculates how many SBD it owes for its author rewards. It is also used to calculate the worth in $US displayed in the wallet. The price feed is the median price feed of the last 3.5 days of all the top 20 witnesses' price feed.
+- Purpose: The price feed is used by the Hive blockchain when it calculates how many HBD it owes for its author rewards. It is also used to calculate the worth in $US displayed in the wallet. The price feed is the median price feed of the last 3.5 days of all the top 20 witnesses' price feed.
 
 - Replacement API call:
 
@@ -276,14 +276,14 @@ This provides the same data as `getState` but is executed much faster due to the
 
 ```json
 {
-  "base": {"amount": 0.887, "symbol": "SBD"},
-  "quote": {"amount": 1, "symbol": "STEEM"}
+  "base": {"amount": 0.887, "symbol": "HBD"},
+  "quote": {"amount": 1, "symbol": "HIVE"}
 }
 ```
 
 #### Route: getState('props')<a name="props"></a>
 
-- Purpose: Provides detailed information of the block properties. Block number, witness, current STEEM and SBD supply, pending rewards and total vesting fund and shares among others.
+- Purpose: Provides detailed information of the block properties. Block number, witness, current HIVE and HBD supply, pending rewards and total vesting fund and shares among others.
 
 - Replacement API call:
 
@@ -303,12 +303,12 @@ databaseAPI.getBlock(HeadBlockNum)
 ```json
 {
   "average_block_size":122,
-  "confidential_sbd_supply":"0.000 SBD",
-  "confidential_supply":"0.000 STEEM",
+  "confidential_hbd_supply":"0.000 HBD",
+  "confidential_supply":"0.000 HIVE",
   "current_aslot":26372251,
   "current_reserve_ratio":200000000,
-  "current_sbd_supply":"14921682.900 SBD",
-  "current_supply":"277501868.004 STEEM",
+  "current_hbd_supply":"14921682.900 HBD",
+  "current_supply":"277501868.004 HIVE",
   "current_witness":"ausbitbank",
   "delegation_return_period":432000,
   "head_block_id":"0190f89c584661d6ffc78e17395df17ea5653197",
@@ -319,20 +319,20 @@ databaseAPI.getBlock(HeadBlockNum)
   "num_pow_witnesses":172,
   "participation_count":126,
   "pending_rewarded_vesting_shares":"483834672.069834 VESTS",
-  "pending_rewarded_vesting_steem":"237227.812 STEEM",
+  "pending_rewarded_vesting_hive":"237227.812 HIVE",
   "recent_slots_filled":"340282366911034938426725082362930003967",
   "reverse_auction_seconds":900,
-  "sbd_interest_rate":0,
-  "sbd_print_rate":10000,
-  "sbd_start_percent":900,
-  "sbd_stop_percent":1000,
+  "hbd_interest_rate":0,
+  "hbd_print_rate":10000,
+  "hbd_start_percent":900,
+  "hbd_stop_percent":1000,
   "time":"2018-09-26T08:52:33",
   "total_pow":514415,
-  "total_reward_fund_steem":"0.000 STEEM",
+  "total_reward_fund_hive":"0.000 HIVE",
   "total_reward_shares2":"0",
-  "total_vesting_fund_steem":"196777383.890 STEEM",
+  "total_vesting_fund_hive":"196777383.890 HIVE",
   "total_vesting_shares":"397621943253.336916 VESTS",
-  "virtual_supply":"294324509.379 STEEM",
+  "virtual_supply":"294324509.379 HIVE",
   "vote_power_reserve_rate":10
 }
 ```
@@ -357,7 +357,7 @@ The `getTrendingTags` function calls the same information as with `getState` but
   "name": "life",
   "net_votes": 54671586,
   "top_posts": 4996200,
-  "total_payouts": "61584243.124 SBD",
+  "total_payouts": "61584243.124 HBD",
   "trending": "114450355665"
 }
 ```
@@ -372,7 +372,7 @@ The `getTrendingTags` function calls the same information as with `getState` but
 databaseAPI.call('get_trending_tags',[startingValue, limit])
 ```
 
-This information can be gained by the using the same method as for `getState('tags')` and then only displaying the `name` object of the array of tags provided. You can refer to the tutorial [search tags](https://developers.steem.io/tutorials-javascript/search_tags) for a detailed example of this.
+This information can be gained by the using the same method as for `getState('tags')` and then only displaying the `name` object of the array of tags provided. You can refer to the tutorial [search tags](https://developers.hive.io/tutorials-javascript/search_tags) for a detailed example of this.
 
 - Expected result:
 
@@ -429,9 +429,9 @@ If required you can also call the `median_props` values as standalone via the se
   "max_runner_witnesses": 1,
   "max_voted_witnesses": 20,
   "median_props": {
-    "account_creation_fee": "3.000 STEEM",
+    "account_creation_fee": "3.000 HIVE",
     "maximum_block_size": 65536,
-    "sbd_interest_rate": 0,
+    "hbd_interest_rate": 0,
     "account_subsidy_budget": 797,
     "account_subsidy_decay": 347321
   },
@@ -454,7 +454,7 @@ If required you can also call the `median_props` values as standalone via the se
 databaseAPI.call('get_witnesses_by_vote',['',limit])
 ```
 
-This detailed information can be used to track the performance of a specific witness when deciding for who to vote or for your own witness statistics. The detail includes the amount of votes, blocks missed and also the SBD exchange rate (feed price) that this witness is reporting. This function calls the info listed according to total votes.
+This detailed information can be used to track the performance of a specific witness when deciding for who to vote or for your own witness statistics. The detail includes the amount of votes, blocks missed and also the HBD exchange rate (feed price) that this witness is reporting. This function calls the info listed according to total votes.
 
 - Expected result:
 
@@ -467,22 +467,22 @@ This detailed information can be used to track the performance of a specific wit
   "id": 9493,
   "last_aslot": 26387405,
   "last_confirmed_block_num": 26293189,
-  "last_sbd_exchange_update": "2018-09-26T19:54:36",
+  "last_hbd_exchange_update": "2018-09-26T19:54:36",
   "last_work": "0000000048bf77f525731f28db7c1aa9ad853a475ccc78e71ea952a7782e5459",
   "owner": "gtg",
   "pow_worker": 0,
   "props": {
-    "account_creation_fee": "3.000 STEEM",
+    "account_creation_fee": "3.000 HIVE",
     "maximum_block_size": 65536,
-    "sbd_interest_rate": 0,
+    "hbd_interest_rate": 0,
     "account_subsidy_budget": 797,
     "account_subsidy_decay": 347321
   },
   "running_version": "0.20.3",
-  "sbd_exchange_rate": {"base": "0.893 SBD", "quote": "1.000 STEEM"},
+  "hbd_exchange_rate": {"base": "0.893 HBD", "quote": "1.000 HIVE"},
   "signing_key": "STM5T98tp8jZRbs7zzyCg74o2siqBw2SXxoYaE1MCuwuCPeQwKrju",
   "total_missed": 535,
-  "url": "https://steemit.com/witness-category/@gtg/witness-gtg",
+  "url": "https://hive.blog/witness-category/@gtg/witness-gtg",
   "virtual_last_update": "376717145948220892034052885",
   "virtual_position": "240558419146717570415939163840356145056",
   "virtual_scheduled_time": "376718433464807443533288610",

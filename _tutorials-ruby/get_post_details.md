@@ -55,7 +55,7 @@ api.get_content("steemitdev", "announcing-the-steem-developer-portal") do |conte
 #### Example api call using script
 And to do the same with our tutorial script
 ```bash
-ruby get_post_details.rb https://steemit.com/steemdev/@steemitdev/announcing-the-steem-developer-portal
+ruby get_post_details.rb https://hive.blog/hivedev/@steemitdev/announcing-the-steem-developer-portal
 ```
 
 #### Example Output
@@ -64,22 +64,22 @@ From the example we get the following output from our script
 
 ```
 Post by steemitdev
-	title: Announcing the Steem Developer Portal!
+	title: Announcing the Hive Developer Portal!
 	permlink: announcing-the-steem-developer-portal
-	category: steemdev
+	category: hivedev
 	body_length: 2342 (381 words)
 	posted at: 2017-10-30T16:34:27, updated at: 2017-10-30T16:34:27, active at: 2018-04-11T10:34:00
 	children: 66
 	net_rshares: 0
 	vote_rshares: 0
 	payout:
-		max_accepted_payout: 0.000 SBD
-		percent_steem_dollars: 100.00 %
+		max_accepted_payout: 0.000 HBD
+		percent_hbd: 100.00 %
 		payout at: 2017-11-06T16:34:27 (235.2 days ago)
-		author_rewards: 0.000 SBD
-		curator_payout_value: 0.000 SBD
-		total_payout_value: 0.000 SBD
-	promoted: 0.000 SBD
+		author_rewards: 0.000 HBD
+		curator_payout_value: 0.000 HBD
+		total_payout_value: 0.000 HBD
+	promoted: 0.000 HBD
 	total_vote_weight: 0
 	reward_weight: 100.00 %
 	net_votes: 181, upvotes: 234, downvotes: 1, unvotes: 0, total: 235, top voter: thejohalfiles
@@ -87,7 +87,7 @@ Post by steemitdev
 	allow_votes: true
 	allow_curation_rewards: true
 	author_reputation: 14487360227924
-	tags: steemdev, steem, dev
+	tags: hivedev, steem, dev
 	app: steemit/0.1
 ```
 
@@ -133,13 +133,13 @@ You will note that we must parse the string found in `content.cashout_time` by a
 
 Even before payout, you can determine what the `max_accepted_payout` is.  Most often, this is set to one of two values by the author:
 
-* `1000000.000 SBD` - Accepted Payout
-* `0.000 SBD` - Declined Payout
+* `1000000.000 HBD` - Accepted Payout
+* `0.000 HBD` - Declined Payout
 
-In addition to `max_accepted_payout`, the author may specify how much of the author reward should be in STEEM Power or liquid rewards.  The most common settings are:
+In addition to `max_accepted_payout`, the author may specify how much of the author reward should be in HIVE Power or liquid rewards.  The most common settings are:
 
 * `10000` - Maximum Liquid Reward
-* `0` - STEEM Power Only
+* `0` - HIVE Power Only
 
 Once the payout time has arrived, it's possible to determine the split between author and curation by inspecting at `author_rewards` and `curator_payout_value`.
 
@@ -151,7 +151,7 @@ In our script, we use the ruby statement:
 content.beneficiaries.any?
 ```
 
-Some content will have a `beneficiaries` array.  This is used to determine reward routes any account, up to eight.  Payouts are in STEEM Power and are expressed as a reward percentage of the author reward.
+Some content will have a `beneficiaries` array.  This is used to determine reward routes any account, up to eight.  Payouts are in HIVE Power and are expressed as a reward percentage of the author reward.
 
 To display a list of who the beneficiaries are, use the following ruby code, as seen in the example:
 
@@ -200,7 +200,7 @@ Note, we're using `rescue` in case the `json_metadata` string contains invalid J
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.steem.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
 
 *`<content-url>` 
 

@@ -21,15 +21,15 @@ A private Microsoft SQL server database with Hive blockchain data, subscription 
 
 ---
 
-**eSync** - [https://github.com/eSteemApp/esync](https://github.com/eSteemApp/esync)
+**eSync** - [https://github.com/eHiveApp/esync](https://github.com/eHiveApp/esync)
 
-eSync extracts Steem blockchain data and saves into Mongodb, written in Nodejs.
+eSync extracts Hive blockchain data and saves into Mongodb, written in Nodejs.
 
 ---
 
-**SteemPress** - [https://github.com/drov0/steempress](https://github.com/drov0/steempress)
+**HivePress** - [https://github.com/drov0/steempress](https://github.com/drov0/steempress)
 
-SteemPress is a WordPress plugin to allow you to automatically publish your articles to the Steem blockchain whenever you publish them on your blog.
+HivePress is a WordPress plugin to allow you to automatically publish your articles to the Hive blockchain whenever you publish them on your blog.
 
 ---
 
