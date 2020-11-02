@@ -1,8 +1,8 @@
 ---
 title: Whitepaper
-position: 3
+position: 2
 ---
 
 The Hive Whitepaper provides a more in depth technical analysis of how the Hive blockchain operates.
 
-[https://steem.com/HiveWhitePaper.pdf](https://steem.com/HiveWhitePaper.pdf)
+[https://hive.io/whitepaper.pdf](https://hive.io/whitepaper.pdf)

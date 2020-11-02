@@ -16,6 +16,12 @@ Install the dependencies with [Bundler](http://bundler.io/):
 $ bundle install
 ~~~
 
+In case of installation problems, make sure you have a ruby development environment installed. If not, install it with:
+
+```bash
+sudo apt-get install ruby-dev
+```
+
 Run `jekyll` commands through Bundler to ensure you're using the right versions:
 
 ~~~bash

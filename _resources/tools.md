@@ -1,6 +1,6 @@
 ---
 title: Tools
-position: 3
+position: 6
 ---
 
 **ChainSync** - [https://github.com/aaroncox/chainsync](https://github.com/aaroncox/chainsync)
