@@ -1,6 +1,6 @@
 ---
 title: Community & Help
-position: 6
+position: 7
 ---
 <!--
 **Developer Advocate**
