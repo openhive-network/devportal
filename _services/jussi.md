@@ -28,7 +28,7 @@ Jussi is a reverse proxy that is situation between the API client and the `hived
 ##### To run `jussi` locally:
 
 ```bash
-git clone https://github.com/steemit/jussi.git
+git clone https://gitlab.syncad.com/hive/jussi.git
 cd jussi
 docker build -t="$USER/jussi:$(git rev-parse --abbrev-ref HEAD)" .
 docker run -itp 9000:8080 "$USER/jussi:$(git rev-parse --abbrev-ref HEAD)"
@@ -53,12 +53,12 @@ The default `DEV_config.json` is:
 
 ```json
 {
-   "limits":{"blacklist_accounts":["non-steemit"]},
+   "limits":{"blacklist_accounts":["badguy"]},
    "upstreams":[
       {
          "name":"hived",
          "translate_to_appbase":false,
-         "urls":[["hived", "https://hived.steemitdev.com"]],
+         "urls":[["hived", "http://api.hive.blog"]],
          "ttls":[
             ["hived", 3],
             ["hived.login_api", -1],
@@ -89,7 +89,7 @@ The default `DEV_config.json` is:
       },
       {
          "name":"appbase",
-         "urls":[["appbase", "https://hived.steemitdev.com"]],
+         "urls":[["appbase", "https://api.hive.blog"]],
          "ttls":[
             ["appbase", -2],
             ["appbase.block_api", -2],
@@ -152,11 +152,7 @@ Jussi can be configured with various `TTL` (Time To Live) schemes. A `TTL` is an
 | `hived`   | `database_api`          | `get_state`                     | `'/promoted'`      | 30            |
 | `hived`   | `database_api`          | `get_state`                     | `'/created'`       | 10            |
 | `hived`   | `database_api`          | `get_dynamic_global_properties` | _all_              | 1             |
-| `overseer` | _all_                   | _all_                           | _all_              | 5             |
-| `conveyor` | _all_                   | _all_                           | _all_              | -1            |
-| `hbds`     | _all_                   | _all_                           | _all_              | 3             |
 | `hivemind` | _all_                   | _all_                           | _all_              | 3             |
-| `yo`       | _all_                   | _all_                           | _all_              | 3             |
 
 In this case, requests for `login_api` and `network_broadcast_api` have a `TTL` of `-1`, which means requests with those namespaces are not cached, whereas `follow_api` request have a `TTL` of `10` seconds.
 
@@ -177,7 +173,7 @@ Each `urls` key can have multiple endpoints for each namespace.  For example:
 ```json
 {
   "urls":[
-    ["appbase", "https://api.steemitdev.com"]
+    ["appbase", "http://anyx.io"]
   ]
 }
 ```
@@ -187,9 +183,9 @@ Each `urls` key can have multiple endpoints for each namespace.  For example:
 ```json
 {
   "urls":[
-    ["appbase","https://api.steemitdev.com"],
-    ["appbase.condenser_api.get_account_history","https://api-for-account-history.steemitdev.com"],
-    ["appbase.condenser_api.get_ops_in_block","https://api-for-get-ops-in-block.steemitdev.com"]
+    ["appbase","http://anyx.io"],
+    ["appbase.condenser_api.get_account_history","http://anyx.io"],
+    ["appbase.condenser_api.get_ops_in_block","http://anyx.io"]
   ]
 }
 ```
@@ -386,7 +382,7 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 
 * Batch requests are limited to a maximum of 50 request elements.
   * *Also see: [json-rpc batch specification](http://www.jsonrpc.org/specification#batch)*
-* Repository: [github.com/steemit/jussi](https://github.com/steemit/jussi)
+* Repository: [gitlab.syncad.com/hive/jussi](https://gitlab.syncad.com/hive/jussi)
 
 ---
 
