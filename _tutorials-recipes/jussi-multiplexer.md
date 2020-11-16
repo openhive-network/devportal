@@ -7,7 +7,7 @@ layout: full
 canonical_url: jussi-multiplexer.html
 ---
 
-*By the end of this recipe you should know how to install `jussi` on your local subnet to take advantage of its features.*
+*How to install `jussi` on your local subnet to take advantage of its features.*
 
 This recipe will take you through the process of setting up `jussi` for a small infrastructure like a home network.
 
@@ -38,13 +38,13 @@ Although it's possible to set up `jussi` to run natively without virtualization,
 #### 2. Install `jussi` <a name="install-jussi"></a>
 
 ```bash
-git clone https://github.com/steemit/jussi.git
+git clone https://gitlab.syncad.com/hive/jussi.git
 cd jussi
 ```
 
 Edit the file `DEV_config.json` and change all:
 
-`https://hived.steemitdev.com`
+`https://api.steemit.com`
 
 ... to ...
 
