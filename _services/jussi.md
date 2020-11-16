@@ -4,7 +4,7 @@ position: 3
 description: A reverse proxy that forwards json-rpc requests.
 ---
 
-Jussi is a custom-built caching layer for use with `hived` and other various services (such as [HBDS]({{ '/services/#services-hbds' | relative_url }})).
+Jussi is a custom-built caching layer for use with `hived`.
 
 The purpose of this document is to help developers and node operators set up their own jussi node within a docker container.
 
