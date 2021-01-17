@@ -1,25 +1,22 @@
 ---
-title: 'JS: Convert Hbd To Hive'
+title: 'JS: Convert HBD To HIVE'
 position: 32
 description: "_How to convert HBD to HIVE for a specified account._"
 layout: full
 canonical_url: convert_hbd_to_hive.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Convert Hbd To Hive](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/32_convert_hbd_to_hive) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Convert HBD To HIVE](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/32_convert_hbd_to_hive) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-32_convert_hbd_to_hive.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/32_convert_hbd_to_hive)).
 
 This tutorial will take you through the process of checking a specific users' balances and then broadcasting the intended HBD conversion to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
 
 It should be noted that the converted HIVE will not be available instantly as it takes 3.5 days for the transaction to be processed. It is also not possible to stop a conversion once initialised. During the 3.5 days for it to be converted and as the conversion price fluctuates you could actually be receiving less HIVE than what you should. Because of this, the method in this tutorial is NOT the preferred or most efficient way of converting HBD to HIVE. This tutorial just illustrates that it can be done in this manner.
 
-There is a marketplace on Hive that allows you to "sell" your HBD instantly. With this process you can get your HIVE immediately and at the exact price that you expect. The market place is the better way to convert your HBD. [This article](https://hive.blog/steem/@epico/convert-hbd-to-steem-and-steem-power-guide-2017625t103821622z) provides more information on using the market to exchange your HBD to HIVE
+There is a marketplace on Hive that allows you to "sell" your HBD instantly. With this process you can get your HIVE immediately and at the exact price that you expect. The market place is the better way to convert your HBD. [This article](https://hive.blog/steem/@epico/convert-sbd-to-steem-and-steem-power-guide-2017625t103821622z) provides more information on using the market to exchange your HBD to HIVE
 
 Hiveconnect offers an alternative to converting HBD with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below substituting the three parameters for your own details. You will be prompted to enter your username and password before the transaction will be executed.
-https://steemconnect.com/sign/convert?owner=username&requestid=1234567&amount=0.000%20HBD
-This is similar to the steemconnect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.steemconnect.com/sign
-[This article](https://hive.blog/hbd/@timcliff/how-to-convert-hbd-into-steem-using-steemconnect) has more information on using steemconnect
+https://hivesigner.com/sign/convert?owner=username&requestid=1234567&amount=0.000%20HBD
+This is similar to the Hive Connect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.hivesigner.com/sign
+[This article](https://hive.blog/hbd/@timcliff/how-to-convert-sbd-into-steem-using-steemconnect) has more information on using Hive Connect
 
 ## Intro
 
@@ -33,7 +30,7 @@ The only other information required is the private active key of the user.
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain
 1.  [**User account**](#user) User account is captured and balances displayed
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Broadcast operation**](#broadcast) Broadcasting the operation to the blockchain
@@ -43,16 +40,16 @@ The only other information required is the private active key of the user.
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
-// //connect to a steem node, tesetnet in this case
+// //connect to a hive node, tesetnet in this case
 const client = new Client(NetConfig.url, opts);
 ```
 
-Above, we have `dsteem` pointing to the testnet with the proper chainId, addressPrefix, and endpoint by importing it from the `configuration.js` file. Due to this tutorial altering the blockchain it is preferable to not work on production.
+Above, we have `dhive` pointing to the testnet with the proper chainId, addressPrefix, and endpoint by importing it from the `configuration.js` file. Due to this tutorial altering the blockchain it is preferable to not work on production.
 
 #### 2. User account<a name="user"></a>
 
@@ -144,11 +141,8 @@ The results of the operation is displayed on the UI along with a block number in
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/32_convert_hbd_to_hive`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/32_convert_hbd_to_hive`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at http://localhost:3000/

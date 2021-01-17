@@ -1,8 +1,8 @@
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Mainnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 
 //submitAcc function from html input
@@ -30,15 +30,15 @@ window.submitAcc = async () => {
 
     const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestHive} HIVE POWER<br/><br/>`;
     document.getElementById('accBalance').innerHTML = balance;
-    document.getElementById('steem').value = avail + ' VESTS';
+    document.getElementById('hive').value = avail + ' VESTS';
 
     document.getElementById('sc').style.display = 'block';
-    const link = `https://steemconnect.com/sign/withdraw-vesting?account=${name}&vesting_shares=${
-        document.getElementById('steem').value
+    const link = `https://hivesigner.com/sign/withdraw-vesting?account=${name}&vesting_shares=${
+        document.getElementById('hive').value
     }`;
     document.getElementById('sc').innerHTML = `<br/><a href=${encodeURI(
         link
-    )} target="_blank">Hiveconnect signing</a>`;
+    )} target="_blank">Hive Signer signing</a>`;
 };
 
 window.submitTx = async () => {
@@ -49,7 +49,7 @@ window.submitTx = async () => {
         'withdraw_vesting',
         {
             account: document.getElementById('username').value,
-            vesting_shares: document.getElementById('steem').value,
+            vesting_shares: document.getElementById('hive').value,
         },
     ];
     client.broadcast.sendOperations([op], privateKey).then(

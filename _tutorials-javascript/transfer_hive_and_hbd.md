@@ -4,19 +4,17 @@ position: 21
 description: "_Transfer both HIVE and HBD from one account to another._"
 layout: full
 canonical_url: transfer_hive_and_hbd.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Transfer Hive And Hbd](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/21_transfer_hive_and_hbd) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
+---
+Full, runnable src of [Transfer Hive And HBD](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/21_transfer_hive_and_hbd) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-21_transfer_hive_and_hbd.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/21_transfer_hive_and_hbd)).
 
 
 This tutorial will take you through the process of preparing and submitting a `transfer` using the `broadcast` operation. Two demo accounts are provided to use on the `testnet` but all variables can be easily changed and applied to the `production server`.
 
-There is also an alternative method to transfer from one account to another using a `hot signing` link that can be generated via [Hiveconnect](https://steemconnect.com/sign/). You create a link using the `to` account, the amount, and a `memo` (optional comments). This [link](https://steemconnect.com/sign/transfer?to=steemitblog&amount=1.000%20HIVE) then allows you to do a transfer simply by adding the login details of the `from` account. This is a very simple way to send a payment request to any other user with the correct details already provided by the link.
+There is also an alternative method to transfer from one account to another using a `hot signing` link that can be generated via [Hiveconnect](https://hivesigner.com/sign/). You create a link using the `to` account, the amount, and a `memo` (optional comments). This [link](https://hivesigner.com/sign/transfer?to=hiveio&amount=1.000%20HIVE) then allows you to do a transfer simply by adding the login details of the `from` account. This is a very simple way to send a payment request to any other user with the correct details already provided by the link.
 
 ## Intro
 
-We are using the `broadcast.transfer` function provided by the `dsteem` library to send the transaction through to the network. In order to do the transfer, two accounts are required. One the sender and the other the recipient. You also can't transfer from and to the same account, which is why two accounts have been provided for this tutorial. There are 6 parameters required for the transfer operation:
+We are using the `broadcast.transfer` function provided by the `dhive` library to send the transaction through to the network. In order to do the transfer, two accounts are required. One the sender and the other the recipient. You also can't transfer from and to the same account, which is why two accounts have been provided for this tutorial. There are 6 parameters required for the transfer operation:
 
 1.  _Username_ - The username of the account making the transfer (`from` account)
 2.  _Privatekey_ - This is the private `active` key of the sender
@@ -29,7 +27,7 @@ It is noteworthy that Hive Power (VESTS) cannot be transferred with this operati
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 3.  [**Object creation**](#object) Creating an object to use in the broadcast operation
 4.  [**Broadcast**](#broadcast) Broadcasting the transfer to the blockchain
@@ -39,22 +37,22 @@ It is noteworthy that Hive Power (VESTS) cannot be transferred with this operati
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 //define network parameters
 let opts = {};
-opts.addressPrefix = 'STX';
+opts.addressPrefix = 'STM';
 opts.chainId =
     '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673';
-//connect to a steem node, testnet in this case
-const client = new dsteem.Client('https://testnet.steem.vc', opts);
+//connect to a Hive node, testnet in this case
+const client = new dhive.Client('https://testnet.hive.blog', opts);
 ```
 
-Above, we have `dsteem` pointing to the test network with the proper chainId, addressPrefix, and endpoint.  
+Above, we have `dhive` pointing to the test network with the proper chainId, addressPrefix, and endpoint.  
 Because this tutorial modifies the blockchain, we will use a testnet and predefined accounts to demonstrate the transfer process.
 
 #### 2. Input variables<a name="input"></a>
 
-The required parameters for the transfer operation is recorded via an HTML UI that can be found in the `public/index.html` file. The values are prepopulated in this case with testnet `demo` accounts. The transfer amount is set to `1.000` but any value can be input as long as the sender has enough HIVE to send.
+The required parameters for the transfer operation is recorded via an HTML UI that can be found in the `public/index.html` file. The values are pre-populated in this case with testnet `demo` accounts. The transfer amount is set to `1.000` but any value can be input as long as the sender has enough HIVE to send.
 
 The parameter values are allocated as seen below, once the user clicks on the "Transfer" button.
 
@@ -64,7 +62,7 @@ window.submitTransfer = async () => {
     //get account name of sender
     const username = document.getElementById('username').value;
     //get private active key
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('privateKey').value
     );
     //get recipient
@@ -123,11 +121,8 @@ client.broadcast.transfer(transf, privateKey).then(
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/javascript/20_transfer_HIVE_and_HBD`
-3.  `npm i`
-4.  `npm run dev-server` or `npm run start`
-5.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+2. `cd devportal/tutorials/javascript/21_transfer_hive_and_hbd`
+3. `npm i`
+4. `npm run dev-server` or `npm run start`
+5. After a few moments, the server should be running at http://localhost:3000/

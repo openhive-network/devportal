@@ -4,15 +4,12 @@ position: 30
 description: "_How to grant and revoke posting permission to another user._"
 layout: full
 canonical_url: grant_posting_permission.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Posting Permission](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/30_grant_posting_permission) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Grant Posting Permission](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/30_grant_posting_permission) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-30_grant_posting_permission.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/30_grant_posting_permission)).
 
 This tutorial will take you through the process of checking a specific users' data, altering the array pertaining to the posting `account_auths`, and then broadcasting the changes to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
 
-Providing another user posting permission for your account can be used to allow multiple users to submit posts on a single steemit community. @Utopian-Io is an example of such a community. There are also applications that allows you to schedule posts by automatically publishing on your behalf.
+Providing another user posting permission for your account can be used to allow multiple users to submit posts on a single hive community.  There are also applications that allows you to schedule posts by automatically publishing on your behalf.
 
 ## Intro
 
@@ -32,7 +29,7 @@ The tutorial is set up with three individual functions for each of the required 
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI.
 3.  [**Database query**](#query) Sending a query to the blockchain for the posting permissions (status)
 4.  [**Object creation**](#object) Create the array and subsequent data object for the broadcast operation
@@ -43,17 +40,17 @@ The tutorial is set up with three individual functions for each of the required 
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 //define network parameters
 let opts = {};
 opts.addressPrefix = 'STX';
 opts.chainId =
     '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673';
-//connect to a steem node, testnet in this case
-const client = new dsteem.Client('https://testnet.steem.vc', opts);
+//connect to a hive node, testnet in this case
+const client = new dhive.Client('https://testnet.hive.blog', opts);
 ```
 
-Above, we have `dsteem` pointing to the testnet with the proper chainId, addressPrefix, and endpoint. Due to this tutorial altering the blockchain it is preferable to not work on production.
+Above, we have `dhive` pointing to the testnet with the proper chainId, addressPrefix, and endpoint. Due to this tutorial altering the blockchain it is preferable to not work on production.
 
 #### 2. Input variables<a name="input"></a>
 
@@ -65,7 +62,7 @@ All of the functions use the same input variables. Once the function is activate
 //get username
 const username = document.getElementById('username').value;
 //get private active key
-const privateKey = dsteem.PrivateKey.fromString(
+const privateKey = dhive.PrivateKey.fromString(
     document.getElementById('privateKey').value
 );
 //get account to provide posting auth
@@ -74,7 +71,7 @@ const newAccount = document.getElementById('newAccount').value;
 
 #### 3. Database query<a name="query"></a>
 
-The queries are sent through to the steem blockchain with the `database API` using the `getAccounts` function. The results of the query is used to check the status of the current posting authorisations and parameters as per the `intro`.
+The queries are sent through to the hive blockchain with the `database API` using the `getAccounts` function. The results of the query is used to check the status of the current posting authorisations and parameters as per the `intro`.
 
 ```javascript
     //query database for posting array
@@ -120,7 +117,7 @@ postingAuth.account_auths.sort();
 postingAuth.account_auths.splice(arrayindex, 1);
 ```
 
-When adding to the array (creaing permission) it is required to sort the array before we can broadcast. The steem blockchain does not accept the new fields in the array if it's not alphabetically sorted.
+When adding to the array (creaing permission) it is required to sort the array before we can broadcast. The hive blockchain does not accept the new fields in the array if it's not alphabetically sorted.
 After the posting array has been defined, the broadcast object can be created. This holds all the required information for a successful transaction to be sent to the blockchain. Where there is no change in the authority types, the parameter can be omitted or in the case of required parameters, allocated directly from the database query.
 
 ```javascript
@@ -164,16 +161,13 @@ client.broadcast.updateAccount(accObj, privateKey).then(
 The results of the operation is displayed on the UI along with a block number in the console to confirm a successful operation. If you add permission to an account that already has permission will display an error of "Missing Active Authority".
 
 Hiveconnect offers an alternative to revoking posting permission with a "simple link" solution. Instead of running through a list of opetions on your account, you can simply use a link similar to the one below. You will be prompted to enter your usename and password and the specified user will have their posting permission removed instantly.
-https://v2.steemconnect.com/revoke/@username
-This is similar to the steemconnect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.steemconnect.com/sign
+https://v2.hivesigner.com/revoke/@username
+This is similar to the Hive Signer links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.hivesigner.com/sign
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/javascript/28_grant_posting_permission`
-3.  `npm i`
-4.  `npm run dev-server` or `npm run start`
-5.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+2. `cd devportal/tutorials/javascript/30_grant_posting_permission`
+3. `npm i`
+4. `npm run dev-server` or `npm run start`
+5. After a few moments, the server should be running at http://localhost:3000/

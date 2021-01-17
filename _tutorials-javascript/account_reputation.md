@@ -4,38 +4,35 @@ position: 20
 description: "_Learn how to interpret account reputation._"
 layout: full
 canonical_url: account_reputation.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Account Reputation](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/20_account_reputation) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Account Reputation](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/20_account_reputation) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-20_account_reputation.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/20_account_reputation)).
 
 This tutorial runs on the main Hive blockchain. And accounts queried are real users with reputation.
 
 ## Intro
 
-This tutorial will show the method of capturing a queried tag name and matching it to the Hive. We are using the `call` function provided by the `dsteem` library to pull accounts from the Hive blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
+This tutorial will show the method of capturing a queried tag name and matching it to the Hive. We are using the `call` function provided by the `dhive` library to pull accounts from the Hive blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
 
 ## steps
 
-1.  [**App setup**](#app-setup) Configuration of `dsteem` to use the proper connection and network.
+1.  [**App setup**](#app-setup) Configuration of `dhive` to use the proper connection and network.
 2.  [**Search account**](#search-account) Collecting the relevant search criteria
 3.  [**Interpret account reputation**](#run-reputation) Running the search and interpreting reputation.
 4.  [**Output**](#output) Displaying the results
 
 #### 1. App setup <a name="app-setup"></a>
 
-Below we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
+Below we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -105,12 +102,9 @@ That's it!
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/20_account_reputation`
-1.  `npm i`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/20_account_reputation`
+1. `npm i`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

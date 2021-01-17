@@ -1,4 +1,4 @@
-const dhive = require('@hivechain/dhive');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';

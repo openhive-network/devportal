@@ -4,13 +4,12 @@ position: 29
 description: "_View the vesting delegations made by a user as well as the delegations that are expiring._"
 layout: full
 canonical_url: get_delegations_by_user.html
----              
+---
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Delegations By User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/29_get_delegations_by_user) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
+Full, runnable src of [Get Delegations By User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/29_get_delegations_by_user) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-29_get_delegations_by_user.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/29_get_delegations_by_user)).
 
-
-
-This tutorial will take you through the process of calling delegation information from the steem blockchain using the `database API`. The account information provided has been chosen by random and the process is applicable to any user account on both the `production server` and the `testnet`.
+This tutorial will take you through the process of calling delegation information from the hive blockchain using the `database API`. The account information provided has been chosen by random and the process is applicable to any user account on both the `production server` and the `testnet`.
 
 ## Intro
 
@@ -28,7 +27,7 @@ The second function is `getExpiringVestingDelegations` with parameters:
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 3.  [**Database query**](#query) Sending a query to the blockchain for the user delegations
 4.  [**Display results**](#display) Display the results of the blockchain query
@@ -38,17 +37,17 @@ The second function is `getExpiringVestingDelegations` with parameters:
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //define network parameters
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to a steem node, production in this case
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 ```
 
-Above, we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint.
+Above, we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint.
 
 #### 2. Input variables<a name="input"></a>
 
@@ -156,11 +155,8 @@ delegationdata.forEach(newObj => {
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/javascript/27_get_delegations_by_user`
-3.  `npm i`
-4.  `npm run dev-server` or `npm run start`
-5.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+2. `cd devportal/tutorials/javascript/29_get_delegations_by_user`
+3. `npm i`
+4. `npm run dev-server` or `npm run start`
+5. After a few moments, the server should be running at http://localhost:3000/

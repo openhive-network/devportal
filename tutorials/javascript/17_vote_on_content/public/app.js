@@ -1,9 +1,9 @@
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 
 const createPrivateKey = function() {
@@ -19,7 +19,7 @@ const createPrivateKey = function() {
     }
 };
 
-//refer to "10_submit_post" in the tutorials folder for creating a post on steemit
+//refer to "10_submit_post" in the tutorials folder for creating a post on hive.blog
 window.createPost = async () => {
     //get private key
     const privateKey = createPrivateKey();
@@ -30,7 +30,7 @@ window.createPost = async () => {
     //get title
     const title = `developers.hive.io - JS-T:17 ${time}`;
     //get body
-    const body = `Go to [developers.hive.io](https://developers.hive.io) for the latest in Hive tutorials! This post was created by someone using the active version of those tutorials at  [https://github.com/steemit/devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js)
+    const body = `Go to [developers.hive.io](https://developers.hive.io) for the latest in Hive tutorials! This post was created by someone using the active version of those tutorials at  [https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/develop/tutorials/javascript)
         
         ${time}`;
     //get tags and convert to array list
@@ -61,7 +61,7 @@ window.createPost = async () => {
                 document.getElementById('permlink').innerHTML = permlink;
                 document.getElementById(
                     'postLink'
-                ).innerHTML = `Included in block: <a href="http://condenser.steem.vc/${
+                ).innerHTML = `Included in block: <a href="http://testnet-condenser.hive.blog/${
                     taglist[0]
                 }/@${account}/${permlink}" target="_blank">${
                     result.block_num

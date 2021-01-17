@@ -1,5 +1,5 @@
 //Step 1.
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
@@ -51,7 +51,7 @@ window.submitComment = async () => {
                 'postLink'
             ).innerHTML = `<br/><p>Included in block: ${
                 result.block_num
-            }</p><br/><br/><a href="http://condenser.steem.vc/@${parent_author}/${parent_permlink}">Check post here</a>`;
+            }</p><br/><br/><a href="http://testnet-condenser.hive.blog/@${parent_author}/${parent_permlink}">Check post here</a>`;
         },
         function(error) {
             console.error(error);

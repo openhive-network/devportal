@@ -1,4 +1,4 @@
-const { Client } = require("@hivechain/dhive");
+const { Client } = require("@hiveio/dhive");
 
 const client = new Client('https://api.hive.blog');
 

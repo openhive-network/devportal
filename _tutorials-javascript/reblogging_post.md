@@ -1,20 +1,17 @@
 ---
 title: 'JS: Reblogging Post'
 position: 14
-description: "_By the end of this tutorial you should know how to reblog (resteem) a blog from hive_"
+description: "_How to reblog a post from hive_"
 layout: full
 canonical_url: reblogging_post.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/14_reblogging_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
+---
+Full, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/14_reblogging_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-14_reblogging_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/14_reblogging_post)).
 
-
-
-This tutorial will show the method of obtaining the relevant inputs for the reblog process followed by broadcasting the info to the steem blockchain using a `demo` account on the `production server`.
+This tutorial will show the method of obtaining the relevant inputs for the reblog process followed by broadcasting the info to the hive blockchain using a `demo` account on the `production server`.
 
 ## Intro
 
-We are using the `client.broadcast` function provided by `dsteem` to reblog the selected blogpost. There are 4 variables that are required to perform this action:
+We are using the `client.broadcast` function provided by `dhive` to reblog the selected blogpost. There are 4 variables that are required to perform this action:
 
 *   The account name that is doing the reblog
 *   The private _posting_ key of the account that is doing the reblog (this is not your main key)
@@ -23,29 +20,29 @@ We are using the `client.broadcast` function provided by `dsteem` to reblog the 
 
 A simple HTML interface is used to capture the required information after which the transaction is submitted. There are two prerequisites within the reblog process in Hive that have to be adhered to, namely, the post must not be older than 7 days, and the post can only be reblogged once by a specific account. The fields have been populated with information to give an example of what it would look like but care has to be taken to provide correct details before the function is executed.
 
-This tutorial makes use of the This function is taken from the tutorial [Blog Feed](https://github.com/steemit/devportal-tutorials-js/blob/master/tutorials/01_blog_feed/) to get a list of trending posts.
+This tutorial makes use of the This function is taken from the tutorial [Blog Feed](blog_feed.html) to get a list of trending posts.
 
 ## Steps
 
-1.  [**Configure connection**](#configure_connection) Configuration of `dsteem` to use the proper connection and network.
+1.  [**Configure connection**](#configure_connection) Configuration of `dhive` to use the proper connection and network.
 2.  [**Collecting information**](#collecting_information) Generating relevant posting information with an HTML interface.
 3.  [**Broadcasting the reblog**](#broadcasting_the_reblog) Assigning variables and executing the reblog.
 
 #### 1. Configure connection\*\*<a name="configure_connection"></a>
 
-Below we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint. Although this tutorial is interactive, we will not post to the testnet due to the prerequisites of reblogging.
+Below we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint. Although this tutorial is interactive, we will not post to the testnet due to the prerequisites of reblogging.
 There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 
 //define network parameters
 let opts = {};
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
-//connect to a Hive node. This is currently setup on production, but we recommend using a testnet like https://testnet.steem.vc
-const client = new dsteem.Client('https://api.hive.blog', opts);
+//connect to a Hive node. This is currently setup on production, but we recommend using a testnet like https://testnet.hive.blog
+const client = new dhive.Client('https://api.hive.blog', opts);
 ```
 
 #### 2. Collecting information<a name="collecting_information"></a>
@@ -57,7 +54,7 @@ after wich we assign them to variables for use later.
 //this function will execute when the HTML form is submitted
 window.submitPost = async () => {
     //get private key
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('postingKey').value
     );
     //get account name
@@ -99,7 +96,7 @@ client.broadcast.json(data, privateKey).then(
 );
 ```
 
-There are also two `console` functions an a ui output under **Resteem Results** defined in order to track if the reblog
+There are also two `console` functions an a ui output under **Reblog Results** defined in order to track if the reblog
 as successful or not. If the broadcast succeeds the `console.log` will show the following:
 
 client broadcast result:
@@ -138,11 +135,8 @@ It should be noted that reblogging a post does not create a new post on the bloc
 
 ## To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/javascript/14_reblogging_post`
-3.  `npm i`
-4.  `npm run dev-server` or `npm run start`
-5.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+2. `cd devportal/tutorials/javascript/14_reblogging_post`
+3. `npm i`
+4. `npm run dev-server` or `npm run start`
+5. After a few moments, the server should be running at http://localhost:3000/

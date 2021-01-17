@@ -1,41 +1,38 @@
 ---
 title: 'JS: Create Account'
 position: 26
-description: "_Create Hive account using Hiveconnect as well as with client-side signing._"
+description: "_Create Hive account using Hive Signer as well as with client-side signing._"
 layout: full
 canonical_url: create_account.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Create Account](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/26_create_account) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Create Account](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/26_create_account) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-26_create_account.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/26_create_account)).
 
 This tutorial will show how to search for a valid account name and then create a new account by means of Resource Credits or HIVE. This tutorial runs on the main Hive blockchain so extra care needs to be taken as any operation will affect real accounts.
 
 ## Intro
 
-This tutorial will show few functions such as querying account by name and check if username is taken or available to register. We are using the `call` function provided by the `dsteem` library to pull account from the Hive blockchain. We then create proper private keys for new account. A simple HTML interface is used to enter payment of account creation fee and create account right inside tutorial. We use the `account_create` function to commit the transaction to the blockchain. This function is used to create what is called a "non-discounted account". This means that the creator account needs to supply the exact `account_creation_fee` in HIVE in order for the transaction to process successfully. Currently this value is set to 3 HIVE. There is a second method of creating accounts using tokens. These are called "discounted accounts". In stead of HIVE, the `account_creation_fee` is paid in RC (resource credits). There are however a limited amount of discounted accounts that can be claimed which is decided upon by the witnesses. This account creation process is done in two steps, first claiming an account and then creating the account.
+This tutorial will show few functions such as querying account by name and check if username is taken or available to register. We are using the `call` function provided by the `dhive` library to pull account from the Hive blockchain. We then create proper private keys for new account. A simple HTML interface is used to enter payment of account creation fee and create account right inside tutorial. We use the `account_create` function to commit the transaction to the blockchain. This function is used to create what is called a "non-discounted account". This means that the creator account needs to supply the exact `account_creation_fee` in HIVE in order for the transaction to process successfully. Currently this value is set to 3 HIVE. There is a second method of creating accounts using tokens. These are called "discounted accounts". In stead of HIVE, the `account_creation_fee` is paid in RC (resource credits). There are however a limited amount of discounted accounts that can be claimed which is decided upon by the witnesses. This account creation process is done in two steps, first claiming an account and then creating the account.
 
 ## Steps
 
-1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
+1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Generate private keys**](#generate-keys) Generate proper keys for new account
-4.  [**Create account**](#create-account) Create account via Client-side or Hiveconnect
+4.  [**Create account**](#create-account) Create account via Client-side or Hive Signer
 
 #### 1. App setup <a name="app-setup"></a>
 
-Below we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
+Below we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -68,10 +65,10 @@ After we know that account is available to register, we will fill form with pass
 const username = document.getElementById('username').value;
 const password = document.getElementById('password').value;
 
-const ownerKey = dsteem.PrivateKey.fromLogin(username, password, 'owner');
-const activeKey = dsteem.PrivateKey.fromLogin(username, password, 'active');
-const postingKey = dsteem.PrivateKey.fromLogin(username, password, 'posting');
-const memoKey = dsteem.PrivateKey.fromLogin(
+const ownerKey = dhive.PrivateKey.fromLogin(username, password, 'owner');
+const activeKey = dhive.PrivateKey.fromLogin(username, password, 'active');
+const postingKey = dhive.PrivateKey.fromLogin(username, password, 'posting');
+const memoKey = dhive.PrivateKey.fromLogin(
     username,
     password,
     'memo'
@@ -102,13 +99,13 @@ After following all steps properly, we can now submit transaction to create new 
 
 ```javascript
 //non-discounted account creation
-const privateKey = dsteem.PrivateKey.fromString(
+const privateKey = dhive.PrivateKey.fromString(
     document.getElementById('wif').value
 );
 const op = [
     'account_create',
     {
-        fee: document.getElementById('steem').value,
+        fee: document.getElementById('hive').value,
         creator: document.getElementById('account').value,
         new_account_name: username,
         owner: ownerAuth,
@@ -139,7 +136,7 @@ Discounted account creation uses the same eventual `account_create` parameters b
 ```javascript
 //discounted account creation
 //private active key of creator account
-const privateKey = dsteem.PrivateKey.fromString(document.getElementById('wif').value);
+const privateKey = dhive.PrivateKey.fromString(document.getElementById('wif').value);
 
 let ops = [];
 
@@ -198,11 +195,8 @@ That's it!
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/26_create_account`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/26_create_account`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

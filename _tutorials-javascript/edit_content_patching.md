@@ -1,14 +1,11 @@
 ---
 title: 'JS: Edit Content Patching'
 position: 12
-description: "_By the end of this tutorial you should know how to patch post edits to Hive._"
+description: "_How to patch post edits to Hive._"
 layout: full
 canonical_url: edit_content_patching.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/12_edit_content_patching) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/12_edit_content_patching) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-12_edit_content_patching.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/12_edit_content_patching)).
 
 This tutorial will take you through the process of preparing and patching post using the `broadcast.comment` operation. Being able to patch a post is critical to save resources on Hive.
 
@@ -16,9 +13,9 @@ This tutorial will take you through the process of preparing and patching post u
 
 Tutorial is demonstrating the typical process of editing content that has been previously posted on the blockchain. Instead of replacing the entire body of the post, the Hive blockchain offers an alternative strategy. In this tutorial, we will focus on properly patching existing content and then broadcasting the patch with a `demo` account on a testnet.
 
-***Note for long time community members:** Since HF20 even archived content (older than 7 days) can be changed/updated. Editing content will also use less RC (resource credits) than creating new posts entirely.*
+***Note for long time community members:** Since HF20 even archived content (older than 7 days) can be changed/updated. Editing content will also use less RC (resource credits) than creating new posts entirely.***
 
-We are using the `broadcast.comment` function provided by `dsteem` which generates, signs, and broadcast the transaction to the network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, it's a post, when there is, it's a comment. When editing a post, we need to make sure that we don't resubmit the same post over and over again, which will spam the network and adds additional cost to operate the platform. Instead we will use a package called `diff-match-patch`, which allows us to only apply changes and save resources on the Hive platform.
+We are using the `broadcast.comment` function provided by `dhive` which generates, signs, and broadcast the transaction to the network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, it's a post, when there is, it's a comment. When editing a post, we need to make sure that we don't resubmit the same post over and over again, which will spam the network and adds additional cost to operate the platform. Instead we will use a package called `diff-match-patch`, which allows us to only apply changes and save resources on the Hive platform.
 
 ## Steps
 
@@ -32,17 +29,17 @@ We are using the `broadcast.comment` function provided by `dsteem` which generat
 As usual, we have a file called `public/app.js`, which holds the Javascript segment of the tutorial. In the first few lines, we have defined the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to community testnet
 opts.addressPrefix = 'STX';
 opts.chainId =
     '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673';
 //connect to server which is connected to the network/testnet
-const client = new dsteem.Client('https://testnet.steem.vc', opts);
+const client = new dhive.Client('https://testnet.hive.blog', opts);
 ```
 
-Above, we have `dsteem` pointing to the test network with the proper chainId, addressPrefix, and endpoint. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using testnet and a predefined account to demonstrate post patching.
+Above, we have `dhive` pointing to the test network with the proper chainId, addressPrefix, and endpoint. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using testnet and a predefined account to demonstrate post patching.
 
 #### 2. Get latest post<a name="get-post"></a>
 
@@ -92,7 +89,7 @@ Next, we have the `submitPost` function, which executes when the Submit button i
 
 ```javascript
 //get private key
-const privateKey = dsteem.PrivateKey.fromString(
+const privateKey = dhive.PrivateKey.fromString(
     document.getElementById('postingKey').value
 );
 //get account name
@@ -145,7 +142,7 @@ client.broadcast
                 'postLink'
             ).innerHTML = `<br/><p>Included in block: ${
                 result.block_num
-            }</p><br/><br/><a href="http://condenser.steem.vc/${
+            }</p><br/><br/><a href="http://testnet-condenser.hive.blog/${
                 taglist[0]
             }/@${account}/${permlink}">Check post here</a>`;
         },
@@ -177,11 +174,8 @@ After the post has been broadcasted to the network, we can simply set all the fi
 
 ### To Run the tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/12_edit_content_patching`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/12_edit_content_patching`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at http://localhost:3000/

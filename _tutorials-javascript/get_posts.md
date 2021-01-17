@@ -211,6 +211,3 @@ The result returned from the service is a `JSON` list. This is an example list w
 1. `npm i`
 1. `npm run dev-server` or `npm run start`
 1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----

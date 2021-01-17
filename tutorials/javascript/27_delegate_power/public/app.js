@@ -1,8 +1,8 @@
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Mainnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 
 //submitAcc function from html input
@@ -30,13 +30,13 @@ window.submitAcc = async () => {
 
     const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestHive} HIVE POWER<br/><br/>`;
     document.getElementById('accBalance').innerHTML = balance;
-    document.getElementById('steem').value =
+    document.getElementById('hive').value =
         Number(avail).toFixed(6) + ' VESTS';
 };
 window.openSC = async () => {
-    const link = `https://steemconnect.com/sign/delegate-vesting-shares?delegator=${
+    const link = `https://hivesigner.com/sign/delegate-vesting-shares?delegator=${
         document.getElementById('username').value
-    }&vesting_shares=${document.getElementById('steem').value}&delegatee=${
+    }&vesting_shares=${document.getElementById('hive').value}&delegatee=${
         document.getElementById('account').value
     }`;
     window.open(link);
@@ -50,7 +50,7 @@ window.submitTx = async () => {
         {
             delegator: document.getElementById('username').value,
             delegatee: document.getElementById('account').value,
-            vesting_shares: document.getElementById('steem').value,
+            vesting_shares: document.getElementById('hive').value,
         },
     ];
     client.broadcast.sendOperations([op], privateKey).then(

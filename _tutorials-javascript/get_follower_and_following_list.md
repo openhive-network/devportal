@@ -4,17 +4,14 @@ position: 19
 description: "_Get the followers of a user/author & the authors that user is following._"
 layout: full
 canonical_url: get_follower_and_following_list.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-19_get_follower_and_following_list.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/19_get_follower_and_following_list)).
 
 This tutorial will take you through the process of calling both the `follower` and `following` functions from the HIVE API.
 
 ## Intro
 
-We are using the `call` operation provided by the `dsteem` library to pull the follow information for a specified user account. There are 4 variables required to execute this operation:
+We are using the `call` operation provided by the `dhive` library to pull the follow information for a specified user account. There are 4 variables required to execute this operation:
 
 1.  _username_ - The specific user for which the follower(ing) list will be retrieved.
 2.  _startFollower(ing)_ - The starting letter(s) or name for the search query.
@@ -25,7 +22,7 @@ A simple HTML interface is used to capture the required information after which 
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with the Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with the Hive blockchain
 2.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 3.  [**Get followers/following**](#query) Get the followers or users being followed
 4.  [**Display**](#display) Display the array of results on the UI
@@ -35,17 +32,17 @@ A simple HTML interface is used to capture the required information after which 
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //define network parameters
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
-//connect to a steem node, production in this case
-const client = new dsteem.Client('https://api.hive.blog');
+//connect to a hive node, production in this case
+const client = new dhive.Client('https://api.hive.blog');
 ```
 
-Above, we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint.
+Above, we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint.
 
 #### 2. Input variables<a name="input"></a>
 
@@ -116,11 +113,8 @@ followlist.forEach(newObj => {
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/javascript/19_get_follower_and_following_list`
-3.  `npm i`
-4.  `npm run dev-server` or `npm run start`
-5.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+2. `cd devportal/tutorials/javascript/19_get_follower_and_following_list`
+3. `npm i`
+4. `npm run dev-server` or `npm run start`
+5. After a few moments, the server should be running at http://localhost:3000/

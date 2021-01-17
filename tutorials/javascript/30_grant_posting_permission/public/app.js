@@ -1,9 +1,9 @@
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 
 //check permission status
@@ -55,7 +55,7 @@ window.submitPermission = async () => {
         newAccount,
         parseInt(postingAuth.weight_threshold),
     ]);
-    //sort array required for steem blockchain
+    //sort array required for hive blockchain
     postingAuth.account_auths.sort();
 
     //object creation

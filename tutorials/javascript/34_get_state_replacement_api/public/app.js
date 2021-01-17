@@ -1,4 +1,4 @@
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 
 let opts = {};
 
@@ -8,13 +8,13 @@ opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 
 
 window.showAccount = async () => {
     console.log('account : ');
     var _info = new Array
-    _info = await client.database.getAccounts(['steemitblog']);
+    _info = await client.database.getAccounts(['hiveio']);
     console.log(_info[0]);
 
 }

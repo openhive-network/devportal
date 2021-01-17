@@ -25,7 +25,7 @@ Below we have `dhive` pointing to the main network with the proper chainId, addr
 There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define and configure library and packages.
 
 ```javascript
-const dhive = require('@hivechain/dhive');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
