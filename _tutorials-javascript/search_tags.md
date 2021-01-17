@@ -1,41 +1,38 @@
 ---
 title: 'JS: Search Tags'
 position: 16
-description: "_By the end of this tutorial you should know how to run a search for trending tags_"
+description: "_How to run a search for trending tags_"
 layout: full
 canonical_url: search_tags.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Tags](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/16_search_tags) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Search Tags](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/16_search_tags) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-16_search_tags.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/16_search_tags)).
 
 This tutorial runs on the main Hive blockchain.
 
 ## Intro
 
-This tutorial will show the method of capturing a queried tag name and matching it to the steem database. We are using the `call` function provided by the `dsteem` library to pull tags from the steem blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
+This tutorial will show the method of capturing a queried tag name and matching it to the hive database. We are using the `call` function provided by the `dhive` library to pull tags from the hive blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
 
 ## steps
 
-1.  [**Configure connection**](#configure-conn) Configuration of `dsteem` to use the proper connection and network.
+1.  [**Configure connection**](#configure-conn) Configuration of `dhive` to use the proper connection and network.
 2.  [**Search input**](#search-input) Collecting the relevant search criteria
 3.  [**Run Search**](#run-search) Running the search on the blockchain
 4.  [**Output**](#output) Displaying the results of the search query
 
 #### 1. Configure connection <a name="configure-conn"></a>
 
-Below we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
+Below we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 ```
 
 #### 2. Search input <a name="search-input"></a>
@@ -78,11 +75,8 @@ document.getElementById('tagList').innerHTML = posts.join('<br>');
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/16_search_tags`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/16_search_tags`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at http://localhost:3000/

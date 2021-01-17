@@ -1,11 +1,11 @@
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 
 //submitTab function from html input
 const max = 10;

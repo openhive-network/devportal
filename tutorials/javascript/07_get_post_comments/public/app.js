@@ -1,4 +1,4 @@
-const dhive = require('@hivechain/dhive');
+const dhive = require('@hiveio/dhive');
 const Remarkable = require('remarkable');
 
 let opts = {};

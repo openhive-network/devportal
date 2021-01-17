@@ -26,7 +26,7 @@ We are using `get_state` function with `dhive`, which is straight-forward and th
 As usual, we have `public/app.js` file which holds the javascript part of the tutorial. In first few lines we define, configure library and packages.
 
 ```javascript
-const dhive = require('@hivechain/dhive');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';

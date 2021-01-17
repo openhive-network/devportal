@@ -1,11 +1,11 @@
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 
 //submitAcc function from html input
 const max = 5;
@@ -31,15 +31,15 @@ window.submitAcc = async () => {
     document.getElementById('accInfo').innerHTML = info;
 };
 window.openSC = async () => {
-    const link = `https://steemconnect.com/sign/set-withdraw-vesting-route?from_account=${
+    const link = `https://hivesigner.com/sign/set-withdraw-vesting-route?from_account=${
         document.getElementById('username').value
-    }&percent=${document.getElementById('steem').value * 100}&to_account=${
+    }&percent=${document.getElementById('hive').value * 100}&to_account=${
         document.getElementById('account').value
     }&auto_vest=${document.getElementById('percent').checked}`;
     window.open(link);
 };
 window.submitTx = async () => {
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('wif').value
     );
     const op = [
@@ -47,7 +47,7 @@ window.submitTx = async () => {
         {
             from_account: document.getElementById('username').value,
             to_account: document.getElementById('account').value,
-            percent: document.getElementById('steem').value * 100,
+            percent: document.getElementById('hive').value * 100,
             auto_vest: document.getElementById('percent').checked,
         },
     ];

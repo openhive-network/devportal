@@ -4,19 +4,16 @@ position: 22
 description: "_Create a list of available witnesses as well as vote for and remove your vote for a witness._"
 layout: full
 canonical_url: witness_listing_and_voting.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Witness Listing And Voting](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/22_witness_listing_and_voting) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Witness Listing And Voting](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/22_witness_listing_and_voting) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-22_witness_listing_and_voting.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/22_witness_listing_and_voting)).
 
 This tutorial will take you through the process of preparing and submitting a `vote` using the `broadcast` operation. A demo account is provided to use on the `testnet` but all variables can be easily changed and applied to the `production server`.
 
-There is also an alternative method to vote for a witness using a `hot signing` link that can be generated via [Hiveconnect](https://steemconnect.com/sign/). You create a link using the `witness` name and the `approve` fields which denotes whether you want to vote for or remove the vote. This [link](https://v2.steemconnect.com/sign/account-witness-vote?witness=grg&approve=approve) then allows you to vote simply by signing in with your account details. This is a very simple way to send a vote request to any other user with the correct details already provided by the link.
+There is also an alternative method to vote for a witness using a `hot signing` link that can be generated via [Hiveconnect](https://hivesigner.com/sign/). You create a link using the `witness` name and the `approve` fields which denotes whether you want to vote for or remove the vote. This [link](https://v2.hivesigner.com/sign/account-witness-vote?witness=grg&approve=approve) then allows you to vote simply by signing in with your account details. This is a very simple way to send a vote request to any other user with the correct details already provided by the link.
 
 ## Intro
 
-We are using the `account witness vote` function to create the vote which we then commit to the steem blockchain with a `broadcast` operation from `dsteem`. We also look at the vote status for a specific user using the `getAccounts` function. The parameters required for the witness voting operation are:
+We are using the `account witness vote` function to create the vote which we then commit to the hive blockchain with a `broadcast` operation from `dhive`. We also look at the vote status for a specific user using the `getAccounts` function. The parameters required for the witness voting operation are:
 
 1.  _limit_ - Used in creating the witness list. Denotes the maximum number of witnesses to display
 1.  _voter_ - This is the account making the vote
@@ -26,7 +23,7 @@ We are using the `account witness vote` function to create the vote which we the
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain
 1.  [**Create witness list**](#createlist) Displaying a list of active witnesses
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Voting status**](#status) Confirming the current vote status for the selected witness
@@ -37,15 +34,15 @@ We are using the `account witness vote` function to create the vote which we the
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
-//connect to a steem node, testnet in this case
+//connect to a Hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 ```
 
-Above, we have `dsteem` pointing to the test network with the proper chainId, addressPrefix, and endpoint by importing from the `configuration.js` file. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account which is imported once the application loads, to demonstrate witness voting.
+Above, we have `dhive` pointing to the test network with the proper chainId, addressPrefix, and endpoint by importing from the `configuration.js` file. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account which is imported once the application loads, to demonstrate witness voting.
 
 ```javascript
 window.onload = async () => {
@@ -91,7 +88,7 @@ window.submitVote = async () => {
     //get account name of voter
     const voter = document.getElementById('username').value;
     //get private active key
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('activeKey').value
     );
     //get witness name
@@ -139,7 +136,7 @@ window.submitYes = async () => {
 
 The array cotains the function for the witness vote along with an object containing the needed parameters. We have to use the opposite of the `approve` variable that we created in the previous step. That variable is `true` if the user has already voted, and a value of `true` for the `approve` parameter means that the user is voting _for_ the specified witness which will then return an error.
 
-After the object has been created we can `broadcast` the operation to the steem blockchain along with the private active key of the user. The result of the vote is displayed on the UI to confirm whether you voted for or removed a vote for the witness as well as error details should there be one.
+After the object has been created we can `broadcast` the operation to the hive blockchain along with the private active key of the user. The result of the vote is displayed on the UI to confirm whether you voted for or removed a vote for the witness as well as error details should there be one.
 
 ```javascript
 //broadcast the vote
@@ -184,11 +181,8 @@ The option buttons (continue with voting process or stop) are disabled at the en
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/22_witness_listing_and_voting`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/22_witness_listing_and_voting`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

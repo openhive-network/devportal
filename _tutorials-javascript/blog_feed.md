@@ -28,7 +28,7 @@ In order to connect to the live Hive network, all we have to do is provide conne
 In first couple lines we require package and define connection server:
 
 ```javascript
-const { Client } = require("@hivechain/dhive");
+const { Client } = require("@hiveio/dhive");
 
 const client = new Client('https://api.hive.blog');
 ```

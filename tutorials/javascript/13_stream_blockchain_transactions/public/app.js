@@ -1,4 +1,4 @@
-const dsteem = require('dsteem');
+const dsteem = require('@hiveio/dhive');
 
 let opts = {};
 
