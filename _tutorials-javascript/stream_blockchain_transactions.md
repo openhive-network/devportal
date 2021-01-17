@@ -1,14 +1,11 @@
 ---
 title: 'JS: Stream Blockchain Transactions'
 position: 13
-description: "_By the end of this tutorial you should know how to stream transactions and blocks from Hive blockchain._"
+description: "_How to stream transactions and blocks from Hive blockchain._"
 layout: full
 canonical_url: stream_blockchain_transactions.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-13_stream_blockchain_transactions.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/13_stream_blockchain_transactions)).
 
 This tutorial will take you through the process of preparing and streaming blocks using the `blockchain.getBlockStream()` operation. Being able to stream blocks is crucial if you are building automated or follow up scripts or detect certain type of transactions on network or simply use it for your backend application to sync and/or work with data in real-time.
 
@@ -16,11 +13,11 @@ This tutorial will take you through the process of preparing and streaming block
 
 Tutorial is demonstrating the typical process of streaming blocks on Hive. We will show some information from each block that is being streamed to give you an idea. Each block contains transactions objects as well but we will not show each of this data in user interface.
 
-We are using the `blockchain.getBlockStream` function provided by `dsteem` which returns each block after it has been accepted by witnesses. By default it follows irreversible blocks which was accepted by all witnesses. Function follows or gets blocks every 3 seconds so it would not miss any new blocks. We will then extract part of this data and show it in list.
+We are using the `blockchain.getBlockStream` function provided by `dhive` which returns each block after it has been accepted by witnesses. By default it follows irreversible blocks which was accepted by all witnesses. Function follows or gets blocks every 3 seconds so it would not miss any new blocks. We will then extract part of this data and show it in list.
 
 ## Steps
 
-1.  [**App setup**](#app-setup) Configure proper settings for dsteem
+1.  [**App setup**](#app-setup) Configure proper settings for dhive
 1.  [**Stream blocks**](#stream-blocks) Stream blocks
 1.  [**Display result**](#display-result) Show results in proper UI
 
@@ -29,7 +26,7 @@ We are using the `blockchain.getBlockStream` function provided by `dsteem` which
 As usual, we have a file called `public/app.js`, which holds the Javascript segment of the tutorial. In the first few lines, we have defined the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 
 let opts = {};
 
@@ -39,10 +36,10 @@ opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 ```
 
-Above, we have `dsteem` pointing to the live network with the proper chainId, addressPrefix, and endpoint. Because this tutorial requires active transactions to see some data.
+Above, we have `dhive` pointing to the live network with the proper chainId, addressPrefix, and endpoint. Because this tutorial requires active transactions to see some data.
 
 #### 2. Stream blocks<a name="stream-blocks"></a>
 
@@ -126,11 +123,8 @@ That's it!
 
 ### To Run the tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/13_stream_blockchain_transactions`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/13_stream_blockchain_transactions`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

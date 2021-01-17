@@ -1,41 +1,38 @@
 ---
 title: 'JS: Power Up Hive'
 position: 24
-description: "_Power up an account's Hive using either Hiveconnect or a client-side signing._"
+description: "_Power up an account's Hive using either Hive Signer or a client-side signing._"
 layout: full
 canonical_url: power_up_hive.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Power Up Hive](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/24_power_up_hive) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Power Up Hive](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/24_power_up_hive) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-24_power_up_hive.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/24_power_up_hive)).
 
 This tutorial runs on the main Hive blockchain. And accounts queried are real users with liquid HIVE balances.
 
 ## Intro
 
-This tutorial will show few functions such as querying account by name and getting account balance. We are using the `call` function provided by the `dsteem` library to pull account from the Hive blockchain. A simple HTML interface is used to capture the account and its HIVE balance as well as allowing interactively power up part or all of HIVE to choose account.
+This tutorial will show few functions such as querying account by name and getting account balance. We are using the `call` function provided by the `dhive` library to pull account from the Hive blockchain. A simple HTML interface is used to capture the account and its HIVE balance as well as allowing interactively power up part or all of HIVE to choose account.
 
 ## Steps
 
-1.  [**App setup**](#app-setup) Setup `dsteem` to use the proper connection and network.
+1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.
 2.  [**Search account**](#search-account) Get account details after input has account name
 3.  [**Fill form**](#fill-form) Fill form with account reward balances
-4.  [**Power up**](#power-up) Power up HIVE with Hiveconnect or Client-side signing.
+4.  [**Power up**](#power-up) Power up HIVE with Hive Signer or Client-side signing.
 
 #### 1. App setup <a name="app-setup"></a>
 
-Below we have `dsteem` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
+Below we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 ```
 
 #### 2. Search account <a name="search-account"></a>
@@ -57,20 +54,20 @@ const name = _account[0].name;
 const hive_balance = _account[0].balance;
 const balance = `Available Hive balance for ${name}: ${hive_balance}<br/>`;
 document.getElementById('accBalance').innerHTML = balance;
-document.getElementById('steem').value = hive_balance;
+document.getElementById('hive').value = hive_balance;
 const receiver = document.getElementById('receiver').value;
 ```
 
 #### 4. Power up <a name="power-up"></a>
 
-We have 2 options on how to Power up. Hiveconnect and Client-side signing options. By default we generate Hiveconnect link to Power up (transfer to vesting), but you can use client signing option to Power up right inside tutorial, note client-side signing will require Active private key to perform operation.
+We have 2 options on how to Power up. Hive Signer and Client-side signing options. By default we generate Hive Signer link to Power up (transfer to vesting), but you can use client signing option to Power up right inside tutorial, note client-side signing will require Active private key to perform operation.
 
 In order to enable client signing, we will generate operation and also show Active Private key (wif) field to sign transaction right there client side.
 Below you can see example of operation and signing transaction, after successful operation broadcast result will be shown in user interface. It will be block number that transaction was included.
 
 ```javascript
 window.submitTx = async () => {
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('wif').value
     );
     const op = [
@@ -78,7 +75,7 @@ window.submitTx = async () => {
         {
             from: document.getElementById('username').value,
             to: document.getElementById('receiver').value,
-            amount: document.getElementById('steem').value,
+            amount: document.getElementById('hive').value,
         },
     ];
     client.broadcast.sendOperations([op], privateKey).then(
@@ -101,11 +98,8 @@ That's it!
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/22_power_up_hive`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/24_power_up_hive`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

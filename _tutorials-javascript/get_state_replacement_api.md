@@ -4,11 +4,10 @@ position: 34
 description: "This is a list of replacement API calls for each of the different _routes_ available from the `getState` function."
 layout: full
 canonical_url: get_state_replacement_api.html
----              
+---
 <span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/34_get_state_replacement_api) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
 <br>
-
-
+Full, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/34_get_state_replacement_api) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-34_get_state_replacement_api.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/34_get_state_replacement_api)).
 
 ## Intro
 
@@ -163,7 +162,7 @@ In order to get the full compliment of account information for a specified accou
   "proxied_vsf_votes": ["1466563679903716", "754759334883", 0, 0],
   "proxy": "",
   "received_vesting_shares": "0.000000 VESTS",
-  "recovery_account": "steem",
+  "recovery_account": "peakd",
   "reputation": "",
   "reset_account": "null",
   "reward_hbd_balance": "0.000 HBD",
@@ -381,7 +380,7 @@ This information can be gained by the using the same method as for `getState('ta
   "life"
   "photography"
   "kr"
-  "steemit"
+  "hive"
   "bitcoin"
 }
 ```
@@ -492,11 +491,8 @@ This detailed information can be used to track the performance of a specific wit
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/34_get_state_replacement_api`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/34_get_state_replacement_api`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at http://localhost:3000/

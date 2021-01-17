@@ -46,7 +46,7 @@ export const TestnetHive = {
     },
 };
 
-export const TestnetVC = {
+export const TestnetAlt = {
     accounts: [
         {
             address: 'demo01',
@@ -59,7 +59,7 @@ export const TestnetVC = {
             privActive: '5KgMKfnTQTzrmZP3RxrQs3CEckHTPXxFzJWHV3cJjetmXwLUWZj',
         },
     ],
-    url: 'https://testnet.steem.vc',
+    url: 'https://testnet.hive.blog',
     net: {
         addressPrefix: 'STX',
         chainId:
@@ -67,7 +67,7 @@ export const TestnetVC = {
     },
 };
 
-export const Testnet = TestnetVC;
+export const Testnet = TestnetHive;
 
 export const Mainnet = {
     accounts: [],

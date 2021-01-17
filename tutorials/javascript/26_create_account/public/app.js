@@ -1,20 +1,20 @@
-const dsteem = require('dsteem');
+const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to production server
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
 //connect to server which is connected to the network/production
-const client = new dsteem.Client('https://api.hive.blog');
+const client = new dhive.Client('https://api.hive.blog');
 
-// const dsteem = require('dsteem');
+// const dhive = require('@hiveio/dhive');
 // //define network parameters
 // let opts = {};
 // opts.addressPrefix = 'STX';
 // opts.chainId =
 //     '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673';
-// //connect to a steem node, testnet in this case
-// const client = new dsteem.Client('https://testnet.steem.vc', opts);
+// //connect to a hive node, testnet in this case
+// const client = new dhive.Client('https://testnet.hive.blog', opts);
 
 //submit Account search function from html input
 const max = 5;
@@ -39,14 +39,14 @@ window.submitTx = async () => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const ownerKey = dsteem.PrivateKey.fromLogin(username, password, 'owner');
-    const activeKey = dsteem.PrivateKey.fromLogin(username, password, 'active');
-    const postingKey = dsteem.PrivateKey.fromLogin(
+    const ownerKey = dhive.PrivateKey.fromLogin(username, password, 'owner');
+    const activeKey = dhive.PrivateKey.fromLogin(username, password, 'active');
+    const postingKey = dhive.PrivateKey.fromLogin(
         username,
         password,
         'posting'
     );
-    const memoKey = dsteem.PrivateKey.fromLogin(
+    const memoKey = dhive.PrivateKey.fromLogin(
         username,
         password,
         'memo'
@@ -68,14 +68,14 @@ window.submitTx = async () => {
         key_auths: [[postingKey.createPublic(opts.addressPrefix), 1]],
     };
 
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('wif').value
     );
 
     const op = [
         'account_create',
         {
-            fee: document.getElementById('steem').value,
+            fee: document.getElementById('hive').value,
             creator: document.getElementById('account').value,
             new_account_name: username,
             owner: ownerAuth,
@@ -107,14 +107,14 @@ window.submitDisc = async () => {
     const password = document.getElementById('password').value;
 
     //create keys
-    const ownerKey = dsteem.PrivateKey.fromLogin(username, password, 'owner');
-    const activeKey = dsteem.PrivateKey.fromLogin(username, password, 'active');
-    const postingKey = dsteem.PrivateKey.fromLogin(
+    const ownerKey = dhive.PrivateKey.fromLogin(username, password, 'owner');
+    const activeKey = dhive.PrivateKey.fromLogin(username, password, 'active');
+    const postingKey = dhive.PrivateKey.fromLogin(
         username,
         password,
         'posting'
     );
-    const memoKey = dsteem.PrivateKey.fromLogin(
+    const memoKey = dhive.PrivateKey.fromLogin(
         username,
         password,
         'memo'
@@ -137,7 +137,7 @@ window.submitDisc = async () => {
     };
 
     //private active key of creator account
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('wif').value
     );
 

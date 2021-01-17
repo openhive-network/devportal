@@ -1,9 +1,9 @@
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
-// //connect to a steem node, tesetnet in this case
+// //connect to a Hive node, tesetnet in this case
 const client = new Client(NetConfig.url, opts);
 
 //submit transfer function executes when you click "Transfer" button

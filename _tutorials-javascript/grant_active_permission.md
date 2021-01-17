@@ -4,11 +4,8 @@ position: 31
 description: "_How to grant and revoke active permission to another user._"
 layout: full
 canonical_url: grant_active_permission.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Grant Active Permission](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/31_grant_active_permission) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Grant Active Permission](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/31_grant_active_permission) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-31_grant_active_permission.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/31_grant_active_permission)).
 
 This tutorial will take you through the process of checking a specific users' data, altering the array pertaining to the active `account_auths`, and then broadcasting the changes to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
 
@@ -18,7 +15,7 @@ One of the common practice nowadays is to lend/delegate SP to another account, a
 
 Active permissions and authority should be used with utmost care, you don't want to loose your funds. It is really not easy to hack Hive accounts, let alone take control over it. But without careful use (revealing private keys) loosing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
 
-[this article](https://hive.blog/steem/@good-karma/steem-multi-authority-permissions-and-how-active-authority-works-part-2-f158813ec0ec1) has more detail around active authorities
+[this article](https://hive.blog/hive/@good-karma/steem-multi-authority-permissions-and-how-active-authority-works-part-2-f158813ec0ec1) has more detail around active authorities
 
 ## Intro
 
@@ -38,7 +35,7 @@ The tutorial is set up with three individual functions for each of the required 
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI.
 1.  [**Database query**](#query) Sending a query to the blockchain for the active permissions (status)
 1.  [**Object creation**](#object) Create the array and subsequent data object for the broadcast operation
@@ -49,16 +46,16 @@ The tutorial is set up with three individual functions for each of the required 
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 ```
 
-Above, we have `dsteem` pointing to the testnet with the proper chainId, addressPrefix, and endpoint by importing it from the `configuration.js` file. Due to this tutorial altering the blockchain it is preferable to not work on production.
+Above, we have `dhive` pointing to the testnet with the proper chainId, addressPrefix, and endpoint by importing it from the `configuration.js` file. Due to this tutorial altering the blockchain it is preferable to not work on production.
 
 #### 2. Input variables<a name="input"></a>
 
@@ -89,7 +86,7 @@ const newAccount = document.getElementById('newAccount').value;
 
 #### 3. Database query<a name="query"></a>
 
-The queries are sent through to the steem blockchain with the `database API` using the `getAccounts` function. The results of the query is used to check the status of the current active authorisations and parameters as per the `intro`.
+The queries are sent through to the hive blockchain with the `database API` using the `getAccounts` function. The results of the query is used to check the status of the current active authorisations and parameters as per the `intro`.
 
 ```javascript
 //query database for active array
@@ -175,16 +172,13 @@ client.broadcast.updateAccount(accObj, privateKey).then(
 The results of the operation is displayed on the UI along with a block number in the console to confirm a successful operation. If you add permission to an account that already has permission, or if your private key has been entered incorrectly, an error of "Missing Active Authority" will be displayed.
 
 Hiveconnect offers an alternative to revoking active permission with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below. You will be prompted to enter your usename and password and the specified user will have their permissions removed instantly.
-https://v2.steemconnect.com/revoke/@username
-This is similar to the steemconnect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.steemconnect.com/sign
+https://v2.hivesigner.com/revoke/@username
+This is similar to the Hive Signer links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.hivesigner.com/sign
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/31_grant_active_permission`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at http://localhost:3000/
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/31_grant_active_permission`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at http://localhost:3000/

@@ -1,11 +1,11 @@
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 
 //define network parameters
 let opts = {};
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
-//connect to a Hive node. This is currently setup on production, but we recommend using a testnet like https://testnet.steem.vc
+//connect to a Hive node. This is currently setup on production, but we recommend using a testnet like https://testnet.hive.blog
 const client = new Client('https://api.hive.blog', opts);
 window.client = client;
 
@@ -17,12 +17,12 @@ window.autofillAuthorAndPermlink = function(el) {
 
 function fetchBlog() {
     const query = {
-        tag: 'steemitblog',
+        tag: 'hiveio',
         limit: 5,
     };
 
     client.database
-        .getDiscussions('blog', query) //get a list of posts for easy resteeming.
+        .getDiscussions('blog', query) //get a list of posts for easy reblogging.
         .then(result => {
             //when the response comes back ...
             const postList = [];
@@ -46,9 +46,9 @@ function fetchBlog() {
         });
 }
 
-//this function will execute when the "Resteem!" button is clicked
+//this function will execute when the "Reblog!" button is clicked
 window.submitPost = async () => {
-    resteemOutput('preparing to submit');
+    reblogOutput('preparing to submit');
     //get private key
     try {
         const privateKey = PrivateKey.from(
@@ -77,24 +77,24 @@ window.submitPost = async () => {
             required_auths: [],
             required_posting_auths: [myAccount],
         };
-        resteemOutput('resteeming:\n', JSON.stringify(data, 2));
-        console.log('resteeming:', data);
+        reblogOutput('reblogging:\n', JSON.stringify(data, 2));
+        console.log('reblogging:', data);
         client.broadcast.json(data, privateKey).then(
             function(result) {
-                resteemOutput(result);
-                console.log('resteem result: ', result);
+                reblogOutput(result);
+                console.log('reblog result: ', result);
             },
             function(error) {
                 console.error(error);
             }
         );
     } catch (e) {
-        resteemOutput(e.message);
+        reblogOutput(e.message);
         console.log(e);
     }
 };
 
-function resteemOutput(output) {
+function reblogOutput(output) {
     document.getElementById('results').innerText = output;
 }
 

@@ -4,17 +4,14 @@ position: 18
 description: "_Follow and unfollow a user / author._"
 layout: full
 canonical_url: follow_a_user.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Follow A User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/18_follow_a_user) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Follow A User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/18_follow_a_user) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-18_follow_a_user.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/18_follow_a_user)).
 
 This tutorial will take you through the process of checking the `follow status` of an author and either follow or unfollow that user depending on the current status. This is done with the `call` operation as well as the `broadcast.json` operation.
 
 ## Intro
 
-We are using the `broadcast.json` operation provided by the `dsteem` library to follow or unfollow a selected author. There are 4 variables required to execute this operation:
+We are using the `broadcast.json` operation provided by the `dhive` library to follow or unfollow a selected author. There are 4 variables required to execute this operation:
 
 1.  _follower_ - The specific user that will select the author to follow/unfollow (`username`).
 1.  _privatekey_ - This is the private posting key of the user(`postingKey`).
@@ -25,7 +22,7 @@ A simple HTML UI is used to capture the required information, after which the br
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with the Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with the Hive blockchain
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Get status**](#status) Get the follow status for the specified author
 1.  [**Follow operation**](#follow) Execute the `follow` operation
@@ -35,16 +32,16 @@ A simple HTML UI is used to capture the required information, after which the br
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 ```
 
-Above, we have `dsteem` pointing to the test network with the proper chainId, addressPrefix, and endpoint by importing from the `configuration.js` file. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account which is imported once the application loads, to demonstrate following of an author.
+Above, we have `dhive` pointing to the test network with the proper chainId, addressPrefix, and endpoint by importing from the `configuration.js` file. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account which is imported once the application loads, to demonstrate following of an author.
 
 ```javascript
 window.onload = async () => {
@@ -65,7 +62,7 @@ The parameter values are allocated as seen below once the user clicks on the "Fo
 ```javascript
 window.submitFollow = async () => {
     //get private key
-    const privateKey = dsteem.PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('postingKey').value
     );
     //get account name
@@ -150,15 +147,12 @@ client.broadcast.json(data, privateKey).then(
 );
 ```
 
-If either of the values for the user or author does not exist the proper error result will be displayed on the UI. The result is also displayed in the console in order for the user to confirm that a block transaction has taken place. The status of the operation can be verified on the [demo account](http://condenser.steem.vc/@cdemo/followed).
+If either of the values for the user or author does not exist the proper error result will be displayed on the UI. The result is also displayed in the console in order for the user to confirm that a block transaction has taken place. The status of the operation can be verified on the [demo account](http://testnet-condenser.hive.blog/@cdemo/followed).
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/18_follow_user`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/18_follow_user`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)

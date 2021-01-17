@@ -4,22 +4,17 @@ position: 17
 description: "_Create a weighted up or down vote on a comment/post._"
 layout: full
 canonical_url: vote_on_content.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/17_vote_on_content) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
-
-
+---
+Full, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/17_vote_on_content) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-17_vote_on_content.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/17_vote_on_content)).
 
 This tutorial will take you through the process of preparing and submitting a `vote` using the `broadcast` operation.
 Because this tutorial essentially produces spam, it will be pointed at a Hive testnet. The testnet is an open resource,
 so the default account and posting key in this tutorial may have been changed by another developer learning the ropes.
 If that happens, you'll want to create a new account on the testnet and use that account's credentials instead.
 
-To learn more about the testnet, including an easy way to create a play account, visit https://testnet.steem.vc/
-
 ## Intro
 
-We are using the `broadcast.vote` function provided by the `dsteem` library to send the transaction through to the
+We are using the `broadcast.vote` function provided by the `dhive` library to send the transaction through to the
 network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by
 whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, when there is, it's a
 comment. Voting is done on either of the two based on the author and permlink of the comment. There are 5 parameters
@@ -35,7 +30,7 @@ Due to the low amount of posts on the testnet we added an additional step to cre
 
 ## Steps
 
-1.  [**Configure connection**](#connection) Configuration of `dsteem` to communicate with a Hive blockchain
+1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain
 1.  [**Create new post**](#createpost) Creating a new post on the testnet
 1.  [**Input variables**](#input) Collecting the required inputs via an HTML UI
 1.  [**Broadcast**](#broadcast) Creating an object and broadcasting the vote to the blockchain
@@ -45,7 +40,7 @@ Due to the low amount of posts on the testnet we added an additional step to cre
 As usual, we have a `public/app.js` file which holds the Javascript segment of the tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
-import { Client, PrivateKey } from 'dsteem';
+import { Client, PrivateKey } from '@hiveio/dhive';
 import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
@@ -54,7 +49,7 @@ let opts = { ...NetConfig.net };
 const client = new Client(NetConfig.url, opts);
 ```
 
-Above, we have `dsteem` pointing to the test network with the proper chainId, addressPrefix, and endpoint by importing from the `configuration.js` file. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account which is imported once the application loads, to demonstrate voting on content.
+Above, we have `dhive` pointing to the test network with the proper chainId, addressPrefix, and endpoint by importing from the `configuration.js` file. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account which is imported once the application loads, to demonstrate voting on content.
 
 ```javascript
 window.onload = () => {
@@ -112,7 +107,7 @@ window.createPost = async () => {
                 document.getElementById('permlink').innerHTML = permlink;
                 document.getElementById(
                     'postLink'
-                ).innerHTML = `Included in block: <a href="http://condenser.steem.vc/${
+                ).innerHTML = `Included in block: <a href="http://testnet-condenser.hive.blog/${
                     taglist[0]
                 }/@${account}/${permlink}" target="_blank">${
                     result.block_num
@@ -129,12 +124,12 @@ window.createPost = async () => {
 
 You may have noted the mystery function `createPrivateKey()`. It's a convenience function that allows us to give the
 user some meaningful UI feedback if they put in a bad posting key. The important part of it is
-`return dsteem.PrivateKey.fromString(<somestring>)` but its full glory can be seen in the snippet below
+`return dhive.PrivateKey.fromString(<somestring>)` but its full glory can be seen in the snippet below
 
 ```javascript
 const createPrivateKey = function() {
     try {
-        return dsteem.PrivateKey.fromString(
+        return dhive.PrivateKey.fromString(
             document.getElementById('postingKey').value
         );
     } catch (e) {
@@ -220,11 +215,8 @@ More information on how to use the `broadcast` operation and options surrounding
 
 ### To run this tutorial
 
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/javascript/17_vote_on_content`
-1.  `npm i`
-1.  `npm run dev-server` or `npm run start`
-1.  After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
-
-
----
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/javascript/17_vote_on_content`
+1. `npm i`
+1. `npm run dev-server` or `npm run start`
+1. After a few moments, the server should be running at [http://localhost:3000/](http://localhost:3000/)
