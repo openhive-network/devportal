@@ -524,7 +524,7 @@
     expected_response_json: []
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_comment_discussions_by_payout",
-      "params":[{"tag":"steem","limit":1}], "id":1}'
+      "params":[{"tag":"blocktrades","limit":1}], "id":1}'
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_comment_discussions_by_payout",
       "params":[{"tag":"photography","limit":10,"truncate_body":0}], "id":1}'
   - api_method: condenser_api.get_config
@@ -689,8 +689,9 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_current_median_history_price",
       "params":[], "id":1}'
   - api_method: condenser_api.get_discussions_by_active
+    deprecated: true
     purpose: |
-      Returns a list of discussions based on active.
+      **Deprecated.** Returns a list of discussions based on active.
       
       Also see: [tags_api.get_discussions_by_active]({{ '/apidefinitions/#tags_api.get_discussions_by_active' | relative_url }})
     parameter_json:
@@ -739,8 +740,9 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_blog", "params":[{"tag":"alice","limit":10}],
       "id":1}'
   - api_method: condenser_api.get_discussions_by_cashout
+    deprecated: true
     purpose: |
-      Returns a list of discussions by cashout.
+      **Deprecated.** Returns a list of discussions by cashout.
       
       Also see: [tags_api.get_discussions_by_cashout]({{ '/apidefinitions/#tags_api.get_discussions_by_cashout' | relative_url }})
     parameter_json:
@@ -757,8 +759,9 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_cashout", "params":[{"tag":"photography","limit":10,"truncate_body":0}],
       "id":1}'
   - api_method: condenser_api.get_discussions_by_children
+    deprecated: true
     purpose: |
-      Returns a list of discussions by children.
+      **Deprecated.** Returns a list of discussions by children.
       
       Also see: [tags_api.get_discussions_by_children]({{ '/apidefinitions/#tags_api.get_discussions_by_children' | relative_url }})
     parameter_json:
@@ -883,8 +886,9 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_trending", "params":[{"tag":"photography","limit":10,"truncate_body":0}],
       "id":1}'
   - api_method: condenser_api.get_discussions_by_votes
+    deprecated: true
     purpose: |
-      Returns a list of discussions by votes.
+      **Deprecated.** Returns a list of discussions by votes.
       
       Also see: [tags_api.get_discussions_by_votes]({{ '/apidefinitions/#tags_api.get_discussions_by_votes' | relative_url }})
     parameter_json:
@@ -972,9 +976,10 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_expiring_vesting_delegations",
       "params":["alice","2017-12-01T00:00:00"], "id":1}'
   - api_method: condenser_api.get_feed
+    deprecated: true
     since: HF14
     purpose: |
-      Returns a list of items in an account's feed.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
+      **Deprecated.** Returns a list of items in an account's feed.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
 
       | `account` (string) | `start_entry_id` (int) | `limit` (int) | |
       |-------------------|---------------|---------------|-|
@@ -993,9 +998,10 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_feed", "params":["alice",1,10],
       "id":1}'
   - api_method: condenser_api.get_feed_entries
+    deprecated: true
     since: HF14
     purpose: |
-      Returns a list of entries in an account's feed.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
+      **Deprecated.** Returns a list of entries in an account's feed.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
 
       | `account` (string) | `start_entry_id` (int) | `limit` (int) | |
       |-------------------|---------------|---------------|-|
