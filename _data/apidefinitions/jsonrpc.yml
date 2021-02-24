@@ -209,6 +209,8 @@
       ]
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"jsonrpc.get_methods", "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: jsonrpc.get_signature
     purpose: Returns the signature information for a JSON RPC method including the
       arguments and expected response JSON.
@@ -227,3 +229,5 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"jsonrpc.get_signature", "params":{"method":"database_api.get_dynamic_global_properties"},
       "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

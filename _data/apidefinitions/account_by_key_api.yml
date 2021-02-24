@@ -14,3 +14,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"account_by_key_api.get_key_references", "params":{"keys":["STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH"]},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-key-references)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-key-references)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

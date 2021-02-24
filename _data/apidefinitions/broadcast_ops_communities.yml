@@ -25,6 +25,12 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"setRole\", {\"community\": \"hive-123456\", \"account\": \"charlie\", \"role\": \"mod\"}]"}]'
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"setRole\", {\"community\": \"hive-123456\", \"account\": \"dave\", \"role\": \"guest\"}]"}]'
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"setRole\", {\"community\": \"hive-123456\", \"account\": \"edward\", \"role\": \"member\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: setUserTitle
       purpose: |
         Sets a title (badge) for a given account in a community (*Mods* or higher).
@@ -36,6 +42,11 @@
           title
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"setUserTitle\", {\"community\": \"hive-123456\", \"account\": \"alice\", \"title\": \"Founder\"}]"}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: mutePost
       purpose: |
         Mute a post (*Mods* or higher).  Can be a topic or a comment.
@@ -43,30 +54,78 @@
         **Note:** Any posts muted for spam should contain simply the string spam in the notes field. This standardized label will help train automated spam detection.
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"mutePost\",{\"community\":\"hive-123456\",\"account\":\"eve\",\"permlink\":\"re-eve-comment-1564339652z\",\"notes\":\"Off Topic\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: unmutePost
       purpose: Unmute a post (*Mods* or higher).
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"unmutePost\",{\"community\":\"hive-123456\",\"account\":\"eve\",\"permlink\":\"re-eve-comment-1564339652z\",\"notes\":\"On Topic (on second thought)\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: updateProps
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"updateProps\",{\"community\":\"hive-123456\",\"props\":{\"title\":\"Anti-Knitting\",\"about\":\"A community against knitting.\",\"is_nsfw\":false,\"description\":\"If you like to knitting, go away.\",\"flag_text\":\"Must hate knitting or else you will be muted.\"}}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: subscribe
       purpose: Allows a user to signify they want this community shown on their personal trending feed and to be shown in their navigation menu.
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"subscribe\",{\"community\":\"hive-123456\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: pinPost
       purpose: Stickies a post to the top of the community homepage (*Mods* or higher). If multiple posts are stickied, the newest ones are shown first.
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"pinPost\",{\"community\":\"hive-123456\",\"account\":\"alice\",\"permlink\":\"a-post-by-alice\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: unsubscribe
       purpose: Allows a user to signify they no longer want this community shown on their personal trending feed or to be shown in their navigation menu.
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"unsubscribe\",{\"community\":\"hive-123456\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: unpinPost
       purpose: Removes a post to the top of the community homepage (*Mods* or higher).
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"unpinPost\",{\"community\":\"hive-123456\",\"account\":\"alice\",\"permlink\":\"a-post-by-alice\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: flagPost
       purpose: Used by guests to suggest a post for the review queue.  It's up to the community to define what constitutes flagging.
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"flagPost\",{\"community\":\"hive-123456\",\"account\":\"eve\",\"permlink\":\"a-post-by-eve\",\"notes\":\"Warning\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'

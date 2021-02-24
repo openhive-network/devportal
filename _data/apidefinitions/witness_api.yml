@@ -29,3 +29,5 @@
     expected_curl_responses:
     - Could not find API witness_api
     - Could not find API witness_api
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

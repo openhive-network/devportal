@@ -29,6 +29,10 @@
     expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_account_recovery_requests", "params": {"accounts":["hiveio"]}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-recovery-request)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-recovery-request)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_accounts
     purpose: |
       Returns accounts, queried by name.  Parameters: `account:string array`
@@ -202,6 +206,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio"]}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio", "alice"]}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_change_recovery_account_requests
     since: HF11
     purpose: |
@@ -224,12 +232,20 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_change_recovery_account_requests", "params": {"accounts":["hiveio"]}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-recovery-request)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.find_change_recovery_account_requests)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_comments
     purpose: Search for comments.
     parameter_json: '{"start":[["",""]], "limit":0, "order":""}'
     expected_response_json: '{"comments":[]}'
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_comments", "params": {"start":[["temp","test1"],["temp","foobar"]], "limit":10, "order":"by_account"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_decline_voting_rights_requests
     since: HF14
     purpose: Returns a list of requests to decline voting rights.
@@ -237,6 +253,8 @@
     expected_response_json: '{"requests":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_decline_voting_rights_requests", "params": {"accounts":["temp","null"]}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_escrows
     since: HF14
     purpose: Returns a list of escrows.
@@ -275,6 +293,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_escrows", "params": {"from": "temp"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-escrow)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-escrow)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_limit_orders
     purpose: Returns a list of limit orders.
     parameter_json: '{"account":""}'
@@ -305,6 +327,8 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_limit_orders", "params": {"account":"temp"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_owner_histories
     purpose: |
       Returns owner authority history.  Parameters: `owner:string`
@@ -318,6 +342,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_owner_histories", "params": {"owner":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_owner_histories", "params": {"owner":"alice"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-owner-history)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-owner-history)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_savings_withdrawals
     since: HF14
     purpose: |
@@ -331,6 +359,10 @@
     expected_response_json: '{"withdrawals":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_savings_withdrawals", "params": {"start":"temp"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-savings-withdraw-from)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-savings-withdraw-from)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_hbd_conversion_requests
     purpose: |
       Returns the list of HBD conversion requests for an account.  Parameters: `account:string`
@@ -344,6 +376,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_hbd_conversion_requests", "params": {"account":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_hbd_conversion_requests", "params": {"account":"alice"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_vesting_delegation_expirations
     since: HF17
     purpose: |
@@ -372,6 +406,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegation_expirations", "params": {"account":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegation_expirations", "params": {"account":"alice"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_expiring_vesting_delegations)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_vesting_delegations
     since: HF17
     purpose: |
@@ -401,6 +439,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegations", "params": {"account":"hiveio"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_vesting_delegations", "params": {"account":"alice"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_vesting_delegations)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_votes
     purpose: |
       Returns all votes for the given post.  Parameters: `author:string`; `permlink:string`
@@ -432,6 +474,10 @@
     expected_curl_responses:
     - 
     - Could not find comment alice/a-post-by-alice
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-votes)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_account_votes)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_withdraw_vesting_routes
     purpose: Returns the list of vesting withdraw routes for an account.
     parameter_json: '{"account":"","order":"by_name"}'
@@ -449,6 +495,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_withdraw_vesting_routes", "params": {"account":"temp", "order":"by_destination"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-withdraw-routes)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_withdraw_routes)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_witnesses
     purpose: Search for witnesses.
     parameter_json: '{"owners":[]}'
@@ -503,6 +553,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_witnesses", "params": {"owners":["initminer"]}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-witnesses)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_active_witnesses
     purpose: Returns the list of active witnesses.
     parameter_json: "{}"
@@ -534,6 +588,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_active_witnesses", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-witnesses)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-witnesses)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_config
     purpose: |
       Returns information about compile-time constants. Some properties may
@@ -809,6 +867,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_config", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-config)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-config)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_current_price_feed
     purpose: Returns the current price feed.
     parameter_json: "{}"
@@ -827,6 +889,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_current_price_feed", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-current-median-history-price)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_median_price)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_dynamic_global_properties
     purpose: |
       Returns the current dynamic global properties.  See: [Understanding
@@ -930,6 +996,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_dynamic_global_properties", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-dynamic-global-properties)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_dynamic_global_properties)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_feed_history
     purpose: Returns the history of price feed values.
     parameter_json: "{}"
@@ -952,6 +1022,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_feed_history", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-current-median-history-price)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_median_price)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_hardfork_properties
     purpose: Returns the current properties about the blockchain's hardforks.
     parameter_json: "{}"
@@ -991,6 +1065,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_hardfork_properties", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-hardfork-version)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_hardfork_properties)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_order_book
     purpose: Returns the order book.
     parameter_json: '{"limit":0,"base":{"amount":"1000","precision":3,"nai":"@@000000021"},"quote":{"amount":"1","precision":3,"nai":"@@000000013"}}'
@@ -1000,6 +1078,9 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.get_order_book", "params":{"limit":50,"base":{"amount":"1000","precision":3,"nai":"@@000000021"},"quote":{"amount":"1","precision":3,"nai":"@@000000013"}},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-order-book)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_potential_signatures
     purpose: |
       This method will return the set of all public keys that could possibly
@@ -1011,6 +1092,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_potential_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-potential-signatures)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-potential-signatures)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_required_signatures
     purpose: This API will take a partially signed transaction and a set of public
       keys that the owner has the ability to sign for and return the minimal subset
@@ -1020,6 +1105,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_required_signatures", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]},"available_keys":[]},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-required-signatures)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-required-signatures)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_reward_funds
     since: HF17
     purpose: Returns information about the current reward funds.
@@ -1047,6 +1136,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_reward_funds", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-reward-fund)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-reward-fund)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_transaction_hex
     purpose: Returns a hexdump of the serialized binary form of a transaction.
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]}}'
@@ -1054,6 +1147,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_transaction_hex", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-transaction-hex)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction-hex)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_version
     since: HF20
     purpose: Returns the compile time versions of blockchain, steem, FC. Also returns
@@ -1069,6 +1166,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_version", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-version)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-version)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_witness_schedule
     purpose: Returns the current witness schedule.
     parameter_json: "{}"
@@ -1147,6 +1248,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_witness_schedule", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witness-schedule)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witness-schedule)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_account_recovery_requests
     since: HF11
     purpose: |
@@ -1166,6 +1271,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_account_recovery_requests", "params": {"start":"", "limit":10, "order":"by_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_account_recovery_requests", "params": {"start":["1960-01-01T00:00:00"], "limit":10, "order":"by_expiration"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-recovery-request)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-recovery-request)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_accounts
     purpose: |
       List accounts ordered by specified key.  Parameters: `start:object`, `limit:int`, `order:string`
@@ -1337,6 +1446,10 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":"", "limit":10, "order":"by_name"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["", ""], "limit":10, "order":"by_proxy"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["1960-01-01T00:00:00", ""], "limit":10, "order":"by_next_vesting_withdrawal"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_change_recovery_account_requests
     since: HF11
     purpose: |
@@ -1371,6 +1484,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_change_recovery_account_requests", "params": {"start":"alice", "limit":10, "order":"by_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_change_recovery_account_requests", "params": {"start":["1960-01-01T00:00:00",""], "limit":10, "order":"by_effective_date"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-recovery-request)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.list_change_recovery_account_requests)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_comments
     purpose: |
       Returns all comments, starting with the specified options.  Parameters: `start:array`; `limit:int`; `order:string`
@@ -1455,6 +1572,10 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["",""], "limit":10, "order":"by_permlink"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_root"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_parent"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.comment.html#module-beem.comment)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_decline_voting_rights_requests
     since: HF14
     purpose: |
@@ -1479,6 +1600,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_decline_voting_rights_requests", "params": {"start":"", "limit":10, "order":"by_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_decline_voting_rights_requests", "params": {"start":["1970-01-01T00:00:00","",""], "limit":10, "order":"by_effective_date"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_escrows
     since: HF14
     purpose: |
@@ -1534,6 +1657,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_escrows", "params": {"start":["",0], "limit":10, "order":"by_from_id"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_escrows", "params": {"start":[true, "1970-01-01T00:00:00", 0], "limit":10, "order":"by_ratification_deadline"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-escrow)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_escrow)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_limit_orders
     purpose: |
       Returns a list of limit orders.  Parameters: `start:array`; `limit:int`; `order:string`
@@ -1581,6 +1708,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_limit_orders", "params": {"start":[{"base":{"amount":"1000","precision":3,"nai":"@@000000021"},"quote":{"amount":"1","precision":3,"nai":"@@000000013"}},0], "limit":10, "order":"by_price"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_limit_orders", "params": {"start":["alice",0], "limit":10, "order":"by_account"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_owner_histories
     purpose: |
       Returns a list of owner authority histories.  Parameters: `start:array`, `limit:int`
@@ -1615,6 +1744,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_owner_histories", "params": {"start":["hiveio","1970-01-01T00:00:00"], "limit":10}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_owner_histories", "params": {"start":["alice","1970-01-01T00:00:00"], "limit":10}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-owner-history)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_owner_history)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_savings_withdrawals
     since: HF14
     purpose: |
@@ -1659,6 +1792,10 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":[0], "limit":10, "order":"by_from_id"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":["2018-12-07T16:54:03", "hiveio", 0], "limit":10, "order":"by_complete_from_id"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_savings_withdrawals", "params": {"start":["", "1970-01-01T00:00:00", 0], "limit":10, "order":"by_to_complete"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-savings-withdraw-from)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_savings_withdrawals)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_hbd_conversion_requests
     purpose: |
       Returns the list of HBD conversion requests for an account.  Parameters: `start:array`, `limit:int`, `order:string`
@@ -1696,6 +1833,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_hbd_conversion_requests", "params": {"start":["hiveio", 0], "limit":10, "order":"by_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_hbd_conversion_requests", "params": {"start":["2018-12-07T16:54:03", 0], "limit":10, "order":"by_conversion_date"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-conversion-requests)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_conversion_requests)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_vesting_delegation_expirations
     since: HF17
     purpose: |
@@ -1733,6 +1874,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_vesting_delegation_expirations", "params": {"start":["1970-01-01T00:00:00",0], "limit":10, "order":"by_expiration"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_vesting_delegation_expirations", "params": {"start":["alice", "1970-01-01T00:00:00",0], "limit":10, "order":"by_account_expiration"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_expiring_vesting_delegations)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_vesting_delegations
     since: HF17
     purpose: |
@@ -1767,6 +1912,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_vesting_delegations", "params": {"start":["",""], "limit":10, "order":"by_delegation"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_expiring_vesting_delegations)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_votes
     purpose: |
       Returns all votes, starting with the specified voter and/or author and permlink.  Parameters: `start:array`; `limit:int`; `order:string`
@@ -1811,6 +1960,10 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["", "", ""], "limit":10, "order":"by_voter_comment"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["", "", "hiveio"], "limit":10, "order":"by_comment_voter"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_votes", "params": {"start":["alice", "xeroc", "vanteem-config"], "limit":10, "order":"by_voter_comment"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-votes)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.vote.html#beem.vote.AccountVotes)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_withdraw_vesting_routes
     purpose: |
       Returns a list of vesting withdraw routes.  Parameters: `start:array`; `limit:int`; `order:string`
@@ -1845,6 +1998,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_withdraw_vesting_routes", "params": {"start":["temp",""], "limit":10, "order":"by_withdraw_route"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_withdraw_vesting_routes", "params": {"start":["",0], "limit":10, "order":"by_destination"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-withdraw-routes)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.withdraw_vesting)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_witness_votes
     purpose: |
       Returns a list of witness votes.  Parameters: `start:array`; `limit:int`; `order:string`
@@ -1877,6 +2034,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_witness_votes", "params": {"start":["",""], "limit":10, "order":"by_account_witness"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_witness_votes", "params": {"start":["",""], "limit":10, "order":"by_witness_account"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses-by-vote)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.witness.html#beem.witness.WitnessesRankedByVote)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_witnesses
     purpose: |
       Returns the list of witnesses.  Parameters: `start:object`; `limit:int`; `order:string`
@@ -1952,6 +2113,10 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_witnesses", "params": {"start":"", "limit":10, "order":"by_name"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_witnesses", "params": {"start":[0,""], "limit":10, "order":"by_vote_name"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_witnesses", "params": {"start":["473718186844702107410533306","alice"], "limit":10, "order":"by_schedule_time"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses-by-vote)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.witness.html#beem.witness.WitnessesRankedByVote)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.verify_account_authority
     disabled: true
     purpose: |
@@ -1962,6 +2127,10 @@
     - '{"jsonrpc":"2.0", "method":"database_api.verify_account_authority", "params":{"account":"temp","signers":["STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"]}, "id":1}'
     expected_curl_responses:
     - Missing Active Authority hiveio
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#verify-account-authority)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.verify_account_authority)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.verify_authority
     purpose: |
       Returns true if the transaction has all of the required signatures,
@@ -1971,6 +2140,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.verify_authority", "params":{"trx":{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[{"type":"pow_operation","value":{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}}],"extensions":[],"signatures":[]}},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#verify-authority)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html#beem.transactionbuilder.TransactionBuilder.verify_authority)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.verify_signatures
     purpose: This is a general purpose API that checks signatures against accounts
       for an arbitrary sha256 hash using the existing authority structures.
@@ -1978,6 +2151,8 @@
     expected_response_json: '{"valid":false}'
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.verify_signatures", "params":{"hash": "0000000000000000000000000000000000000000000000000000000000000000", "signatures": [], "required_owner": [], "required_active": [], "required_posting": [], "required_other": []}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_proposals
     purpose: |
       Finds proposals by `proposal.id` (not `proposal.proposal_id`).
@@ -2002,6 +2177,8 @@
       }]}
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_proposals", "params":{"proposal_ids": [0]}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_proposal_votes
     purpose: |
       Returns all proposal votes, starting with the specified voter or `proposal.id`.  Parameters: `start:array`; `limit:int`; `order:string`; `order_direction:string`; `status:string`
@@ -2055,6 +2232,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposal_votes", "params":{"start": [""], "limit": 10, "order": "by_voter_proposal", "order_direction": "ascending", "status": "active"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposal_votes", "params":{"start": [0], "limit": 10, "order": "by_proposal_voter", "order_direction": "ascending", "status": "active"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_proposals
     purpose: |
       Returns all proposals, starting with the specified creator or start date.  Parameters: `start:array`; `limit:int`; `order:string`; `order_direction:string`; `status:string`
@@ -2118,6 +2297,8 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposals", "params":{"start": ["alice"], "limit": 10, "order": "by_creator", "order_direction": "ascending", "status": "all"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposals", "params":{"start": [""], "limit": 1000, "order": "by_creator", "order_direction": "ascending", "status": "votable"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposals", "params":{"start": [10], "limit": 1000, "order": "by_total_votes", "order_direction": "ascending", "status": "votable"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_smt_contributions
     since: Mysterious Future
     purpose: |
@@ -2144,6 +2325,8 @@
       ]}
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_smt_contributions", "params":{"symbol_contributors": []}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_smt_token_emissions
     since: Mysterious Future
     purpose: |
@@ -2154,6 +2337,8 @@
     expected_response_json: '{"token_emissions":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_smt_token_emissions", "params":{"asset_symbol":{"nai":"@@422838704","precision":0}}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_smt_tokens
     since: Mysterious Future
     purpose: |
@@ -2164,6 +2349,8 @@
     expected_response_json: '{"tokens":[]}' # TODO - recheck in HF23
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_smt_tokens", "params":{"symbols":[],"ignore_precision":false}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_nai_pool
     since: Mysterious Future
     purpose: |
@@ -2218,6 +2405,8 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_nai_pool", "params":{}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_smt_contributions
     since: Mysterious Future
     purpose: |
@@ -2258,6 +2447,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_contributions", "params":{"start":[{"nai": "@@422838704", "precision": 0}, 0],"limit":10,"order":"by_symbol_id"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_contributions", "params":{"start":[{"nai": "@@422838704", "precision": 0}, "alice", 0],"limit":10,"order":"by_symbol_contributor"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_smt_token_emissions
     since: Mysterious Future
     purpose: |
@@ -2309,6 +2500,8 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_token_emissions", "params":{"start":[{"nai": "@@422838704", "precision": 0}, "2019-08-07T16:54:03"],"limit":10,"order":"by_symbol_time"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_smt_tokens
     since: Mysterious Future
     purpose: |
@@ -2387,3 +2580,5 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":{"nai": "@@422838704", "precision": 0},"limit":10,"order":"by_symbol"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":"","limit":10,"order":"by_control_account"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":["", {"nai": "@@422838704", "precision": 0}],"limit":10,"order":"by_control_account"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

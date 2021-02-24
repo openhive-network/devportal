@@ -27,6 +27,10 @@
       "limit":1}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_account_reputations", "params":{"account_lower_bound":"a",
       "limit":10}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-reputations)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-reputations)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog
     purpose: |
       Returns the list of blog entries for an account.
@@ -97,6 +101,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_blog", "params":{"account":"alice","start_entry_id":0,"limit":50},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-blog)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog_authors
     purpose: |
       Returns a list of authors that have had their content reblogged on a given blog account.
@@ -117,6 +125,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_blog_authors", "params":{"blog_account":"alice"},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-blog-authors)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-authors)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog_entries
     purpose: |
       Returns a list of blog entries for an account.
@@ -140,6 +152,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_blog_entries", "params":{"account":"alice","start_entry_id":0,"limit":50},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-blog-entries)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-entries)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_feed
     since: HF14
     purpose: |
@@ -153,6 +169,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_feed", "params":{"account":"alice","start_entry_id":1,"limit":10},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-feed-entries)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_feed_entries
     since: HF14
     purpose: |
@@ -166,6 +186,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_feed_entries", "params":{"account":"alice","start_entry_id":1,"limit":10},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-feed-entries)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed-entries)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_follow_count
     since: HF9
     purpose: Returns the count of followers for an account.
@@ -181,6 +205,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_follow_count", "params":{"account":"alice"},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-follow-count)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-follow-count)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_followers
     since: HF9
     purpose: |
@@ -205,6 +233,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_followers", "params":{"account":"alice","start":null,"type":"ignore","limit":100},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-followers)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-followers)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_following
     since: HF9
     purpose: |
@@ -229,6 +261,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"follow_api.get_following", "params":{"account":"alice","start":null,"type":"ignore","limit":100},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-following)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-following)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_reblogged_by
     since: HF14
     purpose: Returns a list of authors that have reblogged a post.
@@ -242,3 +278,7 @@
     expected_curl_responses:
     - 
     - 'unknown key:unknown key:'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-reblogged-by)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-reblogged-by)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
