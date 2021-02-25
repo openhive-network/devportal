@@ -57,7 +57,7 @@ This would mean that 19 hardforks have been accepted by witnesses and the new ch
 
 After these changes, all we have to do is compile the source code and get the `hived` executable. And once we fire up the custom testnet we can start testing and experimenting.
 
-If you want to port some data from Hive main network you can use [Tinman](https://github.com/steemit/tinman), also developed by Hive, to help with taking snapshots of the main network.
+If you want to port some data from Hive main network you can use [Tinman](https://gitlab.syncad.com/hive/tinman), also developed by the Hive community, to help with taking snapshots of the main network.
 
 #### Custom live testnet
 
