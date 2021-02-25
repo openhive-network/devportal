@@ -237,11 +237,12 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.find_change_recovery_account_requests)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_comments
-    purpose: Search for comments.
-    parameter_json: '{"start":[["",""]], "limit":0, "order":""}'
+    purpose: Search for comments by author/permlink.
+    parameter_json: '{"comments":[["author", "permlink"]]}'
     expected_response_json: '{"comments":[]}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_comments", "params": {"start":[["temp","test1"],["temp","foobar"]], "limit":10, "order":"by_account"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_comments", "params": {"comments":[["hiveio", "around-the-hive-reflections"]]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_comments", "params": {"comments":[["alice", "a-post-by-alice"]]}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content)'
