@@ -28,3 +28,7 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"reputation_api.get_account_reputations", "params": {"account_lower_bound": "steem"}, "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-reputations)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_reputation)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

@@ -28,6 +28,10 @@
       expected_curl_responses:
         - Could not find API account_history_api
         - Could not find API account_history_api
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-history)'
+        - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.get_ops_in_block
       purpose: Returns all operations contained in a block.
       parameter_json: {"block_num":0,"only_virtual":false}
@@ -49,6 +53,10 @@
       expected_curl_responses:
         - Could not find API account_history_api
         - Could not find API account_history_api
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-ops-in-block)'
+        - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ops-in-block)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.get_transaction
       deprecated: true
       purpose: Returns the details of a transaction based on a transaction id.
@@ -69,6 +77,10 @@
         - '{"jsonrpc":"2.0", "method":"account_history_api.get_transaction", "params":{"id":"6fde0190a97835ea6d9e651293e90c89911f933c"}, "id":1}'
       expected_curl_responses:
         - Could not find API account_history_api
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-transaction)'
+        - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.enum_virtual_ops
       since: Mysterious Future
       purpose: 
@@ -85,3 +97,5 @@
             "op": {}
           }]
         }
+      client_docs:
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

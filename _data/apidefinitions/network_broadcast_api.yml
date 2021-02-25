@@ -17,6 +17,10 @@
       "id":1}'
     expected_curl_responses:
     - attempting to push a block that is too old
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#broadcast-api)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/TransactionBuilder)'
   - api_method: network_broadcast_api.broadcast_transaction
     purpose: Used to broadcast a transaction.
     parameter_json: '{"trx":{"ref_block_num":0,"ref_block_prefix":0,"expiration":"1970-01-01T00:00:00","operations":[],"extensions":[],"signatures":[]},"max_block_age":-1}'
@@ -29,3 +33,7 @@
     expected_curl_responses:
     - Internal Error
     - Internal Error
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#broadcast-api)'
+      - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/TransactionBuilder)'

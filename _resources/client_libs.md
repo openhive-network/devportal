@@ -9,7 +9,7 @@ Radiator is a Ruby API client to interact with the steem blockchain.
 
 ---
 
-**Hive-JS** - [https://github.com/steemit/steem-js](https://gitlab.syncad.com/hive/hive-js)
+**Hive-JS** - [https://github.com/hive/hive-js](https://gitlab.syncad.com/hive/hive-js)
 
 Pure JavaScript Hive crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.
 
