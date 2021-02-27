@@ -623,6 +623,102 @@ blockquote {
   max-height: 100%;
 }
 
+a[href*='hive-keychain'] {
+  background-image: url(../images/languages/nodejs.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='hivesigner.js'] {
+  background-image: url(../images/languages/nodejs.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='hivesigner'] {
+  background-image: url(../images/languages/nodejs.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='hive-js'] {
+  background-image: url(../images/languages/nodejs.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='tutorials-javascript'] {
+  background-image: url(../images/languages/nodejs.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='beem'] {
+  background-image: url(../images/languages/python.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='dhive'] {
+  background-image: url(../images/languages/nodejs.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='openApi'] {
+  background-image: url(../images/languages/python.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='tutorials-python'] {
+  background-image: url(../images/languages/python.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='hive-ruby'] {
+  background-image: url(../images/languages/ruby.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='radiator'] {
+  background-image: url(../images/languages/ruby.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
+a[href*='tutorials-ruby'] {
+  background-image: url(../images/languages/ruby.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
 // See: https://github.com/turbolinks/turbolinks#displaying-progress
 .turbolinks-progress-bar {
   height: 5px;

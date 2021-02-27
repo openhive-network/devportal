@@ -43,6 +43,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"block_api.get_block", "params":{"block_num":62396745},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
   - api_method: block_api.get_block_header
     purpose: "Retrieve a block header of the referenced block, or null if no matching
       block was found.\n\n**Parameters:**\n  \n  * `block_num:int` - Height of the
@@ -68,3 +72,7 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"block_api.get_block_header", "params":{"block_num":62396745},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'

@@ -47,6 +47,9 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"market_history_api.get_market_history", "params":{"bucket_seconds":86400,"start":"2018-01-01T00:00:00","end":"2018-01-02T00:00:00"},
       "id":1}'
+    client_docs:
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-market-history)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: market_history_api.get_market_history_buckets
     purpose: Returns the bucket seconds being tracked by the plugin.
     parameter_json: "{}"
@@ -63,6 +66,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"market_history_api.get_market_history_buckets",
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-market-history-buckets)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-market-history-buckets)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: market_history_api.get_order_book
     purpose: Returns the internal market order book.
     parameter_json: '{"limit":500}'
@@ -131,6 +138,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"market_history_api.get_order_book", "params":{"limit":50},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-order-book)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-order-book)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: market_history_api.get_recent_trades
     purpose: Returns the most recent trades for the internal HBD:HIVE market.
     parameter_json: '{"limit":1000}'
@@ -157,6 +168,10 @@
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"market_history_api.get_recent_trades", "params":{"limit":500},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-recent-trades)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-recent-trades)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: market_history_api.get_ticker
     purpose: Returns the market ticker for the internal HBD:HIVE market.
     parameter_json: "{}"
@@ -179,6 +194,10 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"market_history_api.get_ticker", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-ticker)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ticker)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: market_history_api.get_trade_history
     purpose: Returns the trade history for the internal HBD:HIVE market.
     parameter_json: '{"start":"1970-01-01T00:00:00","end":"1970-01-01T00:00:00","limit":1000}'
@@ -203,6 +222,10 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"market_history_api.get_trade_history", "params":{"start":"2018-01-01T00:00:00","end":"2018-01-02T00:00:00","limit":10},
       "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-trade-history)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-trade-history)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: market_history_api.get_volume
     purpose: Returns the market volume for the past 24 hours.
     parameter_json: "{}"
@@ -221,3 +244,7 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"market_history_api.get_volume", "id":1}'
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-volume)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-volume)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

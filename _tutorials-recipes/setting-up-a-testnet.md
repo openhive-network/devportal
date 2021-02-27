@@ -161,6 +161,8 @@ Then make the following changes to the generated `config.ini`:
 * Enable plugins `chain debug_node p2p webserver block_api chain_api database_api debug_node_api network_broadcast_api`
 * Pick a random port for p2p, say `12541`
 * Edit `shared-file-size` down, say `12G`
+* Edit `rc-account-whitelist` down, say `porter tnman`
+* Add `rc-start-at-block` to, say `100000`
 * Pick a random port for `webserver-http-endpoint` and set `webserver-ws-endpoint` to the next-highest port.
 
 To summarize, the *changed* values are:
@@ -169,6 +171,8 @@ To summarize, the *changed* values are:
 plugin = chain debug_node p2p webserver block_api chain_api database_api debug_node_api network_broadcast_api
 shared-file-size = 12G
 p2p-endpoint = 0.0.0.0:12541
+rc-account-whitelist = porter tnman
+rc-start-at-block = 100000
 webserver-http-endpoint = 0.0.0.0:18751
 webserver-ws-endpoint = 0.0.0.0:18752
 ```

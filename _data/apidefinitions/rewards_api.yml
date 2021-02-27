@@ -29,3 +29,5 @@
       - '{"jsonrpc":"2.0", "method":"rewards_api.simulate_curve_payouts", "params": {"curve": "square_root", "var1": "2000000000000"}, "id":1}'
       - '{"jsonrpc":"2.0", "method":"rewards_api.simulate_curve_payouts", "params": {"curve": "convergent_linear", "var1": "2000000000000"}, "id":1}'
       - '{"jsonrpc":"2.0", "method":"rewards_api.simulate_curve_payouts", "params": {"curve": "convergent_square_root", "var1": "2000000000000"}, "id":1}'
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

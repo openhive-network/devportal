@@ -76,6 +76,12 @@
           weight
       json_examples:
         - '["vote", {"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestvote)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#vote)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#vote)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.vote)'
     - name: comment
       virtual: false
       purpose: |
@@ -161,6 +167,12 @@
           json_metadata
       json_examples:
         - '["comment",{"parent_author":"","parent_permlink":"steem","author":"alice","permlink":"a-post-by-alice","title":"A Post By Alice","body":"This is my post.","json_metadata":"{\"tags\":[\"hiveio\",\"example\",\"tags\"]}"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#comment)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#comment)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.comment)'
     - name: transfer
       virtual: false
       purpose: |
@@ -182,6 +194,12 @@
           memo
       json_examples:
         - '["transfer",{"from":"hiveio","to":"alice","amount":{"amount":"10","precision":3,"nai":"@@000000021"},"memo":"Thanks for all the fish."}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requesttransfer)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#transfer)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer)'
     - name: transfer_to_vesting
       virtual: false
       purpose: |
@@ -202,6 +220,11 @@
           amount
       json_examples:
         - '["transfer_to_vesting",{"from":"alice","to":"","amount":{"amount":"357000","precision":3,"nai":"@@000000021"}}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpowerup)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-to-vesting)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_to_vesting)'
     - name: withdraw_vesting
       virtual: false
       purpose: |
@@ -225,6 +248,11 @@
           vesting_shares
       json_examples:
         - '["withdraw_vesting",{"account":"hiveio","vesting_shares":{"amount":"200000000000","precision":6,"nai":"@@000000037"}}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpowerdown)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#withdraw-vesting)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.withdraw_vesting)'
     - name: limit_order_create
       virtual: false
       purpose: |
@@ -242,6 +270,10 @@
           expiration
       json_examples:
         - '["limit_order_create",{"owner":"hiveio","orderid":10,"amount_to_sell":{"amount":"9950","precision":3,"nai":"@@000000021"},"min_to_receive":{"amount":"3500","precision":3,"nai":"@@000000013"},"fill_or_kill":false,"expiration":"2035-10-29T06:32:22"}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-create)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.limit_order_create)'
     - name: limit_order_cancel
       virtual: false
       purpose: |
@@ -254,6 +286,10 @@
           orderid
       json_examples:
         - '["limit_order_cancel",{"owner":"hiveio","orderid":10}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-cancel)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.limit_order_cancel)'
     - name: price
       virtual: false
       purpose:
@@ -277,6 +313,10 @@
           exchange_rate
       json_examples:
         - '["feed_publish",{"publisher":"alice","exchange_rate":{"base":{"amount":"1000","precision":3,"nai":"@@000000013"},"quote":{"amount":"1000000","precision":3,"nai":"@@000000021"}}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#feed-publish)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.feed_publish)'
     - name: convert
       virtual: false
       purpose: |
@@ -291,6 +331,10 @@
           amount
       json_examples:
         - '["convert",{"owner":"hiveio","requestid":1467592156,"amount":{"amount":"5000","precision":3,"nai":"@@000000013"}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#convert)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.convert)'
     - name: account_create
       virtual: false
       purpose:
@@ -308,6 +352,10 @@
           json_metadata
       json_examples:
         - '["account_create",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-create)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_create)'
     - name: create_claimed_account
       since: HF20
       virtual: false
@@ -326,6 +374,10 @@
           json_metadata
       json_examples:
         - '["create_claimed_account",{"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcreateclaimedaccount)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.create_claimed_account)'
     - name: claim_account
       since: HF20
       virtual: false
@@ -340,11 +392,14 @@
           extensions
       json_examples:
         - '["claim_account",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"hiveio","extensions":[]}]'
+      client_docs:
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.claim_account)'
     - name: witness_set_properties
       since: HF20
       virtual: false
       purpose: |
-        Added in HF20 to replace the `witness_update` which was not easily extendable.  While it is recommended to use `witness_set_properties`, `witness_update` will continue to work.  See: [Witness Parameters](https://github.com/steemit/steem/blob/master/doc/witness_parameters.md)
+        Added in HF20 to replace the `witness_update` which was not easily extendable.  While it is recommended to use `witness_set_properties`, `witness_update` will continue to work.  See: [Witness Parameters]( https://gitlab.syncad.com/hive/hive/-/blob/master/doc/witness_parameters.md)
       roles:
         - block_signing
           active
@@ -355,6 +410,10 @@
           extensions
       json_examples:
         - '["witness_set_properties",{"owner":"alice", "props":{"account_creation_fee":"0.000 HIVE","account_subsidy_budget":10000,"account_subsidy_decay":330782,"maximum_block_size":65536,"hbd_interest_rate": "0.000 HIVE","hbd_exchange_rate":{"base": "0.000 HBD", "quote": "0.000 HIVE"}, "url": "68747470733A2F2F737465656D69742E636F6D", "new_signing_key": "25688bbe7b1204f26e40be054c8b2ff1997eec6d4e7be6a105aab8a0e6f11c616d7cb6066"}, "extensions": []}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#witness-set-properties)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.witness_set_properties)'
     - name: account_update
       virtual: false
       purpose:
@@ -370,6 +429,10 @@
           json_metadata
       json_examples:
         - '["account_update",{"account":"hiveio","posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo",1],["STM76EQNV2RTA6yF9TnBvGSV71mW7eW36MM7XQp24JxdoArTfKA76",1]]},"memo_key":"STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo","json_metadata":""}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-update)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_update)'
     - name: report_over_production
       disabled: true
       purpose: |
@@ -393,6 +456,9 @@
         - reporter
           first_block
           second_block
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#report-over-production)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: witness_update
       virtual: false
       purpose: |
@@ -426,6 +492,10 @@
           fee
       json_examples:
         - '["witness_update",{"owner":"alice","url":"witness-category/my-witness","block_signing_key":"STM8LoQjQqJHvotqBo7HjnqmUbFW9oJ2theyqonzUd9DdJ7YYHsvD","props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000},"fee":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#witness-update)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.witness_update)'
     - name: account_witness_vote
       virtual: false
       purpose: |
@@ -442,6 +512,11 @@
           approve
       json_examples:
         - '["account_witness_vote",{"account":"alice","witness":"bob","approve":true}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestwitnessvote)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-witness-vote)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_witness_vote)'
     - name: account_witness_proxy
       virtual: false
       purpose: |
@@ -460,6 +535,11 @@
           proxy
       json_examples:
         - '["account_witness_proxy",{"account":"alice","proxy":"bob"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestproxy)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-witness-proxy)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_witness_proxy)'
     - name: pow
       disabled: true
       virtual: false
@@ -475,6 +555,9 @@
           work
       json_examples:
         - '["pow",{"worker_account":"admin","block_id":"000004433bd4602cf5f74dbb564183837df9cef8","nonce":82,"work":{"worker":"STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G","input":"59b009f89477919f95914151cef06f28bf344dd6fb7670aca1c1f4323c80446b","signature":"1f3f83209097efcd01b7d6f27ce726164323d503d6fcf4d55bfb7cb3032796f6766738b36062b5850d69447fdf9c091cbc70825df5eeacc4710a0b11ffdbf0912a","work":"0b62f4837801cd857f01d6a541faeb13d6bb95f1c36c6b4b14a47df632aa6c92"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#pow)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: custom
       virtual: false
       purpose: |
@@ -492,6 +575,10 @@
           data
       json_examples:
         - '["custom",{"required_auths":["bytemaster"],"id":777,"data":"0a627974656d617374657207737465656d697402a3d13897d82114466ad87a74b73a53292d8331d1bd1d3082da6bfbcff19ed097029db013797711c88cccca3692407f9ff9b9ce7221aaa2d797f1692be2215d0a5f6d2a8cab6832050078bc5729201e3ea24ea9f7873e6dbdc65a6bd9899053b9acda876dc69f11a13df9ca8b26b6"}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom)'
     - name: delete_comment
       virtual: false
       purpose:
@@ -504,6 +591,10 @@
           permlink
       json_examples:
         - '["delete_comment",{"author":"alice","permlink":"a-post-by-alice"}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#delete-comment)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.delete_comment)'
     - name: custom_json
       virtual: false
       purpose: |
@@ -544,6 +635,12 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"follow","json":"[\"follow\",{\"follower\":\"alice\",\"following\":\"eve\",\"what\":[\"ignore\"]}]"}]'
         - '["custom_json",{"required_auths":[],"required_posting_auths":["bob"],"id":"reblog","json":"{\"account\":\"bob\",\"author\":\"alice\",\"permlink\":\"a-post-by-alice\"}"}]'
         - '["custom_json",{"required_auths":["alice"],"required_posting_auths":[],"id":"witness","json":"[\"enable_content_editing\", {\"account\": \"alice\", \"relock_time\": \"2100-01-01T12:00:00\"}]"}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: comment_options
       virtual: false
       purpose: |
@@ -595,6 +692,11 @@
         - '["comment_options",{"author":"alice","permlink":"a-post-by-alice","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":5000,"allow_votes":true,"allow_curation_rewards":true,"extensions":[]}]'
         - '["comment_options",{"author":"bob","permlink":"a-post-with-a-beneficiary","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":63,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"charlie","weight":1000}]}]]}]'
         - '["comment_options",{"author":"charlie","permlink":"a-post-with-multiple-beneficiaries","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":62688,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"david","weight":500},{"account":"erin","weight":500},{"account":"faythe","weight":1000},{"account":"frank","weight":500}]}]]}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#comment-options)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.comment)'
     - name: set_withdraw_vesting_route
       virtual: false
       purpose: |
@@ -602,10 +704,10 @@
         request for the funds to be transferred directly to another account's
         balance rather than the withdrawing account. In addition, those funds
         can be immediately vested again, circumventing the conversion from
-        vests to steem and back, guaranteeing they maintain their value.
+        vests to hive and back, guaranteeing they maintain their value.
         
         **Notes:**
-        * Percent must be valid steem percent.
+        * Percent must be valid hive percent.
       roles:
         - active
           owner
@@ -616,6 +718,10 @@
           auto_vest
       json_examples:
         - '["set_withdraw_vesting_route",{"from_account":"alice","to_account":"bob","percent":10000,"auto_vest":true}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#set-withdraw-vesting-route)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.set_withdraw_vesting_route)'
     - name: limit_order_create2
       virtual: false
       purpose: |
@@ -639,11 +745,15 @@
           expiration
       json_examples:
         - '["limit_order_create2",{"owner":"alice","orderid":492991,"amount_to_sell":{"amount":"1","precision":3,"nai":"@@000000013"},"exchange_rate":{"base":{"amount":"1","precision":3,"nai":"@@000000013"},"quote":{"amount":"10","precision":3,"nai":"@@000000021"}},"fill_or_kill":false,"expiration":"2017-05-12T23:11:13"}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-create2)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: challenge_authority
       disabled: true
       virtual: false
       purpose: |
         Disabled in HF14.
+        <p> </p><p> </p>
       roles:
         - posting
           active
@@ -652,15 +762,21 @@
         - challenger
           challenged
           require_owner
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#challenge-authority)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: prove_authority
       virtual: false
-      purpose:
+      purpose: <p> </p><p> </p><p> </p>
       roles:
         - active
           owner
       params:
         - challenged
           require_owner
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#prove-authority)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: request_account_recovery
       since: HF11
       virtual: false
@@ -712,6 +828,10 @@
           extensions
       json_examples:
         - '["request_account_recovery",{"recovery_account":"steem","account_to_recover":"alice","new_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LYxj96zdypHYqgDdD6Nyh2NxerN3P1Mp3ddNm7gci63nfrSuZ",1]]},"extensions":[]}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#request-account-recovery)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.request_account_recovery)'
     - name: recover_account
       since: HF11
       virtual: false
@@ -725,6 +845,10 @@
           extensions
       json_examples:
         - '["recover_account",{"account_to_recover":"alice","new_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7j3nhkhHTpXqLEvdx2yEGhQeeorTcxSV6WDL2DZGxwUxYGrHvh",1]]},"recent_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM78Xth94gNxp8nmByFV2vNAhg9bsSdviJ6fQXUTFikySLK3uTxC",1]]},"extensions":[]}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#recover-account)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.recover_account)'
     - name: change_recovery_account
       since: HF11
       virtual: false
@@ -755,6 +879,10 @@
           extensions
       json_examples:
         - '["change_recovery_account",{"account_to_recover":"alice","new_recovery_account":"bob","extensions":[]}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#change-recovery-account)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.change_recovery_account)'
     - name: escrow_transfer
       since: HF14
       virtual: false
@@ -779,7 +907,7 @@
         Escrow transactions are uniquely identified by `from` and `escrow_id`,
         the `escrow_id` is defined by the sender.
         
-        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:299](https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L299-335)
       roles:
         - active
           owner
@@ -796,6 +924,10 @@
           json_meta
       json_examples:
         - '["escrow_transfer",{"from":"alice","to":"bob","hbd_amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"hive_amount":{"amount":"0","precision":3,"nai":"@@000000021"},"escrow_id":23456789,"agent":"charlie","fee":{"amount":"100","precision":3,"nai":"@@000000013"},"json_meta":"{}","ratification_deadline":"2017-02-26T11:22:39","escrow_expiration":"2017-02-28T11:22:39"}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-transfer)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_transfer)'
     - name: escrow_dispute
       since: HF14
       virtual: false
@@ -804,7 +936,7 @@
         can raise it for dispute. Once a payment is in dispute, the agent has
         authority over who gets what.
         
-        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:299]( https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L299-335)
       roles:
         - active
           owner
@@ -816,6 +948,10 @@
           escrow_id
       json_examples:
         - '["escrow_dispute",{"from":"alice","to":"bob","agent":"charlie","who":"alice","escrow_id":72526562}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-dispute)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_dispute)'
     - name: escrow_release
       since: HF14
       virtual: false
@@ -831,7 +967,7 @@
           * If there is a dispute regardless of expiration, the agent can
             release funds to either party following whichever agreement was in place between the parties.
         
-        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:299]( https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L299-335)
       roles:
         - active
           owner
@@ -846,6 +982,10 @@
           hive_amount
       json_examples:
         - '["escrow_release",{"from":"alice","to":"bob","agent":"charlie","who":"charlie","receiver":"bob","escrow_id":72526562,"hbd_amount":{"amount":"5000","precision":3,"nai":"@@000000013"},"hive_amount":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-release)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_release)'
     - name: pow2
       disabled: true
       virtual: false
@@ -859,6 +999,9 @@
           pow_summary
       json_examples:
         - '["pow2",{"work":[0,{"input":{"worker_account":"alice","prev_block":"003ea604345523c344fbadab605073ea712dd76f","nonce":"1052853013628665497"},"pow_summary":3817904373}],"props":{"account_creation_fee":{"amount":"1","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#pow2)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: escrow_approve
       since: HF14
       virtual: false
@@ -868,7 +1011,7 @@
         cannot revoke their approval. Subsequent escrow approve operations,
         regardless of the approval, will be rejected.
         
-        See: [hive_operations.hpp:229](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L229-L322)
+        See: [hive_operations.hpp:299]( https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L299-335)
       roles:
         - active
           owner
@@ -881,6 +1024,10 @@
           approve
       json_examples:
         - '["escrow_approve",{"from":"alice","to":"bob","agent":"charlie","who":"charlie","escrow_id":59102208,"approve":true}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-approve)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_approve)'
     - name: transfer_to_savings
       since: HF14
       virtual: false
@@ -893,7 +1040,7 @@
         Assuming an account can be recovered quickly, loss in such situations
         can be kept to a minimum.
         
-        See: [hive_operations.hpp:868](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L868-L895)
+        See: [hive_operations.hpp:988]( https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L988-996)
       roles:
         - active
           owner
@@ -904,6 +1051,10 @@
           memo
       json_examples:
         - '["transfer_to_savings",{"from":"alice","to":"alice","amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"memo":""}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-to-savings)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_to_savings)'
     - name: transfer_from_savings
       since: HF14
       virtual: false
@@ -919,6 +1070,10 @@
           memo
       json_examples:
         - '["transfer_from_savings",{"from":"alice","request_id":101,"to":"alice","amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"memo":""}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-from-savings)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_from_savings)'
     - name: cancel_transfer_from_savings
       since: HF14
       virtual: false
@@ -931,6 +1086,10 @@
           request_id
       json_examples:
         - '["cancel_transfer_from_savings",{"from":"alice","request_id":1}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#cancel-transfer-from-savings)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.cancel_transfer_from_savings)'
     - name: custom_binary
       since: HF14
       virtual: false
@@ -941,7 +1100,7 @@
         binary deserialization of plugin operations and should improve overall
         performance of plugins that chose to use it.
         
-        See: [hive_operations.hpp:491](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L491-L506)
+        See: [hive_operations.hpp:604]( https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L604-619)
       roles:
         - posting
           active
@@ -949,6 +1108,12 @@
       params:
         - id
           data
+      json_examples:
+        - '["custom_binary",{"id": 0, "data": ""}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-binary)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_binary)'
     - name: decline_voting_rights
       since: HF14
       virtual: false
@@ -959,7 +1124,7 @@
         formalize a smart contract between certain accounts and the community
         that currently only exists as a social contract.
         
-        See: [hive_operations.hpp:897](https://github.com/steemit/steem/blob/86ec544b731680eaba3808cc7a41e8ea73d89701/libraries/chain/include/steemit/chain/protocol/hive_operations.hpp#L897-L905)
+        See: [hive_operations.hpp:1020]( https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L1020-1027)
       roles:
         - owner
       params:
@@ -967,6 +1132,9 @@
           decline
       json_examples:
         - '["decline_voting_rights",{"account":"judy","decline":true}]'
+      client_docs:
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.decline_voting_rights)'
     - name: reset_account
       disabled: true
       since: HF11
@@ -983,6 +1151,10 @@
         - reset_account
           account_to_reset
           new_owner_authority
+      json_examples:
+        - '["reset_account",{}]'
+      client_docs:
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: set_reset_account
       disabled: true
       since: HF11
@@ -999,6 +1171,10 @@
         - account
           current_reset_account
           reset_account
+      json_examples:
+        - '["set_reset_account",{}]'
+      client_docs:
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: claim_reward_balance
       virtual: false
       purpose:
@@ -1013,6 +1189,10 @@
           reward_vests
       json_examples:
         - '["claim_reward_balance",{"account":"alice","reward_hive":{"amount":"17","precision":3,"nai":"@@000000021"},"reward_hbd":{"amount":"11","precision":3,"nai":"@@000000013"},"reward_vests":{"amount":"185025103","precision":6,"nai":"@@000000037"}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#claim-reward-balance)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.claim_reward_balance)'
     - name: delegate_vesting_shares
       since: HF17
       virtual: false
@@ -1027,7 +1207,7 @@
         to prevent a satoshi of VESTS from voting on the same content twice.
         
         Also see:
-          * [hive_evaluator.cpp:2309](https://github.com/steemit/steem/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/chain/hive_evaluator.cpp#L2309)
+          * [hive_evaluator.cpp:2309]( https://gitlab.syncad.com/hive/hive/-/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/hive_evaluator.cpp#L2309)
       roles:
         - active
           owner
@@ -1037,6 +1217,10 @@
           vesting_shares
       json_examples:
         - '["delegate_vesting_shares",{"delegator":"alice","delegatee":"bob","vesting_shares":{"amount":"94599167138276","precision":6,"nai":"@@000000037"}}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#delegate-vesting-shares)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.delegate_vesting_shares)'
     - name: account_create_with_delegation
       since: HF17
       deprecated: true
@@ -1058,8 +1242,8 @@
         creation.*
         
         Also see:
-          * [config.hpp:145](https://github.com/steemit/steem/blob/65c58af34971416057e142ac1332421e2228749b/libraries/protocol/include/steem/protocol/config.hpp#L145)
-          * [hive_evaluator.cpp:400](https://github.com/steemit/steem/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/chain/hive_evaluator.cpp#L400)
+          * [config.hpp:145]( https://gitlab.syncad.com/hive/hive/-/blob/65c58af34971416057e142ac1332421e2228749b/libraries/protocol/include/steem/protocol/config.hpp#L145)
+          * [hive_evaluator.cpp:400]( https://gitlab.syncad.com/hive/hive/-/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/hive_evaluator.cpp#L400)
       roles:
         - active
           owner
@@ -1076,6 +1260,10 @@
           extensions
       json_examples:
         - '["account_create_with_delegation",{"fee":{"amount":"3000","precision":3,"nai":"@@000000021"},"delegation":{"amount":"0","precision":6,"nai":"@@000000037"},"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5Tki3ecCdCCHCjhhwvQvXuKryL2s34Ma6CXsRzntSUTYVYxCQ9",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LUoAA8gCL9tHRz7v9xcwR4ZWD3KDRHP5t1U7UAZHdfanLxyBE",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM8anmpHdfVE4AmwsDpcSXpRsydHysEbv6vGJkRQy1d1CC83zeTA",1]]},"memo_key":"STM67RYDyEkP1Ja1jFehJ45BFGA9oHHUnRnYbxKJEtMhVQiHW3S3k","json_metadata":"{}","extensions":[]}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-create-with-delegation)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_create_with_delegation)'
     - name: create_proposal
       since: HF21
       deprecated: false
@@ -1096,6 +1284,9 @@
           permlink
       json_examples:
         - '["create_proposal",{"creator":"alice","receiver":"bob","start_date":"2019-08-26T11:22:39","end_date":"2019-08-26T11:22:39","daily_pay":{"amount":"3000","precision":3,"nai":"@@000000013"},"subject":"subject","permlink":"creator-proposal-permlink"}]'
+      client_docs:
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.create_proposal)'
     - name: remove_proposal
       since: HF21
       deprecated: false
@@ -1111,6 +1302,10 @@
           proposal_ids
       json_examples:
         - '["remove_proposal",{"creator":"alice","proposal_ids":[0]}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestremoveproposal)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.remove_proposal)'
     - name: update_proposal_votes
       since: HF21
       deprecated: false
@@ -1127,6 +1322,10 @@
           approve
       json_examples:
         - '["update_proposal_votes",{"voter":"alice","proposal_ids":[0],"approve":true}]'
+      client_docs:
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestupdateproposalvote)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal_votes)'
     - name: claim_reward_balance2
       since: Mysterious Future
       virtual: false
@@ -1214,7 +1413,7 @@
        
         See [#3455](https://github.com/steemit/steem/issues/3455), [SMT Setup](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smt-setup)
         
-        <sup>[Structure](https://github.com/steemit/steem/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L67-L90)</sup>
+        <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L67-L90)</sup>
       roles:
         - active
           owner
@@ -1257,7 +1456,7 @@
 
         See: [#1513](https://github.com/steemit/steem/issues/1513), [#2738](https://github.com/steemit/steem/issues/2738), [SMT Pre-Setup](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smt-pre-setup), [Inflation Operations](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#inflation-operations), [Full JSON Examples](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#full-json-examples), [Inflation FAQ](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#inflation-faq)
         
-        <sup>[Structure](https://github.com/steemit/steem/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L100-L129)</sup>
+        <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L100-L129)</sup>
       roles:
         - active
           owner
@@ -1292,7 +1491,7 @@
         See: [#2727](https://github.com/steemit/steem/issues/2727), [Named Token Parameters](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#named-token-parameters)
 
         
-        <sup>[Structure](https://github.com/steemit/steem/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L172-L183)</sup>
+        <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L172-L183)</sup>
       roles:
         - active
           owner
@@ -1324,7 +1523,7 @@
         
         See: [Named Token Parameters](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#named-token-parameters)
         
-        <sup>[Structure](https://github.com/steemit/steem/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L185-L196)</sup>
+        <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L185-L196)</sup>
       roles:
         - active
           owner
@@ -1362,7 +1561,7 @@
         
         See: [SMT Object Creation](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smt-object-creation)
         
-        <sup>[Structure](https://github.com/steemit/steem/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L16-L37)</sup>
+        <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L16-L37)</sup>
       roles:
         - active
           owner
@@ -1387,7 +1586,7 @@
         
         See: [#2730](https://github.com/steemit/steem/issues/2730), [Token Units](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#token-units)
         
-        <sup>[Structure](https://github.com/steemit/steem/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L198-L209)</sup>
+        <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L198-L209)</sup>
       roles:
         - active
           owner

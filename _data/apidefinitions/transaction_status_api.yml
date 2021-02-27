@@ -40,3 +40,5 @@
     testnet:
       working: false
       detail: "Not yet enabled."
+    client_docs:
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
