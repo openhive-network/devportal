@@ -2,6 +2,7 @@
 title: Jussi
 position: 3
 description: A reverse proxy that forwards json-rpc requests.
+canonical_url: jussi.html
 ---
 
 Jussi is a custom-built caching layer for use with `hived`.

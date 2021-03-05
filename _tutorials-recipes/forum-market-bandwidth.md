@@ -28,7 +28,7 @@ Bandwidth is specific to each account and depends on account activity.
 
 1. [Getting Account Bandwidth](#getting-account-bandwidth)
 1. [Dynamic Global Properties](#dynamic-global-properties)
-1. [Account HIVE Power](#account-steem-power)
+1. [Account HIVE Power](#account-hive-power)
 1. [Calculate](#calculate)
 
 ### Getting Account Bandwidth

@@ -1,6 +1,7 @@
 ---
 title: DHF
 position: 5
+canonical_url: dhf.html
 ---
 
 #### Intro

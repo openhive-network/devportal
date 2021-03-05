@@ -1,6 +1,7 @@
 ---
 title: Client Libraries
 position: 3
+canonical_url: client_libs.html
 ---
 
 **Radiator** - [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator)

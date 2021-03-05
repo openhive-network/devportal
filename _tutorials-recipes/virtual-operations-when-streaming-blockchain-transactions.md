@@ -13,7 +13,7 @@ This recipe will take you through the process of streaming blockchain transactio
 
 There are two points from which Hive blockchain transactions can be streamed to give a "live" view of what's happening on the blockchain. The first is from the `head block` which is the most recent block created on the chain (every 3 seconds when a new block is created). The second, is from the `last irreversible block` which is the newest block that has been confirmed by a sufficient number of block producers so that it can no longer be invalidated. This is not a live view but it is normally not far behind the head block number.
 
-There is already a [javascript tutorial](https://developers.hive.io/tutorials-javascript/stream_blockchain_transactions) on the [devportal](https://developers.hive.io/) describing how to stream blockchain transactions. This recipe will go into further detail on operations on each block and more specifically the virtual operations that are executed with every new block. We will also assume that you have already run through the basic tutorials on the Hive blockchain and will focus more on the specific functions and outputs pertinent to this topic.
+There is already a [javascript tutorial]({{ '/tutorials-javascript/stream_blockchain_transactions' | relative_url }}) on the [devportal](https://developers.hive.io/) describing how to stream blockchain transactions. This recipe will go into further detail on operations on each block and more specifically the virtual operations that are executed with every new block. We will also assume that you have already run through the basic tutorials on the Hive blockchain and will focus more on the specific functions and outputs pertinent to this topic.
 
 ## Steps
 
@@ -87,7 +87,7 @@ Virtual operations (curation rewards, etc) are derived from blockchain activity,
 `steem-python` provides a very simple method to stream virtual or any other operations directly:
 
 ```python
-from steem import Hive
+from beem import Hive
 from steem.blockchain import Blockchain
 import pprint
 s = Hive()

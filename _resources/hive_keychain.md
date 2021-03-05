@@ -1,6 +1,7 @@
 ---
 title: Hive Keychain
 position: 5
+canonical_url: hive_keychain.html
 ---
 
 Hive Keychain is a browser extension solution to integrate web sites with the Hive blockchain.

@@ -56,7 +56,7 @@ In this case. `dsf0yxlox2d` will be our parent permlink and `@demo` will be the 
 #### 3. Add content<a name="add-content"></a>
 
 We've added the parent post info and `Some amazing content` in our UI via the keyboard.
-![comment_reply_user_input.png](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/11_submit_comment_reply/images/comment_reply_user_input.png)
+![comment_reply_user_input.png](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/11_submit_comment_reply/images/comment_reply_user_input.png)
 
 #### 4. Get Comment Data<a name="get-comment"></a>
 
@@ -131,7 +131,7 @@ client.broadcast.comment(comment, privateKey).then(
 ```
 
 A successful comment will output something like the following to the console:
-![successful console output](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/11_submit_comment_reply/images/comment_reply_successful_console_output.png)
+![successful console output](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/11_submit_comment_reply/images/comment_reply_successful_console_output.png)
 
 That's all there is to it.
 

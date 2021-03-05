@@ -1,6 +1,7 @@
 ---
 title: Community & Help
 position: 7
+canonical_url: developeradvocate.html
 ---
 <!--
 **Developer Advocate**
