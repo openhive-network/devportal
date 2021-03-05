@@ -108,8 +108,6 @@
   - api_method: follow_api.get_blog_authors
     purpose: |
       Returns a list of authors that have had their content reblogged on a given blog account.
-      
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_blog_authors' | relative_url }})
     parameter_json: '{"blog_account":""}'
     expected_response_json: |
       {
