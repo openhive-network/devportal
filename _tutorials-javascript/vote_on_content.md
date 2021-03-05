@@ -26,7 +26,7 @@ required for the voting operation:
 1.  _Permlink_ - The unique identifier of the comment/post of the author
 1.  _Weight_ - This is the weight that the vote will carry. The value ranges from -10000 (100% flag) to 10000 (100% upvote)
 
-Due to the low amount of posts on the testnet we added an additional step to create a post before we vote on it. The values are auto loaded in the respective input boxes. A full tutorial on how to create a new post can be found on the [Hive Devportal](https://developers.hive.io/tutorials-javascript/submit_post)
+Due to the low amount of posts on the testnet we added an additional step to create a post before we vote on it. The values are auto loaded in the respective input boxes. A full tutorial on how to create a new post can be found on the [Hive Devportal]({{ '/tutorials-javascript/submit_post' | relative_url }})
 
 ## Steps
 
