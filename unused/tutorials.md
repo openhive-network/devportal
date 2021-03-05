@@ -27,7 +27,7 @@ Example for operation Stream:
 Example for decentralized exchange:
 
 ~~~ python
-from steem import Hive
+from beem import Hive
 import os
 import json
 steem = Hive(wif="<posting-key-for-default-author>")
@@ -57,7 +57,7 @@ for a in blockchain.ops()
     
 ~~~ python
 from pprint import pprint
-from steem import Hive
+from beem import Hive
 from steem.dex import Dex
 
 steem = Hive()
