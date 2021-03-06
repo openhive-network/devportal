@@ -211,7 +211,7 @@ window.onload = () => {
     };
 ```
 
-More information on how to use the `broadcast` operation and options surrounding the operation can be found on the [Hive Devportal](https://developers.hive.io/apidefinitions/#broadcast_ops_vote)
+More information on how to use the `broadcast` operation and options surrounding the operation can be found on the [Hive Devportal]({{ '/apidefinitions/#broadcast_ops_vote' | relative_url }})
 
 ### To run this tutorial
 

@@ -95,7 +95,7 @@ From this result, you have access to everything associated with the selected pos
 * `weight` - Weight of the voting power.
 * `rshares` - Reward shares.
 * `percent` - Percent of vote.
-* `reputation` - The [reputation](https://developers.hive.io/glossary/#reputation) of the account that voted.
+* `reputation` - The [reputation]({{ '/glossary/#reputation' | relative_url }}) of the account that voted.
 * `time` - Time the vote was submitted.
 
 ### To Run the tutorial
