@@ -170,12 +170,48 @@ namespace :test do
     # See: https://github.com/gjtorikian/html-proofer#configuration
     sh 'bundle exec jekyll build'
     options = {
+      # Automatically add extension (e.g. .html) to file paths, to allow
+      # extensionless URLs (as supported by Jekyll 3 and GitHub Pages)
       assume_extension: true,
+      
+      # Only reports errors for links that fall within the 4xx status code
+      # range.
       only_4xx: true,
+      
+      # Enables the favicon checker.
       check_favicon: true,
+      
+      # Enables HTML validation errors from Nokogumbo.  See: https://github.com/gjtorikian/html-proofer#configuring-html-validation-rules
       check_html: true,
+      validation: {
+        report_mismatched_tags: true
+      },
+      
+      # If true, ignores the href="#" (typically JQuery).
       allow_hash_href: true,
-      empty_alt_ignore: true
+      
+      # If true, ignores images with empty alt tags.
+      empty_alt_ignore: true,
+      
+      # Check that <link> and <script> external resources use SRI	
+      check_sri: true,
+      
+      # Enables the Open Graph checker.
+      check_opengraph: true,
+      
+      # If true, does not run the external link checker, which can take a lot of
+      # time.  Also, external links may rate-limit or even fail due to excess
+      # requests.
+      disable_external: true,
+      
+      # If disable_external is false, consider ignoring http status 429.
+      # http_status_ignore: [429],
+      
+      # If disable_external is false, consider caching.  See: https://github.com/gjtorikian/html-proofer#configuring-caching
+      # cache: { timeframe: '2w' }
+      
+      # Fails a link if it's not marked as https.	
+      enforce_https: true
     }
     
     HTMLProofer.check_directory("./_site", options).run
