@@ -5,8 +5,6 @@ description: "This is a list of replacement API calls for each of the different 
 layout: full
 canonical_url: get_state_replacement_api.html
 ---
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/34_get_state_replacement_api) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
 Full, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/34_get_state_replacement_api) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-34_get_state_replacement_api.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/34_get_state_replacement_api)).
 
 ## Intro

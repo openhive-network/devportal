@@ -48,7 +48,7 @@ console.log(currentManaPerc);
 
 ## Calculating transaction cost
 
-A community created library, [beem-python](https://github.com/holgern/beem) offers a solution to calculate the RC costs for a different transaction types. The three main transaction types are: posts/comments, transfers, and vote(on posts). The beem's functions can be executed with no parameters (as seen below) to provide a rough estimate of an average operation.
+A community created library, [beem](https://github.com/holgern/beem) offers a solution to calculate the RC costs for a different transaction types. The three main transaction types are: posts/comments, transfers, and vote(on posts). The beem's functions can be executed with no parameters (as seen below) to provide a rough estimate of an average operation.
 
 ```python
 import beem

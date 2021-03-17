@@ -633,7 +633,7 @@
       json_examples:
         - '["custom_json",{"required_auths":[],"required_posting_auths":["hiveio"],"id":"follow","json":"[\"follow\",{\"follower\":\"hiveio\",\"following\":\"alice\",\"what\":[\"blog\"]}]"}]'
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"follow","json":"[\"follow\",{\"follower\":\"alice\",\"following\":\"eve\",\"what\":[\"ignore\"]}]"}]'
-        - '["custom_json",{"required_auths":[],"required_posting_auths":["bob"],"id":"reblog","json":"{\"account\":\"bob\",\"author\":\"alice\",\"permlink\":\"a-post-by-alice\"}"}]'
+        - '["custom_json",{"required_auths":[],"required_posting_auths":["bob"],"id":"reblog","json":"[\"reblog\", {\"account\":\"bob\",\"author\":\"alice\",\"permlink\":\"a-post-by-alice\"}]"}]'
         - '["custom_json",{"required_auths":["alice"],"required_posting_auths":[],"id":"witness","json":"[\"enable_content_editing\", {\"account\": \"alice\", \"relock_time\": \"2100-01-01T12:00:00\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'

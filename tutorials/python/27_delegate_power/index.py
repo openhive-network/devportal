@@ -1,70 +1,76 @@
-import steembase
-import steem
 from pick import pick
-import pprint
-from steem.amount import Amount
+import getpass
+from beem import Hive
+from beem.account import Account
+from beem.amount import Amount
 
-# connect to testnet
-steembase.chains.known_chains['HIVE'] = {
-    'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
-}
+# capture user information
+account = input('Enter username: ')
+wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
-#capture user information
-username = input('Enter username: ') #demo account: cdemo
-wif = input('Enter private ACTIVE key: ') #demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
+# connect node and private active key
+client = Hive('http://127.0.0.1:8091', keys=[wif_active_key])
 
-#connect node and private active key
-client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
+# check valid user
+account = Account(account, blockchain_instance=client)
 
-#connect to production server with active key
-# client = steem.Hive(keys=[wif])
+balance = account['balance']
+symbol = balance.symbol
 
-#check valid user
-userinfo = client.get_account(username)
-if(userinfo is None) :
-    print('Oops. Looks like user ' + username + ' doesn\'t exist on this chain!')
-    exit()
+# we need high precision because VESTS
+denom = 1e6
+delegated_vests = account['delegated_vesting_shares']
+vesting_shares = account['vesting_shares']
+vesting_symbol = vesting_shares.symbol
+to_withdraw_vests = float(account['to_withdraw']) / denom
+withdrawn_vests = float(account['withdrawn']) / denom
 
-#display active delegations (refer to tutorial #29_get_delegations_by_user)
-delegations = client.get_vesting_delegations(username, '', 100)
+dgpo = client.get_dynamic_global_properties()
+total_vesting_fund_hive = Amount(dgpo['total_vesting_fund_hive']).amount
+total_vesting_shares_mvest = Amount(dgpo['total_vesting_shares']).amount / denom
+base_per_mvest = total_vesting_fund_hive / total_vesting_shares_mvest
+available_vests = (vesting_shares.amount - delegated_vests.amount - ((to_withdraw_vests - withdrawn_vests)))
+available_base = (available_vests / denom) * base_per_mvest
+
+# display active delegations (refer to tutorial #29_get_delegations_by_user)
+delegations = account.get_vesting_delegations()
 if len(delegations) == 0:
-	print('No active delegations')
+  print('No active delegations')
 else:
-	pprint.pprint(delegations)
+  print('Current delegations:')
+  for delegation in delegations:
+    delegated_vests = float(delegation['vesting_shares']['amount']) / denom
+    delegated_base = (delegated_vests / denom) * base_per_mvest
+    print('\t' + delegation['delegatee'] + ': ' + format(delegated_base, '.3f') + ' ' + symbol)
 
-#available VESTS
-avail_vests = (Amount(userinfo['vesting_shares']).amount - 
-    ((userinfo['to_withdraw']-userinfo['withdrawn'])/1000000)-
-    Amount(userinfo['delegated_vesting_shares']).amount)
-print('\n' + 'Available VESTS : ' + str(avail_vests))
+print('\n' + 'Available ' + symbol + ' Power: ' + format(available_base, '.3f') + ' ' + symbol)
 
 input('Press enter to continue' + '\n')
 
-#choice of action
+# choice of action
 title = ('Please choose action')
 options = ['DELEGATE POWER', 'UN-DELEGATE POWER', 'CANCEL']
 # get index and selected permission choice
 option, index = pick(options, title)
 
-if (option == 'CANCEL') :
-    print('operation cancelled')
-    exit()
+if (option == 'CANCEL'):
+  print('operation cancelled')
+  exit()
 
-#get account to authorise and check if valid
+# get account to authorise and check if valid
 delegatee = input('Please enter the account name to ADD / REMOVE delegation: ')
-delegatee_userinfo = client.get_account(delegatee)
-if(delegatee_userinfo is None) :
-    print('Oops. Looks like user ' + delegatee + ' doesn\'t exist on this chain!')
-    exit()
+delegatee = Account(delegatee, blockchain_instance=client)
 
-# delegate_vesting_shares(to_account: str, vesting_shares: str, account=None)
-if (option == 'DELEGATE POWER') :
-    vesting_value = input('Please enter the amount of VESTS to delegate: ')
-    vesting_shares = (str(vesting_value) + ' VESTS')
-    client.delegate_vesting_shares(to_account=delegatee, vesting_shares=vesting_shares, account=username)
-    print('\n' + str(vesting_shares) + ' have been successfully been delegated to ' + delegatee)
-else :
-    vesting_shares = '0 VESTS'
-    client.delegate_vesting_shares(to_account=delegatee, vesting_shares=vesting_shares, account=username)
-    print('Delegated VESTS have been successfully removed from ' + delegatee)
+if (option == 'DELEGATE POWER'):
+  amount = float(input('Please enter the amount of ' + symbol + ' you would like to delegate: ') or '0')
+  amount_vests = (amount * denom) / base_per_mvest
+  
+  print(format(amount, '.3f') + ' ' + symbol + ' (' + format(amount_vests, '.6f') + ' ' + vesting_symbol + ') will be delegated to ' + delegatee.name)
+else:
+  amount_vests = 0
+  print('Removing delegated VESTS from ' + delegatee.name)
+
+account.delegate_vesting_shares(delegatee.name, amount_vests)
+
+print('Success.')
+

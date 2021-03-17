@@ -4,64 +4,57 @@ position: 10
 description: "How to submit post on Hive blockchain using Python."
 layout: full
 canonical_url: submit_post.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/tutorials/10_submit_post) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
-<br>
+---
+Full, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/10_submit_post) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python-10_submit_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python/10_submit_post)).
 
-
-
-In this tutorial will explain and show you how to submit a new post to the `Hive` blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial will explain and show you how to submit a new post to the `Hive` blockchain using the `commit` class found within the [beem](https://github.com/holgern/beem) library.
 
 ## Intro
 
-The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `post` method found within the `commit` class in the the library. It should be noted that comments and new post are both treated as `commit.post` operation with the only difference being that a comment/reply has got an additional parameter containing the `parent post/comment`. There are 11 parameters within the `post` method:
+The beem library has a built-in function to transmit transactions to the blockchain.  We are using the [`transactionbuilder`](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html) in the the library.  It should be noted that comments and new post are both treated as the `comment` operation with the only difference being that a comment/reply has an additional parameter containing the `parent_author`/`parent_permlink` that corresponds to the original post/comment.
 
-1. _title_ - The title of the post
-2. _body_ - The body of the post
-3. _author_ - The account that you are posting from
-4. _permlink_ - A unique adentifier for the
-5. _tags_ - Between 1 and 5 key words that defines the post
-6. _reply_idendifier_ - Identifier of the parent post(used for comments)
-7. _json_metadata_ - JSON meta objec that can be attached to the post
-8. _comment_options_ - JSON options object that can be attached to the post to specify additional options like 'max_payouts', 'allow_votes', etc.
-9. _community_ - Name of the community you are posting into
-10. _beneficiaries_ - A list of beneficiaries for posting reward distribution.
-11. _self_vote_ - Upvote the post as author right after posting
+* _author_ - The account that you are posting from
+* _title_ - The title of the post
+* _body_ - The body of the post
+* _permlink_ - A unique identifier, scoped to author
+* _parent_author_ - Empty string (for posts) or author being replied to (for replies)
+* _parent_permlink_ - Category (for posts) or permlink being replied to (for replies)
+* _json_metadata_ - JSON meta object that can be attached to the post
+  * _tags_ - Between 1 and 5 key words that defines the post
 
-We will only be using the first 5 parameters as these are the only ones required to create a basic post. If you want to explore the other parameters further you can find more information [HERE](http://steem.readthedocs.io/en/latest/core.html).
+We will only be using the above parameters as these are the only ones required to create a basic post.  If you want to explore the other parameters further you can find more information [HERE](https://beem.readthedocs.io/en/latest/beem.comment.html#beem.comment.Comment).
+
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
 
 ## Steps
 
-1.  [**App setup**](#setup) - Library install and import. Connection to Hive node
-2.  [**Variable input and format**](#input) - Input and creation of varialbes
-3.  [**Post submission and result**](#submit) - Committing of transaction to the blockchain
+1. [**App setup**](#setup) - Library install and import. Connection to Hive node
+2. [**Variable input and format**](#input) - Input and creation of varialbes
+3. [**Post submission and result**](#submit) - Committing of transaction to the blockchain
 
 #### 1. App setup <a name="setup"></a>
 
-In this tutorial we use 4 packages:
+In this tutorial we use the following packages:
 
 - `random` and `string` - used to create a random string used for the `permlink`
-- `steem` - steem-python library and interaction with Blockchain
-- `steembase` - used to connect to the testnet
+- `getpass` - capture wif without showing it on the screen
+- `json` - generate `json_metadata`
+- `beem` - hive library and interaction with Blockchain
 
-We import the libraries, connect to the `testnet` and initialize the Hive class.
+We import the libraries, connect to your local `testnet`, and initialize the Hive class.
 
 ```python
 import random
 import string
-import steembase
-import steem
-
-steembase.chains.known_chains['HIVE'] = {
-    'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
-}
-
-#connect node and private posting key
-client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=['5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz'])
+import getpass
+import json
+from beem import Hive
+from beem.transactionbuilder import TransactionBuilder
+from beembase.operations import Comment
 ```
 
-Because this tutorial alters the blockchain we have to connect to the testnet. We also require the `private posting key` of the contributing author in order to commit the post which is why it is specified along with the `testnet` node. We have supplied a test account, `cdemo` to use with this tutorial.
+Because this tutorial alters the blockchain we have to connect to the testnet.  We also require the `private posting key` of the contributing author in order to commit the post which is why we're using a `testnet` node.
 
 #### 2. Variable input and format<a name="input"></a>
 
@@ -77,44 +70,62 @@ body = input('Post Body: ')
 taglimit = 2 #number of tags 1 - 5
 taglist = []
 for i in range(1, taglimit+1):
-	print(i)
-	tag = input(' Tag : ')
-	taglist.append(tag)
+  print(i)
+  tag = input(' Tag : ')
+  taglist.append(tag)
 ```
 
-The `tags` parameter needs to be in the form of a single string with the words split by an empty space, so we add a line to prepare that variable. We also use a random generator to create a new `permlink` for the post being created
+The `tags` parameter needs to be formatted within the `json_metadata` field as JSON.  We also use a random generator to create a new `permlink` for the post being created.
 
 ```python
-" ".join(taglist) #create string joined with empty spaces
-
 #random generator to create post permlink
 permlink = ''.join(random.choices(string.digits, k=10))
 ```
 
-The random generator is limited to 10 characters in this case but the permlink can be up to 256 bytes. If the permlink value is left empty then it auto creates a permlink based on the title of the post. The permlink is unique to the author only which means that multiple authors can have the same title for the thier post.
+The random generator is limited to 10 characters in this case but the permlink can be [up to 256 bytes]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MAX_PERMLINK_LENGTH' | relative_url }}).  The permlink is unique to the author only which means that multiple authors can have the same permlink for the their post.
 
 #### 3. Post submission and result<a name="submit"></a>
 
-The last step is to transmit the post through to the blockchain. This is done `post` method within the `commit` class. All the defined parameters are submitted with the function. As stated earlier in the tutorial, there are quite a few parameters for this function but for a basic post these 5 are the most important.
+The last step is to transmit the post through to the blockchain.  All the defined parameters are signed and broadcasted.  We also securely prompt for the posting key right before signing.
 
 ```python
-client.commit.post(title=title, body=body, author=author, tags=taglist, permlink=permlink)
+client = Hive('http://127.0.0.1:8091')
+tx = TransactionBuilder(blockchain_instance=client)
+tx.appendOps(Comment(**{
+  "parent_author": '',
+  "parent_permlink": taglist[0], # we use the first tag as the category
+  "author": author,
+  "permlink": permlink,
+  "title": title,
+  "body": body,
+  "json_metadata": json.dumps({"tags": taglist})
+}))
 
-print("Post created successfully")
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print("Post created successfully: " + str(broadcast_tx))
 ```
 
 A simple confirmation is printed on the screen if the post is committed successfully.
 
-You can also check on the [testportal](http://condenser.steem.vc/blog/@cdemo) for the post.
+You can also check on your local testnet using [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }}) for the post.
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started.html)
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-2.  `cd devportal/tutorials/python/10_submit_post`
-3.  `pip install -r requirements.txt`
-4.  `python index.py`
-5.  After a few moments, you should see a prompt for input in terminal screen.
+Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
 
+```bash
+docker run -d -p 8091:8091 inertia/tintoy:latest
+```
 
----
+For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
+
+1. [review dev requirements](getting_started.html)
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+2. `cd devportal/tutorials/python/10_submit_post`
+3. `pip install -r requirements.txt`
+4. `python index.py`
+5. After a few moments, you should see a prompt for input in terminal screen.

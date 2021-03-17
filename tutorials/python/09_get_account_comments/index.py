@@ -1,34 +1,33 @@
 import pprint
 from pick import pick
 # initialize Hive class
-from steem import Hive
+from beem import Hive
+from beem.discussions import Query, Discussions
 
-s = Hive()
+h = Hive()
+q = Query(limit=2, tag="")
+d = Discussions()
 
-query = {
-	"limit":5, #number of posts
-	"tag":"" #tag of posts
-}
 #author list from created post list to randomize account list
-posts = s.get_discussions_by_created(query)
+posts = d.get_discussions('created', q, limit=2)
 
 title = 'Please choose account: '
 options = []
 #accounts list
 for post in posts:
-	options.append(post["author"])
+  options.append(post["author"])
 
 # get index and selected account name
 option, index = pick(options, title)
 
-query2 = {
-	"limit":5, #number of comments
-	"start_author":option #selected user
-}
+# 5 comments from selected author
+q = Query(limit=5, start_author=option) 
 
 # get comments of selected account
-comments = s.get_discussions_by_comments(query2)
+comments = d.get_discussions('comments', q, limit=5)
 
 # print comment details for selected account
-pprint.pprint(comments)
-pprint.pprint("Selected: "+option)
+for comment in comments:
+  pprint.pprint(comment)
+pprint.pprint("Selected: " + option)
+

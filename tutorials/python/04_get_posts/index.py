@@ -1,9 +1,10 @@
 import pprint
 from pick import pick
 # initialize Hive class
-from steem import Hive
+from beem import Hive
+from beem.discussions import Query, Discussions
 
-s = Hive()
+h = Hive()
 
 title = 'Please choose filter: '
 #filters list
@@ -11,19 +12,22 @@ options = ['trending', 'hot', 'active', 'created', 'promoted']
 # get index and selected filter name
 option, index = pick(options, title)
 
-query = {
-	"limit":2, #number of posts
-	"tag":"" #tag of posts
-	}
+q = Query(limit=2, tag="")
+d = Discussions()
+count = 0
+
 #post list for selected query
-posts = {0: s.get_discussions_by_trending(query),
-		 1: s.get_discussions_by_hot(query),
-		 2: s.get_discussions_by_active(query),
-		 3: s.get_discussions_by_created(query),
-		 4: s.get_discussions_by_promoted(query)
+posts = {
+  0: d.get_discussions('trending', q, limit=2),
+  1: d.get_discussions('hot', q, limit=2),
+  2: d.get_discussions('active', q, limit=2),
+  3: d.get_discussions('created', q, limit=2),
+  4: d.get_discussions('promoted', q, limit=2)
 }
 
 # print post list for selected filter
-pprint.pprint(posts[index])
+for p in posts[index]:
+  print(("%d. " % (count + 1)) + str(p))
+  count += 1
 
-pprint.pprint("Selected: "+option)
+pprint.pprint("Selected: " + option)
