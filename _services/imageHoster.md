@@ -1,7 +1,7 @@
 ---
 title: ImageHoster
 position: 4
-canonical_url: imagehoster.html
+canonical_url: imageHoster.html
 ---
 # Definition
 
