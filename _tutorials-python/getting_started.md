@@ -1,27 +1,23 @@
 ---
 title: 'PY: Getting Started'
 position: 0
-description: "The official Hive library for Python is `steem-python`. It comes with a BIP38 encrypted wallet and a practical CLI utility called `steempy`."
+description: "One excellent Hive library for Python is `beem`.  It comes with a BIP38 encrypted wallet and a practical CLI utility called `beempy`."
 layout: full
 canonical_url: getting_started.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of these tutorials can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
-<br>
-
-
+---
+Full, runnable src of [all python tutorials](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python)).
 
 The library was designed to allow Python developers to easily access the network as well as build utilities and applications.
 
-Currently steem-python documentation is generated in the standard [pydoc format](https://steem.readthedocs.io/en/latest/).
+Currently beem documentation is generated in the standard [pydoc format](https://beem.readthedocs.io/en/latest/).
 
-Documentation is available at: [Official steem-python Docs](https://github.com/steemit/steem-python).
+Repository: [https://github.com/holgern/beem](https://github.com/holgern/beem).
 
 ---
 
 #### Dev requirements
 
 In our Python tutorials we recommend developers to be familiar with following requirements/libraries.
-
 
 * Python developer should be familiar with Python 3.x and above
 
@@ -37,6 +33,3 @@ In our Python tutorials we recommend developers to be familiar with following re
 To get started with Python, you can also check official [Python installation](https://wiki.python.org/moin/BeginnersGuide/Download) and [Python tutorial](https://docs.python.org/3/tutorial/).
 
 To get started with our Python tutorials, checkout our [first tutorial here](get_posts.html).
-
-
----

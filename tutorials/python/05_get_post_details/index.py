@@ -1,30 +1,33 @@
 import pprint
 from pick import pick
 # initialize Hive class
-from steem import Hive
+from beem import Hive
+from beem.discussions import Query, Discussions
+from beem.comment import Comment
 
-s = Hive()
+h = Hive()
 
-query = {
-	"limit":5, #number of posts
-	"tag":"" #tag of posts
-	}
+q = Query(limit=2, tag="")
+d = Discussions()
+
 #post list for selected query
-posts = s.get_discussions_by_created(query)
+posts = d.get_discussions('created', q, limit=2)
 
 title = 'Please choose post: '
 options = []
+
 #posts list
 for post in posts:
-	options.append(post["author"]+'/'+post["permlink"])
+  options.append(post["author"] + '/' + post["permlink"])
+
 # get index and selected filter name
 option, index = pick(options, title)
 
-# posts[index] would also show post details
-# but in this tutorial we are showing usage of get_content of post where author and permlink is known
+details = Comment(option)
 
-details = s.get_content(posts[index]["author"],posts[index]["permlink"])
-
-# print post details for selected post
-pprint.pprint(details)
-pprint.pprint("Selected: "+option)
+# print post body for selected post
+# Also see: https://beem.readthedocs.io/en/latest/beem.comment.html#beem.comment.Comment
+pprint.pprint('Depth: ' + str(details.depth))
+pprint.pprint('Author: ' + details.author)
+pprint.pprint('Category: ' + details.category)
+pprint.pprint('Body: ' + details.body)

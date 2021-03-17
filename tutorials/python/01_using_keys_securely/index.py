@@ -1,15 +1,16 @@
 # initialize Hive class
-from steem import Hive
+from beem import Hive
+from beem.account import Account
 
 # defining private keys inside source code is not secure way but possible
-s = Hive(keys=['<private_posting_key>', '<private_active_key>'])
+h = Hive(keys=['<private_posting_key>', '<private_active_key>'])
+a = Account('demo', blockchain_instance=h)
 
 # above will allow accessing Commit methods such as
 # demo account sending 0.001 HIVE to demo1 account
 
-s.commit.transfer('demo','0.001','HIVE','memo text','demo1')
+a.transfer('demo1', '0.001', 'HIVE', memo='memo text')
 
 # if private keys are not defined
 # accessing Wallet methods are also possible and secure way
-s.wallet.get_active_key_for_account('demo')
-
+h.wallet.getActiveKeyForAccount('demo')

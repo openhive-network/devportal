@@ -1,43 +1,29 @@
-import steembase
-import steem
-from pick import pick
 import pprint
+from pick import pick
+import getpass
+from beem import Hive
+from beem.account import Account
+from beem.witness import Witness, WitnessesVotedByAccount
 
-# connect to testnet
-steembase.chains.known_chains['HIVE'] = {
-    'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
-}
+# capture user information
+account = input('Enter username: ')
+wif_active_key = getpass.getpass('Active Key: ')
 
-#capture user information
-username = input('Enter username: ') #demo account: cdemo
-wif = input('Enter private ACTIVE key: ') #demo account: 5KaNM84WWSqzwKzY82fXPaUW43idbLnPqf5SfjGxLfw6eV2kAP3
+# connect node and private active key
+client = Hive('http://127.0.0.1:8091', keys=[wif_active_key])
 
-#connect node and private active key
-client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
+# check valid user
+account = Account(account, blockchain_instance=client)
 
-#connect to production server with active key
-# client = steem.Hive(keys=[wif])
-
-#check valid user
-userinfo = client.get_account(username)
-if(userinfo is None) :
-    print('Oops. Looks like user ' + username + ' doesn\'t exist on this chain!')
-    exit()
-
-#print list of active witnesses
-print('ACTIVE WITNESSES')
-witness_list = client.get_active_witnesses()
-pprint.pprint(witness_list)
-
-#print list of currently voted for witnesses
+# print list of currently voted for witnesses
 print('\n' + 'WITNESSES CURRENTLY VOTED FOR')
-vote_list = userinfo['witness_votes']
-pprint.pprint(vote_list)
+vote_list = WitnessesVotedByAccount(account.name, blockchain_instance=client)
+for witness in vote_list:
+  pprint.pprint(witness.account.name)
 
 input('Press enter to continue')
 
-#choice of action
+# choice of action
 title = ('Please choose action')
 options = ['VOTE', 'UNVOTE', 'CANCEL']
 # get index and selected permission choice
@@ -50,13 +36,11 @@ if (option == 'CANCEL') :
 if (option == 'VOTE') :
     # vote process
     witness_vote = input('Please enter the witness name you wish to vote for: ')
-    if witness_vote not in witness_list :
-        print('\n' + witness_vote + ' does not appear on the available witness list')
-        exit()
+    witness = Witness(witness_vote, blockchain_instance=client)
     if witness_vote in vote_list :
         print('\n' + witness_vote + ' cannot be voted for more than once')
         exit()
-    client.approve_witness(witness=witness_vote, account=username, approve=True)
+    account.approvewitness(witness_vote)
     print('\n' + witness_vote + ' has been successfully voted for')
 else :
     # unvote process
@@ -64,5 +48,6 @@ else :
     if witness_unvote not in vote_list :
         print('\n' + witness_unvote + ' is not in your voted for list')
         exit()
-    client.disapprove_witness(witness=witness_unvote, account=username)
+    account.disapprovewitness(witness_unvote)
     print('\n' + witness_unvote + ' has been removed from your voted for list')
+

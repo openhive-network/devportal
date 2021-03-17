@@ -1,51 +1,52 @@
-import steembase
-import steem
+import beem
+import getpass
+from beem import Hive
+from beem.account import Account
+from beem.comment import Comment
+from beem.transactionbuilder import TransactionBuilder
+from beembase import operations
 from diff_match_patch import diff_match_patch
 
-# connect to testnet
-steembase.chains.known_chains['HIVE'] = {
-    'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
-}
-
 #capture user information
-username = input('Enter username: ') #demo account: cdemo
-wif = input('Enter private POSTING key: ') #demo account: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-
-#connect node and private active key
-client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
-
-#check valid username
-userinfo = client.get_account(username)
-if(userinfo is None) :
-    print('Oops. Looks like user ' + username + ' doesn\'t exist on this chain!')
-    exit()
-
 post_author = input('Please enter the AUTHOR of the post you want to edit: ')
+
+#connect node
+client = Hive('http://127.0.0.1:8091')
+
+#check valid post_author
+try:
+  userinfo = Account(post_author, blockchain_instance=client)
+except:
+  print('Oops. Looks like user ' + post_author + ' doesn\'t exist on this chain!')
+  exit()
+
 post_permlink = input('Please enter the PERMLINK of the post you want to edit: ')
 
 #get details of selected post
-details = client.get_content(post_author, post_permlink)
+try:
+  details = beem.comment.Comment(post_author + '/' + post_permlink)
+except:
+  print('Oops. Looks like ' + post_author + '/' + post_permlink + ' doesn\'t exist on this chain!')
+  exit()
 
-print('\n' + 'Title: ' + details['title'])
-o_body = details['body']
+print('\n' + 'Title: ' + details.title)
+o_body = details.body
 print('Body:' + '\n' + o_body + '\n')
 
 n_body = input('Please enter new post content:' + '\n')
 
 #initialise the diff match patch module
-# dmp = dmp_module.diff_match_patch()
 dmp = diff_match_patch()
 
 #Check for null input
 if (n_body == '') :
-    print('\n' + 'No new post body supplied. Operation aborted')
-    exit()
+  print('\n' + 'No new post body supplied. Operation aborted')
+  exit()
 else :
-    # Check for equality
-    if (o_body == n_body) :
-        print('\n' + 'No changes made to post body. Operation aborted')
-        exit()
+  # Check for equality
+  if (o_body == n_body) :
+    print('\n' + 'No changes made to post body. Operation aborted')
+    exit()
 
 #check for differences in the text field
 diff = dmp.diff_main(o_body, n_body)
@@ -57,12 +58,25 @@ patch = dmp.patch_make(o_body, diff)
 patch_body = dmp.patch_toText(patch)
 #check patch length
 if (len(patch_body) < len(o_body)) :
-    new_body = patch_body
+  new_body = patch_body
 else :
-    new_body = n_body
-    
-#commit post to blockchain with all old values and new body text
-client.commit.post(title=details['title'], body=new_body, author=details['author'], permlink=details['permlink'],
-    json_metadata=details['json_metadata'], reply_identifier=(details['parent_author'] + '/' + details['parent_permlink']))
+  new_body = n_body
 
-print('\n' + 'Content of the post has been successfully updated')
+tx = TransactionBuilder(blockchain_instance=client)
+tx.appendOps(operations.Comment(**{
+  "parent_author": details.parent_author,
+  "parent_permlink": details.parent_permlink,
+  "author": details.author,
+  "permlink": details.permlink,
+  "title": details.title,
+  "body": new_body,
+  "json_metadata": details.json_metadata
+}))
+
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print('\n' + 'Content of the post has been successfully updated: ' + str(broadcast_tx))
+
