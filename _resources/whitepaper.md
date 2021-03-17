@@ -1,6 +1,7 @@
 ---
 title: Whitepaper
 position: 2
+canonical_url: whitepaper.html
 ---
 
 The Hive Whitepaper provides a more in depth technical analysis of how the Hive blockchain operates.

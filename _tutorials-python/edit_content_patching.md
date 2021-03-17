@@ -4,13 +4,10 @@ position: 12
 description: "How to edit post content with diff_match_patch using Python."
 layout: full
 canonical_url: edit_content_patching.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/tutorials/12_edit_content_patching) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
-<br>
+---
+Full, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/12_edit_content_patching) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python-12_edit_content_patching.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python/12_edit_content_patching)).
 
-
-
-In this tutorial we show you how to patch and update posts/comments on the **Hive** blockchain using the `commit` class found within the [steem-python](https://github.com/steemit/steem-python) library.
+In this tutorial we show you how to patch and update posts/comments on the **Hive** blockchain using the `commit` class found within the [beem](https://github.com/holgern/beem) library.
 
 ## Intro
 
@@ -24,74 +21,73 @@ Being able to patch a post is critical to save resources on Hive. The Hive pytho
 
 ## Steps
 
-1.  [**App setup**](#setup) - Library install and import. Connection to testnet
-1.  [**User information and steem node**](#userinfo) - Input user information and connection to Hive node
-1.  [**Post to update**](#post) - Input and retrieve post information
-1.  [**Patching**](#patch) - Create the patch to update the post
-1.  [**New post commit**](#commit) - Commit the post to the blockchain
+1. [**App setup**](#setup) - Library install and import. Connection to testnet
+1. [**Post to update**](#post) - Input and retrieve post information
+1. [**Patching**](#patch) - Create the patch to update the post
+1. [**New post commit**](#commit) - Commit the post to the blockchain
 
 #### 1. App setup <a name="setup"></a>
 
 In this tutorial we use 2 packages:
 
-- `steem` - steem-python library and interaction with Blockchain
+- `beem` - hive library and interaction with Blockchain
 - `diff_match_patch` - used to compute the difference between two text fields to create a patch
 
-We import the libraries and connect to the `testnet`.
+We import the libraries.
 
 ```python
-import steembase
-import steem
+import beem
+import getpass
+from beem import Hive
+from beem.account import Account
+from beem.comment import Comment
+from beem.transactionbuilder import TransactionBuilder
+from beembase import operations
 from diff_match_patch import diff_match_patch
-
-steembase.chains.known_chains['HIVE'] = {
-    'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
-}
 ```
 
 Because this tutorial alters the blockchain we connect to a testnet so we don't create spam on the production server.
 
-#### 2. User information and steem node <a name="userinfo"></a>
-
 We require the `private posting key` of the user in order for the transfer to be committed to the blockchain. This is why we are using a testnet. The values are supplied via the terminal/console before we initialise the steem class. There are some demo accounts available but we encourage you to create your own accounts on this testnet and create balances you can claim; it's good practice.
 
-```python
-#capture user information
-username = input('Enter username: ') #demo account: cdemo
-wif = input('Enter private POSTING key: ') #demo account: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
+#### 2. Post to update <a name="post"></a>
 
-#connect node and private active key
-client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=[wif])
-```
-
-#### 3. Post to update <a name="post"></a>
-
-The user inputs the author and permlink of the post that they wish to edit. It should be noted that a post cannot be patched once it has been archived. We suggest referring to the `submit post` tutorial to create a new post before trying the patch process.
+The user inputs the author and permlink of the post that they wish to edit.  See the [`submit post`]({{ '/tutorials-python/submit_post.html' | relative_url }}) tutorial to create a new post before trying the patch process.
 
 ```python
 #check valid username
-userinfo = client.get_account(username)
-if(userinfo is None) :
-    print('Oops. Looks like user ' + username + ' doesn\'t exist on this chain!')
-    exit()
-
+#capture user information
 post_author = input('Please enter the AUTHOR of the post you want to edit: ')
+
+#connect node
+client = Hive('http://127.0.0.1:8091')
+
+#check valid post_author
+try:
+  userinfo = Account(post_author, blockchain_instance=client)
+except:
+  print('Oops. Looks like user ' + post_author + ' doesn\'t exist on this chain!')
+  exit()
+
 post_permlink = input('Please enter the PERMLINK of the post you want to edit: ')
 
 #get details of selected post
-details = client.get_content(post_author, post_permlink)
+try:
+  details = beem.comment.Comment(post_author + '/' + post_permlink)
+except:
+  print('Oops. Looks like ' + post_author + '/' + post_permlink + ' doesn\'t exist on this chain!')
+  exit()
 
-print('\n' + 'Title: ' + details['title'])
-o_body = details['body']
+print('\n' + 'Title: ' + details.title)
+o_body = details.body
 print('Body:' + '\n' + o_body + '\n')
 
 n_body = input('Please enter new post content:' + '\n')
 ```
 
-The user also inputs the updated text in the console/terminal. This will then give us the two text fields to compare.
+The user also inputs the updated text in the console/terminal.  This will then give us the two text fields to compare.
 
-#### 4. Patching <a name="patch"></a>
+#### 3. Patching <a name="patch"></a>
 
 The module is initiated and the new post text is checked for validity.
 
@@ -101,13 +97,13 @@ dmp = diff_match_patch()
 
 #Check for null input
 if (n_body == '') :
-    print('\n' + 'No new post body supplied. Operation aborted')
-    exit()
+  print('\n' + 'No new post body supplied. Operation aborted')
+  exit()
 else :
-    # Check for equality
-    if (o_body == n_body) :
-        print('\n' + 'No changes made to post body. Operation aborted')
-        exit()
+  # Check for equality
+  if (o_body == n_body) :
+    print('\n' + 'No changes made to post body. Operation aborted')
+    exit()
 ```
 
 The `diff` is calculated and a test is done to check the `diff` length against the total length of the new text to determine if it will be better to patch or just replace the text field. The value to be sent to the blockchain is then assigned to the `new_body` parameter.
@@ -117,41 +113,50 @@ The `diff` is calculated and a test is done to check the `diff` length against t
 diff = dmp.diff_main(o_body, n_body)
 #Reduce the number of edits by eliminating semantically trivial equalities.
 dmp.diff_cleanupSemantic(diff)
+#create patch
+patch = dmp.patch_make(o_body, diff)
+#create new text based on patch
+patch_body = dmp.patch_toText(patch)
 #check patch length
-if (dmp.diff_levenshtein(diff) < len(o_body)) :
-    #create patch
-    patch = dmp.patch_make(o_body, diff)
-    #create new text based on patch
-    patch_body = dmp.patch_apply(patch, o_body)
-    new_body = patch_body[0]
+if (len(patch_body) < len(o_body)) :
+  new_body = patch_body
 else :
-    new_body = n_body
+  new_body = n_body
 ```
 
-#### 5. New post commit <a name="commit"></a>
+#### 4. New post commit <a name="commit"></a>
 
 The only new parameter is the changed body text. All the other parameters to do a commit is assigned directly from the original post entered by the user.
 
 ```python
-#commit post to blockchain with all old values and new body text
-client.commit.post(title=details['title'], body=new_body, author=details['author'], permlink=details['permlink'],
-    json_metadata=details['json_metadata'], reply_identifier=(details['parent_author'] + '/' + details['parent_permlink']))
+tx = TransactionBuilder(blockchain_instance=client)
+tx.appendOps(operations.Comment(**{
+  "parent_author": details.parent_author,
+  "parent_permlink": details.parent_permlink,
+  "author": details.author,
+  "permlink": details.permlink,
+  "title": details.title,
+  "body": new_body,
+  "json_metadata": details.json_metadata
+}))
 
-print('\n' + 'Content of the post has been successfully updated')
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print('\n' + 'Content of the post has been successfully updated: ' + str(broadcast_tx))
 ```
 
 A simple confirmation is displayed on the screen for a successful commit.
 
-We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the [testnet portal](http://condenser.steem.vc/).
+We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the [testnet portal](http://testnet-condenser.hive.blog/).
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started.html)
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/python/12_edit_content_patching`
-1.  `pip install -r requirements.txt`
-1.  `python index.py`
-1.  After a few moments, you should see a prompt for input in terminal screen.
-
-
----
+1. [review dev requirements](getting_started.html)
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/python/12_edit_content_patching`
+1. `pip install -r requirements.txt`
+1. `python index.py`
+1. After a few moments, you should see a prompt for input in terminal screen.

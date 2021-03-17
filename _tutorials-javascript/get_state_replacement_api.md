@@ -5,8 +5,6 @@ description: "This is a list of replacement API calls for each of the different 
 layout: full
 canonical_url: get_state_replacement_api.html
 ---
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/tutorials/34_get_state_replacement_api) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript).</span>
-<br>
 Full, runnable src of [Get State Replacement Api](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/34_get_state_replacement_api) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-34_get_state_replacement_api.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/34_get_state_replacement_api)).
 
 ## Intro
@@ -205,7 +203,7 @@ In order to get the full compliment of account information for a specified accou
 databaseAPI.call('get_discussions_by_trending',[{limit:20}])
 ```
 
-While `getState()` truncates the post body at 1024 characters, `getDiscussionsBy` will not truncate the body unless you provide a truncate_body value in the query structure. `getDiscussionsBy` can be executed by trending, created, active, cashout, payout, votes, children, hot, feed, blog or comments. This provides a wide range by which the posts can be called depending on the specific needs. Within the `query` parameter specific tags, filters, authors and permlinks can be provided. The limit can also be increased to a maximum of 100 posts where `getState` is limited to the first 20. You can also refer to the [get post](https://developers.hive.io/tutorials-javascript/get_posts) tutorial for a simplified database call for posts. The detail provided by this statement can be used to track pending payouts, curator rewards and votes for the trending, or specified posts.
+While `getState()` truncates the post body at 1024 characters, `getDiscussionsBy` will not truncate the body unless you provide a truncate_body value in the query structure. `getDiscussionsBy` can be executed by trending, created, active, cashout, payout, votes, children, hot, feed, blog or comments. This provides a wide range by which the posts can be called depending on the specific needs. Within the `query` parameter specific tags, filters, authors and permlinks can be provided. The limit can also be increased to a maximum of 100 posts where `getState` is limited to the first 20. You can also refer to the [get post]({{ '/tutorials-javascript/get_posts' | relative_url }}) tutorial for a simplified database call for posts. The detail provided by this statement can be used to track pending payouts, curator rewards and votes for the trending, or specified posts.
 
 - Expected result:
 
@@ -371,7 +369,7 @@ The `getTrendingTags` function calls the same information as with `getState` but
 databaseAPI.call('get_trending_tags',[startingValue, limit])
 ```
 
-This information can be gained by the using the same method as for `getState('tags')` and then only displaying the `name` object of the array of tags provided. You can refer to the tutorial [search tags](https://developers.hive.io/tutorials-javascript/search_tags) for a detailed example of this.
+This information can be gained by the using the same method as for `getState('tags')` and then only displaying the `name` object of the array of tags provided. You can refer to the tutorial [search tags]({{ '/tutorials-javascript/search_tags' | relative_url }}) for a detailed example of this.
 
 - Expected result:
 

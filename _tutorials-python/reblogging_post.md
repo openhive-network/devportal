@@ -1,61 +1,61 @@
 ---
 title: 'PY: Reblogging Post'
 position: 14
-description: "We will show how to reblog or resteem post using Python, with username and posting private key."
+description: "We will show how to reblog or reblog post using Python, with username and posting private key."
 layout: full
 canonical_url: reblogging_post.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/tutorials/14_reblogging_post) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
-<br>
+---
+Full, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/14_reblogging_post) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python-14_reblogging_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python/14_reblogging_post)).
 
-
-
-Tutorial will also explain and show you how to sign/broadcast transaction on **Hive** blockchain using the [steem-python](https://github.com/steemit/steem-python) library.
+Tutorial will also explain and show you how to sign/broadcast transaction on **Hive** blockchain using the [beem](https://github.com/holgern/beem) library.
 
 ## Intro
 
-Hive python library has built-in function to commit transaction and broadcast it to the network. 
+Beem has built-in functionality to commit transaction and broadcast it to the network. 
 
 ## Steps
 
-1.  [**App setup**](#app-setup) - Library install and import
-1.  [**Post list**](#post-list) - List of posts to select from trending filter 
-1.  [**Enter user credentials**](#credentials-list) - Enter user credentails to sign transaction
+1. [**App setup**](#app-setup) - Library install and import
+1. [**Post list**](#post-list) - List of posts to select from trending filter 
+1. [**Enter user credentials**](#credentials-list) - Enter user credentails to sign transaction
 
 #### 1. App setup <a name="app-setup"></a>
 
-In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
+In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `beem` - hive library, interaction with Blockchain. `pprint` - print results in better format.
 
-First we import all three library and initialize Hive class
+First we import all three library and initialize Hive class:
 
 ```python
-    import pprint
-    from pick import pick
-    # initialize Hive class
-    from steem import Hive
+import pprint
+from pick import pick
+import getpass
+import json
+# initialize Hive class
+from beem import Hive
+from beem.discussions import Query, Discussions
+from beem.comment import Comment
+from beem.transactionbuilder import TransactionBuilder
+from beembase.operations import Custom_json
 
-    s = Hive()
+hive = Hive(['http://127.0.0.1:8091'])
 ```
 
 #### 2. Post list <a name="post-list"></a>
 
-
 Next we will fetch and make list of accounts and setup `pick` properly.
 
 ```python
-    query = {
-      "limit":5, #number of posts
-      "tag":"" #tag of posts
-    }
-    # post list from trending post list
-    posts = s.get_discussions_by_trending(query)
+q = Query(limit=5, tag="")
+d = Discussions()
 
-    title = 'Please choose post to reblog: '
-    options = []
-    # post list
-    for post in posts:
-      options.append('@'+post["author"]+'/'+post["permlink"])
+#author list from hot post list
+posts = d.get_discussions('hot', q, limit=5)
 
+title = 'Please choose post to reblog: '
+options = []
+# post list
+for post in posts:
+  options.append('@' + post["author"] + '/' + post["permlink"])
 ```
 
 This will show us list of posts to select in terminal/command prompt. And after selection we will get formatted post as an `option` variable.
@@ -65,32 +65,49 @@ This will show us list of posts to select in terminal/command prompt. And after 
 Next in order to sign transaction, application asks for username and posting private key to sign transaction and broadcast it.
 
 ```python
-  # get index and selected post
-  option, index = pick(options, title)
-  pprint.pprint("You selected: "+option)
+# get index and selected post
+option, index = pick(options, title)
+pprint.pprint("You selected: " + option)
 
-  account = input("Enter your username? ")
-  wif = input("Enter your Posting private key? ")
+comment = Comment(option, blockchain_instance=hive)
 
-  # commit or build transaction
-  c = Commit(steem=Hive(keys=[wif]))
+account = input("Enter your username? ")
 
-  # broadcast transaction
-  c.resteem(option, account=account)
+tx = TransactionBuilder(blockchain_instance=hive)
+tx.appendOps(Custom_json(**{
+  'required_auths': [],
+  'required_posting_auths': [account],
+  'id': 'reblog',
+  'json': json.dumps(['reblog', {
+    'account': account,
+    'author': comment.author,
+    'permlink': comment.permlink
+  }])
+}))
 
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print("Reblogged successfully: " + str(broadcast_tx))
 ```
 
-
-That's it, if transaction is successful you shouldn't see any error messages, otherwise you will be notified.
+If transaction is successful you shouldn't see any error messages, otherwise you will be notified.
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started.html)
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/python/14_reblogging_post`
-1.  `pip install -r requirements.txt`
-1.  `python index.py`
-1.  After a few moments, you should see output in terminal/command prompt screen.
+Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
 
+```bash
+docker run -d -p 8091:8091 inertia/tintoy:latest
+```
 
----
+For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
+
+1. [review dev requirements](getting_started.html)
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/python/14_reblogging_post`
+1. `pip install -r requirements.txt`
+1. `python index.py`
+1. After a few moments, you should see output in terminal/command prompt screen.

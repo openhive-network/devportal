@@ -1,30 +1,30 @@
 import pprint
 from pick import pick
 # initialize Hive class
-from steem import Hive
+from beem import Hive
+from beem.discussions import Query, Discussions
+from beem.vote import ActiveVotes
 
-s = Hive()
+h = Hive()
+q = {"limit": 5, "tag": "", "before_date": None}
+d = Discussions()
 
-query = {
-	"limit":5, #number of posts
-	"tag":"" #tag of posts
-	}
 #post list for selected query
-posts = s.get_discussions_by_active(query)
+posts = d.get_discussions('hot', q, limit=5)
 
 title = 'Please choose post: '
 options = []
+
 #posts list
 for post in posts:
-	options.append(post["author"]+'/'+post["permlink"])
+	options.append(post["author"] + '/' + post["permlink"])
+
 # get index and selected filter name
 option, index = pick(options, title)
 
-# posts[index] would also have active voters info
-# but in this tutorial we are showing usage of get_active_votes of post where author and permlink is known/selected
+voters = ActiveVotes(option)
 
-voters = s.get_active_votes(posts[index]["author"],posts[index]["permlink"])
+# print voters list for selected post
+voters.printAsTable()
+pprint.pprint("Selected: " + option)
 
-# print post details for selected post
-pprint.pprint(voters)
-pprint.pprint("Selected: "+option)

@@ -1,4 +1,3 @@
-steem
-steembase
+beem
 random
 string

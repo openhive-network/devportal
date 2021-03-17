@@ -1,6 +1,7 @@
 ---
 title: HiveSigner
 position: 2
+canonical_url: hivesigner.html
 ---
 
 **What is HiveSigner?**
@@ -27,6 +28,6 @@ A full breakdown of OAuth2 and how it applies to Hive and HiveSigner can be foun
 **Useful Links**
 
 *   [HiveSigner Repo](https://github.com/ledgerconnect/hivesigner)
-*   [Community Resources]({{ '/resources/#community-hivesigner-libs' | relative_url }})
+*   [Community Resources]({{ '/resources/#resources-hivesigner-libs' | relative_url }})
 
 For additional material you can refer to the original Hive [blog](https://hive.blog/hive/@good-karma/hivesigner-released-and-ready) post by [@good-karma](https://hive.blog/)

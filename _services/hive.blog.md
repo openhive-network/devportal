@@ -1,6 +1,7 @@
 ---
 title: hive.blog
 position: 1
+canonical_url: hive.blog.html
 ---
 
 #### Hive.blog endpoints

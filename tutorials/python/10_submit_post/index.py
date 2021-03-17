@@ -1,16 +1,10 @@
 import random
 import string
-import steembase
-import steem
-
-# connect to testnet
-steembase.chains.known_chains['HIVE'] = {
-    'chain_id': '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
-    'prefix': 'STX', 'hive_symbol': 'HIVE', 'hbd_symbol': 'HBD', 'vests_symbol': 'VESTS'
-}
-
-#connect node and private posting key
-client = steem.Hive(nodes=['https://testnet.steem.vc'], keys=['5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz'])
+import getpass
+import json
+from beem import Hive
+from beem.transactionbuilder import TransactionBuilder
+from beembase.operations import Comment
 
 #capture variables
 author = input('Username: ')
@@ -21,14 +15,29 @@ body = input('Post Body: ')
 taglimit = 2 #number of tags 1 - 5
 taglist = []
 for i in range(1, taglimit+1):
-	print(i)
-	tag = input(' Tag : ')
-	taglist.append(tag)
-" ".join(taglist) #create string joined with empty spaces
+  print(i)
+  tag = input(' Tag : ')
+  taglist.append(tag)
 
 #random generator to create post permlink
 permlink = ''.join(random.choices(string.digits, k=10))
 
-client.commit.post(title=title, body=body, author=author, tags=taglist, permlink=permlink)
+client = Hive('http://127.0.0.1:8091')
+tx = TransactionBuilder(blockchain_instance=client)
+tx.appendOps(Comment(**{
+  "parent_author": '',
+  "parent_permlink": taglist[0], # we use the first tag as the category
+  "author": author,
+  "permlink": permlink,
+  "title": title,
+  "body": body,
+  "json_metadata": json.dumps({"tags": taglist})
+}))
 
-print("Post created successfully")
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print("Post created successfully: " + str(broadcast_tx))
+

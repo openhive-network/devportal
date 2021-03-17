@@ -1,6 +1,7 @@
 ---
 title: Overview
 position: 1
+canonical_url: overview.html
 ---
 
 Hive has an active developer community that is constantly innovating on the blockchain. 

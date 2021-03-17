@@ -1,6 +1,7 @@
 ---
 title: Tools
 position: 6
+canonical_url: tools.html
 ---
 
 **ChainSync** - [https://github.com/aaroncox/chainsync](https://github.com/aaroncox/chainsync)
@@ -21,7 +22,7 @@ A private Microsoft SQL server database with Hive blockchain data, subscription 
 
 ---
 
-**eSync** - [https://github.com/eHiveApp/esync](https://github.com/eHiveApp/esync)
+**eSync** - [https://github.com/ecency/esync](https://github.com/ecency/esync)
 
 eSync extracts Hive blockchain data and saves into Mongodb, written in Nodejs.
 

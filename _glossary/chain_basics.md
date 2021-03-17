@@ -2,6 +2,7 @@
 title: Chain Basics
 position: 1
 description: Dictionary of Chain Basic Terms
+canonical_url: chain_basics.html
 ---
 
 <table>

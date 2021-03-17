@@ -56,7 +56,7 @@ In this case. `dsf0yxlox2d` will be our parent permlink and `@demo` will be the 
 #### 3. Add content<a name="add-content"></a>
 
 We've added the parent post info and `Some amazing content` in our UI via the keyboard.
-![comment_reply_user_input.png](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/11_submit_comment_reply/images/comment_reply_user_input.png)
+![comment_reply_user_input.png](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/11_submit_comment_reply/images/comment_reply_user_input.png)
 
 #### 4. Get Comment Data<a name="get-comment"></a>
 
@@ -131,11 +131,11 @@ client.broadcast.comment(comment, privateKey).then(
 ```
 
 A successful comment will output something like the following to the console:
-![successful console output](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/tutorials/11_submit_comment_reply/images/comment_reply_successful_console_output.png)
+![successful console output](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/11_submit_comment_reply/images/comment_reply_successful_console_output.png)
 
 That's all there is to it.
 
-The `broadcast` operation has more to offer than just committing a post/comment to the blockchain. It provides a mulititude of options that can accompany this commit. The max payout and percent of hive dollars can be set. When authors don't want all of the benifits from a post, they can set the payout factors to zero or beneficiaries can be set to receive part of the rewards. You can also set whether votes are allowed or not. The broadcast to the blockchain can be modified to meet the exact requirements of the author. More information on how to use the `broadcast` operation can be found on the Hive [Devportal](https://developers.hive.io/apidefinitions/#apidefinitions-broadcast-ops-comment) with a list of the available broadcast options under the specific [Appbase API](https://developers.hive.io/apidefinitions/#broadcast_ops_comment_options)
+The `broadcast` operation has more to offer than just committing a post/comment to the blockchain. It provides a mulititude of options that can accompany this commit. The max payout and percent of hive dollars can be set. When authors don't want all of the benifits from a post, they can set the payout factors to zero or beneficiaries can be set to receive part of the rewards. You can also set whether votes are allowed or not. The broadcast to the blockchain can be modified to meet the exact requirements of the author. More information on how to use the `broadcast` operation can be found on the Hive [Devportal]({{ '/apidefinitions/#apidefinitions-broadcast-ops-comment' | relative_url }}) with a list of the available broadcast options under the specific [Appbase API]({{ '/apidefinitions/#broadcast_ops_comment_options' | relative_url }})
 
 ### To Run the tutorial
 

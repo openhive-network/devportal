@@ -4,60 +4,64 @@ position: 5
 description: "Get post details from list of posts from the blockchain with `created` filter and tag then display selected post details."
 layout: full
 canonical_url: get_post_details.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/tutorials/05_get_post_details) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python).</span>
-<br>
+---
+Full, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/05_get_post_details) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python-05_get_post_details.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python/05_get_post_details)).
 
-
-
-We will explain and show you how to access the **Hive** blockchain using the [steem-python](https://github.com/steemit/steem-python) library to fetch list of posts filtered by a _filter_ and _tag_
+We will explain and show you how to access the **Hive** blockchain using the [beem](https://github.com/holgern/beem) library to fetch list of posts filtered by a _filter_ and _tag_.
 
 ## Intro
 
 Hive python library has built-in function to get details of post with author and permlink as an argument. Since we don't have predefined post or author/permlink. We will fetch post list from previous tutorial and give option to choose one option/post to get its details. `get_content` function fetches latest state of the post and delivers its details. Note that `get_discussions_by_created` filter is used for fetching 5 posts which by default contains details of each post, but for purpose of this tutorial we will showcase `get_content` function to fetch details.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }})
+* [condenser_api.get_content]({{ '/apidefinitions/#condenser_api.get_content' | relative_url }})
+
 ## Steps
 
-1.  [**App setup**](#app-setup) - Library install and import
-1.  [**Post list**](#post-list) - List of posts to select from created filter 
-1.  [**Post details**](#post-details) - Get post details for selected post
-1.  [**Print output**](#print-output) - Print results in output
+1. [**App setup**](#app-setup) - Library install and import
+1. [**Post list**](#post-list) - List of posts to select from created filter 
+1. [**Post details**](#post-details) - Get post details for selected post
+1. [**Print output**](#print-output) - Print results in output
 
 #### 1. App setup <a name="app-setup"></a>
 
-In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `steem` - steem-python library, interaction with Blockchain. `pprint` - print results in better format.
+In this tutorial we use 3 packages, `pick` - helps us to select filter interactively. `beem` - hive library, interaction with Blockchain. `pprint` - print results in better format.
 
 First we import all three library and initialize Hive class
 
 ```python
-    import pprint
-    from pick import pick
-    # initialize Hive class
-    from steem import Hive
+import pprint
+from pick import pick
+# initialize Hive class
+from beem import Hive
+from beem.discussions import Query, Discussions
+from beem.comment import Comment
 
-    s = Hive()
+h = Hive()
 ```
 
 #### 2. Post list <a name="post-list"></a>
 
-
 Next we will fetch and make list of posts and setup `pick` properly.
 
 ```python
-    query = {
-        "limit":5, #number of posts
-        "tag":"" #tag of posts
-        }
-    #post list for selected query
-    posts = s.get_discussions_by_created(query)
+q = Query(limit=2, tag="")
+d = Discussions()
 
-    title = 'Please choose post: '
-    options = []
-    #posts list options
-    for post in posts:
-        options.append(post["author"]+'/'+post["permlink"])
-    # get index and selected filter name
-    option, index = pick(options, title)
+#post list for selected query
+posts = d.get_discussions('created', q, limit=2)
+
+title = 'Please choose post: '
+options = []
+
+#posts list
+for post in posts:
+  options.append(post["author"] + '/' + post["permlink"])
+
+# get index and selected filter name
+option, index = pick(options, title)
 ```
 
 This will show us list of posts to select in terminal/command prompt. And after selection we will get index and post name to `index` and `option` variables.
@@ -67,104 +71,44 @@ This will show us list of posts to select in terminal/command prompt. And after 
 Next we will fetch post details with `get_content`. By default `get_discussions_by_created` function already contains post details, but for this tutorial purpose we will ignore all other fields but only use `author` and `permlink` fields to fetch fresh post details.
 
 ```python
-
-details = s.get_content(posts[index]["author"],posts[index]["permlink"])
+details = Comment(option)
 ```
-
 
 #### 4. Print output <a name="print-output"></a>
 
 Next, we will print result, details of selected post.
 
 ```python
-    # print post details for selected post
-    pprint.pprint(details)
-    pprint.pprint("Selected: "+option)
+# print post body for selected post
+pprint.pprint('Depth: ' + str(details.depth))
+pprint.pprint('Author: ' + details.author)
+pprint.pprint('Category: ' + details.category)
+pprint.pprint('Body: ' + details.body)
 ```
 
-The example of result returned from the service is a `JSON` object with the following properties:
+Also see: [beem.comment.Comment](https://beem.readthedocs.io/en/latest/beem.comment.html?highlight=comment#beem.comment.Comment)
 
-```json
-{
-    "id": 37338948,
-    "author": "steemitblog",
-    "permlink": "join-team-steemit-at-tokenfest",
-    "category": "steemit",
-    "parent_author": "",
-    "parent_permlink": "steemit",
-    "title": "Join Team Hive at TokenFest!",
-    "body":
-        "<a href=\"https://tokenfest.adria.digital\"><img src=\"https://i.imgur.com/fOScDIW.png\"/></a>\n\nHello Hiveians! If you’d like to meet Team Hive live-in-person, or are just interested in attending what promises to be a great blockchain conference, join us at <a href=\"https://tokenfest.adria.digital/\">TokenFest</a> in San Francisco from March 15th to 16th. \n\nHive CEO, Ned Scott, will be participating in a fireside chat alongside Hive’s CTO, Harry Schmidt, as well as the creator of Utopian.io, Diego Pucci. Hive will also be hosting the opening party on Thursday night and we’d certainly love to meet as many of you as possible IRL, so head on over to https://tokenfest.adria.digital/ and get your tickets while you can. \n\n*Team Hive*",
-    "json_metadata":
-        "{\"tags\":[\"steemit\",\"tokenfest\",\"conference\"],\"image\":[\"https://i.imgur.com/fOScDIW.png\"],\"links\":[\"https://tokenfest.adria.digital\",\"https://tokenfest.adria.digital/\"],\"app\":\"steemit/0.1\",\"format\":\"markdown\"}",
-    "last_update": "2018-03-07T23:22:54",
-    "created": "2018-03-07T20:56:36",
-    "active": "2018-03-13T01:40:21",
-    "last_payout": "1970-01-01T00:00:00",
-    "depth": 0,
-    "children": 29,
-    "net_rshares": "11453442114933",
-    "abs_rshares": "11454054795840",
-    "vote_rshares": "11454054795840",
-    "children_abs_rshares": "13568695606090",
-    "cashout_time": "2018-03-14T20:56:36",
-    "max_cashout_time": "1969-12-31T23:59:59",
-    "total_vote_weight": 3462435,
-    "reward_weight": 10000,
-    "total_payout_value": "0.000 HBD",
-    "curator_payout_value": "0.000 HBD",
-    "author_rewards": 0,
-    "net_votes": 77,
-    "root_comment": 37338948,
-    "max_accepted_payout": "0.000 HBD",
-    "percent_hbd": 10000,
-    "allow_replies": true,
-    "allow_votes": true,
-    "allow_curation_rewards": true,
-    "beneficiaries": [],
-    "url": "/steemit/@steemitblog/join-team-steemit-at-tokenfest",
-    "root_title": "Join Team Hive at TokenFest!",
-    "pending_payout_value": "46.436 HBD",
-    "total_pending_payout_value": "0.000 HIVE",
-    "active_votes": [
-        {
-            "voter": "steemitblog",
-            "weight": 0,
-            "rshares": "1870813909383",
-            "percent": 10000,
-            "reputation": "128210130644387",
-            "time": "2018-03-07T20:56:36"
-        },
-        {
-            "voter": "kevinwong",
-            "weight": 526653,
-            "rshares": "2208942520687",
-            "percent": 5000,
-            "reputation": "374133832002581",
-            "time": "2018-03-08T04:27:00"
-        }
-    ],
-    "replies": [],
-    "author_reputation": "128210130644387",
-    "promoted": "0.000 HBD",
-    "body_length": 754,
-    "reblogged_by": []
-}
-'Selected: steemitblog/join-team-steemit-at-tokenfest'
+The example of result returned from the service:
+
+```
+'Depth: 0'
+'Author: hiveio'
+'Category: hive'
+('Body: '
+ '\n'
+ '\n'
+.
+.
+.
 ```
 
-From this result you have access to everything associated to the post including additional metadata which is a `JSON` string (that must be decoded to use), `active_votes` info, post title, body, etc. details that can be used in further development of application with Python.
-
-That's it!
+From this result you have access to everything associated to the post including additional metadata which is a `JSON` string (e.g.; `json()["created"]`), `active_votes` (see: [beem.comment.Comment.get_vote_with_curation](https://beem.readthedocs.io/en/latest/beem.comment.html?highlight=comment#beem.comment.Comment.get_vote_with_curation)) info, post title, body, etc. details that can be used in further development of applications with Python.
 
 ### To Run the tutorial
 
-1.  [review dev requirements](getting_started.html)
-1.  `git clone https://gitlab.syncad.com/hive/devportal.git`
-1.  `cd devportal/tutorials/python/05_get_post_details`
-1.  `pip install -r requirements.txt`
-1.  `python index.py`
-1.  After a few moments, you should see output in terminal/command prompt screen.
-
-
----
+1. [review dev requirements](getting_started.html)
+1. `git clone https://gitlab.syncad.com/hive/devportal.git`
+1. `cd devportal/tutorials/python/05_get_post_details`
+1. `pip install -r requirements.txt`
+1. `python index.py`
+1. After a few moments, you should see output in terminal/command prompt screen.

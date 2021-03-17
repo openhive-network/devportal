@@ -483,3 +483,133 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_community)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+  - api_method: bridge.get_relationship_between_accounts
+    purpose: Tells what relations connect given accounts from the perspective of first account.
+    parameter_json: '["alice", "bob"]'
+    expected_response_json: |
+      {
+        "follows": false,
+        "ignores": false,
+        "blacklists": false,
+        "follows_blacklists": false,
+        "follows_muted": false
+      }
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"bridge.get_relationship_between_accounts", "params":["alice", "bob"], "id":1}'
+    client_docs:
+      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_relationship_between_accounts)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+  - api_method: bridge.get_payout_stats
+    purpose: |
+      Lists communities ordered by payout with stats (total payout, number of posts and authors).
+      
+      * `limit` - if omitted the server will use the default value of 250 [optional]
+    parameter_json: {"limit": 250}
+    expected_response_json: |
+      {
+        "items": [
+          [
+            "hive-167922",
+            "LeoFinance",
+            10881.39,
+            16791,
+            1466
+          ]
+        ],
+        "total": 107662.592,
+        "blogs": 14453.794
+      }
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"bridge.get_payout_stats", "params":{"limit": 1}, "id":1}'
+      - '{"jsonrpc":"2.0", "method":"bridge.get_payout_stats", "params":{"limit": 250}, "id":1}'
+    client_docs:
+      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_payout_stats)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+  - api_method: bridge.get_post
+    purpose: |
+      Gives single selected post.
+      
+      * `author` - valid account
+      * `permlink` - valid permlink
+      * `observer` - valid account [optional]
+    parameter_json: {"author": "hiveio", "permlink": "around-the-hive-reflections"}
+    expected_response_json: |
+      {
+        "post_id": 101867403,
+        "author": "hiveio",
+        "permlink": "around-the-hive-reflections",
+        "category": "hiveecosystem",
+        "title": "Around the Hive: Reflections",
+        "body": "It's been a busy year so far for developers on Hive. Layer 2 solutions are in progress, key optimization is an ongoing priority ...",
+        "json_metadata": {
+          "tags": [
+            "hiveecosystem"
+          ],
+          "users": [
+            "blocktrades",
+            "howo"
+          ],
+          "image": [
+            "https://images.hive.blog/768x0/https://files.peakd.com/file/peakd-hive/hiveio/pKjrNcbK-Hive-Wallpaper-1920x1080.png",
+            "https://images.hive.blog/DQmR3iwCn9yvwXDXfuNjmMX6FrjAvFfYQWgA4QRckpens1j/hive%20dividers-02.png"
+          ],
+          "links": [
+            "https://gitlab.syncad.com/hive/hive-whitepaper/-/blob/master/technical-vision/infographic.pdf"
+          ],
+          "app": "hiveblog/0.1",
+          "format": "markdown",
+          "description": "The strength of Hive lies in our decentralization."
+        },
+        "created": "2021-02-14T08:16:03",
+        "updated": "2021-02-14T08:16:03",
+        "depth": 0,
+        "children": 15,
+        "net_rshares": 93531156115025,
+        "is_paidout": true,
+        "payout_at": "2021-02-21T08:16:03",
+        "payout": 0,
+        "pending_payout_value": "0.000 HBD",
+        "author_payout_value": "0.000 HBD",
+        "curator_payout_value": "0.000 HBD",
+        "promoted": "0.000 HBD",
+        "replies": [],
+        "author_reputation": 69.29,
+        "stats": {
+          "hide": false,
+          "gray": false,
+          "total_votes": 129,
+          "flag_weight": 0
+        },
+        "url": "/hiveecosystem/@hiveio/around-the-hive-reflections",
+        "beneficiaries": [],
+        "max_accepted_payout": "0.000 HBD",
+        "percent_hbd": 10000,
+        "active_votes": [],
+        "blacklists": []
+      }
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"bridge.get_post", "params":{"author": "alice", "permlink": "that-march-hare", "observer": "bob"}, "id":1}'
+      - '{"jsonrpc":"2.0", "method":"bridge.get_post", "params":{"author": "hiveio", "permlink": "around-the-hive-reflections"}, "id":1}'
+    client_docs:
+      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_post)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+  - api_method: bridge.get_post_header
+    purpose: |
+      Gives very basic information on given post.
+      
+      * `author` - valid account
+      * `permlink` - valid permlink
+    parameter_json: {"author": "hiveio", "permlink": "around-the-hive-reflections"}
+    expected_response_json: |
+      {
+        "author": "hiveio",
+        "permlink": "around-the-hive-reflections",
+        "category": "hiveecosystem",
+        "depth": 0
+      }
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"bridge.get_post_header", "params":{"author": "alice", "permlink": "that-march-hare"}, "id":1}'
+      - '{"jsonrpc":"2.0", "method":"bridge.get_post_header", "params":{"author": "hiveio", "permlink": "around-the-hive-reflections"}, "id":1}'
+    client_docs:
+      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_post_header)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
