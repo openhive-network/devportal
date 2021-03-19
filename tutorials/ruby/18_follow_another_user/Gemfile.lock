@@ -1,27 +1,57 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    awesome_print (1.8.0)
-    bitcoin-ruby (0.0.18)
-    connection_pool (2.2.2)
-    ffi (1.9.25)
-    hashie (3.6.0)
-    json (2.1.0)
+    awesome_print (1.9.2)
+    base58 (0.2.3)
+    bindata (2.4.8)
+    bitcoin-ruby (0.0.20)
+      eventmachine
+      ffi
+      scrypt
+    connection_pool (2.2.3)
+    eventmachine (1.2.7)
+    ffi (1.15.0)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    hashie (4.1.0)
+    hive-ruby (1.0.2)
+      base58 (~> 0.2, >= 0.2.3)
+      bindata (~> 2.4, >= 2.4.4)
+      bitcoin-ruby (~> 0.0, = 0.0.20)
+      ffi (~> 1.9, >= 1.9.23)
+      hashie (~> 4.1, >= 3.5.7)
+      json (~> 2.1, >= 2.1.0)
+      logging (~> 2.2, >= 2.2.0)
+    json (2.5.1)
     little-plugger (1.1.4)
-    logging (2.2.2)
+    logging (2.3.0)
       little-plugger (~> 1.1)
-      multi_json (~> 1.10)
-    multi_json (1.13.1)
-    net-http-persistent (3.0.0)
+      multi_json (~> 1.14)
+    multi_json (1.15.0)
+    net-http-persistent (4.0.1)
       connection_pool (~> 2.2)
-    radiator (0.4.2)
+    radiator (0.4.8)
       awesome_print (~> 1.7, >= 1.7.0)
-      bitcoin-ruby (~> 0.0, >= 0.0.11)
+      bitcoin-ruby (= 0.0.20)
       ffi (~> 1.9, >= 1.9.18)
-      hashie (~> 3.5, >= 3.5.5)
+      hashie (>= 3.5)
+      hive-ruby (~> 1.0, >= 1.0.2)
       json (~> 2.0, >= 2.0.2)
       logging (~> 2.2, >= 2.2.0)
       net-http-persistent (>= 2.5.2)
+      steem-ruby (~> 0.9, >= 0.9.5)
+    rake (13.0.3)
+    scrypt (3.0.7)
+      ffi-compiler (>= 1.0, < 2.0)
+    steem-ruby (0.9.6)
+      base58 (~> 0.2, >= 0.2.3)
+      bindata (~> 2.4, >= 2.4.4)
+      bitcoin-ruby (~> 0.0, >= 0.0.18)
+      ffi (~> 1.9, >= 1.9.23)
+      hashie (~> 4.1, >= 3.5.7)
+      json (~> 2.1, >= 2.1.0)
+      logging (~> 2.2, >= 2.2.0)
 
 PLATFORMS
   ruby
@@ -30,4 +60,4 @@ DEPENDENCIES
   radiator
 
 BUNDLED WITH
-   1.16.4
+   2.1.4

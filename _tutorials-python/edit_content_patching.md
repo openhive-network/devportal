@@ -11,7 +11,7 @@ In this tutorial we show you how to patch and update posts/comments on the **Hiv
 
 ## Intro
 
-Being able to patch a post is critical to save resources on Hive. The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `diff_match_patch` class for python to create a `patch` for a post or comment. We then use the `post` method found within the `commit` class in the library. It should be noted that comments and new post are both treated as `commit.post` operation with the only difference being that a comment/reply has got an additional parameter containing the `parent post/comment`. There is already a tutorial on how to create a new post so the focus of this tutorial will be on `patching` the content of the post. We will be using a couple of methods within the `diff_match_patch` class.
+Being able to patch a post is critical to save resources on Hive.  The beem library has a built-in functionality to transmit transactions to the blockchain. We are using the `diff_match_patch` class for python to create a `patch` for a post or comment.  There is already a tutorial on how to create a new post so the focus of this tutorial will be on `patching` the content of the post.  We will be using a couple of methods provided by the `diff_match_patch` module.
 
 `diff_main` - This compares two text fields to find the differences.
 `diff_cleanupSemantic` - This reduces the number of edits by eliminating semantically trivial equalities.
@@ -21,8 +21,8 @@ Being able to patch a post is critical to save resources on Hive. The Hive pytho
 
 ## Steps
 
-1. [**App setup**](#setup) - Library install and import. Connection to testnet
-1. [**Post to update**](#post) - Input and retrieve post information
+1. [**App setup**](#setup) - Library install and import.
+1. [**Post to update**](#post) - Input and retrieve post information, connection to testnet
 1. [**Patching**](#patch) - Create the patch to update the post
 1. [**New post commit**](#commit) - Commit the post to the blockchain
 
@@ -46,11 +46,9 @@ from beembase import operations
 from diff_match_patch import diff_match_patch
 ```
 
-Because this tutorial alters the blockchain we connect to a testnet so we don't create spam on the production server.
+#### 2. Post to update <a name="post"></a>
 
 We require the `private posting key` of the user in order for the transfer to be committed to the blockchain. This is why we are using a testnet. The values are supplied via the terminal/console before we initialise the steem class. There are some demo accounts available but we encourage you to create your own accounts on this testnet and create balances you can claim; it's good practice.
-
-#### 2. Post to update <a name="post"></a>
 
 The user inputs the author and permlink of the post that they wish to edit.  See the [`submit post`]({{ '/tutorials-python/submit_post.html' | relative_url }}) tutorial to create a new post before trying the patch process.
 
@@ -106,7 +104,7 @@ else :
     exit()
 ```
 
-The `diff` is calculated and a test is done to check the `diff` length against the total length of the new text to determine if it will be better to patch or just replace the text field. The value to be sent to the blockchain is then assigned to the `new_body` parameter.
+The `diff` is calculated and a test is done to check the `diff` length against the total length of the new text to determine if it will be better to patch or just replace the text field.  The value to be sent to the blockchain is then assigned to the `new_body` parameter.
 
 ```python
 #check for differences in the text field
@@ -153,6 +151,14 @@ A simple confirmation is displayed on the screen for a successful commit.
 We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the [testnet portal](http://testnet-condenser.hive.blog/).
 
 ### To Run the tutorial
+
+Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
+
+```bash
+docker run -d -p 8091:8091 inertia/tintoy:latest
+```
+
+For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

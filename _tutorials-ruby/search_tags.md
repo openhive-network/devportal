@@ -4,11 +4,8 @@ position: 16
 description: "Performing a search for tags."
 layout: full
 canonical_url: search_tags.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Tags](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/16_search_tags) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Search Tags](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/16_search_tags) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-16_search_tags.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/16_search_tags)).
 
 This tutorial will return tags sorted by trending, up to a specified limit.
 
@@ -22,6 +19,8 @@ This tutorial will return tags sorted by trending, up to a specified limit.
 1. [To Run](#to-run) - Running the example.
 
 ### Making the api call
+
+[`search_tags.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/16_search_tags/search_tags.rb)
 
 To request the a list of tags, we can use the `get_trending_tags` method:
 
@@ -56,16 +55,16 @@ ruby search_tags.rb
 From the example we get the following output from our script:
 
 ```
-tag: <empty>, total_payouts: 57513246.041 HBD, net_votes: 47471936, top_posts: 4523493, comments: 27287924, trending: 100430269400
-tag: life, total_payouts: 12563434.550 HBD, net_votes: 10898489, top_posts: 1193059, comments: 1164873, trending: 7440962326
-tag: photography, total_payouts: 7529111.644 HBD, net_votes: 8578110, top_posts: 819008, comments: 1498469, trending: 7311205387
-tag: kr, total_payouts: 2953387.067 HBD, net_votes: 749380, top_posts: 79842, comments: 2138776, trending: 7009078414
-tag: steemit, total_payouts: 8531217.920 HBD, net_votes: 5393375, top_posts: 580400, comments: 1156174, trending: 5471456871
-tag: art, total_payouts: 4017591.434 HBD, net_votes: 3577651, top_posts: 330597, comments: 716566, trending: 3302526197
-tag: bitcoin, total_payouts: 3556944.650 HBD, net_votes: 2885034, top_posts: 416088, comments: 625529, trending: 3284115413
-tag: introduceyourself, total_payouts: 1863437.063 HBD, net_votes: 725570, top_posts: 24891, comments: 986875, trending: 3185017448
-tag: spanish, total_payouts: 1221282.258 HBD, net_votes: 2683931, top_posts: 154983, comments: 827033, trending: 3103643123
-tag: travel, total_payouts: 3976626.578 HBD, net_votes: 2505962, top_posts: 229401, comments: 622754, trending: 2687292306
+tag: hive-148441, total_payouts: 13831.392 HBD, top_posts: 1716, comments: 3996
+tag: hive-167922, total_payouts: 13735.647 HBD, top_posts: 1901, comments: 16164
+tag: hive-105017, total_payouts: 4798.170 HBD, top_posts: 301, comments: 825
+tag: hive-140217, total_payouts: 4513.385 HBD, top_posts: 385, comments: 692
+tag: hive-120586, total_payouts: 4001.515 HBD, top_posts: 413, comments: 1435
+tag: hive-194913, total_payouts: 3365.291 HBD, top_posts: 432, comments: 1480
+tag: hive-163772, total_payouts: 3149.881 HBD, top_posts: 157, comments: 1155
+tag: hive-129496, total_payouts: 2946.808 HBD, top_posts: 262, comments: 644
+tag: hive-158489, total_payouts: 2938.784 HBD, top_posts: 135, comments: 1058
+tag: hive-175254, total_payouts: 2651.732 HBD, top_posts: 196, comments: 1202
 ```
 
 ### Tag fields
@@ -74,23 +73,16 @@ Tags in the results of `get_trending_tags` returns the following fields:
 
 * `name` - Name of the tag or empty.
 * `total_payouts` - Rewards paid in this tag.
-* `net_votes` - Net votes in this tag.
 * `top_posts` - Top votes in this tag.
 * `comments` - Number of comments in this tag.
-* `trending` - Total trending.
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
-
-* `[limit]` (optional)
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/16_search_tags
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/16_search_tags
 bundle install
 ruby search_tags.rb [limit]
 ```
-
-
----

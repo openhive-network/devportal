@@ -4,17 +4,16 @@ position: 10
 description: "This example will broadcast a new post to the blockchain using the values provided.  To create a post in `ruby`, we will use a `Radiator::Transaction` containing a `comment` operation, which is how all content is stored internally."
 layout: full
 canonical_url: submit_post.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/10_submit_post) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/10_submit_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-10_submit_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/10_submit_post)).
 
 A post is differentiated from a comment by whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, otherwise it's a comment.
 
 ### Script
 
-You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](/apidefinitions/broadcast-ops.html#broadcast_ops_comment):
+[`submit_a_new_post.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/10_submit_post/submit_a_new_post.rb)
+
+You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation]({{ '/apidefinitions/broadcast-ops.html#broadcast_ops_comment' | relative_url }}):
 
 * `author` - Account name of the author currently posting.
 * `permlink` - Value unique to the author 
@@ -26,11 +25,11 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/10_submit_post
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/10_submit_post
 bundle install
 ruby submit_a_new_post.rb
 ```
@@ -55,6 +54,3 @@ The response we get after broadcasting the transaction gives us the transaction 
 #### Error Handling
 
 We're checking the result for `error` in case the remote node has an issue to raise.  Normally, it will be `nil`, but if it's populated, output `error.message` and exit.
-
-
----

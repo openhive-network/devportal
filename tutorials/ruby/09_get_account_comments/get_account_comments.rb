@@ -6,7 +6,17 @@ Bundler.require
 account_name = ARGV[0]
 api = Radiator::Api.new
 
-api.get_account_history(account_name, -1, 10000) do |history|
+options = []
+options << account_name
+options << -1 # start
+options << 1000 # limit
+
+# This is optional, we can mask out all operations other than comment_operation.
+operation_mask = 0x02 # comment_operation
+options << (operation_mask & 0xFFFFFFFF) # operation_filter_low
+options << ((operation_mask & 0xFFFFFFFF00000000) >> 32) # operation_filter_high
+
+api.get_account_history(*options) do |history|
   history.each do |index, item|
     type, op = item.op
     
