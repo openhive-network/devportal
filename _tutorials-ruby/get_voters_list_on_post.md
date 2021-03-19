@@ -4,13 +4,13 @@ position: 6
 description: "This example will output the active vote totals for the post/comment passed as an argument to the script."
 layout: full
 canonical_url: get_voters_list_on_post.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Voters List On Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/06_get_voters_list_on_post) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
+---
 
-
+Full, runnable src of [Get Voters List On Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/06_get_voters_list_on_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-06_get_voters_list_on_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/06_get_voters_list_on_post)).
 
 ### Script
+
+[`voter_list.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/06_get_voters_list_on_post/voter_list.rb)
 
 First, we ask the blockchain for the active votes on a post or comment.  Then, we count the `upvotes`, `downvotes`, and `unvotes` (which are votes that have been removed after being cast in a previous transaction).
 
@@ -18,24 +18,21 @@ Then, we sort the votes by `rshares` to find the top voter.
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/06_get_voters_list_on_post
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/06_get_voters_list_on_post
 bundle install
-ruby voter_list.rb https://hive.blog/hivedev/@steemitdev/announcing-the-steem-developer-portal
+ruby voter_list.rb https://hive.blog/communityfork/@hiveio/announcing-the-launch-of-hive-blockchain
 ```
 
 ### Example Output
 
 ```
-Upvotes: 231
-Downvotes: 1
+Upvotes: 997
+Downvotes: 3
 Unvotes: 0
-Total: 232
-Top Voter: thejohalfiles
+Total: 1000
+Top Voter: blocktrades
 ```
-
-
----

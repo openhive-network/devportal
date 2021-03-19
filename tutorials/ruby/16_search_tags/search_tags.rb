@@ -24,8 +24,6 @@ end
 all_tags.each do |tag|
   print "tag: #{tag.name.empty? ? '<empty>' : tag.name},"
   print " total_payouts: #{tag.total_payouts},"
-  print " net_votes: #{tag.net_votes},"
   print " top_posts: #{tag.top_posts},"
-  print " comments: #{tag.comments},"
-  print " trending: #{tag.trending}\n"
+  print " comments: #{tag.comments}\n"
 end

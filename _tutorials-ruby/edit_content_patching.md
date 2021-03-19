@@ -1,28 +1,21 @@
 ---
 title: 'RB: Edit Content Patching'
 position: 12
-description: "---"
+description: Patching changes to a post on Hive.
 layout: full
 canonical_url: edit_content_patching.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/12_edit_content_patching) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-title: How to edit a Post
-position: 5
-exclude: true
-layout: main-script
-description: Patching changes to a post on Hive.
-main_script: tutorials-ruby/edit_content_patching.rb
-main_type: ruby
-main_script_anchor: Script
 ---
+<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/12_edit_content_patching) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
+
+Full, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/12_edit_content_patching) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-12_edit_content_patching.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/12_edit_content_patching)).
 
 ### Intro
 
 This tutorial will show a technique for efficiently editing a post by only broadcasting changes to the post body.
 
 ### Script
+
+[`edit_content_patching.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/12_edit_content_patching/edit_content_patching.rb)
 
 This script will take an existing post and append a new line by broadcasting a `comment` operation containing a `diff` instruction.  This instruction will tell the blockchain to append new content to the end of the `body` of the original comment.
 
@@ -37,11 +30,11 @@ As stated earlier, you will need to change `broadcast` to `true`.  You can also 
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/12_edit_content_patching
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/12_edit_content_patching
 bundle install
 ruby edit_content_patching.rb
 ```
@@ -65,5 +58,4 @@ Changes:
 }
 ```
 
-
----
+The response we get after broadcasting (if enabled) the transaction gives us the transaction id ([`f327acc...`](https://hiveblocks.com/tx/f327acc1c51d907a9ba9bfac70e6fc9e99ab2865)), block number ([`22867626`](https://hiveblocks.com/b/23035803)), and the transaction number of that block (`0`).

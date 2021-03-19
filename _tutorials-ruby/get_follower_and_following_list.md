@@ -4,11 +4,8 @@ position: 19
 description: "_How to create a list of followers and accounts that you are following._"
 layout: full
 canonical_url: get_follower_and_following_list.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Get Follower And Following List](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/19_get_follower_and_following_list) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-19_get_follower_and_following_list.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/19_get_follower_and_following_list)).
 
 This tutorial will take you through the process of requesting either the `follower` or `following` list for an account on the blockchain.
 
@@ -30,6 +27,8 @@ In `radiator`, we can request follow results using `condenser_api.get_following`
 
 #### 1. Configure connection<a name="connection"></a>
 
+[`get_follow.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/18_follow_another_user/get_follow.rb)
+
 In the first few lines we initialize the configured library and packages (libraries are described in `Gemfile`):
 
 ```ruby
@@ -44,7 +43,7 @@ api = Radiator::Api.new
 Above, we have `radiator` pointing to the production network.  To specify a different full node, e.g.:
 
 ```ruby
-api = Radiator::Api.new(url: 'https://testnet.steemitdev.com')
+api = Radiator::Api.new(url: 'https://api.hive.blog')
 ```
 
 #### 2. Input variables<a name="input"></a>
@@ -52,9 +51,12 @@ api = Radiator::Api.new(url: 'https://testnet.steemitdev.com')
 Capture the arguments from the command line.
 
 ```ruby
+type = 'blog' # use 'ignore' to get mutes
 account = ARGV[0]
-type = ARGV[1] || 'following'
+what = ARGV[1] || 'following'
 limit = (ARGV[2] || '-1').to_i
+result = []
+count = -1
 ```
 
 #### 3. Get followers/following<a name="query"></a>
@@ -62,8 +64,8 @@ limit = (ARGV[2] || '-1').to_i
 Depending on the arguments passed, we call the corresponding method and the element name of what we are requesting:
 
 ```ruby
-method = "get_#{type}"
-elem = type.sub(/s/, '').to_sym
+method = "get_#{what}"
+elem = what.sub(/s/, '').to_sym
 ```
 
 The name of the `elem` value stored corresponds with the result elements we're interested in.  For method calls on `get_following`, we want the `following` elements.  For method calls on `get_followers`, we want `follower` elements.
@@ -75,7 +77,7 @@ Iterate multiple calls to capture all of the results.
 ```ruby
 until count >= result.size
   count = result.size
-  response = api.send(method, account, result.last, what, [limit, 100].max)
+  response = api.send(method, account, result.last, type, [limit, 1000].max)
   abort response.error.message if !!response.error
   result += response.result.map(&elem)
   result = result.uniq
@@ -84,14 +86,11 @@ end
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/19_get_follower_and_following_list
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/19_get_follower_and_following_list
 bundle install
 ruby get_follow.rb
 ```
-
-
----

@@ -5,7 +5,7 @@ description: "To reblog a post, we can use a `custom_json` operation that is han
 layout: full
 canonical_url: reblogging_post.html
 ---
-Full, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/14_reblogging_post) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-14_reblogging_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/14_reblogging_post)).
+Full, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/14_reblogging_post) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-14_reblogging_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master-14_reblogging_post.zip?path=tutorials/ruby/14_reblogging_post)).
 
 For this operation, we will use `custom_json` and a properly formed id and payload so that `follow_plugin` will pick up the reblog data and display the selected post in the feed of the account doing the reblog.
 
@@ -20,6 +20,8 @@ For this operation, we will use `custom_json` and a properly formed id and paylo
 1. [To Run](#to-run) - Running the example.
 
 ### Making the api call
+
+[`reblogging_post.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/14_reblogging_post/reblogging_post.rb)
 
 To broadcast the operation, we can use a `Radiator::Transaction` instance:
 
@@ -83,7 +85,7 @@ The response we get after broadcasting the transaction gives us the transaction 
 
 ### Example Error
 
-If a post has already been reblogged by the account, we will get back an error:
+If a post has already been reblogged by the account, some witnesses are configured to response with an error, if they have `follow_evaluators` enabled (by soft-consensus):
 
 ```json
 {
@@ -261,7 +263,7 @@ If a post has already been reblogged by the account, we will get back an error:
 }
 ```
 
-This indicates that the operation was not included in the blockchain because it was already reblogged in the past.
+This indicates that the operation was not included in the blockchain because it was already reblogged in the past.  If a witness accepts the erroneous reblog operation, because they do not have `follow_evaluators` enabled, there will be no error.
 
 ### Custom JSON Fields
 
@@ -279,16 +281,11 @@ Broadcasting a `custom_json` operation will require the following fields:
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
-
-* `<url>`
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/14_reblogging_post
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/14_reblogging_post
 bundle install
 ruby reblogging_post.rb <url>
 ```
-
-
----

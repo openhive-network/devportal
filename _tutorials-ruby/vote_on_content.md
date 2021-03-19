@@ -4,11 +4,8 @@ position: 17
 description: "To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast)."
 layout: full
 canonical_url: vote_on_content.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/17_vote_on_content) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/17_vote_on_content) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-17_vote_on_content.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/17_vote_on_content)).
 
 ### Sections
 
@@ -21,6 +18,8 @@ canonical_url: vote_on_content.html
 1. [To Run](#to-run) - Running the example.
 
 ### Making the api call
+
+[`vote_on_content.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/17_vote_on_content/vote_on_content.rb)
 
 To broadcast the operation, we can use a `Radiator::Transaction` instance:
 
@@ -198,17 +197,11 @@ Broadcasting a `vote` operation will require the following fields:
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository) with the following arguments:
-
-* `<url>` - the URL to vote on
-* `[weight]` - the weight of the vote as percentage, optional (default `100.0 %`)
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository) with the following arguments:
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/17_vote_on_content
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/17_vote_on_content
 bundle install
 ruby vote_on_content.rb <url> [weight]
 ```
-
-
----

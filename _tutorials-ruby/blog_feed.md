@@ -4,13 +4,12 @@ position: 1
 description: "This example will output blog details to the terminal for the author specified, limited to five results."
 layout: full
 canonical_url: blog_feed.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Blog Feed](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/01_blog_feed) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Blog Feed](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/01_blog_feed) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-01_blog_feed.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/01_blog_feed)).
 
 ### Script
+
+[`blog_feed.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/01_blog_feed/blog_feed.rb)
 
 The script parses the creation date, assuming Zulu timezone (AKA UTC).
 
@@ -22,44 +21,41 @@ Finally, it creates the canonical URL by combining `parent_permlink`, `author`, 
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/01_blog_feed
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/01_blog_feed
 bundle install
-ruby blog_feed.rb steemitblog
+ruby blog_feed.rb hiveio
 ```
 
 ### Example Output
 
 ```
-2018-03-24 17:30:36 UTC
-  Post: Happy 2nd Birthday Hive Blockchain
-  By: steemitblog
-  Words: 301
-  https://hive.blog/steem/@steemitblog/happy-2nd-birthday-steem-blockchain
-2018-03-07 20:56:36 UTC
-  Post: Join Team Hive at TokenFest!
-  By: steemitblog
-  Words: 104
-  https://hive.blog/steemit/@steemitblog/join-team-steemit-at-tokenfest
-2018-02-27 20:18:36 UTC
-  Post: Smart Media Token Development
-  By: steemitblog
-  Words: 699
-  https://hive.blog/smt/@steemitblog/smart-media-token-development
-2018-02-25 20:55:24 UTC
-  Reblog: I filmed this video of @ned @pkattera and @sneak talking about the SMTs and the future of Hive
-  By: ruwan
-  Words: 89
-  https://hive.blog/steemit/@ruwan/i-filmed-this-video-of-ned-pkattera-and-sneak-talking-about-the-smts-and-the-future-of-steemit
-2018-02-22 17:41:00 UTC
-  Post: HIVE 및 HBD가 GOPAX에 상장되었습니다
-  By: steemitblog
-  Words: 317
-  https://hive.blog/gopax/@steemitblog/steem-hbd-gopa
+2021-02-14 08:16:03 UTC
+  Post: Around the Hive: Reflections
+  By: hiveio
+  Words: 423
+  https://hive.blog/hiveecosystem/@hiveio/around-the-hive-reflections
+2021-01-07 04:00:48 UTC
+  Post: Hive and Kyros Ventures AMA
+  By: hiveio
+  Words: 2374
+  https://hive.blog/hiveblockchain/@hiveio/hive-and-kyros-ventures-ama
+2020-12-16 19:13:36 UTC
+  Post: GetBlock x Hive : Providing Hive Node Services, Presenting at HiveFest, and a HIVE Giveaway
+  By: hiveio
+  Words: 602
+  https://hive.blog/hiveblockchain/@hiveio/getblock-x-hive-providing-hive-node-services-presenting-at-hivefest-and-a-hive-giveaway
+2020-11-12 01:20:36 UTC
+  Post: Hive x Beaxy Livestream AMA - Answering Community Questions and HIVE Up for Grabs!
+  By: hiveio
+  Words: 258
+  https://hive.blog/hiveblockchain/@hiveio/hive-x-beaxy-livestream-ama-answering-community-questions-and-hive-up-for-grabs
+2020-10-22 18:59:54 UTC
+  Post: Beaxy HIVE Listing Announcement
+  By: hiveio
+  Words: 419
+  https://hive.blog/hiveblockchain/@hiveio/beaxy-hive-listing-announcement
 ```
-
-
----

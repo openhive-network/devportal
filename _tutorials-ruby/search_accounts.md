@@ -4,11 +4,8 @@ position: 15
 description: "Performing a search on account by names starting with a given input."
 layout: full
 canonical_url: search_accounts.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/15_search_accounts) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/15_search_accounts) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-15_search_accounts.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/15_search_accounts)).
 
 This tutorial will return account names matching the input given, up to a specified limit.
 
@@ -21,6 +18,8 @@ This tutorial will return account names matching the input given, up to a specif
 1. [To Run](#to-run) - Running the example.
 
 ### Making the api call
+
+[`search_accounts.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/15_search_accounts/search_accounts.rb)
 
 To request the a list of accounts starting with a particular lookup pattern, we can use the `lookup_accounts` method:
 
@@ -58,19 +57,29 @@ From the example we get the following output from our script:
 alice alice-22 alice-is alice-labardo alice-mikhaylova alice-n-chains alice-radster alice-sandra alice-thuigh alice-way
 ```
 
-### To Run
+#### Example api call using script, with limit
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
-
-* `<lower-bound-name>`
-* `[limit]` (optional)
+And to do the same with our tutorial script, which has its own default limit of 10:
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/15_search_accounts
+ruby search_accounts.rb bob 1
+```
+
+#### Example Output, with limit
+
+From the example we get the following output from our script:
+
+```
+bob
+```
+
+### To Run
+
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
+
+```bash
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/15_search_accounts
 bundle install
 ruby search_accounts.rb <lower-bound-name> [limit]
 ```
-
-
----

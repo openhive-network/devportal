@@ -1,14 +1,11 @@
 ---
 title: 'RB: Submit Comment Reply'
 position: 11
-description: "_By the end of this tutorial you should know how to prepare comments for Hive and then submit using Radiator._"
+description: "How to prepare comments for Hive and then submit using Radiator."
 layout: full
 canonical_url: submit_comment_reply.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/11_submit_comment_reply) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Submit Comment Reply](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/11_submit_comment_reply) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-11_submit_comment_reply.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/11_submit_comment_reply)).
 
 ### Intro
 
@@ -18,7 +15,9 @@ A reply is differentiated from a post by whether or not a `parent_author` exists
 
 ### Script
 
-You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation](https://developers.hive.io/apidefinitions/broadcast-ops.html#broadcast_ops_comment):
+[`submit_comment_reply.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/11_submit_comment_reply/submit_comment_reply.rb)
+
+You should change `wif` to the posting key that matches your `author`.  This script will pass along the values as a [`comment` operation]({{ '/apidefinitions/broadcast-ops.html#broadcast_ops_comment' | relative_url }}):
 
 * `author` - Account name of the author currently replying.
 * `permlink` - Value unique to the author 
@@ -30,11 +29,11 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/11_submit_comment_reply
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/11_submit_comment_reply
 bundle install
 ruby submit_comment_reply.rb
 ```
@@ -59,6 +58,3 @@ The response we get after broadcasting the transaction gives us the transaction 
 #### Error Handling
 
 We're checking the result for `error` in case the remote node has an issue to raise.  Normally, it will be `nil`, but if it's populated, output `error.message` and exit.
-
-
----

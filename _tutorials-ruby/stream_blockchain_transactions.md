@@ -4,11 +4,8 @@ position: 13
 description: "*How to stream transactions and operations from Hive blockchain.*"
 layout: full
 canonical_url: stream_blockchain_transactions.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-13_stream_blockchain_transactions.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/13_stream_blockchain_transactions)).
 
 To respond to live activity on the blockchain, a common approach is to make a request for the current block number, access all of the information in that block, and repeat.  Many API clients have dedicated tools for simplifying this process.  In Radiator, this tool is part of the `Radiator::Stream` class.  In addition, Radiator will allow you to specify exactly what type of operation you're interested in.
 
@@ -20,6 +17,8 @@ To respond to live activity on the blockchain, a common approach is to make a re
 
 ### Streaming Transactions
 
+[`stream_blockchain_transactions.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/13_stream_blockchain_transactions/stream_blockchain_transactions.rb)
+
 In the example script, we can stream transactions with the following arguments:
 
 ```bash
@@ -28,7 +27,7 @@ ruby stream_blockchain_transactions.rb head transactions
 
 This will instruct the script to follow transactions at head `block_num` instead of irreversible.
 
-See: [`head_block_number`](https://developers.hive.io/tutorials-recipes/understanding-dynamic-global-properties#head_block_number) vs. [`last_irreversible_block_num`](https://developers.hive.io/tutorials-recipes/understanding-dynamic-global-properties#last_irreversible_block_num)
+See: [`head_block_number`]({{ '/tutorials-recipes/understanding-dynamic-global-properties#head_block_number' | relative_url }}) vs. [`last_irreversible_block_num`]({{ '/tutorials-recipes/understanding-dynamic-global-properties#last_irreversible_block_num' | relative_url }})
 
 This is done by using the following ruby:
 
@@ -80,11 +79,11 @@ The `type` variable can be `nil` or the type of ops we're looking for whereas `a
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/13_stream_blockchain_transactions
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/13_stream_blockchain_transactions
 bundle install
 ruby stream_blockchain_transactions.rb
 ```
@@ -106,5 +105,3 @@ ruby stream_blockchain_transactions.rb
 {"voter":"ivan174","author":"securixio","permlink":"cloud-mining-is-no-longer-profitable","weight":10000}
 {"voter":"admiralbot","author":"homsys","permlink":"rare-photo-picture-698-105","weight":-10000}
 ```
-
----

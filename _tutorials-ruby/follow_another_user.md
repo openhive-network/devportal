@@ -4,13 +4,10 @@ position: 18
 description: "*How to follow/unfollow another user.*"
 layout: full
 canonical_url: follow_another_user.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Follow Another User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/18_follow_another_user) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
+---
+Full, runnable src of [Follow Another User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/18_follow_another_user) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-18_follow_another_user.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/18_follow_another_user)).
 
-
-
-This tutorial will take you through the process of following/muting/unfollowing/ummuting an author and checking the follow status of an author.
+This tutorial will take you through the process of following/muting/unfollowing/unmuting an author and checking the follow status of an author.
 
 ### Sections
 
@@ -19,6 +16,8 @@ This tutorial will take you through the process of following/muting/unfollowing/
 1. [To Run](#to-run) - Running the example.
 
 ### Follow
+
+[`follow.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/18_follow_another_user/follow.rb)
 
 In the first example script, we can modify the initial configuration then run:
 
@@ -59,11 +58,11 @@ We also specify `blog` to tell the API method that we're looking for followed, n
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/18_follow_another_user
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/18_follow_another_user
 bundle install
 ruby follow.rb
 ```
@@ -83,4 +82,4 @@ ruby follow.rb
 }
 ```
 
----
+The response we get after broadcasting (if enabled) the transaction gives us the transaction id ([`025688e...`](https://hiveblocks.com/tx/025688e27999d3aa514f1f0b77c9f8d8dae31d72)), block number ([`22867626`](https://hiveblocks.com/b/26349355)), and the transaction number of that block (`3`).

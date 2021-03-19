@@ -1,14 +1,13 @@
 ---
 title: 'RB: Getting Started'
 position: 0
-description: "To access the Hive blockchain using Ruby, install the Radiator gem: [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator).  Full documentation on Radiator api methods are hosted on [rubydoc.info](http://www.rubydoc.info/gems/radiator)."
+description: "To access the Hive blockchain using Ruby, install the Radiator gem: [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator).  Full documentation on Radiator api methods are hosted on [rubydoc.info](https://www.rubydoc.info/gems/radiator)."
 layout: full
 canonical_url: getting_started.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of these tutorials can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
+---
+Full, runnable src of [all ruby tutorials](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just the Rubyt tutorials: [devportal-master-tutorials-python.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master-tutorials-ruby.zip?path=tutorials/ruby)).
 
-
+Full, runnable src of [tutorial_title](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorial_slug) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-tutorial_slug.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/tutorial_slug)).
 
 ### Setup
 
@@ -40,13 +39,13 @@ ruby -r radiator myscript.rb
 
 ### Examples
 
-The tutorials on this site are available within this site's repository.  To get a copy, clone this repository, change directory to `devportal/_includes/tutorials-ruby` and do a `bundle install` to install the required local gems.
+The tutorials on this site are available within this site's repository.  To get a copy, clone this repository, change directory to `devportal/tutorials/ruby/01_blog_feed` and do a `bundle install` to install the required local gems.
 
-From there, you can see all of the `.rb` files referenced on this site.
+From there, you can see each of the `.rb` files referenced on this site, for example:
 
 ```bash
-git clone https://github.com/steemit/devportal.git
-cd devportal/_includes/tutorials-ruby/
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/01_blog_feed
 bundle install
 ```
 
@@ -65,17 +64,17 @@ api = Radiator::Api.new
 To override the `url` option:
 
 ```ruby
-api = Radiator::Api.new(url: 'https://rpc.steemliberator.com')
+api = Radiator::Api.new(url: 'https://api.openhive.network')
 ```
 
 To override both `url` and `failover_urls` options:
 
 ```ruby
 options = {
-  url: 'https://rpc.steemliberator.com',
+  url: 'https://api.openhive.network',
   failover_urls: [
-    'https://gtg.steem.house:8090',
-    'https://hived.minnowsupportproject.org',
+    'https://anyx.io',
+    'https://api.hivekings.com',
     'https://hived.privex.io',
   ]
 }
@@ -84,7 +83,4 @@ api = Radiator::Api.new(options)
 
 ### Next Step
 
-If you'd like to dive right into the first tutorial, have a look at: [Blog Feed](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/01_blog_feed)
-
-
----
+If you'd like to dive right into the first tutorial, have a look at: [Blog Feed]({{ '/tutorials-ruby/blog_feed.html' | relative_url }})

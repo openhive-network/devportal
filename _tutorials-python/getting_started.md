@@ -5,7 +5,7 @@ description: "One excellent Hive library for Python is `beem`.  It comes with a 
 layout: full
 canonical_url: getting_started.html
 ---
-Full, runnable src of [all python tutorials](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python)).
+Full, runnable src of [all python tutorials](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just the Python tutorials: [devportal-master-tutorials-python.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master-tutorials-python.zip?path=tutorials/python)).
 
 The library was designed to allow Python developers to easily access the network as well as build utilities and applications.
 
