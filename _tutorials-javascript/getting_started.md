@@ -11,7 +11,7 @@ For Javascript tutorials, we will use the opensource library [@hivechain/dhive](
 
 ### Node.js
 
-To get the most out of these tutorials, you should be familiar with [Node.js](https://nodejs.org/en/), [ES6](https://babeljs.io/learn-es2015/) aka [es2015](http://www.ecma-international.org/ecma-262/6.0/), the DOM, and modern Javascript programming practices.
+To get the most out of these tutorials, you should be familiar with [Node.js](https://nodejs.org/en/), [ES6](https://babeljs.io/learn-es2015/) aka [es2015](https://www.ecma-international.org/ecma-262/6.0/), the DOM, and modern Javascript programming practices.
 You can still learn a lot of these if they aren't in your base skill-set; it'll be much easier if they are.
 
 ### Your Dev Environment
