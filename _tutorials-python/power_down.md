@@ -50,7 +50,7 @@ account = input('Enter username: ')
 wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
 # connect node and private active key
-client = Hive('http://127.0.0.1:8091', keys=[wif_active_key])
+client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
 ```
 
 #### 3. Check balance <a name="balance"></a>
@@ -146,9 +146,15 @@ print('Insufficient funds available')
 
 The result is displayed on the console/terminal.
 
-We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the [testnet portal](http://testnet-condenser.hive.blog/).
-
 ### To Run the tutorial
+
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
+
+```bash
+docker run -d -p 8090:8090 inertia/tintoy:latest
+```
+
+For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

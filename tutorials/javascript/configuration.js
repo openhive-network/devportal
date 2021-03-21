@@ -38,11 +38,11 @@ export const TestnetHive = {
             privActive: '5K7QWGuAAX27yvQRPBMBDA4BbXVpdtmALxoM8CoRdZAsPew5hJd',
         },
     ],
-    url: 'https://testnet.hive.blog',
+    url: 'http://127.0.0.1:8090',
     net: {
         addressPrefix: 'TST',
         chainId:
-            '46d82ab7d8db682eb1959aed0ada039a6d49afa1602491f93dde9cac3e8e6c32',
+            '18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e',
     },
 };
 
@@ -59,11 +59,11 @@ export const TestnetAlt = {
             privActive: '5KgMKfnTQTzrmZP3RxrQs3CEckHTPXxFzJWHV3cJjetmXwLUWZj',
         },
     ],
-    url: 'https://testnet.hive.blog',
+    url: 'http://127.0.0.1:8090',
     net: {
-        addressPrefix: 'STX',
+        addressPrefix: 'TST',
         chainId:
-            '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673',
+            '18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e',
     },
 };
 

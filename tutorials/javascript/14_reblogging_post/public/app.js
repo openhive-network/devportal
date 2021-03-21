@@ -5,7 +5,7 @@ let opts = {};
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
-//connect to a Hive node. This is currently setup on production, but we recommend using a testnet like https://testnet.hive.blog
+//connect to a Hive node. This is currently setup on production, but we recommend using a testnet
 const client = new Client('https://api.hive.blog', opts);
 window.client = client;
 

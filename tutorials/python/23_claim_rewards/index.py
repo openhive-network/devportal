@@ -9,7 +9,7 @@ account = input('Enter username: ')
 wif_posting_key = getpass.getpass('Enter private POSTING key: ')
 
 # connect node
-client = Hive('http://127.0.0.1:8091', keys=[wif_posting_key])
+client = Hive('http://127.0.0.1:8090', keys=[wif_posting_key])
 
 # get account reward balances
 account = Account(account, blockchain_instance=client)

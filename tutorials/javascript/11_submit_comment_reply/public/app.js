@@ -51,7 +51,7 @@ window.submitComment = async () => {
                 'postLink'
             ).innerHTML = `<br/><p>Included in block: ${
                 result.block_num
-            }</p><br/><br/><a href="http://testnet-condenser.hive.blog/@${parent_author}/${parent_permlink}">Check post here</a>`;
+            }</p><br/><br/><a href="http://127.0.0.1:8080/@${parent_author}/${parent_permlink}">Check post here</a>`;
         },
         function(error) {
             console.error(error);

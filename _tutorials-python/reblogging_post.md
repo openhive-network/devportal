@@ -37,7 +37,7 @@ from beem.comment import Comment
 from beem.transactionbuilder import TransactionBuilder
 from beembase.operations import Custom_json
 
-hive = Hive(['http://127.0.0.1:8091'])
+hive = Hive(['http://127.0.0.1:8090'])
 ```
 
 #### 2. Post list <a name="post-list"></a>
@@ -97,10 +97,10 @@ If transaction is successful you shouldn't see any error messages, otherwise you
 
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
 
 ```bash
-docker run -d -p 8091:8091 inertia/tintoy:latest
+docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
 For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
