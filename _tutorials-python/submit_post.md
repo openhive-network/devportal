@@ -89,7 +89,7 @@ The random generator is limited to 10 characters in this case but the permlink c
 The last step is to transmit the post through to the blockchain.  All the defined parameters are signed and broadcasted.  We also securely prompt for the posting key right before signing.
 
 ```python
-client = Hive('http://127.0.0.1:8091')
+client = Hive('http://127.0.0.1:8090')
 tx = TransactionBuilder(blockchain_instance=client)
 tx.appendOps(Comment(**{
   "parent_author": '',
@@ -115,10 +115,10 @@ You can also check on your local testnet using [database_api.find_comments]({{ '
 
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
 
 ```bash
-docker run -d -p 8091:8091 inertia/tintoy:latest
+docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
 For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})

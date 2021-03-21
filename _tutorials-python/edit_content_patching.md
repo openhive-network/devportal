@@ -58,7 +58,7 @@ The user inputs the author and permlink of the post that they wish to edit.  See
 post_author = input('Please enter the AUTHOR of the post you want to edit: ')
 
 #connect node
-client = Hive('http://127.0.0.1:8091')
+client = Hive('http://127.0.0.1:8090')
 
 #check valid post_author
 try:
@@ -148,14 +148,12 @@ print('\n' + 'Content of the post has been successfully updated: ' + str(broadca
 
 A simple confirmation is displayed on the screen for a successful commit.
 
-We encourage users to play around with different values and data types to fully understand how this process works. You can also check the balances and transaction history on the [testnet portal](http://testnet-condenser.hive.blog/).
-
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
 
 ```bash
-docker run -d -p 8091:8091 inertia/tintoy:latest
+docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
 For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})

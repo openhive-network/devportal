@@ -11,7 +11,7 @@ from diff_match_patch import diff_match_patch
 post_author = input('Please enter the AUTHOR of the post you want to edit: ')
 
 #connect node
-client = Hive('http://127.0.0.1:8091')
+client = Hive('http://127.0.0.1:8090')
 
 #check valid post_author
 try:

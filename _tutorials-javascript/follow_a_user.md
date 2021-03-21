@@ -147,7 +147,7 @@ client.broadcast.json(data, privateKey).then(
 );
 ```
 
-If either of the values for the user or author does not exist the proper error result will be displayed on the UI. The result is also displayed in the console in order for the user to confirm that a block transaction has taken place. The status of the operation can be verified on the [demo account](http://testnet-condenser.hive.blog/@cdemo/followed).
+If either of the values for the user or author does not exist the proper error result will be displayed on the UI. The result is also displayed in the console in order for the user to confirm that a block transaction has taken place. The status of the operation can be verified on the [demo account](http://127.0.0.1:8080/@cdemo/followed).
 
 ### To run this tutorial
 

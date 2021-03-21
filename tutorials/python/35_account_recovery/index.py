@@ -14,7 +14,7 @@ new_password = getpass.getpass('new password for account: ')
 recovery_account = input('account owner (recovery account name): ')
 recovery_account_private_key = getpass.getpass('account owner private ACTIVE key: ')
 
-client = Hive('http://127.0.0.1:8091', keys=[recovery_account_private_key])
+client = Hive('http://127.0.0.1:8090', keys=[recovery_account_private_key])
 account = Account(account, blockchain_instance=client)
 recovery_account = Account(recovery_account, blockchain_instance=client)
 
@@ -96,7 +96,7 @@ op_account_update_data = {
 }
 
 # recover account initialisation and transmission
-client = Hive('http://127.0.0.1:8091', keys=[recovery_account_private_key])
+client = Hive('http://127.0.0.1:8090', keys=[recovery_account_private_key])
 
 op_recover_account = beembase.operations.Recover_account(**op_recover_account_data)
 
@@ -114,7 +114,7 @@ print('result')
 print(result)
 
 # update account keys initialisation and transmission
-client = Hive('http://127.0.0.1:8091', keys=[new_account_owner_private_key])
+client = Hive('http://127.0.0.1:8090', keys=[new_account_owner_private_key])
 
 op_account_update = beembase.operations.Account_update(**op_account_update_data)
 

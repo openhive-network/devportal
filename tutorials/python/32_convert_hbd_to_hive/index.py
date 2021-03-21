@@ -8,7 +8,7 @@ account = input('Enter username: ')
 wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
 # connect node and private active key
-client = Hive('http://127.0.0.1:8091', keys=[wif_active_key])
+client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
 
 # get account balance for HIVE and HBD
 account = Account(account, blockchain_instance=client)

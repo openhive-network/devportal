@@ -49,7 +49,7 @@ window.submitPost = async () => {
                 'postLink'
             ).innerHTML = `<br/><p>Included in block: ${
                 result.block_num
-            }</p><br/><br/><a href="http://testnet-condenser.hive.blog/${
+            }</p><br/><br/><a href="http://127.0.0.1:8080/${
                 taglist[0]
             }/@${account}/${permlink}">Check post here</a>`;
         },

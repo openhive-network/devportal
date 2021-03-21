@@ -86,7 +86,7 @@ $ export DATABASE_URL=postgresql://user:pass@localhost:5432/hive
 By default Hivemind will connect to the mainnet [https://api.hive.blog](https://api.hive.blog) but if required you can change this to connect to a testnet. To do this set the environment variable as described below.
 
 ```bash
-$ export HIVED_URL=https://testnet.steem.vc
+$ export HIVED_URL=http://127.0.0.1:8091
 ```
 
 Now that the basic setup is done you are able to sync the database.

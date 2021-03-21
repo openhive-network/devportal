@@ -17,7 +17,7 @@ if author == account:
   exit()
 
 # connect node and private posting key, demo account being used: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-hive = beem.Hive('http://127.0.0.1:8091')
+hive = beem.Hive('http://127.0.0.1:8090')
 
 author = Account(author, blockchain_instance=hive)
 account = Account(account, blockchain_instance=hive)

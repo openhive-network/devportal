@@ -1,11 +1,11 @@
 // const dhive = require('@hiveio/dhive');
 // //define network parameters
 // let opts = {};
-// opts.addressPrefix = 'STX';
+// opts.addressPrefix = 'TST';
 // opts.chainId =
-//     '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673';
+//     '18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e';
 // //connect to a steem node, testnet in this case
-// const client = new dhive.Client('https://testnet.steem.vc', opts);
+// const client = new dhive.Client('http://127.0.0.1:8090', opts);
 
 const dhive = require('@hiveio/dhive');
 let opts = {};
