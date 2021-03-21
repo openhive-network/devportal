@@ -61,7 +61,7 @@ window.createPost = async () => {
                 document.getElementById('permlink').innerHTML = permlink;
                 document.getElementById(
                     'postLink'
-                ).innerHTML = `Included in block: <a href="http://testnet-condenser.hive.blog/${
+                ).innerHTML = `Included in block: <a href="http://127.0.0.1:8080/${
                     taglist[0]
                 }/@${account}/${permlink}" target="_blank">${
                     result.block_num

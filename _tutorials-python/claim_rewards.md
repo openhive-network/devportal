@@ -54,7 +54,7 @@ account = input('Enter username: ')
 wif_posting_key = getpass.getpass('Enter private POSTING key: ')
 
 # connect node
-client = Hive('http://127.0.0.1:8091', keys=[wif_posting_key])
+client = Hive('http://127.0.0.1:8090', keys=[wif_posting_key])
 ```
 
 #### 3. Check reward balance <a name="balance"></a>
@@ -146,10 +146,10 @@ print('\t' + str(reward_hive) + '\n' +
 
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
 
 ```bash
-docker run -d -p 8091:8091 inertia/tintoy:latest
+docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
 1. [review dev requirements](getting_started.html)

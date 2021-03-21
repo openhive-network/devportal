@@ -22,18 +22,27 @@ We are using the `client.broadcast.comment` function provided by `dhive` which g
 
 #### 1. App setup<a name="app-setup"></a>
 
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
+
+```bash
+docker run -d -p 8090:8090 inertia/tintoy:latest
+```
+
+For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
+
 Below we have `dhive` pointing to the test network with the proper chainId, addressPrefix, and endpoint. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account to demonstrate post publishing.
+
 There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
 ```javascript
 const dhive = require('@hiveio/dhive');
 let opts = {};
 //connect to community testnet
-opts.addressPrefix = 'STX';
+opts.addressPrefix = 'TST';
 opts.chainId =
-    '79276aea5d4877d9a25892eaa01b0adf019d3e5cb12a97478df3298ccdd01673';
+    '18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e';
 //connect to server which is connected to the network/testnet
-const client = new dhive.Client('https://testnet.hive.blog', opts);
+const client = new dhive.Client('http://127.0.0.1:8090', opts);
 ```
 
 #### 2. Fetch Hive Post or Comment data<a name="fetch-content"></a>
@@ -93,7 +102,7 @@ client.broadcast
                 'postLink'
             ).innerHTML = `<br/><p>Included in block: ${
                 result.block_num
-            }</p><br/><br/><a href="http://testnet-condenser.hive.blog/${
+            }</p><br/><br/><a href="http://127.0.0.1:8080/${
                 taglist[0]
             }/@${account}/${permlink}">Check post here</a>`;
         },

@@ -49,7 +49,7 @@ account = input('Enter username: ')
 wif_active_key = getpass.getpass('Active Key: ')
 
 # connect node and private active key
-client = Hive('http://127.0.0.1:8091', keys=[wif_active_key])
+client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
 
 # check valid user
 account = Account(account, blockchain_instance=client)
@@ -107,10 +107,10 @@ A confirmation of the transaction to the blockchain is displayed on the UI.
 
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
 
 ```bash
-docker run -d -p 8091:8091 inertia/tintoy:latest
+docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
 For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})

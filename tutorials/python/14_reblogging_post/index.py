@@ -9,7 +9,7 @@ from beem.comment import Comment
 from beem.transactionbuilder import TransactionBuilder
 from beembase.operations import Custom_json
 
-hive = Hive(['http://127.0.0.1:8091'])
+hive = Hive(['http://127.0.0.1:8090'])
 q = Query(limit=5, tag="")
 d = Discussions()
 

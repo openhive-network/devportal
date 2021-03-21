@@ -55,7 +55,7 @@ voter = input('Please enter your username (voter): ')
 
 # connect node
 # If using mainnet, try with demo account: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-client = Hive('http://127.0.0.1:8091')
+client = Hive('http://127.0.0.1:8090')
 ```
 
 #### 3. Check vote status<a name="votestat"></a>
@@ -137,10 +137,10 @@ A simple confirmation of the chosen action is printed on the screen.
 
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8091 mapped locally to the docker container:
+Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
 
 ```bash
-docker run -d -p 8091:8091 inertia/tintoy:latest
+docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
 For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})

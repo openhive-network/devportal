@@ -11,7 +11,7 @@ voter = input('Please enter your username (voter): ')
 
 # connect node
 # If using mainnet, try with demo account: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-client = Hive('http://127.0.0.1:8091')
+client = Hive('http://127.0.0.1:8090')
 
 # capture variables
 author = input('Author of post/comment that you wish to vote for: ')

@@ -18,7 +18,7 @@ wif_old_owner_key = str(
   PasswordKey(account, old_password, "owner").get_private_key()
 )
 
-client = Hive('http://127.0.0.1:8091', keys=[wif_old_owner_key])
+client = Hive('http://127.0.0.1:8090', keys=[wif_old_owner_key])
 
 account = Account(account, blockchain_instance=client)
 new_public_keys = {}
