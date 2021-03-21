@@ -27,7 +27,7 @@ canonical_url: plugin-and-api-list.html
 * [`rewards_api`](#rewards_api)
 * [`tags_api`](#tags_api)
 * [`transaction_status_api`](#transaction_status_api)
-* [`witness_api`](#witness_api)
+* [`witness_api`](#witness_api-deprecated)
 
 ### `account_by_key_api`
 
