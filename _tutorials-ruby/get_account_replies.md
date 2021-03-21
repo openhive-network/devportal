@@ -4,11 +4,8 @@ position: 8
 description: "Fetching the replies written to a particular account."
 layout: full
 canonical_url: get_account_replies.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Account Replies](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/08_get_account_replies) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Get Account Replies](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/08_get_account_replies) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-08_get_account_replies.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/08_get_account_replies)).
 
 Historically, applications that wanted to retrieve replies written to a particular account would use `get_state`.  But this method has been scheduled for deprecation.  So we'll use a more supported approach in this tutorial using `get_account_history`.
 
@@ -28,7 +25,17 @@ To request the latest replies to a particular author, we can use the `get_accoun
 ```ruby
 api = Radiator::Api.new
 
-api.get_account_history(account_name, -1, 10000) do |history|
+options = []
+options << account_name
+options << -1 # start
+options << 1000 # limit
+
+# This is optional, we can mask out all operations other than comment_operation.
+operation_mask = 0x02 # comment_operation
+options << (operation_mask & 0xFFFFFFFF) # operation_filter_low
+options << ((operation_mask & 0xFFFFFFFF00000000) >> 32) # operation_filter_high
+
+api.get_account_history(*options) do |history|
   history.each do |index, item|
     type, op = item.op
     
@@ -43,7 +50,9 @@ api.get_account_history(account_name, -1, 10000) do |history|
 end
 ```
 
-Notice, the above example request up to 10,000 operations from history, starting from the oldest.  From these results, we iterate on each item in history to locate **a)** type of `comment`, and **b)** `parent_author` that match the `account_name`.
+Notice, the above example request up to 1,000 operations from history, starting from the oldest.  From these results, we iterate on each item in history to locate **a)** type of `comment`, and **b)** `parent_author` that match the `account_name`.
+
+This example also shows how to mask out all but `comment_operation`.  This is optional, but by providing this mask, the api response will only include posts and replies, reducing the bandwidth required to execute this api call.
 
 #### Example api call
 
@@ -65,24 +74,16 @@ ruby get_account_replies.rb lordvader
 From the example we get the following output from our script:
 
 ```
-.
-.
-.
-Reply by @steemitboard in discussion: "The Empire has sent you a friend request."
-	body_length: 677 (99 words)
-	replied at: 2018-04-28T04:32:42
+Reply by @hivebuzz in discussion: "Join the 501st Legion and Rule Drug Wars!"
+	body_length: 1103 (172 words)
+	replied at: 2020-06-06T22:36:33
 	net_votes: 0
-	https://hive.blog/@steemitboard/steemitboard-notify-lordvader-20180428t043241000z
-Reply by @jedimasteryoda in discussion: "The Empire has sent you a friend request."
-	body_length: 65 (11 words)
-	replied at: 2018-06-07T18:47:54
+	https://hive.blog/@hivebuzz/hivebuzz-notify-lordvader-20200606t223635000z
+Reply by @obrisgold1 in discussion: "Join the 501st Legion and Rule Drug Wars!"
+	body_length: 51 (10 words)
+	replied at: 2020-07-21T14:25:00
 	net_votes: 0
-	https://hive.blog/@jedimasteryoda/re-lordvader-the-empire-has-sent-you-a-friend-request-20180607t184754944z
-Reply by @koinbot in discussion: "The Empire has sent you a friend request."
-	body_length: 15 (2 words)
-	replied at: 2018-06-23T07:58:51
-	net_votes: 0
-	https://hive.blog/@koinbot/re-lordvader-the-empire-has-sent-you-a-friend-request-20180623t075851464z
+	https://hive.blog/@obrisgold1/re-lordvader-qdtpdo
 ```
 
 ### Comment fields
@@ -97,20 +98,15 @@ Replies in the results of `get_account_history` will only return the following f
 * `body`
 * `json_metadata`
 
-In our example script, we want more detail than this, so for every `comment`, we call `get_content` to retrieve more detail.  For a full explanation of the results provided by `get_content`, please refer to the tutorial: [Get Post Details](https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials/05_get_post_details)
+In our example script, we want more detail than this, so for every `comment`, we call `get_content` to retrieve more detail.  For a full explanation of the results provided by `get_content`, please refer to the tutorial: [Get Post Details]({{ '/tutorials-ruby/get_post_details.html' | relative_url }})
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
-
-* `<account-name>`
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/08_get_account_replies
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/08_get_account_replies
 bundle install
 ruby get_account_replies.rb <account-name>
 ```
-
-
----

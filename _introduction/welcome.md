@@ -5,7 +5,7 @@ position: 1
 
 #### Welcome to the Hive Developer Portal!
 
-This site is designed to aid those interested in developing applications on the  **[Hive](http://hive.io){:target="_blank"}** blockchain.
+This site is designed to aid those interested in developing applications on the  **[Hive](https://hive.io){:target="_blank"}** blockchain.
 
 If you don't know about Hive yet, visit [hive.io](https://hive.io).
 

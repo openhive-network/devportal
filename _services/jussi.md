@@ -382,7 +382,7 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 ### Footnotes<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 * Batch requests are limited to a maximum of 50 request elements.
-  * *Also see: [json-rpc batch specification](http://www.jsonrpc.org/specification#batch)*
+  * *Also see: [json-rpc batch specification](https://www.jsonrpc.org/specification#batch)*
 * Repository: [gitlab.syncad.com/hive/jussi](https://gitlab.syncad.com/hive/jussi)
 
 ---

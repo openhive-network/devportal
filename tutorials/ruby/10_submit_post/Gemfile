@@ -1,4 +1,2 @@
 source 'https://rubygems.org'
 gem 'radiator'
-gem 'pry'
-gem 'diff_match_patch'

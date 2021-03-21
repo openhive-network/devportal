@@ -4,11 +4,8 @@ position: 5
 description: "Understand and use the most common fields of the requested content."
 layout: full
 canonical_url: get_post_details.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/05_get_post_details) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/05_get_post_details) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-05_get_post_details.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/05_get_post_details)).
 
 ### Intro
 
@@ -18,7 +15,7 @@ We will also describe the most commonly used fields from the response object.
 
 ### Sections
 
-1. [Making the api call](#making-the-api-call) - Use steem-rb to a specific post
+1. [Making the api call](#making-the-api-call) - Use `get_content` to a specific post
     1. [Example api call](#example-api-call) - make the call in code
     1. [Example api call using script](#example-api-call-using-script) - using our tutorial script
     1. [Example Output](#example-output) - output from a successful call
@@ -47,15 +44,19 @@ end
 ```
 
 #### Example api call
-If we want to get the post "announcing-the-steem-developer-portal" by user @steemitdev
+
+If we want to get the post "announcing-the-launch-of-hive-blockchain" by user @hiveio
+
 ```ruby
-api.get_content("steemitdev", "announcing-the-steem-developer-portal") do |content| ...
+api.get_content("hiveio", "announcing-the-launch-of-hive-blockchain") do |content| ...
 ```
 
 #### Example api call using script
+
 And to do the same with our tutorial script
+
 ```bash
-ruby get_post_details.rb https://hive.blog/hivedev/@steemitdev/announcing-the-steem-developer-portal
+ruby get_post_details.rb https://hive.blog/communityfork/@hiveio/announcing-the-launch-of-hive-blockchain
 ```
 
 #### Example Output
@@ -63,35 +64,33 @@ ruby get_post_details.rb https://hive.blog/hivedev/@steemitdev/announcing-the-st
 From the example we get the following output from our script
 
 ```
-Post by steemitdev
-	title: Announcing the Hive Developer Portal!
-	permlink: announcing-the-steem-developer-portal
-	category: hivedev
-	body_length: 2342 (381 words)
-	posted at: 2017-10-30T16:34:27, updated at: 2017-10-30T16:34:27, active at: 2018-04-11T10:34:00
-	children: 66
+Post by hiveio
+	title: Announcing the Launch of Hive Blockchain
+	permlink: announcing-the-launch-of-hive-blockchain
+	category: communityfork
+	body_length: 10337 (1738 words)
+	posted at: 2020-03-17T23:30:54, active at: 2020-10-12T05:25:03
+	children: 978
 	net_rshares: 0
 	vote_rshares: 0
 	payout:
 		max_accepted_payout: 0.000 HBD
 		percent_hbd: 100.00 %
-		payout at: 2017-11-06T16:34:27 (235.2 days ago)
+		payout at: 2020-03-24T23:30:54 (358.0 days ago)
 		author_rewards: 0.000 HBD
 		curator_payout_value: 0.000 HBD
 		total_payout_value: 0.000 HBD
 	promoted: 0.000 HBD
 	total_vote_weight: 0
 	reward_weight: 100.00 %
-	net_votes: 181, upvotes: 234, downvotes: 1, unvotes: 0, total: 235, top voter: thejohalfiles
+	net_votes: 1337, upvotes: 997, downvotes: 3, unvotes: 0, total: 1000, top voter: blocktrades
 	allow_replies: true
 	allow_votes: true
 	allow_curation_rewards: true
-	author_reputation: 14487360227924
-	tags: hivedev, steem, dev
-	app: steemit/0.1
+	author_reputation: 83492228581467
+	tags: communityfork, hive, steemcommunity, steem
+	app: steempeak/2020.03.6
 ```
-
-
 
 ### Post fields
 
@@ -99,7 +98,7 @@ Most console applications that use the `get_content` method are probably looking
 
 #### `parent_author`
 
-In our script (`get_post_details.rb`), we use the ruby statement:
+In our script ([`get_post_details.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/05_get_post_details/get_post_details.rb)), we use the ruby statement:
 
 ```ruby
 content.parent_author.empty?
@@ -197,20 +196,15 @@ As you can see from the above example, `json_metadata` starts out as a string of
 
 Note, we're using `rescue` in case the `json_metadata` string contains invalid JSON because there is no validation performed on this field by the blockchain when content is broadcasted.
 
-
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 *`<content-url>` 
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/05_get_post_details
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/05_get_post_details
 bundle install
 ruby get_post_details.rb <content-url>
 ```
-
-
-
----

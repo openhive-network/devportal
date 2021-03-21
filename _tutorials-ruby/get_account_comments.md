@@ -4,11 +4,8 @@ position: 9
 description: "Fetching the comments written by a particular account."
 layout: full
 canonical_url: get_account_comments.html
----              
-<span class="fa-pull-left top-of-tutorial-repo-link"><span class="first-word">Full</span>, runnable src of [Get Account Comments](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorials/09_get_account_comments) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby).</span>
-<br>
-
-
+---
+Full, runnable src of [Get Account Comments](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/09_get_account_comments) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-09_get_account_comments.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/09_get_account_comments)).
 
 Historically, applications that wanted to retrieve comments written by a particular account would use `get_state`.  But this method has been scheduled for deprecation.  So we'll use a more supported approach in this tutorial using `get_account_history`.
 
@@ -28,7 +25,17 @@ To request the latest comments by a particular author, we can use the `get_accou
 ```ruby
 api = Radiator::Api.new
 
-api.get_account_history(account_name, -1, 10000) do |history|
+options = []
+options << account_name
+options << -1 # start
+options << 1000 # limit
+
+# This is optional, we can mask out all operations other than comment_operation.
+operation_mask = 0x02 # comment_operation
+options << (operation_mask & 0xFFFFFFFF) # operation_filter_low
+options << ((operation_mask & 0xFFFFFFFF00000000) >> 32) # operation_filter_high
+
+api.get_account_history(*options) do |history|
   history.each do |index, item|
     type, op = item.op
     
@@ -43,7 +50,9 @@ api.get_account_history(account_name, -1, 10000) do |history|
 end
 ```
 
-Notice, the above example request up to 10,000 operations from history, starting from the oldest.  From these results, we iterate on each item in history to locate **a)** type of `comment`, and **b)** `parent_author` that do not match the `account_name`.
+Notice, the above example request up to 1,000 operations from history, starting from the oldest.  From these results, we iterate on each item in history to locate **a)** type of `comment`, and **b)** `parent_author` that do not match the `account_name`.
+
+This example also shows how to mask out all but `comment_operation`.  This is optional, but by providing this mask, the api response will only include posts and replies, reducing the bandwidth required to execute this api call.
 
 #### Example api call
 
@@ -68,21 +77,21 @@ From the example we get the following output from our script:
 .
 .
 .
-Reply to @saarliconvalley in discussion: "The Empire has sent you a friend request."
-	body_length: 33 (7 words)
-	replied at: 2018-03-27T16:02:45
+Reply to @darkunicorn in discussion: "5 EASY WAYS TO MAKE A BEAUTIFUL WOMAN SMILE TO YOU."
+	body_length: 89 (19 words)
+	replied at: 2016-07-28T22:07:06
 	net_votes: 0
-	https://hive.blog/@lordvader/re-saarliconvalley-re-lordvader-2018327t16025594z-20180327t160243538z
-Reply to @teenovision in discussion: "The Empire has sent you a friend request."
-	body_length: 90 (16 words)
-	replied at: 2018-03-27T15:53:39, updated at: 2018-03-30T17:25:18, active at: 2018-03-30T17:25:18
-	net_votes: 0
-	https://hive.blog/@lordvader/re-teenovision-re-lordvader-the-empire-has-sent-you-a-friend-request-20180327t155339532z
-Reply to @gtg in discussion: "gtg witness log"
-	body_length: 130 (25 words)
-	replied at: 2018-04-06T04:29:00
+	https://hive.blog/@lordvader/re-darkunicorn-5-easy-ways-to-make-a-beautiful-woman-smile-to-you-20160728t220708749z
+Reply to @michaellamden68 in discussion: "Black Knight Satellite-What's Your Opinion?"
+	body_length: 88 (16 words)
+	replied at: 2016-07-28T22:10:09
 	net_votes: 2
-	https://hive.blog/@lordvader/re-gtg-ffdhu-gtg-witness-log-20180406t042906872z
+	https://hive.blog/@lordvader/re-michaellamden68-black-knight-satellite-what-s-your-opinion-20160728t221010607z
+Reply to @teamsteem in discussion: "I’ve invited my 708 Facebook friends to join Steemit (updated I invited 0 friends thanks to Facebook)"
+	body_length: 112 (22 words)
+	replied at: 2016-07-28T22:03:18, updated at: 2016-07-28T22:12:42, active at: 2016-07-28T22:12:42
+	net_votes: 0
+	https://hive.blog/@lordvader/re-teamsteem-i-ve-invited-my-708-facebook-friends-to-join-steemit-20160728t220318695z
 ```
 
 ### Comment fields
@@ -97,20 +106,15 @@ Comments in the results of `get_account_history` will only return the following 
 * `body`
 * `json_metadata`
 
-In our example script, we want more detail than this, so for every `comment`, we call `get_content` to retrieve more detail.  For a full explanation of the results provided by `get_content`, please refer to the tutorial: [Get Post Details](https://github.com/steemit/devportal-tutorials-rb/tree/master/tutorials/05_get_post_details)
+In our example script, we want more detail than this, so for every `comment`, we call `get_content` to retrieve more detail.  For a full explanation of the results provided by `get_content`, please refer to the tutorial: [Get Post Details]({{ '/tutorials-ruby/get_post_details.html' | relative_url }})
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started](https://developers.hive.io/tutorials-ruby/getting_started).  Then you can create and execute the script (or clone from this repository):
-
-* `<account-name>`
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
-git clone git@github.com:steemit/devportal-tutorials-rb.git
-cd devportal-tutorials-rb/tutorials/09_get_account_comments
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/09_get_account_comments
 bundle install
 ruby get_account_comments.rb <account-name>
 ```
-
-
----

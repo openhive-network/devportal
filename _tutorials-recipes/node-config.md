@@ -226,7 +226,7 @@ track-account-range =
 
 Defines a list of operations which will be explicitly logged.
 
-See: [#301](#https://github.com/steemit/steem/issues/301), [#521](https://github.com/steemit/steem/issues/521)
+See: [#301](https://github.com/steemit/steem/issues/301), [#521](https://github.com/steemit/steem/issues/521)
 
 ```ini
 # default
@@ -253,7 +253,7 @@ history-whitelist-ops =
 
 Defines a list of operations which will be explicitly ignored.
 
-See: [#301](#https://github.com/steemit/steem/issues/301), [#521](https://github.com/steemit/steem/issues/521)
+See: [#301](https://github.com/steemit/steem/issues/301), [#521](https://github.com/steemit/steem/issues/521)
 
 ```ini
 # default
