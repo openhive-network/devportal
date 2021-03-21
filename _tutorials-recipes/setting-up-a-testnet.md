@@ -24,7 +24,7 @@ But in this tutorial, we will go over the **no docker** approach which will crea
 
 If you want full details on setting up a testnet using Tinman, head over to that github:
 
-https://gitlab.syncad.com/hive/tinman
+[https://gitlab.syncad.com/hive/tinman](https://gitlab.syncad.com/hive/tinman)
 
 Otherwise, let's do the complete Quick Start:
 
