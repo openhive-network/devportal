@@ -26,28 +26,90 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
 
 For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://hive.blog/@fullnodeupdate) by [@holger80](https://hive.blog/@holger80).
 
-
 ### Private Nodes
 
 The simplest way to get started is by deploying a pre-built dockerized container.
 
 ##### Dockerized p2p Node
 
-_To run a p2p node (ca. 2GB of memory is required at the moment):_
+To install a witness or seed node:
+
+```bash
+git clone https://github.com/someguy123/hive-docker.git
+cd hive-docker
+# If you don't already have a docker installation, this will install it for you
+./run.sh install_docker
+
+# This downloads/updates the low-memory docker image for Hive
+./run.sh install
+
+# If you are a witness, you need to adjust the configuration as needed
+# e.g. witness name, private key, logging config, turn off p2p-endpoint etc.
+# If you're running a seed, then don't worry about the config, it will just work
+nano data/witness_node_data_dir/config.ini
+
+# (optional) Setting the .env file up (see the env settings section of this readme)
+# will help you to adjust settings for hive-in-a-box
+nano .env
+
+# Once you've configured your server, it's recommended to download the block log, as replays can be
+# faster than p2p download
+./run.sh dlblocks
+
+# You'll also want to set the shared memory size (use sudo if not logged in as root). 
+# Adjust 64G to whatever size is needed for your type of server and make sure to leave growth room.
+# Please be aware that the shared memory size changes constantly. Ask in a witness chatroom if you're unsure.
+./run.sh shm_size 64G
+
+# Then after you've downloaded the blockchain, you can start hived in replay mode
+./run.sh replay
+# If you DON'T want to replay, use "start" instead
+./run.sh start
+```
+
+You may want to persist the /dev/shm size (shared memory) across reboots. To do this, you can edit `/etc/fstab`, please be very careful, as any mistakes in this file will cause your system to become unbootable.
 
 ##### Dockerized Full Node
 
-_to run a node with all the data (e.g. for supporting a content website) that uses ca. 140GB of memory and growing:_
+To install a full RPC node - follow the same steps as above, but use `install_full` instead of `install`.
+
+Remember to adjust the config, you'll need a higher shared memory size (potentially up to 1 TB), and various plugins.
+
+For handling requests to your full node in docker, I recommend spinning up an nginx container, and connecting nginx to the Hive node using a docker network.
+
+Example:
+
+```
+docker network create rpc_default
+# Assuming your RPC container is called "rpc1" instead of witness/seed
+docker network connect rpc_default rpc1
+docker network connect rpc_default nginx
+```
+
+Nginx will now be able to access the container RPC1 via `http://rpc1:8090` (assuming 8090 is the RPC port in your config). Then you can set up SSL and container port forwarding as needed for nginx.
+
+##### Customized Docker Node
+
+If the above options do not meet your needs, refer to Hive-in-a-box by [@someguy123](https://hive.blog/@someguy123):
+
+[https://github.com/someguy123/hive-docker](https://github.com/someguy123/hive-docker)
+
+##### Building Without Docker
+
+Full non-docker steps can be reviewed here:
+
+[Build Eclipse](https://peakd.com/hive-160391/@gtg/witness-update-release-candidate-for-eclipse-is-out#build-eclipse) by [@gtg](https://hive.blog/@gtg)
 
 ### Syncing blockchain
 
-Normally syncing blockchain starts from very first, `0` genesis block. It might take long time to catch up with live network. Because it connectes to various p2p nodes in the Hive network and requests blocks from 0 to head block. It stores blocks in block log file and builds up the current state in the shared memory file. But there is a way to bootstrap syncing by using trusted `block_log` file. The block log is an external append only log of the blocks. It contains blocks that are only added to the log after they are irreversible because the log is append only.
+Normally syncing blockchain starts from very first, `0` genesis block.  It might take long time to catch up with live network, because it connects to various p2p nodes in the Hive network and requests blocks from 0 to head block.  It stores blocks in block log file and builds up the current state in the shared memory file.  But there is a way to bootstrap syncing by using trusted `block_log` file.  The block log is an external append only log of the blocks.  It contains blocks that are only added to the log after they are irreversible because the log is append only.
 
 Trusted block log file helps to download blocks faster. Various operators provide public block log file which can be downloaded from:
-- http://files.privex.io
-- https://gtg.steem.house/get/blockchain
 
-Both `block_log` files updated periodically, as of April 2020 uncompressed `block_log` file size ~260 GB. (Docker container on `stable` branch of Hive source code has option to use `USE_PUBLIC_BLOCKLOG=1` to download latest block log and start Hive node with replay.)
+* [http://files.privex.io/hive/](http://files.privex.io/hive/)
+* [https://gtg.openhive.network/get/blockchain/block_log](https://gtg.openhive.network/get/blockchain/block_log)
+
+Both `block_log` files updated periodically, as of March 2021 uncompressed `block_log` file size ~350 GB. (Docker container on `stable` branch of Hive source code has option to use `USE_PUBLIC_BLOCKLOG=1` to download latest block log and start Hive node with replay.)
 
 Block log should be place in `blockchain` directory below `data_dir` and node should be started with `--replay-blockchain` to ensure block log is valid and continue to sync from the point of snapshot. Replay uses the downloaded block log file to build up the shared memory file up to the highest block stored in that snapshot and then continues with sync up to the head block.
 
@@ -67,7 +129,7 @@ Above bash script drops `block_log` from the OS cache, leaving more memory free 
 
 ##### Few other tricks that might help:
 
-For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in hived being slowed down by redundant IO operations. These settings are recommended to optimize reindex time.
+For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in hived being slowed down by redundant IO operations.  These settings are recommended to optimize reindex time.
 
 ```
 echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio
@@ -76,21 +138,4 @@ echo    80 | sudo tee /proc/sys/vm/dirty_ratio
 echo 30000 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
 ```
 
-Another settings that can be changed in `config.ini` is `flush` - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.
-
-(below info is outdated - need updating)
-``` bash
-docker run \
-    -d -p 2001:2001 -p 8090:8090 --name hived-default \
-    steemit/steem
-
-docker logs -f hived-default  # follow along
-```
-``` bash
-docker run \
-    --env USE_WAY_TOO_MUCH_RAM=1 \
-    -d -p 2001:2001 -p 8090:8090 --name hived-full \
-    steemit/steem
-
-docker logs -f hived-full
-```  
+Another settings that can be changed in `config.ini` is [`flush-state-interval`]({{ '/tutorials-recipes/node-config.html#flush-state-interval' | relative_url }}) - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.
