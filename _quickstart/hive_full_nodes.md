@@ -106,7 +106,7 @@ Normally syncing blockchain starts from very first, `0` genesis block.  It might
 
 Trusted block log file helps to download blocks faster. Various operators provide public block log file which can be downloaded from:
 
-* [http://files.privex.io/hive/](http://files.privex.io/hive/)
+* [https://files.privex.io/hive/](https://files.privex.io/hive/)
 * [https://gtg.openhive.network/get/blockchain/block_log](https://gtg.openhive.network/get/blockchain/block_log)
 
 Both `block_log` files updated periodically, as of March 2021 uncompressed `block_log` file size ~350 GB. (Docker container on `stable` branch of Hive source code has option to use `USE_PUBLIC_BLOCKLOG=1` to download latest block log and start Hive node with replay.)
