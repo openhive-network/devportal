@@ -26,8 +26,7 @@ We will also describe the most commonly used fields from the response object.
     1. [`beneficiaries`](#beneficiaries) - reward routes other accounts
     1. [`active_votes`](#active_votes) - all votes applied
     1. [`json_metadata`](#json_metadata) - things like `tags` and `app`
-2. [Script](#script) - Delving into the example script.
-3. [To Run](#to-run) - Running the example.
+1. [To Run](#to-run) - Running the example.
 
 ### Making the api call
 
