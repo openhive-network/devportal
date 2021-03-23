@@ -433,6 +433,34 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-update)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_update)'
+    - name: account_update2
+      since: HF21
+      virtual: false
+      purpose: |
+        This operation behaves identically to the existing
+        `account_update_operation` except that it allows the posting authority
+        to sign when the owner and active authorities and memo key are not
+        present (i.e. only valid for posting and JSON metadata).
+        
+        See: [#3274](https://github.com/steemit/steem/issues/3274)
+      roles:
+        - posting
+          active
+          owner
+      params:
+        - account
+          owner
+          active
+          posting
+          memo_key
+          json_metadata
+          posting_json_metadata
+      json_examples:
+        - '["account_update",{"account":"hiveio","posting_json_metadata":""}]'
+      client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-update2)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_update2)'
     - name: report_over_production
       disabled: true
       purpose: |
