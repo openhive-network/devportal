@@ -11,7 +11,7 @@ canonical_url: using-hivemind.html
 
 Hive is a "consensus interpretation" layer for the Hive blockchain, maintaining the state of social features such as post feeds, follows, and communities. Written in Python, it synchronizes an SQL database with chain state, providing developers with a more flexible/extensible alternative to the raw hived API. This means that you can bypass hived and access data in a more traditional way, for example, with SQL. But you can't use SQL on hived. So Hivemind solves that problem. Hive does not support any queries to do with wallets, orders, escrow, keys, recovery, or account history.
 
-A good source of additional information on hive and how to use it can be found in [this Hive article](https://hive.blog/hivemind/@inertia/hivemind-queries) by @inertia.
+<!-- A good source of additional information on hive and how to use it can be found in [this Hive article](https://hive.blog/hivemind/@inertia/hivemind-queries) by @inertia. -->
 
 #### Supported API functionality:
 
@@ -31,7 +31,7 @@ A good source of additional information on hive and how to use it can be found i
 *   condenser_api.get_content
 *   condenser_api.get_state
 
-**Additional functions available within hive-steem library**
+**Additional functions available within hivemind library**
 
 The majority of these functions are reliant on hived so any changes to hived would affect these function calls. The only two functions not directly reliant on hived are `stream_blocks` and `get_hive_per_mvest`.
 
@@ -50,11 +50,11 @@ The majority of these functions are reliant on hived so any changes to hived wou
 *   get_hive_price
 *   get_blocks_range
 
-Detailed information on the hive-steem library can be found in the [Hivemind repo](https://github.com/steemit/hivemind/blob/master/hive/steem/client.py).
+Detailed information on the hivemind library can be found in the [Hivemind repo](https://gitlab.syncad.com/hive/hivemind/-/blob/master/hive/steem/client.py).
 
 #### Hivemind dependencies and setup
 
-Hivemind is available as a pre-built docker image which can be downloaded directly from Dockerhub at [https://hub.docker.com/r/steemit/hivemind/](https://hub.docker.com/r/steemit/hivemind/).
+<!-- Hivemind is available as a pre-built docker image which can be downloaded directly from Dockerhub at [https://hub.docker.com/r/hive/hivemind/](https://hub.docker.com/r/hive/hivemind/). -->
 
 If you would prefer to install Hivemind yourself you can do so following the basic instructions below.
 
@@ -74,7 +74,7 @@ $ sudo apt-get install python3 python3-pip
 $ sudo apt-get install postgresql
 ```
 
-More detailed documentation on the setup of Hivemind can be found at the [Hivemind github repository](https://github.com/steemit/hivemind).
+More detailed documentation on the setup of Hivemind can be found at the [Hivemind github repository](https://gitlab.syncad.com/hive/hivemind).
 
 Once the dependencies have been installed the database can be created and the environment variables set.
 

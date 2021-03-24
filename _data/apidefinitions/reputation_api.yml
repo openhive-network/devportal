@@ -23,11 +23,11 @@
     parameter_json: '{"account_lower_bound":"","limit":1000}'
     expected_response_json: | # TODO - recheck in HF23
       {
-        "account": "steem",
+        "account": "hive",
         "reputation": 0
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"reputation_api.get_account_reputations", "params": {"account_lower_bound": "steem"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"reputation_api.get_account_reputations", "params": {"account_lower_bound": "hive"}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-reputations)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_reputation)'

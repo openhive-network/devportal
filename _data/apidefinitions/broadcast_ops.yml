@@ -166,7 +166,7 @@
           body
           json_metadata
       json_examples:
-        - '["comment",{"parent_author":"","parent_permlink":"steem","author":"alice","permlink":"a-post-by-alice","title":"A Post By Alice","body":"This is my post.","json_metadata":"{\"tags\":[\"hiveio\",\"example\",\"tags\"]}"}]'
+        - '["comment",{"parent_author":"","parent_permlink":"hiveio","author":"alice","permlink":"a-post-by-alice","title":"A Post By Alice","body":"This is my post.","json_metadata":"{\"tags\":[\"hiveio\",\"example\",\"tags\"]}"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
         - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#comment)'
@@ -303,8 +303,8 @@
       virtual: false
       purpose: |
         Feeds can only be published by the top N witnesses which are included in
-        every round and are used to define the exchange rate between steem and
-        the dollar.
+        every round and are used to define the exchange rate between HIVE and
+        the US dollar.
       roles:
         - active
           owner
@@ -473,7 +473,7 @@
         
         Users not in the ACTIVE witness set should not have to worry about their
         key getting compromised and being used to produced multiple blocks so
-        the attacker can report it and steel their vesting steem.
+        the attacker can report it and steel their vesting HIVE.
         
         The result of the operation is to transfer the full VESTING HIVE balance
         of the block producer to the reporter.
@@ -855,7 +855,7 @@
           new_owner_authority
           extensions
       json_examples:
-        - '["request_account_recovery",{"recovery_account":"steem","account_to_recover":"alice","new_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LYxj96zdypHYqgDdD6Nyh2NxerN3P1Mp3ddNm7gci63nfrSuZ",1]]},"extensions":[]}]'
+        - '["request_account_recovery",{"recovery_account":"hiveio","account_to_recover":"alice","new_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LYxj96zdypHYqgDdD6Nyh2NxerN3P1Mp3ddNm7gci63nfrSuZ",1]]},"extensions":[]}]'
       client_docs:
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#request-account-recovery)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
@@ -1405,9 +1405,9 @@
         * `contribution_begin_time` - The start time of the ICO contribution process.
         * `contribution_end_time` - The end time of the ICO contribution process.
         * `launch_time` - The time in which a token should launch.
-        * `hive_units_min` - The minimum steem units required for a successful ICO.
-        * `hive_units_soft_cap` - The steem unit cap in which the pre_soft_cap_unit generation policy applies.
-        * `hive_units_hard_cap` - The steem unit cap in which the post_soft_cap_unit generation policy applies.
+        * `hive_units_min` - The minimum HIVE units required for a successful ICO.
+        * `hive_units_soft_cap` - The HIVE unit cap in which the pre_soft_cap_unit generation policy applies.
+        * `hive_units_hard_cap` - The HIVE unit cap in which the post_soft_cap_unit generation policy applies.
         * `initial_generation_policy` - A JSON string of the HIVE and token destination routes of the ICO process.
        
         **Example Initial Generation Policy JSON:**
@@ -1673,7 +1673,7 @@
       virtual: true
       purpose: |
         Fills when conversion requests with a conversion date before the head
-        block time and then converts them to/from steem/hbd at the current
+        block time and then converts them to/from HIVE/HBD at the current
         median price feed history price times the premium.
       roles:
         - active

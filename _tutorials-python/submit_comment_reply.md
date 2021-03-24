@@ -83,7 +83,7 @@ We initialize the beem class by connecting to the specific `testnet` node. We al
 
 ```python
 #connect node and private posting key
-client = steem.Hive(nodes=['http://127.0.0.1:8090'], keys=[wif])
+client = Hive('http://127.0.0.1:8090', keys=[wif])
 ```
 
 #### 4. Post submission and result<a name="submit"></a>

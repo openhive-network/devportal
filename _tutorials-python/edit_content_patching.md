@@ -48,7 +48,7 @@ from diff_match_patch import diff_match_patch
 
 #### 2. Post to update <a name="post"></a>
 
-We require the `private posting key` of the user in order for the transfer to be committed to the blockchain. This is why we are using a testnet. The values are supplied via the terminal/console before we initialise the steem class. There are some demo accounts available but we encourage you to create your own accounts on this testnet and create balances you can claim; it's good practice.
+We require the `private posting key` of the user in order for the transfer to be committed to the blockchain. This is why we are using a testnet. The values are supplied via the terminal/console before we initialize the beem class. There are some demo accounts available but we encourage you to create your own accounts on this testnet and create balances you can claim; it's good practice.
 
 The user inputs the author and permlink of the post that they wish to edit.  See the [`submit post`]({{ '/tutorials-python/submit_post.html' | relative_url }}) tutorial to create a new post before trying the patch process.
 

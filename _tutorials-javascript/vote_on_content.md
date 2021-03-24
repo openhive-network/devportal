@@ -45,7 +45,7 @@ import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Re
 
 let opts = { ...NetConfig.net };
 
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 ```
 
@@ -64,7 +64,7 @@ window.onload = () => {
 A new blog post is created on the testnet with the necessary variables for the vote function being allocated as well. If a post is successfully created it will display a block number and a value will be assigned to the `permlink` variable.
 
 ```javascript
-//refer to "10_submit_post" in the tutorials folder for creating a post on steemit
+//refer to "10_submit_post" in the tutorials folder for creating a post on hive.blog
 //create post function
 window.createPost = async () => {
     //get private key
@@ -76,7 +76,7 @@ window.createPost = async () => {
     //get title
     const title = `developers.hive.io - JS-T:17 ${time}`;
     //get body
-    const body = `Go to [developers.hive.io](https://developers.hive.io) for the latest in Hive tutorials! This post was created by someone using the active version of those tutorials at  [https://github.com/steemit/devportal-tutorials-js](https://github.com/steemit/devportal-tutorials-js)
+    const body = `Go to [developers.hive.io](https://developers.hive.io) for the latest in Hive tutorials! This post was created by someone using the active version of those tutorials at  [https://developers.hive.io/tutorials/#tutorials-javascript](https://developers.hive.io/tutorials/#tutorials-javascript)
         
         ${time}`;
     //get tags and convert to array list
