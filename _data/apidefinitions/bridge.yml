@@ -81,7 +81,7 @@
         * `error` - provides feedback to developers for ops that cannot be interpreted
         * `subscribe` - an account has subscribed to a community
         * `reply` - a post has been replied to
-        * `reblog` - a post has been reblogged/resteemed
+        * `reblog` - a post has been reblogged/reblogged
         * `follow` - an account has followed another account
         * `mention` - author mentions an account
         * `vote` - voter votes for an author

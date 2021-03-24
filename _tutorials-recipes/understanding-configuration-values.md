@@ -11,7 +11,7 @@ canonical_url: understanding-configuration-values.html
 
 These values underpin the behavior of the entire blockchain.  In a sense, each witness votes for these configuration values every time they sign a block.  Unlike many of the [Dynamic Global Properties]({{ '/tutorials-recipes/understanding-dynamic-global-properties.html' | relative_url }}), these values never change at runtime (e.g., as a witness, in order to change them, you typically must shut down your node, make the change, recompile, and run).
 
-See: [config.hpp](https://github.com/steemit/steem/blob/master/libraries/protocol/include/steem/protocol/config.hpp)
+See: [config.hpp](https://gitlab.syncad.com/hive/hive/-/blob/master/libraries/protocol/include/hive/protocol/config.hpp)
 
 Usually, these configuration values are universally adhered to, but there are situations where these values can and should be altered, like in the case of deploying a new blockchain (typically a testnet).  Some of the values that do not affect consensus, like [`HIVE_SOFT_MAX_COMMENT_DEPTH`](#HIVE_SOFT_MAX_COMMENT_DEPTH), are allowed to change to some extent.
 

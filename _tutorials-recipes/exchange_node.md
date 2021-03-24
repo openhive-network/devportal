@@ -16,7 +16,7 @@ These instructions are similar to setting up a [Get Transaction Node]({{ '/tutor
 
 If you prefer a docker version of these instructions, please refer to:
 
-[exchangequickstart.md](https://github.com/steemit/steem/blob/master/doc/exchangequickstart.md)
+[exchangequickstart.md](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/exchangequickstart.md)
 
 ### Sections
 
@@ -29,7 +29,7 @@ If you prefer a docker version of these instructions, please refer to:
 
 ### Minimum Requirements
 
-This tutorial assumes Ubuntu Server 18.04 LTS 16GB RAM and 320GB SSD/HDD.
+This tutorial assumes Ubuntu Server 18.04 LTS 64GB RAM and 500GB SSD/HDD.
 
 ### Building `hived`
 
@@ -43,8 +43,8 @@ sudo apt-get install autoconf automake autotools-dev bsdmainutils \
   libbz2-dev liblz4-dev libzstd-dev
 mkdir -p ~/src
 cd ~/src
-git clone --branch stable https://github.com/steemit/steem.git
-cd steem
+git clone --branch master https://gitlab.syncad.com/hive/hive.git
+cd hive
 git submodule update --init --recursive
 mkdir -p build
 cd build
@@ -105,7 +105,7 @@ Download the block log (optional but recommended).
 ```bash
 cd ~/hive_data
 mkdir -p blockchain
-wget -O blockchain/block_log https://s3.amazonaws.com/steemit-dev-blockchainstate/block_log-latest
+wget -O blockchain/block_log https://gtg.openhive.network/get/blockchain/block_log
 hived --data-dir=. --replay-blockchain
 ```
 
