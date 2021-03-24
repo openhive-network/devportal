@@ -358,6 +358,8 @@ Also see: [API Definition]({{ '/apidefinitions/#database_api.list_change_recover
 * `by_permlink` - `start` requires 2 values: `author`, `permlink`
 * `by_root` - `start` requires 4 values: `root_author`, `root_permlink`, `child_author`, `child_permlink`
 * `by_parent` - `start` requires 4 values: `child_author`, `child_permlink`, `root_author`, `root_permlink`
+* `by_last_update` - `start` requires 4 values: `parent_author`, `update_time`, `start_author`, `permlink`
+* `by_author_last_update` - `start` requires 4 values: `parent_author`, `update_time`, `start_author`, `permlink`
 
 To list the first 10 posts/comments by cashout time:
 
@@ -426,7 +428,7 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_comments",
   "params": {
-    "start": ["steemit", "firstpost", "", ""],
+    "start": ["hiveio", "announcing-the-launch-of-hive-blockchain", "", ""],
     "limit": 10,
     "order": "by_root"
   },
@@ -441,7 +443,7 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_comments",
   "params": {
-    "start": ["steemit", "firstpost", "gopher", "re-steemit-firstpost-20160718t195806340z"],
+    "start": ["hiveio", "announcing-the-launch-of-hive-blockchain", "traducciones", "q7d314"],
     "limit": 10,
     "order": "by_root"
   },
@@ -456,7 +458,7 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_comments",
   "params": {
-    "start": ["steemit", "firstpost", "", ""],
+    "start": ["hiveio", "announcing-the-launch-of-hive-blockchain", "", ""],
     "limit": 10,
     "order": "by_parent"
   },
@@ -471,9 +473,69 @@ curl -s --data '{
   "jsonrpc": "2.0",
   "method": "database_api.list_comments",
   "params": {
-    "start": ["steemit", "firstpost", "sictransitgloria", "re-steemit-firstpost-20160721t233702742z"],
+    "start": ["hiveio", "announcing-the-launch-of-hive-blockchain", "tsnaks", "re-hiveio-q7d32c"],
     "limit": 10,
     "order": "by_parent"
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the first 10 posts/comments by last update:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "database_api.list_comments",
+  "params": {
+    "start": ["hiveio", "2020-03-20T00:00:00", "", ""],
+    "limit": 10,
+    "order": "by_last_update"
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page of posts/comments by parent post:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "database_api.list_comments",
+  "params": {
+    "start": ["hiveio", "2020-03-20T00:00:00", "titusfrost", "q7g5ef"],
+    "limit": 10,
+    "order": "by_last_update"
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the first 10 posts/comments by author last update:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "database_api.list_comments",
+  "params": {
+    "start": ["hiveio", "2021-03-20T00:00:00", "", ""],
+    "limit": 10,
+    "order": "by_author_last_update"
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page of posts/comments by parent post:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "database_api.list_comments",
+  "params": {
+    "start": ["hiveio", "2021-03-20T00:00:00", "hiveio", "final-hive-hf24-date-set-october-6-2020"],
+    "limit": 10,
+    "order": "by_author_last_update"
   },
   "id": 1
 }' https://api.hive.blog | jq
