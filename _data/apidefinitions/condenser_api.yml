@@ -329,8 +329,6 @@
       |----------------------------|---------------|-|
       | `"hiveio"` | `"firstpost"` | Queries votes for content with a slug `@hiveio/firstpost` |
       | `"alice"` | `"a-post-by-alice"` | Queries votes for content with a slug `@alice/a-post-by-alice` |
-      
-      Also see: [tags_api.get_active_votes]({{ '/apidefinitions/#tags_api.get_active_votes' | relative_url }})
     parameter_json:
     - ''
     - ''
@@ -777,10 +775,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-current-median-history-price)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_active
-    purpose: |
-      Returns a list of discussions based on active.
-      
-      Also see: [tags_api.get_discussions_by_active]({{ '/apidefinitions/#tags_api.get_discussions_by_active' | relative_url }})
+    purpose: Returns a list of discussions based on active.
     parameter_json:
     - tag: ''
       limit: 0
@@ -839,10 +834,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_cashout
-    purpose: |
-      Returns a list of discussions by cashout.
-      
-      Also see: [tags_api.get_discussions_by_cashout]({{ '/apidefinitions/#tags_api.get_discussions_by_cashout' | relative_url }})
+    purpose: Returns a list of discussions by cashout.
     parameter_json:
     - tag: ''
       limit: 0
@@ -861,10 +853,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-cashout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_children
-    purpose: |
-      Returns a list of discussions by children.
-      
-      Also see: [tags_api.get_discussions_by_children]({{ '/apidefinitions/#tags_api.get_discussions_by_children' | relative_url }})
+    purpose: Returns a list of discussions by children.
     parameter_json:
     - tag: ''
       limit: 0
@@ -928,10 +917,7 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_feed
     since: HF14
-    purpose: |
-      Returns a list of discussions by feed.
-      
-      Also see: [tags_api.get_discussions_by_feed]({{ '/apidefinitions/#tags_api.get_discussions_by_feed' | relative_url }})
+    purpose: Returns a list of discussions by feed.
     parameter_json:
     - tag: ''
       start_author: ''
@@ -1015,10 +1001,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_votes
-    purpose: |
-      Returns a list of discussions by votes.
-      
-      Also see: [tags_api.get_discussions_by_votes]({{ '/apidefinitions/#tags_api.get_discussions_by_votes' | relative_url }})
+    purpose: Returns a list of discussions by votes.
     parameter_json:
     - tag: ''
       limit: 0
@@ -1595,7 +1578,7 @@
     purpose: |
       Returns a list of replies by last update.  `start_parent_author:string`, `start_permlink:string`, `limit:int` up to 100
       
-      Also see: [tags_api.get_replies_by_last_update]({{ '/apidefinitions/#tags_api.get_replies_by_last_update' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_replies_by_last_update' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_replies_by_last_update' | relative_url }})
     parameter_json:
     - ''
     - ''
@@ -1778,8 +1761,6 @@
       | `account` (string) | |
       |--------------------|-|
       | `"hiveio"` | Queries the tags used by the account named "hiveio". |
-      
-      Also see: [tags_api.get_tags_used_by_author]({{ '/apidefinitions/#tags_api.get_tags_used_by_author' | relative_url }})
     parameter_json:
     - ''
     expected_response_json: []
@@ -1892,7 +1873,7 @@
       | `null` | 100 | Queries the top 100 trending tags. |
       | `"hive"` | 10 | Queries the tags after "hive", up to 10 tags. |
       
-      Also see: [tags_api.get_trending_tags]({{ '/apidefinitions/#tags_api.get_trending_tags' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_trending_tags' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_trending_tags' | relative_url }})
     parameter_json:
     - ''
     - 1

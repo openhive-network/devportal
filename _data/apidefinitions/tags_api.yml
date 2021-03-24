@@ -6,7 +6,11 @@
     AppBase API methods are still under development and subject to change.**
   methods:
   - api_method: tags_api.get_active_votes
-    purpose: Returns all votes for the given post.
+    disabled: true
+    purpose: |
+      **Disabled since HF24**  Use: [`condenser_api.get_active_votes`]({{ '/apidefinitions/#condenser_api.get_active_votes' | relative_url }})
+      
+      Returns all votes for the given post.
     parameter_json: '{"author":"","permlink":""}'
     expected_response_json: |
       {
@@ -148,7 +152,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Discussions.get_discussions)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_active
-    purpose: Returns a list of discussions based on active.
+    purpose: |
+      **Disabled since HF24**  Use: [`condenser_api.get_discussions_by_active`]({{ '/apidefinitions/#condenser_api.get_discussions_by_active' | relative_url }})
+      
+      Returns a list of discussions based on active.
     parameter_json: '{"tag":"","limit":0,"filter_tags":[],"select_authors":[],"select_tags":[],"truncate_body":0}'
     expected_response_json: |
       {
@@ -442,7 +449,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_cashout
-    purpose: Returns a list of discussions by cashout.
+    purpose: |
+      **Disabled since HF24**  Use: [`condenser_api.get_discussions_by_cashout`]({{ '/apidefinitions/#condenser_api.get_discussions_by_cashout' | relative_url }})
+      
+      Returns a list of discussions by cashout.
     parameter_json: '{"tag":"","limit":0,"filter_tags":[],"select_authors":[],"select_tags":[],"truncate_body":0}'
     expected_response_json: '{"discussions":[]}'
     curl_examples:
@@ -455,7 +465,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-cashout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_children
-    purpose: Returns a list of discussions by children.
+    purpose: |
+      **Disabled since HF24**  Use: [`condenser_api.get_discussions_by_children`]({{ '/apidefinitions/#condenser_api.get_discussions_by_children' | relative_url }})
+      
+      Returns a list of discussions by children.
     parameter_json: '{"tag":"","limit":0,"filter_tags":[],"select_authors":[],"select_tags":[],"truncate_body":0}'
     expected_response_json: |
       {
@@ -662,7 +675,10 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_feed
     since: HF14
-    purpose: Returns a list of discussions by feed.
+    purpose: |
+      **Disabled since HF24**  Use: [`condenser_api.get_discussions_by_feed`]({{ '/apidefinitions/#condenser_api.get_discussions_by_feed' | relative_url }})
+      
+      Returns a list of discussions by feed.
     parameter_json: '{"tag":"","limit":0,"filter_tags":[],"select_authors":[],"select_tags":[],"truncate_body":0}'
     expected_response_json: '{"discussions":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -715,7 +731,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_votes
-    purpose: Returns a list of discussions by votes.
+    purpose: |
+      **Disabled since HF24**  Use: [`condenser_api.get_discussions_by_votes`]({{ '/apidefinitions/#condenser_api.get_discussions_by_votes' | relative_url }})
+      
+      Returns a list of discussions by votes.
     parameter_json: '{"tag":"","limit":0,"filter_tags":[],"select_authors":[],"select_tags":[],"truncate_body":0}'
     expected_response_json: '{"discussions":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -743,9 +762,9 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_replies_by_last_update
     purpose: |
-      Returns a list of replies by last update.
+      **Disabled since HF24**  Use: [`condenser_api.get_replies_by_last_update`]({{ '/apidefinitions/#condenser_api.get_replies_by_last_update' | relative_url }})
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#tags_apiget_replies_by_last_update' | relative_url }})
+      Returns a list of replies by last update.
     parameter_json: '{"start_parent_author":"","start_permlink":"","limit":100}'
     expected_response_json: '{"discussions":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -756,7 +775,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Replies_by_last_update)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_tags_used_by_author
-    purpose: Returns a list of tags used by an author.
+    purpose: |
+      **Disabled since HF24**  Use: [`condenser_api.get_tags_used_by_author`]({{ '/apidefinitions/#condenser_api.get_tags_used_by_author' | relative_url }})
+      
+      Returns a list of tags used by an author.
     parameter_json: '{"author":""}'
     expected_response_json: '{"tags":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -768,9 +790,9 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_trending_tags
     purpose: |
-      Returns the list of trending tags.
+      **Disabled since HF24**  Use: [`condenser_api.get_trending_tags`]({{ '/apidefinitions/#condenser_api.get_trending_tags' | relative_url }})
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#tags_apiget_trending_tags' | relative_url }})
+      Returns the list of trending tags.
     parameter_json: '{"start_tag":"","limit":100}'
     expected_response_json: '{"tags":[]}' # TODO - recheck in HF23
     curl_examples:
