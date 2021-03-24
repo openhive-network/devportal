@@ -7,8 +7,6 @@ layout: full
 canonical_url: estimate_upvote.html
 ---
 
-*By the end of this recipe you should know how to estimate value of each vote on Hive.*
-
 This recipe will take you through the process of fetching necessary data and formulating estimation.
 
 ## Intro 
@@ -54,7 +52,7 @@ The response example will look like:
 [
   {
     "id": 9660,
-    "name": "steemitblog",
+    "name": "hiveio",
     "owner": {
       "weight_threshold": 1,
       "account_auths": [
@@ -114,7 +112,7 @@ The response example will look like:
     "last_account_update": "2017-03-17T18:19:18",
     "created": "2016-05-24T18:54:24",
     "mined": false,
-    "recovery_account": "steem",
+    "recovery_account": "hiveio",
     "last_account_recovery": "2016-07-19T19:48:54",
     "reset_account": "null",
     "comment_count": 0,
@@ -203,5 +201,3 @@ power = (voting_power * weight / 10000) / 50
 rshares = power * final_vest / 10000
 estimate = rshares / recent_claims * reward_balance * hbd_median_price
 ```
-
-That's all there is to it.

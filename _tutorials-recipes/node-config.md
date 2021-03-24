@@ -11,12 +11,12 @@ When running `hived` for the first time, once the startup banner appears, press 
 
 Also refer to:
 
-* [example_config.ini](https://github.com/steemit/steem/blob/master/doc/example_config.ini)
-* [fullnode.config.ini](https://github.com/steemit/steem/blob/master/contrib/fullnode.config.ini)
-* [config-for-ahnode.ini](https://github.com/steemit/steem/blob/master/contrib/config-for-ahnode.ini)
-* [config-for-docker.ini](https://github.com/steemit/steem/blob/master/contrib/config-for-docker.ini)
-* [config-for-broadcaster.ini](https://github.com/steemit/steem/blob/master/contrib/config-for-broadcaster.ini)
-* [fullnode.opswhitelist.config.ini](https://github.com/steemit/steem/blob/master/contrib/fullnode.opswhitelist.config.ini)
+* [example_config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/example_config.ini)
+* [fullnode.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/fullnode.config.ini)
+* [config-for-ahnode.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-ahnode.ini)
+* [config-for-docker.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-docker.ini)
+* [config-for-broadcaster.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-broadcaster.ini)
+* [fullnode.opswhitelist.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/fullnode.opswhitelist.config.ini)
 
 ### Sections
 
@@ -582,7 +582,7 @@ flush-state-interval =
 
 Database edits to apply on startup (may specify multiple times).
 
-See: [`debug_node_plugin.md`](https://github.com/steemit/steem/blob/master/doc/devs/debug_node_plugin.md)
+See: [`debug_node_plugin.md`](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/debug_node_plugin.md)
 
 ```ini
 debug-node-edit-script =
@@ -696,7 +696,7 @@ The IP address and port of a remote peer to sync with.  Multiple allowed.
 * If any other seeds are specified, only those seeds are used.
 * If a blank seed is specified (i.e `p2p-seed-node = `) then no seeds are used.
 
-See: [seednodes.txt](https://github.com/steemit/steem/blob/master/doc/seednodes.txt)
+See: [seednodes.txt](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/seednodes.txt)
 
 ```ini
 # example, override compiled seeds
