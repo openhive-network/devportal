@@ -197,7 +197,7 @@ Note, we're using `rescue` in case the `json_metadata` string contains invalid J
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 *`<content-url>` 
 

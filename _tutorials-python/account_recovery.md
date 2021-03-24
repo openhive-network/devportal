@@ -80,7 +80,7 @@ The new password for the account to be recovered must be at least 32 characters 
 
 #### 2. Owner key creation <a name="owner_key"></a>
 
-Both new and old owner keys are generated from the passwords supplied in the first step.  For a more in depth look at creating keys please refer to [this]({{ '/tutorials-python/password_key_change' | relative_url }}) tutorial on changing your password and keys.
+Both new and old owner keys are generated from the passwords supplied in the first step.  For a more in depth look at creating keys please refer to [this]({{ '/tutorials-python/password_key_change.html' | relative_url }}) tutorial on changing your password and keys.
 
 ```python
 # create new account owner keys
