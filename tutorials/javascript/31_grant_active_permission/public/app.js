@@ -70,7 +70,7 @@ window.submitPermission = async () => {
         newAccount,
         parseInt(activeAuth.weight_threshold)
     ]);
-    //sort array required for steem blockchain
+    //sort array required for Hive blockchain
     activeAuth.account_auths.sort();
 
     //object creation

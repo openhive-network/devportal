@@ -3,7 +3,7 @@
   description: |
     To interact with the communities framework, use `custom_json` operations with the an `id` of `community`.  Communities also intepret other ids like `follow` and `reblog`.
     
-    See: [communities.md](https://github.com/steemit/hivemind/blob/master/docs/communities.md)
+    See: [communities.md](https://gitlab.syncad.com/hive/hivemind/-/blob/master/docs/communities.md)
     
     Also see: [Bridge]({{ '/apidefinitions/#apidefinitions-bridge' | relative_url }}), [Broadcast Transaction]({{ '/apidefinitions/#condenser_api.broadcast_transaction' | relative_url }}), [`custom_json`]({{ '/apidefinitions/#broadcast_ops_custom_json' | relative_url }})
   ops:

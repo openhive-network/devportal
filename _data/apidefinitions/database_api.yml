@@ -98,7 +98,7 @@
             "last_account_update": "2018-05-31T23:32:06",
             "created": "2016-03-24T17:00:21",
             "mined": true,
-            "recovery_account": "steem",
+            "recovery_account": "hiveio",
             "last_account_recovery": "1970-01-01T00:00:00",
             "reset_account": "null",
             "comment_count": 0,
@@ -394,7 +394,7 @@
         "delegations": [
           {
             "id": 3077902,
-            "delegator": "steem",
+            "delegator": "hiveio",
             "vesting_shares": {
               "amount": "201417615",
               "precision": 6,
@@ -1154,7 +1154,7 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_version
     since: HF20
-    purpose: Returns the compile time versions of blockchain, steem, FC. Also returns
+    purpose: Returns the compile time versions of blockchain, hived, FC. Also returns
       the boot time version of the chain id (*may* be different from compile time
       value only when looking at a testnet)
     parameter_json: "{}"
@@ -1338,7 +1338,7 @@
             "last_account_update": "1970-01-01T00:00:00",
             "created": "2016-04-30T12:27:12",
             "mined": true,
-            "recovery_account": "steem",
+            "recovery_account": "hiveio",
             "last_account_recovery": "1970-01-01T00:00:00",
             "reset_account": "null",
             "comment_count": 0,
@@ -1521,7 +1521,7 @@
             "id": 66710716,
             "author": "libert",
             "permlink": "libert-re-runicar-re-libert-libert-re-runicar-re-libert-libert-re-runicar-ykwyxgj6-20181128t063355338z",
-            "category": "steem",
+            "category": "hive",
             "parent_author": "runicar",
             "parent_permlink": "re-libert-libert-re-runicar-re-libert-libert-re-runicar-ykwyxgj6-20181128t063100538z",
             "title": "",

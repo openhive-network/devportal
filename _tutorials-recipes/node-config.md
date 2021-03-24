@@ -11,12 +11,12 @@ When running `hived` for the first time, once the startup banner appears, press 
 
 Also refer to:
 
-* [example_config.ini](https://github.com/steemit/steem/blob/master/doc/example_config.ini)
-* [fullnode.config.ini](https://github.com/steemit/steem/blob/master/contrib/fullnode.config.ini)
-* [config-for-ahnode.ini](https://github.com/steemit/steem/blob/master/contrib/config-for-ahnode.ini)
-* [config-for-docker.ini](https://github.com/steemit/steem/blob/master/contrib/config-for-docker.ini)
-* [config-for-broadcaster.ini](https://github.com/steemit/steem/blob/master/contrib/config-for-broadcaster.ini)
-* [fullnode.opswhitelist.config.ini](https://github.com/steemit/steem/blob/master/contrib/fullnode.opswhitelist.config.ini)
+* [example_config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/example_config.ini)
+* [fullnode.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/fullnode.config.ini)
+* [config-for-ahnode.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-ahnode.ini)
+* [config-for-docker.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-docker.ini)
+* [config-for-broadcaster.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-broadcaster.ini)
+* [fullnode.opswhitelist.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/fullnode.opswhitelist.config.ini)
 
 ### Sections
 
@@ -582,7 +582,7 @@ flush-state-interval =
 
 Database edits to apply on startup (may specify multiple times).
 
-See: [`debug_node_plugin.md`](https://github.com/steemit/steem/blob/master/doc/devs/debug_node_plugin.md)
+See: [`debug_node_plugin.md`](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/debug_node_plugin.md)
 
 ```ini
 debug-node-edit-script =
@@ -696,11 +696,11 @@ The IP address and port of a remote peer to sync with.  Multiple allowed.
 * If any other seeds are specified, only those seeds are used.
 * If a blank seed is specified (i.e `p2p-seed-node = `) then no seeds are used.
 
-See: [seednodes.txt](https://github.com/steemit/steem/blob/master/doc/seednodes.txt)
+See: [seednodes.txt](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/seednodes.txt)
 
 ```ini
 # example, override compiled seeds
-p2p-seed-node = seed-east.hive.blog:2001 seed-central.hive.blog:2001 seed-west.hive.blog:2001 steem-seed1.abit-more.com:2001 52.74.152.79:2001 seed.hiveblocks.com:34191 anyx.co:2001 seed.xeldal.com:12150 seed.steemnodes.com:2001 seed.liondani.com:2016 gtg.steem.house:2001 seed.jesta.us:2001 hived.pharesim.me:2001 5.9.18.213:2001 lafonasteem.com:2001 seed.rossco99.com:2001 steem-seed.altcap.io:40696 seed.roelandp.nl:2001 steem.global:2001 seed.esteem.ws:2001 94.23.33.61:2001 104.199.118.92:2001 192.99.4.226:2001 seed.bhuz.info:2001 seed.steemviz.com:2001 steem-seed.lukestokes.info:2001 seed.blackrift.net:2001 seed.followbtcnews.com:2001 node.mahdiyari.info:2001 seed.jerrybanfield.com:2001 seed.windforce.farm:2001 seed.curiesteem.com:2001 seed.riversteem.com:2001 steem-seed.furion.me:2001 148.251.237.104:2001 seed1.blockbrothers.io:2001 
+p2p-seed-node = seed.openhive.network:2001 anyx.io:2001 hiveseed-fin.privex.io:2001 hive-seed.arcange.eu:2001 seed.liondani.com:2016 hived.splinterlands.com:2001 seed.hivekings.com:2001 node.mahdiyari.info:2001 seed.roelandp.nl:2001 p2p-seed-node = hiveseed-se.privex.io:2001 seed.buildteam.io:2001 hive-seed.lukestokes.info:2001 seed.chitty.me:2001
 ```
 
 ```ini
@@ -715,13 +715,6 @@ p2p-seed-node = 104.199.157.70:2001
 p2p-seed-node = 104.236.82.250:2001
 p2p-seed-node = 212.47.249.84:40696
 p2p-seed-node = 162.213.199.171:34191
-p2p-seed-node = steem.kushed.com:2001
-p2p-seed-node = hived.pharesim.me:2001
-p2p-seed-node = seed.steemed.net:2001
-p2p-seed-node = steem.clawmap.com:2001
-p2p-seed-node = seed.steemnodes.com:2001
-p2p-seed-node = seed.steemwitness.com:2001
-p2p-seed-node = steem-seed1.abit-more.com:2001
 ```
 
 ```ini
