@@ -5,7 +5,7 @@
   description: |
     This plugin allows all sorts of creative "what-if" experiments with the chain.
     
-    See: [debug_node_plugin.md](https://github.com/steemit/steem/blob/master/doc/devs/debug_node_plugin.md)
+    See: [debug_node_plugin.md](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/debug_node_plugin.md)
   methods:
   - api_method: debug_node_api.debug_generate_blocks
     purpose: Generate blocks locally.

@@ -11,7 +11,7 @@ This tutorial will take you through the process of calling delegation informatio
 
 ## Intro
 
-This tutorial has two separate functions, one for viewing active delegations and one for viewing expiring delegations. Both of these use the `database API` to pull information from the steem blockchain. It should be noted that when a delegation is cancelled it will only be available after 7 days. The value of the delegation can also be changed at any time, either decreased or increased. The first function we use is `getVestingDelegations` for which we require the following parameters:
+This tutorial has two separate functions, one for viewing active delegations and one for viewing expiring delegations. Both of these use the `database API` to pull information from the Hive blockchain. It should be noted that when a delegation is cancelled it will only be available after 7 days. The value of the delegation can also be changed at any time, either decreased or increased. The first function we use is `getVestingDelegations` for which we require the following parameters:
 
 1.  _account_ - The username for which the query is done
 2.  _from_ - The value from where to start the search. This can be used for paging. This parameter is optional
@@ -41,7 +41,7 @@ let opts = {};
 opts.addressPrefix = 'STM';
 opts.chainId =
     'beeab0de00000000000000000000000000000000000000000000000000000000';
-//connect to a steem node, production in this case
+//connect to a hive node, production in this case
 const client = new dhive.Client('https://api.hive.blog');
 ```
 
@@ -61,11 +61,12 @@ window.createList = async () => {
 
     //get username
     const delegator = document.getElementById('username').value;
+  }
 ```
 
 #### 3. Database query<a name="query"></a>
 
-The queries are sent through to the steem blockchain using the `database API` and parameters as per the `intro`. The result of the query is displayed on the console as a control check.
+The queries are sent through to the Hive blockchain using the `database API` and parameters as per the `intro`. The result of the query is displayed on the console as a control check.
 
 ```javascript
 //active delegations function

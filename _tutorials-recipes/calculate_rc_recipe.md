@@ -67,7 +67,7 @@ The functions can also be executed for a specific transaction by passing in data
 
 ```python
 opdata = {
-    'voter': 'steemit',
+    'voter': 'hiveio',
     'author': 'r1s2g3',
     'permlink': 'rc-calculations-according-to-your-need-part-1',
     'weight': 100
@@ -82,7 +82,7 @@ print(rc.vote(vote_tx))
 ```
 
 You can find the source for beem's RC class in the [beem github repo](https://github.com/holgern/beem/blob/master/beem/rc.py)
-Additional info can also be found in [this article by steem user @holger80](https://hive.blog/utopian-io/@holger80/update-for-beem-adding-rc-costs-calculation-and-witnesssetproperties-broadcasting?sort=new)
+Additional info can also be found in [this article by hive user @holger80](https://hive.blog/utopian-io/@holger80/update-for-beem-adding-rc-costs-calculation-and-witnesssetproperties-broadcasting?sort=new)
 
 ## Allocation of RC to blockchain resources
 
