@@ -1497,20 +1497,26 @@
       * `limit` is up to 1000.
       * `order` can be one of:
         * `by_cashout_time` - order by cashout time
-          * `start` is an array of one required value and two optional: `timestamp`, `author`, `permlink`
+          * `start` is an array of three required values (two optionally blank): `timestamp`, `author`, `permlink`
         * `by_permlink` - order by permlink
-          * `start` is an array of two optional values: `author`, `permlink`
+          * `start` is an array of two required values (both optionally blank): `author`, `permlink`
         * `by_root` - order by root
-          * `start` is an array of two required values and two optional: `root_author`, `root_permlink`, `child_author`, `child_permlink`
+          * `start` is an array of four required values (two optional blank): `root_author`, `root_permlink`, `child_author`, `child_permlink`
         * `by_parent` - order by parent
-          * `start` is an array of two required values and two optional: `parent_author`, `parent_permlink`, `child_author`, `child_permlink`
-
+          * `start` is an array of four required values (two optional blank): `parent_author`, `parent_permlink`, `child_author`, `child_permlink`
+        * `by_last_update` - order by last update
+          * `start` is an array of four required values (two optionally blank): `parent_author`, `update_time`, `start_author`, `permlink`
+        * `by_author_last_update` - order by author's last update
+          * `start` is an array of four required values (two optionally blank): `parent_author`, `update_time`, `start_author`, `permlink`
+      
       | `start` (array) | `limit` (int) | `order` (string) | |
       |----------------------------|---------------|-|
       | `["1970-01-01T00:00:00", "", ""]` | 10 | `"by_cashout_time"` | Queries first 10 comments, sort by cashout time |
       | `["", ""]` | 10 | `"by_permlink"` | Queries first 10 comments, sort by permlink |
-      | `["hiveio","firstpost", "", ""]` | 10 | `"by_root"` | Queries next 10 comments starting at @hiveio/firstpost, sort by root |
-      | `["hiveio","firstpost", "", ""]` | 10 | `"by_parent"` | Queries next 10 comments starting at @hiveio/firstpost, sort by parent |
+      | `["hiveio","announcing-the-launch-of-hive-blockchain", "", ""]` | 10 | `"by_root"` | Queries next 10 comments starting at @hiveio/firstpost, sort by root |
+      | `["hiveio","announcing-the-launch-of-hive-blockchain", "", ""]` | 10 | `"by_parent"` | Queries next 10 comments starting at @hiveio/firstpost, sort by parent |
+      | `["hiveio","1970-01-01T00:00:00", "", ""]` | 10 | `"by_last_update"` | Queries next 10 comments starting at @hiveio's updates since timpstamp, sort by last update |
+      | `["hiveio","1970-01-01T00:00:00", "", ""]` | 10 | `"by_author_last_update"` | Queries next 10 comments starting at @hiveio's updates since timestamp, sort by author's last update |
 
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_comments' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
@@ -1518,61 +1524,63 @@
       {
         "comments": [
           {
-            "id": 66710716,
-            "author": "libert",
-            "permlink": "libert-re-runicar-re-libert-libert-re-runicar-re-libert-libert-re-runicar-ykwyxgj6-20181128t063355338z",
-            "category": "hive",
-            "parent_author": "runicar",
-            "parent_permlink": "re-libert-libert-re-runicar-re-libert-libert-re-runicar-ykwyxgj6-20181128t063100538z",
+            "active": "2020-03-18T16:45:21",
+            "author_rewards": 11835,
+            "id": 96448425,
+            "author": "berniesanders",
+            "permlink": "q7d2ue",
+            "category": "communityfork",
             "title": "",
-            "body": "13\n\nPosted using [Partiko Android](https://hive.blog/@partiko-android)",
-            "json_metadata": "{\"app\":\"partiko\"}",
-            "last_update": "2018-11-28T06:33:57",
-            "created": "2018-11-28T06:33:57",
-            "active": "2018-11-28T06:34:30",
-            "last_payout": "1970-01-01T00:00:00",
-            "depth": 5,
-            "children": 1,
-            "net_rshares": 0,
-            "abs_rshares": 0,
-            "vote_rshares": 0,
-            "children_abs_rshares": 0,
-            "cashout_time": "2018-12-05T06:33:57",
+            "body": "https://media.giphy.com/media/xjLlSxM5Z61FJh9wMC/giphy.gif",
+            "json_metadata": "{\"image\":[\"https://media.giphy.com/media/xjLlSxM5Z61FJh9wMC/giphy.gif\"],\"app\":\"steemit/0.2\"}",
+            "created": "2020-03-17T23:35:06",
+            "last_update": "2020-03-17T23:35:06",
+            "depth": 1,
+            "children": 5,
+            "last_payout": "2020-03-24T23:35:06",
+            "cashout_time": "1969-12-31T23:59:59",
             "max_cashout_time": "1969-12-31T23:59:59",
-            "total_vote_weight": 0,
-            "reward_weight": 10000,
-            "total_payout_value": {
-              "amount": "0",
-              "precision": 3,
-              "nai": "@@000000013"
-            },
             "curator_payout_value": {
-              "amount": "0",
-              "precision": 3,
-              "nai": "@@000000013"
+              "amount": "2120",
+              "nai": "@@000000013",
+              "precision": 3
             },
-            "author_rewards": 0,
-            "net_votes": 0,
-            "root_author": "runicar",
-            "root_permlink": "ykwyxgj6",
-            "max_accepted_payout": {
-              "amount": "1000000000",
-              "precision": 3,
-              "nai": "@@000000013"
+            "total_payout_value": {
+              "amount": "2247",
+              "nai": "@@000000013",
+              "precision": 3
             },
-            "percent_hbd": 10000,
+            "reward_weight": 10000,
+            "root_author": "hiveio",
+            "root_permlink": "announcing-the-launch-of-hive-blockchain",
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,
-            "beneficiaries": []
+            "parent_author": "hiveio",
+            "parent_permlink": "announcing-the-launch-of-hive-blockchain",
+            "beneficiaries": [],
+            "max_accepted_payout": {
+              "amount": "1000000000",
+              "nai": "@@000000013",
+              "precision": 3
+            },
+            "percent_hbd": 10000,
+            "net_votes": 30,
+            "total_vote_weight": 0,
+            "vote_rshares": 0,
+            "net_rshares": 0,
+            "abs_rshares": 0,
+            "children_abs_rshares": 0
           }
         ]
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["1970-01-01T00:00:00","",""], "limit":10, "order":"by_cashout_time"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["",""], "limit":10, "order":"by_permlink"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_root"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_parent"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","announcing-the-launch-of-hive-blockchain","",""], "limit":10, "order":"by_root"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","announcing-the-launch-of-hive-blockchain","",""], "limit":10, "order":"by_parent"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","1970-01-01T00:00:00","",""], "limit":10, "order":"by_last_update"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","1970-01-01T00:00:00","",""], "limit":10, "order":"by_author_last_update"}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.comment.html#module-beem.comment)'
