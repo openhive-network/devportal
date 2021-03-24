@@ -446,13 +446,13 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_votes
     purpose: |
-      Returns all votes for the given post.  Parameters: `author:string`; `permlink:string`
+      Returns all votes for the given post.  Required (non-empty) parameters: `author:string`; `permlink:string`
 
       | `author` (string) | `permlink` (string) | |
       |----------------------------|---------------|-|
-      | `"hiveio"` | `"firstpost"` | Queries votes for content with a slug `@hiveio/firstpost` |
+      | `"hiveio"` | `"announcing-the-launch-of-hive-blockchain"` | Queries votes for content with a slug `@hiveio/announcing-the-launch-of-hive-blockchain` |
       | `"alice"` | `"a-post-by-alice"` | Queries votes for content with a slug `@alice/a-post-by-alice` |
-    parameter_json: '{"author":"","permlink":""}'
+    parameter_json: '{"author":"hiveio", "permlink":"announcing-the-launch-of-hive-blockchain"}'
     expected_response_json: |
       {
         "votes": [
@@ -470,7 +470,7 @@
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"hiveio", "permlink":"firstpost"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"hiveio", "permlink":"announcing-the-launch-of-hive-blockchain"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"alice", "permlink":"a-post-by-alice"}, "id":1}'
     expected_curl_responses:
     - 
