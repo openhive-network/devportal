@@ -128,8 +128,6 @@ The following methods have various forms of pagination:
   * [`get_account_reputations`](#reputation_apiget_account_reputations)
 * `tags_api`
   * [`get_discussions_by_author_before_date`](#tags_apiget_discussions_by_author_before_date)
-  * [`get_replies_by_last_update`](#tags_apiget_replies_by_last_update)
-  * [`get_trending_tags`](#tags_apiget_trending_tags)
 * `condenser_api`
   * [`get_account_history`](#condenser_apiget_account_history)
   * [`get_blog`](#condenser_apiget_blog)
@@ -2143,72 +2141,6 @@ curl -s --data '{
 
 Also see: [API Definition]({{ '/apidefinitions/#tags_api.get_discussions_by_author_before_date' | relative_url }})
 
-### `tags_api.get_replies_by_last_update`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `author`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "tags_api.get_replies_by_last_update",
-  "params": {
-    "start_author": "alice",
-    "start_permlink": "",
-    "limit": 10
-  },
-  "id":1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `alice-permlink` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "tags_api.get_replies_by_last_update",
-  "params": {
-    "start_author": "alice",
-    "start_permlink": "alice-permlink",
-    "limit": 10
-  },
-  "id":1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#tags_api.get_replies_by_last_update' | relative_url }})
-
-### `tags_api.get_trending_tags`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `tags`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "tags_api.get_trending_tags",
-  "params": {
-    "start_tag": null,
-    "limit": 10
-  },
-  "id":1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `photography` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "tags_api.get_trending_tags",
-  "params": {
-    "start_tag": "photography",
-    "limit": 10
-  },
-  "id":1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#tags_api.get_trending_tags' | relative_url }})
-
 ### `condenser_api.get_account_history`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 See: [`account_history_api.get_account_history`](#account_history_apiget_account_history)
@@ -2259,7 +2191,35 @@ Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_following' | r
 
 ### `condenser_api.get_replies_by_last_update`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`tags_api.get_replies_by_last_update`](#tags_apiget_replies_by_last_update)
+To list the first 10 objects for `author`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_replies_by_last_update",
+  "params": {
+    "start_author": "alice",
+    "start_permlink": "",
+    "limit": 10
+  },
+  "id":1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `alice-permlink` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_replies_by_last_update",
+  "params": {
+    "start_author": "alice",
+    "start_permlink": "alice-permlink",
+    "limit": 10
+  },
+  "id":1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_replies_by_last_update' | relative_url }})
 
@@ -2271,6 +2231,32 @@ Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_vesting_delega
 
 ### `condenser_api.get_trending_tags`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`tags_api.get_trending_tags`](#tags_apiget_trending_tags)
+To list the first 10 objects for `tags`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_trending_tags",
+  "params": {
+    "start_tag": null,
+    "limit": 10
+  },
+  "id":1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `photography` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_trending_tags",
+  "params": {
+    "start_tag": "photography",
+    "limit": 10
+  },
+  "id":1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_trending_tags' | relative_url }})
