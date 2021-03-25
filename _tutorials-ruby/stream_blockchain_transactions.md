@@ -27,7 +27,7 @@ ruby stream_blockchain_transactions.rb head transactions
 
 This will instruct the script to follow transactions at head `block_num` instead of irreversible.
 
-See: [`head_block_number`]({{ '/tutorials-recipes/understanding-dynamic-global-properties#head_block_number' | relative_url }}) vs. [`last_irreversible_block_num`]({{ '/tutorials-recipes/understanding-dynamic-global-properties#last_irreversible_block_num' | relative_url }})
+See: [`head_block_number`]({{ '/tutorials-recipes/understanding-dynamic-global-properties.html#head_block_number' | relative_url }}) vs. [`last_irreversible_block_num`]({{ '/tutorials-recipes/understanding-dynamic-global-properties.html#last_irreversible_block_num' | relative_url }})
 
 This is done by using the following ruby:
 

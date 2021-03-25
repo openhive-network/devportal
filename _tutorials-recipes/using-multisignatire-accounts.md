@@ -4,6 +4,7 @@ position: 1
 description: How to set up and use multisignature accounts on Hive Blockchain.
 exclude: true
 layout: hive-post
+canonical_url: using-multisignatire-accounts.html
 ---
 <center>
   <img src="https://images.hive.blog/1536x0/https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQme59Hypf9j6W186aPhDKoeaRSKRMe4yLvNFemZXeuy9q8/image.png" /><br />
