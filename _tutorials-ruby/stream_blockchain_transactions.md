@@ -79,7 +79,7 @@ The `type` variable can be `nil` or the type of ops we're looking for whereas `a
 
 ### To Run
 
-First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git

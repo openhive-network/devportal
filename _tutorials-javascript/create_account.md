@@ -59,7 +59,7 @@ We will then do simple check if account is taken or not.
 
 #### 3. Generate private keys <a name="generate-keys"></a>
 
-After we know that account is available to register, we will fill form with password we wish for that account and enter creation fee. Note, that creation fees are "burned" once the new account is created. The creator account wishes to provide the new account with VEST (as per previous account creation process) they can do so by following the `delegate_vesting_shares` process (refer tutorial [#27]({{ '/tutorials-javascript/delegate_power' | relative_url }})). Irrespective of which account creation method is being followed, the process for generating new accounts keys is the same for both.
+After we know that account is available to register, we will fill form with password we wish for that account and enter creation fee. Note, that creation fees are "burned" once the new account is created. The creator account wishes to provide the new account with VEST (as per previous account creation process) they can do so by following the `delegate_vesting_shares` process (refer tutorial [#27]({{ '/tutorials-javascript/delegate_power.html' | relative_url }})). Irrespective of which account creation method is being followed, the process for generating new accounts keys is the same for both.
 
 ```javascript
 const username = document.getElementById('username').value;
