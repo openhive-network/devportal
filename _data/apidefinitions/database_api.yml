@@ -35,29 +35,25 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_accounts
     purpose: |
-      Returns accounts, queried by name.  Parameters: `account:string array`
+      Returns accounts, queried by name.  Parameters: `account:string array`; `delayed_votes_active:boolean`
 
-      | `account` (string array) | |
+      | `account` (string array) | `delayed_votes_active` (boolean) | |
       |-------------------|-|
-      | `["hiveio"]` | Queries for account named "hiveio". |
-      | `["hiveio", "alice"]` | Queries for accounts named "hiveio" and "alice". |
-    parameter_json: '{"accounts":[]}'
+      | `["hiveio"]` | | Queries for account named "hiveio". |
+      | `["hiveio", "alice"]` | false | Queries for accounts named "hiveio" and "alice" with `delayed_votes` hidden. |
+    parameter_json: '{"accounts":[], "delayed_votes_active": true}'
     expected_response_json: |
       {
         "accounts": [
           {
-            "id": 28,
+            "id": 1370484,
             "name": "hiveio",
             "owner": {
               "weight_threshold": 1,
               "account_auths": [],
               "key_auths": [
                 [
-                  "STM6Ezkzey8FWoEnnHHP4rxbrysJqoMmzwR2EdoD5p7FDsF64qxbQ",
-                  1
-                ],
-                [
-                  "STM7TCZKisQnvR69CK9BaL6W4SJn2cXYwkfWYRicoVGGzhtFswxMH",
+                  "STM65PUAPA4yC4RgPtGgsPupxT6yJtMhmT5JHFdsT3uoCbR8WJ25s",
                   1
                 ]
               ]
@@ -67,54 +63,55 @@
               "account_auths": [],
               "key_auths": [
                 [
-                  "STM5VkLha96X5EQu3HSkJdD8SEuwazWtZrzLjUT6Sc5sopgghBYrz",
-                  1
-                ],
-                [
-                  "STM7u1BsoqLaoCu9XHi1wjWctLWSFCuvyagFjYMfga4QNWEjP7d3U",
+                  "STM69zfrFGnZtU3gWFWpQJ6GhND1nz7TJsKBTjcWfebS1JzBEweQy",
                   1
                 ]
               ]
             },
             "posting": {
               "weight_threshold": 1,
-              "account_auths": [],
-              "key_auths": [
+              "account_auths": [
                 [
-                  "STM6kXdRbWgoH9E4hvtTZeaiSbY8FmGXQavfJZ2jzkKjT5cWYgMBS",
+                  "threespeak",
                   1
                 ],
                 [
-                  "STM6tDMSSKa8Bd9ss7EjqhXPEHTWissGXJJosAU94LLpC5tsCdo61",
+                  "vimm.app",
+                  1
+                ]
+              ],
+              "key_auths": [
+                [
+                  "STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9",
                   1
                 ]
               ]
             },
-            "memo_key": "STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH",
+            "memo_key": "STM7wrsg1BZogeK7X3eG4ivxmLaH69FomR8rLkBbepb3z3hm5SbXu",
             "json_metadata": "",
-            "posting_json_metadata": "",
+            "posting_json_metadata": "{\"profile\":{\"pinned\":\"none\",\"version\":2,\"website\":\"hive.io\",\"profile_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Jp2YHc6Q-hive-logo.png\",\"cover_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Xe1TcEBi-hive-banner.png\"}}",
             "proxy": "",
-            "last_owner_update": "2018-05-31T23:32:06",
-            "last_account_update": "2018-05-31T23:32:06",
-            "created": "2016-03-24T17:00:21",
-            "mined": true,
-            "recovery_account": "hiveio",
+            "last_owner_update": "1970-01-01T00:00:00",
+            "last_account_update": "2020-11-12T01:20:48",
+            "created": "2020-03-06T12:22:48",
+            "mined": false,
+            "recovery_account": "steempeak",
             "last_account_recovery": "1970-01-01T00:00:00",
             "reset_account": "null",
             "comment_count": 0,
             "lifetime_vote_count": 0,
-            "post_count": 1,
+            "post_count": 31,
             "can_vote": true,
             "voting_manabar": {
-              "current_mana": "69835912701503862",
-              "last_update_time": 1538171805
+              "current_mana": "598442432741",
+              "last_update_time": 1591297380
             },
             "downvote_manabar": {
-              "current_mana": "14309515566616031",
-              "last_update_time": 1573774416
+              "current_mana": "149610608184",
+              "last_update_time": 1591297380
             },
             "balance": {
-              "amount": "2806644634",
+              "amount": "11682",
               "precision": 3,
               "nai": "@@000000021"
             },
@@ -124,13 +121,13 @@
               "nai": "@@000000021"
             },
             "hbd_balance": {
-              "amount": "8716535",
+              "amount": "43575",
               "precision": 3,
               "nai": "@@000000013"
             },
             "hbd_seconds": "0",
-            "hbd_seconds_last_update": "2018-11-12T02:39:39",
-            "hbd_last_interest_payment": "2018-11-12T02:39:39",
+            "hbd_seconds_last_update": "2020-10-21T02:45:12",
+            "hbd_last_interest_payment": "2020-10-21T02:45:12",
             "savings_hbd_balance": {
               "amount": "0",
               "precision": 3,
@@ -161,12 +158,12 @@
               "nai": "@@000000021"
             },
             "vesting_shares": {
-              "amount": "90039851836689703",
+              "amount": "598442432741",
               "precision": 6,
               "nai": "@@000000037"
             },
             "delegated_vesting_shares": {
-              "amount": "20203939135185841",
+              "amount": "0",
               "precision": 6,
               "nai": "@@000000037"
             },
@@ -180,32 +177,45 @@
               "precision": 6,
               "nai": "@@000000037"
             },
+            "post_voting_power": {
+              "amount": "598442432741",
+              "precision": 6,
+              "nai": "@@000000037"
+            },
             "next_vesting_withdrawal": "1969-12-31T23:59:59",
             "withdrawn": 0,
             "to_withdraw": 0,
             "withdraw_routes": 0,
+            "pending_transfers": 0,
             "curation_rewards": 0,
-            "posting_rewards": 3548,
+            "posting_rewards": 604589,
             "proxied_vsf_votes": [
-              "14953279511",
+              0,
               0,
               0,
               0
             ],
             "witnesses_voted_for": 0,
-            "last_post": "2016-03-30T18:30:18",
-            "last_root_post": "2016-03-30T18:30:18",
-            "last_post_edit": "2016-03-30T18:30:18",
-            "last_vote_time": "2016-12-04T23:10:57",
+            "last_post": "2021-03-23T18:05:48",
+            "last_root_post": "2021-03-23T18:05:48",
+            "last_post_edit": "2021-03-23T18:05:48",
+            "last_vote_time": "1970-01-01T00:00:00",
             "post_bandwidth": 0,
             "pending_claimed_accounts": 0,
-            "is_smt": false
+            "is_smt": false,
+            "delayed_votes": [
+              {"time": "2021-02-24T05:08:21", "val": "11550765516955"},
+              {"time": "2021-02-26T15:46:06", "val": "633465684569"},
+              {"time": "2021-03-07T17:54:39", "val": "1000000037683"},
+              {"time": "2021-03-16T05:54:33", "val": "999978763511"},
+              {"time": "2021-03-18T06:06:00", "val": "1000000171317"}
+            ]
           }
         ]
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio"]}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio", "alice"]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio", "alice"], "delayed_votes_active": false}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
@@ -446,13 +456,13 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_votes
     purpose: |
-      Returns all votes for the given post.  Parameters: `author:string`; `permlink:string`
+      Returns all votes for the given post.  Required (non-empty) parameters: `author:string`; `permlink:string`
 
       | `author` (string) | `permlink` (string) | |
       |----------------------------|---------------|-|
-      | `"hiveio"` | `"firstpost"` | Queries votes for content with a slug `@hiveio/firstpost` |
+      | `"hiveio"` | `"announcing-the-launch-of-hive-blockchain"` | Queries votes for content with a slug `@hiveio/announcing-the-launch-of-hive-blockchain` |
       | `"alice"` | `"a-post-by-alice"` | Queries votes for content with a slug `@alice/a-post-by-alice` |
-    parameter_json: '{"author":"","permlink":""}'
+    parameter_json: '{"author":"hiveio", "permlink":"announcing-the-launch-of-hive-blockchain"}'
     expected_response_json: |
       {
         "votes": [
@@ -470,7 +480,7 @@
         ]
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"hiveio", "permlink":"firstpost"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"hiveio", "permlink":"announcing-the-launch-of-hive-blockchain"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.find_votes", "params": {"author":"alice", "permlink":"a-post-by-alice"}, "id":1}'
     expected_curl_responses:
     - 
@@ -1278,22 +1288,23 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_accounts
     purpose: |
-      List accounts ordered by specified key.  Parameters: `start:object`, `limit:int`, `order:string`
+      List accounts ordered by specified key.  Parameters: `start:object`, `limit:int`, `order:string`, `delayed_votes_active:boolean`
 
       * `limit` is up to 1000.
       * `order` can be one of:
         * `by_name` - order by accont name
         * `by_proxy` - order by proxy
         * `by_next_vesting_withdrawal` - order by next next vesting withdrawal
+      * `delayed_votes_active` default true (optional)
 
-      | `start` (object) | `limit` (int) | `order` (string) |
-      |-------------------|-|
-      | `""` | `10` | `"by_name"` Queries for up to 10 accounts starting at the beginning, sorted by name. |
-      | `["", ""]` | `10` | `"by_proxy"` Queries for up to 10 accounts starting at the beginning, sorted by proxy. |
-      | `["1960-01-01T00:00:00", ""]` | `10` | `"by_next_vesting_withdrawal"` Queries for up to 10 accounts starting at the beginning, sorted by next vesting withdrawl. |
+      | `start` (object) | `limit` (int) | `order` (string) | `delayed_votes_active` (boolean) |
+      |------------------|---------------|------------------|----------------------------------|
+      | `""` | `10` | `"by_name"` Queries for up to 10 accounts starting at the beginning, sorted by name. | |
+      | `["", ""]` | `10` | `"by_proxy"` Queries for up to 10 accounts starting at the beginning, sorted by proxy. | |
+      | `["1960-01-01T00:00:00", ""]` | `10` | `"by_next_vesting_withdrawal"` Queries for up to 10 accounts starting at the beginning, sorted by next vesting withdrawl. | false |
 
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_accounts' | relative_url }})
-    parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
+    parameter_json: '{"start":null,"limit":0,"order":"by_name","delayed_votes_active":true}'
     expected_response_json: |
       {
         "accounts": [
@@ -1350,8 +1361,8 @@
               "last_update_time": 1462019232
             },
             "downvote_manabar": {
-              "current_mana": 389748,
-              "last_update_time": 1570346718
+              "current_mana": 0,
+              "last_update_time": 1462019232
             },
             "balance": {
               "amount": "1",
@@ -1420,10 +1431,16 @@
               "precision": 6,
               "nai": "@@000000037"
             },
+            "post_voting_power": {
+              "amount": "13873020360",
+              "precision": 6,
+              "nai": "@@000000037"
+            },
             "next_vesting_withdrawal": "1969-12-31T23:59:59",
             "withdrawn": 0,
             "to_withdraw": 0,
             "withdraw_routes": 0,
+            "pending_transfers": 0,
             "curation_rewards": 0,
             "posting_rewards": 0,
             "proxied_vsf_votes": [
@@ -1439,14 +1456,21 @@
             "last_vote_time": "1970-01-01T00:00:00",
             "post_bandwidth": 0,
             "pending_claimed_accounts": 0,
-            "is_smt": false
+            "is_smt": false,
+            "delayed_votes": [
+              {"time": "2021-02-24T05:08:21", "val": "11550765516955"},
+              {"time": "2021-02-26T15:46:06", "val": "633465684569"},
+              {"time": "2021-03-07T17:54:39", "val": "1000000037683"},
+              {"time": "2021-03-16T05:54:33", "val": "999978763511"},
+              {"time": "2021-03-18T06:06:00", "val": "1000000171317"}
+            ]
           }
         ]
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":"", "limit":10, "order":"by_name"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["", ""], "limit":10, "order":"by_proxy"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["1960-01-01T00:00:00", ""], "limit":10, "order":"by_next_vesting_withdrawal"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["1960-01-01T00:00:00", ""], "limit":10, "order":"by_next_vesting_withdrawal","delayed_votes_active":false}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
@@ -1497,20 +1521,26 @@
       * `limit` is up to 1000.
       * `order` can be one of:
         * `by_cashout_time` - order by cashout time
-          * `start` is an array of one required value and two optional: `timestamp`, `author`, `permlink`
+          * `start` is an array of three required values (two optionally blank): `timestamp`, `author`, `permlink`
         * `by_permlink` - order by permlink
-          * `start` is an array of two optional values: `author`, `permlink`
+          * `start` is an array of two required values (both optionally blank): `author`, `permlink`
         * `by_root` - order by root
-          * `start` is an array of two required values and two optional: `root_author`, `root_permlink`, `child_author`, `child_permlink`
+          * `start` is an array of four required values (two optional blank): `root_author`, `root_permlink`, `child_author`, `child_permlink`
         * `by_parent` - order by parent
-          * `start` is an array of two required values and two optional: `parent_author`, `parent_permlink`, `child_author`, `child_permlink`
-
+          * `start` is an array of four required values (two optional blank): `parent_author`, `parent_permlink`, `child_author`, `child_permlink`
+        * `by_last_update` - order by last update
+          * `start` is an array of four required values (two optionally blank): `parent_author`, `update_time`, `start_author`, `permlink`
+        * `by_author_last_update` - order by author's last update
+          * `start` is an array of four required values (two optionally blank): `parent_author`, `update_time`, `start_author`, `permlink`
+      
       | `start` (array) | `limit` (int) | `order` (string) | |
       |----------------------------|---------------|-|
       | `["1970-01-01T00:00:00", "", ""]` | 10 | `"by_cashout_time"` | Queries first 10 comments, sort by cashout time |
       | `["", ""]` | 10 | `"by_permlink"` | Queries first 10 comments, sort by permlink |
-      | `["hiveio","firstpost", "", ""]` | 10 | `"by_root"` | Queries next 10 comments starting at @hiveio/firstpost, sort by root |
-      | `["hiveio","firstpost", "", ""]` | 10 | `"by_parent"` | Queries next 10 comments starting at @hiveio/firstpost, sort by parent |
+      | `["hiveio","announcing-the-launch-of-hive-blockchain", "", ""]` | 10 | `"by_root"` | Queries next 10 comments starting at @hiveio/firstpost, sort by root |
+      | `["hiveio","announcing-the-launch-of-hive-blockchain", "", ""]` | 10 | `"by_parent"` | Queries next 10 comments starting at @hiveio/firstpost, sort by parent |
+      | `["hiveio","1970-01-01T00:00:00", "", ""]` | 10 | `"by_last_update"` | Queries next 10 comments starting at @hiveio's updates since timpstamp, sort by last update |
+      | `["hiveio","1970-01-01T00:00:00", "", ""]` | 10 | `"by_author_last_update"` | Queries next 10 comments starting at @hiveio's updates since timestamp, sort by author's last update |
 
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_comments' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
@@ -1518,61 +1548,63 @@
       {
         "comments": [
           {
-            "id": 66710716,
-            "author": "libert",
-            "permlink": "libert-re-runicar-re-libert-libert-re-runicar-re-libert-libert-re-runicar-ykwyxgj6-20181128t063355338z",
-            "category": "hive",
-            "parent_author": "runicar",
-            "parent_permlink": "re-libert-libert-re-runicar-re-libert-libert-re-runicar-ykwyxgj6-20181128t063100538z",
+            "active": "2020-03-18T16:45:21",
+            "author_rewards": 11835,
+            "id": 96448425,
+            "author": "berniesanders",
+            "permlink": "q7d2ue",
+            "category": "communityfork",
             "title": "",
-            "body": "13\n\nPosted using [Partiko Android](https://hive.blog/@partiko-android)",
-            "json_metadata": "{\"app\":\"partiko\"}",
-            "last_update": "2018-11-28T06:33:57",
-            "created": "2018-11-28T06:33:57",
-            "active": "2018-11-28T06:34:30",
-            "last_payout": "1970-01-01T00:00:00",
-            "depth": 5,
-            "children": 1,
-            "net_rshares": 0,
-            "abs_rshares": 0,
-            "vote_rshares": 0,
-            "children_abs_rshares": 0,
-            "cashout_time": "2018-12-05T06:33:57",
+            "body": "https://media.giphy.com/media/xjLlSxM5Z61FJh9wMC/giphy.gif",
+            "json_metadata": "{\"image\":[\"https://media.giphy.com/media/xjLlSxM5Z61FJh9wMC/giphy.gif\"],\"app\":\"steemit/0.2\"}",
+            "created": "2020-03-17T23:35:06",
+            "last_update": "2020-03-17T23:35:06",
+            "depth": 1,
+            "children": 5,
+            "last_payout": "2020-03-24T23:35:06",
+            "cashout_time": "1969-12-31T23:59:59",
             "max_cashout_time": "1969-12-31T23:59:59",
-            "total_vote_weight": 0,
-            "reward_weight": 10000,
-            "total_payout_value": {
-              "amount": "0",
-              "precision": 3,
-              "nai": "@@000000013"
-            },
             "curator_payout_value": {
-              "amount": "0",
-              "precision": 3,
-              "nai": "@@000000013"
+              "amount": "2120",
+              "nai": "@@000000013",
+              "precision": 3
             },
-            "author_rewards": 0,
-            "net_votes": 0,
-            "root_author": "runicar",
-            "root_permlink": "ykwyxgj6",
-            "max_accepted_payout": {
-              "amount": "1000000000",
-              "precision": 3,
-              "nai": "@@000000013"
+            "total_payout_value": {
+              "amount": "2247",
+              "nai": "@@000000013",
+              "precision": 3
             },
-            "percent_hbd": 10000,
+            "reward_weight": 10000,
+            "root_author": "hiveio",
+            "root_permlink": "announcing-the-launch-of-hive-blockchain",
             "allow_replies": true,
             "allow_votes": true,
             "allow_curation_rewards": true,
-            "beneficiaries": []
+            "parent_author": "hiveio",
+            "parent_permlink": "announcing-the-launch-of-hive-blockchain",
+            "beneficiaries": [],
+            "max_accepted_payout": {
+              "amount": "1000000000",
+              "nai": "@@000000013",
+              "precision": 3
+            },
+            "percent_hbd": 10000,
+            "net_votes": 30,
+            "total_vote_weight": 0,
+            "vote_rshares": 0,
+            "net_rshares": 0,
+            "abs_rshares": 0,
+            "children_abs_rshares": 0
           }
         ]
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["1970-01-01T00:00:00","",""], "limit":10, "order":"by_cashout_time"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["",""], "limit":10, "order":"by_permlink"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_root"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","firstpost","",""], "limit":10, "order":"by_parent"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","announcing-the-launch-of-hive-blockchain","",""], "limit":10, "order":"by_root"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","announcing-the-launch-of-hive-blockchain","",""], "limit":10, "order":"by_parent"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","1970-01-01T00:00:00","",""], "limit":10, "order":"by_last_update"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_comments", "params": {"start":["hiveio","1970-01-01T00:00:00","",""], "limit":10, "order":"by_author_last_update"}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.comment.html#module-beem.comment)'

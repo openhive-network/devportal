@@ -139,24 +139,47 @@
       "id":1}'
   - api_method: condenser_api.get_account_history
     purpose: |
-      Returns a history of all operations for a given account.  Parameters: `account:string`; `start:int`. e.g.: -1 for reverse history or any positive numeric; `limit:int` up to 10000
-
-      | `account` (string) | `start` (int) | `limit` (int) | |
-      |--------------------|---------------|---------------|-|
-      | `"hiveio"` | `1000` | `1000` | Queries the account named `hiveio` starting on the latest item in history, up to 1,000 results. |
-      | `"alice"` | `-1` | `10000` | Queries the account named `alice` starting on the oldest item in history, up to 10,000 results. |
+      Returns a history of all operations for a given account.  Parameters:
+      
+      * `account:string`
+      * `start:int`. e.g.: -1 for reverse history or any positive numeric
+      * `limit:int` up to 1000
+      * `operation_filter_low:int` (optional)
+      * `operation_filter_high:int` (optional)
+      
+      If either `operation_filter_low` or `operation_filter_high` are set, the set of returned operations will include only these matching bitwise filter.
+      
+      For the first 64 operations (as defined in [protocol/operations.hpp](https://gitlab.syncad.com/hive/hive/-/blob/master/libraries/protocol/include/hive/protocol/operations.hpp)), set the corresponding bit in `operation_filter_low`; for the higher-numbered operations, set the bit in operation_filter_high (pretending operation_filter is a 128-bit bitmask composed of `{operation_filter_high, operation_filter_low}`)
+      
+      | `account` (string) | `start` (int) | `limit` (int) | `operation_filter_low` (int) | `operation_filter_low` (int)  | |
+      |--------------------|---------------|---------------|------------------------------|-------------------------------|-|
+      | `"hiveio"` | `1000` | `1000` | | | Queries the account named `hiveio` starting on the latest item in history, up to 1,000 results. |
+      | `"alice"` | `-1` | `1000` | | | Queries the account named `alice` starting on the oldest item in history, up to 1,000 results. |
+      | `"bob"` | `-1` | `1000` | 1 | | Queries **only votes** by the account named `bob` starting on the oldest item in history, up to 1,000 results. |
+      | `"charlie"` | `-1` | `1000` | 262144 | | Queries **only custom jsons** by the account named `charlie` starting on the oldest item in history, up to 1,000 results. |
+      | `"emma"` | `-1` | `1000` | 0 | 1 | Queries **only proposal payments** by the account named `emma` starting on the oldest item in history, up to 1,000 results. |
       
       Also see: [account_history_api.get_account_history]({{ '/apidefinitions/#account_history_api.get_account_history' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_account_history' | relative_url }})
     parameter_json:
     - ''
     - 0
     - 1000
-    expected_response_json: []
+    expected_response_json: |
+      [99, {
+        "trx_id": "0000000000000000000000000000000000000000",
+        "block": 0,
+        "trx_in_block": 4294967295,
+        "op_in_trx": 0,
+        "virtual_op": 0,
+        "timestamp": "2019-12-09T21:32:39",
+        "op": {}
+      }]
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio",
-      1000, 1000], "id":1}'
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio",
-      -1, 10000], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio", 1000, 1000], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio", -1, 1000], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["bob", -1, 1000, 1], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["charlie", -1, 1000, 262144], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["emma", -1, 1000, 0, 1], "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-history)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)'
@@ -212,111 +235,143 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_accounts
     purpose: |
-      Returns accounts, queried by name.  Parameters: `account:string array`
+      Returns accounts, queried by name.  Parameters: `account:string array`; `delayed_votes_active:boolean`
 
-      | `account` (string array) | |
+      | `account` (string array) | `delayed_votes_active` (boolean) | |
       |-------------------|-|
-      | `["hiveio"]` | Queries for account named "hiveio". |
-      | `["hiveio", "alice"]` | Queries for accounts named "hiveio" and "alice". |
+      | `["hiveio"]` | | Queries for account named "hiveio". |
+      | `["hiveio", "alice"]` | false | Queries for accounts named "hiveio" and "alice" with `delayed_votes` hidden. |
       
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
     - - ''
-    expected_response_json:
-    - id: 0
-      name: ''
-      owner:
-        weight_threshold: 0
-        account_auths: []
-        key_auths:
-        - - ''
-          - 0
-        - - ''
-          - 0
-        - - ''
-          - 0
-      active:
-        weight_threshold: 0
-        account_auths: []
-        key_auths:
-        - - ''
-          - 0
-        - - ''
-          - 0
-      posting:
-        weight_threshold: 0
-        account_auths: []
-        key_auths:
-        - - ''
-          - 0
-        - - ''
-          - 0
-        - - ''
-          - 0
-      memo_key: ''
-      json_metadata: ''
-      proxy: ''
-      last_owner_update: '2017-03-16T21:17:51'
-      last_account_update: '2017-03-16T23:10:36'
-      created: '2016-03-24T17:00:21'
-      mined: false
-      recovery_account: ''
-      last_account_recovery: '1970-01-01T00:00:00'
-      reset_account: 'null'
-      comment_count: 0
-      lifetime_vote_count: 0
-      post_count: 0
-      can_vote: false
-      voting_power: 0
-      last_vote_time: '2016-12-04T23:10:57'
-      balance: 0.000 HIVE
-      savings_balance: 0.0 HIVE
-      hbd_balance: 0.0 HBD
-      hbd_seconds: ''
-      hbd_seconds_last_update: '2018-04-10T04:08:36'
-      hbd_last_interest_payment: '2018-03-15T17:58:24'
-      savings_hbd_balance: 0.000 HBD
-      savings_hbd_seconds: ''
-      savings_hbd_seconds_last_update: '1970-01-01T00:00:00'
-      savings_hbd_last_interest_payment: '1970-01-01T00:00:00'
-      savings_withdraw_requests: 0
-      reward_hbd_balance: 0.000 HBD
-      reward_hive_balance: 0.000 HIVE
-      reward_vesting_balance: 0.000000 VESTS
-      reward_vesting_hive: 0.000 HIVE
-      vesting_shares: 0.000 VESTS
-      delegated_vesting_shares: 0.000000 VESTS
-      received_vesting_shares: 0.000000 VESTS
-      vesting_withdraw_rate: 0.000000 VESTS
-      next_vesting_withdrawal: '1969-12-31T23:59:59'
-      withdrawn: 0
-      to_withdraw: 0
-      withdraw_routes: 0
-      curation_rewards: 0
-      posting_rewards: 0
-      proxied_vsf_votes:
-      - 0
-      - 0
-      - 0
-      - 0
-      witnesses_voted_for: 0
-      last_post: '2016-03-30T18:30:18'
-      last_root_post: '2016-03-30T18:30:18'
-      vesting_balance: 0.000 HIVE
-      reputation: ''
-      transfer_history: []
-      market_history: []
-      post_history: []
-      vote_history: []
-      other_history: []
-      witness_votes: []
-      tags_usage: []
-      guest_bloggers: []
+    expected_response_json: |
+      {
+        "id": 1370484,
+        "name": "hiveio",
+        "owner": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM65PUAPA4yC4RgPtGgsPupxT6yJtMhmT5JHFdsT3uoCbR8WJ25s",
+              1
+            ]
+          ]
+        },
+        "active": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM69zfrFGnZtU3gWFWpQJ6GhND1nz7TJsKBTjcWfebS1JzBEweQy",
+              1
+            ]
+          ]
+        },
+        "posting": {
+          "weight_threshold": 1,
+          "account_auths": [
+            [
+              "threespeak",
+              1
+            ],
+            [
+              "vimm.app",
+              1
+            ]
+          ],
+          "key_auths": [
+            [
+              "STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9",
+              1
+            ]
+          ]
+        },
+        "memo_key": "STM7wrsg1BZogeK7X3eG4ivxmLaH69FomR8rLkBbepb3z3hm5SbXu",
+        "json_metadata": "",
+        "posting_json_metadata": "{\"profile\":{\"pinned\":\"none\",\"version\":2,\"website\":\"hive.io\",\"profile_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Jp2YHc6Q-hive-logo.png\",\"cover_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Xe1TcEBi-hive-banner.png\"}}",
+        "proxy": "",
+        "last_owner_update": "1970-01-01T00:00:00",
+        "last_account_update": "2020-11-12T01:20:48",
+        "created": "2020-03-06T12:22:48",
+        "mined": false,
+        "recovery_account": "steempeak",
+        "last_account_recovery": "1970-01-01T00:00:00",
+        "reset_account": "null",
+        "comment_count": 0,
+        "lifetime_vote_count": 0,
+        "post_count": 31,
+        "can_vote": true,
+        "voting_manabar": {
+          "current_mana": "598442432741",
+          "last_update_time": 1591297380
+        },
+        "downvote_manabar": {
+          "current_mana": "149610608184",
+          "last_update_time": 1591297380
+        },
+        "voting_power": 0,
+        "balance": "11.682 HIVE",
+        "savings_balance": "0.000 HIVE",
+        "hbd_balance": "43.575 HBD",
+        "hbd_seconds": "0",
+        "hbd_seconds_last_update": "2020-10-21T02:45:12",
+        "hbd_last_interest_payment": "2020-10-21T02:45:12",
+        "savings_hbd_balance": "0.000 HBD",
+        "savings_hbd_seconds": "0",
+        "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+        "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
+        "savings_withdraw_requests": 0,
+        "reward_hbd_balance": "0.000 HBD",
+        "reward_hive_balance": "0.000 HIVE",
+        "reward_vesting_balance": "0.000000 VESTS",
+        "reward_vesting_hive": "0.000 HIVE",
+        "vesting_shares": "598442.432741 VESTS",
+        "delegated_vesting_shares": "0.000000 VESTS",
+        "received_vesting_shares": "0.000000 VESTS",
+        "vesting_withdraw_rate": "0.000000 VESTS",
+        "post_voting_power": "598442.432741 VESTS",
+        "next_vesting_withdrawal": "1969-12-31T23:59:59",
+        "withdrawn": 0,
+        "to_withdraw": 0,
+        "withdraw_routes": 0,
+        "pending_transfers": 0,
+        "curation_rewards": 0,
+        "posting_rewards": 604589,
+        "proxied_vsf_votes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "witnesses_voted_for": 0,
+        "last_post": "2021-03-23T18:05:48",
+        "last_root_post": "2021-03-23T18:05:48",
+        "last_vote_time": "1970-01-01T00:00:00",
+        "post_bandwidth": 0,
+        "pending_claimed_accounts": 0,
+        "delayed_votes": [
+          {"time": "2021-02-24T05:08:21", "val": "11550765516955"},
+          {"time": "2021-02-26T15:46:06", "val": "633465684569"},
+          {"time": "2021-03-07T17:54:39", "val": "1000000037683"},
+          {"time": "2021-03-16T05:54:33", "val": "999978763511"},
+          {"time": "2021-03-18T06:06:00", "val": "1000000171317"}
+        ],
+        "vesting_balance": "0.000 HIVE",
+        "reputation": "88826789432105",
+        "transfer_history": [],
+        "market_history": [],
+        "post_history": [],
+        "vote_history": [],
+        "other_history": [],
+        "witness_votes": [],
+        "tags_usage": [],
+        "guest_bloggers": []
+      }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]],
-      "id":1}'
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio",
-      "alice"]], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio", "alice"], true], "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
@@ -329,8 +384,6 @@
       |----------------------------|---------------|-|
       | `"hiveio"` | `"firstpost"` | Queries votes for content with a slug `@hiveio/firstpost` |
       | `"alice"` | `"a-post-by-alice"` | Queries votes for content with a slug `@alice/a-post-by-alice` |
-      
-      Also see: [tags_api.get_active_votes]({{ '/apidefinitions/#tags_api.get_active_votes' | relative_url }})
     parameter_json:
     - ''
     - ''
@@ -777,10 +830,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-current-median-history-price)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_active
-    purpose: |
-      Returns a list of discussions based on active.
-      
-      Also see: [tags_api.get_discussions_by_active]({{ '/apidefinitions/#tags_api.get_discussions_by_active' | relative_url }})
+    purpose: Returns a list of discussions based on active.
     parameter_json:
     - tag: ''
       limit: 0
@@ -839,10 +889,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_cashout
-    purpose: |
-      Returns a list of discussions by cashout.
-      
-      Also see: [tags_api.get_discussions_by_cashout]({{ '/apidefinitions/#tags_api.get_discussions_by_cashout' | relative_url }})
+    purpose: Returns a list of discussions by cashout.
     parameter_json:
     - tag: ''
       limit: 0
@@ -861,10 +908,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-cashout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_children
-    purpose: |
-      Returns a list of discussions by children.
-      
-      Also see: [tags_api.get_discussions_by_children]({{ '/apidefinitions/#tags_api.get_discussions_by_children' | relative_url }})
+    purpose: Returns a list of discussions by children.
     parameter_json:
     - tag: ''
       limit: 0
@@ -928,10 +972,7 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_feed
     since: HF14
-    purpose: |
-      Returns a list of discussions by feed.
-      
-      Also see: [tags_api.get_discussions_by_feed]({{ '/apidefinitions/#tags_api.get_discussions_by_feed' | relative_url }})
+    purpose: Returns a list of discussions by feed.
     parameter_json:
     - tag: ''
       start_author: ''
@@ -1015,10 +1056,7 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_discussions_by_votes
-    purpose: |
-      Returns a list of discussions by votes.
-      
-      Also see: [tags_api.get_discussions_by_votes]({{ '/apidefinitions/#tags_api.get_discussions_by_votes' | relative_url }})
+    purpose: Returns a list of discussions by votes.
     parameter_json:
     - tag: ''
       limit: 0
@@ -1595,7 +1633,7 @@
     purpose: |
       Returns a list of replies by last update.  `start_parent_author:string`, `start_permlink:string`, `limit:int` up to 100
       
-      Also see: [tags_api.get_replies_by_last_update]({{ '/apidefinitions/#tags_api.get_replies_by_last_update' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_replies_by_last_update' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_replies_by_last_update' | relative_url }})
     parameter_json:
     - ''
     - ''
@@ -1778,8 +1816,6 @@
       | `account` (string) | |
       |--------------------|-|
       | `"hiveio"` | Queries the tags used by the account named "hiveio". |
-      
-      Also see: [tags_api.get_tags_used_by_author]({{ '/apidefinitions/#tags_api.get_tags_used_by_author' | relative_url }})
     parameter_json:
     - ''
     expected_response_json: []
@@ -1892,7 +1928,7 @@
       | `null` | 100 | Queries the top 100 trending tags. |
       | `"hive"` | 10 | Queries the tags after "hive", up to 10 tags. |
       
-      Also see: [tags_api.get_trending_tags]({{ '/apidefinitions/#tags_api.get_trending_tags' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_trending_tags' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_trending_tags' | relative_url }})
     parameter_json:
     - ''
     - 1
@@ -2128,94 +2164,140 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.lookup_account_names
     purpose: |
-      Looks up account names.  `accounts:[string]`
+      Looks up account names.  Parameters: `accounts:[string]`; `delayed_votes_active:boolean`
       
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
-    - - hiveio
-    expected_response_json:
-    - id: 28
-      name: hiveio
-      owner:
-        weight_threshold: 1
-        account_auths: []
-        key_auths:
-        - - STM5tfrdPG1Ycjwa9FuBUueDFFyygndBLXdVEEs2c9eRKScnFk6vM
-          - 1
-        - - STM71f6yWztimJuREVyyMXNqAVbx1FzPVW6LLXNoQ35dHwKuszmHX
-          - 1
-        - - STM7U3ymhUTuKME72dpdpQkdQvh722gTLjKBKtmKQPPWgtkr418Nf
-          - 1
-      active:
-        weight_threshold: 1
-        account_auths: []
-        key_auths:
-        - - STM5832HKCJzs6K3rRCsZ1PidTKgjF38ZJb718Y3pCW92HEMsCGPf
-          - 1
-        - - STM7Q2rLBqzPzFeteQZewv9Lu3NLE69fZoLeL6YK59t7UmssCBNTU
-          - 1
-      posting:
-        weight_threshold: 1
-        account_auths: []
-        key_auths:
-        - - STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
-          - 1
-        - - STM7xVFaqi8RxhWKZwuLA2bKrAiQmhnrbgvw4e2ChAsKYQbPjqUq2
-          - 1
-        - - STM83dmDkQcZU9X8MWcxsTztSyutE6udrb55PvYgu7RLzStaoAt67
-          - 1
-      memo_key: STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
-      json_metadata: ''
-      proxy: ''
-      last_owner_update: '2017-03-16T21:17:51'
-      last_account_update: '2017-03-16T23:10:36'
-      created: '2016-03-24T17:00:21'
-      mined: true
-      recovery_account: hiveio
-      last_account_recovery: '1970-01-01T00:00:00'
-      reset_account: 'null'
-      comment_count: 0
-      lifetime_vote_count: 0
-      post_count: 1
-      can_vote: true
-      voting_power: 9950
-      last_vote_time: '2016-12-04T23:10:57'
-      balance: 0.006 HIVE
-      savings_balance: 11006644.632 HIVE
-      hbd_balance: 8581.890 HBD
-      hbd_seconds: '18846158467785'
-      hbd_seconds_last_update: '2018-04-10T04:08:36'
-      hbd_last_interest_payment: '2018-03-15T17:58:24'
-      savings_hbd_balance: 0.000 HBD
-      savings_hbd_seconds: '0'
-      savings_hbd_seconds_last_update: '1970-01-01T00:00:00'
-      savings_hbd_last_interest_payment: '1970-01-01T00:00:00'
-      savings_withdraw_requests: 0
-      reward_hbd_balance: 0.000 HBD
-      reward_hive_balance: 0.000 HIVE
-      reward_vesting_balance: 0.000000 VESTS
-      reward_vesting_hive: 0.000 HIVE
-      vesting_shares: 90039851836.689703 VESTS
-      delegated_vesting_shares: 0.000000 VESTS
-      received_vesting_shares: 0.000000 VESTS
-      vesting_withdraw_rate: 0.000000 VESTS
-      next_vesting_withdrawal: '1969-12-31T23:59:59'
-      withdrawn: 0
-      to_withdraw: 0
-      withdraw_routes: 0
-      curation_rewards: 0
-      posting_rewards: 3548
-      proxied_vsf_votes:
-      - '28583799126'
-      - 0
-      - 0
-      - 0
-      witnesses_voted_for: 0
-      last_post: '2016-03-30T18:30:18'
-      last_root_post: '2016-03-30T18:30:18'
+      -
+        - hiveio
+        - true
+    expected_response_json: |
+      {
+        "id": 1370484,
+        "name": "hiveio",
+        "owner": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM65PUAPA4yC4RgPtGgsPupxT6yJtMhmT5JHFdsT3uoCbR8WJ25s",
+              1
+            ]
+          ]
+        },
+        "active": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM69zfrFGnZtU3gWFWpQJ6GhND1nz7TJsKBTjcWfebS1JzBEweQy",
+              1
+            ]
+          ]
+        },
+        "posting": {
+          "weight_threshold": 1,
+          "account_auths": [
+            [
+              "threespeak",
+              1
+            ],
+            [
+              "vimm.app",
+              1
+            ]
+          ],
+          "key_auths": [
+            [
+              "STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9",
+              1
+            ]
+          ]
+        },
+        "memo_key": "STM7wrsg1BZogeK7X3eG4ivxmLaH69FomR8rLkBbepb3z3hm5SbXu",
+        "json_metadata": "",
+        "posting_json_metadata": "{\"profile\":{\"pinned\":\"none\",\"version\":2,\"website\":\"hive.io\",\"profile_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Jp2YHc6Q-hive-logo.png\",\"cover_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Xe1TcEBi-hive-banner.png\"}}",
+        "proxy": "",
+        "last_owner_update": "1970-01-01T00:00:00",
+        "last_account_update": "2020-11-12T01:20:48",
+        "created": "2020-03-06T12:22:48",
+        "mined": false,
+        "recovery_account": "steempeak",
+        "last_account_recovery": "1970-01-01T00:00:00",
+        "reset_account": "null",
+        "comment_count": 0,
+        "lifetime_vote_count": 0,
+        "post_count": 31,
+        "can_vote": true,
+        "voting_manabar": {
+          "current_mana": "598442432741",
+          "last_update_time": 1591297380
+        },
+        "downvote_manabar": {
+          "current_mana": "149610608184",
+          "last_update_time": 1591297380
+        },
+        "voting_power": 0,
+        "balance": "11.682 HIVE",
+        "savings_balance": "0.000 HIVE",
+        "hbd_balance": "43.575 HBD",
+        "hbd_seconds": "0",
+        "hbd_seconds_last_update": "2020-10-21T02:45:12",
+        "hbd_last_interest_payment": "2020-10-21T02:45:12",
+        "savings_hbd_balance": "0.000 HBD",
+        "savings_hbd_seconds": "0",
+        "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+        "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
+        "savings_withdraw_requests": 0,
+        "reward_hbd_balance": "0.000 HBD",
+        "reward_hive_balance": "0.000 HIVE",
+        "reward_vesting_balance": "0.000000 VESTS",
+        "reward_vesting_hive": "0.000 HIVE",
+        "vesting_shares": "598442.432741 VESTS",
+        "delegated_vesting_shares": "0.000000 VESTS",
+        "received_vesting_shares": "0.000000 VESTS",
+        "vesting_withdraw_rate": "0.000000 VESTS",
+        "post_voting_power": "598442.432741 VESTS",
+        "next_vesting_withdrawal": "1969-12-31T23:59:59",
+        "withdrawn": 0,
+        "to_withdraw": 0,
+        "withdraw_routes": 0,
+        "pending_transfers": 0,
+        "curation_rewards": 0,
+        "posting_rewards": 604589,
+        "proxied_vsf_votes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "witnesses_voted_for": 0,
+        "last_post": "2021-03-23T18:05:48",
+        "last_root_post": "2021-03-23T18:05:48",
+        "last_vote_time": "1970-01-01T00:00:00",
+        "post_bandwidth": 0,
+        "pending_claimed_accounts": 0,
+        "delayed_votes": [
+          {"time": "2021-02-24T05:08:21", "val": "11550765516955"},
+          {"time": "2021-02-26T15:46:06", "val": "633465684569"},
+          {"time": "2021-03-07T17:54:39", "val": "1000000037683"},
+          {"time": "2021-03-16T05:54:33", "val": "999978763511"},
+          {"time": "2021-03-18T06:06:00", "val": "1000000171317"}
+        ],
+        "vesting_balance": "0.000 HIVE",
+        "reputation": "88826789432105",
+        "transfer_history": [],
+        "market_history": [],
+        "post_history": [],
+        "vote_history": [],
+        "other_history": [],
+        "witness_votes": [],
+        "tags_usage": [],
+        "guest_bloggers": []
+      }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]],
-      "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"], false], "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#lookup-account-names)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#lookup-account-names)'
