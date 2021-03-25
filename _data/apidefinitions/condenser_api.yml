@@ -235,12 +235,12 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.get_accounts
     purpose: |
-      Returns accounts, queried by name.  Parameters: `account:string array`
+      Returns accounts, queried by name.  Parameters: `account:string array`; `delayed_votes_active:boolean`
 
-      | `account` (string array) | |
+      | `account` (string array) | `delayed_votes_active` (boolean) | |
       |-------------------|-|
-      | `["hiveio"]` | Queries for account named "hiveio". |
-      | `["hiveio", "alice"]` | Queries for accounts named "hiveio" and "alice". |
+      | `["hiveio"]` | | Queries for account named "hiveio". |
+      | `["hiveio", "alice"]` | false | Queries for accounts named "hiveio" and "alice" with `delayed_votes` hidden. |
       
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
@@ -370,10 +370,8 @@
         "guest_bloggers": []
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]],
-      "id":1}'
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio",
-      "alice"]], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio", "alice"], true], "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
@@ -2166,11 +2164,13 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: condenser_api.lookup_account_names
     purpose: |
-      Looks up account names.  `accounts:[string]`
+      Looks up account names.  Parameters: `accounts:[string]`; `delayed_votes_active:boolean`
       
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
-    - - hiveio
+      -
+        - hiveio
+        - true
     expected_response_json: |
       {
         "id": 1370484,
@@ -2296,8 +2296,8 @@
         "guest_bloggers": []
       }
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]],
-      "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"], false], "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#lookup-account-names)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#lookup-account-names)'

@@ -35,13 +35,13 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.find_accounts
     purpose: |
-      Returns accounts, queried by name.  Parameters: `account:string array`
+      Returns accounts, queried by name.  Parameters: `account:string array`; `delayed_votes_active:boolean`
 
-      | `account` (string array) | |
+      | `account` (string array) | `delayed_votes_active` (boolean) | |
       |-------------------|-|
-      | `["hiveio"]` | Queries for account named "hiveio". |
-      | `["hiveio", "alice"]` | Queries for accounts named "hiveio" and "alice". |
-    parameter_json: '{"accounts":[]}'
+      | `["hiveio"]` | | Queries for account named "hiveio". |
+      | `["hiveio", "alice"]` | false | Queries for accounts named "hiveio" and "alice" with `delayed_votes` hidden. |
+    parameter_json: '{"accounts":[], "delayed_votes_active": true}'
     expected_response_json: |
       {
         "accounts": [
@@ -215,7 +215,7 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio"]}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio", "alice"]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.find_accounts", "params": {"accounts":["hiveio", "alice"], "delayed_votes_active": false}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
@@ -1288,22 +1288,23 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.list_accounts
     purpose: |
-      List accounts ordered by specified key.  Parameters: `start:object`, `limit:int`, `order:string`
+      List accounts ordered by specified key.  Parameters: `start:object`, `limit:int`, `order:string`, `delayed_votes_active:boolean`
 
       * `limit` is up to 1000.
       * `order` can be one of:
         * `by_name` - order by accont name
         * `by_proxy` - order by proxy
         * `by_next_vesting_withdrawal` - order by next next vesting withdrawal
+      * `delayed_votes_active` default true (optional)
 
-      | `start` (object) | `limit` (int) | `order` (string) |
-      |-------------------|-|
-      | `""` | `10` | `"by_name"` Queries for up to 10 accounts starting at the beginning, sorted by name. |
-      | `["", ""]` | `10` | `"by_proxy"` Queries for up to 10 accounts starting at the beginning, sorted by proxy. |
-      | `["1960-01-01T00:00:00", ""]` | `10` | `"by_next_vesting_withdrawal"` Queries for up to 10 accounts starting at the beginning, sorted by next vesting withdrawl. |
+      | `start` (object) | `limit` (int) | `order` (string) | `delayed_votes_active` (boolean) |
+      |------------------|---------------|------------------|----------------------------------|
+      | `""` | `10` | `"by_name"` Queries for up to 10 accounts starting at the beginning, sorted by name. | |
+      | `["", ""]` | `10` | `"by_proxy"` Queries for up to 10 accounts starting at the beginning, sorted by proxy. | |
+      | `["1960-01-01T00:00:00", ""]` | `10` | `"by_next_vesting_withdrawal"` Queries for up to 10 accounts starting at the beginning, sorted by next vesting withdrawl. | false |
 
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_accounts' | relative_url }})
-    parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
+    parameter_json: '{"start":null,"limit":0,"order":"by_name","delayed_votes_active":true}'
     expected_response_json: |
       {
         "accounts": [
@@ -1469,7 +1470,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":"", "limit":10, "order":"by_name"}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["", ""], "limit":10, "order":"by_proxy"}, "id":1}'
-    - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["1960-01-01T00:00:00", ""], "limit":10, "order":"by_next_vesting_withdrawal"}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.list_accounts", "params": {"start":["1960-01-01T00:00:00", ""], "limit":10, "order":"by_next_vesting_withdrawal","delayed_votes_active":false}, "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
