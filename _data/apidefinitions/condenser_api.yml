@@ -139,24 +139,47 @@
       "id":1}'
   - api_method: condenser_api.get_account_history
     purpose: |
-      Returns a history of all operations for a given account.  Parameters: `account:string`; `start:int`. e.g.: -1 for reverse history or any positive numeric; `limit:int` up to 10000
-
-      | `account` (string) | `start` (int) | `limit` (int) | |
-      |--------------------|---------------|---------------|-|
-      | `"hiveio"` | `1000` | `1000` | Queries the account named `hiveio` starting on the latest item in history, up to 1,000 results. |
-      | `"alice"` | `-1` | `10000` | Queries the account named `alice` starting on the oldest item in history, up to 10,000 results. |
+      Returns a history of all operations for a given account.  Parameters:
+      
+      * `account:string`
+      * `start:int`. e.g.: -1 for reverse history or any positive numeric
+      * `limit:int` up to 1000
+      * `operation_filter_low:int` (optional)
+      * `operation_filter_high:int` (optional)
+      
+      If either `operation_filter_low` or `operation_filter_high` are set, the set of returned operations will include only these matching bitwise filter.
+      
+      For the first 64 operations (as defined in [protocol/operations.hpp](https://gitlab.syncad.com/hive/hive/-/blob/master/libraries/protocol/include/hive/protocol/operations.hpp)), set the corresponding bit in `operation_filter_low`; for the higher-numbered operations, set the bit in operation_filter_high (pretending operation_filter is a 128-bit bitmask composed of `{operation_filter_high, operation_filter_low}`)
+      
+      | `account` (string) | `start` (int) | `limit` (int) | `operation_filter_low` (int) | `operation_filter_low` (int)  | |
+      |--------------------|---------------|---------------|------------------------------|-------------------------------|-|
+      | `"hiveio"` | `1000` | `1000` | | | Queries the account named `hiveio` starting on the latest item in history, up to 1,000 results. |
+      | `"alice"` | `-1` | `1000` | | | Queries the account named `alice` starting on the oldest item in history, up to 1,000 results. |
+      | `"bob"` | `-1` | `1000` | 1 | | Queries **only votes** by the account named `bob` starting on the oldest item in history, up to 1,000 results. |
+      | `"charlie"` | `-1` | `1000` | 262144 | | Queries **only custom jsons** by the account named `charlie` starting on the oldest item in history, up to 1,000 results. |
+      | `"emma"` | `-1` | `1000` | 0 | 1 | Queries **only proposal payments** by the account named `emma` starting on the oldest item in history, up to 1,000 results. |
       
       Also see: [account_history_api.get_account_history]({{ '/apidefinitions/#account_history_api.get_account_history' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_account_history' | relative_url }})
     parameter_json:
     - ''
     - 0
     - 1000
-    expected_response_json: []
+    expected_response_json: |
+      [99, {
+        "trx_id": "0000000000000000000000000000000000000000",
+        "block": 0,
+        "trx_in_block": 4294967295,
+        "op_in_trx": 0,
+        "virtual_op": 0,
+        "timestamp": "2019-12-09T21:32:39",
+        "op": {}
+      }]
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio",
-      1000, 1000], "id":1}'
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio",
-      -1, 10000], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio", 1000, 1000], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["hiveio", -1, 1000], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["bob", -1, 1000, 1], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["charlie", -1, 1000, 262144], "id":1}'
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["emma", -1, 1000, 0, 1], "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-history)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)'
