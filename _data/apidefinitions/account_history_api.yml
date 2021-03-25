@@ -6,10 +6,29 @@
   methods:
     - api_method: account_history_api.get_account_history
       purpose: |
-        Returns a history of all operations for a given account.
+        Returns a history of all operations for a given account.  Parameters:
         
+        * `account:string`
+        * `start:int`. e.g.: -1 for reverse history or any positive numeric
+        * `limit:int` up to 1000
+        * `include_reversible:boolean` (optional) If set to true also operations from reversible block will be included
+        * `operation_filter_low:int` (optional)
+        * `operation_filter_high:int` (optional)
+        
+        If either `operation_filter_low` or `operation_filter_high` are set, the set of returned operations will include only these matching bitwise filter.
+        
+        For the first 64 operations (as defined in [protocol/operations.hpp](https://gitlab.syncad.com/hive/hive/-/blob/master/libraries/protocol/include/hive/protocol/operations.hpp)), set the corresponding bit in `operation_filter_low`; for the higher-numbered operations, set the bit in operation_filter_high (pretending operation_filter is a 128-bit bitmask composed of `{operation_filter_high, operation_filter_low}`)
+        
+        | `account` (string) | `start` (int) | `limit` (int) | `include_reversible` (boolean) | `operation_filter_low` (int) | `operation_filter_high` (int)  | |
+        |--------------------|---------------|---------------|--------------------------------|------------------------------|--------------------------------|-|
+        | `"hiveio"` | `1000` | `1000` | | | | Queries the account named `hiveio` starting on the latest item in history, up to 1,000 results. |
+        | `"alice"` | `-1` | `1000` | | | | Queries the account named `alice` starting on the oldest item in history, up to 1,000 results. |
+        | `"bob"` | `-1` | `1000` | true | 1 | | Queries **only votes** by the account named `bob` starting on the oldest item in history, up to 1,000 results. |
+        | `"charlie"` | `-1` | `1000` | true | 262144 | | Queries **only custom jsons** by the account named `charlie` starting on the oldest item in history, up to 1,000 results. |
+        | `"emma"` | `-1` | `1000` | true | 0 | 1 | Queries **only proposal payments** to the account named `emma` starting on the oldest item in history, up to 1,000 results. |
+
         Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#account_history_apiget_account_history' | relative_url }})
-      parameter_json: {"account":"","start":"18446744073709551615","limit":1000}
+      parameter_json: {"account":"","start":"18446744073709551615","limit":1000,"include_reversible": true,"operation_filter_low":4294967295,"operation_filter_high":4294967295}
       expected_response_json: |
         {"history": [
           [99, {
@@ -24,7 +43,10 @@
         ]}
       curl_examples:
         - '{"jsonrpc":"2.0", "method":"account_history_api.get_account_history", "params":{"account":"hiveio", "start":1000, "limit":1000}, "id":1}'
-        - '{"jsonrpc":"2.0", "method":"account_history_api.get_account_history", "params":{"account":"hiveio", "start":-1, "limit":10000}, "id":1}'
+        - '{"jsonrpc":"2.0", "method":"account_history_api.get_account_history", "params":{"account":"hiveio", "start":-1, "limit":1000}, "id":1}'
+        - '{"jsonrpc":"2.0", "method":"account_history_api.get_account_history", "params":{"account":"bob", "start":-1, "limit":1000, "include_reversible": true, "operation_filter_low": 1}, "id":1}'
+        - '{"jsonrpc":"2.0", "method":"account_history_api.get_account_history", "params":{"account":"charlie", "start":-1, "limit":1000, "include_reversible": true, "operation_filter_low": 262144}, "id":1}'
+        - '{"jsonrpc":"2.0", "method":"account_history_api.get_account_history", "params":{"account":"emma", "start":-1, "limit":1000, "include_reversible": true, "operation_filter_low": 0, "operation_filter_high": 1}, "id":1}'
       expected_curl_responses:
         - Could not find API account_history_api
         - Could not find API account_history_api
@@ -33,8 +55,13 @@
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.get_ops_in_block
-      purpose: Returns all operations contained in a block.
-      parameter_json: {"block_num":0,"only_virtual":false}
+      purpose: |
+        Returns all operations contained in a block.  Parameter:
+          
+          * `block_num:int`
+          * `only_virtual:boolean`
+          * `include_reversible:boolean` (optional) If set to true also operations from reversible block will be included if block_num points to such block.
+      parameter_json: {"block_num":0,"only_virtual":false,"include_reversible": true}
       expected_response_json: |
         {
           "ops": [{
@@ -50,6 +77,7 @@
       curl_examples:
         - '{"jsonrpc":"2.0", "method":"account_history_api.get_ops_in_block", "params":{"block_num":1,"only_virtual":false}, "id":1}'
         - '{"jsonrpc":"2.0", "method":"account_history_api.get_ops_in_block", "params":{"block_num":5443322,"only_virtual":true}, "id":1}'
+        - '{"jsonrpc":"2.0", "method":"account_history_api.get_ops_in_block", "params":{"block_num":5443322,"only_virtual":true,"include_reversible":true}, "id":1}'
       expected_curl_responses:
         - Could not find API account_history_api
         - Could not find API account_history_api
@@ -59,8 +87,12 @@
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.get_transaction
       deprecated: true
-      purpose: Returns the details of a transaction based on a transaction id.
-      parameter_json: {"id":"0000000000000000000000000000000000000000"}
+      purpose: |
+        Returns the details of a transaction based on a transaction id.
+        
+        * `id:string` trx_id of expected transaction
+        * `include_reversible:boolean` (optional) If set to true also operations from reversible block will be included if block_num points to such block.
+      parameter_json: {"id":"0000000000000000000000000000000000000000", "include_reversible": true}
       expected_response_json: |
         {
           "ref_block_num": 0,
@@ -75,6 +107,7 @@
         }
       curl_examples:
         - '{"jsonrpc":"2.0", "method":"account_history_api.get_transaction", "params":{"id":"6fde0190a97835ea6d9e651293e90c89911f933c"}, "id":1}'
+        - '{"jsonrpc":"2.0", "method":"account_history_api.get_transaction", "params":{"id":"6fde0190a97835ea6d9e651293e90c89911f933c", "include_reversible": true}, "id":1}'
       expected_curl_responses:
         - Could not find API account_history_api
       client_docs:
@@ -82,9 +115,14 @@
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.enum_virtual_ops
-      since: Mysterious Future
-      purpose: 
-      parameter_json: '{"block_range_begin":1,"block_range_end":2}'
+      since: HF24
+      purpose: |
+        Allows to specify range of blocks to retrieve virtual operations for. 
+        
+        * `block_range_begin:int` starting block number (inclusive) to search for virtual operations
+        * `block_range_end:int` last block number (exclusive) to search for virtual operations
+        * `include_reversible:boolean` (optional) If set to true also operations from reversible block will be included if block_num points to such block.
+      parameter_json: '{"block_range_begin":1,"block_range_end":2,"include_reversible":true}'
       expected_response_json: |
         {
           "ops": [{
@@ -94,8 +132,12 @@
             "op_in_trx": 0,
             "virtual_op": 0,
             "timestamp": "2016-03-24T17:46:30",
-            "op": {}
+            "op": {},
+            "operation_id": "18446744069414584320"
           }]
         }
+      curl_examples:
+        - '{"jsonrpc":"2.0", "method":"account_history_api.enum_virtual_ops", "params":{"block_range_begin":1,"block_range_end":2}, "id":1}'
+        - '{"jsonrpc":"2.0", "method":"account_history_api.enum_virtual_ops", "params":{"block_range_begin":1,"block_range_end":2,"include_reversible":true}, "id":1}'
       client_docs:
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'

@@ -145,7 +145,7 @@ The following methods have various forms of pagination:
 
 ### `account_history_api.get_account_history`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-Although the name of the param is `start`, it's better to think of it as `from`.  We are telling the API that we would like to read *from* the *nth* object minus the `limit`.  Unlike most `limit` params in the API, `get_account_history` has a limit of 10,000 objects.
+Although the name of the param is `start`, it's better to think of it as `from`.  We are telling the API that we would like to read *from* the *nth* object minus the `limit`.  Like all `limit` params in the API, `get_account_history` has a limit of 1,000 objects.
 
 **Note:** The `start` param may not be less than `limit`.  The `start` param may also be negative (`-1`).
 
