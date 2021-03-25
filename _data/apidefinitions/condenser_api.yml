@@ -245,96 +245,130 @@
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
     - - ''
-    expected_response_json:
-    - id: 0
-      name: ''
-      owner:
-        weight_threshold: 0
-        account_auths: []
-        key_auths:
-        - - ''
-          - 0
-        - - ''
-          - 0
-        - - ''
-          - 0
-      active:
-        weight_threshold: 0
-        account_auths: []
-        key_auths:
-        - - ''
-          - 0
-        - - ''
-          - 0
-      posting:
-        weight_threshold: 0
-        account_auths: []
-        key_auths:
-        - - ''
-          - 0
-        - - ''
-          - 0
-        - - ''
-          - 0
-      memo_key: ''
-      json_metadata: ''
-      proxy: ''
-      last_owner_update: '2017-03-16T21:17:51'
-      last_account_update: '2017-03-16T23:10:36'
-      created: '2016-03-24T17:00:21'
-      mined: false
-      recovery_account: ''
-      last_account_recovery: '1970-01-01T00:00:00'
-      reset_account: 'null'
-      comment_count: 0
-      lifetime_vote_count: 0
-      post_count: 0
-      can_vote: false
-      voting_power: 0
-      last_vote_time: '2016-12-04T23:10:57'
-      balance: 0.000 HIVE
-      savings_balance: 0.0 HIVE
-      hbd_balance: 0.0 HBD
-      hbd_seconds: ''
-      hbd_seconds_last_update: '2018-04-10T04:08:36'
-      hbd_last_interest_payment: '2018-03-15T17:58:24'
-      savings_hbd_balance: 0.000 HBD
-      savings_hbd_seconds: ''
-      savings_hbd_seconds_last_update: '1970-01-01T00:00:00'
-      savings_hbd_last_interest_payment: '1970-01-01T00:00:00'
-      savings_withdraw_requests: 0
-      reward_hbd_balance: 0.000 HBD
-      reward_hive_balance: 0.000 HIVE
-      reward_vesting_balance: 0.000000 VESTS
-      reward_vesting_hive: 0.000 HIVE
-      vesting_shares: 0.000 VESTS
-      delegated_vesting_shares: 0.000000 VESTS
-      received_vesting_shares: 0.000000 VESTS
-      vesting_withdraw_rate: 0.000000 VESTS
-      next_vesting_withdrawal: '1969-12-31T23:59:59'
-      withdrawn: 0
-      to_withdraw: 0
-      withdraw_routes: 0
-      curation_rewards: 0
-      posting_rewards: 0
-      proxied_vsf_votes:
-      - 0
-      - 0
-      - 0
-      - 0
-      witnesses_voted_for: 0
-      last_post: '2016-03-30T18:30:18'
-      last_root_post: '2016-03-30T18:30:18'
-      vesting_balance: 0.000 HIVE
-      reputation: ''
-      transfer_history: []
-      market_history: []
-      post_history: []
-      vote_history: []
-      other_history: []
-      witness_votes: []
-      tags_usage: []
-      guest_bloggers: []
+    expected_response_json: |
+      {
+        "id": 1370484,
+        "name": "hiveio",
+        "owner": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM65PUAPA4yC4RgPtGgsPupxT6yJtMhmT5JHFdsT3uoCbR8WJ25s",
+              1
+            ]
+          ]
+        },
+        "active": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM69zfrFGnZtU3gWFWpQJ6GhND1nz7TJsKBTjcWfebS1JzBEweQy",
+              1
+            ]
+          ]
+        },
+        "posting": {
+          "weight_threshold": 1,
+          "account_auths": [
+            [
+              "threespeak",
+              1
+            ],
+            [
+              "vimm.app",
+              1
+            ]
+          ],
+          "key_auths": [
+            [
+              "STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9",
+              1
+            ]
+          ]
+        },
+        "memo_key": "STM7wrsg1BZogeK7X3eG4ivxmLaH69FomR8rLkBbepb3z3hm5SbXu",
+        "json_metadata": "",
+        "posting_json_metadata": "{\"profile\":{\"pinned\":\"none\",\"version\":2,\"website\":\"hive.io\",\"profile_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Jp2YHc6Q-hive-logo.png\",\"cover_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Xe1TcEBi-hive-banner.png\"}}",
+        "proxy": "",
+        "last_owner_update": "1970-01-01T00:00:00",
+        "last_account_update": "2020-11-12T01:20:48",
+        "created": "2020-03-06T12:22:48",
+        "mined": false,
+        "recovery_account": "steempeak",
+        "last_account_recovery": "1970-01-01T00:00:00",
+        "reset_account": "null",
+        "comment_count": 0,
+        "lifetime_vote_count": 0,
+        "post_count": 31,
+        "can_vote": true,
+        "voting_manabar": {
+          "current_mana": "598442432741",
+          "last_update_time": 1591297380
+        },
+        "downvote_manabar": {
+          "current_mana": "149610608184",
+          "last_update_time": 1591297380
+        },
+        "voting_power": 0,
+        "balance": "11.682 HIVE",
+        "savings_balance": "0.000 HIVE",
+        "hbd_balance": "43.575 HBD",
+        "hbd_seconds": "0",
+        "hbd_seconds_last_update": "2020-10-21T02:45:12",
+        "hbd_last_interest_payment": "2020-10-21T02:45:12",
+        "savings_hbd_balance": "0.000 HBD",
+        "savings_hbd_seconds": "0",
+        "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+        "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
+        "savings_withdraw_requests": 0,
+        "reward_hbd_balance": "0.000 HBD",
+        "reward_hive_balance": "0.000 HIVE",
+        "reward_vesting_balance": "0.000000 VESTS",
+        "reward_vesting_hive": "0.000 HIVE",
+        "vesting_shares": "598442.432741 VESTS",
+        "delegated_vesting_shares": "0.000000 VESTS",
+        "received_vesting_shares": "0.000000 VESTS",
+        "vesting_withdraw_rate": "0.000000 VESTS",
+        "post_voting_power": "598442.432741 VESTS",
+        "next_vesting_withdrawal": "1969-12-31T23:59:59",
+        "withdrawn": 0,
+        "to_withdraw": 0,
+        "withdraw_routes": 0,
+        "pending_transfers": 0,
+        "curation_rewards": 0,
+        "posting_rewards": 604589,
+        "proxied_vsf_votes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "witnesses_voted_for": 0,
+        "last_post": "2021-03-23T18:05:48",
+        "last_root_post": "2021-03-23T18:05:48",
+        "last_vote_time": "1970-01-01T00:00:00",
+        "post_bandwidth": 0,
+        "pending_claimed_accounts": 0,
+        "delayed_votes": [
+          {"time": "2021-02-24T05:08:21", "val": "11550765516955"},
+          {"time": "2021-02-26T15:46:06", "val": "633465684569"},
+          {"time": "2021-03-07T17:54:39", "val": "1000000037683"},
+          {"time": "2021-03-16T05:54:33", "val": "999978763511"},
+          {"time": "2021-03-18T06:06:00", "val": "1000000171317"}
+        ],
+        "vesting_balance": "0.000 HIVE",
+        "reputation": "88826789432105",
+        "transfer_history": [],
+        "market_history": [],
+        "post_history": [],
+        "vote_history": [],
+        "other_history": [],
+        "witness_votes": [],
+        "tags_usage": [],
+        "guest_bloggers": []
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]],
       "id":1}'
@@ -2137,86 +2171,130 @@
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
     - - hiveio
-    expected_response_json:
-    - id: 28
-      name: hiveio
-      owner:
-        weight_threshold: 1
-        account_auths: []
-        key_auths:
-        - - STM5tfrdPG1Ycjwa9FuBUueDFFyygndBLXdVEEs2c9eRKScnFk6vM
-          - 1
-        - - STM71f6yWztimJuREVyyMXNqAVbx1FzPVW6LLXNoQ35dHwKuszmHX
-          - 1
-        - - STM7U3ymhUTuKME72dpdpQkdQvh722gTLjKBKtmKQPPWgtkr418Nf
-          - 1
-      active:
-        weight_threshold: 1
-        account_auths: []
-        key_auths:
-        - - STM5832HKCJzs6K3rRCsZ1PidTKgjF38ZJb718Y3pCW92HEMsCGPf
-          - 1
-        - - STM7Q2rLBqzPzFeteQZewv9Lu3NLE69fZoLeL6YK59t7UmssCBNTU
-          - 1
-      posting:
-        weight_threshold: 1
-        account_auths: []
-        key_auths:
-        - - STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
-          - 1
-        - - STM7xVFaqi8RxhWKZwuLA2bKrAiQmhnrbgvw4e2ChAsKYQbPjqUq2
-          - 1
-        - - STM83dmDkQcZU9X8MWcxsTztSyutE6udrb55PvYgu7RLzStaoAt67
-          - 1
-      memo_key: STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
-      json_metadata: ''
-      proxy: ''
-      last_owner_update: '2017-03-16T21:17:51'
-      last_account_update: '2017-03-16T23:10:36'
-      created: '2016-03-24T17:00:21'
-      mined: true
-      recovery_account: hiveio
-      last_account_recovery: '1970-01-01T00:00:00'
-      reset_account: 'null'
-      comment_count: 0
-      lifetime_vote_count: 0
-      post_count: 1
-      can_vote: true
-      voting_power: 9950
-      last_vote_time: '2016-12-04T23:10:57'
-      balance: 0.006 HIVE
-      savings_balance: 11006644.632 HIVE
-      hbd_balance: 8581.890 HBD
-      hbd_seconds: '18846158467785'
-      hbd_seconds_last_update: '2018-04-10T04:08:36'
-      hbd_last_interest_payment: '2018-03-15T17:58:24'
-      savings_hbd_balance: 0.000 HBD
-      savings_hbd_seconds: '0'
-      savings_hbd_seconds_last_update: '1970-01-01T00:00:00'
-      savings_hbd_last_interest_payment: '1970-01-01T00:00:00'
-      savings_withdraw_requests: 0
-      reward_hbd_balance: 0.000 HBD
-      reward_hive_balance: 0.000 HIVE
-      reward_vesting_balance: 0.000000 VESTS
-      reward_vesting_hive: 0.000 HIVE
-      vesting_shares: 90039851836.689703 VESTS
-      delegated_vesting_shares: 0.000000 VESTS
-      received_vesting_shares: 0.000000 VESTS
-      vesting_withdraw_rate: 0.000000 VESTS
-      next_vesting_withdrawal: '1969-12-31T23:59:59'
-      withdrawn: 0
-      to_withdraw: 0
-      withdraw_routes: 0
-      curation_rewards: 0
-      posting_rewards: 3548
-      proxied_vsf_votes:
-      - '28583799126'
-      - 0
-      - 0
-      - 0
-      witnesses_voted_for: 0
-      last_post: '2016-03-30T18:30:18'
-      last_root_post: '2016-03-30T18:30:18'
+    expected_response_json: |
+      {
+        "id": 1370484,
+        "name": "hiveio",
+        "owner": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM65PUAPA4yC4RgPtGgsPupxT6yJtMhmT5JHFdsT3uoCbR8WJ25s",
+              1
+            ]
+          ]
+        },
+        "active": {
+          "weight_threshold": 1,
+          "account_auths": [],
+          "key_auths": [
+            [
+              "STM69zfrFGnZtU3gWFWpQJ6GhND1nz7TJsKBTjcWfebS1JzBEweQy",
+              1
+            ]
+          ]
+        },
+        "posting": {
+          "weight_threshold": 1,
+          "account_auths": [
+            [
+              "threespeak",
+              1
+            ],
+            [
+              "vimm.app",
+              1
+            ]
+          ],
+          "key_auths": [
+            [
+              "STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9",
+              1
+            ]
+          ]
+        },
+        "memo_key": "STM7wrsg1BZogeK7X3eG4ivxmLaH69FomR8rLkBbepb3z3hm5SbXu",
+        "json_metadata": "",
+        "posting_json_metadata": "{\"profile\":{\"pinned\":\"none\",\"version\":2,\"website\":\"hive.io\",\"profile_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Jp2YHc6Q-hive-logo.png\",\"cover_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Xe1TcEBi-hive-banner.png\"}}",
+        "proxy": "",
+        "last_owner_update": "1970-01-01T00:00:00",
+        "last_account_update": "2020-11-12T01:20:48",
+        "created": "2020-03-06T12:22:48",
+        "mined": false,
+        "recovery_account": "steempeak",
+        "last_account_recovery": "1970-01-01T00:00:00",
+        "reset_account": "null",
+        "comment_count": 0,
+        "lifetime_vote_count": 0,
+        "post_count": 31,
+        "can_vote": true,
+        "voting_manabar": {
+          "current_mana": "598442432741",
+          "last_update_time": 1591297380
+        },
+        "downvote_manabar": {
+          "current_mana": "149610608184",
+          "last_update_time": 1591297380
+        },
+        "voting_power": 0,
+        "balance": "11.682 HIVE",
+        "savings_balance": "0.000 HIVE",
+        "hbd_balance": "43.575 HBD",
+        "hbd_seconds": "0",
+        "hbd_seconds_last_update": "2020-10-21T02:45:12",
+        "hbd_last_interest_payment": "2020-10-21T02:45:12",
+        "savings_hbd_balance": "0.000 HBD",
+        "savings_hbd_seconds": "0",
+        "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+        "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
+        "savings_withdraw_requests": 0,
+        "reward_hbd_balance": "0.000 HBD",
+        "reward_hive_balance": "0.000 HIVE",
+        "reward_vesting_balance": "0.000000 VESTS",
+        "reward_vesting_hive": "0.000 HIVE",
+        "vesting_shares": "598442.432741 VESTS",
+        "delegated_vesting_shares": "0.000000 VESTS",
+        "received_vesting_shares": "0.000000 VESTS",
+        "vesting_withdraw_rate": "0.000000 VESTS",
+        "post_voting_power": "598442.432741 VESTS",
+        "next_vesting_withdrawal": "1969-12-31T23:59:59",
+        "withdrawn": 0,
+        "to_withdraw": 0,
+        "withdraw_routes": 0,
+        "pending_transfers": 0,
+        "curation_rewards": 0,
+        "posting_rewards": 604589,
+        "proxied_vsf_votes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "witnesses_voted_for": 0,
+        "last_post": "2021-03-23T18:05:48",
+        "last_root_post": "2021-03-23T18:05:48",
+        "last_vote_time": "1970-01-01T00:00:00",
+        "post_bandwidth": 0,
+        "pending_claimed_accounts": 0,
+        "delayed_votes": [
+          {"time": "2021-02-24T05:08:21", "val": "11550765516955"},
+          {"time": "2021-02-26T15:46:06", "val": "633465684569"},
+          {"time": "2021-03-07T17:54:39", "val": "1000000037683"},
+          {"time": "2021-03-16T05:54:33", "val": "999978763511"},
+          {"time": "2021-03-18T06:06:00", "val": "1000000171317"}
+        ],
+        "vesting_balance": "0.000 HIVE",
+        "reputation": "88826789432105",
+        "transfer_history": [],
+        "market_history": [],
+        "post_history": [],
+        "vote_history": [],
+        "other_history": [],
+        "witness_votes": [],
+        "tags_usage": [],
+        "guest_bloggers": []
+      }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]],
       "id":1}'

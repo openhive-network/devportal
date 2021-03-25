@@ -109,87 +109,121 @@ In order to get the full compliment of account information for a specified accou
 
 ```json
 {
-  "active": {
-    "weight_threshold": 1,
-    "account_auths": [],
-    "key_auths": []
-  },
-  "average_bandwidth": 0,
-  "average_market_bandwidth": 0,
-  "balance": "0.000 HIVE",
-  "can_vote": true,
-  "comment_count": 0,
-  "created": "2016-03-26T08:26:21",
-  "curation_rewards": 396530808,
-  "delegated_vesting_shares": "505881.492379 VESTS",
-  "guest_bloggers": [],
-  "id": 340,
-  "json_metadata": {"profile":{"name":,"profile_image":}},
-  "last_account_recovery": "1970-01-01T00:00:00",
-  "last_account_update": "2018-08-30T01:48:15",
-  "last_bandwidth_update": "1970-01-01T00:00:00",
-  "last_market_bandwidth_update": "1970-01-01T00:00:00",
-  "last_owner_update": "2017-11-22T03:58:09",
-  "last_post": "2018-09-26T18:32:30",
-  "last_root_post": "2018-09-26T16:07:51",
-  "last_vote_time": "2018-09-26T16:23:09",
-  "lifetime_bandwidth": 0,
-  "lifetime_market_bandwidth": 0,
-  "lifetime_vote_count": 0,
-  "market_history": [],
-  "memo_key": "",
-  "mined": true,
-  "name": "",
-  "next_vesting_withdrawal": "1969-12-31T23:59:59",
-  "other_history": [],
+  "id": 1370484,
+  "name": "hiveio",
   "owner": {
     "weight_threshold": 1,
     "account_auths": [],
-    "key_auths": []
+    "key_auths": [
+      [
+        "STM65PUAPA4yC4RgPtGgsPupxT6yJtMhmT5JHFdsT3uoCbR8WJ25s",
+        1
+      ]
+    ]
   },
-  "pending_claimed_accounts": 0,
-  "post_bandwidth": 10000,
-  "post_count": 6289,
-  "post_history": [],
-  "posting": {
+  "active": {
     "weight_threshold": 1,
     "account_auths": [],
-    "key_auths": []
+    "key_auths": [
+      [
+        "STM69zfrFGnZtU3gWFWpQJ6GhND1nz7TJsKBTjcWfebS1JzBEweQy",
+        1
+      ]
+    ]
   },
-  "posting_rewards": 30925563,
-  "proxied_vsf_votes": ["1466563679903716", "754759334883", 0, 0],
+  "posting": {
+    "weight_threshold": 1,
+    "account_auths": [
+      [
+        "threespeak",
+        1
+      ],
+      [
+        "vimm.app",
+        1
+      ]
+    ],
+    "key_auths": [
+      [
+        "STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9",
+        1
+      ]
+    ]
+  },
+  "memo_key": "STM7wrsg1BZogeK7X3eG4ivxmLaH69FomR8rLkBbepb3z3hm5SbXu",
+  "json_metadata": "",
+  "posting_json_metadata": "{\"profile\":{\"pinned\":\"none\",\"version\":2,\"website\":\"hive.io\",\"profile_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Jp2YHc6Q-hive-logo.png\",\"cover_image\":\"https://files.peakd.com/file/peakd-hive/hiveio/Xe1TcEBi-hive-banner.png\"}}",
   "proxy": "",
-  "received_vesting_shares": "0.000000 VESTS",
-  "recovery_account": "peakd",
-  "reputation": "",
+  "last_owner_update": "1970-01-01T00:00:00",
+  "last_account_update": "2020-11-12T01:20:48",
+  "created": "2020-03-06T12:22:48",
+  "mined": false,
+  "recovery_account": "steempeak",
+  "last_account_recovery": "1970-01-01T00:00:00",
   "reset_account": "null",
-  "reward_hbd_balance": "0.000 HBD",
-  "reward_hive_balance": "0.000 HIVE",
-  "reward_vesting_balance": "967.889424 VESTS",
-  "reward_vesting_hive": "0.479 HIVE",
+  "comment_count": 0,
+  "lifetime_vote_count": 0,
+  "post_count": 31,
+  "can_vote": true,
+  "voting_manabar": {
+    "current_mana": "598442432741",
+    "last_update_time": 1591297380
+  },
+  "downvote_manabar": {
+    "current_mana": "149610608184",
+    "last_update_time": 1591297380
+  },
+  "voting_power": 0,
+  "balance": "11.682 HIVE",
   "savings_balance": "0.000 HIVE",
+  "hbd_balance": "43.575 HBD",
+  "hbd_seconds": "0",
+  "hbd_seconds_last_update": "2020-10-21T02:45:12",
+  "hbd_last_interest_payment": "2020-10-21T02:45:12",
   "savings_hbd_balance": "0.000 HBD",
-  "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
   "savings_hbd_seconds": "0",
   "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+  "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
   "savings_withdraw_requests": 0,
-  "hbd_balance": "0.000 HBD",
-  "hbd_last_interest_payment": "2018-09-08T13:46:15",
-  "hbd_seconds": "79984344",
-  "hbd_seconds_last_update": "2018-09-26T17:36:15",
-  "tags_usage": [],
-  "to_withdraw": 0,
-  "transfer_history": [],
-  "vesting_balance": "0.000 HIVE",
-  "vesting_shares": "26772189.757016 VESTS",
+  "reward_hbd_balance": "0.000 HBD",
+  "reward_hive_balance": "0.000 HIVE",
+  "reward_vesting_balance": "0.000000 VESTS",
+  "reward_vesting_hive": "0.000 HIVE",
+  "vesting_shares": "598442.432741 VESTS",
+  "delegated_vesting_shares": "0.000000 VESTS",
+  "received_vesting_shares": "0.000000 VESTS",
   "vesting_withdraw_rate": "0.000000 VESTS",
-  "vote_history": [],
-  "voting_manabar": {"current_mana": "5514091390534", "last_update_time": 1537978989},
-  "voting_power": 2099,
-  "withdraw_routes": 0,
+  "post_voting_power": "598442.432741 VESTS",
+  "next_vesting_withdrawal": "1969-12-31T23:59:59",
   "withdrawn": 0,
+  "to_withdraw": 0,
+  "withdraw_routes": 0,
+  "pending_transfers": 0,
+  "curation_rewards": 0,
+  "posting_rewards": 604589,
+  "proxied_vsf_votes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "witnesses_voted_for": 0,
+  "last_post": "2021-03-23T18:05:48",
+  "last_root_post": "2021-03-23T18:05:48",
+  "last_vote_time": "1970-01-01T00:00:00",
+  "post_bandwidth": 0,
+  "pending_claimed_accounts": 0,
+  "delayed_votes": [],
+  "vesting_balance": "0.000 HIVE",
+  "reputation": "88826789432105",
+  "transfer_history": [],
+  "market_history": [],
+  "post_history": [],
+  "vote_history": [],
+  "other_history": [],
   "witness_votes": [],
-  "witnesses_voted_for": 24
+  "tags_usage": [],
+  "guest_bloggers": []
 }
 ```
 
