@@ -156,7 +156,7 @@ Before running this tutorial, launch your local testnet, with port 8090 mapped l
 docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
+For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

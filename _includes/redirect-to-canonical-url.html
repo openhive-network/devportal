@@ -1,0 +1,5 @@
+<script>
+window.location = '{{ page.canonical_url | relative_url }}' + window.location.hash;
+</script>
+
+Redirecting to: <a href="{{ page.canonical_url | relative_url }}">{{ page.canonical_url }}</a>
