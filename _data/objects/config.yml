@@ -582,9 +582,9 @@
       links:
         - <a href="https://github.com/steemit/steem/issues/3084">#3084</a>
         - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_DB_FORMAT_VERSION' | relative_url }}"><code>HIVE_DB_FORMAT_VERSION</code></a>
-        - <a href="{{ '/tutorials-recipes/node-config.html#state-format' | relative_url }}">state-format</a>
-        - <a href="{{ '/tutorials-recipes/node-config.html#from-state' | relative_url }}">from-state</a>
-        - <a href="{{ '/tutorials-recipes/node-config.html#to-state' | relative_url }}">to-state</a>
+        - <a href="{{ '/nodeop/node-config.html#state-format' | relative_url }}">state-format</a>
+        - <a href="{{ '/nodeop/node-config.html#from-state' | relative_url }}">from-state</a>
+        - <a href="{{ '/nodeop/node-config.html#to-state' | relative_url }}">to-state</a>
     - name: HIVE_DB_FORMAT_VERSION
       since: Mysterious Future
       purpose: |
@@ -596,7 +596,7 @@
       links:
         - <a href="https://github.com/steemit/steem/issues/3084">#3084</a>
         - <a href="{{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_NETWORK_TYPE' | relative_url }}"><code>HIVE_NETWORK_TYPE</code></a>
-        - <a href="{{ '/tutorials-recipes/node-config.html#state-format' | relative_url }}">state-format</a>
-        - <a href="{{ '/tutorials-recipes/node-config.html#from-state' | relative_url }}">from-state</a>
-        - <a href="{{ '/tutorials-recipes/node-config.html#to-state' | relative_url }}">to-state</a>
+        - <a href="{{ '/nodeop/node-config.html#state-format' | relative_url }}">state-format</a>
+        - <a href="{{ '/nodeop/node-config.html#from-state' | relative_url }}">from-state</a>
+        - <a href="{{ '/nodeop/node-config.html#to-state' | relative_url }}">to-state</a>
     # - name: 

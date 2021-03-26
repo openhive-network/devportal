@@ -217,3 +217,15 @@ namespace :test do
     HTMLProofer.check_directory("./_site", options).run
   end
 end
+
+desc 'Sample a page.'
+task :sample do
+  sitemap = Nokogiri::XML(File.open('_site/sitemap.xml'))
+  
+  sitemap.root.children.to_a.sample(10).each do |e|
+    if !!e.children
+      puts e.children
+      exit
+    end
+  end
+end

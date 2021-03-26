@@ -138,4 +138,4 @@ echo    80 | sudo tee /proc/sys/vm/dirty_ratio
 echo 30000 | sudo tee /proc/sys/vm/dirty_writeback_centisecs
 ```
 
-Another settings that can be changed in `config.ini` is [`flush-state-interval`]({{ '/tutorials-recipes/node-config.html#flush-state-interval' | relative_url }}) - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.
+Another settings that can be changed in `config.ini` is [`flush-state-interval`]({{ '/nodeop/node-config.html#flush-state-interval' | relative_url }}) - it is to specify a target number of blocks to process before flushing the chain database to disk. This is needed on Linux machines and a value of 100000 is recommended. It is not needed on OS X, but can be used if desired.

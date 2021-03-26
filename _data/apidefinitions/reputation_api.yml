@@ -4,7 +4,7 @@
 - name: :reputation_api
   description: |
     Needed by `condenser_api` to optionally use `follow_api` or `reputation_api`
-    for account reputations (the latter if [`hivemind`]({{ '/tutorials-recipes/using-hivemind.html' | relative_url }}) is fronting `follow_api`)
+    for account reputations (the latter if [`hivemind`]({{ '/nodeop/using-hivemind.html' | relative_url }}) is fronting `follow_api`)
   methods:
   - api_method: reputation_api.get_account_reputations
     since: HF20
