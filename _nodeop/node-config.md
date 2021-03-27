@@ -93,6 +93,7 @@ Also refer to:
 * [`pm-account-range`](#pm-account-range)
 * [`chain-stats-bucket-size`](#chain-stats-bucket-size)
 * [`chain-stats-history-per-bucket`](#chain-stats-history-per-bucket)
+* [`snapshot-root-dir`](#snapshot-root-dir)
 
 ### `from-state`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -1136,4 +1137,17 @@ See: [#79](https://github.com/steemit/steem/issues/79)
 ```ini
 # default
 chain-stats-history-per-bucket = 100
+```
+
+### `snapshot-root-dir`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+
+The location (root-dir) of the snapshot storage, to save/read portable state dumps.  Will create this directory if it doesn't already exist.
+
+Used by plugin: `state_snapshot`
+
+See: [v1.24.2](https://gitlab.syncad.com/hive/hive/-/releases/v1.24.2)
+
+```ini
+# default
+snapshot-root-dir = directory_for_storing_snapshots
 ```

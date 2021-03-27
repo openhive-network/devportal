@@ -13,7 +13,13 @@ Command line options are typically expressed with double-dash (e.g., `--replay-b
 hived --data-dir=. --replay-blockchain
 ```
 
-Note that nearly all options available from `config.ini` can be set as command-line options.  See: [Node Config]({{ '/nodeop/node-config.html' | relative_url }})
+... or ...
+
+```bash
+hived --replay-blockchain --p2p-seed-node=hiveseed-se.privex.io:2001
+```
+
+Note, as the above example shows, options like `p2p-seed-node` are available as both a `config.ini` option as well a command-line options.  Nearly all options available as `config.ini` options are also available as command-line options.  See: [Node Config]({{ '/nodeop/node-config.html' | relative_url }})
 
 The following are *only* available as command-line options.
 
@@ -34,9 +40,16 @@ The following are *only* available as command-line options.
 * [`check-locks`](#check-locks)
 * [`validate-database-invariants`](#validate-database-invariants)
 * [`database-cfg`](#database-cfg)
-* [`memory-replay`](#memory-replay)
-* [`chain-id`](#chain-id)
 * [`account-history-rocksdb-immediate-import`](#account-history-rocksdb-immediate-import)
+* [`exit-after-replay`](#exit-after-replay)
+* [`force-replay`](#force-replay)
+* [`account-history-rocksdb-immediate-import`](#account-history-rocksdb-immediate-import)
+* [`account-history-rocksdb-stop-import-at-block`](#account-history-rocksdb-stop-import-at-block)
+* [`load-snapshot`](#load-snapshot)
+* [`dump-snapshot`](#dump-snapshot)
+
+* Testnet Only
+  * [`chain-id`](#chain-id)
 
 ### `disable-get-block`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -182,26 +195,6 @@ The database configuration file location  **MIRA only.**
 --database-cfg=database.cfg
 ```
 
-### `memory-replay`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Replay with state in memory instead of on disk.  **MIRA only.**
-
-See: [#3307](https://github.com/steemit/steem/issues/3307)
-
-```bash
---memory-replay
-```
-
-### `chain-id`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Chain ID to connect to.  **Testnet only.**
-
-See: [PR#1631](https://github.com/steemit/steem/pull/1631), [#2827](https://github.com/steemit/steem/issues/2827)
-
-```bash
---chain-id=d043ab83d223f25f37e1876fe48a240d49d8e4b1daa2342064990a8036a8bb5b
-```
-
 ### `account-history-rocksdb-immediate-import`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 Allows to force immediate data import at plugin startup.  By default storage is supplied during reindex process.
@@ -220,4 +213,50 @@ See: [#1987](https://github.com/steemit/steem/issues/1987)
 
 ```bash
 --account-history-rocksdb-stop-import-at-block=1234
+```
+
+### `exit-after-replay`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+
+Exit after reaching given block number
+
+```bash
+--exit-after-replay
+```
+
+### `force-replay`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+
+Before replaying clean all old files
+
+```bash
+--force-replay
+```
+
+### `load-snapshot`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+
+Allows to force immediate snapshot import at plugin startup.  All data in state storage are overwritten.
+
+```bash
+--load-snapshot=snapshot.json
+```
+
+See: [v1.24.2](https://gitlab.syncad.com/hive/hive/-/releases/v1.24.2)
+
+### `dump-snapshot`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+
+Allows to force immediate snapshot dump at plugin startup.  All data in the snaphsot storage are overwritten.
+
+```bash
+--dump-snapshot=snapshot.json
+```
+
+See: [v1.24.2](https://gitlab.syncad.com/hive/hive/-/releases/v1.24.2)
+
+### `chain-id`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+
+Chain ID to connect to.  **Testnet only.**
+
+See: [PR#1631](https://github.com/steemit/steem/pull/1631), [#2827](https://github.com/steemit/steem/issues/2827)
+
+```bash
+--chain-id=d043ab83d223f25f37e1876fe48a240d49d8e4b1daa2342064990a8036a8bb5b
 ```
