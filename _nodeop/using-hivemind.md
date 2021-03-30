@@ -65,6 +65,7 @@ There are two dependencies for setting up the dev environment on ubuntu for runn
 *   Python
 
 ```bash
+$ sudo apt-get update
 $ sudo apt-get install python3 python3-pip
 ```
 
@@ -79,14 +80,30 @@ More detailed documentation on the setup of Hivemind can be found at the [Hivemi
 Once the dependencies have been installed the database can be created and the environment variables set.
 
 ```bash
-$ createdb hive
-$ export DATABASE_URL=postgresql://user:pass@localhost:5432/hive
+$ sudo service postgresql start
+$ su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD 'postgres';\""
+$ su - postgres -c "createdb hive"
+$ su - postgres -c "psql -d hive -c \"CREATE EXTENSION intarray;\""
+$ export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/hive
+$ export PG_PASSWORD=postgres
+$ sudo service postgresql restart
+```
+
+##### Installation
+
+```bash
+$ git clone https://gitlab.syncad.com/hive/hivemind.git
+$ cd hivemind
+$ git submodule update --init --recursive
+$ python3 setup.py build
+$ sudo python3 setup.py install
 ```
 
 By default Hivemind will connect to the mainnet [https://api.hive.blog](https://api.hive.blog) but if required you can change this to connect to a testnet. To do this set the environment variable as described below.
 
 ```bash
-$ export HIVED_URL=http://127.0.0.1:8091
+# Note as of 2021-03-30, hivemind still internally uses the environment variable called STEEMD_URL for this.
+$ export STEEMD_URL='{"default":"http://127.0.0.1:8091"}'
 ```
 
 Now that the basic setup is done you are able to sync the database.
