@@ -120,7 +120,7 @@
         In addition we require the following:
 
         - All letters are lowercase
-        - Length is between (inclusive) [HIVE_MIN_ACCOUNT_NAME_LENGTH](#HIVE_MIN_ACCOUNT_NAME_LENGTH) (3 characters) and HIVE_MAX_ACCOUNT_NAME_LENGTH (16 characters)
+        - Length is between (inclusive) [HIVE_MIN_ACCOUNT_NAME_LENGTH]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MIN_ACCOUNT_NAME_LENGTH' | relative_url }}) (3 characters) and HIVE_MAX_ACCOUNT_NAME_LENGTH (16 characters)
       links:
         - <a href="{{ '/apidefinitions/#broadcast_ops_account_create' | relative_url }}">`account_create`</a>
         - <del><a href="{{ '/apidefinitions/#broadcast_ops_account_create_with_delegation' | relative_url }}">`account_create_with_delegation`</a></del>
@@ -325,6 +325,22 @@
     - name: HIVE_MAX_WITHDRAW_ROUTES
     - name: HIVE_MIN_ACCOUNT_CREATION_FEE
     - name: HIVE_MIN_ACCOUNT_NAME_LENGTH
+      purpose: |
+        Names must comply with the following grammar ([RFC 1035](https://tools.ietf.org/html/rfc1035#section-2.3.1)), i.e.: a valid name consists of a dot-separated sequence of one or more labels consisting of the following rules:
+
+        - Each label is three characters or more
+        - Each label begins with a letter
+        - Each label ends with a letter or digit
+        - Each label contains only letters, digits or hyphens
+
+        In addition we require the following:
+
+        - All letters are lowercase
+        - Length is between (inclusive) HIVE_MIN_ACCOUNT_NAME_LENGTH (3 characters) and [HIVE_MAX_ACCOUNT_NAME_LENGTH]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MAX_ACCOUNT_NAME_LENGTH' | relative_url }}) (16 characters)
+      links:
+        - <a href="{{ '/apidefinitions/#broadcast_ops_account_create' | relative_url }}">`account_create`</a>
+        - <del><a href="{{ '/apidefinitions/#broadcast_ops_account_create_with_delegation' | relative_url }}">`account_create_with_delegation`</a></del>
+        - <a href="{{ '/apidefinitions/#broadcast_ops_create_claimed_account' | relative_url }}">`create_claimed_account`</a>
     - name: HIVE_MIN_BLOCK_SIZE_LIMIT
     - name: HIVE_MIN_BLOCK_SIZE
     - name: HIVE_MIN_CONTENT_REWARD
