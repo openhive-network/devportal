@@ -72,7 +72,7 @@ nano config.ini
 Then make the following changes to the generated `config.ini`:
 
 * Enable plugins: `p2p webserver account_history block_api condenser_api database_api account_history_api`
-* Blacklist all virtual operations from account history.
+* Blacklist [all virtual operations](https://gitlab.syncad.com/hive/hive/-/blob/master/libraries/protocol/include/hive/protocol/operations.hpp#L87) from account history.
 * Pick a port for p2p to `2000`.
 * Edit `shared-file-size` to `54G`.
 * Pick a port for `webserver-http-endpoint` and set `webserver-ws-endpoint` to the next-highest port.
@@ -81,7 +81,7 @@ To summarize, the *changed* values are:
 
 ```ini
 plugin = p2p webserver account_history block_api condenser_api database_api account_history_api
-account-history-blacklist-ops = fill_convert_request_operation author_reward_operation curation_reward_operation comment_reward_operation liquidity_reward_operation interest_operation fill_vesting_withdraw_operation fill_order_operation shutdown_witness_operation fill_transfer_from_savings_operation hardfork_operation comment_payout_update_operation return_vesting_delegation_operation comment_benefactor_reward_operation producer_reward_operation clear_null_account_balance_operation proposal_pay_operation sps_fund_operation
+account-history-blacklist-ops = fill_convert_request_operation author_reward_operation curation_reward_operation comment_reward_operation liquidity_reward_operation interest_operation fill_vesting_withdraw_operation fill_order_operation shutdown_witness_operation fill_transfer_from_savings_operation hardfork_operation comment_payout_update_operation return_vesting_delegation_operation comment_benefactor_reward_operation producer_reward_operation clear_null_account_balance_operation proposal_pay_operation sps_fund_operation hardfork_hive_operation hardfork_hive_restore_operation delayed_voting_operation consolidate_treasury_balance_operation effective_comment_vote_operation ineffective_delete_comment_operation sps_convert_operation
 shared-file-size = 54G
 p2p-endpoint = 0.0.0.0:2000
 webserver-http-endpoint = 0.0.0.0:8751
