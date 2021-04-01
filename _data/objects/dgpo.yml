@@ -141,7 +141,8 @@
         - "`264241152000000000000`"
     - name: init_hbd_supply
       since: HF19
-      # purpose: Originally called `virtual_hbd_supply`, ... TODO
+      purpose: |
+        Initial amount of HBD issued, originally called `virtual_hbd_supply`.
       examples:
         - "`0.000 HBD`"
     - name: required_actions_partition_percent
@@ -236,6 +237,8 @@
         - <a href="https://github.com/steemit/steem/issues/3344">#3344</a>
     - name: pending_rewarded_vesting_shares
       since: HF17
+      purpose: |
+        Amount of VESTS produced from HIVE held in pending reward vested fund.
       examples:
         - "`379159224.860656 VESTS`"
       links:
@@ -243,6 +246,8 @@
         - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
     - name: pending_rewarded_vesting_hive
       since: HF17
+      purpose: |
+        Pool of HIVE tokens for pending (vested) rewards.
       examples:
         - "`185294.019 HIVE`"
       links:
@@ -269,3 +274,14 @@
       links:
         - <a href="https://github.com/steemit/steem/issues/1252">#1252</a>
         - <a href="https://github.com/steemit/steem/issues/1411">#1411</a>
+    - name: next_daily_maintenance_time
+      since: HF24
+      purpose: |
+        Schedule to convert HIVE to HBD in the treasury account.
+      examples:
+        - "`2018-07-14T01:19:51`"
+      links:
+        - <a href="https://gitlab.syncad.com/hive/hive/-/releases/v1.24.2">v1.24.2</a>
+        - <a href="https://gitlab.syncad.com/hive/hive/-/commit/96254ae57c9e92cdf066e4ccd5deeed4ec9d964f">96254ae</a>
+        - <a href="{{ '/apidefinitions/#broadcast_ops_sps_fund' | relative_url }}"><code>sps_fund</code></a>
+        - <a href="{{ '/apidefinitions/#broadcast_ops_sps_convert' | relative_url }}"><code>sps_convert</code></a>
