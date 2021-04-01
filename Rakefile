@@ -90,6 +90,37 @@ task :ops_dump, [:vops, :appbase] do |t, args|
   puts op_names.compact.sort
 end
 
+desc 'Dump all dgpo keys.'
+task :dgpo_dump do
+  file_name = '_data/objects/dgpo.yml'
+  yaml = YAML.load_file(file_name)
+  api = Hive::DatabaseApi.new
+  all_keys = api.get_dynamic_global_properties.result.keys - ['id']
+  known_keys = []
+  removed_keys = []
+  unknown_keys = []
+  known_undocumented_keys = []
+  
+  yaml[0]['fields'].map do |field|
+    field_name = field['name']
+    
+    known_keys << field_name if all_keys.include? field_name
+    removed_keys << field_name if !!field['removed']
+    known_undocumented_keys << field_name if all_keys.include?(field_name) && field['purpose'].nil?
+  end
+  
+  unknown_keys = all_keys - known_keys
+  
+  puts "Known keys:"
+  puts known_keys.map{|k| "\t#{k}"}
+  puts "Removed keys:"
+  puts removed_keys.map{|k| "\t#{k}"}
+  puts "Unknown keys:"
+  puts unknown_keys.map{|k| "\t#{k}"}
+  puts "Known, undocumented keys:"
+  puts known_undocumented_keys.map{|k| "\t#{k}"}
+end
+
 namespace :test do
   KNOWN_APIS = %i(
     account_by_key_api account_history_api block_api condenser_api 
