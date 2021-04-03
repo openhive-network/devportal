@@ -12,4 +12,4 @@ Hive blockchain software is written in C++ and in order to modify the source cod
 docker run -d -p 8090:8090 inertia/tintoy:latest
 ```
 
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/tutorials-recipes/setting-up-a-testnet.html' | relative_url }})
+For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})

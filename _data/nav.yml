@@ -8,6 +8,12 @@ toc:
     url: "/quickstart/"
     position: 2
     exclude: true
+  - title: "Node Operation"
+    collection: "nodeop"
+    url: "/nodeop/"
+    position: 3
+    exclude: true
+    top_level_section: true
   - title: "Tutorials"
     collection: "tutorials"
     url: "/tutorials/"
