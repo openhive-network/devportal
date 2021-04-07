@@ -98,9 +98,9 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/TransactionBuilder)'
   - api_method: condenser_api.get_account_bandwidth
-    disabled: true
+    removed: true
     purpose: |
-      **Disabled since 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844)**
+      **Disabled since 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844); Removed: HF24**
 
       Returns the available bandwidth of an account.  Parameters: `account:string`; `type:string`, e.g.: `forum` or `market`
 

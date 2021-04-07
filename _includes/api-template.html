@@ -21,6 +21,9 @@ Methods:
 {% if method.disabled %}
 <li class="warning"><strong><small>Disabled</small></strong></li>
 {% endif %}
+{% if method.removed %}
+<li class="error"><strong><small>Removed</small></strong></li>
+{% endif %}
 {% if method.client_docs %}
 <li class="info"><strong><small>SDK Reference</small></strong>{% for client_doc in method.client_docs %}<small>{{ client_doc | markdownify }}</small>{% endfor %}</li>
 {% endif %}
