@@ -48,12 +48,19 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
   - api_method: block_api.get_block_header
-    purpose: "Retrieve a block header of the referenced block, or null if no matching
-      block was found.\n\n**Parameters:**\n  \n  * `block_num:int` - Height of the
-      block whose header should be returned\n\n| `block_num` (int) | |\n|-------------------|-|\n|
-      `1` | Queries the block headers for the very first block. |\n| `8675309` | Queries
-      block headers for block number 8,675,309. |\n| `62396745` | Queries block headers
-      for block number 62,396,745. |\n"
+    purpose: |
+      Retrieve a block header of the referenced block, or null if no matching
+      block was found.
+      
+      **Parameters:**
+        
+      * `block_num:int` - Height of the block whose header should be returned
+      
+      | `block_num` (int) | |
+      |-------------------|-|
+      | `1` | Queries the block headers for the very first block. |
+      | `8675309` | Queries block headers for block number 8,675,309. |
+      | `62396745` | Queries block headers for block number 62,396,745. |
     parameter_json: '{"block_num":0}'
     expected_response_json: |
       {
@@ -76,3 +83,25 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
+  - api_method: block_api.get_block_range
+    purpose: |
+      Retrieve a range of full, signed blocks.  The list may be shorter than requested if `count` blocks would take you past the current head block.
+      
+      **Parameters:**
+        
+      * `starting_block_num` - Height of the first block to be returned
+      * `count` - the maximum number of blocks to return
+      
+      | `starting_block_num` (int) | `count` (int) | |
+      |----------------------------|---------------|-|
+      | `1` | `10` | Queries the block headers for the very first block through the tenth block. |
+      | `8675309` | `50`| Queries block headers for block numbers 8,675,309 through 8,675,359. |
+      | `62396745` | `1000` | Queries block headers for block numbers 62,396,745 through 62,397,745. |
+      
+      See: [!149](https://gitlab.syncad.com/hive/hive/-/merge_requests/149), [702ea4a](https://gitlab.syncad.com/hive/hive/-/commit/702ea4a758a98b4d164a616dadb34683d40e7af4)
+    parameter_json: '{"starting_block_num":0,"count":0}'
+    expected_response_json: '{"blocks":[]}'
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"block_api.get_block_range", "params":{"starting_block_num": 1, "count": 10}, "id":1}'
+      - '{"jsonrpc":"2.0", "method":"block_api.get_block_range", "params":{"starting_block_num": 8675309, "count": 50}, "id":1}'
+      - '{"jsonrpc":"2.0", "method":"block_api.get_block_range", "params":{"starting_block_num": 62396745, "count": 1000}, "id":1}'

@@ -2615,3 +2615,61 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_smt_tokens", "params":{"start":["", {"nai": "@@422838704", "precision": 0}],"limit":10,"order":"by_control_account"}, "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+  - api_method: database_api.get_comment_pending_payouts
+    purpose: |
+      Get comment pending payout data.
+      
+      **Parameters:**
+      
+      * `comments` - author/permlink
+      
+      | `comments` (array:string) | |
+      |---------------------------|-|
+      | `[["hbd.funder", "upvote-this-post-to-fund-hbdstabilizer-qr2j7n"]]` | Returns comment info for a single post. |
+      | `[["hbd.funder", "upvote-this-post-to-fund-hbdstabilizer-qr2j7n"], ["arcange", "hivesql-proposal-unfunded-information-and-reaction"]]` | Returns comment info for multiple posts. |
+    parameter_json: '{"comments":[["hbd.funder", "upvote-this-post-to-fund-hbdstabilizer-qr2j7n"]]}'
+    expected_response_json: |
+      {
+        "cashout_infos": [
+          {
+            "author": "hbd.funder",
+            "permlink": "upvote-this-post-to-fund-hbdstabilizer-qr2j7n",
+            "cashout_info": {
+              "total_vote_weight": 22841196,
+              "total_payout_value": {
+                "amount": "0",
+                "precision": 3,
+                "nai": "@@000000013"
+              },
+              "curator_payout_value": {
+                "amount": "0",
+                "precision": 3,
+                "nai": "@@000000013"
+              },
+              "max_accepted_payout": {
+                "amount": "1000000000",
+                "precision": 3,
+                "nai": "@@000000013"
+              },
+              "author_rewards": 0,
+              "children_abs_rshares": "606511906476641",
+              "net_rshares": "571577939879762",
+              "abs_rshares": "594467432989642",
+              "vote_rshares": "583007369825359",
+              "net_votes": 378,
+              "active": "2021-04-06T15:29:03",
+              "last_payout": "1970-01-01T00:00:00",
+              "cashout_time": "2021-04-12T02:07:00",
+              "max_cashout_time": "1969-12-31T23:59:59",
+              "percent_hbd": 10000,
+              "reward_weight": 10000,
+              "allow_replies": false,
+              "allow_votes": true,
+              "allow_curation_rewards": true
+            }
+          }
+        ]
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"database_api.get_comment_pending_payouts", "params":{"comments":[["hbd.funder", "upvote-this-post-to-fund-hbdstabilizer-qr2j7n"]]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.get_comment_pending_payouts", "params":{"comments":[["hbd.funder", "upvote-this-post-to-fund-hbdstabilizer-qr2j7n"], ["arcange", "hivesql-proposal-unfunded-information-and-reaction"]]}, "id":1}'
