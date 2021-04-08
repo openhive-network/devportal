@@ -7,7 +7,7 @@ layout: full
 canonical_url: calculate_rc_recipe.html
 ---
 
-Since HF20 a Resource Credit (RC) system has been implemented to manage the number of transactions (comments, votes, transfers, etc) you can execute on the blockchain at any given time. This recipe will look at how to calculate your current RC and also what the current RC cost is for a given transaction. This recipe is far more 'basics oriented' than most. For a more in-depth description of how RC's work consume [this excellent RC demo](https://github.com/steemit/rcdemo) created by Hive's Blockchain Team.
+Since HF20 a Resource Credit (RC) system has been implemented to manage the number of transactions (comments, votes, transfers, etc) you can execute on the blockchain at any given time. This recipe will look at how to calculate your current RC and also what the current RC cost is for a given transaction. This recipe is far more 'basics oriented' than most. For a more in-depth description of how RC's work consume [this excellent RC demo]({{ '/tutorials-python/rcdemo.html' | relative_url }}) created by Hive's Blockchain Team.
 
 ## Intro
 
