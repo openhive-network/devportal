@@ -32,7 +32,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-reputations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog
+    removed: true
     purpose: |
+      **Removed since HF24**
+      
       Returns the list of blog entries for an account.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_blog' | relative_url }})
@@ -106,7 +109,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog_authors
+    removed: true
     purpose: |
+      **Removed since HF24**
+      
       Returns a list of authors that have had their content reblogged on a given blog account.
     parameter_json: '{"blog_account":""}'
     expected_response_json: |
@@ -128,7 +134,10 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-authors)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog_entries
+    removed: true
     purpose: |
+      **Removed since HF24**
+      
       Returns a list of blog entries for an account.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_blog_entries' | relative_url }})
@@ -155,8 +164,11 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-entries)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_feed
+    removed: true
     since: HF14
     purpose: |
+      **Removed since HF24**
+      
       Returns a list of items in an account's feed.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_feed' | relative_url }})
@@ -172,8 +184,11 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_feed_entries
+    removed: true
     since: HF14
     purpose: |
+      **Removed since HF24**
+      
       Returns a list of entries in an account's feed.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_feed_entries' | relative_url }})
@@ -189,8 +204,12 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed-entries)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_follow_count
+    removed: true
     since: HF9
-    purpose: Returns the count of followers for an account.
+    purpose: |
+      **Removed since HF24**
+      
+      Returns the count of followers for an account.
     parameter_json: '{"account":""}'
     expected_response_json: |
       {
@@ -208,8 +227,11 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-follow-count)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_followers
+    removed: true
     since: HF9
     purpose: |
+      **Removed since HF24**
+      
       Returns the list of followers for an account.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_followers' | relative_url }})
@@ -236,8 +258,11 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-followers)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_following
+    removed: true
     since: HF9
     purpose: |
+      **Removed since HF24**
+      
       Returns the list of accounts that are following an account.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_following' | relative_url }})
@@ -264,8 +289,12 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-following)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_reblogged_by
+    removed: true
     since: HF14
-    purpose: Returns a list of authors that have reblogged a post.
+    purpose: |
+      **Removed since HF24**
+      
+      Returns a list of authors that have reblogged a post.
     parameter_json: '{"author":"","permlink":""}'
     expected_response_json: '{"accounts":[]}' # TODO - recheck in HF23
     curl_examples:

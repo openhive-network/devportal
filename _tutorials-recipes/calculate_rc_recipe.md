@@ -7,7 +7,7 @@ layout: full
 canonical_url: calculate_rc_recipe.html
 ---
 
-Since HF20 a Resource Credit (RC) system has been implemented to manage the number of transactions (comments, votes, transfers, etc) you can execute on the blockchain at any given time. This recipe will look at how to calculate your current RC and also what the current RC cost is for a given transaction. This recipe is far more 'basics oriented' than most. For a more in-depth description of how RC's work consume [this excellent RC demo](https://github.com/steemit/rcdemo) created by Hive's Blockchain Team.
+Since HF20 a Resource Credit (RC) system has been implemented to manage the number of transactions (comments, votes, transfers, etc) you can execute on the blockchain at any given time. This recipe will look at how to calculate your current RC and also what the current RC cost is for a given transaction. This recipe is far more 'basics oriented' than most. For a more in-depth description of how RC's work consume [this excellent RC demo]({{ '/tutorials-python/rcdemo.html' | relative_url }}) created by Hive's Blockchain Team.
 
 ## Intro
 
@@ -86,4 +86,4 @@ Additional info can also be found in [this article by hive user @holger80](https
 
 ## Allocation of RC to blockchain resources
 
-An in depth look at how RC's are assigned to each of the three resources (CPU megacycles/state memory/history size) can be found in Hive's wiki articles for [RC Bandwidth System](https://github.com/steemit/steem/wiki/RC-Bandwidth-System) and [Parameters](https://github.com/steemit/steem/wiki/RC-Bandwidth-Parameters)
+An in depth look at how RC's are assigned to each of the three resources (CPU megacycles/state memory/history size) can be found in Hive's wiki articles for [RC Bandwidth System]({{ '/tutorials-recipes/rc-bandwidth-system' | relative_url }}) and [Parameters]({{ '/tutorials-recipes/rc-bandwidth-parameters' | relative_url }}).

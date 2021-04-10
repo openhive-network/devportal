@@ -118,12 +118,6 @@ The following methods have various forms of pagination:
   * [`list_smt_tokens`](#database_apilist_smt_tokens)
 * `follow_api`
   * [`get_account_reputations`](#follow_apiget_account_reputations)
-  * [`get_blog`](#follow_apiget_blog)
-  * [`get_blog_entries`](#follow_apiget_blog_entries)
-  * [`get_feed`](#follow_apiget_feed)
-  * [`get_feed_entries`](#follow_apiget_feed_entries)
-  * [`get_followers`](#follow_apiget_followers)
-  * [`get_following`](#follow_apiget_following)
 * `reputation_api`
   * [`get_account_reputations`](#reputation_apiget_account_reputations)
 * `tags_api`
@@ -1862,214 +1856,6 @@ curl -s --data '{
 
 Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_account_reputations' | relative_url }})
 
-### `follow_api.get_blog`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `account`, ordered by `entry_id`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_blog",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 0,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `alice`, `99` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_blog",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 99,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_blog' | relative_url }})
-
-### `follow_api.get_blog_entries`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `account`, ordered by `entry_id`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_blog_entries",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 0,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `alice`, `99` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_blog_entries",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 99,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_blog_entries' | relative_url }})
-
-### `follow_api.get_feed`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `account`, ordered by `entry_id`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_feed",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 0,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `alice`, `99` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_feed",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 99,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_feed' | relative_url }})
-
-### `follow_api.get_feed_entries`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `account`, ordered by `entry_id`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_feed_entries",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 0,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `alice`, `99` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_feed_entries",
-  "params": {
-    "account": "alice",
-    "start_entry_id": 99,
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_feed_entries' | relative_url }})
-
-### `follow_api.get_followers`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `account`, ordered by `follower`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_followers",
-  "params": {
-    "account": "alice",
-    "start": "",
-    "type": "blog",
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `alice`, `bob` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_followers",
-  "params": {
-    "account": "alice",
-    "start": "bob",
-    "type": "blog",
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_followers' | relative_url }})
-
-### `follow_api.get_following`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-To list the first 10 objects for `account`, ordered by `followed`:
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_following",
-  "params": {
-    "account": "alice",
-    "start": "",
-    "type": "blog",
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-To list the next page (assuming `alice`, `bob` is the last entry in the previous page):
-
-```bash
-curl -s --data '{
-  "jsonrpc": "2.0",
-  "method": "follow_api.get_following",
-  "params": {
-    "account": "alice",
-    "start": "bob",
-    "type": "blog",
-    "limit": 10
-  },
-  "id": 1
-}' https://api.hive.blog | jq
-```
-
-Also see: [API Definition]({{ '/apidefinitions/#follow_api.get_following' | relative_url }})
-
 ### `reputation_api.get_account_reputations`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 To list the first 10 objects ordered by `account`:
@@ -2149,13 +1935,69 @@ Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_account_histor
 
 ### `condenser_api.get_blog`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`follow_api.get_blog`](#follow_apiget_blog)
+To list the first 10 objects for `account`, ordered by `entry_id`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_blog",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 0,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `alice`, `99` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_blog",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 99,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_blog' | relative_url }})
 
 ### `condenser_api.get_blog_entries`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`follow_api.get_blog_entries`](#follow_apiget_blog_entries)
+To list the first 10 objects for `account`, ordered by `entry_id`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_blog_entries",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 0,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `alice`, `99` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_blog_entries",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 99,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_blog_entries' | relative_url }})
 
@@ -2167,25 +2009,141 @@ Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_discussions_by
 
 ### `condenser_api.get_feed`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`follow_api.get_feed`](#follow_apiget_feed)
+To list the first 10 objects for `account`, ordered by `entry_id`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenseer_api.get_feed",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 0,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `alice`, `99` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenseer_api.get_feed",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 99,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_feed' | relative_url }})
 
 ### `condenser_api.get_feed_entries`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`follow_api.get_feed_entries`](#follow_apiget_feed_entries)
+To list the first 10 objects for `account`, ordered by `entry_id`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_feed_entries",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 0,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `alice`, `99` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_feed_entries",
+  "params": {
+    "account": "alice",
+    "start_entry_id": 99,
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_feed_entries' | relative_url }})
 
 ### `condenser_api.get_followers`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`follow_api.get_followers`](#follow_apiget_followers)
+To list the first 10 objects for `account`, ordered by `follower`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_followers",
+  "params": {
+    "account": "alice",
+    "start": "",
+    "type": "blog",
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `alice`, `bob` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_followers",
+  "params": {
+    "account": "alice",
+    "start": "bob",
+    "type": "blog",
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_followers' | relative_url }})
 
 ### `condenser_api.get_following`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-See: [`follow_api.get_following`](#follow_apiget_following)
+To list the first 10 objects for `account`, ordered by `followed`:
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_following",
+  "params": {
+    "account": "alice",
+    "start": "",
+    "type": "blog",
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
+
+To list the next page (assuming `alice`, `bob` is the last entry in the previous page):
+
+```bash
+curl -s --data '{
+  "jsonrpc": "2.0",
+  "method": "condenser_api.get_following",
+  "params": {
+    "account": "alice",
+    "start": "bob",
+    "type": "blog",
+    "limit": 10
+  },
+  "id": 1
+}' https://api.hive.blog | jq
+```
 
 Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_following' | relative_url }})
 

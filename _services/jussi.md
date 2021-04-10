@@ -379,6 +379,8 @@ curl -s --data '[{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":
 ]
 ```
 
+Also see: [`block_api.get_block_range`]({{ '/apidefinitions/#block_api.get_block_range' | request_url }})
+
 ### Footnotes<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 * Batch requests are limited to a maximum of 50 request elements.

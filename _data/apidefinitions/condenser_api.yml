@@ -98,9 +98,9 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/TransactionBuilder)'
   - api_method: condenser_api.get_account_bandwidth
-    disabled: true
+    removed: true
     purpose: |
-      **Disabled since 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844)**
+      **Disabled since 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844); Removed: HF24**
 
       Returns the available bandwidth of an account.  Parameters: `account:string`; `type:string`, e.g.: `forum` or `market`
 
@@ -492,7 +492,7 @@
       | "hiveio" | `0` | `1` | Queries the blog for the account named "hiveio", up to one result. |
       | "alice" | `0` | `50` | Queries the blog for the account named "alice", up to 50 results. |
       
-      Also see: [follow_api.get_blog]({{ '/apidefinitions/#follow_api.get_blog' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog' | relative_url }})
     parameter_json:
     - hiveio
     - 0
@@ -565,8 +565,6 @@
       |-------------------|-|
       | `"hiveio"` | Queries for account named "hiveio". |
       | `"alice"` | Queries for accounts named alice". |
-      
-      Also see: [follow_api.get_blog_authors]({{ '/apidefinitions/#follow_api.get_blog_authors' | relative_url }})
     parameter_json:
     - ''
     expected_response_json:
@@ -590,7 +588,7 @@
       | "hiveio" | `0` | `1` | Queries the blog entries for the account named "hiveio", up to one result. |
       | "alice" | `0` | `50` | Queries the blog entries for the account named "alice", up to 50 results. |
       
-      Also see: [follow_api.get_blog_entries]({{ '/apidefinitions/#follow_api.get_blog_entries' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog_entries' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog_entries' | relative_url }})
     parameter_json:
     - hiveio
     - 0
@@ -1167,7 +1165,7 @@
       | `"hiveio"` | `0` | `1` | Queries the account named `hiveio` starting on the first item, up to 1 result. |
       | `"alice"` | `1` | `10` | Queries the account named `alice` starting on the second item, up to 10 results. |
       
-      Also see: [follow_api.get_feed]({{ '/apidefinitions/#follow_api.get_feed' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed' | relative_url }})
     parameter_json:
     - ''
     - 0
@@ -1192,7 +1190,7 @@
       | `"hiveio"` | `0` | `1` | Queries the account named `hiveio` starting on the first item, up to 1 result. |
       | `"alice"` | `1` | `10` | Queries the account named `alice` starting on the second item, up to 10 results. |
       
-      Also see: [follow_api.get_feed_entries]({{ '/apidefinitions/#follow_api.get_feed_entries' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed_entries' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed_entries' | relative_url }})
     parameter_json:
     - ''
     - 0
@@ -1234,8 +1232,6 @@
       |-------------------|-|
       | `"hiveio"` | Queries the account named `hiveio`. |
       | `"alice"` | Queries the account named `alice`. |
-      
-      Also see: [follow_api.get_follow_count]({{ '/apidefinitions/#follow_api.get_follow_count' | relative_url }})
     parameter_json:
     - ''
     expected_response_json:
@@ -1261,7 +1257,7 @@
       | `"hiveio"` | `null` | `"blog"` | `10` | Queries for follows of the account named `hiveio`, up to 10 results. |
       | `"alice"` | `null` | `"ignore"` | `100` | Queries for mutes of the account named `alice`, up to 100 results. |
       
-      Also see: [follow_api.get_followers]({{ '/apidefinitions/#follow_api.get_followers' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_followers' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_followers' | relative_url }})
     parameter_json:
     - ''
     - ''
@@ -1293,7 +1289,7 @@
       | `"hiveio"` | `null` | `"blog"` | `10` | Queries for follows of the account named `hiveio`, up to 10 results. |
       | `"alice"` | `null` | `"ignore"` | `100` | Queries for mutes of the account named `alice`, up to 100 results. |
       
-      Also see: [follow_api.get_following]({{ '/apidefinitions/#follow_api.get_following' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_following' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_following' | relative_url }})
     parameter_json:
     - ''
     - ''
@@ -1566,8 +1562,6 @@
       |----------------------------|---------------|-|
       | `"hiveio"` | `"firstpost"` | Queries reblogs for content with a slug `@hiveio/firstpost` |
       | `"alice"` | `"a-post-by-alice"` | Queries reblogs for content with a slug `@alice/a-post-by-alice` |
-      
-      Also see: [follow_api.get_reblogged_by]({{ '/apidefinitions/#follow_api.get_reblogged_by' | relative_url }})
     parameter_json:
     - ''
     - ''
