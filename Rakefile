@@ -121,6 +121,37 @@ task :dgpo_dump do
   puts known_undocumented_keys.map{|k| "\t#{k}"}
 end
 
+desc 'Dump all config keys.'
+task :config_dump do
+  file_name = '_data/objects/config.yml'
+  yaml = YAML.load_file(file_name)
+  api = Hive::DatabaseApi.new
+  all_keys = api.get_config.result.keys
+  known_keys = []
+  removed_keys = []
+  unknown_keys = []
+  known_undocumented_keys = []
+  
+  yaml[0]['fields'].map do |field|
+    field_name = field['name']
+    
+    known_keys << field_name if all_keys.include? field_name
+    removed_keys << field_name if !!field['removed']
+    known_undocumented_keys << field_name if all_keys.include?(field_name) && field['purpose'].nil?
+  end
+  
+  unknown_keys = all_keys - known_keys
+  
+  puts "Known keys:"
+  puts known_keys.map{|k| "\t#{k}"}
+  puts "Removed keys:"
+  puts removed_keys.map{|k| "\t#{k}"}
+  puts "Unknown keys:"
+  puts unknown_keys.map{|k| "\t#{k}"}
+  puts "Known, undocumented keys:"
+  puts known_undocumented_keys.map{|k| "\t#{k}"}
+end
+
 namespace :test do
   KNOWN_APIS = %i(
     account_by_key_api account_history_api block_api condenser_api 
@@ -252,11 +283,27 @@ end
 desc 'Sample a page.'
 task :sample do
   sitemap = Nokogiri::XML(File.open('_site/sitemap.xml'))
+  links = []
   
-  sitemap.root.children.to_a.sample(10).each do |e|
-    if !!e.children
-      puts e.children
-      exit
-    end
+  if 10 > rand() * 100
+    file_name = '_data/objects/config.yml'
+    yaml = YAML.load_file(file_name)
+    key = yaml[0]['fields'].sample['name']
+    
+    puts "https://developers.hive.io/tutorials-recipes/understanding-configuration-values.html##{key}"
+    exit
+  elsif 10 > rand() * 100
+    file_name = '_data/objects/dgpo.yml'
+    yaml = YAML.load_file(file_name)
+    key = yaml[0]['fields'].sample['name']
+    
+    puts "https://developers.hive.io/tutorials-recipes/understanding-dynamic-global-properties.html##{key}"
+    exit
   end
+  
+  while links.empty?
+    links += sitemap.root.children.to_a.sample(10).map(&:children).compact.reject(&:empty?)
+  end
+  
+  puts links.sample.children.first.to_s.gsub('http://localhost:4000', 'https://developers.hive.io')
 end
