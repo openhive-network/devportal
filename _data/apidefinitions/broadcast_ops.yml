@@ -211,6 +211,8 @@
         **Notes:**
         * Amount must be in HIVE.
         * Must transfer a nonzero amount.
+        
+        See: [delayed_voting]({{ '/apidefinitions/#delayed_voting' | relative_url }})
       roles:
         - active
           owner
@@ -360,7 +362,7 @@
       since: HF20
       virtual: false
       purpose: |
-        When used with `claim_account`, works identically to `account_create`.  See: [Hive 0.20.2 Release Notes](https://github.com/steemit/steem/releases/tag/v0.20.2)
+        When used with `claim_account`, works identically to `account_create`.  See: [0.20.2 Release Notes]({{ 'https://github.com/steemit/steem/releases/tag/v0.20.2' | archived_url }})
       roles:
         - active
           owner
@@ -382,7 +384,7 @@
       since: HF20
       virtual: false
       purpose: |
-        When used with `create_claimed_account`, works identically to `account_create`.  See: [Hive 0.20.2 Release Notes](https://github.com/steemit/steem/releases/tag/v0.20.2)
+        When used with `create_claimed_account`, works identically to `account_create`.  See: [0.20.2 Release Notes]({{ 'https://github.com/steemit/steem/releases/tag/v0.20.2' | archived_url }})
       roles:
         - active
           owner
@@ -442,7 +444,7 @@
         to sign when the owner and active authorities and memo key are not
         present (i.e. only valid for posting and JSON metadata).
         
-        See: [#3274](https://github.com/steemit/steem/issues/3274)
+        See: [#3274]({{ 'https://github.com/steemit/steem/issues/3274' | archived_url }})
       roles:
         - posting
           active
@@ -648,7 +650,7 @@
         their content. By consensus, content is editable indefinitely, but is
         soft forked to be frozen after payout. This operation requires an
         `active` key and is designed to prevent vandalism if a posting key is
-        compromised. [#1017](https://github.com/steemit/steem/issues/1017)
+        compromised. [#1017]({{ 'https://github.com/steemit/steem/issues/1017' | archived_url }})
       roles:
         - posting
           active
@@ -760,7 +762,7 @@
         - For prices involving SMT assets, the base asset must be HIVE.
         - The quote must be a power of 10.
         
-        See: [#1573](https://github.com/steemit/steem/issues/1573)
+        See: [#1573]({{ 'https://github.com/steemit/steem/issues/1573' | archived_url }})
       roles:
         - active
           owner
@@ -845,7 +847,7 @@
           wishes to have. This is secret known by the account to recover and
           will be confirmed in a `recover_account`.
         
-        See: [#169](https://github.com/steemit/steem/issues/169)
+        See: [#169]({{ 'https://github.com/steemit/steem/issues/169' | archived_url }})
       roles:
         - active
           owner
@@ -898,7 +900,7 @@
         witness vote weights. The top voted witness is explicitly the most trusted
         witness according to stake.
         
-        See: [#169](https://github.com/steemit/steem/issues/169)
+        See: [#169]({{ 'https://github.com/steemit/steem/issues/169' | archived_url }})
       roles: 
         - owner
       params:
@@ -1171,7 +1173,7 @@
         This operation allows `recovery_account` to change `account_to_reset`'s
         owner authority to `new_owner_authority` after 60 days of inactivity.
         
-        See: [#169](https://github.com/steemit/steem/issues/169)
+        See: [#169]({{ 'https://github.com/steemit/steem/issues/169' | archived_url }})
       roles:
         - active
           owner
@@ -1191,7 +1193,7 @@
         This operation allows `account` owner to control which account has the
         power to execute the `reset_account` operation after 60 days.
         
-        See: [#169](https://github.com/steemit/steem/issues/169)
+        See: [#169]({{ 'https://github.com/steemit/steem/issues/169' | archived_url }})
       roles:
         - owner
           posting
@@ -1235,7 +1237,7 @@
         to prevent a satoshi of VESTS from voting on the same content twice.
         
         Also see:
-          * [hive_evaluator.cpp:2309]( https://gitlab.syncad.com/hive/hive/-/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/hive_evaluator.cpp#L2309)
+          * [hive_evaluator.cpp:2309](https://gitlab.syncad.com/hive/hive/-/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/hive_evaluator.cpp#L2309)
       roles:
         - active
           owner
@@ -1334,6 +1336,27 @@
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestremoveproposal)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.remove_proposal)'
+    - name: update_proposal
+      since: HF24
+      deprecated: false
+      virtual: false
+      purpose: |
+        Update a proposal using `proposal.id` of a given proposal.  Allows creator to lower `daily_pay` but not increase it, change subject, and point to a new permlink.
+      roles:
+        - posting
+          active
+          owner
+      params:
+        - proposal_id
+          creator
+          daily_pay
+          subject
+          permlink
+      json_examples:
+        - '["update_proposal",{"proposal_id":0,"creator":"alice","daily_pay":{"amount":"3000","precision":3,"nai":"@@000000013"},"subject":"New Subject","permlink":"creator-proposal-permlink"}]'
+      client_docs:
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal)'
     - name: update_proposal_votes
       since: HF21
       deprecated: false
@@ -1362,7 +1385,7 @@
         
         Note: The reward tokens are required to be unique and sorted (both by asset symbol) in ascending order.  Otherwise operation validation will fail.
        
-        See: [#1859](https://github.com/steemit/steem/issues/1859)
+        See: [#1859]({{ 'https://github.com/steemit/steem/issues/1859' | archived_url }})
       roles:
         - posting
           active
@@ -1379,7 +1402,7 @@
       purpose: |
         This operation is used to cast a vote on a post/comment using multiple votable assets.
         
-        See: [#2748](https://github.com/steemit/steem/issues/2748), [SMT Voting Mana Deep Dive](https://hive.blog/smt/@vandeberg/smt-voting-mana-deep-dive)
+        See: [#2748]({{ 'https://github.com/steemit/steem/issues/2748' | archived_url }}), [SMT Voting Mana Deep Dive](https://hive.blog/smt/@vandeberg/smt-voting-mana-deep-dive)
       roles:
         - posting
           active
@@ -1439,7 +1462,7 @@
         }}
         ```
        
-        See [#3455](https://github.com/steemit/steem/issues/3455), [SMT Setup](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smt-setup)
+        See [#3455]({{ 'https://github.com/steemit/steem/issues/3455' | archived_url }}), [SMT Setup]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#smt-setup)
         
         <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L67-L90)</sup>
       roles:
@@ -1482,7 +1505,7 @@
         * `remove` - Indicates whether an emission should be added or removed.
         * `floor_emissions` - Indicates whether we should consider the lowest or highest value with regards to relative and absolute emissions.
 
-        See: [#1513](https://github.com/steemit/steem/issues/1513), [#2738](https://github.com/steemit/steem/issues/2738), [SMT Pre-Setup](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smt-pre-setup), [Inflation Operations](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#inflation-operations), [Full JSON Examples](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#full-json-examples), [Inflation FAQ](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#inflation-faq)
+        See: [#1513]({{ 'https://github.com/steemit/steem/issues/1513' | archived_url }}), [#2738]({{ 'https://github.com/steemit/steem/issues/2738' | archived_url }}), [SMT Pre-Setup]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#smt-pre-setup), [Inflation Operations]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url}}#inflation-operations), [Full JSON Examples]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#full-json-examples), [Inflation FAQ]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#inflation-faq)
         
         <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L100-L129)</sup>
       roles:
@@ -1516,7 +1539,7 @@
         * `symbol` - The asset symbol of the created token.
         * `setup_parameters` - The SMT setup parameters
         
-        See: [#2727](https://github.com/steemit/steem/issues/2727), [Named Token Parameters](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#named-token-parameters)
+        See: [#2727]({{ 'https://github.com/steemit/steem/issues/2727' | archived_url }}), [Named Token Parameters]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#named-token-parameters)
 
         
         <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L172-L183)</sup>
@@ -1549,7 +1572,7 @@
         * `square_root`
         * `bounded_curation`
         
-        See: [Named Token Parameters](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#named-token-parameters)
+        See: [Named Token Parameters]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#named-token-parameters)
         
         <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L185-L196)</sup>
       roles:
@@ -1587,7 +1610,7 @@
         * `smt_creation_fee` - The amount to be transfered from @account to null account as elevation fee.  The amount required is set by the `smt_creation_fee` field of the `dynamic_global_properties` object.  This field may contain a value in HIVE or HBD.
         * `precision` - Separately provided precision for clarity and redundancy.
         
-        See: [SMT Object Creation](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smt-object-creation)
+        See: [SMT Object Creation]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url}}#smt-object-creation)
         
         <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L16-L37)</sup>
       roles:
@@ -1612,7 +1635,7 @@
         * `contribution_id` A unique contribution ID number
         * `contribution` The contribution (in HIVE)
         
-        See: [#2730](https://github.com/steemit/steem/issues/2730), [Token Units](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#token-units)
+        See: [#2730]({{ 'https://github.com/steemit/steem/issues/2730' | archived_url }}), [Token Units]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#token-units)
         
         <sup>[Structure]( https://gitlab.syncad.com/hive/hive/-/blob/e134c404b67fae7dba439162344332e369a4c269/libraries/protocol/include/steem/protocol/smt_operations.hpp#L198-L209)</sup>
       roles:
@@ -1630,11 +1653,11 @@
       virtual: true
       deprecated: true
       purpose: |
-         Deprecated as of HF23, see: [#3556](https://github.com/steemit/steem/issues/3556).
+         Deprecated as of HF23, see: [#3556]({{ 'https://github.com/steemit/steem/issues/3556' | archived_url }}}}).
          
          For per-block processing that clears null account balances (prior to HF23).
          
-         See: [#2627](https://github.com/steemit/steem/issues/2627)
+         See: [#2627]({{ 'https://github.com/steemit/steem/issues/2627' | archived_url }})
       roles:
         - active
           owner
@@ -1712,7 +1735,7 @@
       since: HF17
       virtual: true
       purpose: |
-        See: [#774](https://github.com/steemit/steem/issues/774)
+        See: [#774]({{ 'https://github.com/steemit/steem/issues/774' | archived_url }})
       roles:
         - posting
           active
@@ -1725,7 +1748,7 @@
       disabled: true
       virtual: true
       purpose: |
-        Deprecated as of HF12, see: [#178](https://github.com/steemit/steem/issues/178).
+        Deprecated as of HF12, see: [#178]({{ 'https://github.com/steemit/steem/issues/178' | archived_url }}).
       roles:
         - active
           owner
@@ -1747,7 +1770,7 @@
       since: HF6
       virtual: true
       purpose: |
-        See: [#78](https://github.com/steemit/steem/issues/78)
+        See: [#78]({{ 'https://github.com/steemit/steem/issues/78' | archived_url }})
       roles:
         - active
           owner
@@ -1780,7 +1803,7 @@
       purpose: |
         When a witness goes offline.
         
-        See: [#278](https://github.com/steemit/steem/issues/278)
+        See: [#278]({{ 'https://github.com/steemit/steem/issues/278' | archived_url }})
       roles:
         - posting
           active
@@ -1803,10 +1826,43 @@
           amount
           request_id
           memo
+      json_examples:
+        - '["fill_transfer_from_savings",{"from":"learngerman","to":"learngerman","amount":{"amount":"1000","precision":3,"nai":"@@000000021"},"request_id":1618177172,"memo":""}]'
     - name: hardfork
       since: HF9
       virtual: true
-      purpose:
+      purpose: |
+        Tracks hardfork activation.
+        
+        | Hardfork | Sheduled Hardfork Time  | Actual Block  |
+        |----------|-------------------------|--------------:|
+        | HF0      | 2016-03-24 16:00:00 UTC | [1](https://hiveblocks.com/b/1) |
+        | HF1      | 2016-04-25 17:30:00 UTC | [905693](https://hiveblocks.com/b/905693) |
+        | HF2      | 2016-04-26 18:00:00 UTC | [934585](https://hiveblocks.com/b/934585) |
+        | HF3      | 2016-04-27 13:00:00 UTC | [953363](https://hiveblocks.com/b/953363) |
+        | HF4      | 2016-04-30 15:00:00 UTC | [1041497](https://hiveblocks.com/b/1041497) |
+        | HF5      | 2016-05-31 17:00:00 UTC | [1934236](https://hiveblocks.com/b/1934236) |
+        | HF6      | 2016-06-30 14:00:00 UTC | [2790882](https://hiveblocks.com/b/2790882) |
+        | HF7      | 2016-07-04 00:00:00 UTC | [2889019](https://hiveblocks.com/b/2889019) |
+        | HF8      | 2016-07-04 01:00:00 UTC | [2889959](https://hiveblocks.com/b/2889959) |
+        | HF9      | 2016-07-14 00:00:00 UTC | [3202773](https://hiveblocks.com/b/3202773) |
+        | HF10     | 2016-07-15 12:00:00 UTC | [3239649](https://hiveblocks.com/b/3239649) |
+        | HF11     | 2016-07-17 15:00:00 UTC | [3276913](https://hiveblocks.com/b/3276913) |
+        | HF12     | 2016-07-26 15:00:00 UTC | [3533567](https://hiveblocks.com/b/3533567) |
+        | HF13     | 2016-08-15 14:00:00 UTC | [4105155](https://hiveblocks.com/b/4105155) |
+        | HF14     | 2016-09-20 15:00:00 UTC | [5137542](https://hiveblocks.com/b/5137542) |
+        | HF15     | 2016-11-08 16:00:00 UTC | [6547932](https://hiveblocks.com/b/6547932) |
+        | HF16     | 2016-12-06 16:00:00 UTC | [7353249](https://hiveblocks.com/b/7353249) |
+        | HF17     | 2017-03-30 15:00:00 UTC | [10629455](https://hiveblocks.com/b/10629455) |
+        | HF18     | 2017-03-30 15:00:00 UTC | [10629486](https://hiveblocks.com/b/10629486) |
+        | HF19     | 2017-06-20 15:00:00 UTC | [12988978](https://hiveblocks.com/b/12988978) |
+        | HF20     | 2018-09-25 15:00:00 UTC | [26256743](https://hiveblocks.com/b/26256743) |
+        | HF21     | 2019-08-27 15:00:00 UTC | [35921786](https://hiveblocks.com/b/35921786) |
+        | HF22     | 2019-08-29 15:00:00 UTC | [35974326](https://hiveblocks.com/b/35974326) |
+        | HF23     | 2020-03-20 14:00:00 UTC | [41818752](https://hiveblocks.com/b/41818752) |
+        | HF24     | 2020-10-06 14:00:00 UTC | [47797680](https://hiveblocks.com/b/47797680) |
+        
+        See: [PR2616]({{ 'https://github.com/steemit/steem/pull/2616' | archived_url }}), [database_api.get_hardfork_properties]({{ '/apidefinitions/#database_api.get_hardfork_properties' | relative_url }}), [condenser_api.get_next_scheduled_hardfork]({{ '/apidefinitions/#condenser_api.get_next_scheduled_hardfork' | relative_url }})
       roles:
         - posting
           active
@@ -1864,3 +1920,119 @@
           vesting_shares
       json_examples:
         - '["producer_reward", {"producer":"alice","vesting_shares":"14403.626449 VESTS"}]'
+    - name: hardfork_hive
+      since: HF23
+      deprecated: false
+      virtual: true
+      purpose: |
+        At the point of the Hive hardfork, the only accounts who were not included in the initial airdrop were those containing the Steemit, Inc. ninja-mined stake and those who actively contributed to (and publicly declared support for) the centralization of the Steem Blockchain.
+        
+        This virual operation tracks the initial consolidation of stake into the treasury, on the above criteria.
+        
+        Also represents the moment Hive forked from the previous chain.
+        
+        See: [Hive Announcement](https://peakd.com/communityfork/@hiveio/announcing-the-launch-of-hive-blockchain#will-all-steem-accounts-be-included-in-the-hive-airdrop), [Block No. 41818752](https://hiveblocks.com/b/41818752), [e9f2f73](https://gitlab.syncad.com/hive/hive/-/commit/e9f2f7302bbf691c8084383edc85d10f4aee58f9)
+      roles:
+        - posting
+          active
+          owner
+      params:
+        - account
+          treasury
+          hbd_transferred
+          hive_transferred
+          vests_converted
+          total_hive_from_vests
+      json_examples:
+        - '["hardfork_hive", {"account":"steem","treasury":"steem.dao","hbd_transferred":{"amount":"861823","precision":3,"nai":"@@000000013"},"hive_transferred":{"amount":"40590","precision":3,"nai":"@@000000021"},"vests_converted":{"amount":"22870822335791719","precision":6,"nai":"@@000000037"},"total_hive_from_vests":{"amount":"11678135805","precision":3,"nai":"@@000000021"}}]'
+    - name: hardfork_hive_restore
+      since: HF24
+      deprecated: false
+      virtual: true
+      purpose: |
+        To restore the liquid balance of accounts that were not airdropped in the original Hive hardfork.
+        
+        VESTS were restored in a later transaction:
+          
+        https://hiveblocks.com/tx/1d600db22fc6f9b362db36d9f0fc521b95f8894f
+        
+        See: [Block No. 47797680](https://hiveblocks.com/b/47797680), [!19](https://gitlab.syncad.com/hive/hive/-/merge_requests/19), [5edf4f0](https://gitlab.syncad.com/hive/hive/-/commit/5edf4f0ba04426982ba655bf83d5acd746736d49), [restore.js](https://github.com/drov0/restore-hf23-balances/blob/master/restore.js)
+      roles:
+      params:
+      json_examples:
+        - '["hardfork_hive_restore", {"account":"yellowbird","treasury":"steem.dao","hbd_transferred":{"amount":"0","precision":3,"nai":"@@000000013"},"hive_transferred":{"amount":"1280","precision":3,"nai":"@@000000021"}}]'
+    - name: delayed_voting
+      since: HF24
+      deprecated: false
+      virtual: true
+      purpose: |
+        Tracks when newly powered up VESTS become counted towards witness and DHF proposals (after a 30 day delay is complete).
+        
+        See: See: [transfer_to_vesting]({{ '/apidefinitions/#transfer_to_vesting' | relative_url }}), [fa63145](https://gitlab.syncad.com/hive/hive/-/commit/fa63145e21e008c672fbbb1ec3420b40711aa1ee), [5](https://gitlab.syncad.com/hive/hive/-/issues/5), [!21](https://gitlab.syncad.com/hive/hive/-/merge_requests/21)
+      roles:
+      params:
+      json_examples:
+        - '["delayed_voting", {"voter":"fordummies","votes":191547046}]'
+    - name: consolidate_treasury_balance
+      since: HF24
+      deprecated: false
+      virtual: true
+      purpose: |
+        Tracks when balances move from old treasury account to current one, on an ongoing basis.  Note that the obsolete account is still considered a treasury (cannot be reused for other purposes), but all funds and actions are redirected to new one.
+        
+        For example, if an author designates the obsolete account as beneficiary, the reward will briefly exist in the obsolete account until consoldated to the new account.
+        
+        See: [2074917](https://gitlab.syncad.com/hive/hive/-/commit/2074917f0735d9bdf22d33f5bdb089df3f6361b0), [`OBSOLETE_TREASURY_ACCOUNT`]({{ '/tutorials-recipes/understanding-configuration-values.html#OBSOLETE_TREASURY_ACCOUNT' | relative_url }}), [`NEW_HIVE_TREASURY_ACCOUNT`]({{ '/tutorials-recipes/understanding-configuration-values.html#NEW_HIVE_TREASURY_ACCOUNT' | relative_url }})
+      roles:
+        - posting
+          active
+          owner
+      params:
+        - total_moved
+      json_examples:
+        - '["consolidate_treasury_balance", {"total_moved":[{"amount":"8853","precision":3,"nai":"@@000000013"}]}]'
+    - name: effective_comment_vote
+      since: HF24
+      deprecated: false
+      virtual: true
+      purpose: |
+        Needed by hivemind to index estimated `pending_payout` from a given vote.
+        
+        See: [2074917](https://gitlab.syncad.com/hive/hive/-/commit/2074917f0735d9bdf22d33f5bdb089df3f6361b0)
+      roles:
+        - posting
+          active
+          owner
+      params:
+        - voter
+          author
+          permlink
+          weight
+          rshares
+          total_vote_weight
+          pending_payout
+      json_examples:
+        - '["effective_comment_vote", {"voter":"hivebuzz","author":"papilloncharity","permlink":"re-hivebuzz-qrevvy","weight":3658,"rshares":"7332260842","total_vote_weight":3658,"pending_payout":{"amount":"4","precision":3,"nai":"@@000000013"}}]'
+    - name: ineffective_delete_comment
+      since: HF24
+      deprecated: false
+      virtual: true
+      purpose: |
+        Track comments that were intended to be removed but weren't due to having a payout due to net positive votes.  This operation is used to communicate to hivemind in order to avoid hiding comments with payout.
+        
+        See: [!94](https://gitlab.syncad.com/hive/hive/-/merge_requests/94)
+      roles:
+      params:
+      json_examples:
+      client_docs:
+    - name: sps_convert
+      since: HF24
+      deprecated: false
+      virtual: true
+      purpose: |
+        
+        
+        See: [96254ae](https://gitlab.syncad.com/hive/hive/-/commit/96254ae57c9e92cdf066e4ccd5deeed4ec9d964f)
+      roles:
+      params:
+      json_examples:

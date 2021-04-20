@@ -152,6 +152,14 @@ task :config_dump do
   puts known_undocumented_keys.map{|k| "\t#{k}"}
 end
 
+desc 'Dump all archived urls'
+task :archived_urls_dump do
+  file_name = '_data/archived_urls.yml'
+  yaml = YAML.load_file(file_name)
+  
+  puts yaml['archived_urls'].map{|k, v| "#{k} => #{v}"}
+end
+
 namespace :test do
   KNOWN_APIS = %i(
     account_by_key_api account_history_api block_api condenser_api 

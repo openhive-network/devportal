@@ -100,7 +100,7 @@
   - api_method: condenser_api.get_account_bandwidth
     removed: true
     purpose: |
-      **Disabled since 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844); Removed: HF24**
+      **Disabled since 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url }}#issuecomment-428404844); Removed: HF24**
 
       Returns the available bandwidth of an account.  Parameters: `account:string`; `type:string`, e.g.: `forum` or `market`
 
@@ -1406,8 +1406,8 @@
   - api_method: condenser_api.get_next_scheduled_hardfork
     purpose: |
       Returns the next scheduled hardfork.
-            
-      Also see: [database_api.get_hardfork_properties]({{ '/apidefinitions/#database_api.get_hardfork_properties' | relative_url }})
+      
+      Also see: [database_api.get_hardfork_properties]({{ '/apidefinitions/#database_api.get_hardfork_properties' | relative_url }}), [hardfork]({{ '/apidefinitions/#broadcast_ops_hardfork' | relative_url }})
     parameter_json: []
     expected_response_json:
       hf_version: 0.0.0
@@ -2526,3 +2526,15 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[[10], 1000, "by_total_votes", "ascending", "votable"], "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+  - api_method: condenser_api.is_known_transaction
+    since: HF25
+    purpose: |
+      Only return true *if* the transaction has not expired or been invalidated.
+      If this method is called with a VERY old transaction we will return false,
+      use `account_history_api.get_transaction`.
+      
+      Also see: [transaction_status_api.find_transaction]({{ '/apidefinitions/#transaction_status_api.find_transaction' | relative_url }}), [account_history_api.get_transaction]({{ '/apidefinitions/#account_history_api.get_transaction' | relative_url }})
+    parameter_json: '["0000000000000000000000000000000000000000"]'
+    expected_response_json: 'false'
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.is_known_transaction", "params":["0000000000000000000000000000000000000000"]}, "id":1}'

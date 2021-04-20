@@ -17,7 +17,7 @@
       |--------------------|-|
       | `"hiveio"` | 10 | Queries the reputation for account named "hiveio". |
 
-      See [#1425](https://github.com/steemit/steem/issues/1425)
+      See [#1425]({{ 'https://github.com/steemit/steem/issues/1425' | archived_url }})
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#reputation_apiget_account_reputations' | relative_url }})
     parameter_json: '{"account_lower_bound":"","limit":1000}'

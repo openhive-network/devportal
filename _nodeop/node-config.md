@@ -177,7 +177,7 @@ log-logger = {"name":"default","level":"info","appender":"stderr"} {"name":"p2p"
 
 Whether or not to print a backtrace on SIGSEGV (segmentation fault).
 
-See: [#1542](https://github.com/steemit/steem/issues/1542)
+See: [#1542]({{ 'https://github.com/steemit/steem/issues/1542' | archived_url }})
 
 ```ini
 # default
@@ -199,7 +199,7 @@ plugin = witness account_by_key account_by_key_api condenser_api
 
 Defines a range of accounts to track as a JSON pair `["from","to"]`.  Can be specified multiple times.
 
-See: [Exchange Node]({{ '/nodeop/exchange-node.html' | relative_url }}), [`exchangequickstart.md`](https://github.com/steemit/steem/blob/970f599655465b65bbe939b78db348a21af982e0/doc/exchangequickstart.md#configuration-files-when-not-using-a-docker-image), [#862](https://github.com/steemit/steem/issues/862#issuecomment-285432626)
+See: [Exchange Node]({{ '/nodeop/exchange-node.html' | relative_url }}), [`exchangequickstart.md`]({{ 'https://github.com/steemit/steem/blob/970f599655465b65bbe939b78db348a21af982e0/doc/exchangequickstart.md' | archived_url }}#configuration-files-when-not-using-a-docker-image), [#862]({{ 'https://github.com/steemit/steem/issues/862' | archived_url }}#issuecomment-285432626)
 
 ```ini
 # examples
@@ -227,7 +227,7 @@ track-account-range =
 
 Defines a list of operations which will be explicitly logged.
 
-See: [#301](https://github.com/steemit/steem/issues/301), [#521](https://github.com/steemit/steem/issues/521)
+See: [#301]({{ 'https://github.com/steemit/steem/issues/301' | archived_url }}), [#521]({{ 'https://github.com/steemit/steem/issues/521' | archived_url }})
 
 ```ini
 # default
@@ -254,7 +254,7 @@ history-whitelist-ops =
 
 Defines a list of operations which will be explicitly ignored.
 
-See: [#301](https://github.com/steemit/steem/issues/301), [#521](https://github.com/steemit/steem/issues/521)
+See: [#301]({{ 'https://github.com/steemit/steem/issues/301' | archived_url }}), [#521]({{ 'https://github.com/steemit/steem/issues/521' | archived_url }})
 
 ```ini
 # default
@@ -276,7 +276,7 @@ history-blacklist-ops =
 
 Disables automatic account history trimming.
 
-See: [#1671](https://github.com/steemit/steem/issues/1671)
+See: [#1671]({{ 'https://github.com/steemit/steem/issues/1671' | archived_url }})
 
 ```ini
 # default
@@ -287,7 +287,7 @@ history-disable-pruning = 0
 
 The location of the rocksdb database for account history.  By default it is `$DATA_DIR/blockchain/account-history-rocksdb-storage`.
 
-See: [#2066](https://github.com/steemit/steem/issues/2066)
+See: [#2066]({{ 'https://github.com/steemit/steem/issues/2066' | archived_url }})
 
 ```ini
 # default
@@ -298,7 +298,7 @@ account-history-rocksdb-path = "blockchain/account-history-rocksdb-storage"
 
 Defines a range of accounts to track as a JSON pair `["from","to"]`.  Can be specified multiple times.
 
-See: [#2066](https://github.com/steemit/steem/issues/2066)
+See: [#2066]({{ 'https://github.com/steemit/steem/issues/2066' | archived_url }})
 
 ```ini
 # default
@@ -309,7 +309,7 @@ account-history-rocksdb-track-account-range =
 
 Defines a list of operations which will be explicitly logged.
 
-See: [#2066](https://github.com/steemit/steem/issues/2066)
+See: [#2066]({{ 'https://github.com/steemit/steem/issues/2066' | archived_url }})
 
 ```ini
 # default
@@ -320,7 +320,7 @@ account-history-rocksdb-whitelist-ops =
 
 Defines a list of operations which will be explicitly ignored.
 
-See: [#2066](https://github.com/steemit/steem/issues/2066)
+See: [#2066]({{ 'https://github.com/steemit/steem/issues/2066' | archived_url }})
 
 ```ini
 # default
@@ -331,7 +331,7 @@ account-history-rocksdb-blacklist-ops =
 
 Where to export data (NONE to discard).
 
-See: [#2244](https://github.com/steemit/steem/issues/2244), [#2326](https://github.com/steemit/steem/pull/2326)
+See: [#2244]({{ 'https://github.com/steemit/steem/issues/2244' | archived_url }}), [#2326]({{ 'https://github.com/steemit/steem/pull/2326' | archived_url }})
 
 Used by plugins: `block_data_export`, `stats_export`
 
@@ -363,7 +363,7 @@ block_num=199   size=1395575   hash=7a49e2d67522b5204574d33e4b4f479e7c23c5358d85
 
 Used by plugin: `block_log_info`
 
-See: [#1893](https://github.com/steemit/steem/issues/1893)
+See: [#1893]({{ 'https://github.com/steemit/steem/issues/1893' | archived_url }})
 
 ```ini
 # default
@@ -376,7 +376,7 @@ Whether to defer printing out `block_log_info` until block is irreversible.
 
 Used by plugin: `block_log_info`
 
-See: [#1893](https://github.com/steemit/steem/issues/1893)
+See: [#1893]({{ 'https://github.com/steemit/steem/issues/1893' | archived_url }})
 
 ```ini
 # default
@@ -389,7 +389,7 @@ Where to print out `block_log_info` (filename or special sink `ILOG`, `STDOUT`, 
 
 Used by plugin: `block_log_info`
 
-See: [#1893](https://github.com/steemit/steem/issues/1893)
+See: [#1893]({{ 'https://github.com/steemit/steem/issues/1893' | archived_url }})
 
 ```ini
 # default
@@ -427,7 +427,7 @@ Size of the shared memory file.  Default: 54G.  If running a full node, increase
 * **Seed Node** - Shared memory file for seed node uses over 5.5GB
 * **Other Use Cases** - Shared memory file size varies, depends on your specific configuration but it is expected to be somewhere between "seed node" and "full node" usage.
 
-See: [#1891](https://github.com/steemit/steem/issues/1891), [#2478](https://github.com/steemit/steem/issues/2478)
+See: [#1891]({{ 'https://github.com/steemit/steem/issues/1891' | archived_url }}), [#2478]({{ 'https://github.com/steemit/steem/issues/2478' | archived_url }})
 
 ```ini
 # default
@@ -438,7 +438,7 @@ shared-file-size = 54G
 
 A 2 precision percentage (0-10000) that defines the threshold for when to autoscale the shared memory file.  Setting this to 0 disables autoscaling.  Recommended value for consensus node is 9500 (95%).  Full node is 9900 (99%)
 
-See: [#1891](https://github.com/steemit/steem/issues/1891)
+See: [#1891]({{ 'https://github.com/steemit/steem/issues/1891' | archived_url }})
 
 ```ini
 # default
@@ -449,7 +449,7 @@ shared-file-full-threshold = 0
 
 A 2 precision percentage (0-10000) that defines how quickly to scale the shared memory file.  When autoscaling occurs the file's size will be increased by this percent.  Setting this to 0 disables autoscaling.  Recommended value is between 1000-2000 (10-20%)
 
-See: [#1891](https://github.com/steemit/steem/issues/1891)
+See: [#1891]({{ 'https://github.com/steemit/steem/issues/1891' | archived_url }})
 
 ```ini
 # default
@@ -593,7 +593,7 @@ debug-node-edit-script =
 
 Database edits to apply on startup (may specify multiple times).
 
-**Deprecated in favor of:** `debug-node-edit-script`, see: [#1297](https://github.com/steemit/steem/issues/1297)
+**Deprecated in favor of:** `debug-node-edit-script`, see: [#1297]({{ 'https://github.com/steemit/steem/issues/1297' | archived_url }})
 
 ```ini
 edit-script =
@@ -603,7 +603,7 @@ edit-script =
 
 Set the maximum size of cached feed for an account.
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#follow_api' | relative_url }}), [#192](https://github.com/steemit/steem/issues/192)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#follow_api' | relative_url }}), [#192]({{ 'https://github.com/steemit/steem/issues/192' | archived_url }})
 
 ```ini
 # default
@@ -614,7 +614,7 @@ follow-max-feed-size = 500
 
 Block time (in epoch seconds) when to start calculating feeds.
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#follow_api' | relative_url }}), [#1162](https://github.com/steemit/steem/issues/1162)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#follow_api' | relative_url }}), [#1162]({{ 'https://github.com/steemit/steem/issues/1162' | archived_url }})
 
 ```ini
 # default
@@ -627,7 +627,7 @@ json-rpc log directory name.
 
 Used by plugin: `jsonrpc`
 
-See: [#1986](https://github.com/steemit/steem/issues/1986)
+See: [#1986]({{ 'https://github.com/steemit/steem/issues/1986' | archived_url }})
 
 ```ini
 # default (no dump)
@@ -683,7 +683,7 @@ p2p-max-connections =
 
 The IP address and port of a remote peer to sync with.
 
-**Deprecated in favor of:** `p2p-seed-node`, see: [#1314](https://github.com/steemit/steem/issues/1314)
+**Deprecated in favor of:** `p2p-seed-node`, see: [#1314]({{ 'https://github.com/steemit/steem/issues/1314' | archived_url }})
 
 ```ini
 seed-node =
@@ -745,7 +745,7 @@ P2P network parameters.  Default:
 }
 ```
 
-See: [#1713](https://github.com/steemit/steem/issues/1713)
+See: [#1713]({{ 'https://github.com/steemit/steem/issues/1713' | archived_url }})
 
 ```ini
 p2p-parameters =
@@ -764,7 +764,7 @@ p2p-user-agent = Graphene Reference Implementation
 
 Skip rejecting transactions when account has insufficient RCs. This is not recommended.
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168]({{ 'https://github.com/steemit/steem/issues/3168' | archived_url }})
 
 ```ini
 # default
@@ -775,7 +775,7 @@ rc-skip-reject-not-enough-rc = 0
 
 Generate historical resource credits.
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168]({{ 'https://github.com/steemit/steem/issues/3168' | archived_url }})
 
 ```ini
 # default
@@ -786,7 +786,7 @@ rc-compute-historical-rc = 0
 
 Start calculating RCs at a specific block.  **Testnet only.**
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168]({{ 'https://github.com/steemit/steem/issues/3168' | archived_url }})
 
 ```ini
 # default
@@ -797,7 +797,7 @@ rc-start-at-block = 0
 
 Ignore RC calculations for the whitelist.  **Testnet only.**
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168](https://github.com/steemit/steem/issues/3168)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#rc_api' | relative_url }}), [#3168]({{ 'https://github.com/steemit/steem/issues/3168' | archived_url }})
 
 ```ini
 # default
@@ -810,7 +810,7 @@ Endpoint to send statsd messages to when `statsd_plugin` is enabled.
 
 Used by plugin: `statsd`
 
-See: [#3168](https://github.com/steemit/steem/issues/3168)
+See: [#3168]({{ 'https://github.com/steemit/steem/issues/3168' | archived_url }})
 
 ```ini
 # default
@@ -823,7 +823,7 @@ Size to batch statsd messages when `statsd_plugin` is enabled.
 
 Used by plugin: `statsd`
 
-See: [#2276](https://github.com/steemit/steem/issues/2276)
+See: [#2276]({{ 'https://github.com/steemit/steem/issues/2276' | archived_url }})
 
 ```ini
 # default
@@ -836,7 +836,7 @@ Whitelist of statistics to capture when `statsd_plugin` is enabled.
 
 Used by plugin: `statsd`
 
-See: [#2276](https://github.com/steemit/steem/issues/2276)
+See: [#2276]({{ 'https://github.com/steemit/steem/issues/2276' | archived_url }})
 
 ```ini
 # default
@@ -849,7 +849,7 @@ Blacklist of statistics to capture when `statsd_plugin` is enabled.
 
 Used by plugin: `statsd`
 
-See: [#2276](https://github.com/steemit/steem/issues/2276)
+See: [#2276]({{ 'https://github.com/steemit/steem/issues/2276' | archived_url }})
 
 ```ini
 # default
@@ -860,7 +860,7 @@ statsd-blacklist =
 
 Block time (in epoch seconds) when to start calculating promoted content. Should be 1 week prior to current time.
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#tags_api' | relative_url }}), See: [#1612](https://github.com/steemit/steem/issues/1612)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#tags_api' | relative_url }}), See: [#1612]({{ 'https://github.com/steemit/steem/issues/1612' | archived_url }})
 
 ```ini
 # default
@@ -871,7 +871,7 @@ tags-start-promoted = 0
 
 Skip updating tags on startup. Can safely be skipped when starting a previously running node. Should not be skipped when reindexing.
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#tags_api' | relative_url }}), See: [#1612](https://github.com/steemit/steem/issues/1612)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#tags_api' | relative_url }}), See: [#1612]({{ 'https://github.com/steemit/steem/issues/1612' | archived_url }})
 
 ```ini
 # default
@@ -904,7 +904,7 @@ Defines the number of blocks from the head block that transaction statuses will 
  */
 ```
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#transaction_status_api' | relative_url }}), [#2458](https://github.com/steemit/steem/issues/2458)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#transaction_status_api' | relative_url }}), [#2458]({{ 'https://github.com/steemit/steem/issues/2458' | archived_url }})
  
 ```ini
 transaction-status-block-depth = 64000
@@ -916,7 +916,7 @@ Defines the block number the transaction status plugin will begin tracking.
 
 Used by plugin: `transaction_status`
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#transaction_status_api' | relative_url }}), See: [#2458](https://github.com/steemit/steem/issues/2458)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#transaction_status_api' | relative_url }}), See: [#2458]({{ 'https://github.com/steemit/steem/issues/2458' | archived_url }})
  
 ```ini
 transaction-status-track-after-block = 0
@@ -926,7 +926,7 @@ transaction-status-track-after-block = 0
 
 Local http endpoint for webserver requests.
 
-See: [#1347](https://github.com/steemit/steem/issues/1347)
+See: [#1347]({{ 'https://github.com/steemit/steem/issues/1347' | archived_url }})
 
 ```ini
 # example, enable only local requests on port 8751
@@ -942,7 +942,7 @@ webserver-http-endpoint = 0.0.0.0:8751
 
 Local websocket endpoint for webserver requests.
 
-See: [#1347](https://github.com/steemit/steem/issues/1347)
+See: [#1347]({{ 'https://github.com/steemit/steem/issues/1347' | archived_url }})
 
 ```ini
 # example, enable only local requests on port 8752
@@ -971,7 +971,7 @@ curl -s --data '{
 }' --unix-socket /tmp/hived.sock http:
 ```
 
-See: [#3205](https://github.com/steemit/steem/pull/3205)
+See: [#3205]({{ 'https://github.com/steemit/steem/pull/3205' | archived_url }})
 
 ```ini
 # example
@@ -982,7 +982,7 @@ webserver-unix-endpoint = /tmp/hived.sock
 
 Local http and websocket endpoint for webserver requests.
 
-**Deprecated in favor of:** `webserver-http-endpoint` and `webserver-ws-endpoint`, see: [#1297](https://github.com/steemit/steem/issues/1297)
+**Deprecated in favor of:** `webserver-http-endpoint` and `webserver-ws-endpoint`, see: [#1297]({{ 'https://github.com/steemit/steem/issues/1297' | archived_url }})
 
 ```ini
 rpc-endpoint =
@@ -994,7 +994,7 @@ Number of threads used to handle queries.  Default: 32.
 
 * must be greater than 0
 
-See: [#1347](https://github.com/steemit/steem/issues/1347)
+See: [#1347]({{ 'https://github.com/steemit/steem/issues/1347' | archived_url }})
 
 ```ini
 # default
@@ -1046,7 +1046,7 @@ private-key =
 
 Skip enforcing bandwidth restrictions. Default is `true` in favor of `rc_plugin`.
 
-See: [#2648](https://github.com/steemit/steem/issues/2648), [#2703](https://github.com/steemit/steem/issues/2703)
+See: [#2648]({{ 'https://github.com/steemit/steem/issues/2648' | archived_url }}), [#2703]({{ 'https://github.com/steemit/steem/issues/2703' | archived_url }})
 
 ```ini
 witness-skip-enforce-bandwidth = 1
@@ -1058,7 +1058,7 @@ Track account statistics by grouping orders into buckets of equal size measured 
 
 Used by plugin: `account_statistics`
 
-See: [#79](https://github.com/steemit/steem/issues/79)
+See: [#79]({{ 'https://github.com/steemit/steem/issues/79' | archived_url }})
 
 ```ini
 # default
@@ -1071,7 +1071,7 @@ How far back in time to track history for each bucker size, measured in the numb
 
 Used by plugin: `account_statistics`
 
-See: [#79](https://github.com/steemit/steem/issues/79)
+See: [#79]({{ 'https://github.com/steemit/steem/issues/79' | archived_url }})
 
 ```ini
 # default
@@ -1084,7 +1084,7 @@ Which accounts to track the statistics of.  Empty list tracks all accounts.
 
 Used by plugin: `account_statistics`
 
-See: [#79](https://github.com/steemit/steem/issues/79)
+See: [#79]({{ 'https://github.com/steemit/steem/issues/79' | archived_url }})
 
 ```ini
 # default
@@ -1119,7 +1119,7 @@ Track blockchain statistics by grouping orders into buckets of equal size measur
 
 Used by plugin: `blockchain_statistics`
 
-See: [#79](https://github.com/steemit/steem/issues/79)
+See: [#79]({{ 'https://github.com/steemit/steem/issues/79' | archived_url }})
 
 ```ini
 # default
@@ -1132,7 +1132,7 @@ How far back in time to track history for each bucket size, measured in the numb
 
 Used by plugin: `blockchain_statistics`
 
-See: [#79](https://github.com/steemit/steem/issues/79)
+See: [#79]({{ 'https://github.com/steemit/steem/issues/79' | archived_url }})
 
 ```ini
 # default

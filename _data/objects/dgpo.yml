@@ -33,14 +33,14 @@
       examples:
         - "`514415`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/770">#770</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/770' | archived_url}}">#770</a>
     - name: num_pow_witnesses
       deprecated: true
       purpose: The current count of how many pending POW witnesses there are, determines the difficulty of doing pow.
       examples:
         - "`172`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/770">#770</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/770' | archived_url}}">#770</a>
     - name: virtual_supply
       purpose: The virtual supply is the supply of all HIVE + all HBD if all HBD were converted to HIVE at the current median price.
       examples:
@@ -113,12 +113,12 @@
       examples:
         - "`10`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/1252">#1252</a>
-        - <a href="https://github.com/steemit/steem/issues/1411">#1411</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/1252' | archived_url}}">#1252</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/1411' | archived_url}}">#1411</a>
     - name: average_block_size
       removed: true
       purpose: |
-        **Removed in 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844)**
+        **Removed in 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url}}#issuecomment-428404844)**
 
         Average block size is updated every block to be: `average_block_size = (99 * average_block_size + new_block_size) / 100`.  This property is used to update the `current_reserve_ratio` to maintain approximately *  50% or less utilization of network capacity.
       examples:
@@ -126,7 +126,7 @@
     - name: current_reserve_ratio
       removed: true
       purpose: |
-        **Removed in 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844)**
+        **Removed in 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url}}#issuecomment-428404844)**
         
         Any time `average_block_size <= 50% maximum_block_size` this value grows by 1 until it reaches `HIVE_MAX_RESERVE_RATIO`.  Any time `average_block_size` is greater than 50% it falls by 1%.  Upward adjustments happen once per round, downward adjustments happen every block.
       examples:
@@ -134,7 +134,7 @@
     - name: max_virtual_bandwidth
       removed: true
       purpose: |
-        **Removed in 0.20.6, see: [#3029](https://github.com/steemit/steem/issues/3029#issuecomment-428404844)**
+        **Removed in 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url}}#issuecomment-428404844)**
         
         The maximum bandwidth the blockchain can support is `max_bandwidth = maximum_block_size * HIVE_BANDWIDTH_AVERAGE_WINDOW_SECONDS / HIVE_BLOCK_INTERVAL`; The maximum virtual bandwidth is: `max_bandwidth * current_reserve_ratio`
       examples:
@@ -156,34 +156,34 @@
       examples:
         - "`432000`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/2428">#2428</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/2428' | archived_url}}">#2428</a>
     - name: reverse_auction_seconds
       since: HF21
       purpose: Curation reverse auction duration.
       examples:
         - "`300`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/1874">#1874</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/1874' | archived_url}}">#1874</a>
     - name: available_account_subsidies
       since: HF20
       examples:
         - "`23985882`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/1770">#1770</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/1770' | archived_url}}">#1770</a>
     - name: hbd_stop_percent
       since: HF20
       purpose: Stop printing HBD at *n*% marketcap.
       examples:
         - "`1000`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/2140">#2140</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/2140' | archived_url}}">#2140</a>
     - name: hbd_start_percent
       since: HF20
       purpose: Start reducing printing of HBD at *n*% marketcap.
       examples:
         - "`900`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/2140">#2140</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/2140' | archived_url}}">#2140</a>
     - name: next_maintenance_time
       since: HF21
       purpose: Used to compute payments for every proposal.
@@ -205,27 +205,27 @@
       examples:
         - "`6500`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/3328">#3328</a>
-        - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3328' | archived_url}}">#3328</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3346' | archived_url}}">#3346</a>
     - name: vesting_reward_percent
       since: HF21
       examples:
         - "`1500`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/3328">#3328</a>
-        - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3328' | archived_url}}">#3328</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3346' | archived_url}}">#3346</a>
     - name: sps_fund_percent
       since: HF21
       examples:
         - "`1000`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3346' | archived_url}}">#3346</a>
     - name: sps_interval_ledger
       since: HF21
       examples:
         - "`63.684 HBD`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3346' | archived_url}}">#3346</a>
     - name: downvote_pool_percent
       since: HF21
       purpose: |
@@ -233,8 +233,8 @@
       examples:
         - "`2500`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/3336">#3336</a>
-        - <a href="https://github.com/steemit/steem/issues/3344">#3344</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3336' | archived_url}}">#3336</a>
+        - <a href="{{ 'https://github.com/steemit/steem/pull/3344' | archived_url}}">PR3344</a>
     - name: pending_rewarded_vesting_shares
       since: HF17
       purpose: |
@@ -242,8 +242,8 @@
       examples:
         - "`379159224.860656 VESTS`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/3328">#3328</a>
-        - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3328' | archived_url}}">#3328</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3346' | archived_url}}">#3346</a>
     - name: pending_rewarded_vesting_hive
       since: HF17
       purpose: |
@@ -251,15 +251,15 @@
       examples:
         - "`185294.019 HIVE`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/659">#659</a>
-        - <a href="https://github.com/steemit/steem/issues/3328">#3328</a>
-        - <a href="https://github.com/steemit/steem/issues/3346">#3346</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/659' | archived_url}}">#659</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3328' | archived_url}}">#3328</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/3346' | archived_url}}">#3346</a>
     - name: hbd_print_rate
       since: HF14
       examples:
         - "`2933`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/230">#230</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/230' | archived_url}}">#230</a>
     - name: participation_count
       since: HF9
       purpose: Used to compute witness participation.
@@ -272,8 +272,8 @@
       examples:
         - "`50`"
       links:
-        - <a href="https://github.com/steemit/steem/issues/1252">#1252</a>
-        - <a href="https://github.com/steemit/steem/issues/1411">#1411</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/1252' | archived_url}}">#1252</a>
+        - <a href="{{ 'https://github.com/steemit/steem/issues/1411' | archived_url}}">#1411</a>
     - name: next_daily_maintenance_time
       since: HF24
       purpose: |
