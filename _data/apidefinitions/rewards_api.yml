@@ -16,7 +16,7 @@
     | `"convergent_linear"` | "2000000000000" |  |
     | `"convergent_square_root"` | "2000000000000" |  |
     
-    See: [#3325](https://github.com/steemit/steem/issues/3325)
+    See: [#3325]({{ 'https://github.com/steemit/steem/issues/3325' | archived_url }})
   methods:
   - api_method: rewards_api.simulate_curve_payouts
     purpose: 

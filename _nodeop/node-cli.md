@@ -65,7 +65,7 @@ Records statsd events during replay
 
 Used by plugin: `statsd`
 
-See: [#2276](https://github.com/steemit/steem/issues/2276)
+See: [#2276]({{ 'https://github.com/steemit/steem/issues/2276' | archived_url }})
 
 ```bash
 --statsd-record-on-replay
@@ -77,7 +77,7 @@ Indicates that the transaction status plugin must re-build its state upon startu
 
 Used by plugin: `transaction_status`
 
-See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#transaction_status_api' | relative_url }}), [#2458](https://github.com/steemit/steem/issues/2458)
+See: [Plugin & API List]({{ '/nodeop/plugin-and-api-list.html#transaction_status_api' | relative_url }}), [#2458]({{ 'https://github.com/steemit/steem/issues/2458' | archived_url }})
 
 ```bash
 --transaction-status-rebuild-state
@@ -115,7 +115,7 @@ Force open the database, skipping the environment check.  If the binary or confi
 
 **WARNING: THIS MAY CORRUPT YOUR DATABASE. FORCE OPEN AT YOUR OWN RISK.**
 
-See: [#3446](https://github.com/steemit/steem/issues/3446)
+See: [#3446]({{ 'https://github.com/steemit/steem/issues/3446' | archived_url }})
 
 ```bash
 --force-open
@@ -133,7 +133,7 @@ Clear chain database and block log.
 
 Stop and exit after reaching given block number
 
-See: [#1590](https://github.com/steemit/steem/issues/1590)
+See: [#1590]({{ 'https://github.com/steemit/steem/issues/1590' | archived_url }})
 
 ```bash
 --stop-replay-at-block=1234
@@ -143,7 +143,7 @@ See: [#1590](https://github.com/steemit/steem/issues/1590)
 
 Make profiling for every plugin.
 
-See: [#1996](https://github.com/steemit/steem/issues/1996)
+See: [#1996]({{ 'https://github.com/steemit/steem/issues/1996' | archived_url }})
 
 ```bash
 --advanced-benchmark
@@ -153,7 +153,7 @@ See: [#1996](https://github.com/steemit/steem/issues/1996)
 
 Print time and memory usage every given number of blocks.
 
-See: [#1590](https://github.com/steemit/steem/issues/1590)
+See: [#1590]({{ 'https://github.com/steemit/steem/issues/1590' | archived_url }})
 
 ```bash
 --set-benchmark-interval
@@ -163,7 +163,7 @@ See: [#1590](https://github.com/steemit/steem/issues/1590)
 
 Dump database objects memory usage info. Use `set-benchmark-interval` to set dump interval.
 
-See: [#1985](https://github.com/steemit/steem/issues/1985)
+See: [#1985]({{ 'https://github.com/steemit/steem/issues/1985' | archived_url }})
 
 ```bash
 --dump-memory-details
@@ -181,7 +181,7 @@ Check correctness of *chainbase* locking.
 
 Validate all supply invariants check out.
 
-See: [#1477](https://github.com/steemit/steem/issues/1477), [#1649](https://github.com/steemit/steem/issues/1649)
+See: [#1477]({{ 'https://github.com/steemit/steem/issues/1477' | archived_url }}), [#1649]({{ 'https://github.com/steemit/steem/issues/1649' | archived_url }})
 
 ```bash
 --validate-database-invariants
@@ -199,7 +199,7 @@ The database configuration file location  **MIRA only.**
 
 Allows to force immediate data import at plugin startup.  By default storage is supplied during reindex process.
 
-See: [#1987](https://github.com/steemit/steem/issues/1987)
+See: [#1987]({{ 'https://github.com/steemit/steem/issues/1987' | archived_url }})
 
 ```bash
 --account-history-rocksdb-immediate-import
@@ -209,7 +209,7 @@ See: [#1987](https://github.com/steemit/steem/issues/1987)
 
 Allows you to specify the block number that the data import process should stop at.
 
-See: [#1987](https://github.com/steemit/steem/issues/1987)
+See: [#1987]({{ 'https://github.com/steemit/steem/issues/1987' | archived_url }})
 
 ```bash
 --account-history-rocksdb-stop-import-at-block=1234
@@ -255,7 +255,7 @@ See: [v1.24.2](https://gitlab.syncad.com/hive/hive/-/releases/v1.24.2)
 
 Chain ID to connect to.  **Testnet only.**
 
-See: [PR#1631](https://github.com/steemit/steem/pull/1631), [#2827](https://github.com/steemit/steem/issues/2827)
+See: [PR#1631]({{ 'https://github.com/steemit/steem/pull/1631' | archived_url }}), [#2827]({{ 'https://github.com/steemit/steem/issues/2827' | archived_url }})
 
 ```bash
 --chain-id=d043ab83d223f25f37e1876fe48a240d49d8e4b1daa2342064990a8036a8bb5b
