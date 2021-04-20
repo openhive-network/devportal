@@ -3,7 +3,7 @@
 ---
 - name: Resource Credit API
   description: |
-    Allows querying of various Resource Credit metrics.  See: [RC Bandwidth System](https://github.com/steemit/steem/wiki/RC-Bandwidth-System), [0.20.2 Release Notes](https://github.com/steemit/steem/releases/tag/v0.20.2), [Developer Guide: Resource Credit System](https://hive.blog/steem/@steemitdev/developer-guide-resource-credit-system)
+    Allows querying of various Resource Credit metrics.  See: [RC Bandwidth System]({{ '/tutorials-recipes/rc-bandwidth-system.html' | relative_url }}), [0.20.2 Release Notes]({{ 'https://github.com/steemit/steem/releases/tag/v0.20.2' | archived_url }}), [Developer Guide: Resource Credit System](https://hive.blog/steem/@steemitdev/developer-guide-resource-credit-system)
   methods:
   - api_method: rc_api.find_rc_accounts
     since: HF20
@@ -46,7 +46,7 @@
     purpose: |
       Exports all relevant resource size constants, in particular the measurement-based execution time parameters.
       
-      See: [#2980](https://github.com/steemit/steem/issues/2980)
+      See: [#2980]({{ 'https://github.com/steemit/steem/issues/2980' | archived_url }})
     parameter_json: "{}"
     expected_response_json: |
       {
@@ -253,7 +253,7 @@
   - api_method: rc_api.get_resource_pool
     since: HF20
     purpose: |
-      Work in progress.  See: [#2563](https://github.com/steemit/steem/issues/2563), [PR#2678](https://github.com/steemit/steem/pull/2678)
+      Work in progress.  See: [#2563]({{ 'https://github.com/steemit/steem/issues/2563' | archived_url }}), [PR#2678]({{ 'https://github.com/steemit/steem/pull/2678' | archived_url }})
     parameter_json: "{}"
     expected_response_json: |
       {

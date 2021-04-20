@@ -1038,18 +1038,21 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_median_price)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: database_api.get_hardfork_properties
-    purpose: Returns the current properties about the blockchain's hardforks.
+    purpose: |
+      Returns the current properties about the blockchain's hardforks.
+      
+      See: [condenser_api.get_next_scheduled_hardfork]({{ '/apidefinitions/#condenser_api.get_next_scheduled_hardfork' | relative_url }}), [hardfork]({{ '/apidefinitions/#broadcast_ops_hardfork' | relative_url }})
     parameter_json: "{}"
     expected_response_json: |
       {
         "id": 0,
         "processed_hardforks": [
-          "2016-01-01T00:00:00",
-          "2016-01-01T00:00:00",
-          "2016-01-01T00:00:00",
-          "2016-01-01T00:00:00",
-          "2016-01-01T00:00:00",
-          "2016-01-01T00:00:00",
+          "2016-03-24T16:00:00",
+          "2016-04-25T17:30:00",
+          "2016-04-26T18:00:00",
+          "2016-04-27T13:00:00",
+          "2016-04-30T15:00:00",
+          "2016-05-31T17:00:00",
           "2016-06-30T14:00:00",
           "2016-07-04T00:00:00",
           "2016-07-04T01:00:00",
@@ -1067,12 +1070,13 @@
           "2018-09-25T15:00:00",
           "2019-08-27T15:00:00",
           "2019-08-29T15:00:00",
-          "2019-10-14T15:00:00"
+          "2020-03-20T14:00:00",
+          "2020-10-06T14:00:00"
         ],
-        "last_hardfork": 23,
-        "current_hardfork_version": "0.23.0",
-        "next_hardfork": "0.23.0",
-        "next_hardfork_time": "2019-10-14T15:00:00"
+        "last_hardfork": 24,
+        "current_hardfork_version": "1.24.0",
+        "next_hardfork": "1.24.0",
+        "next_hardfork_time": "2020-10-06T14:00:00"
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_hardfork_properties", "id":1}'
@@ -2337,7 +2341,7 @@
     purpose: |
       Find SMT contributions.  Contributions are needed to track individual contributions on an SMT during the ICO phase.
       
-      See: [Token Units](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#token-units), [Vesting Contributions](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#vesting-contributions)
+      See: [Token Units]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#token-units), [Vesting Contributions]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#vesting-contributions)
     parameter_json: '{"symbol_contributors":[]}'
     expected_response_json: | # TODO - recheck in HF23
       {"contributions": [
@@ -2365,7 +2369,7 @@
     purpose: |
       Find SMT emissions.
       
-      See: [Content Rewards](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#content-rewards), [Qualitative Discussion](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#qualitative-discussion)
+      See: [Content Rewards]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#content-rewards), [Qualitative Discussion]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#qualitative-discussion)
     parameter_json: '{"asset_symbol":{"nai":"@@422838704","precision":0}}'
     expected_response_json: '{"token_emissions":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -2377,7 +2381,7 @@
     purpose: |
       Find SMT.
       
-      See: [Smart Media Tokens (SMTs)](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smart-media-tokens-smts)
+      See: [Smart Media Tokens (SMTs)]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#smart-media-tokens-smts)
     parameter_json: '{"symbols":[],"ignore_precision":false}'
     expected_response_json: '{"tokens":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -2389,7 +2393,7 @@
     purpose: |
       Return an array of Numeric Asset Identifier (NAI) available to be used for new SMT to be created.
       
-      See: [Numerical Asset Identifiers](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#numerical-asset-identifiers)
+      See: [Numerical Asset Identifiers]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#numerical-asset-identifiers)
     parameter_json: "{}"
     expected_response_json: |
       {
@@ -2456,7 +2460,7 @@
       | `[{"nai": "@@422838704", "precision": 0}, 0]` | 10 | `by_symbol_id` | list 10 contributions, ordered by symbol, id |
       | `[{"nai": "@@422838704", "precision": 0}, "alice", 0]` | 10 | `by_symbol_contributor` | list 10 contributions, ordered by symbol, contributor, id |
       
-      See: [Token Units](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#token-units), [Vesting Contributions](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#vesting-contributions)
+      See: [Token Units]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#token-units), [Vesting Contributions]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#vesting-contributions)
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_smt_contributions' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_symbol_id"}'
@@ -2496,7 +2500,7 @@
       |-------------------|-|-|-|-|-|
       | `[{"nai": "@@422838704", "precision": 0}, "2019-08-07T16:54:03"]` | 10 | `by_symbol_time` | list 10 emissions, ordered by symbol, timestamp |
       
-      See: [Content Rewards](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#content-rewards), [Qualitative Discussion](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#qualitative-discussion)
+      See: [Content Rewards]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#content-rewards), [Qualitative Discussion]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#qualitative-discussion)
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_smt_token_emissions' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_symbol_time"}'
@@ -2552,7 +2556,7 @@
       | `""` | 10 | `by_control_account` | list 10 tokens, ordered by control account |
       | `["", {"nai": "@@422838704", "precision": 0}]` | 10 | `by_control_account` | list 10 tokens, ordered by control account, symbol |
       
-      See: [Smart Media Tokens (SMTs)](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md#smart-media-tokens-smts)
+      See: [Smart Media Tokens (SMTs)]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url }}#smart-media-tokens-smts)
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_smt_tokens' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_symbol"}'
@@ -2673,3 +2677,15 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_comment_pending_payouts", "params":{"comments":[["hbd.funder", "upvote-this-post-to-fund-hbdstabilizer-qr2j7n"]]}, "id":1}'
     - '{"jsonrpc":"2.0", "method":"database_api.get_comment_pending_payouts", "params":{"comments":[["hbd.funder", "upvote-this-post-to-fund-hbdstabilizer-qr2j7n"], ["arcange", "hivesql-proposal-unfunded-information-and-reaction"]]}, "id":1}'
+  - api_method: database_api.is_known_transaction
+    since: HF25
+    purpose: |
+      Only return true *if* the transaction has not expired or been invalidated.
+      If this method is called with a VERY old transaction we will return false,
+      use `account_history_api.get_transaction`.
+
+      Also see: [transaction_status_api.find_transaction]({{ '/apidefinitions/#transaction_status_api.find_transaction' | relative_url }}), [account_history_api.get_transaction]({{ '/apidefinitions/#account_history_api.get_transaction' | relative_url }})
+    parameter_json: '{"transaction_id":"0000000000000000000000000000000000000000"}'
+    expected_response_json: '{"is_known":false}'
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"database_api.is_known_transaction", "params":{"transaction_id":"0000000000000000000000000000000000000000"}, "id":1}'

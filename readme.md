@@ -130,3 +130,9 @@ An example pointing at the Hivedev testnet
 ```bash
 $ TEST_NODE=https://testnet.Hivedev.com bundle exec rake test:curl
 ```
+
+To verify previously archived urls:
+
+```bash
+$ VERIFY_ARCHIVED_URLS=true bundle exec jekyll build
+```
