@@ -34,7 +34,7 @@ are consumed by a vote transaction?  The `rcdemo` script allows us to find out:
 The `count_resources()` function is *stateless*.  That means all of the information needed to do the calculation is contained in the transaction itself.  It doesn't
 depend on what's happening on the blockchain, or what other users are doing.  [1] [2] [3]
 
-[1] Although it is possible that the calculation will change in future versions of `hived`, for example to correct the [bug](https://github.com/steemit/steem/issues/2972) where execution time is always reported as zero.
+[1] Although it is possible that the calculation will change in future versions of `hived`, for example to correct the [bug]({{ 'https://github.com/steemit/steem/issues/2972' | archived_url }}) where execution time is always reported as zero.
 
 [2] For convenience, some of the constants used in the calculation are exposed by the `size_info` member of `rc_api.get_resource_params()`.  Only a `hived` version upgrade can change any values returned by `rc_api.get_resource_params()`, so it is probably okay to query that API once, on startup or when first needed, and then cache the result forever.  Or even embed the result of `rc_api.get_resource_params()` in the source code of your library or application.
 
@@ -48,7 +48,7 @@ Let's go into details on the different kinds of resources which are limited by t
 - `resource_new_accounts` : Number of accounts created by the transaction.
 - `resource_market_bytes` : Number of bytes consumed by the transaction if it contains market operations.
 - `resource_state_bytes` : Number of bytes of chain state needed to support the transaction.
-- `resource_execution_time` : An estimate of how long the transaction will take to execute.  Zero for now due to [#2972](https://github.com/steemit/steem/issues/2972).
+- `resource_execution_time` : An estimate of how long the transaction will take to execute.  Zero for now due to [#2972]({{ 'https://github.com/steemit/steem/issues/2972' | archived_url }}).
 
 The resources have different scales.  The resources use fixed-point arithmetic where one "tick" of the resource value is a "fractional" value of the resource.  Right now, the resource scales are scattered in different places.  The `count_resources()` result has the following scale:
 
