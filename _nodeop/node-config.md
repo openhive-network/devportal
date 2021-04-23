@@ -12,11 +12,11 @@ When running `hived` for the first time, once the startup banner appears, press 
 Also refer to:
 
 * [example_config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/example_config.ini)
-* [fullnode.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/fullnode.config.ini)
+* [fullnode.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/v0.23.0/contrib/fullnode.config.ini) (example deprecated as of 0.23.0)
 * [config-for-ahnode.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-ahnode.ini)
 * [config-for-docker.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-docker.ini)
-* [config-for-broadcaster.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/config-for-broadcaster.ini)
-* [fullnode.opswhitelist.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/contrib/fullnode.opswhitelist.config.ini)
+* [config-for-broadcaster.ini](https://gitlab.syncad.com/hive/hive/-/blob/v0.23.0/contrib/config-for-broadcaster.ini) (example deprecated as of 0.23.0)
+* [fullnode.opswhitelist.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/v0.23.0/contrib/fullnode.opswhitelist.config.ini) (example deprecated as of 0.23.0)
 
 ### Sections
 
