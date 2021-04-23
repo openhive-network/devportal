@@ -1954,7 +1954,7 @@
         
         VESTS were restored in a later transaction:
           
-        https://hiveblocks.com/tx/1d600db22fc6f9b362db36d9f0fc521b95f8894f
+        [https://hiveblocks.com/tx/1d600db22fc6f9b362db36d9f0fc521b95f8894f](https://hiveblocks.com/tx/1d600db22fc6f9b362db36d9f0fc521b95f8894f)
         
         See: [Block No. 47797680](https://hiveblocks.com/b/47797680), [!19](https://gitlab.syncad.com/hive/hive/-/merge_requests/19), [5edf4f0](https://gitlab.syncad.com/hive/hive/-/commit/5edf4f0ba04426982ba655bf83d5acd746736d49), [restore.js](https://github.com/drov0/restore-hf23-balances/blob/master/restore.js)
       roles:
