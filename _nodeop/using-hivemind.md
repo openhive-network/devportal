@@ -112,6 +112,15 @@ Now that the basic setup is done you are able to sync the database.
 $ hive sync
 ```
 
+**Note:** Do not use a public node to `hive sync`.  Instead of doing an initial sync, you can use a data dump, to speed up the process: [Daily Hivemind backups
+ :: How to restore](https://peakd.com/hive-139531/@emrebeyler/daily-hivemind-backups#how-to-restore)
+ 
+```bash
+# Assunes 8 cpu cores:
+$ pg_restore -j 8 -U postgres -d hive path/to/dump_file.dump
+$ hive sync
+```
+
 You can also check the status of your synced database.
 
 ```bash

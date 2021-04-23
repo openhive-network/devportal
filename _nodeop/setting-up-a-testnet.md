@@ -18,7 +18,7 @@ Setting up a testnet can be as simple as running a single Docker command, such a
 docker run -d -P inertia/tintoy:latest
 ```
 
-This docker command is useful for rapid testnet deploy because it only creates 2,000 accounts.
+This docker command is useful for rapid testnet deploy because it only creates 2,000 accounts.  See: [inertia/tintoy](https://hub.docker.com/r/inertia/tintoy)
 
 But in this tutorial, we will go over the **no docker** approach which will create all accounts that exist on mainnet.  The idea is to try to mirror the accounts and balances in proportion to the mainnet.
 
