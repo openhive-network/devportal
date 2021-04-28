@@ -115,7 +115,7 @@ Block log should be place in `blockchain` directory below `data_dir` and node sh
 
 Replay helps to sync blockchain in much faster rate, but as blockchain grows in size replay might also take some time to verify blocks.
 
-There is another [trick which might help](https://github.com/steemit/steem/issues/2391) with faster sync/replay on smaller equipped servers:
+There is another [trick which might help]({{ 'https://github.com/steemit/steem/issues/2391' | archived_url }}) with faster sync/replay on smaller equipped servers:
 
 ```
 while :
