@@ -27,7 +27,7 @@ In `radiator`, we can request follow results using `condenser_api.get_following`
 
 #### 1. Configure connection<a name="connection"></a>
 
-[`get_follow.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/18_follow_another_user/get_follow.rb)
+[`get_follow.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/19_get_follower_and_following_list/get_follow.rb)
 
 In the first few lines we initialize the configured library and packages (libraries are described in `Gemfile`):
 

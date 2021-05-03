@@ -20,6 +20,8 @@ Historically, applications that wanted to retrieve replies written to a particul
 
 ### Making the api call
 
+[`get_account_replies.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/08_get_account_replies/get_account_replies.rb)
+
 To request the latest replies to a particular author, we can use the `get_account_history` method:
 
 ```ruby

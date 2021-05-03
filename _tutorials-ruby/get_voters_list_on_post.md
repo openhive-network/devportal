@@ -5,7 +5,6 @@ description: "This example will output the active vote totals for the post/comme
 layout: full
 canonical_url: get_voters_list_on_post.html
 ---
-
 Full, runnable src of [Get Voters List On Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/06_get_voters_list_on_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-06_get_voters_list_on_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/06_get_voters_list_on_post)).
 
 ### Script

@@ -30,6 +30,8 @@ We will also describe the most commonly used fields from the response object.
 
 ### Making the api call
 
+[`get_post_details.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/05_get_post_details/get_post_details.rb)
+
 To request a specific post we use the `get_content` method:
 
 ```ruby

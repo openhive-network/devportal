@@ -5,8 +5,6 @@ description: "To access the Hive blockchain using Ruby, install the Radiator gem
 layout: full
 canonical_url: getting_started.html
 ---
-Full, runnable src of [all ruby tutorials](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just the Rubyt tutorials: [devportal-master-tutorials-python.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master-tutorials-ruby.zip?path=tutorials/ruby)).
-
 Full, runnable src of [tutorial_title](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/tutorial_slug) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-tutorial_slug.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/tutorial_slug)).
 
 ### Setup

@@ -20,6 +20,8 @@ Historically, applications that wanted to retrieve comments written by a particu
 
 ### Making the api call
 
+[`get_account_comments.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/09_get_account_comments/get_account_comments.rb)
+
 To request the latest comments by a particular author, we can use the `get_account_history` method:
 
 ```ruby
