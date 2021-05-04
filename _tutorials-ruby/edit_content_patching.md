@@ -11,6 +11,9 @@ Full, runnable src of [Edit Content Patching](https://gitlab.syncad.com/hive/dev
 
 This tutorial will show a technique for efficiently editing a post by only broadcasting changes to the post body.
 
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
+
 ### Script
 
 [`edit_content_patching.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/12_edit_content_patching/edit_content_patching.rb)

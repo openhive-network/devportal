@@ -9,6 +9,13 @@ Full, runnable src of [Get Account Comments](https://gitlab.syncad.com/hive/devp
 
 Historically, applications that wanted to retrieve comments written by a particular account would use `get_state`.  But this method has been scheduled for deprecation.  So we'll use a more supported approach in this tutorial using `get_account_history`.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [tags_api.get_discussions_by_comments]({{ '/apidefinitions/#tags_api.get_discussions_by_comments' | relative_url }})
+* [condenser_api.get_discussions_by_comments]({{ '/apidefinitions/#condenser_api.get_discussions_by_comments' | relative_url }})
+* [tags_api.get_discussions_by_created]({{ '/apidefinitions/#tags_api.get_discussions_by_created' | relative_url }})
+* [condenser_api.get_discussions_by_created]({{ '/apidefinitions/#condenser_api.get_discussions_by_created' | relative_url }})
+
 ### Sections
 
 1. [Making the api call](#making-the-api-call) - Requesting account history

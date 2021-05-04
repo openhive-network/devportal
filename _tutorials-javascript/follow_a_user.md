@@ -20,6 +20,9 @@ We are using the `broadcast.json` operation provided by the `dhive` library to f
 
 A simple HTML UI is used to capture the required information, after which the broadcast operation can be compiled.
 
+Also see:
+* [custom_json_operation]({{ '/apidefinitions/#broadcast_ops_custom_json' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with the Hive blockchain

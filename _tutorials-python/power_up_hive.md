@@ -16,6 +16,9 @@ The beem library has a built-in function to transmit transactions to the blockch
 1. _amount_ - The amount of HIVE to power up. This must be of the `float` data type
 1. _to_ - The account to where the HIVE will be powered up
 
+Also see:
+* [transfer_to_vesting_operation]({{ '/apidefinitions/#broadcast_ops_transfer_to_vesting' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

@@ -21,6 +21,9 @@ We are using the `account witness vote` function to create the vote which we the
 1.  _witness_ - The name of the witness being voted for
 1.  _approve_ - This is a boolean value determining whether the voting opration is to vote for, or to remove a vote
 
+Also see:
+* [condenser_api.get_witnesses_by_vote]({{ '/apidefinitions/#condenser_api.get_witnesses_by_vote' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain

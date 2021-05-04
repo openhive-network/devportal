@@ -13,6 +13,11 @@ This tutorial fetches the contents of a single post and explains all data relate
 
 We will also describe the most commonly used fields from the response object.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }})
+* [condenser_api.get_content]({{ '/apidefinitions/#condenser_api.get_content' | relative_url }})
+
 ### Sections
 
 1. [Making the api call](#making-the-api-call) - Use `get_content` to a specific post

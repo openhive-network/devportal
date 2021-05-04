@@ -19,6 +19,9 @@ The `disallow` method uses the same process except for `weight` which is not req
 
 There is a permission limit defined by [`HIVE_MAX_AUTHORITY_MEMBERSHIP`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MAX_AUTHORITY_MEMBERSHIP' | relative_url }}) that limits the number of authority membership to 40 (max).
 
+Also see:
+* [account_update_operation]({{ '/apidefinitions/#broadcast_ops_account_update' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Input user info and connection to production

@@ -7,6 +7,10 @@ canonical_url: vote_on_content.html
 ---
 Full, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/17_vote_on_content) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-17_vote_on_content.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/17_vote_on_content)).
 
+Also see:
+* [vote_operation]({{ '/apidefinitions/#broadcast_ops_vote' | relative_url }})
+* [get_active_votes]({{ '/apidefinitions/#condenser_api.get_active_votes' | relative_url }})
+
 ### Sections
 
 1. [Making the api call](#making-the-api-call) - broadcasting the operation

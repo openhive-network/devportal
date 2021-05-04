@@ -13,6 +13,9 @@ This tutorial runs on the main Hive blockchain. And accounts queried are real us
 
 This tutorial will show few functions such as querying account by name and getting account balance. We are using the `call` function provided by the `dhive` library to pull account from the Hive blockchain. A simple HTML interface is used to capture the account and its HIVE balance as well as allowing interactively power up part or all of HIVE to choose account.
 
+Also see:
+* [transfer_to_vesting_operation]({{ '/apidefinitions/#broadcast_ops_transfer_to_vesting' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.

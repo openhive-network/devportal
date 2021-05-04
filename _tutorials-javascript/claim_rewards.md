@@ -13,6 +13,9 @@ This tutorial runs on the main Hive blockchain. And accounts queried are real us
 
 This tutorial will show few functions such as querying account by name and getting unclaimed rewards. We are using the `call` function provided by the `dhive` library to pull accounts from the Hive blockchain. A simple HTML interface is used to capture the account and its unclaimed balance as well as allowing interactively claim rewards.
 
+Also see:
+* [claim_reward_balance_operation]({{ '/apidefinitions/#broadcast_ops_claim_reward_balance' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.

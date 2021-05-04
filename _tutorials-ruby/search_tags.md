@@ -9,6 +9,9 @@ Full, runnable src of [Search Tags](https://gitlab.syncad.com/hive/devportal/-/t
 
 This tutorial will return tags sorted by trending, up to a specified limit.
 
+Also see:
+* [condenser_api.get_trending_tags]({{ '/apidefinitions/#condenser_api.get_trending_tags' | relative_url }})
+
 ### Sections
 
 1. [Making the api call](#making-the-api-call) - performing the lookup

@@ -15,6 +15,9 @@ The Hive python library has a built-in function to pull information from the blo
 
 The function to query the expiring delegations use the the same parameters except that the `start_account` is replaced by a `start_date`.  If this value is greater than 7 days from present, it will always include all delegations that are pending expiration.
 
+Also see:
+* [condenser_api.get_vesting_delegations]({{ '/apidefinitions/#condenser_api.get_vesting_delegations' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to production

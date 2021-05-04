@@ -13,6 +13,9 @@ This tutorial runs on the main Hive blockchain.
 
 This tutorial will show the method of capturing a queried tag name and matching it to the hive database. We are using the `call` function provided by the `dhive` library to pull tags from the hive blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
 
+Also see:
+* [condenser_api.get_trending_tags]({{ '/apidefinitions/#condenser_api.get_trending_tags' | relative_url }})
+
 ## steps
 
 1.  [**Configure connection**](#configure-conn) Configuration of `dhive` to use the proper connection and network.

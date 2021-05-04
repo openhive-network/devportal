@@ -11,6 +11,9 @@ Full, runnable src of [Account Reputation](https://gitlab.syncad.com/hive/devpor
 
 Because blockchains don't natively store floating point, account reputation is stored on the blockchain as a long integer string which requires special function or formula to convert in more human readable format.  We can define a function that will convert this value, but beem already has the ability to interpret reputation automatically.
 
+Also see:
+* [get_account_reputations]({{ '/apidefinitions/#reputation_api.get_account_reputations' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#app-setup) - Library install and import

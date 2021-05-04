@@ -13,6 +13,11 @@ This tutorial will show how to search for a valid account name and then create a
 
 This tutorial will show few functions such as querying account by name and check if username is taken or available to register. We are using the `call` function provided by the `dhive` library to pull account from the Hive blockchain. We then create proper private keys for new account. A simple HTML interface is used to enter payment of account creation fee and create account right inside tutorial. We use the `account_create` function to commit the transaction to the blockchain. This function is used to create what is called a "non-discounted account". This means that the creator account needs to supply the exact `account_creation_fee` in HIVE in order for the transaction to process successfully. Currently this value is set to 3 HIVE. There is a second method of creating accounts using tokens. These are called "discounted accounts". In stead of HIVE, the `account_creation_fee` is paid in RC (resource credits). There are however a limited amount of discounted accounts that can be claimed which is decided upon by the witnesses. This account creation process is done in two steps, first claiming an account and then creating the account.
 
+Also see:
+* [account_create_operation]({{ '/apidefinitions/#broadcast_ops_account_create' | relative_url }})
+* [account_create_with_delegation_operation]({{ '/apidefinitions/#broadcast_ops_account_create_with_delegation' | relative_url }})
+* [claim_account_operation]({{ '/apidefinitions/#broadcast_ops_account_claim_account' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.

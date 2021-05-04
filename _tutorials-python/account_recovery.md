@@ -33,6 +33,11 @@ The `recover_account` function has the following parameters:
 1.  _recent_owner_authority_ - The OLD owner PUBLIC key of the account to be recovered
 1.  _extensions_ - empty array
 
+Also see:
+* [request_account_recovery_operation]({{ '/apidefinitions/#broadcast_ops_request_account_recovery' | relative_url }})
+* [recover_account_operation]({{ '/apidefinitions/#broadcast_ops_recover_account' | relative_url }})
+* [account_update_operation]({{ '/apidefinitions/#broadcast_ops_account_update' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Input user info and connection to production

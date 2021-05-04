@@ -17,6 +17,10 @@ Voting is a way of promoting good content via an `upvote` or reporting misuse, s
 1. _weight_ - This value determines whether the vote is an upvote (+100.0), a downvote (-100.0), or zero (0) to remove previous vote.
 1. _username_ - The name of the account that is executing the vote
 
+Also see:
+* [vote_operation]({{ '/apidefinitions/#broadcast_ops_vote' | relative_url }})
+* [get_active_votes]({{ '/apidefinitions/#condenser_api.get_active_votes' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

@@ -17,6 +17,9 @@ The beem library has a built-in function to transmit transactions to the blockch
 1. _what_ - The list of states to be followed.  Valid states are `["blog"]`, `["ignore"]`, and `[]` (empty to clear a previous state)
 1. _account_ - The name of the account that is executing the follow/unfollow
 
+Also see:
+* [custom_json_operation]({{ '/apidefinitions/#broadcast_ops_custom_json' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet

@@ -13,6 +13,9 @@ In this tutorial we will explain and show you how to change your account passwor
 
 The beem library has a built-in function to update your account details on the blockchain.  We are using the [`Account_update`](https://beem.readthedocs.io/en/latest/beembase.operationids.html?highlight=Account_update#beembase-operationids) operation and [`TransactionBuilder`](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html#beem.transactionbuilder.TransactionBuilder) to make these changes.  We first get the existing keys from your account then recreate these from your new password. Once these have been created using your new password we commit them to the blockchain.
 
+Also see:
+* [account_update_operation]({{ '/apidefinitions/#broadcast_ops_account_update' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to production

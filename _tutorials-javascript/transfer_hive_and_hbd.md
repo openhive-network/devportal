@@ -25,6 +25,9 @@ We are using the `broadcast.transfer` function provided by the `dhive` library t
 
 It is noteworthy that Hive Power (VESTS) cannot be transferred with this operation.
 
+Also see:
+* [transfer_operation]({{ '/apidefinitions/#broadcast_ops_transfer' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain

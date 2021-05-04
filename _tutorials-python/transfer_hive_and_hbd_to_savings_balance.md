@@ -26,6 +26,10 @@ and `transfer_from_savings` has the following parameters:
 1.  _memo_ - An optional text field containing comments on the withdrawal
 1.  _request id_ - Integer identifier for tracking the withdrawal. This needs to be a unique number for a specified user
 
+Also see:
+* [transfer_to_savings_operation]({{ '/apidefinitions/#broadcast_ops_transfer_to_savings' | relative_url }})
+* [transfer_from_savings_operation]({{ '/apidefinitions/#broadcast_ops_transfer_from_savings' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

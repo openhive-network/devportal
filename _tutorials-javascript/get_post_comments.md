@@ -15,6 +15,13 @@ We will also explain the most commonly used fields from the response object as w
 
 Each post might have comments/replies that is interesting and contributes to the topic and discussion. Hive offers out of box API for pulling replies for particular post with `get_content_replies`. We will fetch replies and list them in simple user interface.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }})
+* [condenser_api.get_content]({{ '/apidefinitions/#condenser_api.get_content' | relative_url }})
+* [tags_api.get_content_replies]({{ '/apidefinitions/#tags_api.get_content_replies' | relative_url }})
+* [condenser_api.get_content_replies]({{ '/apidefinitions/#condenser_api.get_content_replies' | relative_url }})
+
 ## Steps
 
 1. [**Fetching posts**](#fetching-posts) Getting trending posts

@@ -17,6 +17,9 @@ Tutorial is demonstrating the typical process of editing content that has been p
 
 We are using the `broadcast.comment` function provided by `dhive` which generates, signs, and broadcast the transaction to the network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, it's a post, when there is, it's a comment. When editing a post, we need to make sure that we don't resubmit the same post over and over again, which will spam the network and adds additional cost to operate the platform. Instead we will use a package called `diff-match-patch`, which allows us to only apply changes and save resources on the Hive platform.
 
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
+
 ## Steps
 
 1.  [**Configure testnet**](#configure-app) Testnet connection should be established with proper configurations

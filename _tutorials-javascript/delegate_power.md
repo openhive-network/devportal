@@ -13,6 +13,10 @@ This tutorial runs on the main Hive blockchain. And accounts queried/searched ar
 
 This tutorial will show few functions such as querying account by name and getting account vesting balance. We then convert VESTS to HIVE POWER for convenience of user. And allow user to choose portion or all holdings of VESTS to delegate other users. A simple HTML interface is provided to capture the account with search and its VESTS balance as well as allowing interactively delegate. It should be noted that when a delegation is cancelled, the VESTS will only be available again after a 5 day cool-down period.
 
+Also see:
+* [delegate_vesting_shares_operation]({{ '/apidefinitions/#broadcast_ops_delegate_vesting_shares' | relative_url }})
+* [get_vesting_delegations]({{ '/apidefinitions/#condenser_api.get_vesting_delegations' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.
