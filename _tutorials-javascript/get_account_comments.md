@@ -13,6 +13,13 @@ This tutorial will show how to fetch comments made by a specific account (in thi
 
 We are using the `get_state` function with `dhive` that returns the current state of the network as well as additional content. Each content body is written in markdown and could be submitted to the blockchain by many different applications built on top of Hive. For that reason we are using the `remarkable` npm package to parse markdown in a readable format.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [tags_api.get_discussions_by_comments]({{ '/apidefinitions/#tags_api.get_discussions_by_comments' | relative_url }})
+* [condenser_api.get_discussions_by_comments]({{ '/apidefinitions/#condenser_api.get_discussions_by_comments' | relative_url }})
+* [tags_api.get_discussions_by_created]({{ '/apidefinitions/#tags_api.get_discussions_by_created' | relative_url }})
+* [condenser_api.get_discussions_by_created]({{ '/apidefinitions/#condenser_api.get_discussions_by_created' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#app-setup) Configuration of `dhive` to use the proper connection and network.

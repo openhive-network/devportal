@@ -16,6 +16,10 @@ We are using the `get_all_accounts` and `Trending_tags` functions that are built
 1.  _account/aftertag_ - The string value from where to start the search. If this value is left empty the search will start from the first value available
 1.  _limit_ - The maximum number of names/tags that the query retrieves
 
+Also see:
+* [condenser_api.lookup_accounts]({{ '/apidefinitions/#condenser_api.lookup_accounts' | relative_url }})
+* [condenser_api.get_trending_tags]({{ '/apidefinitions/#condenser_api.get_trending_tags' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library import and Hive class initialization

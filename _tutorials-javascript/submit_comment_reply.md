@@ -14,6 +14,9 @@ Being able to post a comment is critical to most social applications built on Hi
 
 We are using the `broadcast.comment` function provided by the `dhive` library which generates, signs, and broadcasts the transaction to the network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, the it's a post, when there is, it's a comment. An account can broadcast a comment on the blockchain every 3 seconds (with every new block) enabling the user to comment as they wish with almost no wait time between commits.
 
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Import `dhive` into `app.js` and prepare it to communicate with a Hive blockchain

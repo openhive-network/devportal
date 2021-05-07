@@ -14,6 +14,9 @@ This tutorial will show the method of properly formatting content followed by br
 
 We are using the `client.broadcast.comment` function provided by `dhive` which generates, signs, and broadcasts the transaction to the network. On the Hive platform, posts and comments are all internally stored as a `comment` object, differentiated by whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, otherwise it's a comment.
 
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Configuration of `dhive` to use the proper connection and network.

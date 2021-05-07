@@ -9,6 +9,11 @@ Full, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com
 
 To respond to live activity on the blockchain, a common approach is to make a request for the current block number, access all of the information in that block, and repeat.  Many API clients have dedicated tools for simplifying this process.  In Radiator, this tool is part of the `Radiator::Stream` class.  In addition, Radiator will allow you to specify exactly what type of operation you're interested in.
 
+Also see:
+* [block_api.get_block]({{ '/apidefinitions/#block_api.get_block' | relative_url }})
+* [block_api.get_block_range]({{ '/apidefinitions/#block_api.get_block_range' | relative_url }})
+* [account_history_api.enum_virtual_ops]({{ '/apidefinitions/#account_history_api.enum_virtual_ops' | relative_url }})
+
 ### Sections
 
 1. [Streaming Transactions](#streaming-transactions)

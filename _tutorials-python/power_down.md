@@ -13,6 +13,9 @@ In this tutorial we will explain and show you how to power down some or all of y
 
 The beem library has a built-in function to transmit transactions to the blockchain.  We are using the [`withdraw_vesting`](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.withdraw_vesting) method found within the account instance.  When you power down, the converted VESTS (HIVE Power) will not be available as HIVE immediately.  It is converted in 13 equal parts and transferred into your HIVE wallet weekly, the first portion only being available a week after the power down was initiated.  Before we do the conversion, we check the current balance of the account to check how much HIVE Power is available.  This is not strictly necessary as the process will automatically abort with the corresponding error, but it does give some insight into the process as a whole. We use the [`Account`](https://beem.readthedocs.io/en/latest/beem.account.html) module to check for this.
 
+Also see:
+* [withdraw_vesting_operation]({{ '/apidefinitions/#broadcast_ops_withdraw_vesting' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

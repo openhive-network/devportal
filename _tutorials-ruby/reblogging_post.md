@@ -9,6 +9,9 @@ Full, runnable src of [Reblogging Post](https://gitlab.syncad.com/hive/devportal
 
 For this operation, we will use `custom_json` and a properly formed id and payload so that `follow_plugin` will pick up the reblog data and display the selected post in the feed of the account doing the reblog.
 
+Also see:
+* [custom_json_operation]({{ '/apidefinitions/#broadcast_ops_custom_json' | relative_url }})
+
 ### Sections
 
 1. [Making the api call](#making-the-api-call) - broadcasting the operation

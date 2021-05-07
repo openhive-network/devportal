@@ -9,6 +9,11 @@ Full, runnable src of [Get Account Replies](https://gitlab.syncad.com/hive/devpo
 
 Historically, applications that wanted to retrieve replies written to a particular account would use `get_state`.  But this method has been scheduled for deprecation.  So we'll use a more supported approach in this tutorial using `get_account_history`.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [tags_api.get_content_replies]({{ '/apidefinitions/#tags_api.get_content_replies' | relative_url }})
+* [condenser_api.get_content_replies]({{ '/apidefinitions/#condenser_api.get_content_replies' | relative_url }})
+
 ### Sections
 
 1. [Making the api call](#making-the-api-call) - Requesting account history
@@ -19,6 +24,8 @@ Historically, applications that wanted to retrieve replies written to a particul
 1. [To Run](#to-run) - Running the example.
 
 ### Making the api call
+
+[`get_account_replies.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/08_get_account_replies/get_account_replies.rb)
 
 To request the latest replies to a particular author, we can use the `get_account_history` method:
 

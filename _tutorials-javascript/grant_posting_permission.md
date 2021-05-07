@@ -27,6 +27,9 @@ The only other information required is the username of the account that the post
 
 The tutorial is set up with three individual functions for each of the required operations - checking permission status, granting permission and revoking permission.
 
+Also see:
+* [account_update_operation]({{ '/apidefinitions/#broadcast_ops_account_update' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain

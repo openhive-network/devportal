@@ -22,6 +22,9 @@ A simple HTML interface is used to capture the required information after which 
 
 This tutorial makes use of the This function is taken from the tutorial [Blog Feed](blog_feed.html) to get a list of trending posts.
 
+Also see:
+* [custom_json_operation]({{ '/apidefinitions/#broadcast_ops_custom_json' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#configure_connection) Configuration of `dhive` to use the proper connection and network.

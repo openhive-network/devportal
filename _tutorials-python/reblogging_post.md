@@ -13,6 +13,9 @@ Tutorial will also explain and show you how to sign/broadcast transaction on **H
 
 Beem has built-in functionality to commit transaction and broadcast it to the network. 
 
+Also see:
+* [custom_json_operation]({{ '/apidefinitions/#broadcast_ops_custom_json' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#app-setup) - Library install and import

@@ -9,6 +9,9 @@ Full, runnable src of [Follow Another User](https://gitlab.syncad.com/hive/devpo
 
 This tutorial will take you through the process of following/muting/unfollowing/unmuting an author and checking the follow status of an author.
 
+Also see:
+* [custom_json_operation]({{ '/apidefinitions/#broadcast_ops_custom_json' | relative_url }})
+
 ### Sections
 
 1. [Follow](#follow)

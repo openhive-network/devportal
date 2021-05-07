@@ -17,6 +17,9 @@ The beem library has a built-in function to transmit transactions to the blockch
 1.  _reward hbd_ - The amount of HBD to claim
 1.  _reward vests_ - The amount of VESTS (HIVE POWER) to claim
 
+Also see:
+* [claim_reward_balance_operation]({{ '/apidefinitions/#broadcast_ops_claim_reward_balance' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#setup) - Library install and import. Connection to testnet

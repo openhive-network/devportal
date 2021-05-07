@@ -15,6 +15,11 @@ We will also explain the most commonly used fields from the response object.
 
 Each post has voters that support content and play big role in reward distribution. Getting details of each voter and their vote value, time, etc. is another crucial information for authors and app developers. We will be using `get_active_votes` API call to retrieve that information right from Hive blockchain.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [tags_api.get_active_votes]({{ '/apidefinitions/#tags_api.get_active_votes' | relative_url }})
+* [condenser_api.get_active_votes]({{ '/apidefinitions/#condenser_api.get_active_votes' | relative_url }})
+
 ## Steps
 
 1. [**Fetching posts**](#fetching-posts) Get trending post list

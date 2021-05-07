@@ -17,6 +17,9 @@ preferred to RPC-API for performance, stability, scalability and security.
 Unfortunately, client library support for RC algorithms is lacking.  This tutorial, and its accompanying script, are intended to
 provide guidance to UI and client library maintainers about how to add support for the RC system.
 
+Also see:
+* [resource credits]({{ '/search/?q=resource+credits' | relative_url }})
+
 # The RC demo script
 
 To get up and running, I (`theoretical`) have transcribed some key algorithms from C++ to Python.  For example, how many resources

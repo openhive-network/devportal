@@ -13,6 +13,9 @@ We will learn how to allocate a percentage for withdrawal to other accounts usin
 
 This tutorial will demonstrate a few functions such as querying account by name and determining the vesting balance of the related account. This will allow us to set "withdraw routes" to other accounts with a percent selection and auto power up function. This feature is quite useful if you want to withdraw a portion of your HIVE to a separate account or POWER UP other accounts as you withdraw from one account.
 
+Also see:
+* [set_withdraw_vesting_route_operation]({{ '/apidefinitions/#broadcast_ops_set_withdraw_vesting_route' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.
