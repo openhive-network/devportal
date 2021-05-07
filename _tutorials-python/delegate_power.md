@@ -13,6 +13,10 @@ In this tutorial we show you how to delegate a portion of an accounts available 
 
 The beem library has a built-in function to transmit transactions to the blockchain. We are using the [`delegate_vesting_shares`](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.delegate_vesting_shares) method found within the account instance.  When you delegate power you make a portion of your HIVE Power available to another user.  This can empower an application, author, or curator to make higher votes.  Before we do the delegation, we use the [`Account`](https://beem.readthedocs.io/en/latest/beem.account.html) module to check the current HIVE Power balance of the account to see what is available.  This is not strictly necessary but adds to the usability of the process.  It should be noted that when a delegation is cancelled the HIVE Power will only be available again after 7 days.
 
+Also see:
+* [delegate_vesting_shares_operation]({{ '/apidefinitions/#broadcast_ops_delegate_vesting_shares' | relative_url }})
+* [get_vesting_delegations]({{ '/apidefinitions/#condenser_api.get_vesting_delegations' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

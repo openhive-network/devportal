@@ -7,6 +7,13 @@ canonical_url: get_post_comments.html
 ---
 Full, runnable src of [Get Post Comments](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/07_get_post_comments) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-07_get_post_comments.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/07_get_post_comments)).
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }})
+* [condenser_api.get_content]({{ '/apidefinitions/#condenser_api.get_content' | relative_url }})
+* [tags_api.get_content_replies]({{ '/apidefinitions/#tags_api.get_content_replies' | relative_url }})
+* [condenser_api.get_content_replies]({{ '/apidefinitions/#condenser_api.get_content_replies' | relative_url }})
+
 ### Script
 
 [`comments_list.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/07_get_post_comments/comments_list.rb)

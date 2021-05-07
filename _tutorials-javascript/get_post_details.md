@@ -15,6 +15,11 @@ We will also explain the most commonly used fields from the response object as w
 
 Accounts have unique `permlink` - permanent link for each of their posts. And Hive blockchain provides API to directly fetch current state of the post and its details. We will be using `get_content` to retrieve additional details. We can easily reformat data in a way that fits out application.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }})
+* [condenser_api.get_content]({{ '/apidefinitions/#condenser_api.get_content' | relative_url }})
+
 ## Steps
 
 1. [**Fetching posts**](#fetch-posts) Trending posts list

@@ -18,6 +18,9 @@ The beem library has a built-in function to transmit transactions to the blockch
 1. _asset_ - A string value specifying whether `HIVE` or `HBD` is being transferred
 1. _memo_ - An optional text field containing comments on the transfer. This value may begin with '#' for encrypted messaging
 
+Also see:
+* [transfer_operation]({{ '/apidefinitions/#broadcast_ops_transfer' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

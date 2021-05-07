@@ -13,6 +13,9 @@ In this tutorial we show you how to create a list of current witness votes from 
 
 The beem library has a built-in function to transmit transactions to the blockchain.  We are using the [`approvewitness`](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.approvewitness) and [`disapprovewitness`](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.disapprovewitness) method found within the account instance.  We also use the [`WitnessesVotedByAccount`](https://beem.readthedocs.io/en/latest/beem.witness.html#beem.witness.WitnessesVotedByAccount) module to query the blockchain for a list of voted witnesses.
 
+Also see:
+* [condenser_api.get_witnesses_by_vote]({{ '/apidefinitions/#condenser_api.get_witnesses_by_vote' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

@@ -28,6 +28,10 @@ required for the voting operation:
 
 Due to the low amount of posts on the testnet we added an additional step to create a post before we vote on it. The values are auto loaded in the respective input boxes. A full tutorial on how to create a new post can be found on the [Hive Devportal]({{ '/tutorials-javascript/submit_post.html' | relative_url }})
 
+Also see:
+* [vote_operation]({{ '/apidefinitions/#broadcast_ops_vote' | relative_url }})
+* [get_active_votes]({{ '/apidefinitions/#condenser_api.get_active_votes' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain

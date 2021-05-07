@@ -19,6 +19,9 @@ Being able to patch a post is critical to save resources on Hive.  The beem libr
 `patch_make` - Creates a patch based on the calculated differences. This method can be executed in 3 different ways based on the parameters. By using the two separate text fields in question, by using only the calculated difference, or by using the original text along with the calculated difference.
 `patch_apply` - This applies the created patch to the original text field.
 
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import.

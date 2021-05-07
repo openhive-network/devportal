@@ -23,6 +23,9 @@ The second function is `getExpiringVestingDelegations` with parameters:
 2.  _from time_ - The date from where the query will be run. Pending expirations clear after 7 days so it will never be older than that. This value can however be set to anytime before the 7 days of expiration and it will return the relevant transactions
 3.  _limit_ - The quantity of results that is queried from the blockchain
 
+Also see:
+* [condenser_api.get_vesting_delegations]({{ '/apidefinitions/#condenser_api.get_vesting_delegations' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain

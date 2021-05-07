@@ -13,6 +13,9 @@ This tutorial pulls a list of the most recent five user's posts from the blockch
 
 Tutorial is demonstrates the typical process of fetching account blog posts. It is quite useful if you want to embedd your blog posts on your website these tutorial will help you achieve that goal as well. This tutorial will explain and show you how to access the **Hive** blockchain using the [@hivechain/dhive](https://gitlab.syncad.com/hive/dhive) library to build a basic blog list of posts filtered by a _tag_
 
+Also see:
+* [get_discussions_by_blog]({{ '/apidefinitions/#tags_api.get_discussions_by_blog' | relative_url }})
+
 ## Steps
 
 1. [**Configure connection**](#Configure-connection) Configuration of dhive to use proper connection and network

@@ -13,6 +13,9 @@ This tutorial runs on the main Hive blockchain. Therefore, any accounts used her
 
 This tutorial will demonstrate a few functions such as querying account by name and determining the vesting balance of the related account. We are using the `call` function provided by the `dhive` library to pull account data from the Hive blockchain. We then calculate HIVE Power from the VESTS (vesting shares) for the convenience of the user. We will use a simple HTML interface to capture the account and its VESTS. It also has an interactive UI to perform a power down in full or in part.
 
+Also see:
+* [withdraw_vesting_operation]({{ '/apidefinitions/#broadcast_ops_withdraw_vesting' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Setup `dhive` to use the proper connection and network.

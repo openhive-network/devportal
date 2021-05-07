@@ -26,6 +26,9 @@ The Hive python library has built-in functionality to transmit transactions to t
 1. _amount_ - The amount of HBD that will be converted
 1. _request-id_ - An identifier for tracking the conversion. This parameter is optional
 
+Also see:
+* [convert_operation]({{ '/apidefinitions/#broadcast_ops_convert' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import. Connection to testnet

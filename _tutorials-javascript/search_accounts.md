@@ -18,6 +18,9 @@ We are using the `call` function provided by the `dhive` library to pull user na
 
 A simple HTML interface is used to both capture the string query as well as display the completed search. The layout can be found in the "index.html" file.
 
+Also see:
+* [condenser_api.lookup_accounts]({{ '/apidefinitions/#condenser_api.lookup_accounts' | relative_url }})
+
 ## Steps
 
 1. [**Configure connection**](#configure_connection) Configuration of `dhive` to use the proper connection and network.

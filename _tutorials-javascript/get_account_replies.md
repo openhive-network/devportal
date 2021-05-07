@@ -15,6 +15,11 @@ We focus on listing part of the content with simply UI as well as explain the mo
 
 We are using `get_state` function with `dhive`, which is straight-forward and this function returns current state of the network as well as additional content given proper query. Each content body, as we described in previous tutorials, is written markdown and submitted to the blockchain by many applications built on top of Hive. For that reason we are using `remarkable` npm package to parse markdown in a readable format.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [tags_api.get_content_replies]({{ '/apidefinitions/#tags_api.get_content_replies' | relative_url }})
+* [condenser_api.get_content_replies]({{ '/apidefinitions/#condenser_api.get_content_replies' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#app-setup) Setup app packages

@@ -9,6 +9,9 @@ Full, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/t
 
 A post is differentiated from a comment by whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, otherwise it's a comment.
 
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
+
 ### Script
 
 [`submit_a_new_post.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/10_submit_post/submit_a_new_post.rb)

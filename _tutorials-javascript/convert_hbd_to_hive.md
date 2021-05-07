@@ -28,6 +28,9 @@ This tutorial uses the `database API` to gather account information for the curr
 
 The only other information required is the private active key of the user.
 
+Also see:
+* [convert_operation]({{ '/apidefinitions/#broadcast_ops_convert' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with a Hive blockchain

@@ -9,6 +9,9 @@ Full, runnable src of [Search Accounts](https://gitlab.syncad.com/hive/devportal
 
 This tutorial will return account names matching the input given, up to a specified limit.
 
+Also see:
+* [condenser_api.lookup_accounts]({{ '/apidefinitions/#condenser_api.lookup_accounts' | relative_url }})
+
 ### Sections
 
 1. [Making the api call](#making-the-api-call) - performing the lookup

@@ -86,4 +86,4 @@ Additional info can also be found in [this article by hive user @holger80](https
 
 ## Allocation of RC to blockchain resources
 
-An in depth look at how RC's are assigned to each of the three resources (CPU megacycles/state memory/history size) can be found in Hive's wiki articles for [RC Bandwidth System]({{ '/tutorials-recipes/rc-bandwidth-system' | relative_url }}) and [Parameters]({{ '/tutorials-recipes/rc-bandwidth-parameters' | relative_url }}).
+An in depth look at how RC's are assigned to each of the three resources (CPU megacycles/state memory/history size) can be found in Hive's wiki articles for [RC Bandwidth System]({{ '/tutorials-recipes/rc-bandwidth-system.html' | relative_url }}) and [Parameters]({{ '/tutorials-recipes/rc-bandwidth-parameters.html' | relative_url }}).

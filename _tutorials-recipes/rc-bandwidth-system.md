@@ -6,7 +6,7 @@ exclude: true
 layout: full
 canonical_url: rc-bandwidth-system.html
 ---
-See also [RC Bandwidth Parameters]({{ '/tutorials-recipes/rc-bandwidth-parameters' | relative_url }})
+See also [RC Bandwidth Parameters]({{ '/tutorials-recipes/rc-bandwidth-parameters.html' | relative_url }})
 
 ### Introduction
 

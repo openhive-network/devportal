@@ -15,6 +15,11 @@ Tutorial is demonstrating the typical process of streaming blocks on Hive. We wi
 
 We are using the `blockchain.getBlockStream` function provided by `dhive` which returns each block after it has been accepted by witnesses. By default it follows irreversible blocks which was accepted by all witnesses. Function follows or gets blocks every 3 seconds so it would not miss any new blocks. We will then extract part of this data and show it in list.
 
+Also see:
+* [block_api.get_block]({{ '/apidefinitions/#block_api.get_block' | relative_url }})
+* [block_api.get_block_range]({{ '/apidefinitions/#block_api.get_block_range' | relative_url }})
+* [account_history_api.enum_virtual_ops]({{ '/apidefinitions/#account_history_api.enum_virtual_ops' | relative_url }})
+
 ## Steps
 
 1.  [**App setup**](#app-setup) Configure proper settings for dhive

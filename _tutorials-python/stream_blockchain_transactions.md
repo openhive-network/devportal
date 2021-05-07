@@ -15,6 +15,11 @@ Tutorial is demonstrating the typical process of streaming operations on Hive.  
 
 We are using the `blockchain.stream()` function provided by beem which returns each operation after it has been accepted by witnesses.  By default it follows irreversible blocks which was accepted by all witnesses.
 
+Also see:
+* [block_api.get_block]({{ '/apidefinitions/#block_api.get_block' | relative_url }})
+* [block_api.get_block_range]({{ '/apidefinitions/#block_api.get_block_range' | relative_url }})
+* [account_history_api.enum_virtual_ops]({{ '/apidefinitions/#account_history_api.enum_virtual_ops' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#app-setup) Configure imports and initialization of libraries

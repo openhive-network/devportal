@@ -20,6 +20,11 @@ We are using the `call` operation provided by the `dhive` library to pull the fo
 
 A simple HTML interface is used to capture the required information after which the function is executed.
 
+Also see:
+* [condenser_api.get_following]({{ '/apidefinitions/#condenser_api.get_following' | relative_url }})
+* [condenser_api.get_followers]({{ '/apidefinitions/#condenser_api.get_followers' | relative_url }})
+* [condenser_api.get_follow_count]({{ '/apidefinitions/#condenser_api.get_follow_count' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `dhive` to communicate with the Hive blockchain

@@ -18,6 +18,11 @@ We are using the [`get_followers`]({{ '/apidefinitions/#follow_api.get_followers
 1. _follow type_ - This value is set to `blog` and includes all users following or being followed by the `user`. This is currently the only valid parameter value for this function to execute correctly.
 1. _limit_ - The maximum number of lines that can be returned by the query
 
+Also see:
+* [condenser_api.get_following]({{ '/apidefinitions/#condenser_api.get_following' | relative_url }})
+* [condenser_api.get_followers]({{ '/apidefinitions/#condenser_api.get_followers' | relative_url }})
+* [condenser_api.get_follow_count]({{ '/apidefinitions/#condenser_api.get_follow_count' | relative_url }})
+
 ## Steps
 
 1. [**App setup**](#setup) - Library install and import

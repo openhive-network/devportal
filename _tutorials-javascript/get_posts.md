@@ -22,6 +22,9 @@ A `filter` in Hive is a kind of built-in 'view' or ordering of posts. You can us
 `trending`, `hot`, `new`, `active`, and `promoted`. You'll get a feel for the subtleties of each as you create your
 application.
 
+Also see:
+* [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+
 ## Steps
 
 1. [**UI**](#UI) - A brief description of the UI and inputting our query values

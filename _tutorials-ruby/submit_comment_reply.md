@@ -13,6 +13,9 @@ This example will broadcast a reply to the blockchain using the values provided.
 
 A reply is differentiated from a post by whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, otherwise it's a comment (like in this example).
 
+Also see:
+* [comment_operation]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }})
+
 ### Script
 
 [`submit_comment_reply.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/11_submit_comment_reply/submit_comment_reply.rb)

@@ -18,6 +18,11 @@ In `radiator`, we can request follow results using `condenser_api.get_following`
 * `type` - We are going to pass `blog` for all requests to only request follow results (as opposed to mute results, which takes the value: `ignore`).
 * `limit` - The number of lines to be returned by the query (`limit`, maximum 1000 per call)
 
+Also see:
+* [condenser_api.get_following]({{ '/apidefinitions/#condenser_api.get_following' | relative_url }})
+* [condenser_api.get_followers]({{ '/apidefinitions/#condenser_api.get_followers' | relative_url }})
+* [condenser_api.get_follow_count]({{ '/apidefinitions/#condenser_api.get_follow_count' | relative_url }})
+
 ## Steps
 
 1.  [**Configure connection**](#connection) Configuration of `radiator` to communicate with the Hive blockchain
@@ -27,7 +32,7 @@ In `radiator`, we can request follow results using `condenser_api.get_following`
 
 #### 1. Configure connection<a name="connection"></a>
 
-[`get_follow.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/18_follow_another_user/get_follow.rb)
+[`get_follow.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/19_get_follower_and_following_list/get_follow.rb)
 
 In the first few lines we initialize the configured library and packages (libraries are described in `Gemfile`):
 

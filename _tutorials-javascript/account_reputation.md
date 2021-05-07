@@ -13,6 +13,9 @@ This tutorial runs on the main Hive blockchain. And accounts queried are real us
 
 This tutorial will show the method of capturing a queried tag name and matching it to the Hive. We are using the `call` function provided by the `dhive` library to pull accounts from the Hive blockchain. A simple HTML interface is used to both capture the string query as well as display the completed search.
 
+Also see:
+* [get_account_reputations]({{ '/apidefinitions/#reputation_api.get_account_reputations' | relative_url }})
+
 ## steps
 
 1.  [**App setup**](#app-setup) Configuration of `dhive` to use the proper connection and network.
