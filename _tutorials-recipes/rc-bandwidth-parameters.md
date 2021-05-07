@@ -19,7 +19,7 @@ Each pool has its own values of the following constants:
 
 ### Computed values
 
-Let us analyze the dynamics of the resource budget pool as outlined [here]({{ '/tutorials-recipes/rc-bandwidth-system' | relative_url }}) with an eye to establishing values of the parameters.
+Let us analyze the dynamics of the resource budget pool as outlined [here]({{ '/tutorials-recipes/rc-bandwidth-system.html' | relative_url }}) with an eye to establishing values of the parameters.
 
 ### Setting p_0
 
