@@ -78,7 +78,7 @@ Once you have claimed a token, broadcast the `create_claimed_account` operation 
 ]
 ```
 
-Accounts created with this method, don't have any SP, but do have enough RC to interact with the chain at a starting level.
+Accounts created with this method, don't have any HP, but do have enough RC to interact with the chain at a starting level.
 
 #### 2. Non-discounted account creation<a name="nondisc"></a>
 

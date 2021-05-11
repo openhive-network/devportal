@@ -11,7 +11,7 @@ This tutorial will take you through the process of checking a specific users' da
 
 Providing another user active permission for your account enables them to do fund transfers from your account. This can be usefull in setting up a secondary account(s) to manage funds for a main account or having a backup should you lose passwords for the main account. 
 
-One of the common practice nowadays is to lend/delegate SP to another account, above same technique can be used to create market around it with minimum 3rd party trust. All your funds stay in your account. You can use/create automated system where you can lease for certain period of time and system can take care of payments and release of delegations (notify clients). Even better, you can use multi-signature feature to establish 100% trust where clients will have to confirm, approve transactions.
+One of the common practice nowadays is to lend/delegate HP to another account, above same technique can be used to create market around it with minimum 3rd party trust. All your funds stay in your account. You can use/create automated system where you can lease for certain period of time and system can take care of payments and release of delegations (notify clients). Even better, you can use multi-signature feature to establish 100% trust where clients will have to confirm, approve transactions.
 
 Active permissions and authority should be used with utmost care, you don't want to loose your funds. It is really not easy to hack Hive accounts, let alone take control over it. But without careful use (revealing private keys) loosing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
 

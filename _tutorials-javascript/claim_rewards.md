@@ -58,7 +58,7 @@ const reward_hive = _accounts[0].reward_hive_balance.split(' ')[0];
 const reward_hbd = _accounts[0].reward_hbd_balance.split(' ')[0];
 const reward_sp = _accounts[0].reward_vesting_hive.split(' ')[0];
 const reward_vests = _accounts[0].reward_vesting_balance.split(' ')[0];
-const unclaimed_balance = `Unclaimed balance for ${name}: ${reward_hive} HIVE, ${reward_hbd} HBD, ${reward_sp} SP = ${reward_vests} VESTS<br/>`;
+const unclaimed_balance = `Unclaimed balance for ${name}: ${reward_hive} HIVE, ${reward_hbd} HBD, ${reward_sp} HP = ${reward_vests} VESTS<br/>`;
 document.getElementById('accList').innerHTML = unclaimed_balance;
 document.getElementById('hive').value = reward_hive;
 document.getElementById('hbd').value = reward_hbd;
