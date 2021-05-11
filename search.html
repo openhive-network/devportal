@@ -35,46 +35,46 @@ data_defined_ids:
 ---
 
 <div class="search-page">
-	<h2>Search Results</h2>
+  <h2>Search Results</h2>
 
-	<p><span id="search-process">Loading</span> results <span id="search-query-container" style="display: none;">for "<strong id="search-query"></strong>"</span></p>
-	<ul id="search-results"></ul>
+  <p><span id="search-process">Loading &nbsp;&nbsp;&nbsp;</span> results <span id="search-query-container" style="display: none;">for "<strong id="search-query"></strong>"</span></p>
+  <ul id="search-results"></ul>
 </div>
 
 <script>
-	window.data = {
-		{% for collection in site.collections %}
-			{% for item in collection.docs %}
-        {% assign item_id = item.id | strip | slugify %}
-        {% unless page.data_defined_ids contains item_id %}
-  				{% if item.title %}
-  					{% unless item.excluded_in_search %}
-  						{% if added %},{% endif %}
-  						{% assign added = false %}
-  						"{{ item_id }}": {
-  							"id": "{{ item_id }}",
-  							"title": "{{ item.title | strip | xml_escape }}",
-  							"category": "{{ collection.label | strip | xml_escape }}",
-  							"description": "{{ item.description | strip | xml_escape }}",
-  			 				"type": "{{ item.type | strip | xml_escape }}",
-  							"url": "{{ item.url | strip }}.html",
-  							"content": {{ item.content | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }}
-  						}
-  						{% assign added = true %}
-  					{% endunless %}
-  				{% endif %}
-        {% endunless %}
-			{% endfor %}
-		{% endfor %}
+  window.data = {
+    {% for collection in site.collections -%}
+      {%- for item in collection.docs -%}
+        {%- assign item_id = item.id | strip | slugify -%}
+        {%- unless page.data_defined_ids contains item_id -%}
+          {%- if item.title -%}
+            {%- unless item.excluded_in_search -%}
+              {%- if added -%},{%- endif -%}
+              {%- assign added = false -%}
+              "{{ item_id }}": {
+                "id": "{{ item_id }}",
+                "title": "{{ item.title | strip | xml_escape }}",
+                "category": "{{ collection.label | strip | xml_escape }}",
+                "description": "{{ item.description | strip | xml_escape }}",
+                "type": "{{ item.type | strip | xml_escape }}",
+                "url": "{{ item.url | strip }}.html",
+                "content": "{{ item.content | strip_html | strip | replace: "\n", ' ' | jsonify | replace: '"', '' | replace: '\n', ' ' | replace: '\', '' | replace: '  ', ' ' }}"
+              }
+              {%- assign added = true -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    {%- endfor -%}
     
     // # data_defined_ids is as follows
     
-    {% for api_defs in site.data.apidefinitions %}
-      {% for sections in api_defs[1] %}
-        {% for method in sections.methods %}
-          {% if added %},{% endif %}
-          {% assign added = false %}
-          {% assign api_defs_url = '../apidefinitions/#' | append: method.api_method %}
+    {% for api_defs in site.data.apidefinitions -%}
+      {%- for sections in api_defs[1] -%}
+        {%- for method in sections.methods -%}
+          {%- if added -%},{%- endif -%}
+          {%- assign added = false -%}
+          {%- assign api_defs_url = '../apidefinitions/#' | append: method.api_method -%}
           
           "{{ method.api_method | strip | slugify }}": {
             "id": "{{ method.api_method | strip | slugify }}",
@@ -83,19 +83,19 @@ data_defined_ids:
             "description": "{{ method.api_method | strip | xml_escape }}",
             "type": "method",
             "url": "{{ api_defs_url | relative_url }}",
-            "content": {{ method.purpose | liquify | markdownify | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+            "content": "{{ method.purpose | liquify | markdownify | strip_html | strip | replace: "\n", ' ' | jsonify | replace: '"', '' | replace: '\n', ' ' | replace: '\', '' | replace: '  ', ' ' }}",
             "keywords": "{{ method | keywordify: 'subtract', method.purpose }}"
           }
-          {% assign added = true %}
-        {% endfor %}
-  		{% endfor %}
-  	{% endfor %}
+          {%- assign added = true -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endfor -%}
     
-    {% for sections in site.data.apidefinitions.broadcast_ops %}
-      {% for op in sections.ops %}
-        {% if added %},{% endif %}
-        {% assign added = false %}
-        {% assign api_defs_url = '../apidefinitions/#broadcast_ops_' | append: op.name %}
+    {% for sections in site.data.apidefinitions.broadcast_ops -%}
+      {%- for op in sections.ops -%}
+        {%- if added -%},{%- endif -%}
+        {%- assign added = false -%}
+        {%- assign api_defs_url = '../apidefinitions/#broadcast_ops_' | append: op.name -%}
         
         "broadcast_ops_{{ op.name | strip | slugify }}": {
           "id": "broadcast_ops_{{ op.name | strip | slugify }}",
@@ -104,23 +104,23 @@ data_defined_ids:
           "description": "{{ op.name | strip | xml_escape }}",
           "type": "op",
           "url": "{{ api_defs_url | relative_url }}",
-          "content": {{ op.purpose | liquify | markdownify | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+          "content": "{{ op.purpose | liquify | markdownify | strip_html | strip | replace: "\n", ' ' | jsonify | replace: '"', '' | replace: '\n', ' ' | replace: '\', '' | replace: '  ', ' ' }}",
           "keywords": "{{ op | keywordify: 'subtract', op.purpose }}"
         }
-        {% assign added = true %}
-  		{% endfor %}
-  	{% endfor %}
+        {%- assign added = true -%}
+      {%- endfor -%}
+    {%- endfor -%}
     
-    {% for sections in site.data.objects.dgpo %}
-      {% for field in sections.fields %}
-        {% if added %},{% endif %}
-        {% assign added = false %}
+    {% for sections in site.data.objects.dgpo -%}
+      {%- for field in sections.fields -%}
+        {%- if added -%},{%- endif -%}
+        {%- assign added = false -%}
         
-        {% if field.purpose %}
-          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#' | append: field.name %}
-        {% else %}
-          {% assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#not-covered' %}
-        {% endif %}
+        {%- if field.purpose -%}
+          {%- assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#' | append: field.name -%}
+        {%- else -%}
+          {%- assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#not-covered' -%}
+        {%- endif -%}
         
         "dgpo_{{ field.name | strip | slugify }}": {
           "id": "dgpo_{{ field.name | strip | slugify }}",
@@ -129,23 +129,23 @@ data_defined_ids:
           "description": "{{ field.name | strip | xml_escape }}",
           "type": "dgpo",
           "url": "{{ dgpo_url | relative_url }}",
-          "content": {{ field.purpose | liquify | markdownify | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+          "content": "{{ field.purpose | liquify | markdownify | strip_html | strip | replace: "\n", ' ' | jsonify | replace: '"', '' | replace: '\n', ' ' | replace: '\', '' | replace: '  ', ' ' }}",
           "keywords": "{{ field | keywordify: 'subtract', field.purpose }}"
         }
-        {% assign added = true %}
-  		{% endfor %}
-  	{% endfor %}
+        {%- assign added = true -%}
+      {%- endfor -%}
+    {%- endfor -%}
     
-    {% for sections in site.data.objects.config %}
-      {% for field in sections.fields %}
-        {% if added %},{% endif %}
-        {% assign added = false %}
+    {% for sections in site.data.objects.config -%}
+      {%- for field in sections.fields -%}
+        {%- if added -%},{%- endif -%}
+        {%- assign added = false -%}
         
-        {% if field.purpose %}
-          {% assign config_url = '../tutorials-recipes/understanding-configuration-values.html#' | append: field.name %}
-        {% else %}
-          {% assign config_url = '../tutorials-recipes/understanding-configuration-values.html#not-covered' %}
-        {% endif %}
+        {%- if field.purpose -%}
+          {%- assign config_url = '../tutorials-recipes/understanding-configuration-values.html#' | append: field.name -%}
+        {%- else -%}
+          {%- assign config_url = '../tutorials-recipes/understanding-configuration-values.html#not-covered' -%}
+        {%- endif -%}
         
         "config_{{ field.name | strip | slugify }}": {
           "id": "config_{{ field.name | strip | slugify }}",
@@ -154,19 +154,19 @@ data_defined_ids:
           "description": "{{ field.name | strip | xml_escape }}",
           "type": "config",
           "url": "{{ config_url | relative_url }}",
-          "content": {{ field.purpose | liquify | markdownify | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+          "content": "{{ field.purpose | liquify | markdownify | strip_html | strip | replace: "\n", ' ' | jsonify | replace: '"', '' | replace: '\n', ' ' | replace: '\', '' | replace: '  ', ' ' }}",
           "keywords": "{{ field | keywordify: 'subtract', field.purpose }}"
         }
-        {% assign added = true %}
-  		{% endfor %}
-  	{% endfor %}
+        {%- assign added = true -%}
+      {%- endfor -%}
+    {%- endfor -%}
 
-    {% for sections in site.data.glossary.index %}
-      {% for item in sections.items %}
-        {% if added %},{% endif %}
-        {% assign added = false %}
-        {% assign term_id = item.term | strip | slugify %}
-        {% assign glossary_url = '../glossary/#' | append: term_id %}
+    {% for sections in site.data.glossary.index -%}
+      {%- for item in sections.items -%}
+        {%- if added -%},{%- endif -%}
+        {%- assign added = false -%}
+        {%- assign term_id = item.term | strip | slugify -%}
+        {%- assign glossary_url = '../glossary/#' | append: term_id -%}
         
         "glossary_{{ item.term | strip | slugify }}": {
           "id": "glossary_{{ term_id }}",
@@ -175,18 +175,18 @@ data_defined_ids:
           "description": "{{ item.term | strip | xml_escape }}",
           "type": "glossary",
           "url": "{{ glossary_url | relative_url }}",
-          "content": {{ item.def | liquify | markdownify | strip_html | replace_regex: "[\s/\n]+"," " | strip | jsonify }},
+          "content": "{{ item.def | liquify | markdownify | strip_html | strip | replace: "\n", ' ' | jsonify | replace: '"', '' | replace: '\n', ' ' | replace: '\', '' | replace: '  ', ' ' }}",
           "keywords": "{{ item | keywordify: 'subtract', item.def }}"
         }
-        {% assign added = true %}
-  		{% endfor %}
-  	{% endfor %}
-	};
+        {%- assign added = true -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  };
 </script>
-{% if jekyll.environment == 'production' %}
-	<script src="{{ '/js/lunr.min.js' | relative_url }}"></script>
-	<script src="{{ '/js/search.js' | relative_url }}"></script>
-{% else %}
-	<script src="{{ '/js/lunr.min.js' | relative_url }}"></script>
-	<script src="{{ '/js/search.js' | relative_url }}"></script>
-{% endif %}
+{%- if jekyll.environment == 'production' -%}
+  <script src="{{ '/js/lunr.min.js' | relative_url }}"></script>
+  <script src="{{ '/js/search.js' | relative_url }}"></script>
+{%- else -%}
+  <script src="{{ '/js/lunr.min.js' | relative_url }}"></script>
+  <script src="{{ '/js/search.js' | relative_url }}"></script>
+{%- endif -%}
