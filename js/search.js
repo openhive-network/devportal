@@ -71,9 +71,11 @@
 
 			searchResultsEl.innerHTML = resultsHTML;
 			searchProcessEl.innerText = "Showing";
+      searchProcessEl.style.backgroundImage = "none";
 		} else {
 			searchResultsEl.style.display = "none";
 			searchProcessEl.innerText = "No";
+      searchProcessEl.style.backgroundImage = "none";
 		}
 	}
 
@@ -92,7 +94,7 @@
 		searchInputEl = document.getElementById("search-input");
 
 	searchInputEl.value = query;
-	searchQueryEl.innerText = query;
+	searchQueryEl.innerHTML = '<a href="https://www.google.com/search?q=site%3Adevelopers.hive.io+' + query + '">' + query + '</a>';
 	searchQueryContainerEl.style.display = "inline";
 
 	for (var key in window.data) {
