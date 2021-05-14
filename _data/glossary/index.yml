@@ -70,7 +70,7 @@
     - term: RocksDB
       def: A fast-on-disk data store with an advanced caching layer, which minimizes latency when reading/writing to and from disk.
     - term: MIRA
-      def: Multi Index Rocksdb Adapter that updates the database backend of Hive from memory mapped files to a disk log-structured merge-tree implemented via the RocksDB library.
+      def: Multi Index Rocksdb Adapter (removed in HF25) that updates the database backend of Hive from memory mapped files to a disk log-structured merge-tree implemented via the RocksDB library.
     - term: Manabar
       def: |
         <p>
