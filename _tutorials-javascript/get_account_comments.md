@@ -7,11 +7,11 @@ canonical_url: get_account_comments.html
 ---
 Full, runnable src of [Get Account Comments](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/09_get_account_comments) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-09_get_account_comments.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/09_get_account_comments)).
 
-This tutorial will show how to fetch comments made by a specific account (in this case `@hiveio`) by demonstrating how to use the `get_state` api function call. We will also demonstrate the most commonly used fields from the response object as well as how to parse the body of each comment.
+This tutorial will show how to fetch comments made by a specific account (in this case `@hiveio`) by demonstrating how to use the `bridge.get_account_posts` api function call. We will also demonstrate the most commonly used fields from the response object as well as how to parse the body of each comment.
 
 ## Intro
 
-We are using the `get_state` function with `dhive` that returns the current state of the network as well as additional content. Each content body is written in markdown and could be submitted to the blockchain by many different applications built on top of Hive. For that reason we are using the `remarkable` npm package to parse markdown in a readable format.
+We are using the `bridge.get_account_posts` function with `dhive` that returns the current state of the network as well as additional content. Each content body is written in markdown and could be submitted to the blockchain by many different applications built on top of Hive. For that reason we are using the `remarkable` npm package to parse markdown in a readable format.
 
 Also see:
 * [get discussions]({{ '/search/?q=get discussions' | relative_url }})
