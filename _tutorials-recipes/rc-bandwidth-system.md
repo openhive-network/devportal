@@ -13,7 +13,7 @@ See also [RC Bandwidth Parameters]({{ '/tutorials-recipes/rc-bandwidth-parameter
 The *RC bandwidth system* is a complete rewrite of the bandwidth system.  Its goals include:
 
 - Enable simple, effective UI feedback to users about bandwidth usage and remaining bandwidth
-- Simplify the mental model of what buying additional SP gives users
+- Simplify the mental model of what buying additional HP gives users
 - Reduce or eliminate unstable feedback in current bandwidth system
 
 ### History

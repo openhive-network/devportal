@@ -96,14 +96,15 @@ $ git clone https://gitlab.syncad.com/hive/hivemind.git
 $ cd hivemind
 $ git submodule update --init --recursive
 $ python3 setup.py build
+$ sudo pip3 install jinja2
 $ sudo python3 setup.py install
 ```
 
 By default Hivemind will connect to the mainnet [https://api.hive.blog](https://api.hive.blog) but if required you can change this to connect to a testnet. To do this set the environment variable as described below.
 
 ```bash
-# Note as of 2021-03-30, hivemind still internally uses the environment variable called STEEMD_URL for this.
-$ export STEEMD_URL='{"default":"http://127.0.0.1:8091"}'
+# Note as of 2021-05-14, hivemind still internally uses the environment variable called STEEMD_URL for this.
+$ export STEEMD_URL='http://127.0.0.1:8091'
 ```
 
 Now that the basic setup is done you are able to sync the database.

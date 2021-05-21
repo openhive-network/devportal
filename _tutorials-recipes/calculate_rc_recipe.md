@@ -11,7 +11,7 @@ Since HF20 a Resource Credit (RC) system has been implemented to manage the numb
 
 ## Intro
 
-RCs are non-transferable credits that accrue to each Hive account based on how much Hive Power(SP) it has. An account spends RC when it transacts on the Hive blockchain. RCs regenerate over a 5 day period. If an account doesn’t have sufficient credits, the transaction will not be allowed to occur.
+RCs are non-transferable credits that accrue to each Hive account based on how much Hive Power (HP) it has. An account spends RC when it transacts on the Hive blockchain. RCs regenerate over a 5 day period. If an account doesn’t have sufficient credits, the transaction will not be allowed to occur.
 
 The price of a transaction (which consumes a particular resource, or resources) is based on the current stockpile of those resources. As a stockpile of a resource decreases, the RC cost of that resource increases. In other words, as the stockpile goes down, accounts will have to pay more RCs to use the remaining resources. This system disincentivize the over-consumption of resources by users as well as spam.
 
@@ -21,7 +21,7 @@ There are applications available to check an account's status, like [hiveblocks.
 
 ## Calculating available RC
 
-Since RC is calculated relative to SP, we first need to know the available SP before we can calculate how much RC we have left. The value of the current available mana(RC) is also accessible as a field from the `getAccounts` function.
+Since RC is calculated relative to HP, we first need to know the available HP before we can calculate how much RC we have left. The value of the current available mana(RC) is also accessible as a field from the `getAccounts` function.
 
 ```javascript
 //capture account
@@ -29,7 +29,7 @@ var _account = await client.database.getAccounts(['username'])
 var account = _account[0]
 var props = await client.database.getDynamicGlobalProperties()
 var CURRENT_UNIX_TIMESTAMP = parseInt((new Date(props.time).getTime() / 1000).toFixed(0))
-//calculate available SP
+//calculate available HP
 var totalShares = parseFloat(account.vesting_shares) + parseFloat(account.received_vesting_shares) - parseFloat(account.delegated_vesting_shares);
 //determine elapsed time since last RC update
 var elapsed = CURRENT_UNIX_TIMESTAMP - account.voting_manabar.last_update_time;

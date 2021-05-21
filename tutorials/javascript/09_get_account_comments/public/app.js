@@ -12,25 +12,26 @@ const md = new Remarkable({ html: true, linkify: true });
 
 //fetch list of comments for certain account
 async function main() {
-    const query = '/@hiveio/comments';
-    client.database
-        .call('get_state', [query])
+    const author = prompt('Account?', 'hiveio');
+    
+    client.hivemind
+        .call('get_account_posts', {sort: 'comments', account: author, limit: 100})
         .then(result => {
             console.log(result);
             if (
                 !(
-                    Object.keys(result.content).length === 0 &&
-                    result.content.constructor === Object
+                    Object.keys(result).length === 0 &&
+                    result.constructor === Object
                 )
             ) {
                 var comments = [];
-                Object.keys(result.content).forEach(key => {
-                    const comment = result.content[key];
+                Object.keys(result).forEach(key => {
+                    const comment = result[key];
                     const parent_author = comment.parent_author;
                     const parent_permlink = comment.parent_permlink;
                     const created = new Date(comment.created).toDateString();
                     const body = md.render(comment.body);
-                    const netvotes = comment.net_votes;
+                    const totalVotes = comment.stats.total_votes;
                     comments.push(
                         `<div class="list-group-item list-group-item-action flex-column align-items-start">\
                         <div class="d-flex w-100 justify-content-between">\
@@ -38,10 +39,11 @@ async function main() {
                           <small class="text-muted">${created}</small>\
                         </div>\
                         <p class="mb-1">${body}</p>\
-                        <small class="text-muted">&#9650; ${netvotes}, Replied to: @${parent_author}/${parent_permlink}</small>\
+                        <small class="text-muted">&#9650; ${totalVotes}, Replied to: @${parent_author}/${parent_permlink}</small>\
                       </div>`
                     );
                 });
+                document.getElementById('author').innerHTML = author;
                 document.getElementById('comments').style.display = 'block';
                 document.getElementById('comments').innerHTML = comments.join(
                     ''
