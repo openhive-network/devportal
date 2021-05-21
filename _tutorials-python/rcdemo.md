@@ -97,11 +97,11 @@ Suppose an account has 15 Hive Power.  How much can it vote?
 ```
 
 This is the amount of Hive Power (in satoshis) that would be needed by an account to transact once per 5 days ([`HIVE_RC_REGEN_TIME`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_RC_REGEN_TIME' | relative_url }})).
-Our 15 SP account has 15000 SP, so it would be able to do `15000 / 138`, or about `108`, such transactions per 5 days.
+Our 15 HP account has 15000 HP, so it would be able to do `15000 / 138`, or about `108`, such transactions per 5 days.
 
 You can regard the number `138` (or `0.138`) as the "cost" of a "standardized" vote transaction.  It plays an analogous role to a
 transaction fee in Bitcoin, but it is not exactly a fee.  Because the word "fee" implies giving up a permanent token with a limited,
-controlled emission rate.  It is the amount of SP which will allow a user an additional vote transaction every 5 days (but it might
+controlled emission rate.  It is the amount of HP which will allow a user an additional vote transaction every 5 days (but it might
 be slightly more or less, if your vote transactions use a slightly different amount of resources.)
 
 ### Integrating the demo script

@@ -39,7 +39,7 @@ The following are *only* available as command-line options.
 * [`dump-memory-details`](#dump-memory-details)
 * [`check-locks`](#check-locks)
 * [`validate-database-invariants`](#validate-database-invariants)
-* [`database-cfg`](#database-cfg)
+* ~~[`database-cfg`](#database-cfg)~~
 * [`account-history-rocksdb-immediate-import`](#account-history-rocksdb-immediate-import)
 * [`exit-after-replay`](#exit-after-replay)
 * [`force-replay`](#force-replay)
@@ -189,11 +189,13 @@ See: [#1477]({{ 'https://github.com/steemit/steem/issues/1477' | archived_url }}
 
 ### `database-cfg`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
-The database configuration file location  **MIRA only.**
+The database configuration file location  **MIRA only (prior to HF25).**
 
 ```bash
 --database-cfg=database.cfg
 ```
+
+**Removed in:** HF25
 
 ### `account-history-rocksdb-immediate-import`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 

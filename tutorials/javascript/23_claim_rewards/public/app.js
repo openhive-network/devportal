@@ -25,11 +25,9 @@ window.submitAcc = async () => {
     document.getElementById('hbd').value = reward_hbd;
     document.getElementById('hp').value = reward_vests;
 
-    document.getElementById('sc').style.display = 'block';
+    document.getElementById('hc').style.display = 'block';
     const link = `https://hivesigner.com/sign/claim-reward-balance?account=${name}&reward_hive=${reward_hive}&reward_hbd=${reward_hbd}&reward_vests=${reward_vests}`;
-    document.getElementById(
-        'sc'
-    ).innerHTML = `<br/><a href=${link} target="_blank">Hive Signer signing</a>`;
+    document.getElementById('hc').innerHTML = `<br/><a href=${link} target="_blank">Hive Signer signing</a>`;
 };
 
 window.submitTx = async () => {

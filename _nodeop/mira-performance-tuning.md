@@ -3,9 +3,14 @@ title: 'MIRA: Performance Tuning'
 position: 6
 description: Provides a way to get the most performance on specific hardware.
 exclude: true
-layout: hive-post
+layout: full
 canonical_url: https://gitlab.syncad.com/hive/hive/-/blob/master/doc/mira-tuning.md
 ---
+
+<h4 class="danger well">
+  Please note, MIRA was removed in HF25 (see: <a href="https://gitlab.syncad.com/hive/hive/-/merge_requests/185">!185</a>).  This document is outdated and will remain in place to give historical context prior to HF25.
+</h4>
+
 # Preface
 
 After MIRAs initial development efforts we released the [Basic MIRA Configuration Guide](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/mira.md) to help bootstrap users attempting to use MIRA enabled `hived`. There is actually much more fine tuning that can be done to improve MIRA's performance. We will break up this process into three phases:

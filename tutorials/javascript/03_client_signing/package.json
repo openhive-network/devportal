@@ -19,7 +19,7 @@
     },
     "devDependencies": {
         "css-loader": "^1.0.0",
-        "node-sass": "^4.9.3",
+        "node-sass": "^6.0.0",
         "postcss-loader": "^3.0.0",
         "precss": "^3.1.2",
         "sass-loader": "^7.1.0",
