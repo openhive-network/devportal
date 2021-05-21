@@ -8,7 +8,7 @@ canonical_url: https://gitlab.syncad.com/hive/hive/-/blob/master/doc/mira-tuning
 ---
 
 <h4 class="danger well">
-  Please note, MIRA removed in HF25 (see: <a href="https://gitlab.syncad.com/hive/hive/-/merge_requests/185">!185</a>).  This document is outdated and will remain in place to give historical context prior to HF25.
+  Please note, MIRA was removed in HF25 (see: <a href="https://gitlab.syncad.com/hive/hive/-/merge_requests/185">!185</a>).  This document is outdated and will remain in place to give historical context prior to HF25.
 </h4>
 
 # Preface
