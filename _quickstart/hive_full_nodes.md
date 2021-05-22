@@ -10,19 +10,92 @@ Applications that interface directly with the Hive blockchain will need to conne
 
 Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `hived` node or proxy WebSockets to HTTPS using [lineman](https://gitlab.syncad.com/hive/lineman).
 
-| URL                             | Owner          |
-| ------------------------------- | -------------- |
-| api.hive.blog                   | @blocktrades   |
-| api.openhive.network            | @gtg           |
-| anyx.io                         | @anyx          |
-| api.hivekings.com               | @drakos        |
-| hived.privex.io                 | @privex        |
-| rpc.ausbit.dev                  | @ausbitbank    |
-| api.pharesim.me                 | @pharesim      |
-| techcoderx.com                  | @techcoderx    |
-| rpc.esteem.app                  | @esteem        |
-| hive.roelandp.nl                | @roelandp      |
-| hived.emre.sh                   | @emrebeyler    |
+<div id="report">
+  <table>
+    <thead>
+      <tr><th>URL</th><th>Owner</th><th style="display: none;"></th></tr>
+    </thead>
+    <tbody>
+      <tr><td>api.hive.blog</td><td>@blocktrades</td><td style="display: none;"></td></tr>
+      <tr><td>api.openhive.network</td><td>@gtg</td><td style="display: none;"></td></tr>
+      <tr><td>anyx.io</td><td>@anyx</td><td style="display: none;"></td></tr>
+      <tr><td>api.hivekings.com</td><td>@drakos</td><td style="display: none;"></td></tr>
+      <tr><td>hived.privex.io</td><td>@privex</td><td style="display: none;"></td></tr>
+      <tr><td>rpc.ausbit.dev</td><td>@ausbitbank</td><td style="display: none;"></td></tr>
+      <tr><td>techcoderx.com</td><td>@techcoderx</td><td style="display: none;"></td></tr>
+      <tr><td>rpc.ecency.com</td><td>@ecency</td><td style="display: none;"></td></tr>
+      <tr><td>hive.roelandp.nl</td><td>@roelandp</td><td style="display: none;"></td></tr>
+      <tr><td>hived.emre.sh</td><td>@emrebeyler</td><td style="display: none;"></td></tr>
+      <tr><td>api.deathwing.me</td><td>@deathwing</td><td style="display: none;"></td></tr>
+      <tr><td>api.c0ff33a.uk</td><td>@c0ff33a</td><td style="display: none;"></td></tr>
+      <tr><td>hive-api.arcange.eu</td><td>@arcange</td><td style="display: none;"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="untracked_report"></div>
+
+<script>
+  $(document).ready(function() {
+    hive.api.getAccounts(['fullnodeupdate'], function(err, result) {
+      var fullnodeupdate = result[0];
+      var reportData = jQuery.parseJSON(fullnodeupdate.json_metadata).report;
+      var failingNodes = jQuery.parseJSON(fullnodeupdate.json_metadata).failing_nodes;
+      var reportRows = $('#report > table > tbody > tr');
+      var tracked = [];
+      
+      jQuery.each(reportRows, function(i, row) {
+        jQuery.each(reportData, function(j, r) {
+          var host = $(row).find('td:nth-child(1)').text();
+          
+          if ( (r.node.indexOf(host) != -1 || !r.hive) && !tracked.includes(j) ) {
+            tracked.push(j);
+          }
+            
+          with ( $(row).find('td:nth-child(3)') ) {
+            if ( r.node.indexOf(host) != -1 && !!r.hive ) {
+              html('Version: <code>' + r.version + '</code> ' + (r.history.ok ? '✅' : '⚠️'));
+            } else {
+              jQuery.each(Object.keys(failingNodes), function(k, f) {
+                if ( f.indexOf(host) != -1 ) {
+                  html('Failing ⛔');
+                }
+              });
+            }
+            
+            show();
+          }
+        });
+      });
+      
+      with ( $('#report > table > thead > tr > th:nth-child(3)') ) {
+        text('Details');
+        show();
+      }
+      
+      with ( $('#untracked_report') ) {
+        empty();
+        
+        if ( tracked.length != reportData.length ) {
+          append("<p>Also see the following public nodes:</p><ul>");
+          
+          jQuery.each(reportData, function(i, r) {
+            if ( !!r.hive && !tracked.includes(i) ) {
+              var host = r.node.split('https://')[1];
+              
+              if ( !!host && host.length > 0 ) {
+                append('<li>' + host + ', version: <code>' + r.version + '</code> ' + (r.history.ok ? '✅' : '⚠️') + '</li>');
+              }
+            }
+          });
+          
+          append("</ul><p>&nbsp;</p>");
+        }
+      }
+    });
+  });
+
+</script>
 
 For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://hive.blog/@fullnodeupdate) by [@holger80](https://hive.blog/@holger80).
 
