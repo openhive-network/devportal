@@ -49,10 +49,6 @@
         blockchain.  When a vote is cast, the content is considered in the
         consensus rules involving author and curation rewards.
         
-        An upvote can be cast from the point in time that the content is created
-        up to 6.5 days.  The remaining 12 hours are locked out of upvotes at
-        which time only downvotes may be cast.
-        
         A secondary aspect to voting involves reputation, which is not part of
         consensus.
         
@@ -82,6 +78,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#vote)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.vote)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txvotes)'
     - name: comment
       virtual: false
       purpose: |
@@ -173,6 +170,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#comment)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.comment)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcomments)'
     - name: transfer
       virtual: false
       purpose: |
@@ -200,6 +198,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
     - name: transfer_to_vesting
       virtual: false
       purpose: |
@@ -212,7 +211,7 @@
         * Amount must be in HIVE.
         * Must transfer a nonzero amount.
         
-        See: [delayed_voting]({{ '/apidefinitions/#delayed_voting' | relative_url }})
+        See: [delayed_voting]({{ '/apidefinitions/#broadcast_ops_delayed_voting' | relative_url }})
       roles:
         - active
           owner
@@ -227,6 +226,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-to-vesting)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_to_vesting)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
     - name: withdraw_vesting
       virtual: false
       purpose: |
@@ -255,6 +255,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#withdraw-vesting)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.withdraw_vesting)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txwithdraws)'
     - name: limit_order_create
       virtual: false
       purpose: |
@@ -276,10 +277,11 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-create)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.limit_order_create)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txlimitorders)'
     - name: limit_order_cancel
       virtual: false
       purpose: |
-        Cancels an order and returns the balance to owner.
+        Cancels an internal market order and returns the balance to owner.
       roles:
         - active
           owner
@@ -292,6 +294,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-cancel)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.limit_order_cancel)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txlimitorderscancels)'
     - name: price
       virtual: false
       purpose:
@@ -304,6 +307,8 @@
     - name: feed_publish
       virtual: false
       purpose: |
+        Witnesses regularly publish a price feed that enables the blockchain to calculate a conversion ratio between HBD and HIVE.
+        
         Feeds can only be published by the top N witnesses which are included in
         every round and are used to define the exchange rate between HIVE and
         the US dollar.
@@ -319,11 +324,14 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#feed-publish)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.feed_publish)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txfeeds)'
     - name: convert
       virtual: false
       purpose: |
         This operation instructs the blockchain to start a conversion between
         HIVE and HBD, the funds are deposited after 3.5 days.
+        
+        The identifier `requestid` will match the one found in [fill_convert_request]({{ '/apidefinitions/#broadcast_ops_fill_convert_request' | relative_url }}) when the request is executed.
       roles:
         - active
           owner
@@ -337,9 +345,11 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#convert)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.convert)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txconverts)'
     - name: account_create
       virtual: false
-      purpose:
+      purpose: |
+        Broadcasted to the blockchain to create a new account.
       roles:
         - active
           owner
@@ -358,6 +368,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-create)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_create)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountcreates)'
     - name: create_claimed_account
       since: HF20
       virtual: false
@@ -380,11 +391,14 @@
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcreateclaimedaccount)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.create_claimed_account)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountcreates)'
     - name: claim_account
       since: HF20
       virtual: false
       purpose: |
-        When used with `create_claimed_account`, works identically to `account_create`.  See: [0.20.2 Release Notes]({{ 'https://github.com/steemit/steem/releases/tag/v0.20.2' | archived_url }})
+        Requests from users or dApps to get an account creation ticket in order to create new accounts.  These operations are issued before the actual creation of the account on the blockchain.
+        
+        See: [0.20.2 Release Notes]({{ 'https://github.com/steemit/steem/releases/tag/v0.20.2' | archived_url }})
       roles:
         - active
           owner
@@ -416,9 +430,11 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#witness-set-properties)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.witness_set_properties)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txwitnesssetproperties)'
     - name: account_update
       virtual: false
-      purpose:
+      purpose: |
+        Updates account information.
       roles:
         - active
           owner
@@ -435,6 +451,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-update)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_update)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountupdates)'
     - name: account_update2
       since: HF21
       virtual: false
@@ -463,6 +480,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-update2)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_update2)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountupdates2)'
     - name: report_over_production
       disabled: true
       purpose: |
@@ -492,25 +510,15 @@
     - name: witness_update
       virtual: false
       purpose: |
-        Users who wish to become a witness must pay a fee acceptable to
-        the current witnesses to apply for the position and allow voting
-        to begin.
+        Users who wish to become a witness must apply for the position and allow voting to begin.
         
-        If the owner isn't a witness they will become a witness.  Witnesses
-        are charged a fee equal to 1 weeks worth of witness pay which in
-        turn is derived from the current share supply.  The fee is
-        only applied if the owner is not already a witness.
-        
-        If the block_signing_key is null then the witness is removed from
-        contention.  The network will pick the top 21 witnesses for
-        producing blocks.
+        If the owner isn't a witness they will become a witness.  If the `block_signing_key` is null then the witness is removed from
+        contention.  The network will pick the top 21 witnesses for producing blocks.
         
         **Notes:**
-        * The fee paid to register a new witness, should be 10x current
-        block production pay.
         * `url` cannot be more than 2048 bytes.
         * `url` must be UTF-8.
-        * `fee` cannot be negative.
+        * `fee` should be zero and not confused with `props["account_creation_fee"]` (see: [#410](https://github.com/steemit/steem/issues/410#issuecomment-247426741)).
       roles:
         - active
           owner
@@ -526,11 +534,12 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#witness-update)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.witness_update)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txwitnessupdates)'
     - name: account_witness_vote
       virtual: false
       purpose: |
         All accounts with a VFS (Vesting Fund Shares) can vote for or against
-        any witness.  See: [`HIVE_MAX_ACCOUNT_WITNESS_VOTES`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MAX_ACCOUNT_WITNESS_VOTES' | relative_url }})
+        any witness, up to 30 witnesses.  See: [`HIVE_MAX_ACCOUNT_WITNESS_VOTES`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_MAX_ACCOUNT_WITNESS_VOTES' | relative_url }})
         
         If a proxy is specified then all existing votes are removed.
       roles:
@@ -547,6 +556,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-witness-vote)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_witness_vote)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountwitnessvotes)'
     - name: account_witness_proxy
       virtual: false
       purpose: |
@@ -570,6 +580,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-witness-proxy)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_witness_proxy)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountwitnessproxies)'
     - name: pow
       disabled: true
       virtual: false
@@ -588,6 +599,7 @@
       client_docs:
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#pow)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txpows)'
     - name: custom
       virtual: false
       purpose: |
@@ -611,7 +623,8 @@
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom)'
     - name: delete_comment
       virtual: false
-      purpose:
+      purpose: |
+        A post or comment can only be deleted when it has no positive rshares applied (i.e., has no pending payout from upvotes) and has no replies.  They are not really deleted from the blockchain as they are still recorded in the original block.
       roles:
         - posting
           active
@@ -625,6 +638,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#delete-comment)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.delete_comment)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txdeletecomments)'
     - name: custom_json
       virtual: false
       purpose: |
@@ -671,6 +685,10 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcustoms)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
     - name: comment_options
       virtual: false
       purpose: |
@@ -727,6 +745,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#comment-options)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.comment)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcommentsoptions)'
     - name: set_withdraw_vesting_route
       virtual: false
       purpose: |
@@ -752,6 +771,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#set-withdraw-vesting-route)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.set_withdraw_vesting_route)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txwithdrawvestingroutes)'
     - name: limit_order_create2
       virtual: false
       purpose: |
@@ -778,12 +798,15 @@
       client_docs:
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-create2)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txlimitorders)'
     - name: challenge_authority
       disabled: true
       virtual: false
       purpose: |
         Disabled in HF14.
-        <p> </p><p> </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
       roles:
         - posting
           active
@@ -797,7 +820,11 @@
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: prove_authority
       virtual: false
-      purpose: <p> </p><p> </p><p> </p>
+      purpose: |
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
       roles:
         - active
           owner
@@ -862,10 +889,12 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#request-account-recovery)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.request_account_recovery)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountrecovers)'
     - name: recover_account
       since: HF11
       virtual: false
-      purpose:
+      purpose: |
+        Broadcasted to the blockchain by the hacked account's owner to confirm the account recovery request sent by its Recovery Account.
       roles:
         - owner
       params:
@@ -879,6 +908,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#recover-account)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.recover_account)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountrecoveryconfirms)'
     - name: change_recovery_account
       since: HF11
       virtual: false
@@ -900,7 +930,7 @@
         witness vote weights. The top voted witness is explicitly the most trusted
         witness according to stake.
         
-        See: [#169]({{ 'https://github.com/steemit/steem/issues/169' | archived_url }})
+        See: [#169]({{ 'https://github.com/steemit/steem/issues/169' | archived_url }}), [PY: Account Recovery]({{ '/tutorials-python/account_recovery.html' | relative_url }})
       roles: 
         - owner
       params:
@@ -913,6 +943,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#change-recovery-account)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.change_recovery_account)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountrecoverychanges)'
     - name: escrow_transfer
       since: HF14
       virtual: false
@@ -958,6 +989,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-transfer)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_transfer)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txescrowtransfers)'
     - name: escrow_dispute
       since: HF14
       virtual: false
@@ -982,6 +1014,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-dispute)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_dispute)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txescrowdisputes)'
     - name: escrow_release
       since: HF14
       virtual: false
@@ -996,6 +1029,8 @@
             funds to either party.
           * If there is a dispute regardless of expiration, the agent can
             release funds to either party following whichever agreement was in place between the parties.
+        
+        After the expiration, the receiver can use this operation to claim the funds.  If the funds are not claimed by the receiver within 1 month of expiration then the sender can reclaim the funds.
         
         See: [hive_operations.hpp:299]( https://gitlab.syncad.com/hive/hive/-/blob/2074917f0735d9bdf22d33f5bdb089df3f6361b0/libraries/protocol/include/hive/protocol/hive_operations.hpp#L299-335)
       roles:
@@ -1016,10 +1051,11 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-release)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_release)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txescrowreleases)'
     - name: pow2
       disabled: true
       virtual: false
-      purpose:
+      purpose: |
         Disabled in HF17.
       roles:
         - active
@@ -1032,10 +1068,13 @@
       client_docs:
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#pow2)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txpows)'
     - name: escrow_approve
       since: HF14
       virtual: false
       purpose: |
+        After creating an escrow transaction, both the receiver or the agent can approve or disapprove the deal.  If nobody approves or disapproves the transaction before the deadline date, the funds are returned to the sender.
+        
         The agent and to accounts must approve an escrow transaction for it to
         be valid on the blockchain. Once a party approves the escrow, they
         cannot revoke their approval. Subsequent escrow approve operations,
@@ -1058,6 +1097,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-approve)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_approve)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txescrowapproves)'
     - name: transfer_to_savings
       since: HF14
       virtual: false
@@ -1085,10 +1125,12 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-to-savings)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_to_savings)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
     - name: transfer_from_savings
       since: HF14
       virtual: false
-      purpose:
+      purpose: |
+        Funds withdrawals from the savings to an account take three days.  Their execution is recorded in the blockchain with the [`fill_transfer_from_savings`]({{ '/apidefinitions/#broadcast_ops_fill_transfer_from_savings' | relative_url }}) virtual operation.
       roles:
         - active
           owner
@@ -1104,10 +1146,12 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-from-savings)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_from_savings)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
     - name: cancel_transfer_from_savings
       since: HF14
       virtual: false
-      purpose:
+      purpose: |
+        Funds withdrawals from the savings can be canceled at any time before it is executed.
       roles:
         - active
           owner
@@ -1120,6 +1164,8 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#cancel-transfer-from-savings)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.cancel_transfer_from_savings)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
     - name: custom_binary
       since: HF14
       virtual: false
@@ -1165,6 +1211,7 @@
       client_docs:
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.decline_voting_rights)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txdeclinevotingrights)'
     - name: reset_account
       disabled: true
       since: HF11
@@ -1207,7 +1254,8 @@
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
     - name: claim_reward_balance
       virtual: false
-      purpose:
+      purpose: |
+        Author and curator rewards are not automatically transferred to the account's balances.  One has to issue a `claim_reward_balance` operation to trigger the transfer from the reward pool to its balance.
       roles:
         - posting
           active
@@ -1223,6 +1271,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#claim-reward-balance)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.claim_reward_balance)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txclaimrewardbalances)'
     - name: delegate_vesting_shares
       since: HF17
       virtual: false
@@ -1234,7 +1283,7 @@
         decreasing it as needed (i.e. a delegation of 0 removes the delegation).
         
         When a delegation is removed the shares are placed in limbo for a week
-        to prevent a satoshi of VESTS from voting on the same content twice.
+        to prevent using them and voting on the same content twice.
         
         Also see:
           * [hive_evaluator.cpp:2309](https://gitlab.syncad.com/hive/hive/-/blob/4b19e00dd6a76699aa4de1c0d50aad392cd2d0b6/libraries/hive_evaluator.cpp#L2309)
@@ -1251,6 +1300,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#delegate-vesting-shares)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.delegate_vesting_shares)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txdelegatevestingshares)'
     - name: account_create_with_delegation
       since: HF17
       deprecated: true
@@ -1294,6 +1344,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-create-with-delegation)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_create_with_delegation)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountcreates)'
     - name: create_proposal
       since: HF21
       deprecated: false
@@ -1317,6 +1368,7 @@
       client_docs:
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.create_proposal)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalcreates)'
     - name: remove_proposal
       since: HF21
       deprecated: false
@@ -1336,6 +1388,7 @@
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestremoveproposal)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.remove_proposal)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalremoves)'
     - name: update_proposal
       since: HF24
       deprecated: false
@@ -1357,12 +1410,15 @@
       client_docs:
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalupdates)'
     - name: update_proposal_votes
       since: HF21
       deprecated: false
       virtual: false
       purpose: |
         Update proposal votes by `proposal.id`.
+        
+        Note, proposal votes are only summed at payment time (once per hour) and may not be reported immediately by related API.
       roles:
         - posting
           active
@@ -1377,6 +1433,7 @@
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestupdateproposalvote)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal_votes)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalvoteupdates)'
     - name: claim_reward_balance2
       since: Mysterious Future
       virtual: false
@@ -1651,23 +1708,30 @@
     - name: clear_null_account_balance
       since: HF20
       virtual: true
-      deprecated: true
       purpose: |
-         Deprecated as of HF23, see: [#3556]({{ 'https://github.com/steemit/steem/issues/3556' | archived_url }}}}).
+         For per-block processing that clears null account balances.
          
-         For per-block processing that clears null account balances (prior to HF23).
-         
-         See: [#2627]({{ 'https://github.com/steemit/steem/issues/2627' | archived_url }})
+         See: [#2627]({{ 'https://github.com/steemit/steem/issues/2627' | archived_url }}), [#3556]({{ 'https://github.com/steemit/steem/issues/3556' | archived_url }}) (possibly planned for deprecation with SMT Hardfork, if implemented)
       roles:
         - active
           owner
       params:
         - total_cleared
+      json_examples:
+        - '["clear_null_account_balance", {"total_cleared": [{"amount": "3000", "precision": 3, "nai": "@@000000021"}]}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voclearnullaccountbalances)'
     - name: proposal_pay
       since: HF21
       virtual: true
       purpose: |
         Dedicated operation to be generated during proposal payment phase to provide info in Account History related to funds transfer.
+        
+        This virtual operation is issued every hour during a proposal payment phase.
+        
+        Proposals without any votes are not considered active and do not receive any payment.
+        
+        If the payment of a proposal exceeds the amount of the available daily budget, it will receive a partial payment with what's left in the daily budget.
       roles:
         - active
           owner
@@ -1678,6 +1742,8 @@
           op_in_trx
       json_examples:
         - '["proposal_pay",{"receiver":"hive.fund","payment":"1.637 HBD","trx_id":"0000000000000000000000000000000000000000","op_in_trx":0}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voproposalpays)'
     - name: sps_fund
       since: HF21
       virtual: true
@@ -1692,6 +1758,8 @@
         - additional_funds
       json_examples:
         - '["sps_fund",{"additional_funds":"71.460 HBD"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vospsfunds)'
     - name: fill_convert_request
       virtual: true
       purpose: |
@@ -1706,9 +1774,14 @@
           requestid
           amount_in
           amount_out
+      json_examples:
+        - '["fill_convert_request", {"owner": "titofit", "requestid": 3347004874, "amount_in": {"amount": "3770", "precision": 3, "nai": "@@000000013"}, "amount_out": {"amount": "8849", "precision": 3, "nai": "@@000000021"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillconvertrequests)'
     - name: author_reward
       virtual: true
-      purpose:
+      purpose: |
+        Triggered after the payout period on posts and comments.
       roles:
         - posting
           active
@@ -1719,9 +1792,15 @@
           hbd_payout
           hive_payout
           vesting_payout
+          curators_vesting_payout
+      json_examples:
+        - '["author_reward", {"author": "dianadora", "permlink": "actifit-dianadora-20210527t193130754z", "hbd_payout": {"amount": "11", "precision": 3, "nai": "@@000000013"}, "hive_payout": {"amount": "0", "precision": 3, "nai": "@@000000021"}, "vesting_payout": {"amount": "52734247", "precision": 6, "nai": "@@000000037"}, "curators_vesting_payout": {"amount": "96051664", "precision": 6, "nai": "@@000000037"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voauthorrewards)'
     - name: curation_reward
       virtual: true
-      purpose:
+      purpose: |
+        Issued by the blockchain after the payout period on posts and comments.
       roles:
         - posting
           active
@@ -1731,10 +1810,20 @@
           reward
           comment_author
           comment_permlink
+      json_examples:
+        - '["curation_reward", {"curator": "hendrikdegrote", "reward": {"amount": "9349621710", "precision": 6, "nai": "@@000000037"}, "comment_author": "crypt0", "comment_permlink": "metropolis-by-end-of-june-swt-token-now-trading-on-bittrex-roger-ver-offering-his-own-btc"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vocurationrewards)'
     - name: comment_reward
       since: HF17
       virtual: true
       purpose: |
+        Issued after the payout period on posts and comments.
+        
+        The value of this operation is the global payout value for the post or comment.  A separate virtual operation is issued for the author, the curators and the beneficiaries (see [author_reward]({{ '/apidefinitions/#broadcast_ops_author_reward' | relative_url }}), [comment_benefactor_reward]({{ '/apidefinitions/#broadcast_ops_comment_benefactor_reward' | relative_url }}) and [curation_reward]({{ '/apidefinitions/#broadcast_ops_curation_reward' | relative_url }})).
+        
+        The value is the equivalent HBD value of the payout even if no HBD will be effectively paid to the author, curators, or beneficiaries.
+        
         See: [#774]({{ 'https://github.com/steemit/steem/issues/774' | archived_url }})
       roles:
         - posting
@@ -1744,20 +1833,32 @@
         - author
           permlink
           payout
+          author_rewards
+          curator_payout_value
+          beneficiary_payout_value
+      json_examples:
+        - '["comment_reward", {"author": "karla95", "permlink": "blogging-challenge-13-pelicula-favorita", "payout": {"amount": "199", "precision": 3, "nai": "@@000000013"}, "author_rewards": 256, "total_payout_value": {"amount": "108", "precision": 3, "nai": "@@000000013"}, "curator_payout_value": {"amount": "90", "precision": 3, "nai": "@@000000013"}, "beneficiary_payout_value": {"amount": "0", "precision": 3, "nai": "@@000000013"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vocommentrewards)'
     - name: liquidity_reward
       disabled: true
       virtual: true
       purpose: |
-        Deprecated as of HF12, see: [#178]({{ 'https://github.com/steemit/steem/issues/178' | archived_url }}).
+        Liquidity reward was a reward mechanism for the on-chain market designed to pay users who provide liquidity to the market.  Deprecated as of HF12, see: [#178]({{ 'https://github.com/steemit/steem/issues/178' | archived_url }})).
       roles:
         - active
           owner
       params:
         - owner
           payout
+      json_examples:
+        - '["liquidity_reward", {"owner": "adm", "payout": {"amount": "1200000", "precision": 3, "nai": "@@000000021"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voliquidityrewards)'
     - name: interest
       virtual: true
-      purpose:
+      purpose: |
+        Issued when interests are paid on HBD or HBD saving.
       roles:
         - active
           owner
@@ -1766,10 +1867,14 @@
           interest
       json_examples:
         - '["interest",{"owner":"alice","interest":"0.001 HBD"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vointerests)'
     - name: fill_vesting_withdraw
       since: HF6
       virtual: true
       purpose: |
+        Issued when each week after a user has initiated a withdrawal from VESTS to HIVE (see: [withdraw_vesting]({{ '/apidefinitions/#broadcast_ops_withdraw_vesting' | relative_url }})).
+      
         See: [#78]({{ 'https://github.com/steemit/steem/issues/78' | archived_url }})
       roles:
         - active
@@ -1781,9 +1886,12 @@
           deposited
       json_examples:
         - '["fill_vesting_withdraw",{"from_account":"alice","to_account":"alice","withdrawn":"0.026475 VESTS","deposited":"0.710 HIVE"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillvestingwithdraws)'
     - name: fill_order
       virtual: true
-      purpose:
+      purpose: |
+        Issued when orders on the internal market are filled (see: [limit_order_create]({{ '/apidefinitions/#broadcast_ops_limit_order_create' | relative_url }})).
       roles:
         - posting
           active
@@ -1797,11 +1905,16 @@
           open_pays
       json_examples:
         - '["fill_order",{"current_owner":"alice","current_orderid":42896,"current_pays":"94.999 HBD","open_owner":"bob","open_orderid":10001,"open_pays":"500.000 HIVE"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillorders)'
     - name: shutdown_witness
       since: HF14
+      deprecated: true
       virtual: true
       purpose: |
-        When a witness goes offline.
+        This virtual operation was previously issued when the system automatically disables a witness because it was missing too many blocks.
+        
+        This operation has been introduced with HF14 and deprecated with HF20.
         
         See: [#278]({{ 'https://github.com/steemit/steem/issues/278' | archived_url }})
       roles:
@@ -1812,10 +1925,13 @@
         - owner
       json_examples:
         - '["shutdown_witness",{"owner":"alice"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voshutdownwitnesses)'
     - name: fill_transfer_from_savings
       since: HF14
       virtual: true
-      purpose:
+      purpose: |
+        Issued when the delay for a transfer request from a savings balance is complete and the transfer is effectively executed (see: [transfer_from_savings]({{ '/apidefinitions/#broadcast_ops_transfer_from_savings' | relative_url }}))
       roles:
         - posting
           active
@@ -1828,6 +1944,8 @@
           memo
       json_examples:
         - '["fill_transfer_from_savings",{"from":"learngerman","to":"learngerman","amount":{"amount":"1000","precision":3,"nai":"@@000000021"},"request_id":1618177172,"memo":""}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofilltransferfromsavings)'
     - name: hardfork
       since: HF9
       virtual: true
@@ -1871,7 +1989,8 @@
         - hardfork_id
     - name: comment_payout_update
       virtual: true
-      purpose:
+      purpose: |
+        Issued when a post or comment reaches the end of the payout windows and its final payout values are computed.
       roles:
         - posting
           active
@@ -1879,10 +1998,15 @@
       params:
         - author
           permlink
+      json_examples:
+        - '["comment_payout_update", {"author": "pinmapple", "permlink": "pinmapple162222420235626"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vocommentpayoutupdates)'
     - name: return_vesting_delegation
       since: HF17
       virtual: true
-      purpose:
+      purpose: |
+        Occurs when the Hive Power that has been previously delegated by an account to another account comes back to the original owner.  When a user cancels its delegation, it takes 7 days to complete (see: [delegate_vesting_shares]({{ '/apidefinitions/#broadcast_ops_delegate_vesting_shares' | relative_url }})).
       roles:
         - posting
           active
@@ -1890,10 +2014,15 @@
       params:
         - account
           vesting_shares
+      json_examples:
+        - '["return_vesting_delegation", {"account": "artemisha", "vesting_shares": {"amount": "18833102935", "precision": 6, "nai": "@@000000037"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voreturnvestingdelegations)'
     - name: comment_benefactor_reward
       since: HF17
       virtual: true
-      purpose:
+      purpose: |
+        Triggered after the payout period on posts and comments if the original author has decided to share his reward with other users.
       roles:
         - posting
           active
@@ -1902,11 +2031,19 @@
         - benefactor
           author
           permlink
-          reward
+          hbd_payout
+          hive_payout
+          vesting_payout
+      json_examples:
+        - '["comment_benefactor_reward", {"benefactor": "hiveonboard", "author": "yossaeluz", "permlink": "importance-of-the-implementation-of-continuous-improvement-in-processes", "hbd_payout": {"amount": "40", "precision": 3, "nai": "@@000000013"}, "hive_payout": {"amount": "0", "precision": 3, "nai": "@@000000021"}, "vesting_payout": {"amount": "178904599", "precision": 6, "nai": "@@000000037"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vocommentbenefactorrewards)'
     - name: producer_reward
       since: HF17
       virtual: true
       purpose: |
+        Occurs each time a block is produced.  It contains the rewards that are given to witnesses (and [previously miners]({{ '/search/?q=pow' | relative_url }})) for their work.
+      
         Witness rewards for block signing are hard to account for. Making these
         rewards visible will help witnesses and prospective witnesses by
         providing them with more complete and accurate information to guide
@@ -1920,6 +2057,8 @@
           vesting_shares
       json_examples:
         - '["producer_reward", {"producer":"alice","vesting_shares":"14403.626449 VESTS"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voproducerrewards)'
     - name: hardfork_hive
       since: HF23
       deprecated: false
@@ -1945,6 +2084,8 @@
           total_hive_from_vests
       json_examples:
         - '["hardfork_hive", {"account":"steem","treasury":"steem.dao","hbd_transferred":{"amount":"861823","precision":3,"nai":"@@000000013"},"hive_transferred":{"amount":"40590","precision":3,"nai":"@@000000021"},"vests_converted":{"amount":"22870822335791719","precision":6,"nai":"@@000000037"},"total_hive_from_vests":{"amount":"11678135805","precision":3,"nai":"@@000000021"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vohardforkhives)'
     - name: hardfork_hive_restore
       since: HF24
       deprecated: false
@@ -1961,6 +2102,8 @@
       params:
       json_examples:
         - '["hardfork_hive_restore", {"account":"yellowbird","treasury":"steem.dao","hbd_transferred":{"amount":"0","precision":3,"nai":"@@000000013"},"hive_transferred":{"amount":"1280","precision":3,"nai":"@@000000021"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vohardforkhiverestores)'
     - name: delayed_voting
       since: HF24
       deprecated: false
@@ -1968,11 +2111,13 @@
       purpose: |
         Tracks when newly powered up VESTS become counted towards witness and DHF proposals (after a 30 day delay is complete).
         
-        See: See: [transfer_to_vesting]({{ '/apidefinitions/#transfer_to_vesting' | relative_url }}), [fa63145](https://gitlab.syncad.com/hive/hive/-/commit/fa63145e21e008c672fbbb1ec3420b40711aa1ee), [5](https://gitlab.syncad.com/hive/hive/-/issues/5), [!21](https://gitlab.syncad.com/hive/hive/-/merge_requests/21)
+        See: [transfer_to_vesting]({{ '/apidefinitions/#transfer_to_vesting' | relative_url }}), [fa63145](https://gitlab.syncad.com/hive/hive/-/commit/fa63145e21e008c672fbbb1ec3420b40711aa1ee), [5](https://gitlab.syncad.com/hive/hive/-/issues/5), [!21](https://gitlab.syncad.com/hive/hive/-/merge_requests/21)
       roles:
       params:
       json_examples:
         - '["delayed_voting", {"voter":"fordummies","votes":191547046}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vodelayedvotings)'
     - name: consolidate_treasury_balance
       since: HF24
       deprecated: false
@@ -1991,11 +2136,15 @@
         - total_moved
       json_examples:
         - '["consolidate_treasury_balance", {"total_moved":[{"amount":"8853","precision":3,"nai":"@@000000013"}]}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voconsolidatetreasurybalances)'
     - name: effective_comment_vote
       since: HF24
       deprecated: false
       virtual: true
       purpose: |
+        This virtual operation is issued when a vote on a post or comment becomes effective (see: [vote]({{ '/apidefinitions/#broadcast_ops_vote' | relative_url }}))
+        
         Needed by hivemind to index estimated `pending_payout` from a given vote.
         
         See: [2074917](https://gitlab.syncad.com/hive/hive/-/commit/2074917f0735d9bdf22d33f5bdb089df3f6361b0)
@@ -2030,9 +2179,180 @@
       deprecated: false
       virtual: true
       purpose: |
+        Issued when a Proposals Fund (DHF) conversion from HIVE to HBD occurs.
         
+        When the Hardfork that created Hive happened back in March 2020, the Steemit Inc ninja-mined funds were moved into the @hive.fund account as a development fund.  As proposals are paid in HBD and most of the moved funds were in HIVE, an automatic conversion process has been put in place.
         
         See: [96254ae](https://gitlab.syncad.com/hive/hive/-/commit/96254ae57c9e92cdf066e4ccd5deeed4ec9d964f)
       roles:
       params:
+        - fund_account
+          hive_amount_in
+          hbd_amount_out
       json_examples:
+        - '["sps_convert", {"fund_account": "hive.fund", "hive_amount_in": {"amount": "37111024", "precision": 3, "nai": "@@000000021"}, "hbd_amount_out": {"amount": "15735074", "precision": 3, "nai": "@@000000013"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vospsconverts)'
+    - name: account_created
+      since: HF25
+      deprecated: false
+      virtual: true
+      purpose: |
+        Issued each time a new account has been successfully created.
+      roles:
+      params:
+        - new_account_name
+          creator
+          initial_vesting_shares
+          initial_delegation
+      json_examples:
+        - '["account_created", {"new_account_name": "init-2", "creator": "initminer", "initial_vesting_shares": {"amount": "0", "precision": 6, "nai": "@@000000037"}, "initial_delegation": {"amount": "0", "precision": 6, "nai": "@@000000037"}}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voaccountcreateds-hf25)'
+    - name: changed_recovery_account
+      since: HF25
+      deprecated: false
+      virtual: true
+      purpose: |
+        Issued when the blockchain effectively changes the recovery account of an account after it issued such request (see: [change_recovery_account]({{ '/apidefinitions/#broadcast_ops_change_recovery_account' | relative_url }})).
+      roles:
+      params:
+        - account
+          old_recovery_account
+          new_recovery_account
+      json_examples:
+        - '["changed_recovery_account", {"account": "alice", "old_recovery_account": "eve", "new_recovery_account": "bob"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vochangedrecoveryaccounts-hf25)'
+    - name: expired_account_notification
+      since: HF25
+      deprecated: false
+      virtual: true
+      purpose: |
+        Issued when governance votes for an account have expired and are removed.
+      roles:
+      params:
+        - account
+      json_examples:
+        - '["expired_account_notification", {"account": "init-2"}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/voexpiredaccountnotifications-hf25)'
+    - name: failed_recurrent_transfer
+      since: HF25
+      deprecated: false
+      virtual: true
+      purpose: |
+        Issued when a recurrent transfer has failed to be executed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})).
+        
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      roles:
+      params:
+        - from
+          to
+          amount
+          memo
+          consecutive_failures
+          remaining_executions
+          deleted
+      # json_examples:
+      #   - '["failed_recurrent_transfer", {}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofailedrecurrenttransfers-hf25)'
+    - name: fill_collateralized_convert_request
+      since: HF25
+      deprecated: false
+      virtual: true
+      purpose: |
+        Issued when a HIVE to HBD conversion is completed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_collateralized_convert' | relative_url }})).
+        
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      roles:
+      params:
+        - owner
+          requestid
+          amount_in
+          amount_out
+          excess_collateral
+      # json_examples:
+      #   - '["fill_collateralized_convert_request", {}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillcollateralizedconvertrequests-hf25)'
+    - name: fill_recurrent_transfer
+      since: HF25
+      deprecated: false
+      virtual: true
+      purpose: |
+        Issued when a recurrent transfer is executed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})).
+        
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      roles:
+      params:
+        - from
+          to
+          amount
+          memo
+          remaining_executions
+      # json_examples:
+      #   - '["fill_recurrent_transfer", {}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillrecurrenttransfers-hf25)'
+    - name: transfer_to_vesting_completed
+      since: HF25
+      deprecated: false
+      virtual: true
+      purpose: |
+        Issued when a power-up is finally taken into account for governance votes (see: [transfer_to_vesting]({{ '/apidefinitions/#broadcast_ops_transfer_to_vesting' | relative_url }})).
+        
+        See: [#111](https://gitlab.syncad.com/hive/hive/-/issues/111) 
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      roles:
+      params:
+        - from_account
+          to_account
+          hive_vested
+          vesting_shares_received
+      # json_examples:
+      #   - '["fill_recurrent_transfer", {}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillrecurrenttransfers-hf25)'
+    - name: collateralized_convert
+      since: HF25
+      deprecated: false
+      virtual: false
+      purpose: |
+        The `collateralized_convert` operation is similar to `convert` operation (see: [convert]({{ '/apidefinitions/#broadcast_ops_convert' | relative_url }})), and instructs the blockchain to convert HIVE to HBD.  The operation is performed after a 3.5 days delay, but the owner gets HBD immediately.  The price risk is cushioned by extra HIVE.  After actual conversion takes place the excess HIVE is returned to the owner.
+      roles:
+      params:
+        - owner
+          requestid
+          amount
+      # json_examples:
+      #   - '["collateralized_convert", {}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
+    - name: recurrent_transfer
+      since: HF25
+      deprecated: false
+      virtual: false
+      purpose: |
+        The `recurrent_transfer` operation creates/updates/removes a recurrent transfer (transfers any liquid asset every fixed amount of time from one account to another).  If amount is set to 0, the recurrent transfer is be deleted.  If there is already a recurrent transfer matching from and to, the recurrent transfer is updated.
+      roles:
+      params:
+        - from
+          to
+          amount
+          memo
+          recurrence
+          executions
+          extensions
+      # json_examples:
+      #   - '["recurrent_transfer", {}]'
+      client_docs:
+        - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txrecurrenttransfers-hf25)'

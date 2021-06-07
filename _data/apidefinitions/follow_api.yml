@@ -226,6 +226,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-follow-count)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-follow-count)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: follow_api.get_followers
     removed: true
     since: HF9
@@ -257,6 +258,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-followers)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-followers)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: follow_api.get_following
     removed: true
     since: HF9
@@ -288,6 +290,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-following)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-following)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: follow_api.get_reblogged_by
     removed: true
     since: HF14
@@ -309,3 +312,4 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-reblogged-by)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-reblogged-by)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/reblogs)'

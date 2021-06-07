@@ -114,6 +114,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/database-diagram#blocks-and-transactions)'
     - api_method: account_history_api.enum_virtual_ops
       since: HF24
       purpose: |
@@ -170,3 +171,4 @@
         - '{"jsonrpc":"2.0", "method":"account_history_api.enum_virtual_ops", "params":{"block_range_begin":1,"block_range_end":2,"include_reversible":true}, "id":1}'
       client_docs:
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+        - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations)'

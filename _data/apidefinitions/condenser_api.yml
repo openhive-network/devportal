@@ -184,6 +184,9 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-history)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
   - api_method: condenser_api.get_account_reputations
     since: HF13
     purpose: |
@@ -376,6 +379,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/accounts)'
   - api_method: condenser_api.get_active_votes
     purpose: |
       Returns all votes for the given post.  Parameters: `author:string`; `permlink:string`
@@ -420,6 +424,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-witnesses)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-witnesses)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: condenser_api.get_block
     purpose: |
       Returns a block.  Parameters: `block_num:int`
@@ -646,6 +651,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-comment-discussions-by-payout)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-comment-discussions-by-payout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_config
     purpose: |
       Returns information about compile-time constants.  See: [Understanding
@@ -726,6 +732,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
   - api_method: condenser_api.get_content_replies
     purpose: |
       Returns a list of replies.  Parameters: `author:string`; `permlink:string`
@@ -846,6 +853,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-active)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-active)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_author_before_date
     purpose: |
       Returns a list of discussions based on author before date.
@@ -864,6 +872,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-author-before-date)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-author-before-date)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_blog
     purpose: |
       Returns a list of discussions by blog.
@@ -886,6 +895,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-blog)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_cashout
     purpose: Returns a list of discussions by cashout.
     parameter_json:
@@ -905,6 +915,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-cashout)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-cashout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_children
     purpose: Returns a list of discussions by children.
     parameter_json:
@@ -924,6 +935,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-children)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-children)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_comments
     purpose: |
       Returns a list of discussions by comments.
@@ -946,6 +958,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-comments)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_created
     purpose: |
       Returns a list of discussions by created.
@@ -968,6 +981,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-created)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_feed
     since: HF14
     purpose: Returns a list of discussions by feed.
@@ -986,6 +1000,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-feed)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-feed)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_hot
     purpose: |
       Returns a list of discussions by hot.
@@ -1008,6 +1023,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-hot)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-hot)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_promoted
     since: HF13
     purpose: |
@@ -1031,6 +1047,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-promoted)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-promoted)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_trending
     purpose: |
       Returns a list of discussions by trending.
@@ -1053,6 +1070,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_discussions_by_votes
     purpose: Returns a list of discussions by votes.
     parameter_json:
@@ -1072,6 +1090,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-votes)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-votes)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_dynamic_global_properties
     purpose: |
       Returns the current dynamic global properties.  See: [Understanding
@@ -1112,6 +1131,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-dynamic-global-properties)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-dynamic-global-properties)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/dynamicglobalproperties)'
   - api_method: condenser_api.get_escrow
     since: HF14
     purpose: |
@@ -1155,6 +1175,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#api-call)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-expiring-vesting-delegations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)'
   - api_method: condenser_api.get_feed
     since: HF14
     purpose: |
@@ -1247,6 +1268,9 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-follow-count)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-follow-count)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
   - api_method: condenser_api.get_followers
     since: HF9
     purpose: |
@@ -1279,6 +1303,9 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-followers)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-followers)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
   - api_method: condenser_api.get_following
     since: HF9
     purpose: |
@@ -1305,6 +1332,9 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-following)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-following)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
   - api_method: condenser_api.get_hardfork_version
     purpose: |
       Returns the current hardfork version.
@@ -1533,6 +1563,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-post-discussions-by-payout)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-post-discussions-by-payout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_potential_signatures
     purpose: |
       This method will return the set of all public keys that could possibly sign for a given transaction.
@@ -1578,6 +1609,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-reblogged-by)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-reblogged-by)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/reblogs)'
   - api_method: condenser_api.get_recent_trades
     purpose: |
       Returns the most recent trades for the internal HBD:HIVE market.  Parameters: `limit:int` up to 1000
@@ -1803,6 +1835,8 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-state)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-state)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_tags_used_by_author
     purpose: |
       Returns a list of tags used by an author.  Parameters: `author:string`
@@ -1820,6 +1854,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#api-call)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-tags-used-by-author)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_ticker
     purpose: |
       Returns the market ticker for the internal HBD:HIVE market.
@@ -1942,6 +1977,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-trending-tags)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-trending-tags)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: condenser_api.get_version
     purpose: |
       Returns the versions of blockchain, hive, and FC.
@@ -1985,6 +2021,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-vesting-delegations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)'
   - api_method: condenser_api.get_volume
     purpose: |
       Returns the market volume for the past 24 hours.
@@ -2075,6 +2112,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witness-by-account)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witness-by-account)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: condenser_api.get_witness_count
     purpose: 
     parameter_json: []
@@ -2133,6 +2171,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witnesses)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: condenser_api.get_witnesses_by_vote
     purpose: |
       Returns current witnesses by vote.  Parameters: `start_name:string`; `limit:int` up to 1000
@@ -2156,6 +2195,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses-by-vote)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witnesses-by-vote)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: condenser_api.lookup_account_names
     purpose: |
       Looks up account names.  Parameters: `accounts:[string]`; `delayed_votes_active:boolean`
@@ -2336,6 +2376,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#lookup-witness-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#lookup-witness-accounts)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: condenser_api.verify_account_authority
     disabled: true
     purpose: |
@@ -2410,6 +2451,7 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.find_proposals", "params":[[0]], "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposals)'
   - api_method: condenser_api.list_proposal_votes
     purpose: |
       Returns all proposal votes, starting with the specified voter or `proposal.id`.  Parameters: `start:array`; `limit:int`; `order:string`; `order_direction:string`; `status:string`
@@ -2465,6 +2507,7 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[0], 10, "by_proposal_voter", "ascending", "active"], "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposalsapprovals)'
   - api_method: condenser_api.list_proposals
     purpose: |
       Returns all proposals, starting with the specified creator or start date.  Parameters: `start:array`; `limit:int`; `order:string`; `order_direction:string`; `status:string`
@@ -2526,6 +2569,7 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[[10], 1000, "by_total_votes", "ascending", "votable"], "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposals)'
   - api_method: condenser_api.is_known_transaction
     since: HF25
     purpose: |
@@ -2538,3 +2582,15 @@
     expected_response_json: 'false'
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.is_known_transaction", "params":["0000000000000000000000000000000000000000"]}, "id":1}'
+  - api_method: condenser_api.get_collateralized_conversion_requests
+    since: HF25
+    purpose: |
+      Returns objects corresponding with `collateralized_convert` operations.
+        
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    parameter_json: "[]"
+    expected_response_json: "[]"
+    client_docs:
+      - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
