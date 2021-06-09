@@ -2703,6 +2703,8 @@
     expected_response_json: '{"is_known":false}'
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.is_known_transaction", "params":{"transaction_id":"0000000000000000000000000000000000000000"}, "id":1}'
+    client_docs:
+      - '[hivesql](https://docs.hivesql.io/technical-informations/database-diagram#blocks-and-transactions)'
   - api_method: database_api.find_collateralized_conversion_requests
     since: HF25
     purpose: |
