@@ -130,6 +130,14 @@ convenience of asking `hived` to report these values.
 As you can see, integrating support for the RC system into a Hive client library involves a number of architectural and
 technical decisions.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py36rcdemo?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. [review dev requirements](getting_started.html)
