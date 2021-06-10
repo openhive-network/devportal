@@ -116,6 +116,14 @@ followlist.forEach(newObj => {
 });
 ```
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js19getfollowerandfollowinglist?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To run this tutorial
 
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

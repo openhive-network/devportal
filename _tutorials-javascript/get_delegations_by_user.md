@@ -5,7 +5,7 @@ description: "_View the vesting delegations made by a user as well as the delega
 layout: full
 canonical_url: get_delegations_by_user.html
 ---
-Full, runnable src of [Get Delegations By User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/29_get_delegations_by_user) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python-29_get_delegations_by_user.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python/29_get_delegations_by_user)).
+Full, runnable src of [Get Delegations By User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/29_get_delegations_by_user) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-29_get_delegations_by_user.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/29_get_delegations_by_user)).
 
 This tutorial will take you through the process of calling delegation information from the hive blockchain using the `database API`. The account information provided has been chosen by random and the process is applicable to any user account on both the `production server` and the `testnet`.
 
@@ -154,6 +154,14 @@ delegationdata.forEach(newObj => {
         shares + ' will be released at ' + date + '<br>';
 });
 ```
+
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js29getdelegationsbyuser?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To run this tutorial
 

@@ -201,7 +201,13 @@ From this result, you have access to everything associated with the selected pos
 * `body_length` - Total content length.
 * `reblogged_by` - Unused.
 
-That's it!
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js05getpostdetails?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 
