@@ -1,0 +1,48 @@
+<ul>
+  <li><code>id</code> - Unique identifier that is mostly an implementation detail (best to ignore). To uniquely identify content, it's best to use <code>author/permlink</code>.</li>
+  <li><code>author</code> - The author account name of the content.</li>
+  <li><code>permlink</code> - Permanent link of the content, must be unique in the scope of the <code>author</code>.</li>
+  <li><code>category</code> - The main category/tag this content belongs to.</li>
+  <li><code>root_author</code> - Used in conbination with <code>root_permlink</code>.</li>
+  <li><code>root_permlink</code> - In conbination with <code>root_author</code>, distinctly references discussion this content is part of.</li>
+  <li><code>parent_author</code> - Parent author, in case this content is a comment (reply).</li>
+  <li><code>parent_permlink</code> - Parent permanent link, this will be the same as <code>category</code> for posts and will contain the <code>permlink</code> of the content being replied to in the case of a comment.</li>
+  <li><code>title</code> - Title of the content.</li>
+  <li><code>body</code> - Body of the content.</li>
+  <li><code>json_metadata</code> - JSON metadata that holds extra information about the content. <b>Note:</b> The format for this field is not guaranteed to be valid JSON.</li>
+  <li><code>last_update</code> - The date and time of the last update to this content.</li>
+  <li><code>created</code> - The date and time this content was created.</li>
+  <li><code>active</code> - The last time this content was "touched" by voting or reply.</li>
+  <li><code>last_payout</code> - Time of last payout.</li>
+  <li><code>depth</code> - Used to track max nested depth.</li>
+  <li><code>children</code> - Used to track the total number of children, grandchildren, etc. ...</li>
+  <li><code>net_rshares</code> - Reward is proportional to liniar rshares, this is the sum of all votes (positive and negative reward sum)</li>
+  <li><code>abs_rshares</code> - This was used to track the total absolute weight of votes for the purpose of calculating <code>cashout_time</code>.</li>
+  <li><code>vote_rshares</code> - Total positive rshares from all votes. Used to calculate delta weights. Needed to handle vote changing and removal.</li>
+  <li><code>children_abs_rshares</code> - This was used to calculate cashout time of a discussion.</li>
+  <li><code>cashout_time</code> - 7 days from the <code>created</code> date.</li>
+  <li><code>max_cashout_time</code> - Unused.</li>
+  <li><code>total_vote_weight</code> - The total weight of voting rewards, used to calculate pro-rata share of curation payouts.</li>
+  <li><code>reward_weight</code> - Weight/percent of reward.</li>
+  <li><code>total_payout_value</code> - Tracks the total payout this content has received over time, measured in the debt asset.</li>
+  <li><code>curator_payout_value</code> - Tracks the curator payout this content has received over time, measured in the debt asset.</li>
+  <li><code>author_rewards</code> - Tracks the author payout this content has received over time, measured in the debt asset.</li>
+  <li><code>net_votes</code> - Net positive votes</li>
+  <li><code>root_comment</code> - ID of the original content.</li>
+  <li><code>max_accepted_payout</code> - Value of the maximum payout this content will receive.</li>
+  <li><code>percent_hbd</code> - The percent of Hive Dollars to key, unkept amounts will be received as HIVE Power.</li>
+  <li><code>allow_replies</code> - Allows content to disable replies.</li>
+  <li><code>allow_votes</code> - Allows content to receive votes.</li>
+  <li><code>allow_curation_rewards</code> - Allows curators of this content receive rewards.</li>
+  <li><code>beneficiaries</code> - The list of up to 8 beneficiary accounts for this content as well as the percentage of the author reward they will receive in HIVE Power.</li>
+  <li><code>url</code> - The end of the url to this content.</li>
+  <li><code>root_title</code> - Title of the original content (useful in replies).</li>
+  <li><code>pending_payout_value</code> - Pending payout amount if 7 days has not yet elapsed.</li>
+  <li><code>total_pending_payout_value</code> - Total pending payout amount if 7 days has not yet elapsed.</li>
+  <li><code>active_votes</code> - The entire voting list array, including upvotes, downvotes, and unvotes; used to calculate <code>net_votes</code>.</li>
+  <li><code>replies</code> - Unused.</li>
+  <li><code>author_reputation</code> - Author's reputation.</li>
+  <li><code>promoted</code> - If post is promoted, how much has been spent on promotion.</li>
+  <li><code>body_length</code> - Total content length.</li>
+  <li><code>reblogged_by</code> - Unused.</li>
+</ul>
