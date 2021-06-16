@@ -31,7 +31,7 @@ window.submitAcc = async () => {
 };
 
 window.submitTx = async () => {
-    const privateKey = PrivateKey.fromString(
+    const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('wif').value
     );
     const op = [
