@@ -1,5 +1,5 @@
 import { Client, PrivateKey } from '@hiveio/dhive';
-import { Mainnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
+import { TestnetHive as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 //connect to a hive node, testnet in this case
@@ -30,18 +30,19 @@ window.submitAcc = async () => {
 
     const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestHive} HIVE POWER<br/><br/>`;
     document.getElementById('accBalance').innerHTML = balance;
-    document.getElementById('hive').value = avail + ' VESTS';
+    document.getElementById('hive').value = vestHive;
 
     document.getElementById('sc').style.display = 'block';
-    const link = `https://hivesigner.com/sign/withdraw-vesting?account=${name}&vesting_shares=${
-        document.getElementById('hive').value
-    }`;
+    const link = `https://testnet.hivesigner.com/sign/withdraw-vesting?account=${name}&vesting_shares=${avail}`;
     document.getElementById('sc').innerHTML = `<br/><a href=${encodeURI(
         link
     )} target="_blank">Hive Signer signing</a>`;
 };
 
 window.submitTx = async () => {
+    const props = await client.database.getDynamicGlobalProperties();
+    const vests = parseFloat(document.getElementById('hive').value) /
+      (parseFloat(props.total_vesting_fund_hive) / parseFloat(props.total_vesting_shares));
     const privateKey = PrivateKey.fromString(
         document.getElementById('wif').value
     );
@@ -49,7 +50,7 @@ window.submitTx = async () => {
         'withdraw_vesting',
         {
             account: document.getElementById('username').value,
-            vesting_shares: document.getElementById('hive').value,
+            vesting_shares: vests.toFixed(6) + ' VESTS',
         },
     ];
     client.broadcast.sendOperations([op], privateKey).then(
