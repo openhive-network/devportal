@@ -31,7 +31,7 @@ Also see:
 2.  [**Collecting information**](#collecting_information) Generating relevant posting information with an HTML interface.
 3.  [**Broadcasting the reblog**](#broadcasting_the_reblog) Assigning variables and executing the reblog.
 
-#### 1. Configure connection\*\*<a name="configure_connection"></a>
+#### 1. Configure connection<a name="configure_connection"></a>
 
 Below we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint. Although this tutorial is interactive, we will not post to the testnet due to the prerequisites of reblogging.
 There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
