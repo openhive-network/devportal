@@ -110,7 +110,13 @@ The example of results returned from the service:
 
 From this result you have access to everything associated to the replies including content of reply, author, timestamp, etc., so that you can be use in further development of applications with Python.
 
-That's it!
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py07getpostcomments?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

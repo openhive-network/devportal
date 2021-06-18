@@ -207,6 +207,14 @@ The result returned from the service is a `JSON` list. This is an example list w
 
 **And that's all there is to getting top-level posts.** _See [Get post comments](get_post_comments.html) for getting comments_
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js04getposts?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

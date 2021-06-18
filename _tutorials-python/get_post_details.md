@@ -104,6 +104,16 @@ The example of result returned from the service:
 
 From this result you have access to everything associated to the post including additional metadata which is a `JSON` string (e.g.; `json()["created"]`), `active_votes` (see: [beem.comment.Comment.get_vote_with_curation](https://beem.readthedocs.io/en/latest/beem.comment.html#beem.comment.Comment.get_vote_with_curation)) info, post title, body, etc. details that can be used in further development of applications with Python.
 
+{% include structures/comment.html %}
+
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py05getpostdetails?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. [review dev requirements](getting_started.html)

@@ -220,6 +220,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/accounts)'
   - api_method: database_api.find_change_recovery_account_requests
     since: HF11
     purpose: |
@@ -421,6 +422,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_expiring_vesting_delegations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)'
   - api_method: database_api.find_vesting_delegations
     since: HF17
     purpose: |
@@ -454,6 +456,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_vesting_delegations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)'
   - api_method: database_api.find_votes
     purpose: |
       Returns all votes for the given post.  Required (non-empty) parameters: `author:string`; `permlink:string`
@@ -568,6 +571,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-witnesses)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: database_api.get_active_witnesses
     purpose: Returns the list of active witnesses.
     parameter_json: "{}"
@@ -603,6 +607,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-witnesses)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-witnesses)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: database_api.get_config
     purpose: |
       Returns information about compile-time constants. Some properties may
@@ -1011,6 +1016,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-dynamic-global-properties)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_dynamic_global_properties)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/dynamicglobalproperties)'
   - api_method: database_api.get_feed_history
     purpose: Returns the history of price feed values.
     parameter_json: "{}"
@@ -1267,6 +1273,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witness-schedule)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witness-schedule)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: database_api.list_account_recovery_requests
     since: HF11
     purpose: |
@@ -1915,6 +1922,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_expiring_vesting_delegations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)'
   - api_method: database_api.list_vesting_delegations
     since: HF17
     purpose: |
@@ -1953,6 +1961,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_expiring_vesting_delegations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)'
   - api_method: database_api.list_votes
     purpose: |
       Returns all votes, starting with the specified voter and/or author and permlink.  Parameters: `start:array`; `limit:int`; `order:string`
@@ -2075,6 +2084,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses-by-vote)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.witness.html#beem.witness.WitnessesRankedByVote)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: database_api.list_witnesses
     purpose: |
       Returns the list of witnesses.  Parameters: `start:object`; `limit:int`; `order:string`
@@ -2154,6 +2164,7 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses-by-vote)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.witness.html#beem.witness.WitnessesRankedByVote)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)'
   - api_method: database_api.verify_account_authority
     disabled: true
     purpose: |
@@ -2216,6 +2227,7 @@
     - '{"jsonrpc":"2.0", "method":"database_api.find_proposals", "params":{"proposal_ids": [0]}, "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposals)'
   - api_method: database_api.list_proposal_votes
     purpose: |
       Returns all proposal votes, starting with the specified voter or `proposal.id`.  Parameters: `start:array`; `limit:int`; `order:string`; `order_direction:string`; `status:string`
@@ -2271,6 +2283,7 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposal_votes", "params":{"start": [0], "limit": 10, "order": "by_proposal_voter", "order_direction": "ascending", "status": "active"}, "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposalsapprovals)'
   - api_method: database_api.list_proposals
     purpose: |
       Returns all proposals, starting with the specified creator or start date.  Parameters: `start:array`; `limit:int`; `order:string`; `order_direction:string`; `status:string`
@@ -2336,6 +2349,7 @@
     - '{"jsonrpc":"2.0", "method":"database_api.list_proposals", "params":{"start": [10], "limit": 1000, "order": "by_total_votes", "order_direction": "ascending", "status": "votable"}, "id":1}'
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposals)'
   - api_method: database_api.find_smt_contributions
     since: Mysterious Future
     purpose: |
@@ -2689,3 +2703,29 @@
     expected_response_json: '{"is_known":false}'
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.is_known_transaction", "params":{"transaction_id":"0000000000000000000000000000000000000000"}, "id":1}'
+    client_docs:
+      - '[hivesql](https://docs.hivesql.io/technical-informations/database-diagram#blocks-and-transactions)'
+  - api_method: database_api.find_collateralized_conversion_requests
+    since: HF25
+    purpose: |
+      Returns objects corresponding with `collateralized_convert` operations.
+        
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    parameter_json: '{"account":""}'
+    expected_response_json: '{"requests":[]}'
+    client_docs:
+      - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
+  - api_method: database_api.list_collateralized_conversion_requests
+    since: HF25
+    purpose: |
+      Returns objects corresponding with `collateralized_convert` operations.
+        
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
+    expected_response_json: '{"requests":[]}'
+    client_docs:
+      - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'

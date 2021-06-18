@@ -34,6 +34,8 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
+{% include local-testnet.html %}
+
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git
 cd devportal/tutorials/ruby/11_submit_comment_reply

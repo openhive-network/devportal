@@ -18,18 +18,18 @@ Also see:
 
 [`comments_list.rb`](https://gitlab.syncad.com/hive/devportal/-/blob/master/tutorials/ruby/07_get_post_comments/comments_list.rb)
 
-First, we ask the blockchain for the replies on a post or comment.  Then, we grab the authors of those replies and list them, followed by the total comments count.
+In this tutorial we can just use the `radiator` library, interaction with Blockchain.  Root post selection is done by command-line arguments.  First, we ask the blockchain for the replies on a post or comment.  Then, we grab the authors of those replies and list them, followed by the total comments count.
 
-### To Run
-
-First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
-
-```bash
-git clone https://gitlab.syncad.com/hive/devportal.git
-cd devportal/tutorials/ruby/07_get_post_comments
-bundle install
-ruby comments_list.rb https://hive.blog/communityfork/@hiveio/announcing-the-launch-of-hive-blockchain
+```ruby
+api.get_content_replies(author, permlink) do |replies|
+  reply_authors = replies.map{|reply| reply.author}
+  reply_authors = reply_authors.uniq.join("\n\t")
+  puts "Replies by:\n\t#{reply_authors}"
+  puts "Total replies: #{replies.size}"
+end
 ```
+
+The example of results returned from the service:
 
 ### Example Output
 
@@ -70,5 +70,15 @@ Replies by:
 Total replies: 522
 ```
 
-
 ---
+
+### To Run
+
+First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
+
+```bash
+git clone https://gitlab.syncad.com/hive/devportal.git
+cd devportal/tutorials/ruby/07_get_post_comments
+bundle install
+ruby comments_list.rb https://hive.blog/communityfork/@hiveio/announcing-the-launch-of-hive-blockchain
+```

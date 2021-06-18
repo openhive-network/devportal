@@ -70,10 +70,10 @@ For the convenience of the user, we will convert available VESTS to HIVE with `g
 
     const balance = `Available Vests for ${name}: ${avail} VESTS ~ ${vestHive} HIVE POWER<br/><br/>`;
     document.getElementById('accBalance').innerHTML = balance;
-    document.getElementById('hive').value = avail+' VESTS';
+    document.getElementById('hive').value = vestHive;
 ```
 
-Once form is filled with the maximum available VESTS balance, we can choose the amount of VESTS to power down.
+Once form is filled with the maximum available HIVE Power balance, we can choose the amount to power down.
 
 #### 4. Power down <a name="power-down"></a>
 
@@ -85,6 +85,9 @@ Below, we can see an example of the operation and signing transaction. After a s
 
 ```javascript
 window.submitTx = async () => {
+    const props = await client.database.getDynamicGlobalProperties();
+    const vests = parseFloat(document.getElementById('hive').value) /
+      (parseFloat(props.total_vesting_fund_hive) / parseFloat(props.total_vesting_shares));
     const privateKey = dhive.PrivateKey.fromString(
         document.getElementById('wif').value
     );
@@ -92,7 +95,7 @@ window.submitTx = async () => {
         'withdraw_vesting',
         {
             account: document.getElementById('username').value,
-            vesting_shares: document.getElementById('hive').value,
+            vesting_shares: vests.toFixed(6) + ' VESTS',
         },
     ];
     client.broadcast.sendOperations([op], privateKey).then(

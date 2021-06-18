@@ -12,15 +12,35 @@ Every day a portion of the HBD fund managed by the DHF is distributed to various
 
 > The DHF was a concept proposed by [@blocktrades](https://hiveblocks.com/@blocktrades) to allow Hive users to publicly propose work they are willing to do in exchange for pay. Hive users can then vote on these proposals in almost the same way they vote for witnesses.  It uses stake-weighted votes, but voters can vote for as many proposals as they want.
 
-<sup>See original announcement, when it was called "SPS" on Hive: [https://hive.blog/steem/@steemitblog/hf21-sps-and-eip-explained](https://hive.blog/steem/@steemitblog/hf21-sps-and-eip-explained)</sup>
+The Decentralized Hive Fund (DHF) is a proposal-based DPoS financing
+alternative.  The DHF places the consensus behind direct financing of
+development and other ecosystem-positive projects into the hands of the
+stakeholders.  The distribution of the DHF is decentralized by design.  Support
+for a proposal is calculated based on the total stake in support of that
+proposal. When a user opts to support a number of proposals, their stake
+influences the proposals equally.  Support for a proposal may be granted or
+removed but the mechanism cannot be used to negate the sum of supporting stake
+with a negative vote.  This prevents one single large stakeholder from doubling
+the impact of their stake and influencing the remuneration of numerous
+proposals, creating a level playing field.
+
+Proposal funding is released when the total value of that supporting stake
+surpasses the stake behind a benchmark proposal.  The benchmark proposal itself
+may vertically traverse the rankings as per the amount of its supporting stake.
+The payments are distributed on a hourly schedule over a set period of time as
+specified upon launch of each proposal.  Proposals that surpass the benchmark
+proposal and unlock funding will receive the funding as remaining in the total
+ask of the proposal minus the time that had passed prior to funding.  The total
+amount is only released where the proposal unlocks the funds prior to its
+scheduled duration.
 
 #### Tools
 
-* [https://hivedao.com/](https://hivedao.com/) - Hive Proposals UI by [@dmitrydao](https://hive.blog/@dmitrydao)
-* [https://peakd.com/proposals](https://peakd.com/proposals) - Hive Proposals UI by [@peakd](https://peakd.com/@peakd)
-* [https://wallet.hive.blog/proposals](https://wallet.hive.blog/proposals) - Vote for your favorite Hive proposals without leaving the safety of wallet.hive.blog.
-<!-- * [https://joticajulian.github.io/steemexplorer/#/proposals](https://joticajulian.github.io/steemexplorer/#/proposals) - Check who voted what. -->
-<!-- * [https://hive.blog/@proposalalert](https://hive.blog/@proposalalert) - Follow this account to be notified of new proposals. -->
+* [hivedao.com/](https://hivedao.com/) - Hive Proposals UI by [@dmitrydao](https://hive.blog/@dmitrydao)
+* [peakd.com/proposals](https://peakd.com/proposals) - Hive Proposals UI by [@peakd](https://peakd.com/@peakd)
+* [wallet.hive.blog/proposals](https://wallet.hive.blog/proposals) - Vote for your favorite Hive proposals without leaving the safety of wallet.hive.blog.
+* [joticajulian.github.io/hiveexplorer/#/proposals](https://joticajulian.github.io/hiveexplorer/#/proposals) - Check who voted what by [@jga](https://peakd.com/@jga)
+* [hive.blog/@proposalalert/posts](https://hive.blog/@proposalalert/posts) - Follow this account to be notified of new proposals.
 
 #### API
 

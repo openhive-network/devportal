@@ -202,6 +202,8 @@ As you can see from the above example, `json_metadata` starts out as a string of
 
 Note, we're using `rescue` in case the `json_metadata` string contains invalid JSON because there is no validation performed on this field by the blockchain when content is broadcasted.
 
+{% include structures/comment.html %}
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):

@@ -104,7 +104,13 @@ The example of result returned from the service is a `JSON` object with the foll
 
 From this result you have access to everything associated to the [comments](https://beem.readthedocs.io/en/latest/beem.comment.html#beem.comment.Comment) of account including content of comment, timestamp, active_votes, etc., so that you can use in further development of your applications with Python.
 
-That's it!
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py09getaccountcomments?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

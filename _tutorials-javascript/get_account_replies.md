@@ -267,6 +267,14 @@ if (
 
 We check if `content` is not an empty object and we iterate through each object via its key and extract, `author`, format `created` date and time, parse `body` markdown, get `net_votes` on that reply. Pushing each list item separately and displaying it. That's it!
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js08getaccountreplies?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`
