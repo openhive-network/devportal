@@ -9,7 +9,10 @@ author = slug.split('/')[0]
 permlink = slug.split('/')[1..-1].join('/')
 reblogger = 'social'
 posting_wif = '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
-options = {wif: posting_wif}
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: posting_wif
+}
 
 tx = Radiator::Transaction.new(options)
 

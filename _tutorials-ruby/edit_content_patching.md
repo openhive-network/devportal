@@ -33,6 +33,8 @@ As stated earlier, you will need to change `broadcast` to `true`.  You can also 
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
+{% include local-testnet.html %}
+
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git
 cd devportal/tutorials/ruby/12_edit_content_patching

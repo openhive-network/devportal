@@ -5,11 +5,12 @@ Bundler.require
 
 # change to true if you want to broadcast this example
 broadcast = false
+url = 'https://testnet.openhive.network'
 wif = '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
 author = 'social'
 title = 'title of my post'
 permlink = title.gsub(' ', '-').downcase
-api = Radiator::Api.new
+api = Radiator::Api.new(url: url)
 content = api.get_content(author, permlink).result
 metadata = {tags: %w(tag), app: 'devportal/1.0'}
 new_body = "#{content.body}\nAppended content."
@@ -33,7 +34,7 @@ post = {
   body: new_body
 }
 
-tx = Radiator::Transaction.new(wif: wif)
+tx = Radiator::Transaction.new(url: url, wif: wif)
 
 tx.operations << post
 response = tx.process(broadcast)

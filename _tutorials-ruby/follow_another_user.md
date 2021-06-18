@@ -63,6 +63,8 @@ We also specify `blog` to tell the API method that we're looking for followed, n
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
 
+{% include local-testnet.html %}
+
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git
 cd devportal/tutorials/ruby/18_follow_another_user
