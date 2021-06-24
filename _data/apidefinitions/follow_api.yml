@@ -38,7 +38,7 @@
       
       Returns the list of blog entries for an account.
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_blog' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog' | relative_url }})
     parameter_json: '{"account":"","start_entry_id":0,"limit":500}'
     expected_response_json: |
       {
@@ -140,7 +140,7 @@
       
       Returns a list of blog entries for an account.
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_blog_entries' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog_entries' | relative_url }})
     parameter_json: '{"account":"","start_entry_id":0,"limit":500}'
     expected_response_json: |
       {
@@ -171,7 +171,7 @@
       
       Returns a list of items in an account's feed.
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_feed' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed' | relative_url }})
     parameter_json: '{"account":"","start_entry_id":0,"limit":500}'
     expected_response_json: '{"feed":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -191,7 +191,7 @@
       
       Returns a list of entries in an account's feed.
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_feed_entries' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed_entries' | relative_url }})
     parameter_json: '{"account":"","start_entry_id":0,"limit":500}'
     expected_response_json: '{"feed":[]}' # TODO - recheck in HF23
     curl_examples:
@@ -235,7 +235,7 @@
       
       Returns the list of followers for an account.
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_followers' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_followers' | relative_url }})
     parameter_json: '{"account":"","start":"","type":"undefined","limit":1000}'
     expected_response_json: |
       {
@@ -267,7 +267,7 @@
       
       Returns the list of accounts that are following an account.
       
-      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_following' | relative_url }})
+      Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_following' | relative_url }})
     parameter_json: '{"account":"","start":"","type":"undefined","limit":1000}'
     expected_response_json: |
       {

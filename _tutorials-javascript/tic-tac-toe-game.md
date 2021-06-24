@@ -8,6 +8,8 @@ canonical_url: tic-tac-toe-game.html
 
 The following is a series written by [@mahdiyari](https://hive.blog/@mahdiyari) that describes how to develop a decentralized game on the Hive blockchain.  It was originally released part by part, written over the course of about two months and originally posted on his blog.
 
+### Sections
+
 * [**Part 1**](#part-1)
   * [**Target Audience**](#target-audience)
   * [**Why “tic-tac-toe”?**](#why-tic-tac-toe)

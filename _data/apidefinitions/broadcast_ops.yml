@@ -2111,7 +2111,7 @@
       purpose: |
         Tracks when newly powered up VESTS become counted towards witness and DHF proposals (after a 30 day delay is complete).
         
-        See: [transfer_to_vesting]({{ '/apidefinitions/#transfer_to_vesting' | relative_url }}), [fa63145](https://gitlab.syncad.com/hive/hive/-/commit/fa63145e21e008c672fbbb1ec3420b40711aa1ee), [5](https://gitlab.syncad.com/hive/hive/-/issues/5), [!21](https://gitlab.syncad.com/hive/hive/-/merge_requests/21)
+        See: [transfer_to_vesting]({{ '/apidefinitions/#broadcast_ops_transfer_to_vesting' | relative_url }}), [fa63145](https://gitlab.syncad.com/hive/hive/-/commit/fa63145e21e008c672fbbb1ec3420b40711aa1ee), [5](https://gitlab.syncad.com/hive/hive/-/issues/5), [!21](https://gitlab.syncad.com/hive/hive/-/merge_requests/21)
       roles:
       params:
       json_examples:
