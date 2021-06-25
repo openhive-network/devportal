@@ -182,7 +182,7 @@
     - term: Conversion Requests
       def: Request submitted for Converting HBD to HIVE
     - term: Order Book
-      def: Internal market order book to exchange HBD &lt;-&gt HIVE
+      def: Internal market order book to exchange HBD &lt;-&gt; HIVE
     - term: SMT
       def: Smart Media Tokens
     - term: Limit Order

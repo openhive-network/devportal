@@ -656,6 +656,6 @@
         - "steem.dao"
     - name: NEW_HIVE_TREASURY_ACCOUNT
       purpose: |
-        See: [`OLD_HIVE_TREASURY_ACCOUNT`]({{ '/tutorials-recipes/understanding-configuration-values.html#OLD_HIVE_TREASURY_ACCOUNT' | relative_url }})
+        See: [`OBSOLETE_TREASURY_ACCOUNT`]({{ '/tutorials-recipes/understanding-configuration-values.html#OBSOLETE_TREASURY_ACCOUNT' | relative_url }})
       examples:
         - "hive.fund"

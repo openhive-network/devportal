@@ -281,7 +281,8 @@ namespace :test do
       # cache: { timeframe: '2w' }
       
       # Fails a link if it's not marked as https.	
-      enforce_https: true
+      enforce_https: true,
+      url_ignore: ['http://localhost:3000/', 'http://0.0.0.0:8080']
     }
     
     HTMLProofer.check_directory("./_site", options).run
