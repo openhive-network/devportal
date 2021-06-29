@@ -39,13 +39,13 @@
     - '{"jsonrpc":"2.0", "method":"rc_api.find_rc_accounts", "params":{"accounts":["alice","bob"]},
       "id":1}'
     client_docs:
-      - '[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)'
-      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+    - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
+    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.get_resource_params
     since: HF20
     purpose: |
       Exports all relevant resource size constants, in particular the measurement-based execution time parameters.
-      
+
       See: [#2980]({{ 'https://github.com/steemit/steem/issues/2980' | archived_url }})
     parameter_json: "{}"
     expected_response_json: |
@@ -248,8 +248,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"rc_api.get_resource_params", "id":1}'
     client_docs:
-      - '[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)'
-      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+    - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
+    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.get_resource_pool
     since: HF20
     purpose: |
@@ -278,5 +278,5 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"rc_api.get_resource_pool", "id":1}'
     client_docs:
-      - '[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)'
-      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+    - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
+    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"

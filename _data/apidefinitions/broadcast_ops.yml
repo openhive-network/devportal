@@ -1431,7 +1431,7 @@
         - '["update_proposal_votes",{"voter":"alice","proposal_ids":[0],"approve":true}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestupdateproposalvote)'
-        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html?#beem.blockchaininstance.BlockChainInstance.update_proposal_votes)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal_votes)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalvoteupdates)'
     - name: claim_reward_balance2

@@ -339,6 +339,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_profile)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/accounts)'
   - api_method: bridge.list_communities
     purpose: |
       Gets community
@@ -379,6 +380,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_communities)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
   - api_method: bridge.list_pop_communities
     purpose: |
       Gets a list of popular communities.
@@ -429,6 +431,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_subscribers)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.list_community_roles
     purpose: |
       List community roles and labels for each account in the community.
@@ -447,6 +450,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_community_roles)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiesroles)'
   - api_method: bridge.list_all_subscriptions
     purpose: |
       List all subscriptions, titles, and roles to a community for an account.
@@ -463,6 +467,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_all_subscriptions)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.get_community
     purpose: |
       Get community details.
@@ -553,6 +558,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_payout_stats)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
   - api_method: bridge.get_post
     purpose: |
       Gives single selected post.
@@ -643,3 +649,4 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_post_header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
