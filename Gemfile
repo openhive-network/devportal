@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'jekyll'
 gem 'neatjson'
 gem 'rake'
-gem 'git'
 gem 'hive-ruby'
 gem 'html-proofer'
 
