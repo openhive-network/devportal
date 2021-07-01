@@ -2729,3 +2729,30 @@
     expected_response_json: '{"requests":[]}'
     client_docs:
     - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)"
+  - api_method: database_api.find_recurrent_transfers
+    since: HF25
+    purpose: |
+      Finds transfers of any liquid asset every fixed amount of time from one account to another.
+      
+      Also see: [recurrent_transfer_operation]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})
+    parameter_json: '{"from":""}'
+    expected_response_json: |
+      {
+        "recurrent_transfers": [
+          {
+            "id": 3,
+            "trigger_date": "2021-07-02T18:11:51",
+            "from": "alice",
+            "to": "bob",
+            "amount": {"amount": "1000", "precision": 3, "nai": "@@000000021"},
+            "memo": "Payroll",
+            "recurrence": 26,
+            "consecutive_failures": 0,
+            "remaining_executions": 3
+          }
+        ]
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"database_api.find_recurrent_transfers", "params":{"from":"alice"}, "id":1}'
+    client_docs:
+    - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txrecurrenttransfers-hf25)"

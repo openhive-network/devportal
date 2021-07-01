@@ -2343,6 +2343,8 @@
       virtual: false
       purpose: |
         The `recurrent_transfer` operation creates/updates/removes a recurrent transfer (transfers any liquid asset every fixed amount of time from one account to another).  If amount is set to 0, the recurrent transfer is be deleted.  If there is already a recurrent transfer matching from and to, the recurrent transfer is updated.
+        
+        Also see: [database_api.find_recurrent_transfers]({{ '/apidefinitions/#database_api.find_recurrent_transfers' | relative_url }})
       roles:
       params:
         - from
