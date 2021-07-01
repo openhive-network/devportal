@@ -102,7 +102,7 @@ $ TEST_NODE=<some server url> bundle exec rake scrape:api_defs
 An example pointing at the Hivedev testnet:
 
 ```bash
-$ TEST_NODE=https://testnet.Hivedev.com bundle exec rake scrape:api_defs
+$ TEST_NODE=https://testnet.openhive.network bundle exec rake scrape:api_defs
 ```
 
 ### Tests
@@ -128,7 +128,7 @@ $ TEST_NODE=<some server url> bundle exec rake test:curl
 An example pointing at the Hivedev testnet
 
 ```bash
-$ TEST_NODE=https://testnet.Hivedev.com bundle exec rake test:curl
+$ TEST_NODE=https://testnet.openhive.network bundle exec rake test:curl
 ```
 
 To verify previously archived urls:
