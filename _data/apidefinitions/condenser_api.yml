@@ -58,12 +58,11 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["vote",{"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]],"extensions":[],"signatures":[]}],
       "id":1}'
-    - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":"100.000
-      HIVE","maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
+    - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
       "id":1}'
     expected_curl_responses:
     - missing required posting authority
-    - Asset has to treated as object.
+    - transaction tapos exception
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#broadcast-api)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#broadcast-transaction)"
@@ -87,12 +86,11 @@
       "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["vote",{"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]],"extensions":[],"signatures":[]}],
       "id":1}'
     - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction_synchronous",
-      "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":"100.000
-      HIVE","maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
+      "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"10000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
       "id":1}'
     expected_curl_responses:
     - missing required posting authority
-    - Asset has to treated as object.
+    - transaction tapos exception
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#broadcast-api)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)"
@@ -217,26 +215,11 @@
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-reputations)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_account_votes
+    disabled: true
     purpose: |
-      Returns all votes by an account.  Parameters: `account:string`
-
-      | `account` (string) | |
-      |-------------------|-|
-      | `"hiveio"` | Queries for votes by "hiveio". |
-      | `"alice"` | Queries for votes by "alice". |
-    parameter_json:
-    - ''
-    expected_response_json:
-    - authorperm: ''
-      weight: ''
-      rshares: ''
-      percent:
-      time: '2016-04-29T22:27:42'
-    curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_votes", "params":["hiveio"],
-      "id":1}'
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_votes", "params":["alice"],
-      "id":1}'
+      No longer supported.  Use: [database_api.list_votes]({{ '/apidefinitions/#database_api.list_votes' | relative_url }})
+      
+      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-votes)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-votes)"
@@ -409,8 +392,8 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_votes", "params":["alice",
       "a-post-by-alice"], "id":1}'
     expected_curl_responses:
-    -
-    - unknown key:unknown key
+    - Invalid parameters
+    - Invalid parameters
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-votes)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-votes)"
