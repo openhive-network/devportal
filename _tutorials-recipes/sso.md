@@ -48,4 +48,7 @@ Be sure to change `[ACCESS TOKEN]` to the `access_token` that came from the prev
 
 A valid response will contain status code 200 along with a JSON payload containing the user information while an invalid or expired response will be 401.
 
-Also see: [Hivesigner - Login scope explained](https://ecency.com/hive-139531/@good-karma/hivesigner-login-scope-explained)
+Also see:
+
+* [Hivesigner - Login scope explained](https://ecency.com/hive-139531/@good-karma/hivesigner-login-scope-explained)
+* [Hivesigner docs](https://docs.hivesigner.com)
