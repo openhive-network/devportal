@@ -56,8 +56,11 @@ We require the `private posting key` of the user in order for the claim to be br
 account = input('Enter username: ')
 wif_posting_key = getpass.getpass('Enter private POSTING key: ')
 
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # connect node
-client = Hive('http://127.0.0.1:8090', keys=[wif_posting_key])
+client = Hive(node_url, keys=[wif_posting_key])
 ```
 
 #### 3. Check reward balance <a name="balance"></a>
@@ -146,6 +149,14 @@ print('\t' + str(reward_hive) + '\n' +
   '\t' + str(reward_vests)
 )
 ```
+
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py23claimrewards?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

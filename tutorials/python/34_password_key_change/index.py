@@ -18,7 +18,10 @@ wif_old_owner_key = str(
   PasswordKey(account, old_password, "owner").get_private_key()
 )
 
-client = Hive('http://127.0.0.1:8090', keys=[wif_old_owner_key])
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
+client = Hive(node_url, keys=[wif_old_owner_key])
 
 account = Account(account, blockchain_instance=client)
 new_public_keys = {}
@@ -65,4 +68,3 @@ signed_tx = tx.sign()
 broadcast_tx = tx.broadcast(trx_id=True)
 
 print("Account updated successfully: " + str(broadcast_tx))
-

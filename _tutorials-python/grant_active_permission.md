@@ -60,8 +60,11 @@ We require the `private active key` of the user in order for the `allow` or `dis
 account = input('Enter username: ')
 wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # connect to production server with active key
-client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
+client = Hive(node_url, keys=[wif_active_key])
 ```
 
 #### 2. Username validation <a name="username"></a>
@@ -120,6 +123,14 @@ else:
   account.disallow(foreign=foreign.name, permission='active', threshold=1)
   print('active permission for ' + foreign.name + ' has been removed')
 ```
+
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py31grantactivepermission?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

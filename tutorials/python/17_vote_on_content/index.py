@@ -11,7 +11,8 @@ voter = input('Please enter your username (voter): ')
 
 # connect node
 # If using mainnet, try with demo account: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-client = Hive('http://127.0.0.1:8090')
+# client = Hive('https://testnet.openhive.network') # Public Testnet
+client = Hive('http://127.0.0.1:8090') # Local Testnet
 
 # capture variables
 author = input('Author of post/comment that you wish to vote for: ')
@@ -21,8 +22,8 @@ permlink = input('Permlink of the post/comment you wish to vote for: ')
 # noinspection PyInterpreter
 print('checking vote status - getting current post votes')
 identifier = ('@' + author + '/' + permlink)
-author_account = Account(author)
-result = ActiveVotes(identifier)
+author_account = Account(author, blockchain_instance=client)
+result = ActiveVotes(identifier, blockchain_instance=client)
 print(len(result), ' votes retrieved')
 
 if result:
@@ -61,4 +62,3 @@ if option == 'Add/Change vote':
 
 else:
   print('Voting has been cancelled')
-

@@ -61,7 +61,8 @@ The user inputs the author and permlink of the post that they wish to edit.  See
 post_author = input('Please enter the AUTHOR of the post you want to edit: ')
 
 #connect node
-client = Hive('http://127.0.0.1:8090')
+# client = Hive('https://testnet.openhive.network') # Public Testnet
+client = Hive('http://127.0.0.1:8090') # Local Testnet
 
 #check valid post_author
 try:
@@ -74,7 +75,7 @@ post_permlink = input('Please enter the PERMLINK of the post you want to edit: '
 
 #get details of selected post
 try:
-  details = beem.comment.Comment(post_author + '/' + post_permlink)
+  details = beem.comment.Comment(post_author + '/' + post_permlink, blockchain_instance=client)
 except:
   print('Oops. Looks like ' + post_author + '/' + post_permlink + ' doesn\'t exist on this chain!')
   exit()
@@ -150,6 +151,14 @@ print('\n' + 'Content of the post has been successfully updated: ' + str(broadca
 ```
 
 A simple confirmation is displayed on the screen for a successful commit.
+
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py12editcontentpatching?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

@@ -8,8 +8,11 @@ from beem.amount import Amount
 account = input('Enter username: ')
 wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # connect node and private active key
-client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
+client = Hive(node_url, keys=[wif_active_key])
 
 # check valid user
 account = Account(account, blockchain_instance=client)
@@ -73,4 +76,3 @@ else:
 account.delegate_vesting_shares(delegatee.name, amount_vests)
 
 print('Success.')
-

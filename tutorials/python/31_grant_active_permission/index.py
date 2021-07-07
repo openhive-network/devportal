@@ -7,8 +7,11 @@ from beem.account import Account
 account = input('Enter username: ')
 wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
-# connect to production server with active key
-client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
+# connect with active key
+client = Hive(node_url, keys=[wif_active_key])
 
 # check valid user
 account = Account(account, blockchain_instance=client)
@@ -48,4 +51,3 @@ if (option == 'ALLOW'):
 else:
   account.disallow(foreign=foreign.name, permission='active', threshold=1)
   print('active permission for ' + foreign.name + ' has been removed')
-

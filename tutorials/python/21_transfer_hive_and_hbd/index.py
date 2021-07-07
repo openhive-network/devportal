@@ -7,8 +7,11 @@ from beem.account import Account
 account = input('Enter username: ')
 wif_active_key = getpass.getpass('Active Key: ')
 
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # connect node and private active key
-client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
+client = Hive(node_url, keys=[wif_active_key])
 
 # get account balance for HIVE and HBD
 account = Account(account, blockchain_instance=client)
@@ -60,4 +63,3 @@ total_base = account['balance']
 total_debt = account['hbd_balance']
 
 print('\n' + 'REMAINING ACCOUNT BALANCE:' + '\n' + str(total_base) + '\n' + str(total_debt) + '\n')
-

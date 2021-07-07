@@ -89,7 +89,8 @@ The random generator is limited to 10 characters in this case but the permlink c
 The last step is to transmit the post through to the blockchain.  All the defined parameters are signed and broadcasted.  We also securely prompt for the posting key right before signing.
 
 ```python
-client = Hive('http://127.0.0.1:8090')
+# client = Hive('https://testnet.openhive.network') # Public Testnet
+client = Hive('http://127.0.0.1:8090') # Local Testnet
 tx = TransactionBuilder(blockchain_instance=client)
 tx.appendOps(Comment(**{
   "parent_author": '',
@@ -112,6 +113,14 @@ print("Post created successfully: " + str(broadcast_tx))
 A simple confirmation is printed on the screen if the post is committed successfully.
 
 You can also check on your local testnet using [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }}) for the post.
+
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py10submitpost?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

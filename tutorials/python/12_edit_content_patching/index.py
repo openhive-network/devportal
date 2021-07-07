@@ -11,7 +11,8 @@ from diff_match_patch import diff_match_patch
 post_author = input('Please enter the AUTHOR of the post you want to edit: ')
 
 #connect node
-client = Hive('http://127.0.0.1:8090')
+# client = Hive('https://testnet.openhive.network') # Public Testnet
+client = Hive('http://127.0.0.1:8090') # Local Testnet
 
 #check valid post_author
 try:
@@ -24,7 +25,7 @@ post_permlink = input('Please enter the PERMLINK of the post you want to edit: '
 
 #get details of selected post
 try:
-  details = beem.comment.Comment(post_author + '/' + post_permlink)
+  details = beem.comment.Comment(post_author + '/' + post_permlink, blockchain_instance=client)
 except:
   print('Oops. Looks like ' + post_author + '/' + post_permlink + ' doesn\'t exist on this chain!')
   exit()
@@ -79,4 +80,3 @@ signed_tx = tx.sign()
 broadcast_tx = tx.broadcast(trx_id=True)
 
 print('\n' + 'Content of the post has been successfully updated: ' + str(broadcast_tx))
-
