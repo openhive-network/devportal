@@ -194,6 +194,8 @@ namespace :test do
       yml = YAML.load_file(file_name)
       
       yml[0]['methods'].each do |method|
+        next if !!method['removed']
+        
         print "Testing #{method['api_method']} ... "
         
         if method['curl_examples'].nil?
