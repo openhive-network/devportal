@@ -70,7 +70,7 @@ Each resource has a global *pool* which is the number of resources remaining.  T
 The RC cost of each resource depends on the following information:
 
 - How many resources are in the corresponding resource pool
-- The global RC regeneration rate, which may be calculated as `total_vesting_shares` / ([`HIVE_RC_REGEN_TIME`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_RC_REGEN_TIME' | relative_url }}) / [`HIVE_BLOCK_INTERVAL`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_BLOCK_INTERVAL' | relative_url }}))`
+- The global RC regeneration rate, which may be calculated as `total_vesting_shares` / ([`HIVE_RC_REGEN_TIME`](https://gitlab.syncad.com/hive/hive/-/blob/master/libraries/plugins/rc/rc_plugin.cpp#L20) / [`HIVE_BLOCK_INTERVAL`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_BLOCK_INTERVAL' | relative_url }}))`
 - The price curve parameters in the corresponding `price_curve_params` object
 
 For convenience, `rcdemo.py` contains an `RCModel` class with all of this information in its fields.
@@ -96,7 +96,7 @@ Suppose an account has 15 Hive Power.  How much can it vote?
 138.88697555075086
 ```
 
-This is the amount of Hive Power (in satoshis) that would be needed by an account to transact once per 5 days ([`HIVE_RC_REGEN_TIME`]({{ '/tutorials-recipes/understanding-configuration-values.html#HIVE_RC_REGEN_TIME' | relative_url }})).
+This is the amount of Hive Power (in satoshis) that would be needed by an account to transact once per 5 days ([`HIVE_RC_REGEN_TIME`](https://gitlab.syncad.com/hive/hive/-/blob/master/libraries/plugins/rc/rc_plugin.cpp#L20)).
 Our 15 HP account has 15000 HP, so it would be able to do `15000 / 138`, or about `108`, such transactions per 5 days.
 
 You can regard the number `138` (or `0.138`) as the "cost" of a "standardized" vote transaction.  It plays an analogous role to a
