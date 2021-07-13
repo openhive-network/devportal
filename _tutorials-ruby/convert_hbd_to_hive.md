@@ -17,7 +17,7 @@ Also see:
     1. [Example api call using script](#example-api-call-using-script) - using our tutorial script
     1. [Example Output](#example-output) - output from a successful call
     1. [Example Error](#example-error) - error output from a unsuccessful call
-1. [Vote Fields](#vote-fields) - understanding the result
+1. [Convert Fields](#convert-fields) - understanding the result
 1. [To Run](#to-run) - Running the example.
 
 ### Making the api call
