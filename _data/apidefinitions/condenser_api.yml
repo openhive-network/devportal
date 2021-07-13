@@ -716,6 +716,9 @@
       "firstpost"], "id":1}'
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_content", "params":["alice",
       "a-post-by-alice"], "id":1}'
+    expected_curl_responses:
+      - Invalid parameters
+      - Invalid parameters
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content)"
@@ -786,6 +789,9 @@
       "firstpost"], "id":1}'
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_content_replies", "params":["alice",
       "a-post-by-alice"], "id":1}'
+    expected_curl_responses:
+      - Invalid parameters
+      - Invalid parameters
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content-replies)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content-replies)"
@@ -805,6 +811,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_conversion_requests", "params":[1234],
       "id":1}'
+    expected_curl_responses: 
+      - Given account does not exist
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-conversion-requests)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-conversion-requests)"
@@ -856,6 +864,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_author_before_date",
       "params":["hiveio","firstpost","2016-04-19T22:49:43",1], "id":1}'
+    expected_curl_responses:
+      - Invalid parameters
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-author-before-date)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-author-before-date)"
@@ -940,8 +950,8 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_comments", "params":[{"start_author":"alice","start_permlink":"a-post-by-alice","limit":10,"truncate_body":0}],
       "id":1}'
     expected_curl_responses:
-    -
-    - Comment is not in account's comments
+      - Invalid parameters
+      - Invalid parameters
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-comments)"
@@ -1592,8 +1602,8 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_reblogged_by", "params":["alice","a-post-by-alice"],
       "id":1}'
     expected_curl_responses:
-    -
-    - 'unknown key:unknown key:'
+      - Invalid parameters
+      - Invalid parameters
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-reblogged-by)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-reblogged-by)"
@@ -1657,6 +1667,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_replies_by_last_update", "params":["hiveio","firstpost",1],
       "id":1}'
+    expected_curl_responses:
+      - Invalid parameters
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-replies-by-last-update)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-replies-by-last-update)"
