@@ -1076,19 +1076,21 @@
           "2019-08-27T15:00:00",
           "2019-08-29T15:00:00",
           "2020-03-20T14:00:00",
-          "2020-10-06T14:00:00"
+          "2020-10-06T14:00:00",
+          "2021-06-30T14:00:00"
         ],
-        "last_hardfork": 24,
-        "current_hardfork_version": "1.24.0",
-        "next_hardfork": "1.24.0",
-        "next_hardfork_time": "2020-10-06T14:00:00"
+        "last_hardfork": 25,
+        "current_hardfork_version": "1.25.0",
+        "next_hardfork": "1.25.0",
+        "next_hardfork_time": "2021-06-30T14:00:00"
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"database_api.get_hardfork_properties", "id":1}'
     client_docs:
-    - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-hardfork-version)"
-    - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_hardfork_properties)"
-    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-hardfork-version)"
+      - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_hardfork_properties)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+      - "[hivesql](https://docs.hivesql.io/technical-informations/database-diagram#blocks-and-transactions)"
   - api_method: database_api.get_order_book
     purpose: Returns the order book.
     parameter_json: '{"limit":0,"base":{"amount":"1000","precision":3,"nai":"@@000000021"},"quote":{"amount":"1","precision":3,"nai":"@@000000013"}}'
