@@ -1,22 +1,21 @@
 ---
-title: 'JS: Convert HBD To HIVE'
-position: 32
-description: "_How to convert HBD to HIVE for a specified account._"
+title: 'JS: Convert HIVE To HBD'
+position: 37
+description: "_How to convert HIVE to HBD for a specified account._"
 layout: full
 canonical_url: convert_hbd_to_hive.html
 ---
-Full, runnable src of [Convert HBD To HIVE](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/32_convert_hbd_to_hive) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-32_convert_hbd_to_hive.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/32_convert_hbd_to_hive)).
+Full, runnable src of [Convert HIVE to HBD](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/37_convert_hive_to_hbd) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-37_convert_hive_to_hbd.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/37_convert_hive_to_hbd)).
 
-This tutorial will take you through the process of checking a specific users' balances and then broadcasting the intended HBD conversion to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
+This tutorial will take you through the process of checking a specific users' balances and then broadcasting the intended HIVE conversion to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
 
-It should be noted that the converted HIVE will not be available instantly as it takes 3.5 days for the transaction to be processed. It is also not possible to stop a conversion once initialized. During the 3.5 days for it to be converted and as the conversion price fluctuates you could actually be receiving less HIVE than what you should. Because of this, the method in this tutorial is NOT the preferred or most efficient way of converting HBD to HIVE. This tutorial just illustrates that it can be done in this manner.
+It should be noted that unlike the [opposite conversion]({{ '/_tutorials-javascript/32_convert_hbd_to_hive.html' | relative_url }}), the converted HBD *will* be available instantly, but the collateral takes 3.5 days for the transaction to be processed.  It is also not possible to stop a conversion once initialized.  During the 3.5 days for it to be converted and as the conversion price fluctuates you could actually be receiving less released HIVE collateral.  Because of this, the method in this tutorial is NOT the preferred or most efficient way of converting HIVE to HBD. This tutorial just illustrates that it can be done in this manner.
 
-There is a marketplace on Hive that allows you to "sell" your HBD instantly. With this process you can get your HIVE immediately and at the exact price that you expect. The market place is the better way to convert your HBD. [This article](https://hive.blog/steem/@epico/convert-sbd-to-steem-and-steem-power-guide-2017625t103821622z) provides more information on using the market to exchange your HBD to HIVE
+There is a marketplace on Hive that allows you to "sell" your HIVE instantly.  With this process you can get your HBD immediately and at the exact price that you expect.  The market place is the better way to convert your HIVE. [This article](https://hive.blog/steem/@epico/convert-sbd-to-steem-and-steem-power-guide-2017625t103821622z) provides more information on using the market to exchange your HIVE to HBD.
 
-Hiveconnect offers an alternative to converting HBD with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below substituting the three parameters for your own details. You will be prompted to enter your username and password before the transaction will be executed.
-https://hivesigner.com/sign/convert?owner=username&requestid=1234567&amount=0.000%20HBD
-This is similar to the Hive Connect links that have been covered in previous tutorials. For a list of signing operations that work in this manner you can go to https://v2.hivesigner.com/sign
-[This article](https://hive.blog/hbd/@timcliff/how-to-convert-sbd-into-steem-using-steemconnect) has more information on using Hive Connect
+Hiveconnect offers an alternative to converting HIVE with a "simple link" solution. Instead of running through a list of operations on your account, you can simply use a link similar to the one below substituting the three parameters for your own details. You will be prompted to enter your username and password before the transaction will be executed.
+
+https://hivesigner.com/sign/collateralized-convert?owner=username&requestid=1234567&amount=0.000%20HIVE
 
 ## Intro
 
@@ -29,7 +28,7 @@ This tutorial uses the `database API` to gather account information for the curr
 The only other information required is the private active key of the user.
 
 Also see:
-* [convert_operation]({{ '/apidefinitions/#broadcast_ops_convert' | relative_url }})
+* [convert_operation]({{ '/apidefinitions/#broadcast_ops_collateralized_convert' | relative_url }})
 
 ## Steps
 
@@ -44,11 +43,11 @@ As usual, we have a `public/app.js` file which holds the Javascript segment of t
 
 ```javascript
 import { Client, PrivateKey } from '@hiveio/dhive';
-import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
+import { PublicTestnetHive as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
 
 let opts = { ...NetConfig.net };
 
-// //connect to a hive node, tesetnet in this case
+//connect to a hive node, tesetnet in this case
 const client = new Client(NetConfig.url, opts);
 ```
 
@@ -56,7 +55,7 @@ Above, we have `dhive` pointing to the testnet with the proper chainId, addressP
 
 #### 2. User account<a name="user"></a>
 
-The user account is input through the UI. Once entered, the user can select the `search` button to display the HBD and HIVE balances for that account. During this step, a random number is also generated for the `requestid`. This value can be changed to any integer value as long as it is unique for the specific account. If the requestid is duplicated an error to do with "uniqueness constraint" will be displayed in the console. For ease of use values for a demo account has already been entered in the relevant fields once the page loads.
+The user account is input through the UI. Once entered, the user can select the `search` button to display the HIVE and HBD balances for that account. During this step, a random number is also generated for the `requestid`. This value can be changed to any integer value as long as it is unique for the specific account. If the requestid is duplicated an error to do with "uniqueness constraint" will be displayed in the console. For ease of use values for a demo account has already been entered in the relevant fields once the page loads.
 
 ```javascript
 window.onload = async () => {
@@ -75,10 +74,10 @@ window.submitAcc = async () => {
     const _account = await client.database.call('get_accounts', [[accSearch]]);
     console.log(`_account:`, _account);
 
-    const availHBD = _account[0].hbd_balance 
     const availHIVE = _account[0].balance
+    const availHBD = _account[0].hbd_balance 
 
-    const balance = `Available balance: ${availHBD} and ${availHIVE} <br/>`;
+    const balance = `Available balance: ${availHIVE} and ${availHBD} <br/>`;
     document.getElementById('accBalance').innerHTML = balance;
 
     //create random number for requestid paramter
@@ -102,7 +101,7 @@ const privateKey = PrivateKey.fromString(
 //get convert amount
 const quantity = document.getElementById('quantity').value;
 //create correct format
-const convert = quantity.concat(' HBD');
+const convert = quantity.concat(' TESTS'); // HIVE = mainnet symbol; TESTS = testnet symbol
 //assign integer value of ID
 const requestid = parseInt(document.getElementById('requestID').value);
 ```
@@ -114,7 +113,7 @@ With all the parameters assigned we create an array for the `convert` function a
 ```javascript
 //create convert operation
 const op = [
-    'convert',
+    'collateralized_convert',
     { owner: username, amount: convert, requestid: requestid },
 ];
     
@@ -145,7 +144,7 @@ The results of the operation is displayed on the UI along with a block number in
 ### To run this tutorial
 
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`
-1. `cd devportal/tutorials/javascript/32_convert_hbd_to_hive`
+1. `cd devportal/tutorials/javascript/37_convert_hive_to_hbd`
 1. `npm i`
 1. `npm run dev-server` or `npm run start`
 1. After a few moments, the server should be running at http://localhost:3000/

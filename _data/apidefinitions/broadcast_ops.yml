@@ -2340,8 +2340,8 @@
         - owner
           requestid
           amount
-      # json_examples:
-      #   - '["collateralized_convert", {}]'
+      json_examples:
+        - '["collateralized_convert", {"owner":"hiveio","requestid":1467592156,"amount":{"amount":"5000","precision":3,"nai":"@@000000021"}}]'
       client_docs:
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
