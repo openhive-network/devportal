@@ -2318,7 +2318,11 @@
       | `["alice"]` | 10 | `by_creator` | `ascending` | `all` | list 10 proposals with any status, ordered by creator, ascending, by alice |
       | `[""]` | 1000 | `by_creator` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending |
       | `[10]` | 1000 | `by_total_votes` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending, having at least 10 votes |
-
+      
+      ##### Proposal Structure:
+      
+      {% include structures/proposal.html %}
+      
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_proposals' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name","order_direction":"ascending","status":"all"}'
     expected_response_json: |
