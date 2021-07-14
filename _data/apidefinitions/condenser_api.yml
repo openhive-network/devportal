@@ -2596,7 +2596,8 @@
     parameter_json: "[]"
     expected_response_json: "[]"
     client_docs:
-    - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)"
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
+      - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)"
   - api_method: condenser_api.find_recurrent_transfers
     since: HF25
     purpose: |

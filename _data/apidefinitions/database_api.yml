@@ -2722,7 +2722,8 @@
     parameter_json: '{"account":""}'
     expected_response_json: '{"requests":[]}'
     client_docs:
-    - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)"
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
   - api_method: database_api.list_collateralized_conversion_requests
     since: HF25
     purpose: |
@@ -2734,7 +2735,8 @@
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: '{"requests":[]}'
     client_docs:
-    - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)"
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
   - api_method: database_api.find_recurrent_transfers
     since: HF25
     purpose: |

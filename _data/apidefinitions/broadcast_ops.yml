@@ -2286,6 +2286,7 @@
       # json_examples:
       #   - '["fill_collateralized_convert_request", {}]'
       client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillcollateralizedconvertrequests-hf25)'
     - name: fill_recurrent_transfer
       since: HF25
@@ -2342,6 +2343,7 @@
       # json_examples:
       #   - '["collateralized_convert", {}]'
       client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
     - name: recurrent_transfer
       since: HF25
