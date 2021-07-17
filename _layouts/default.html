@@ -5,16 +5,15 @@
   <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
   <meta property="og:image" content="{{ '/images/sticker.png' | relative_url }}" />
   
-  <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Cousine|Inconsolata" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
 
   <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/css/css/fontawesome-all.min.css' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/css/css/work-sans-v7.css' | relative_url }}" />
+  <script src="{{ '/js/hive.min.js' | relative_url }}"></script>
   <script src="{{ '/js/main.js' | relative_url }}"></script>
+  <script src="{{ '/js/adjust.js' | relative_url }}"></script>
 
   {% seo %}
 
@@ -50,9 +49,6 @@
   {% endif %}
 
   {% include sidebar.html %}
-
-
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </header>
 <div class="main" id="top">
   <div class="hero">
@@ -71,9 +67,3 @@
 </script>
 </body>
 </html>
-
-{% if jekyll.environment == 'production' %}
-<script src="{{ '/js/adjust.js' | relative_url }}"></script>
-{% else %}
-<script src="{{ '/js/adjust.js' | relative_url }}"></script>
-{% endif %}

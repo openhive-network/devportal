@@ -1431,7 +1431,7 @@
         - '["update_proposal_votes",{"voter":"alice","proposal_ids":[0],"approve":true}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestupdateproposalvote)'
-        - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
+        - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html?#beem.blockchaininstance.BlockChainInstance.update_proposal_votes)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal_votes)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalvoteupdates)'
     - name: claim_reward_balance2
@@ -1979,6 +1979,7 @@
         | HF22     | 2019-08-29 15:00:00 UTC | [35974326](https://hiveblocks.com/b/35974326) |
         | HF23     | 2020-03-20 14:00:00 UTC | [41818752](https://hiveblocks.com/b/41818752) |
         | HF24     | 2020-10-06 14:00:00 UTC | [47797680](https://hiveblocks.com/b/47797680) |
+        | HF25     | 2021-06-30 14:00:00 UTC | [55235767](https://hiveblocks.com/b/55235767) |
         
         See: [PR2616]({{ 'https://github.com/steemit/steem/pull/2616' | archived_url }}), [database_api.get_hardfork_properties]({{ '/apidefinitions/#database_api.get_hardfork_properties' | relative_url }}), [condenser_api.get_next_scheduled_hardfork]({{ '/apidefinitions/#condenser_api.get_next_scheduled_hardfork' | relative_url }})
       roles:
@@ -1987,6 +1988,11 @@
           owner
       params:
         - hardfork_id
+      client_docs:
+        - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-hardfork-version)"
+        - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.get_hardfork_properties)"
+        - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html#beem.blockchaininstance.BlockChainInstance.hardfork)"
+        - "[hivesql](https://docs.hivesql.io/technical-informations/database-diagram#blocks-and-transactions)"
     - name: comment_payout_update
       virtual: true
       purpose: |
@@ -2111,7 +2117,7 @@
       purpose: |
         Tracks when newly powered up VESTS become counted towards witness and DHF proposals (after a 30 day delay is complete).
         
-        See: [transfer_to_vesting]({{ '/apidefinitions/#transfer_to_vesting' | relative_url }}), [fa63145](https://gitlab.syncad.com/hive/hive/-/commit/fa63145e21e008c672fbbb1ec3420b40711aa1ee), [5](https://gitlab.syncad.com/hive/hive/-/issues/5), [!21](https://gitlab.syncad.com/hive/hive/-/merge_requests/21)
+        See: [transfer_to_vesting]({{ '/apidefinitions/#broadcast_ops_transfer_to_vesting' | relative_url }}), [fa63145](https://gitlab.syncad.com/hive/hive/-/commit/fa63145e21e008c672fbbb1ec3420b40711aa1ee), [5](https://gitlab.syncad.com/hive/hive/-/issues/5), [!21](https://gitlab.syncad.com/hive/hive/-/merge_requests/21)
       roles:
       params:
       json_examples:
@@ -2280,6 +2286,7 @@
       # json_examples:
       #   - '["fill_collateralized_convert_request", {}]'
       client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations/vofillcollateralizedconvertrequests-hf25)'
     - name: fill_recurrent_transfer
       since: HF25
@@ -2333,9 +2340,10 @@
         - owner
           requestid
           amount
-      # json_examples:
-      #   - '["collateralized_convert", {}]'
+      json_examples:
+        - '["collateralized_convert", {"owner":"hiveio","requestid":1467592156,"amount":{"amount":"5000","precision":3,"nai":"@@000000021"}}]'
       client_docs:
+        - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
     - name: recurrent_transfer
       since: HF25
@@ -2343,6 +2351,8 @@
       virtual: false
       purpose: |
         The `recurrent_transfer` operation creates/updates/removes a recurrent transfer (transfers any liquid asset every fixed amount of time from one account to another).  If amount is set to 0, the recurrent transfer is be deleted.  If there is already a recurrent transfer matching from and to, the recurrent transfer is updated.
+        
+        Also see: [database_api.find_recurrent_transfers]({{ '/apidefinitions/#database_api.find_recurrent_transfers' | relative_url }})
       roles:
       params:
         - from

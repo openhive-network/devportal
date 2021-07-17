@@ -179,7 +179,10 @@ namespace :test do
     blockchain_version = version['blockchain_version']
     hive_rev = version['hive_revision'][0..5]
     fc_rev = version['fc_revision'][0..5]
-    puts "node: #{url}; blockchain_version: #{blockchain_version}; hive_rev: #{hive_rev}; fc_rev: #{fc_rev}"
+    chain_id = version['chain_id']
+    mainnet = chain_id == 'beeab0de00000000000000000000000000000000000000000000000000000000'
+    
+    puts "node: #{url}; blockchain_version: #{blockchain_version}; hive_rev: #{hive_rev}; fc_rev: #{fc_rev}; mainnet: #{mainnet}"
     
     apis.each do |api|
       file_name = "_data/apidefinitions/#{api}.yml"
@@ -191,6 +194,8 @@ namespace :test do
       yml = YAML.load_file(file_name)
       
       yml[0]['methods'].each do |method|
+        next if !!method['removed']
+        
         print "Testing #{method['api_method']} ... "
         
         if method['curl_examples'].nil?
@@ -199,6 +204,18 @@ namespace :test do
         end
         
         method['curl_examples'].each_with_index do |curl_example, index|
+          unless mainnet
+            # Replace key prefix, e.g.:
+            # STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
+            # becomes:
+            # TST5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
+            curl_example = curl_example.gsub(/"STM([^"]{50})"/) do |_|
+              match = Regexp.last_match
+              
+              "\"TST#{match[1]}\""
+            end
+          end
+          
           response = `curl -s -w \"HTTP_CODE:%{http_code}\" --data '#{curl_example}' #{url}`
           response = response.split('HTTP_CODE:')
           json = response[0]
@@ -281,7 +298,8 @@ namespace :test do
       # cache: { timeframe: '2w' }
       
       # Fails a link if it's not marked as https.	
-      enforce_https: true
+      enforce_https: true,
+      url_ignore: ['http://localhost:3000/', 'http://0.0.0.0:8080']
     }
     
     HTMLProofer.check_directory("./_site", options).run

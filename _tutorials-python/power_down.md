@@ -52,8 +52,11 @@ We require the `private active key` of the user in order for the conversion to b
 account = input('Enter username: ')
 wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # connect node and private active key
-client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
+client = Hive(node_url, keys=[wif_active_key])
 ```
 
 #### 3. Check balance <a name="balance"></a>
@@ -149,15 +152,17 @@ print('Insufficient funds available')
 
 The result is displayed on the console/terminal.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py25powerdown?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
-
-```bash
-docker run -d -p 8090:8090 inertia/tintoy:latest
-```
-
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})
+{% include local-testnet.html %}
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

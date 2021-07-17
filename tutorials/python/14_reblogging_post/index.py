@@ -9,9 +9,10 @@ from beem.comment import Comment
 from beem.transactionbuilder import TransactionBuilder
 from beembase.operations import Custom_json
 
-hive = Hive(['http://127.0.0.1:8090'])
+# hive = Hive(['https://testnet.openhive.network']) # Public Testnet
+hive = Hive(['http://127.0.0.1:8090']) # Local Testnet
 q = Query(limit=5, tag="")
-d = Discussions()
+d = Discussions(blockchain_instance=hive)
 
 #author list from hot post list
 posts = d.get_discussions('hot', q, limit=5)
@@ -48,4 +49,3 @@ signed_tx = tx.sign()
 broadcast_tx = tx.broadcast(trx_id=True)
 
 print("Reblogged successfully: " + str(broadcast_tx))
-

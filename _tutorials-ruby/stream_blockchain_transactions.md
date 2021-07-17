@@ -5,7 +5,7 @@ description: "*How to stream transactions and operations from Hive blockchain.*"
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---
-Full, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-13_stream_blockchain_transactions.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/13_stream_blockchain_transactions)).
+Full, runnable src of [Stream Blockchain Transactions](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/13_stream_blockchain_transactions) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-13_stream_blockchain_transactions.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/13_stream_blockchain_transactions)).
 
 To respond to live activity on the blockchain, a common approach is to make a request for the current block number, access all of the information in that block, and repeat.  Many API clients have dedicated tools for simplifying this process.  In Radiator, this tool is part of the `Radiator::Stream` class.  In addition, Radiator will allow you to specify exactly what type of operation you're interested in.
 

@@ -17,7 +17,8 @@ if author == account:
   exit()
 
 # connect node and private posting key, demo account being used: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-hive = beem.Hive('http://127.0.0.1:8090')
+# hive = beem.Hive('https://testnet.openhive.network') # Public Testnet
+hive = beem.Hive('http://127.0.0.1:8090') # Local Testnet
 
 author = Account(author, blockchain_instance=hive)
 account = Account(account, blockchain_instance=hive)
@@ -76,4 +77,3 @@ signed_tx = tx.sign()
 broadcast_tx = tx.broadcast(trx_id=True)
 
 print(option + ' ' + author.name + ": " + str(broadcast_tx))
-

@@ -9,8 +9,11 @@ from beem.witness import Witness, WitnessesVotedByAccount
 account = input('Enter username: ')
 wif_active_key = getpass.getpass('Active Key: ')
 
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # connect node and private active key
-client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
+client = Hive(node_url, keys=[wif_active_key])
 
 # check valid user
 account = Account(account, blockchain_instance=client)
@@ -50,4 +53,3 @@ else :
         exit()
     account.disapprovewitness(witness_unvote)
     print('\n' + witness_unvote + ' has been removed from your voted for list')
-

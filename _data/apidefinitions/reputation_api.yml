@@ -18,7 +18,7 @@
       | `"hiveio"` | 10 | Queries the reputation for account named "hiveio". |
 
       See [#1425]({{ 'https://github.com/steemit/steem/issues/1425' | archived_url }})
-      
+
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#reputation_apiget_account_reputations' | relative_url }})
     parameter_json: '{"account_lower_bound":"","limit":1000}'
     expected_response_json: | # TODO - recheck in HF23
@@ -29,6 +29,6 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"reputation_api.get_account_reputations", "params": {"account_lower_bound": "hive"}, "id":1}'
     client_docs:
-      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-reputations)'
-      - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_reputation)'
-      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+    - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-reputations)"
+    - "[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_reputation)"
+    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
