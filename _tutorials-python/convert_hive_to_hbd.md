@@ -9,7 +9,7 @@ Full, runnable src of [Convert HIVE to HBD](https://gitlab.syncad.com/hive/devpo
 
 In this tutorial we will explain and show you how to convert some or all of your available HIVE balance into HBD on the **Hive** blockchain using the `commit` class found within the [beem](https://github.com/holgern/beem) library.
 
-It should be noted that unlike the [opposite conversion]({{ '/_tutorials-python/32_convert_hbd_to_hive.html' | relative_url }}), the converted HBD *will* be available instantly, but the collateral takes 3.5 days for the transaction to be processed.  It is also not possible to stop a conversion once initialized.  During the 3.5 days for it to be converted and as the conversion price fluctuates you could actually be receiving less released HIVE collateral.  Because of this, the method in this tutorial is **NOT** the preferred and **often NOT** the most efficient way of converting HIVE to HBD.  This tutorial just illustrates that it can be done in this manner.
+It should be noted that unlike the [opposite conversion]({{ '/_tutorials-python/convert_hbd_to_hive.html' | relative_url }}), the converted HBD *will* be available instantly, but the collateral takes 3.5 days for the transaction to be processed.  It is also not possible to stop a conversion once initialized.  During the 3.5 days for it to be converted and as the conversion price fluctuates you could actually be receiving less released HIVE collateral.  Because of this, the method in this tutorial is **NOT** the preferred and **often NOT** the most efficient way of converting HIVE to HBD.  This tutorial just illustrates that it can be done in this manner.
 
 Note: **This is not a market process and will often result in unfavorable outcomes, if used bindly.**
 
