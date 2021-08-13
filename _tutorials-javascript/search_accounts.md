@@ -29,7 +29,7 @@ Also see:
 4. [**Output**](#output) Displaying query results
 
 
-#### 1. **Configure connection**<a name="configure_connection"></a>
+#### 1. Configure connection<a name="configure_connection"></a>
 
 Below we have `dhive` pointing to the production network with the proper chainId, addressPrefix, and endpoint. There is a `public/app.js` file which holds the Javascript segment of this tutorial. In the first few lines we define the configured library and packages:
 
@@ -44,7 +44,7 @@ opts.chainId =
 const client = new dhive.Client('https://api.hive.blog');
 ```
 
-#### 2.  **Collecting input variables**<a name="collecting_input_variables"></a>
+#### 2. Collecting input variables<a name="collecting_input_variables"></a>
 
 Next we assign the max number of lines that will be returned by the query. We also use `getElementById` to retrieve the requested user name for searching from the HTML interface. The `max` value can very easily also be attained from the HTML side simply by adding another input line in `index.html` and a second `getElementById` line.
 
@@ -54,7 +54,7 @@ window.submitAcc = async () => {
     const accSearch = document.getElementById("username").value;
 ```
 
-#### 3.  **Blockchain query**<a name="blockchain_query"></a>
+#### 3. Blockchain query<a name="blockchain_query"></a>
 
 The next step is to pull the user names from the blockchain that matches the "username" variable that was retrieved. This is done using the `database.call` function and assigning the result to an array.
 
@@ -63,7 +63,7 @@ const _accounts = await client.database.call('lookup_accounts',[accSearch, max])
     console.log(`_accounts:`, _accounts);
 ```
 
-#### 4.  **Output**<a name="output"></a>
+#### 4. Output<a name="output"></a>
 
 Finally we create a list from the "_accounts" array generated in step 3.
 
@@ -71,6 +71,14 @@ Finally we create a list from the "_accounts" array generated in step 3.
 document.getElementById('accList').innerHTML = _accounts.join('<br>');
 }
 ```
+
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js15searchaccounts?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ## To run this tutorial
 

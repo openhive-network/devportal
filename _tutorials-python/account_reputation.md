@@ -103,6 +103,14 @@ if sign < 0:
 
 You can use this to convert from the raw blockchain value.  This is now done internally by libraries like beem.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py20accountreputation?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. [review dev requirements](getting_started.html)

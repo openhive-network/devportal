@@ -64,6 +64,8 @@
       ]
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"bridge.get_ranked_posts", "params":{"sort":"trending","tag":"","observer":"alice"}, "id":1}'
+    client_docs:
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: bridge.account_notifications
     purpose: |
       Account notifications.
@@ -102,6 +104,10 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_account_notifications)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/reblogs)'
   - api_method: bridge.does_user_follow_any_lists
     purpose: Checks if a given observer follows any blacklists or mute lists.
     parameter_json: '{"observer":"alice"}'
@@ -112,6 +118,10 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_does_user_follow_any_lists)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/blacklistsfollows)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
   - api_method: bridge.get_account_posts
     purpose: |
       Lists posts related to a given account.
@@ -189,6 +199,8 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_account_posts)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/reblogs)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: bridge.get_community_context
     purpose: Gets the role, subscription status, and title for a given account in a given community.
     parameter_json: {"name": "hive-111111", "account": "therealwolf"}
@@ -198,6 +210,9 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_community_context)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiesroles)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.get_discussion
     purpose: Gives a flattened discussion tree starting at given post.
     parameter_json: {"author": "hiveio", "permlink": "around-the-hive-reflections", "observer": "alice"}
@@ -262,6 +277,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_discussion)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: bridge.get_follow_list
     purpose: |
       Returns blacklisted/muted accounts or list of blacklists/mute lists followed by a given observer.
@@ -277,6 +293,10 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_follow_list)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/blacklistsfollows)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
   - api_method: bridge.get_profile
     purpose: |
       Gets profile
@@ -319,6 +339,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_profile)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/accounts)'
   - api_method: bridge.list_communities
     purpose: |
       Gets community
@@ -359,6 +380,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_communities)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
   - api_method: bridge.list_pop_communities
     purpose: |
       Gets a list of popular communities.
@@ -409,6 +431,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_subscribers)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.list_community_roles
     purpose: |
       List community roles and labels for each account in the community.
@@ -427,6 +450,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_community_roles)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiesroles)'
   - api_method: bridge.list_all_subscriptions
     purpose: |
       List all subscriptions, titles, and roles to a community for an account.
@@ -443,6 +467,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_all_subscriptions)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.get_community
     purpose: |
       Get community details.
@@ -483,6 +508,9 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_community)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiesroles)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.get_relationship_between_accounts
     purpose: Tells what relations connect given accounts from the perspective of first account.
     parameter_json: '["alice", "bob"]'
@@ -499,6 +527,11 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_relationship_between_accounts)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/blacklists)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/blacklistsfollows)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutes)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/mutesfollows)'
   - api_method: bridge.get_payout_stats
     purpose: |
       Lists communities ordered by payout with stats (total payout, number of posts and authors).
@@ -525,6 +558,7 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_payout_stats)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
   - api_method: bridge.get_post
     purpose: |
       Gives single selected post.
@@ -593,6 +627,8 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_post)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: bridge.get_post_header
     purpose: |
       Gives very basic information on given post.
@@ -613,3 +649,4 @@
     client_docs:
       - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_post_header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'

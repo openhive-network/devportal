@@ -1,0 +1,13 @@
+<ul>
+  <li><code>id</code> - Unique identifier that is mostly an implementation detail (best to ignore). To uniquely identify proposal, it's best to use <code>proposal_id</code>.</li>
+  <li><code>proposal_id</code> - Before using this value for any further broadcasts, ensure it is part of an irreversible block.</li>
+  <li><code>creator</code> - Account that created this proposal.</li>
+  <li><code>receiver</code> - Account that will receive funds, if this proposal is approved.</li>
+  <li><code>start_date</code> - When payments should begin.</li>
+  <li><code>end_date</code> - When payments should end.</li>
+  <li><code>daily_pay</code> - Amount of HBD expected per day.</li>
+  <li><code>subject</code> - Summary of this proposal.</li>
+  <li><code>permlink</code> - Post by either creator or receiver.</li>
+  <li><code>total_votes</code> - VESTS cast for this proposal.  This will is calculate every maintenance period.</li>
+  <li><code>status</code> - Current status of this proposal.</li>
+</ul>

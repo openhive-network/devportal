@@ -40,7 +40,8 @@ from beem.comment import Comment
 from beem.transactionbuilder import TransactionBuilder
 from beembase.operations import Custom_json
 
-hive = Hive(['http://127.0.0.1:8090'])
+# hive = Hive(['https://testnet.openhive.network']) # Public Testnet
+hive = Hive(['http://127.0.0.1:8090']) # Local Testnet
 ```
 
 #### 2. Post list <a name="post-list"></a>
@@ -49,7 +50,7 @@ Next we will fetch and make list of accounts and setup `pick` properly.
 
 ```python
 q = Query(limit=5, tag="")
-d = Discussions()
+d = Discussions(blockchain_instance=hive)
 
 #author list from hot post list
 posts = d.get_discussions('hot', q, limit=5)
@@ -98,15 +99,17 @@ print("Reblogged successfully: " + str(broadcast_tx))
 
 If transaction is successful you shouldn't see any error messages, otherwise you will be notified.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py14rebloggingpost?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
-
-```bash
-docker run -d -p 8090:8090 inertia/tintoy:latest
-```
-
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})
+{% include local-testnet.html %}
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

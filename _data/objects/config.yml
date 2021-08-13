@@ -655,5 +655,7 @@
       examples:
         - "steem.dao"
     - name: NEW_HIVE_TREASURY_ACCOUNT
+      purpose: |
+        See: [`OBSOLETE_TREASURY_ACCOUNT`]({{ '/tutorials-recipes/understanding-configuration-values.html#OBSOLETE_TREASURY_ACCOUNT' | relative_url }})
       examples:
         - "hive.fund"

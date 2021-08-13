@@ -106,6 +106,14 @@ print(*follows, sep='\n')
 
 This is a fairly simple example of how to use these functions but we encourage you to play around with the parameters to gain further understanding of possible results.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py19getfollowerandfollowinglist?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. [review dev requirements](getting_started.html)

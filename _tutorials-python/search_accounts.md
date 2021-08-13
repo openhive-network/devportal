@@ -96,7 +96,13 @@ else:
 
 The query returns an array of objects. We use the `for` loop to build a list of only the tag `names` from that array and then display the list on the UI with line separators. This creates an easy to read list of tags.
 
-That's it!.
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py15searchaccounts?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

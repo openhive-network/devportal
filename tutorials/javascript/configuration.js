@@ -67,6 +67,15 @@ export const TestnetAlt = {
     },
 };
 
+export const PublicTestnetHive = {
+    url: 'https://testnet.openhive.network',
+    net: {
+        addressPrefix: 'TST',
+        chainId:
+            '18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e',
+    },
+};
+
 export const Testnet = TestnetHive;
 
 export const Mainnet = {

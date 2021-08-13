@@ -5,7 +5,7 @@ description: "Understand and use the most common fields of the requested content
 layout: full
 canonical_url: get_post_details.html
 ---
-Full, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/05_get_post_details) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-05_get_post_details.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/05_get_post_details)).
+Full, runnable src of [Get Post Details](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/05_get_post_details) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-05_get_post_details.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/05_get_post_details)).
 
 ### Intro
 
@@ -201,6 +201,8 @@ app = metadata['app']
 As you can see from the above example, `json_metadata` starts out as a string of JSON that can be parsed to determine things like `tags` and `app`.  Other data may be present, depending on the application that created the content.
 
 Note, we're using `rescue` in case the `json_metadata` string contains invalid JSON because there is no validation performed on this field by the blockchain when content is broadcasted.
+
+{% include structures/comment.html %}
 
 ### To Run
 

@@ -158,6 +158,14 @@ The result is returned from the post content as a `JSON` object with the followi
 
 From this result, you have access to comments made on selected post.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js07getpostcomments?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

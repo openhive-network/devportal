@@ -5,7 +5,7 @@ description: "This example will broadcast a new post to the blockchain using the
 layout: full
 canonical_url: submit_post.html
 ---
-Full, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/10_submit_post) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-10_submit_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/10_submit_post)).
+Full, runnable src of [Submit Post](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/10_submit_post) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-10_submit_post.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/10_submit_post)).
 
 A post is differentiated from a comment by whether or not a `parent_author` exists. When there is no `parent_author`, then it's a post, otherwise it's a comment.
 
@@ -29,6 +29,8 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
+
+{% include local-testnet.html %}
 
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git

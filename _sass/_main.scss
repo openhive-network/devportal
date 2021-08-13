@@ -719,16 +719,18 @@ a[href*='tutorials-ruby'] {
   padding-left: .90em;
 }
 
+a[href*='hivesql'] {
+  background-image: url(../images/languages/hivesql.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
 #search-process {
   background-image: url(../images/loading.gif);
   background-size: .90em .90em;
   background-repeat: no-repeat;
   background-position: right top;
   padding-left: .90em;  
-}
-
-// See: https://github.com/turbolinks/turbolinks#displaying-progress
-.turbolinks-progress-bar {
-  height: 5px;
-  background-color: $brand-colour;
 }

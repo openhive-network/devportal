@@ -16,7 +16,7 @@ This tutorial will show few functions such as querying account by name and check
 Also see:
 * [account_create_operation]({{ '/apidefinitions/#broadcast_ops_account_create' | relative_url }})
 * [account_create_with_delegation_operation]({{ '/apidefinitions/#broadcast_ops_account_create_with_delegation' | relative_url }})
-* [claim_account_operation]({{ '/apidefinitions/#broadcast_ops_account_claim_account' | relative_url }})
+* [claim_account_operation]({{ '/apidefinitions/#broadcast_ops_claim_account' | relative_url }})
 
 ## Steps
 

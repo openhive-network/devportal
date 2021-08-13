@@ -15,7 +15,8 @@ body = input('Post Body: ')
 #random generator to create post permlink
 permlink = ''.join(random.choices(string.digits, k=10))
 
-client = Hive('http://127.0.0.1:8090')
+# client = Hive('https://testnet.openhive.network') # Public Testnet
+client = Hive('http://127.0.0.1:8090') # Local Testnet
 tx = TransactionBuilder(blockchain_instance=client)
 tx.appendOps(Comment(**{
   "parent_author": parent_author,
@@ -32,4 +33,3 @@ signed_tx = tx.sign()
 broadcast_tx = tx.broadcast(trx_id=True)
 
 print("Comment created successfully: " + str(broadcast_tx))
-

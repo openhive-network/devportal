@@ -25,13 +25,7 @@ Also see:
 
 #### 1. App setup<a name="app-setup"></a>
 
-Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
-
-```bash
-docker run -d -p 8090:8090 inertia/tintoy:latest
-```
-
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})
+{% include local-testnet.html %}
 
 Below we have `dhive` pointing to the test network with the proper chainId, addressPrefix, and endpoint. Because this tutorial is interactive, we will not publish test content to the main network. Instead, we're using the testnet and a predefined account to demonstrate post publishing.
 

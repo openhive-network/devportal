@@ -5,7 +5,7 @@ description: "To vote for a post (or reply), we can use a vote operation and pro
 layout: full
 canonical_url: vote_on_content.html
 ---
-Full, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/17_vote_on_content) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-17_vote_on_content.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/17_vote_on_content)).
+Full, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/17_vote_on_content) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-17_vote_on_content.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/17_vote_on_content)).
 
 Also see:
 * [vote_operation]({{ '/apidefinitions/#broadcast_ops_vote' | relative_url }})
@@ -202,6 +202,8 @@ Broadcasting a `vote` operation will require the following fields:
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository) with the following arguments:
+
+{% include local-testnet.html %}
 
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git

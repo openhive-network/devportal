@@ -76,7 +76,10 @@ new_password = getpass.getpass('new password for account: ')
 recovery_account = input('account owner (recovery account name): ')
 recovery_account_private_key = getpass.getpass('account owner private ACTIVE key: ')
 
-client = Hive('http://127.0.0.1:8090', keys=[recovery_account_private_key])
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
+client = Hive(node_url, keys=[recovery_account_private_key])
 account = Account(account, blockchain_instance=client)
 recovery_account = Account(recovery_account, blockchain_instance=client)
 ```
@@ -189,8 +192,11 @@ op_account_update_data = {
 The beem class is initialized once more but with the required WIF for this specific section.  This is necessary when different keys are required at various steps.  The `recover_account` function is transmitted to the blockchain via the `TransactionBuilder` operation in order to append the new private keys.  The operation is then broadcast.
 
 ```python
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # recover account initialisation and transmission
-client = Hive('http://127.0.0.1:8090', keys=[recovery_account_private_key])
+client = Hive(node_url, keys=[recovery_account_private_key])
 
 op_recover_account = beembase.operations.Recover_account(**op_recover_account_data)
 
@@ -213,8 +219,11 @@ print(result)
 The same basic process is followed as in the previous step.  For this step however we require the new owner private key which is initialized in the beem class.  The `TransactionBuilder` operation is used once more for the transmission to the blockchain.
 
 ```python
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # update account keys initialisation and transmission
-client = Hive('http://127.0.0.1:8090', keys=[new_account_owner_private_key])
+client = Hive(node_url, keys=[new_account_owner_private_key])
 
 op_account_update = beembase.operations.Account_update(**op_account_update_data)
 
@@ -232,15 +241,17 @@ print('result')
 print(result)
 ```
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py35accountrecovery?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
-
-```bash
-docker run -d -p 8090:8090 inertia/tintoy:latest
-```
-
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})
+{% include local-testnet.html %}
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

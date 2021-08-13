@@ -8,8 +8,11 @@ from beem.account import Account
 account = input('Enter username: ')
 wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
 
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
 # connect node and private active key
-client = Hive('http://127.0.0.1:8090', keys=[wif_active_key])
+client = Hive(node_url, keys=[wif_active_key])
 
 # check valid user and get account balance
 account = Account(account, blockchain_instance=client)
@@ -53,4 +56,3 @@ print('\n' + str(amount) + ' ' + symbol + ' has been powered up successfully to 
 account.refresh()
 balance = account['balance']
 print('New balance: ' + str(balance))
-

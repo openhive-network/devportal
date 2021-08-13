@@ -9,8 +9,11 @@ author = slug.split('/')[0]
 permlink = slug.split('/')[1..-1].join('/')
 voter = 'social'
 posting_wif = '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
-options = {wif: posting_wif}
 weight = ((weight || '100.0').to_f * 100).to_i
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: posting_wif
+}
 
 tx = Radiator::Transaction.new(options)
 

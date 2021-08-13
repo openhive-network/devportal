@@ -103,6 +103,14 @@ From this result, you have access to everything associated with the selected pos
 * `reputation` - The [reputation]({{ '/glossary/#reputation' | relative_url }}) of the account that voted.
 * `time` - Time the vote was submitted.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js06getvoterslistonpost?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

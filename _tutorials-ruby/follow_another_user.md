@@ -5,7 +5,7 @@ description: "*How to follow/unfollow another user.*"
 layout: full
 canonical_url: follow_another_user.html
 ---
-Full, runnable src of [Follow Another User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/18_follow_another_user) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-18_follow_another_user.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/18_follow_another_user)).
+Full, runnable src of [Follow Another User](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby/18_follow_another_user) can be downloaded as part of: [tutorials/ruby](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/ruby) (or download just this tutorial: [devportal-master-tutorials-ruby-18_follow_another_user.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/ruby/18_follow_another_user)).
 
 This tutorial will take you through the process of following/muting/unfollowing/unmuting an author and checking the follow status of an author.
 
@@ -62,6 +62,8 @@ We also specify `blog` to tell the API method that we're looking for followed, n
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):
+
+{% include local-testnet.html %}
 
 ```bash
 git clone https://gitlab.syncad.com/hive/devportal.git

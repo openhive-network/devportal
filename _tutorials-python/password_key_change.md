@@ -66,7 +66,10 @@ wif_old_owner_key = str(
   PasswordKey(account, old_password, "owner").get_private_key()
 )
 
-client = Hive('http://127.0.0.1:8090', keys=[wif_old_owner_key])
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
+client = Hive(node_url, keys=[wif_old_owner_key])
 
 account = Account(account, blockchain_instance=client)
 ```
@@ -136,15 +139,17 @@ Assert Exception:_db.head_block_time() - account_auth.last_owner_update > HIVE_O
 
 You will need to wait at least an hour before attempting this again.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py34passwordkeychange?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
-
-```bash
-docker run -d -p 8090:8090 inertia/tintoy:latest
-```
-
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})
+{% include local-testnet.html %}
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

@@ -157,6 +157,14 @@ We first check if `result` is not an empty object. We then iterate through each 
 We format `created` date and time, parse `body` markdown and get `totalVotes` on that comment.
 Each line is then pushed and displayed separately.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js09getaccountcomments?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

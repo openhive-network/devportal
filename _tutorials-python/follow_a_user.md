@@ -65,7 +65,8 @@ if author == account:
   exit()
 
 # connect node and private posting key, demo account being used: cdemo, posting key: 5JEZ1EiUjFKfsKP32b15Y7jybjvHQPhnvCYZ9BW62H1LDUnMvHz
-hive = beem.Hive('http://127.0.0.1:8090')
+# hive = beem.Hive('https://testnet.openhive.network') # Public Testnet
+hive = beem.Hive('http://127.0.0.1:8090') # Local Testnet
 ```
 
 #### 3. Check author status<a name="authorstat"></a>
@@ -154,15 +155,17 @@ print(option + ' ' + author.name + ": " + str(broadcast_tx))
 
 A simple confirmation of the chosen action is printed on the screen.
 
+---
+
+#### Try it
+
+Click the play button below:
+
+<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py18followauser?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
 ### To Run the tutorial
 
-Before running this tutorial, launch your local testnet, with port 8090 mapped locally to the docker container:
-
-```bash
-docker run -d -p 8090:8090 inertia/tintoy:latest
-```
-
-For details on running a local testnet, see: [Setting Up a Testnet]({{ '/nodeop/setting-up-a-testnet.html' | relative_url }})
+{% include local-testnet.html %}
 
 1. [review dev requirements](getting_started.html)
 1. `git clone https://gitlab.syncad.com/hive/devportal.git`

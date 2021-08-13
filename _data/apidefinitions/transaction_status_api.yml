@@ -4,22 +4,22 @@
 - name: transaction_status_api
   description: |
     This API is intended to evaluate a transaction status after calling [`condenser_api.broadcast_transaction`]({{ '/apidefinitions/#condenser_api.broadcast_transaction' | relative_url }}).
-    
+
     To enable this API for `hived`, the following is required in `config.ini` by specifying:
-    
+
     ```ini
     plugin = transaction_status_api
     ```
-    
+
     See: [#3060]({{ 'https://github.com/steemit/steem/pull/3060' | archived_url }})
   methods:
   - api_method: transaction_status_api.find_transaction
     since: HF23
     purpose: |
       Returns the status of a given transaction id.  Parameters: `trx_id:string`; `expiration:timestamp` (optional)
-      
+
       The result will contain one of the following `status` values:
-      
+
       | Status | Meaning |
       |--------|---------|
       | `unknown` | Expiration time in future, transaction not included in block or mempool |
@@ -35,4 +35,4 @@
     -  '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params": {"transaction_id": "0000000000000000000000000000000000000000"}, "id":1}'
     -  '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params": {"transaction_id": "0000000000000000000000000000000000000000", "expiration":"2016-03-24T18:00:21"}, "id":1}'
     client_docs:
-      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"

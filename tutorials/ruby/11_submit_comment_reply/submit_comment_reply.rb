@@ -4,6 +4,7 @@ require 'bundler/setup'
 Bundler.require
 
 options = {
+  url: 'https://testnet.openhive.network',
   wif: '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
 }
 tx = Radiator::Transaction.new(options)
