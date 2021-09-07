@@ -72,7 +72,7 @@ options = {
   url: 'https://api.openhive.network',
   failover_urls: [
     'https://anyx.io',
-    'https://api.hivekings.com',
+    'https://rpc.ausbit.dev',
     'https://hived.privex.io',
   ]
 }
