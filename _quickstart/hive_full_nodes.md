@@ -19,7 +19,6 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
       <tr><td>api.hive.blog</td><td>@blocktrades</td><td style="display: none;"></td></tr>
       <tr><td>api.openhive.network</td><td>@gtg</td><td style="display: none;"></td></tr>
       <tr><td>anyx.io</td><td>@anyx</td><td style="display: none;"></td></tr>
-      <tr><td>api.hivekings.com</td><td>@drakos</td><td style="display: none;"></td></tr>
       <tr><td>hived.privex.io</td><td>@privex</td><td style="display: none;"></td></tr>
       <tr><td>rpc.ausbit.dev</td><td>@ausbitbank</td><td style="display: none;"></td></tr>
       <tr><td>techcoderx.com</td><td>@techcoderx</td><td style="display: none;"></td></tr>
@@ -29,6 +28,7 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
       <tr><td>api.deathwing.me</td><td>@deathwing</td><td style="display: none;"></td></tr>
       <tr><td>api.c0ff33a.uk</td><td>@c0ff33a</td><td style="display: none;"></td></tr>
       <tr><td>hive-api.arcange.eu</td><td>@arcange</td><td style="display: none;"></td></tr>
+      <tr><td>api.pharesim.me</td><td>@pharesim</td><td style="display: none;"></td></tr>
     </tbody>
   </table>
 </div>
