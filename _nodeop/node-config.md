@@ -701,7 +701,7 @@ See: [seednodes.txt](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/seedn
 
 ```ini
 # example, override compiled seeds
-p2p-seed-node = seed.openhive.network:2001 anyx.io:2001 hiveseed-fin.privex.io:2001 hive-seed.arcange.eu:2001 seed.liondani.com:2016 hived.splinterlands.com:2001 seed.hivekings.com:2001 node.mahdiyari.info:2001 seed.roelandp.nl:2001 p2p-seed-node = hiveseed-se.privex.io:2001 seed.buildteam.io:2001 hive-seed.lukestokes.info:2001 seed.chitty.me:2001
+p2p-seed-node = seed.openhive.network:2001 anyx.io:2001 hiveseed-fin.privex.io:2001 hive-seed.arcange.eu:2001 seed.liondani.com:2016 hived.splinterlands.com:2001 node.mahdiyari.info:2001 seed.roelandp.nl:2001 p2p-seed-node = hiveseed-se.privex.io:2001 seed.buildteam.io:2001 hive-seed.lukestokes.info:2001 seed.chitty.me:2001
 ```
 
 ```ini
