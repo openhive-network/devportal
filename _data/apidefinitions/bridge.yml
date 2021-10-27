@@ -286,6 +286,8 @@
       * `follow_type` - Supported values:
         * `follow_blacklist`
         * `follow_muted`
+        * `blacklisted`
+        * `muted`
     parameter_json: {"observer": "blocktrades", "follow_type": "follow_blacklist"}
     expected_response_json: [{"name":"hive.blog","blacklist_description":"","muted_list_description":""}]
     curl_examples:
