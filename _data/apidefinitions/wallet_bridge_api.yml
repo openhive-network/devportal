@@ -760,3 +760,37 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
+
+
+
+  - api_method: wallet_bridge_api.get_current_median_history_price
+    purpose: |
+      Return the current median history prices proposed by witnesses.
+      
+      **Parameters:**
+        
+      * `-`
+
+
+    parameter_json: '{"params": []}'
+    expected_response_json: |
+      {
+        "base": {
+          "amount": "1",
+          "precision": 3,
+          "nai": "@@000000013"
+        },
+        "quote": {
+          "amount": "1",
+          "precision": 3,
+          "nai": "@@000000021"
+        }
+      }
+    curl_examples:
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_current_median_history_price", "params": []}'
+
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
+
