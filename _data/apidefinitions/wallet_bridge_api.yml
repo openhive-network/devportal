@@ -734,4 +734,29 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
 
+
+
+  - api_method: wallet_bridge_api.get_version
+    purpose: |
+      Returns the compile time versions of blockchain, hived, FC. Also returns the boot time version of the chain id (may be different from compile time value only when looking at a testnet).
       
+      **Parameters:**
+        
+      * `-`
+
+
+    parameter_json: '{"params": []}'
+    expected_response_json: |
+      {
+        "blockchain_version": "1.26.0",
+        "hive_revision": "f2e829a6a9a50f0e60e41e84e9ca4cbcdbf9d9af",
+        "fc_revision": "f2e829a6a9a50f0e60e41e84e9ca4cbcdbf9d9af",
+        "chain_id": "18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e"
+      }
+    curl_examples:
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_version", "params": []}'
+
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
