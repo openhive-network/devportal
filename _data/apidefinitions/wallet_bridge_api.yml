@@ -639,3 +639,43 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
 
+
+
+  - api_method: wallet_bridge_api.list_accounts
+    purpose: |
+      Return all existing accounts registered in blockchain ordered alphabetically.
+      
+      **Parameters:**
+        
+      * `Lowerbound account`: account name
+      * `Limit: int` - in range (0-1000)
+
+        | `Lowerbound account` (string) | `Limit` (int) |
+        |--------------------|---------------|---------------|-|
+        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
+        | `"non-exist-acc"` | `1000` | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
+        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
+        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
+
+    parameter_json: '{"params": [["account-5", 100]]}'
+    expected_response_json: |
+      [
+        "account-5",
+        "account-6",
+        "account-7",
+        "account-8",
+        "account-9",
+        "hive.fund",
+        "initminer",
+        "miners",
+        "null",
+        "steem.dao",
+        "temp"
+      ]
+    curl_examples:
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
