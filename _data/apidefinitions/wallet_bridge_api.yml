@@ -302,25 +302,340 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
-  - api_method: block_api.get_block_range
+
+
+
+  - api_method: wallet_bridge_api.get_accounts
     purpose: |
-      Retrieve a range of full, signed blocks.  The list may be shorter than requested if `count` blocks would take you past the current head block.
+      Returns informations about the given accounts.
       
       **Parameters:**
         
-      * `starting_block_num` - Height of the first block to be returned
-      * `count` - the maximum number of blocks to return
-      
-      | `starting_block_num` (int) | `count` (int) | |
-      |----------------------------|---------------|-|
-      | `1` | `10` | Queries the block headers for the very first block through the tenth block. |
-      | `8675309` | `50`| Queries block headers for block numbers 8,675,309 through 8,675,359. |
-      | `62396745` | `1000` | Queries block headers for block numbers 62,396,745 through 62,397,745. |
-      
-      See: [!149](https://gitlab.syncad.com/hive/hive/-/merge_requests/149), [702ea4a](https://gitlab.syncad.com/hive/hive/-/commit/702ea4a758a98b4d164a616dadb34683d40e7af4)
-    parameter_json: '{"starting_block_num":0,"count":0}'
-    expected_response_json: '{"blocks":[]}'
+      * `accounts`: array of account names
+
+        | `Accounts` (account name) |
+        |--------------------|---------------|-|
+        | `"[account-0, account-1]"` | Return informations about 'account-0' and 'account-1' |
+        | `"[non-exist-acc]"` | Return null|
+        | `[""]` | Return null |
+
+    parameter_json: '{"params": [["account-0", "account-1"]]}'
+    expected_response_json: |
+      [
+        {
+          "id": 6,
+          "name": "account-0",
+          "owner": {
+            "weight_threshold": 1,
+            "account_auths": [],
+            "key_auths": [
+              [
+                "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
+                1
+              ]
+            ]
+          },
+          "active": {
+            "weight_threshold": 1,
+            "account_auths": [],
+            "key_auths": [
+              [
+                "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
+                1
+              ]
+            ]
+          },
+          "posting": {
+            "weight_threshold": 1,
+            "account_auths": [],
+            "key_auths": [
+              [
+                "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
+                1
+              ]
+            ]
+          },
+          "memo_key": "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
+          "json_metadata": "{}",
+          "posting_json_metadata": "",
+          "proxy": "",
+          "previous_owner_update": "1970-01-01T00:00:00",
+          "last_owner_update": "1970-01-01T00:00:00",
+          "last_account_update": "1970-01-01T00:00:00",
+          "created": "2022-03-28T07:17:39",
+          "mined": false,
+          "recovery_account": "initminer",
+          "last_account_recovery": "1970-01-01T00:00:00",
+          "reset_account": "null",
+          "comment_count": 0,
+          "lifetime_vote_count": 0,
+          "post_count": 0,
+          "can_vote": true,
+          "voting_manabar": {
+            "current_mana": 0,
+            "last_update_time": 1648451859
+          },
+          "downvote_manabar": {
+            "current_mana": 0,
+            "last_update_time": 1648451859
+          },
+          "balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "savings_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "hbd_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "hbd_seconds": "0",
+          "hbd_seconds_last_update": "1970-01-01T00:00:00",
+          "hbd_last_interest_payment": "1970-01-01T00:00:00",
+          "savings_hbd_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "savings_hbd_seconds": "0",
+          "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+          "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
+          "savings_withdraw_requests": 0,
+          "reward_hbd_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "reward_hive_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "reward_vesting_balance": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "reward_vesting_hive": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "vesting_shares": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "delegated_vesting_shares": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "received_vesting_shares": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "vesting_withdraw_rate": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "post_voting_power": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "next_vesting_withdrawal": "1969-12-31T23:59:59",
+          "withdrawn": 0,
+          "to_withdraw": 0,
+          "withdraw_routes": 0,
+          "pending_transfers": 0,
+          "curation_rewards": 0,
+          "posting_rewards": 0,
+          "proxied_vsf_votes": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "witnesses_voted_for": 0,
+          "last_post": "1970-01-01T00:00:00",
+          "last_root_post": "1970-01-01T00:00:00",
+          "last_post_edit": "1970-01-01T00:00:00",
+          "last_vote_time": "1970-01-01T00:00:00",
+          "post_bandwidth": 0,
+          "pending_claimed_accounts": 0,
+          "open_recurrent_transfers": 0,
+          "is_smt": false,
+          "delayed_votes": [],
+          "governance_vote_expiration_ts": "1969-12-31T23:59:59"
+        },
+        {
+          "id": 7,
+          "name": "account-1",
+          "owner": {
+            "weight_threshold": 1,
+            "account_auths": [],
+            "key_auths": [
+              [
+                "TST5hjCkhcMKcXQMppa97XUbDR5dWC3c2K8h23P1ajEi2fT9YuagW",
+                1
+              ]
+            ]
+          },
+          "active": {
+            "weight_threshold": 1,
+            "account_auths": [],
+            "key_auths": [
+              [
+                "TST5hjCkhcMKcXQMppa97XUbDR5dWC3c2K8h23P1ajEi2fT9YuagW",
+                1
+              ]
+            ]
+          },
+          "posting": {
+            "weight_threshold": 1,
+            "account_auths": [],
+            "key_auths": [
+              [
+                "TST5hjCkhcMKcXQMppa97XUbDR5dWC3c2K8h23P1ajEi2fT9YuagW",
+                1
+              ]
+            ]
+          },
+          "memo_key": "TST5hjCkhcMKcXQMppa97XUbDR5dWC3c2K8h23P1ajEi2fT9YuagW",
+          "json_metadata": "{}",
+          "posting_json_metadata": "",
+          "proxy": "",
+          "previous_owner_update": "1970-01-01T00:00:00",
+          "last_owner_update": "1970-01-01T00:00:00",
+          "last_account_update": "1970-01-01T00:00:00",
+          "created": "2022-03-28T07:17:39",
+          "mined": false,
+          "recovery_account": "initminer",
+          "last_account_recovery": "1970-01-01T00:00:00",
+          "reset_account": "null",
+          "comment_count": 0,
+          "lifetime_vote_count": 0,
+          "post_count": 0,
+          "can_vote": true,
+          "voting_manabar": {
+            "current_mana": 0,
+            "last_update_time": 1648451859
+          },
+          "downvote_manabar": {
+            "current_mana": 0,
+            "last_update_time": 1648451859
+          },
+          "balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "savings_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "hbd_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "hbd_seconds": "0",
+          "hbd_seconds_last_update": "1970-01-01T00:00:00",
+          "hbd_last_interest_payment": "1970-01-01T00:00:00",
+          "savings_hbd_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "savings_hbd_seconds": "0",
+          "savings_hbd_seconds_last_update": "1970-01-01T00:00:00",
+          "savings_hbd_last_interest_payment": "1970-01-01T00:00:00",
+          "savings_withdraw_requests": 0,
+          "reward_hbd_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "reward_hive_balance": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "reward_vesting_balance": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "reward_vesting_hive": {
+            "amount": "0",
+            "precision": 3,
+            "nai": "@@000000021"
+          },
+          "vesting_shares": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "delegated_vesting_shares": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "received_vesting_shares": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "vesting_withdraw_rate": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "post_voting_power": {
+            "amount": "0",
+            "precision": 6,
+            "nai": "@@000000037"
+          },
+          "next_vesting_withdrawal": "1969-12-31T23:59:59",
+          "withdrawn": 0,
+          "to_withdraw": 0,
+          "withdraw_routes": 0,
+          "pending_transfers": 0,
+          "curation_rewards": 0,
+          "posting_rewards": 0,
+          "proxied_vsf_votes": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "witnesses_voted_for": 0,
+          "last_post": "1970-01-01T00:00:00",
+          "last_root_post": "1970-01-01T00:00:00",
+          "last_post_edit": "1970-01-01T00:00:00",
+          "last_vote_time": "1970-01-01T00:00:00",
+          "post_bandwidth": 0,
+          "pending_claimed_accounts": 0,
+          "open_recurrent_transfers": 0,
+          "is_smt": false,
+          "delayed_votes": [],
+          "governance_vote_expiration_ts": "1969-12-31T23:59:59"
+        }
+      ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"block_api.get_block_range", "params":{"starting_block_num": 1, "count": 10}, "id":1}'
-      - '{"jsonrpc":"2.0", "method":"block_api.get_block_range", "params":{"starting_block_num": 8675309, "count": 50}, "id":1}'
-      - '{"jsonrpc":"2.0", "method":"block_api.get_block_range", "params":{"starting_block_num": 62396745, "count": 1000}, "id":1}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_accounts", "params": [["account-0", "account-1"]]}'
+
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
+
