@@ -679,3 +679,59 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
+
+
+  
+  - api_method: wallet_bridge_api.list_my_accounts
+    purpose: |
+      Return accounts involved with specified keys.
+      
+      **Parameters:**
+        
+      * `keys`: array of keys
+
+    parameter_json: '{"params": [["TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor", "TST5hjCkhcMKcXQMppa97XUbDR5dWC3c2K8h23P1ajEi2fT9YuagW", "TST5EjyFcCNidBSivAtTKvWWwWRNjakcRMB79QrbwMKprcTRBHtXz", "TST8RgQ3yexUZjcVGxQ2i3cKywwKwhxqzwtCHPQznGUYvQ15ZvahW", "TST77P1n96ojdXcKpd5BRUhVmk7qFTfM2q2UkWSKg63Xi7NKyK2Q1", "TST6qgHQx8jezjXvhVXSEhZ1zVUupsbtPJcWfLccT1drwJNyF9s2X", "TST5uznxkgkek1RQ13sthDWDqiUaE6sx4EfmPTcvLrZKBqETG47gP", "TST52ax8pDiPDnHKPBbb9j99Z3JzsnwYNAVWJb5W7haEGvPREdio3", "TST5S7tYwvBKWnNLETTxn4U8pc8e7m9MZ9GfZ3NPRz1LVPVbkcRDu", "TST5xXaMpWtv7bkTcSi9nvnCGb6vfHqaAdEAJGkWuFYWMnuYxq9Wf"]]}'
+    expected_response_json: |
+      {
+        "accounts": [
+          [
+            "account-0"
+          ],
+          [
+            "account-1"
+          ],
+          [
+            "account-2"
+          ],
+          [
+            "account-3"
+          ],
+          [
+            "account-4"
+          ],
+          [
+            "account-5"
+          ],
+          [
+            "account-6"
+          ],
+          [
+            "account-7"
+          ],
+          [
+            "account-8"
+          ],
+          [
+            "account-9"
+          ]
+        ]
+      }
+    curl_examples:
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_my_accounts", "params": [["TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor", "TST5hjCkhcMKcXQMppa97XUbDR5dWC3c2K8h23P1ajEi2fT9YuagW", "TST5EjyFcCNidBSivAtTKvWWwWRNjakcRMB79QrbwMKprcTRBHtXz", "TST8RgQ3yexUZjcVGxQ2i3cKywwKwhxqzwtCHPQznGUYvQ15ZvahW", "TST77P1n96ojdXcKpd5BRUhVmk7qFTfM2q2UkWSKg63Xi7NKyK2Q1", "TST6qgHQx8jezjXvhVXSEhZ1zVUupsbtPJcWfLccT1drwJNyF9s2X", "TST5uznxkgkek1RQ13sthDWDqiUaE6sx4EfmPTcvLrZKBqETG47gP", "TST52ax8pDiPDnHKPBbb9j99Z3JzsnwYNAVWJb5W7haEGvPREdio3", "TST5S7tYwvBKWnNLETTxn4U8pc8e7m9MZ9GfZ3NPRz1LVPVbkcRDu", "TST5xXaMpWtv7bkTcSi9nvnCGb6vfHqaAdEAJGkWuFYWMnuYxq9Wf"]]}'
+
+    client_docs:
+      - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
+      - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
+
+      
