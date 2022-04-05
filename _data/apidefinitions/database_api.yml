@@ -2309,6 +2309,9 @@
         * `active`
         * `expired`
         * `votable`
+      * `last_id (optional) - Id of the last object in the previous page from which you should start listing the next page`
+
+
 
       | `start` (array) | `limit` (int) | `order` (string) | `order_direction` (string) | `status` (string) | |
       |-------------------|-|-|-|-|-|
