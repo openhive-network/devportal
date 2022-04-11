@@ -1721,7 +1721,7 @@
       | `start` (array) | `limit` (int) | `order` (string) | |
       |----------------------------|---------------|-|
       | `[{"base": {"amount": "85405", "precision": 3, "nai": "@@000000021"}, "quote": {"amount": "17192", "precision": 3, "nai": "@@000000013"}}, 0]` | 10 | `"by_price"` | Queries first 10 requests, sort by price |
-      | `["alice", 0]` | 10 | `"by_effective_date"` | Queries first 10 requests, sort by account |
+      | `["alice", 0]` | 10 | `"by_account"` | Queries first 10 requests, sort by account |
 
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_limit_orders' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
