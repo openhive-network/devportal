@@ -819,37 +819,91 @@
 
   - api_method: wallet_bridge_api.broadcast_transaction_synchronus
     purpose: |
-      List accounts ordered alphabetically.
+      Used to broadcast a transaction and waits for it to be processed synchronously.
+      The method used to broadcast a signed transaction to the p2p network so that witnesses could validate and include it in a block. Broadcast waits to be processed synchronously. 
+
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * transaction
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
+      
+    parameter_json: '{  "params": [
+          [
+            {
+              "ref_block_num": 4,
+              "ref_block_prefix": 2206165069,
+              "expiration": "2022-04-14T12:00:03",
+              "operations": [
+                [
+                  "account_create",
+                  {
+                    "fee": "0.000 TESTS",
+                    "creator": "initminer",
+                    "new_account_name": "alice",
+                    "owner": {
+                      "weight_threshold": 1,
+                      "account_auths": [],
+                      "key_auths": [
+                        [
+                          "TST6Y6jXc8NScXkFMXEHAJorYwm7gb2xVpzPbTp2UMBKKvkmnjGWd",
+                          1
+                        ]
+                      ]
+                    },
+                    "active": {
+                      "weight_threshold": 1,
+                      "account_auths": [],
+                      "key_auths": [
+                        [
+                          "TST5M47qBRzA5o3gW84Q3Vp19QuCSbRTqqr4ioUqjcHEgsLgvnNRc",
+                          1
+                        ]
+                      ]
+                    },
+                    "posting": {
+                      "weight_threshold": 1,
+                      "account_auths": [],
+                      "key_auths": [
+                        [
+                          "TST5ordMRoxxryhCeo7DRivS3Wfxmz2bdbcty9PPhQZ85ZnHUTrQc",
+                          1
+                        ]
+                      ]
+                    },
+                    "memo_key": "TST8mMjiXhividBBfjQ9eiy323H4ktME6XMFgsej37B7W7ZSKND4e",
+                    "json_metadata": "{}"
+                  }
+                ]
+              ],
+              "extensions": [],
+              "signatures": [
+                "1f50894636e136409f5772083ef905e835c45dd521692092cee15eadd8d14398383edd36ccf875d23ffca9aaeb465ea09d80a7e377d121c2bcb0a9bb0cf85347a4"
+              ],
+              "transaction_id": "3665a4691c33ffb474e3418f6e02437220fe9cc0",
+              "block_num": 0,
+              "transaction_num": 0
+            }
+          ]
+        ]
+      }'
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+
     expected_response_json: |
-      [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
-      ]
+      {
+        "jsonrpc": "2.0",
+        "result": {
+          "id": "3665a4691c33ffb474e3418f6e02437220fe9cc0",
+          "block_num": 6,
+          "trx_num": 0,
+          "expired": "False"
+        },
+        "id": 1
+      }
+
+
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.broadcast_transaction", "params": [[{"ref_block_num": 1, "ref_block_prefix": 2521816500, "expiration": "2022-04-14T10:16:03", "operations": [["account_create", {"fee": "0.000 TESTS", "creator": "initminer", "new_account_name": "alice", "owner": {"weight_threshold": 1, "account_auths": [], "key_auths": [["TST5Xn9p5MWAvXucrtrdCRiXZAEu3MjoSESpPVxFBu9BsruY6DCvx", 1]]}, "active": {"weight_threshold": 1, "account_auths": [], "key_auths": [["TST7X2ZPzxWkJop3erD5rMzg8fDAXKQ2wSDXSpnoQmE6WCCPbcdR2", 1]]}, "posting": {"weight_threshold": 1, "account_auths": [], "key_auths": [["TST5pk6G16Kk84LS9KArZX1V6VjyjwJPa7NAStDB1wzaYBWzv976g", 1]]}, "memo_key": "TST7nV6rgvGiNzsUZfQvE7uDwFJDVPH7PGLQrue3YsDmVD6CQLVuX", "json_metadata": "{}"}]], "extensions": [], "signatures": ["1f7b2efe2353827bf33f89ea62c1964e287e392407ac1ff8a718b1366c01d4cde8134673c36304f1fe47cb74c196613ef9e62d7581ad534be601a0a382629d724a"], "transaction_id": "b98dc1ab6c1aced7d7a07214b31c0ab7330a784f", "block_num": 0, "transaction_num": 0}, "additional_argument"]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
