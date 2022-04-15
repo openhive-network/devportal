@@ -914,37 +914,42 @@
 
   - api_method: wallet_bridge_api.find_recurrent_transfers
     purpose: |
-      List accounts ordered alphabetically.
+      Finds transfers of any liquid asset every fixed amount of time from one account to another.
       
+      Also see: [recurrent_transfer_operation]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})
+
+
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `Account`: existing account name
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
-
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["alice"]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": [
+            {
+              "id": 0,
+              "trigger_date": "2022-04-18T17:05:00",
+              "from": "alice",
+              "to": "bob",
+              "amount": {
+                "amount": "20000",
+                "precision": 3,
+                "nai": "@@000000021"
+              },
+              "memo": "memo",
+              "recurrence": 100,
+              "consecutive_failures": 0,
+              "remaining_executions": 9
+            }
+          ],
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.find_recurrent_transfers", "params": [["alice"]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
