@@ -1154,37 +1154,112 @@
 
   - api_method: wallet_bridge_api.get_dynamic_global_properties
     purpose: |
-      List accounts ordered alphabetically.
-      
+      Returns the current dynamic global properties.  See: [Understanding
+      Dynamic Global Properties]({{ '/tutorials-recipes/understanding-dynamic-global-properties.html' | relative_url }}).
+
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * -
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [[]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "id": 0,
+            "head_block_number": 64481935,
+            "head_block_id": "03d7ea8f32f5e430a31ed51b49ed142d922c5d4b",
+            "time": "2022-05-18T12:29:30",
+            "current_witness": "therealwolf",
+            "total_pow": 514415,
+            "num_pow_witnesses": 172,
+            "virtual_supply": {
+              "amount": "429969015551",
+              "precision": 3,
+              "nai": "@@000000021"
+            },
+            "current_supply": {
+              "amount": "380999154975",
+              "precision": 3,
+              "nai": "@@000000021"
+            },
+            "init_hbd_supply": {
+              "amount": "0",
+              "precision": 3,
+              "nai": "@@000000013"
+            },
+            "current_hbd_supply": {
+              "amount": "24876689173",
+              "precision": 3,
+              "nai": "@@000000013"
+            },
+            "total_vesting_fund_hive": {
+              "amount": "155682539020",
+              "precision": 3,
+              "nai": "@@000000021"
+            },
+            "total_vesting_shares": {
+              "amount": "284875162576912602",
+              "precision": 6,
+              "nai": "@@000000037"
+            },
+            "total_reward_fund_hive": {
+              "amount": "0",
+              "precision": 3,
+              "nai": "@@000000021"
+            },
+            "total_reward_shares2": "0",
+            "pending_rewarded_vesting_shares": {
+              "amount": "783573593562632",
+              "precision": 6,
+              "nai": "@@000000037"
+            },
+            "pending_rewarded_vesting_hive": {
+              "amount": "404733550",
+              "precision": 3,
+              "nai": "@@000000021"
+            },
+            "hbd_interest_rate": 2000,
+            "hbd_print_rate": 10000,
+            "maximum_block_size": 65536,
+            "required_actions_partition_percent": 0,
+            "current_aslot": 64680590,
+            "recent_slots_filled": "340282366920938463463374607431751434239",
+            "participation_count": 127,
+            "last_irreversible_block_num": 64481916,
+            "vote_power_reserve_rate": 10,
+            "delegation_return_period": 432000,
+            "reverse_auction_seconds": 0,
+            "available_account_subsidies": 7687433,
+            "hbd_stop_percent": 1000,
+            "hbd_start_percent": 900,
+            "next_maintenance_time": "2022-05-18T12:34:12",
+            "last_budget_time": "2022-05-18T11:34:12",
+            "next_daily_maintenance_time": "2022-05-18T19:31:30",
+            "content_reward_percent": 6500,
+            "vesting_reward_percent": 1500,
+            "sps_fund_percent": 1000,
+            "sps_interval_ledger": {
+              "amount": "164496",
+              "precision": 3,
+              "nai": "@@000000013"
+            },
+            "downvote_pool_percent": 2500,
+            "current_remove_threshold": 200,
+            "early_voting_seconds": 86400,
+            "mid_voting_seconds": 172800,
+            "max_consecutive_recurrent_transfer_failures": 10,
+            "max_recurrent_transfer_end_date": 730,
+            "min_recurrent_transfers_recurrence": 24,
+            "max_open_recurrent_transfers": 255
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_dynamic_global_properties", "params": [[]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
