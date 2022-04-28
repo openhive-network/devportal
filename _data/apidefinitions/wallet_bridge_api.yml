@@ -1075,39 +1075,38 @@
 
 
 
-  - api_method: wallet_bridge_api.get_conversion_requests
+  - api_method: wallet_bridge_api.get_conversion_requests   # nie ma get_conversion_requests
     purpose: |
-      List accounts ordered alphabetically.
-      
+      Returns a list of [conversion requests]({{ '/glossary/#conversion-requests' | relative_url }}).
+
+      Also see: [Convert HBD To HIVE]({{ 'tutorials-python/convert_hbd_to_hive' | relative_url }})
+
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `owner`: existing account name
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["alice"]]}'
     expected_response_json: |
-      [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
-      ]
+      {
+        "jsonrpc": "2.0",
+        "result": [
+          {
+            "id": 0,
+            "owner": "alice",
+            "requestid": 1650443072,
+            "amount": {
+              "amount": "100",
+              "precision": 3,
+              "nai": "@@000000013"
+            },
+            "conversion_date": "2022-04-23T20:24:33"
+          }
+        ],
+        "id": 1
+      }
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_conversion_requests", "params": [["alice"]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
@@ -1128,16 +1127,20 @@
     parameter_json: '{"params": []}'
     expected_response_json: |
       {
-        "base": {
-          "amount": "1",
-          "precision": 3,
-          "nai": "@@000000013"
+        "jsonrpc": "2.0",
+        "result": {
+          "base": {
+            "amount": "508",
+            "precision": 3,
+            "nai": "@@000000013"
+          },
+          "quote": {
+            "amount": "1000",
+            "precision": 3,
+            "nai": "@@000000021"
+          }
         },
-        "quote": {
-          "amount": "1",
-          "precision": 3,
-          "nai": "@@000000021"
-        }
+        "id": 1
       }
     curl_examples:
     - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_current_median_history_price", "params": []}'
