@@ -1980,37 +1980,154 @@
 
   - api_method: wallet_bridge_api.list_proposal_votes
     purpose: |
-      List accounts ordered alphabetically.
-      
+      Returns all votes on [proposals]({{ '/glossary/#proposal' | relative_url }}), starting with the specified voter or `proposal.id`. 
+
       **Parameters:**
-        
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `start` depends on `order`
+        * `voter` - voter of the proposal  (account name string)
+        * `proposal.id` - id the proposal (int)
+      * `limit` is up to 1000.
+      * `order` can be one of:
+        * `by_voter_proposal` - order by proposal voter
+        * `by_proposal_voter` - order by `proposal.id`
+      * `order_direction` can be one of:
+        * `ascending`
+        * `descending`
+      * `status`
+        * `all`
+        * `inactive`
+        * `active`
+        * `expired`
+        * `votable`
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+      | `start` (array) | `limit` (int) | `order` (string) | `order_direction` (string) | `status` (string) | |
+      |-------------------|-|-|-|-|-|
+      | `["alice"]` | 10 | `by_voter_proposal` | `ascending` | `active` | list 10 proposals votes with active status, ordered by voter with start on user 'alice', ascending |
+      | `["alice", 4]` | 100 | `by_voter_proposal` | `descending` | `inactive` | list 100 proposals votes with inactive status, ordered by voter with start on user 'alice' combine with 4'th proposal_id, descending |
+      | `[10]` | 1000 | `by_proposal_voter` | `ascending` | `votable` | list 1000 proposals votes with votable status, ordered by proposal_id with start on number id '10', ascending |
+      | `[10, 'alice']` | 50 | `by_proposal_voter` | `ascending` | `all` | list 50 proposals votes with all status, ordered by proposal_id with number start on number id '10' combine with user named 'alice', ascending |
+
+
+    parameter_json: '{"params": [[["gtg", 3], 5, 33, 0, 0]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "proposal_votes": [
+              {
+                "id": 28365,
+                "voter": "gtg",
+                "proposal": {
+                  "id": 39,
+                  "proposal_id": 39,
+                  "creator": "inertia",
+                  "receiver": "inertia",
+                  "start_date": "2019-10-01T00:00:00",
+                  "end_date": "2020-01-01T00:00:00",
+                  "daily_pay": {
+                    "amount": "130000",
+                    "precision": 3,
+                    "nai": "@@000000013"
+                  },
+                  "subject": "Documentation for developers who work on the Steem blockchain.",
+                  "permlink": "proposal-dev-portal-documentation-q4-2019",
+                  "total_votes": "38895454452180322",
+                  "status": "expired"
+                }
+              },
+              {
+                "id": 28366,
+                "voter": "gtg",
+                "proposal": {
+                  "id": 42,
+                  "proposal_id": 42,
+                  "creator": "themarkymark",
+                  "receiver": "themarkymark",
+                  "start_date": "2019-10-04T00:00:00",
+                  "end_date": "2020-10-04T00:00:00",
+                  "daily_pay": {
+                    "amount": "20000",
+                    "precision": 3,
+                    "nai": "@@000000013"
+                  },
+                  "subject": "Global Blacklist API",
+                  "permlink": "global-blacklist-api-proposal",
+                  "total_votes": "62390602081222473",
+                  "status": "expired"
+                }
+              },
+              {
+                "id": 28367,
+                "voter": "gtg",
+                "proposal": {
+                  "id": 43,
+                  "proposal_id": 43,
+                  "creator": "ackza",
+                  "receiver": "ackza",
+                  "start_date": "2019-10-17T00:00:00",
+                  "end_date": "2019-12-31T00:00:00",
+                  "daily_pay": {
+                    "amount": "5000",
+                    "precision": 3,
+                    "nai": "@@000000013"
+                  },
+                  "subject": "Adding Steem Support to Scatter Dapp Wallet Using Scatter Wallet pack",
+                  "permlink": "sps-proposal-adding-steem-support-to-scatter-dapp-wallet-with-scatter-wallet-pack",
+                  "total_votes": "2204738670434405",
+                  "status": "expired"
+                }
+              },
+              {
+                "id": 28369,
+                "voter": "gtg",
+                "proposal": {
+                  "id": 55,
+                  "proposal_id": 55,
+                  "creator": "yabapmatt",
+                  "receiver": "steem-keychain",
+                  "start_date": "2019-11-15T09:27:24",
+                  "end_date": "2020-05-15T09:27:35",
+                  "daily_pay": {
+                    "amount": "100000",
+                    "precision": 3,
+                    "nai": "@@000000013"
+                  },
+                  "subject": "Steem Keychain Development",
+                  "permlink": "sps-proposal-for-steem-keychain-development",
+                  "total_votes": "38567592072926834",
+                  "status": "expired"
+                }
+              },
+              {
+                "id": 28370,
+                "voter": "gtg",
+                "proposal": {
+                  "id": 56,
+                  "proposal_id": 56,
+                  "creator": "steemitworldmap",
+                  "receiver": "steemitworldmap",
+                  "start_date": "2019-12-01T15:21:58",
+                  "end_date": "2020-03-31T15:22:10",
+                  "daily_pay": {
+                    "amount": "65000",
+                    "precision": 3,
+                    "nai": "@@000000013"
+                  },
+                  "subject": "Announcing Haveyoubeenhere: the social media app for and by travelers",
+                  "permlink": "announcing-haveyoubeenhere-the-social-media-app-for-and-by-travelers",
+                  "total_votes": "13549936316604882",
+                  "status": "expired"
+                }
+              }
+            ]
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_proposal_votes", "params": [[["gtg", 3], 5, 33, 0, 0]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
