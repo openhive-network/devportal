@@ -1468,39 +1468,112 @@
 
 
 
-  - api_method: wallet_bridge_api.get_ops_in_block
+  - api_method: wallet_bridge_api.get_ops_in_block   # nie działa account_history_api_plugin
     purpose: |
-      List accounts ordered alphabetically.
+      Returns sequence of operations included/generated in a specified block.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `block_num`: int
+      * `only_virtual`: boolean
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["10", true]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "ops": [
+              {
+                "trx_id": "0000000000000000000000000000000000000000",
+                "block": 1,
+                "trx_in_block": 0,
+                "op_in_trx": 7,
+                "virtual_op": true,
+                "timestamp": "2016-01-01T00:00:00",
+                "op": {
+                  "type": "hardfork_operation",
+                  "value": {
+                    "hardfork_id": 1
+                  }
+                },
+                "operation_id": 0
+              },
+              {
+                "trx_id": "0000000000000000000000000000000000000000",
+                "block": 1,
+                "trx_in_block": 0,
+                "op_in_trx": 8,
+                "virtual_op": true,
+                "timestamp": "2016-01-01T00:00:00",
+                "op": {
+                  "type": "hardfork_operation",
+                  "value": {
+                    "hardfork_id": 2
+                  }
+                },
+                "operation_id": 0
+              },
+              {
+                "trx_id": "0000000000000000000000000000000000000000",
+                "block": 1,
+                "trx_in_block": 4294967295,
+                "op_in_trx": 5,
+                "virtual_op": true,
+                "timestamp": "2016-01-01T00:00:00",
+                "op": {
+                  "type": "account_created_operation",
+                  "value": {
+                    "new_account_name": "temp",
+                    "creator": "",
+                    "initial_vesting_shares": {
+                      "amount": "0",
+                      "precision": 6,
+                      "nai": "@@000000037"
+                    },
+                    "initial_delegation": {
+                      "amount": "0",
+                      "precision": 6,
+                      "nai": "@@000000037"
+                    }
+                  }
+                },
+                "operation_id": 0
+              },
+              {
+                "trx_id": "0000000000000000000000000000000000000000",
+                "block": 1,
+                "trx_in_block": 4294967295,
+                "op_in_trx": 6,
+                "virtual_op": true,
+                "timestamp": "2016-01-01T00:00:00",
+                "op": {
+                  "type": "account_created_operation",
+                  "value": {
+                    "new_account_name": "initminer",
+                    "creator": "",
+                    "initial_vesting_shares": {
+                      "amount": "0",
+                      "precision": 6,
+                      "nai": "@@000000037"
+                    },
+                    "initial_delegation": {
+                      "amount": "0",
+                      "precision": 6,
+                      "nai": "@@000000037"
+                    }
+                  }
+                },
+                "operation_id": 0
+              }
+            ]
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_ops_in_block", "params": [[10, true]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
