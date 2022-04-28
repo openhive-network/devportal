@@ -1419,39 +1419,47 @@
 
 
 
-  - api_method: wallet_bridge_api.get_open_orders
+  - api_method: wallet_bridge_api.get_open_orders   # nie ma otwartych orderów
     purpose: |
-      List accounts ordered alphabetically.
-      
+      Returns the open orders for HIVE:HBD for an account in the internal market.
+
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `account`: account name
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["alice"]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": [
+            {
+              "id": 0,
+              "created": "2022-04-28T09:39:18",
+              "expiration": "2022-04-28T09:55:57",
+              "seller": "alice",
+              "orderid": 1000,
+              "for_sale": 1000,
+              "sell_price": {
+                "base": {
+                  "amount": "1000",
+                  "precision": 3,
+                  "nai": "@@000000021"
+                },
+                "quote": {
+                  "amount": "1000",
+                  "precision": 3,
+                  "nai": "@@000000013"
+                }
+              }
+            }
+          ],
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_open_orders", "params": [["alice"]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
