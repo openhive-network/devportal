@@ -1721,39 +1721,83 @@
 
 
 
-  - api_method: wallet_bridge_api.get_transaction
+  - api_method: wallet_bridge_api.get_transaction   #  account_history_api_plugin
     purpose: |
-      List accounts ordered alphabetically.
+      Returns the details of a transaction based on a transaction id.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `transaction_id`: string transaction_id of expected transaction
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["7ce70345e99ad3df1fb72d2208b4fca3d8106f88"]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "ref_block_num": 1,
+            "ref_block_prefix": 2201901350,
+            "expiration": "2022-04-28T10:41:18",
+            "operations": [
+              {
+                "type": "account_create_operation",
+                "value": {
+                  "fee": {
+                    "amount": "0",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  },
+                  "creator": "initminer",
+                  "new_account_name": "alice",
+                  "owner": {
+                    "weight_threshold": 1,
+                    "account_auths": [],
+                    "key_auths": [
+                      [
+                        "TST8QkHMH8hKB8CzomrZiWss9hroWFZVioGJMxDhCWjTNuQevWhJ8",
+                        1
+                      ]
+                    ]
+                  },
+                  "active": {
+                    "weight_threshold": 1,
+                    "account_auths": [],
+                    "key_auths": [
+                      [
+                        "TST8NuqzjkmajmE44LuMUk83Ub7HHUzr7iyxe1ubkVf8a5HQ6tVFD",
+                        1
+                      ]
+                    ]
+                  },
+                  "posting": {
+                    "weight_threshold": 1,
+                    "account_auths": [],
+                    "key_auths": [
+                      [
+                        "TST8hVDh8FHFFhfAF6VaN1kxGnQvPD3dREc5YdCuhuJkcMgAUfJRZ",
+                        1
+                      ]
+                    ]
+                  },
+                  "memo_key": "TST6ypL3rc7QWLn8uoZ3R4jEnTYpLCWG9QURRNByVxXMBdHCSrGyX",
+                  "json_metadata": "{}"
+                }
+              }
+            ],
+            "extensions": [],
+            "signatures": [
+              "20066e0f2e24cc910ebaa6d2ad972122caf46dc7d38c5b281baaca14036d7ae1e1024977880105595e008650b902e8eb84694a28751c03caebf309a40ba1a09c79"
+            ],
+            "transaction_id": "7ce70345e99ad3df1fb72d2208b4fca3d8106f88",
+            "block_num": 2,
+            "transaction_num": 0
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_transaction", "params": [["7ce70345e99ad3df1fb72d2208b4fca3d8106f88"]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
