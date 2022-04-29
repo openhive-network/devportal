@@ -1,5 +1,5 @@
 ---
-position: 3
+position: 17
 exclude: true
 canonical_url: .#apidefinitions-wallet-bridge-api
 ---
