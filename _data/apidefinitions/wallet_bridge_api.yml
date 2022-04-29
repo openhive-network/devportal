@@ -2621,37 +2621,94 @@
 
   - api_method: wallet_bridge_api.get_witness_schedule
     purpose: |
-      List accounts ordered alphabetically.
+      Returns the current witness schedule with details.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `-`
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
-
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [[]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "id": 0,
+            "current_virtual_time": "707560794723607800701389472",
+            "next_shuffle_block_num": 64505532,
+            "current_shuffled_witnesses": [
+              "therealwolf",
+              "abit",
+              "themarkymark",
+              "steempeak",
+              "yabapmatt",
+              "ocd-witness",
+              "steempress",
+              "good-karma",
+              "arcange",
+              "pharesim",
+              "smooth.witness",
+              "roelandp",
+              "pfunk",
+              "anyx",
+              "gtg",
+              "ausbitbank",
+              "deathwing",
+              "emrebeyler",
+              "followbtcnews",
+              "stoodkev",
+              "blocktrades"
+            ],
+            "num_scheduled_witnesses": 21,
+            "elected_weight": 1,
+            "timeshare_weight": 5,
+            "miner_weight": 1,
+            "witness_pay_normalization_factor": 25,
+            "median_props": {
+              "account_creation_fee": {
+                "amount": "3000",
+                "precision": 3,
+                "nai": "@@000000021"
+              },
+              "maximum_block_size": 65536,
+              "hbd_interest_rate": 2000,
+              "account_subsidy_budget": 797,
+              "account_subsidy_decay": 347321
+            },
+            "majority_version": "1.25.0",
+            "max_voted_witnesses": 20,
+            "max_miner_witnesses": 0,
+            "max_runner_witnesses": 1,
+            "hardfork_required_witnesses": 17,
+            "account_subsidy_rd": {
+              "resource_unit": 10000,
+              "budget_per_time_unit": 797,
+              "pool_eq": 157691079,
+              "max_pool_size": 157691079,
+              "decay_params": {
+                "decay_per_time_unit": 347321,
+                "decay_per_time_unit_denom_shift": 36
+              },
+              "min_decay": 0
+            },
+            "account_subsidy_witness_rd": {
+              "resource_unit": 10000,
+              "budget_per_time_unit": 996,
+              "pool_eq": 9384019,
+              "max_pool_size": 9384019,
+              "decay_params": {
+                "decay_per_time_unit": 7293741,
+                "decay_per_time_unit_denom_shift": 36
+              },
+              "min_decay": 183
+            },
+            "min_witness_account_subsidy_decay": 0
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_witness_schedule", "params": [[]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
