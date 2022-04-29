@@ -2500,37 +2500,47 @@
 #WITNESSES METHODS
   - api_method: wallet_bridge_api.get_active_witnesses
     purpose: |
-      List accounts ordered alphabetically.
+      Returns the list of [witnesses]({{ '/glossary/#witness' | relative_url }}) producing blocks in the current round (21 Blocks).
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `-`
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
-
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [[]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "witnesses": [
+              "smooth.witness",
+              "stoodkev",
+              "yabapmatt",
+              "ocd-witness",
+              "steempress",
+              "blocktrades",
+              "anyx",
+              "themarkymark",
+              "arcange",
+              "followbtcnews",
+              "gtg",
+              "roelandp",
+              "emrebeyler",
+              "deathwing",
+              "abit",
+              "good-karma",
+              "ausbitbank",
+              "pharesim",
+              "steempeak",
+              "c0ff33a",
+              "therealwolf"
+            ]
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_active_witnesses", "params": [[]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
