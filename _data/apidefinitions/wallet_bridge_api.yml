@@ -2347,37 +2347,107 @@
 
   - api_method: wallet_bridge_api.list_rc_accounts
     purpose: |
-      List accounts ordered alphabetically.
+      List accounts which have [resource credits]({{ '/glossary/#resource-credits' | relative_url }}) ordered alphabetically.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
+      * `Lowerbound account`: account name
       * `Limit: int` - in range (0-1000)
 
-        | `Lowerbound account` (string) | `Limit` (int) |
+        | `Lowerbound account` (account name) | `Limit` (int) |
         |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
+        | `"account-1"` | `1000` | List alphabetically the accounts starting on the "account-1" with limit to 1,000 results. |
+        | `"non-exist-acc"` | `1000` | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
         | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
         | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["gtg", 5]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": [
+            {
+              "account": "gtg",
+              "rc_manabar": {
+                "current_mana": "1085198440495883",
+                "last_update_time": 1652947221
+              },
+              "max_rc_creation_adjustment": {
+                "amount": "2020748973",
+                "precision": 6,
+                "nai": "@@000000037"
+              },
+              "max_rc": "1571757280184060",
+              "delegated_rc": 0,
+              "received_delegated_rc": 0
+            },
+            {
+              "account": "gtg.witnesses",
+              "rc_manabar": {
+                "current_mana": 3042789514,
+                "last_update_time": 1537887600
+              },
+              "max_rc_creation_adjustment": {
+                "amount": "2020748973",
+                "precision": 6,
+                "nai": "@@000000037"
+              },
+              "max_rc": 3042789514,
+              "delegated_rc": 0,
+              "received_delegated_rc": 0
+            },
+            {
+              "account": "gtgaz41291593",
+              "rc_manabar": {
+                "current_mana": "5290155761",
+                "last_update_time": 1652862687
+              },
+              "max_rc_creation_adjustment": {
+                "amount": "5584556471",
+                "precision": 6,
+                "nai": "@@000000037"
+              },
+              "max_rc": "5584556471",
+              "delegated_rc": 0,
+              "received_delegated_rc": 0
+            },
+            {
+              "account": "gtgc",
+              "rc_manabar": {
+                "current_mana": "6024908379",
+                "last_update_time": 1584712800
+              },
+              "max_rc_creation_adjustment": {
+                "amount": "6024908379",
+                "precision": 6,
+                "nai": "@@000000037"
+              },
+              "max_rc": "6024908379",
+              "delegated_rc": 0,
+              "received_delegated_rc": 0
+            },
+            {
+              "account": "gtgcd42364130",
+              "rc_manabar": {
+                "current_mana": "5320592855",
+                "last_update_time": 1635164928
+              },
+              "max_rc_creation_adjustment": {
+                "amount": "5582950532",
+                "precision": 6,
+                "nai": "@@000000037"
+              },
+              "max_rc": "5582950532",
+              "delegated_rc": 0,
+              "received_delegated_rc": 0
+            }
+          ],
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_rc_accounts", "params": [["gtg", 5]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
