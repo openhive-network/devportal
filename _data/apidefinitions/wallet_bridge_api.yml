@@ -2551,37 +2551,66 @@
 
   - api_method: wallet_bridge_api.get_witness
     purpose: |
-      List accounts ordered alphabetically.
+      Returns information stored in the blockchain about the given [witness]({{ '/glossary/#witness' | relative_url }}).
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `Witness account`: account name
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
-
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["gtg"]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "id": 9493,
+            "owner": "gtg",
+            "created": "1970-01-01T00:00:00",
+            "url": "https://gtg.openhive.network",
+            "votes": "149461261165077794",
+            "virtual_last_update": "707560515532124088668590398",
+            "virtual_position": "108045136317721630561083090515412535012",
+            "virtual_scheduled_time": "707562069361048004372609080",
+            "total_missed": 658,
+            "last_aslot": 64704177,
+            "last_confirmed_block_num": 64505486,
+            "pow_worker": 0,
+            "signing_key": "STM4uGhbdL4h5rYdDAD4CiiwjqDHJdSMCoeCq432sW6zyknAhPWST",
+            "props": {
+              "account_creation_fee": {
+                "amount": "3000",
+                "precision": 3,
+                "nai": "@@000000021"
+              },
+              "maximum_block_size": 65536,
+              "hbd_interest_rate": 2000,
+              "account_subsidy_budget": 797,
+              "account_subsidy_decay": 347321
+            },
+            "hbd_exchange_rate": {
+              "base": {
+                "amount": "468",
+                "precision": 3,
+                "nai": "@@000000013"
+              },
+              "quote": {
+                "amount": "1000",
+                "precision": 3,
+                "nai": "@@000000021"
+              }
+            },
+            "last_hbd_exchange_update": "2022-05-19T07:20:21",
+            "last_work": "0000000048bf77f525731f28db7c1aa9ad853a475ccc78e71ea952a7782e5459",
+            "running_version": "1.25.0",
+            "hardfork_version_vote": "1.25.0",
+            "hardfork_time_vote": "2021-06-30T14:00:00",
+            "available_witness_account_subsidies": 1404116
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_witness", "params": [["gtg"]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
