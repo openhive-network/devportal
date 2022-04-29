@@ -2138,37 +2138,141 @@
 
   - api_method: wallet_bridge_api.list_proposals
     purpose: |
-      List accounts ordered alphabetically.
+      Returns list of [proposals]({{ '/glossary/#proposal' | relative_url }}) with details.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `start` depends on `order`
+        * `creator` - creator of the proposal  (account name string)
+        * `start_date` - start date of the proposal (date string)
+        * `end_date` - end date of the proposal (date string)
+        * `total_votes` - total votes of the proposal (int)
+      * `limit` is up to 1000.
+      * `order` can be one of:
+        * `by_creator` - order by proposal creator
+        * `by_start_date` - order by proposal start date
+        * `by_end_date` - order by proposal end date
+        * `by_total_votes` - order by proposal total votes
+      * `order_direction` can be one of:
+        * `ascending`
+        * `descending`
+      * `status`
+        * `all`
+        * `inactive`
+        * `active`
+        * `expired`
+        * `votable`
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
+      | `start` (array) | `limit` (int) | `order` (string) | `order_direction` (string) | `status` (string) | |
+      |-------------------|-|-|-|-|-|
+      | `[""]` | 10 | `by_creator` | `ascending` | `active` | list 10 proposals with active status, ordered by creator, ascending |
+      | `["2019-08-07T16:54:03"]` | 1000 | `by_start_date` | `ascending` | `inactive` | list 1000 proposals with inactive status, ordered by start date, ascending, since 2019-08-07T16:54:03 |
+      | `["2021-02-01T12:14:08"]` | 1000 | `by_end_date` | `ascending` | `inactive` | list 1000 proposals with inactive status, ordered by end date, ascending, since 2021-02-01T12:14:08 |
+      | `["a"]` | 1 | `by_creator` | `ascending` | `expired` | list 1 proposal with expired status, ordered by creator, ascending, by accounts starting with "a" |
+      | `["alice"]` | 10 | `by_creator` | `ascending` | `all` | list 10 proposals with any status, ordered by creator, ascending, by alice |
+      | `[""]` | 1000 | `by_creator` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending |
+      | `[10]` | 1000 | `by_total_votes` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending, having at least 10 votes |
+        
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [[["account-1"], 5, 29, 0, 0]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "proposals": [
+              {
+                "id": 28,
+                "proposal_id": 28,
+                "creator": "ackza",
+                "receiver": "ackza",
+                "start_date": "2019-09-15T00:00:00",
+                "end_date": "2019-09-22T00:00:00",
+                "daily_pay": {
+                  "amount": "100000",
+                  "precision": 3,
+                  "nai": "@@000000013"
+                },
+                "subject": "Coinbase Earn style Videos for Steem to explain all aspects of blockchain",
+                "permlink": "coinbase-earn-style-videos-for-steem",
+                "total_votes": "714660296258228",
+                "status": "expired"
+              },
+              {
+                "id": 43,
+                "proposal_id": 43,
+                "creator": "ackza",
+                "receiver": "ackza",
+                "start_date": "2019-10-17T00:00:00",
+                "end_date": "2019-12-31T00:00:00",
+                "daily_pay": {
+                  "amount": "5000",
+                  "precision": 3,
+                  "nai": "@@000000013"
+                },
+                "subject": "Adding Steem Support to Scatter Dapp Wallet Using Scatter Wallet pack",
+                "permlink": "sps-proposal-adding-steem-support-to-scatter-dapp-wallet-with-scatter-wallet-pack",
+                "total_votes": "2204738670434405",
+                "status": "expired"
+              },
+              {
+                "id": 76,
+                "proposal_id": 76,
+                "creator": "ackza",
+                "receiver": "ackza",
+                "start_date": "2020-03-13T00:00:00",
+                "end_date": "2020-08-31T00:00:00",
+                "daily_pay": {
+                  "amount": "3000",
+                  "precision": 3,
+                  "nai": "@@000000013"
+                },
+                "subject": "Adding STEEM to Wallet pack for Steem Engine & SMTs on Scatter Desktop Wallet",
+                "permlink": "usd100-bounty-for-whoeevr-helps-me-add-a-steem-wallet-pack-to-scatter-for-so-we-can-have-steem-engine-and-smts-on-scatter",
+                "total_votes": "40322244841815",
+                "status": "expired"
+              },
+              {
+                "id": 121,
+                "proposal_id": 121,
+                "creator": "ackza",
+                "receiver": "telokanda",
+                "start_date": "2020-06-30T00:00:00",
+                "end_date": "2020-09-23T00:00:00",
+                "daily_pay": {
+                  "amount": "25000",
+                  "precision": 3,
+                  "nai": "@@000000013"
+                },
+                "subject": "Telokanda Hive Telos EOSIO advertising blockchain faucet",
+                "permlink": "telokanda-hive-telos-eosio-advertising-and-blockchain-enthusiast-network-with-telos-wps-funded-nitrous-discord-telegram-and",
+                "total_votes": "13054134769450",
+                "status": "expired"
+              },
+              {
+                "id": 137,
+                "proposal_id": 137,
+                "creator": "aggroed",
+                "receiver": "hive-engine",
+                "start_date": "2020-11-24T00:00:00",
+                "end_date": "2021-03-04T00:00:00",
+                "daily_pay": {
+                  "amount": "1000000",
+                  "precision": 3,
+                  "nai": "@@000000013"
+                },
+                "subject": "Hive-Engine Development Proposal for Community and Business Development on Hive",
+                "permlink": "hive-engine-dao-funding-proposal",
+                "total_votes": "28520205551226967",
+                "status": "expired"
+              }
+            ]
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_proposals", "params": [[["account-1"], 5, 29, 0, 0]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
