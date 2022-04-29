@@ -2456,13 +2456,13 @@
 
 
 
-  - api_method: wallet_bridge_api.list_rc_direct_delegations
+  - api_method: wallet_bridge_api.list_rc_direct_delegations #dokończ po poprawce howo , Dostaje pusty output
     purpose: |
-      List accounts ordered alphabetically.
+      List rc direct delegations ordered alphabetically.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
+      * `Lowerbound account`: string
       * `Limit: int` - in range (0-1000)
 
         | `Lowerbound account` (string) | `Limit` (int) |
