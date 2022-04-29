@@ -2719,46 +2719,168 @@
 
   - api_method: wallet_bridge_api.list_witnesses
     purpose: |
-      List accounts ordered alphabetically.
+      Returns all witnesses registered in the blockchain with details. This lists witnesses whether they are currently enabled, voted in or not.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
+      * `Lowerbound witness account`: witness name
       * `Limit: int` - in range (0-1000)
 
-        | `Lowerbound account` (string) | `Limit` (int) |
+        | `Lowerbound witness account` (witness name) | `Limit` (int) |
         |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
+        | `"witness-5"` | `1000` | List alphabetically the witnesses starting on the "witness-5" with limit to 1,000 results. |
+        | `"non-exist-acc"` | '1000' | List alphabetically the witnesses starting next after "non-exist-acc" with a limit of 1,000 results. |
+        | `""` | `1000` | List alphabetically all witnesses with a limit of 1,000 results. |
+        | `"witness-5"` | `0` | List alphabetically the witnesses starting on the "witness-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["gtg", 3]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": {
+            "witnesses": [
+              {
+                "id": 9493,
+                "owner": "gtg",
+                "created": "1970-01-01T00:00:00",
+                "url": "https://gtg.openhive.network",
+                "votes": "149462270247375005",
+                "virtual_last_update": "707561997171864170612070348",
+                "virtual_position": "329493514815317545814393448335561510500",
+                "virtual_scheduled_time": "707562069356316392328550015",
+                "total_missed": 658,
+                "last_aslot": 64704308,
+                "last_confirmed_block_num": 64505617,
+                "pow_worker": 0,
+                "signing_key": "STM4uGhbdL4h5rYdDAD4CiiwjqDHJdSMCoeCq432sW6zyknAhPWST",
+                "props": {
+                  "account_creation_fee": {
+                    "amount": "3000",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  },
+                  "maximum_block_size": 65536,
+                  "hbd_interest_rate": 2000,
+                  "account_subsidy_budget": 797,
+                  "account_subsidy_decay": 347321
+                },
+                "hbd_exchange_rate": {
+                  "base": {
+                    "amount": "468",
+                    "precision": 3,
+                    "nai": "@@000000013"
+                  },
+                  "quote": {
+                    "amount": "1000",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  }
+                },
+                "last_hbd_exchange_update": "2022-05-19T07:20:21",
+                "last_work": "0000000048bf77f525731f28db7c1aa9ad853a475ccc78e71ea952a7782e5459",
+                "running_version": "1.25.0",
+                "hardfork_version_vote": "1.25.0",
+                "hardfork_time_vote": "2021-06-30T14:00:00",
+                "available_witness_account_subsidies": 1409815
+              },
+              {
+                "id": 12759,
+                "owner": "gtx-1080-sc-0000",
+                "created": "1970-01-01T00:00:00",
+                "url": "",
+                "votes": 0,
+                "virtual_last_update": "0",
+                "virtual_position": "0",
+                "virtual_scheduled_time": "340282366920938463463374607431768211455",
+                "total_missed": 10,
+                "last_aslot": 8407777,
+                "last_confirmed_block_num": 8356374,
+                "pow_worker": 0,
+                "signing_key": "STM1111111111111111111111111111111114T1Anm",
+                "props": {
+                  "account_creation_fee": {
+                    "amount": "1",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  },
+                  "maximum_block_size": 131072,
+                  "hbd_interest_rate": 1000,
+                  "account_subsidy_budget": 797,
+                  "account_subsidy_decay": 347321
+                },
+                "hbd_exchange_rate": {
+                  "base": {
+                    "amount": "0",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  },
+                  "quote": {
+                    "amount": "0",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  }
+                },
+                "last_hbd_exchange_update": "1970-01-01T00:00:00",
+                "last_work": "0000000000000000000000000000000000000000000000000000000000000000",
+                "running_version": "0.16.1",
+                "hardfork_version_vote": "0.0.0",
+                "hardfork_time_vote": "2016-03-24T16:00:00",
+                "available_witness_account_subsidies": 0
+              },
+              {
+                "id": 12760,
+                "owner": "gtx-1080-sc-0001",
+                "created": "1970-01-01T00:00:00",
+                "url": "",
+                "votes": 0,
+                "virtual_last_update": "0",
+                "virtual_position": "0",
+                "virtual_scheduled_time": "340282366920938463463374607431768211455",
+                "total_missed": 9,
+                "last_aslot": 8409323,
+                "last_confirmed_block_num": 8357920,
+                "pow_worker": 0,
+                "signing_key": "STM1111111111111111111111111111111114T1Anm",
+                "props": {
+                  "account_creation_fee": {
+                    "amount": "1",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  },
+                  "maximum_block_size": 131072,
+                  "hbd_interest_rate": 1000,
+                  "account_subsidy_budget": 797,
+                  "account_subsidy_decay": 347321
+                },
+                "hbd_exchange_rate": {
+                  "base": {
+                    "amount": "0",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  },
+                  "quote": {
+                    "amount": "0",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  }
+                },
+                "last_hbd_exchange_update": "1970-01-01T00:00:00",
+                "last_work": "0000000000000000000000000000000000000000000000000000000000000000",
+                "running_version": "0.16.1",
+                "hardfork_version_vote": "0.0.0",
+                "hardfork_time_vote": "2016-03-24T16:00:00",
+                "available_witness_account_subsidies": 0
+              }
+            ]
+          },
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_witnesses", "params": [["gtg", 3]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/BlockApi)'
-
-
-
-
-
-
-
