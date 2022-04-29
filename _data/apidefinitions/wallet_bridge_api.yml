@@ -2284,37 +2284,59 @@
 #RC METHODS
   - api_method: wallet_bridge_api.find_rc_accounts
     purpose: |
-      List accounts ordered alphabetically.
+      Returns the available [resource credits]({{ '/glossary/#resource-credits' | relative_url }}) of accounts.
       
       **Parameters:**
         
-      * `Lowerbound account: string`
-      * `Limit: int` - in range (0-1000)
+      * `accounts`: array of accounts names
 
-        | `Lowerbound account` (string) | `Limit` (int) |
-        |--------------------|---------------|---------------|-|
-        | `"account-5"` | `1000` | List alphabetically the accounts starting on the "account-5" with limit to 1,000 results. |
-        | `"non-exist-acc"` | '1000' | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
-        | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
+        | `Lowerbound account` (account name) | 
+        |--------------------|---------------|
+        | `["account-0"]` | Query the available resource credits for the account named "account-0". |
+        | `["account-0", "account-2"]` | Query the available resource credits for the accounts named "account-0" and "accounts-2" |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [[["gtg", "blocktrades"]]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": [
+            {
+              "account": "gtg",
+              "rc_manabar": {
+                "current_mana": "1084159703037643",
+                "last_update_time": 1652946936
+              },
+              "max_rc_creation_adjustment": {
+                "amount": "2020748973",
+                "precision": 6,
+                "nai": "@@000000037"
+              },
+              "max_rc": "1571755465096429",
+              "delegated_rc": 0,
+              "received_delegated_rc": 0
+            },
+            {
+              "account": "blocktrades",
+              "rc_manabar": {
+                "current_mana": "4487170877077139",
+                "last_update_time": 1652946951
+              },
+              "max_rc_creation_adjustment": {
+                "amount": "2020748973",
+                "precision": 6,
+                "nai": "@@000000037"
+              },
+              "max_rc": "11218309270089065",
+              "delegated_rc": 0,
+              "received_delegated_rc": 0
+            }
+          ],
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.find_rc_accounts", "params": [[["gtg", "blocktrades"]]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
