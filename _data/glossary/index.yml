@@ -93,7 +93,9 @@
       def: The window of 5 minutes where curation rewards are sent back to reward pool.
     - term: DHF
       def: Also known as Decentralized Hive Fund.  An on-chain decentralized autonomous organization (DAO) that allows users to submit proposals for funding and use stake weighted voting to select which proposals should be funded.
-      
+    - term: Proposal
+      def: Proposals are projects that a particular member or a team requires support financially to implement their projects. Requested fund are posted on the proposals section of the Hive platform which then needs members of Hive to cast vote in order for them to get the funding.
+
 - name: Governance
   id: glossary-governance
   items:
