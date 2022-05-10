@@ -189,3 +189,5 @@
       def: Smart Media Tokens
     - term: Limit Order
       def: A direction given to the DEX to buy or sell an asset at a specified price or better, that expire within 30 days of creation.
+    - term: Withdraw Routes
+      def: Path of funds exiting during the powerdown. It determines the percentage of funds going out in the entire powerdown. Funds can exit as vest or be converted to hive and then transferred.

@@ -189,7 +189,7 @@
       
   - api_method: wallet_bridge_api.get_account_history
     purpose: |
-      Returns a history of all operations for a given account.
+      Return a history of all operations for a given account.
       
       **Parameters:**
         
@@ -200,10 +200,10 @@
       
         | `account` | `start` (int) | `limit` (int) | |
         |--------------------|---------------|---------------|-|
-        | `"account-0"` | `4294967295` | `1000` | Queries the account named `account-0` starting on the 4294967295 item, up to 1,000 results. |
-        | `"account-0"` | `2` | `1000` | Queries the account named `account-0` starting on the 2 item, up to 1,000 results. |
-        | `"account-0"` | `-1` | `1000` | Queries the account named `account-0` starting on the oldest item in history, up to 1,000 results. |
-        | `"account-0"` | `-1` | `1000` | Queries the account named `account-0` starting on the oldest item in history and 0 results |
+        | `"account-0"` | `5436432` | `1000` | Queries the account named `account-0` starting with the item 5436432 , up to 1,000 results. |
+        | `"account-0"` | `2` | `1` | Queries the account named `account-0` with the item 2, up to 1 results. |
+        | `"account-0"` | `-1` | `1000` | Queries the account named `account-0` starting with the oldest item in history, up to 1,000 results. |
+        | `"account-0"` | `-1` | `0` | Queries the account named `account-0` starting with the oldest item in history and 0 results |
 
     parameter_json: '{"params": [["account-0", -1, 1000]]}'
     expected_response_json: |
@@ -308,7 +308,7 @@
 
   - api_method: wallet_bridge_api.get_accounts
     purpose: |
-      Returns informations about the given accounts.
+      Return information about the given accounts.
       
       **Parameters:**
         
@@ -316,7 +316,7 @@
 
         | `Accounts` (account name) |
         |--------------------|---------------|-|
-        | `"[account-0, account-1]"` | Return informations about 'account-0' and 'account-1' |
+        | `"[account-0, account-1]"` | Return information about 'account-0' and 'account-1' |
         | `"[non-exist-acc]"` | Return null|
         | `[""]` | Return null |
 
