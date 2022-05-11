@@ -8,7 +8,7 @@
  #ACCOUNT METHODS 
   - api_method: wallet_bridge_api.get_account
     purpose: |
-      Returns information about the given account.
+      Return information about the given account.
 
       **Parameters:**
 
@@ -685,7 +685,7 @@
   
   - api_method: wallet_bridge_api.list_my_accounts
     purpose: |
-      Return accounts involved with specified keys.
+      Return accounts involved with the specified key.
       
       **Parameters:**
         
@@ -960,7 +960,7 @@
 
   - api_method: wallet_bridge_api.get_block
     purpose: |
-     Returns the information about a block including its content
+     Return the information about a block, including its content.
       
       **Parameters:**
         
@@ -1002,7 +1002,7 @@
 
   - api_method: wallet_bridge_api.get_chain_properties
     purpose: |
-      Returns informations about properties of blochchain.
+      Return information about properties of blochchain.
       
       **Parameters:**
         
@@ -1039,7 +1039,7 @@
 
   - api_method: wallet_bridge_api.get_collateralized_conversion_requests   # nie ma get_collateralized_conversion_requests
     purpose: |
-      Returns objects corresponding with [collateralized_convert operations]({{ '/apidefinitions/#broadcast_ops_collateralized_convert' | relative_url }}) owned by specific account.
+      Return object corresponding with [collateralized_convert operations]({{ '/apidefinitions/#broadcast_ops_collateralized_convert' | relative_url }}) owned by specific account.
 
       **Parameters:**
         
@@ -1077,7 +1077,7 @@
 
   - api_method: wallet_bridge_api.get_conversion_requests   # nie ma get_conversion_requests
     purpose: |
-      Returns a list of [conversion requests]({{ '/glossary/#conversion-requests' | relative_url }}).
+      Return a list of [conversion requests]({{ '/glossary/#conversion-requests' | relative_url }}).
 
       Also see: [Convert HBD To HIVE]({{ 'tutorials-python/convert_hbd_to_hive' | relative_url }})
 
@@ -1117,7 +1117,7 @@
 
   - api_method: wallet_bridge_api.get_current_median_history_price
     purpose: |
-      Return the current median history prices proposed by witnesses.
+      Return the current median historical prices proposed by witnesses.
       
       **Parameters:**
         
@@ -1154,7 +1154,7 @@
 
   - api_method: wallet_bridge_api.get_dynamic_global_properties
     purpose: |
-      Returns the current dynamic global properties.  See: [Understanding
+      Return the current dynamic global properties.  See: [Understanding
       Dynamic Global Properties]({{ '/tutorials-recipes/understanding-dynamic-global-properties.html' | relative_url }}).
 
       **Parameters:**
@@ -1270,7 +1270,7 @@
 
   - api_method: wallet_bridge_api.get_feed_history
     purpose: |
-      Returns the history of [price feed]({{ '/glossary/#price-feed' | relative_url }}) values.
+      Return the history of [price feed]({{ '/glossary/#price-feed' | relative_url }}) values.
       
       **Parameters:**
         
@@ -1398,7 +1398,7 @@
 
   - api_method: wallet_bridge_api.get_hardfork_version
     purpose: |
-      Returns the current [hardfork]({{ '/glossary/#hardfork' | relative_url }}) version.
+      Return the current [hardfork]({{ '/glossary/#hardfork' | relative_url }}) version.
       
       **Parameters:**
         
@@ -1421,7 +1421,7 @@
 
   - api_method: wallet_bridge_api.get_open_orders   # nie ma otwartych orderów
     purpose: |
-      Returns the open orders for HIVE:HBD for an account in the internal market.
+      Return the open orders for HIVE:HBD for an account in the internal market.
 
       **Parameters:**
         
@@ -1470,7 +1470,7 @@
 
   - api_method: wallet_bridge_api.get_ops_in_block   # nie działa account_history_api_plugin
     purpose: |
-      Returns sequence of operations included/generated in a specified block.
+      Return sequence of operations included/generated in a specified block.
       
       **Parameters:**
         
@@ -1584,7 +1584,7 @@
 
   - api_method: wallet_bridge_api.get_order_book    #  nie działa market_history_api_plugin
     purpose: |
-      Returns the [order book]({{ '/glossary/#order-book' | relative_url }}) for HIVE:HBD.
+      Return the [order book]({{ '/glossary/#order-book' | relative_url }}) for HIVE:HBD.
 
       **Parameters:**
         
@@ -1634,7 +1634,7 @@
 
   - api_method: wallet_bridge_api.get_owner_history   #  zwracane jest zero
     purpose: |
-      Returns the owner history of keys from last 30 days for an account.
+      Return the owner history of keys from last 30 days for an account.
       
       **Parameters:**
         
@@ -1680,7 +1680,7 @@
 
   - api_method: wallet_bridge_api.get_reward_fund
     purpose: |
-      Returns information about the current reward funds.
+      Return information about the current reward funds.
       
       **Parameters:**
         
@@ -1723,7 +1723,7 @@
 
   - api_method: wallet_bridge_api.get_transaction   #  account_history_api_plugin
     purpose: |
-      Returns the details of a transaction based on a transaction id.
+      Return the details of a transaction based on a transaction id.
       
       **Parameters:**
         
@@ -1808,7 +1808,7 @@
       
   - api_method: wallet_bridge_api.get_version
     purpose: |
-      Returns the compile time versions of blockchain, hived, FC. Also returns the boot time version of the chain id (may be different from compile time value only when looking at a testnet).
+      Return the compile time versions of blockchain, hived, FC. Also returns the boot time version of the chain id (may be different from compile time value only when looking at a testnet).
       
       **Parameters:**
         
@@ -1835,7 +1835,7 @@
 
   - api_method: wallet_bridge_api.get_withdraw_routes
     purpose: |
-      Returns vesting [withdraw routes]({{ '/glossary/#withdraw-routes' | relative_url }}) for an account.
+      Return vesting [withdraw routes]({{ '/glossary/#withdraw-routes' | relative_url }}) for an account.
       
       **Parameters:**
         
@@ -1899,7 +1899,7 @@
   - api_method: wallet_bridge_api.is_known_transaction
     purpose: |
       Only return true if the transaction has not expired or been invalidated.
-      If this method is called with a VERY old transaction we will return false, use account_history_api.get_transaction.
+      If this method is called with a VERY old transaction, we will return false, use account_history_api.get_transaction.
       
       **Parameters:**
         
@@ -1936,8 +1936,8 @@
         | `proposal_ids` (array of int) 
         |-----------------------------------|-|
         | `[0]` | Return proposal with id 0. |
-        | `[1,2,3]` |  Return proposals with ids 1, 2, 3. |
-        | `[1,4]` | Return proposals with ids 1, 4. |
+        | `[1,2,3]` |  Return proposals with ids 1, 2 and 3. |
+        | `[1,4]` | Return proposals with ids 1 and 4. |
 
     parameter_json: '{"params": [[[1]]]}'
     expected_response_json: |
@@ -1980,7 +1980,7 @@
 
   - api_method: wallet_bridge_api.list_proposal_votes
     purpose: |
-      Returns all votes on [proposals]({{ '/glossary/#proposal' | relative_url }}), starting with the specified voter or `proposal.id`. 
+      Return all votes on [proposals]({{ '/glossary/#proposal' | relative_url }}), starting with the specified voter or `proposal.id`. 
 
       **Parameters:**
       * `start` depends on `order`
@@ -2003,10 +2003,10 @@
 
       | `start` (array) | `limit` (int) | `order` (string) | `order_direction` (string) | `status` (string) | |
       |-------------------|-|-|-|-|-|
-      | `["alice"]` | 10 | `by_voter_proposal` | `ascending` | `active` | list 10 proposals votes with active status, ordered by voter with start on user 'alice', ascending |
-      | `["alice", 4]` | 100 | `by_voter_proposal` | `descending` | `inactive` | list 100 proposals votes with inactive status, ordered by voter with start on user 'alice' combine with 4'th proposal_id, descending |
-      | `[10]` | 1000 | `by_proposal_voter` | `ascending` | `votable` | list 1000 proposals votes with votable status, ordered by proposal_id with start on number id '10', ascending |
-      | `[10, 'alice']` | 50 | `by_proposal_voter` | `ascending` | `all` | list 50 proposals votes with all status, ordered by proposal_id with number start on number id '10' combine with user named 'alice', ascending |
+      | `["alice"]` | 10 | `by_voter_proposal` | `ascending` | `active` | List 10 proposals votes with active status, ordered by voter with start on user 'alice', ascending |
+      | `["alice", 4]` | 100 | `by_voter_proposal` | `descending` | `inactive` | List 100 proposals votes with inactive status, ordered by voter with start on user 'alice' combine with 4'th proposal_id, descending |
+      | `[10]` | 1000 | `by_proposal_voter` | `ascending` | `votable` | List 1000 proposals votes with votable status, ordered by proposal_id with start on number id '10', ascending |
+      | `[10, 'alice']` | 50 | `by_proposal_voter` | `ascending` | `all` | List 50 proposals votes with all status, ordered by proposal_id with number start on number id '10' combine with user named 'alice', ascending |
 
 
     parameter_json: '{"params": [[["gtg", 3], 5, 33, 0, 0]]}'
@@ -2138,7 +2138,7 @@
 
   - api_method: wallet_bridge_api.list_proposals
     purpose: |
-      Returns list of [proposals]({{ '/glossary/#proposal' | relative_url }}) with details.
+      Return list of [proposals]({{ '/glossary/#proposal' | relative_url }}) with details.
       
       **Parameters:**
         
@@ -2165,13 +2165,13 @@
 
       | `start` (array) | `limit` (int) | `order` (string) | `order_direction` (string) | `status` (string) | |
       |-------------------|-|-|-|-|-|
-      | `[""]` | 10 | `by_creator` | `ascending` | `active` | list 10 proposals with active status, ordered by creator, ascending |
-      | `["2019-08-07T16:54:03"]` | 1000 | `by_start_date` | `ascending` | `inactive` | list 1000 proposals with inactive status, ordered by start date, ascending, since 2019-08-07T16:54:03 |
-      | `["2021-02-01T12:14:08"]` | 1000 | `by_end_date` | `ascending` | `inactive` | list 1000 proposals with inactive status, ordered by end date, ascending, since 2021-02-01T12:14:08 |
-      | `["a"]` | 1 | `by_creator` | `ascending` | `expired` | list 1 proposal with expired status, ordered by creator, ascending, by accounts starting with "a" |
-      | `["alice"]` | 10 | `by_creator` | `ascending` | `all` | list 10 proposals with any status, ordered by creator, ascending, by alice |
-      | `[""]` | 1000 | `by_creator` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending |
-      | `[10]` | 1000 | `by_total_votes` | `ascending` | `votable` | list 1000 votable proposals, ordered by creator, ascending, having at least 10 votes |
+      | `[""]` | 10 | `by_creator` | `ascending` | `active` | List 10 proposals with active status, ordered by creator, ascending |
+      | `["2019-08-07T16:54:03"]` | 1000 | `by_start_date` | `ascending` | `inactive` | List 1000 proposals with inactive status, ordered by start date, ascending, since 2019-08-07T16:54:03 |
+      | `["2021-02-01T12:14:08"]` | 1000 | `by_end_date` | `ascending` | `inactive` | List 1000 proposals with inactive status, ordered by end date, ascending, since 2021-02-01T12:14:08 |
+      | `["a"]` | 1 | `by_creator` | `ascending` | `expired` | List 1 proposal with expired status, ordered by creator, ascending, by accounts starting with "a" |
+      | `["alice"]` | 10 | `by_creator` | `ascending` | `all` | List 10 proposals with any status, ordered by creator, ascending, by alice |
+      | `[""]` | 1000 | `by_creator` | `ascending` | `votable` | List 1000 votable proposals, ordered by creator, ascending |
+      | `[10]` | 1000 | `by_total_votes` | `ascending` | `votable` | List 1000 votable proposals, ordered by creator, ascending, having at least 10 votes |
         
 
     parameter_json: '{"params": [[["account-1"], 5, 29, 0, 0]]}'
@@ -2284,7 +2284,7 @@
 #RC METHODS
   - api_method: wallet_bridge_api.find_rc_accounts
     purpose: |
-      Returns the available [resource credits]({{ '/glossary/#resource-credits' | relative_url }}) of accounts.
+      Return the available [resource credits]({{ '/glossary/#resource-credits' | relative_url }}) of accounts.
       
       **Parameters:**
         
@@ -2356,10 +2356,10 @@
 
         | `Lowerbound account` (account name) | `Limit` (int) |
         |--------------------|---------------|---------------|-|
-        | `"account-1"` | `1000` | List alphabetically the accounts starting on the "account-1" with limit to 1,000 results. |
-        | `"non-exist-acc"` | `1000` | List alphabetically the accounts starting next after "non-exist-acc" with a limit of 1,000 results. |
+        | `"account-1"` | `1000` | List alphabetically the accounts, starting on the "account-1" with limit to 1,000 results. |
+        | `"non-exist-acc"` | `1000` | List alphabetically the accounts, starting next after "non-exist-acc" with a limit of 1,000 results. |
         | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
-        | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
+        | `"account-5"` | `0` | List alphabetically the accounts, starting on the "account-5" with limit to 0 results. |
 
     parameter_json: '{"params": [["gtg", 5]]}'
     expected_response_json: |
@@ -2500,7 +2500,7 @@
 #WITNESSES METHODS
   - api_method: wallet_bridge_api.get_active_witnesses
     purpose: |
-      Returns the list of [witnesses]({{ '/glossary/#witness' | relative_url }}) producing blocks in the current round (21 Blocks).
+      Return the list of [witnesses]({{ '/glossary/#witness' | relative_url }}) producing blocks in the current round (21 Blocks).
       
       **Parameters:**
         
@@ -2551,7 +2551,7 @@
 
   - api_method: wallet_bridge_api.get_witness
     purpose: |
-      Returns information stored in the blockchain about the given [witness]({{ '/glossary/#witness' | relative_url }}).
+      Return information stored in the blockchain about the given [witness]({{ '/glossary/#witness' | relative_url }}).
       
       **Parameters:**
         
@@ -2621,7 +2621,7 @@
 
   - api_method: wallet_bridge_api.get_witness_schedule
     purpose: |
-      Returns the current witness schedule with details.
+      Return the current witness schedule with details.
       
       **Parameters:**
         
@@ -2719,7 +2719,7 @@
 
   - api_method: wallet_bridge_api.list_witnesses
     purpose: |
-      Returns all witnesses registered in the blockchain with details. This lists witnesses whether they are currently enabled, voted in or not.
+      Return all witnesses registered in the blockchain with details. This list witnesses whether they are currently enabled, voted in or not.
       
       **Parameters:**
         
