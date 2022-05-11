@@ -379,99 +379,121 @@
         | `"account-0"` | `-1` | `1000` | Queries the account named `account-0` starting with the oldest item in history, up to 1,000 results. |
         | `"account-0"` | `-1` | `0` | Queries the account named `account-0` starting with the oldest item in history and 0 results |
 
-    parameter_json: '{"params": [["account-0", -1, 1000]]}'
+    parameter_json: '{"params": [["hiveio",-1 , 5]]}'
     expected_response_json: |
       {
-        "history": [
+        "jsonrpc": "2.0",
+        "result": [
           [
-            0,
+            30240,
             {
-              "trx_id": "68df3a0c43561a4b4bbe4a107ce046e2646388a2",
-              "block": 2,
-              "trx_in_block": 0,
+              "trx_id": "13f823f97580c51f425563a640a7ff39e3024fb8",
+              "block": 63403027,
+              "trx_in_block": 57,
               "op_in_trx": 0,
               "virtual_op": false,
-              "timestamp": "2022-03-28T06:57:42",
+              "timestamp": "2022-04-10T23:10:09",
               "op": {
-                "type": "account_create_operation",
+                "type": "vote_operation",
                 "value": {
-                  "fee": {
-                    "amount": "0",
-                    "precision": 3,
-                    "nai": "@@000000021"
-                  },
-                  "creator": "initminer",
-                  "new_account_name": "account-0",
-                  "owner": {
-                    "weight_threshold": 1,
-                    "account_auths": [],
-                    "key_auths": [
-                      [
-                        "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
-                        1
-                      ]
-                    ]
-                  },
-                  "active": {
-                    "weight_threshold": 1,
-                    "account_auths": [],
-                    "key_auths": [
-                      [
-                        "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
-                        1
-                      ]
-                    ]
-                  },
-                  "posting": {
-                    "weight_threshold": 1,
-                    "account_auths": [],
-                    "key_auths": [
-                      [
-                        "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
-                        1
-                      ]
-                    ]
-                  },
-                  "memo_key": "TST6jACfK3P5xYFJQvavCwz5M8KR5EW3TcmSesArj9LJVGAq85qor",
-                  "json_metadata": "{}"
+                  "voter": "hislab",
+                  "author": "hiveio",
+                  "permlink": "two-years-of-hive-celebrating-our-2nd-anniversary-together",
+                  "weight": 10000
                 }
               },
               "operation_id": 0
             }
           ],
           [
-            1,
+            30241,
             {
-              "trx_id": "68df3a0c43561a4b4bbe4a107ce046e2646388a2",
-              "block": 2,
-              "trx_in_block": 0,
-              "op_in_trx": 1,
-              "virtual_op": true,
-              "timestamp": "2022-03-28T06:57:42",
+              "trx_id": "4ca936970c8707f9de526386d6a2a129ffcbf76f",
+              "block": 63403046,
+              "trx_in_block": 64,
+              "op_in_trx": 0,
+              "virtual_op": false,
+              "timestamp": "2022-04-10T23:11:06",
               "op": {
-                "type": "account_created_operation",
+                "type": "vote_operation",
                 "value": {
-                  "new_account_name": "account-0",
-                  "creator": "initminer",
-                  "initial_vesting_shares": {
-                    "amount": "0",
-                    "precision": 6,
-                    "nai": "@@000000037"
-                  },
-                  "initial_delegation": {
-                    "amount": "0",
-                    "precision": 6,
-                    "nai": "@@000000037"
-                  }
+                  "voter": "hislab",
+                  "author": "hiveio",
+                  "permlink": "two-years-of-hive-celebrating-our-2nd-anniversary-together",
+                  "weight": 10000
+                }
+              },
+              "operation_id": 0
+            }
+          ],
+          [
+            30242,
+            {
+              "trx_id": "b9b45e7e22e2aa38828e282476894d4ed86f2b30",
+              "block": 63570566,
+              "trx_in_block": 5,
+              "op_in_trx": 0,
+              "virtual_op": false,
+              "timestamp": "2022-04-16T19:10:24",
+              "op": {
+                "type": "vote_operation",
+                "value": {
+                  "voter": "chickenfatale",
+                  "author": "hiveio",
+                  "permlink": "hive-reflecting-on-2021",
+                  "weight": 10000
+                }
+              },
+              "operation_id": 0
+            }
+          ],
+          [
+            30243,
+            {
+              "trx_id": "2ca116587375d6a8160e636835d25bd5db782b1a",
+              "block": 63860837,
+              "trx_in_block": 80,
+              "op_in_trx": 0,
+              "virtual_op": false,
+              "timestamp": "2022-04-26T21:41:27",
+              "op": {
+                "type": "vote_operation",
+                "value": {
+                  "voter": "henrybjm",
+                  "author": "hiveio",
+                  "permlink": "two-years-of-hive-celebrating-our-2nd-anniversary-together",
+                  "weight": 10000
+                }
+              },
+              "operation_id": 0
+            }
+          ],
+          [
+            30244,
+            {
+              "trx_id": "1802a02941f7e85b5b47a2f21d146851e4aea253",
+              "block": 64217838,
+              "trx_in_block": 92,
+              "op_in_trx": 0,
+              "virtual_op": false,
+              "timestamp": "2022-05-09T07:55:00",
+              "op": {
+                "type": "vote_operation",
+                "value": {
+                  "voter": "malmanny",
+                  "author": "hiveio",
+                  "permlink": "two-years-of-hive-celebrating-our-2nd-anniversary-together",
+                  "weight": 10000
                 }
               },
               "operation_id": 0
             }
           ]
-        ]
+        ],
+        "id": 1
       }
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_account_history", "params": [["account-0", -1, 1000]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_account_history", "params": [["hiveio",-1 , 5]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
