@@ -374,10 +374,10 @@
       
         | `account` | `start` (int) | `limit` (int) | |
         |--------------------|---------------|---------------|-|
-        | `"account-0"` | `5436432` | `1000` | Queries the account named `account-0` starting with the item 5436432 , up to 1,000 results. |
-        | `"account-0"` | `2` | `1` | Queries the account named `account-0` with the item 2, up to 1 results. |
-        | `"account-0"` | `-1` | `1000` | Queries the account named `account-0` starting with the oldest item in history, up to 1,000 results. |
-        | `"account-0"` | `-1` | `0` | Queries the account named `account-0` starting with the oldest item in history and 0 results |
+        | `"hiveio"` | `5436432` | `1000` | Queries the account named `hiveio` starting with the item 5436432 , up to 1,000 results. |
+        | `"hiveio"` | `2` | `1` | Queries the account named `hiveio` with the item 2, up to 1 results. |
+        | `"hiveio"` | `-1` | `1000` | Queries the account named `hiveio` starting with the oldest item in history, up to 1,000 results. |
+        | `"hiveio"` | `-1` | `0` | Queries the account named `hiveio` starting with the oldest item in history and 0 results |
 
     parameter_json: '{"params": [["hiveio",-1 , 5]]}'
     expected_response_json: |
