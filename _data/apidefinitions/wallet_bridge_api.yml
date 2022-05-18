@@ -872,23 +872,28 @@
         | `""` | `1000` | List alphabetically all accounts with a limit of 1,000 results. |
         | `"account-5"` | `0` | List alphabetically the accounts starting on the "account-5" with limit to 0 results. |
 
-    parameter_json: '{"params": [["account-5", 100]]}'
+    parameter_json: '{"params": [["hiveio", 10]]}'
     expected_response_json: |
       [
-        "account-5",
-        "account-6",
-        "account-7",
-        "account-8",
-        "account-9",
-        "hive.fund",
-        "initminer",
-        "miners",
-        "null",
-        "steem.dao",
-        "temp"
+        {
+          "jsonrpc": "2.0",
+          "result": [
+            "hiveio",
+            "hiveiq",
+            "hiveisalive",
+            "hiveisamazing",
+            "hiveiscool",
+            "hiveish",
+            "hiveisland",
+            "hiveislove1234",
+            "hiveisshit",
+            "hiveisshitty"
+          ],
+          "id": 1
+        }
       ]
     curl_examples:
-    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["account-5", 100]]}'
+    - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.list_accounts", "params": [["hiveio", 10]]}'
 
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)'
