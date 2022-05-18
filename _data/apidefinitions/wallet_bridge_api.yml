@@ -902,7 +902,7 @@
 
 
   
-  - api_method: wallet_bridge_api.list_my_accounts
+  - api_method: wallet_bridge_api.list_my_accounts   #POTRZEBNY ACCOUNT BY KEY API
     purpose: |
       Return accounts involved with the specified key.
       
