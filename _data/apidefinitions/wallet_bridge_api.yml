@@ -361,7 +361,7 @@
       
       
       
-  - api_method: wallet_bridge_api.get_account_history
+  - api_method: wallet_bridge_api.get_account_history  # przerób bo -1 jest bez sensu
     purpose: |
       Return a history of all operations for a given account.
       
