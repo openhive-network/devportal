@@ -2040,10 +2040,14 @@
     parameter_json: '{"params": []}'
     expected_response_json: |
       {
-        "blockchain_version": "1.26.0",
-        "hive_revision": "f2e829a6a9a50f0e60e41e84e9ca4cbcdbf9d9af",
-        "fc_revision": "f2e829a6a9a50f0e60e41e84e9ca4cbcdbf9d9af",
-        "chain_id": "18dcf0a285365fc58b71f18b3d3fec954aa0c141c44e4e5cb4cf777b9eab274e"
+        "jsonrpc": "2.0",
+        "result": {
+          "blockchain_version": "1.26.0",
+          "hive_revision": "1dd6574ac5a725188ef1cc293cc4cada48d15bac",
+          "fc_revision": "1dd6574ac5a725188ef1cc293cc4cada48d15bac",
+          "chain_id": "beeab0de00000000000000000000000000000000000000000000000000000000"
+        },
+        "id": 1
       }
     curl_examples:
     - '{"jsonrpc": "2.0", "id": 1, "method": "wallet_bridge_api.get_version", "params": []}'
