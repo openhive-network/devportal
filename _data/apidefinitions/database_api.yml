@@ -2194,8 +2194,8 @@
     - "[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html#beem.transactionbuilder.TransactionBuilder.verify_authority)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: database_api.verify_signatures
-    purpose: This is a general purpose API that checks signatures against accounts
-      for an arbitrary sha256 hash using the existing authority structures.
+    purpose:
+      This method validates if transaction was signed by person listed in required_owner, required_active or required_posting parameter. `Hash` is a mix of chain_id and transaction data. 
     parameter_json: '{"hash":"0000000000000000000000000000000000000000000000000000000000000000","signatures":[],"required_owner":[],"required_active":[],"required_posting":[],"required_other":[]}'
     expected_response_json: '{"valid":false}'
     curl_examples:
