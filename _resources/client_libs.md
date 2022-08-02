@@ -34,9 +34,9 @@ A python library to interact with the Hive blockchain. It includes the CLI tool 
 
 ---
 
-**PHP Hive** - [https://github.com/lukestokes/php-steem-tools](https://github.com/lukestokes/php-steem-tools)
+**hive-php** - [https://gitlab.com/mahdiyari/hive-php](https://gitlab.com/mahdiyari/hive-php)
 
-Various tools and scripts written in PHP for exploring the HIVE blockchain.
+A (real) PHP library for Hive blockchain
 
 ---
 
