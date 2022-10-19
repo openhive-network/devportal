@@ -9,7 +9,11 @@
     Also see: [Blockchain Ops]({{ '/apidefinitions/broadcast-ops.html' | relative_url }})
   methods:
   - api_method: network_broadcast_api.broadcast_block
-    purpose: Used to broadcast a block.
+    removed: true
+    purpose: |
+      **Removed: HF26**
+      
+      Used to broadcast a block.
     parameter_json: '{"block":{"previous":"0000000000000000000000000000000000000000","timestamp":"1970-01-01T00:00:00","witness":"","transaction_merkle_root":"0000000000000000000000000000000000000000","extensions":[],"witness_signature":"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","transactions":[]}}'
     expected_response_json: "{}"
     curl_examples:
