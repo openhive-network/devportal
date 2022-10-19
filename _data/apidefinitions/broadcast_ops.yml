@@ -1980,6 +1980,7 @@
         | HF23     | 2020-03-20 14:00:00 UTC | [41818752](https://hiveblocks.com/b/41818752) |
         | HF24     | 2020-10-06 14:00:00 UTC | [47797680](https://hiveblocks.com/b/47797680) |
         | HF25     | 2021-06-30 14:00:00 UTC | [55235767](https://hiveblocks.com/b/55235767) |
+        | HF26     | 2022-10-11 12:00:00 UTC | [68676505](https://hiveblocks.com/b/68676505) |
         
         See: [PR2616]({{ 'https://github.com/steemit/steem/pull/2616' | archived_url }}), [database_api.get_hardfork_properties]({{ '/apidefinitions/#database_api.get_hardfork_properties' | relative_url }}), [condenser_api.get_next_scheduled_hardfork]({{ '/apidefinitions/#condenser_api.get_next_scheduled_hardfork' | relative_url }})
       roles:

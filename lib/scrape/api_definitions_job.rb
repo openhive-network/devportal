@@ -57,13 +57,26 @@ module Scrape
               # puts "D: " + expected_response_json.inspect
               next
             else
+              changed = false
               if existing_api_method['parameter_json'] == parameter_json &&
                   existing_api_method['expected_response_json'] == expected_response_json
                 next
               else
-                existing_api_method['parameter_json'] = parameter_json
-                existing_api_method['expected_response_json'] = expected_response_json
-                puts "\tChanged: #{method}"
+                if existing_api_method['parameter_json'] != '{}' && parameter_json == '{}'
+                  # skip
+                else
+                  existing_api_method['parameter_json'] = parameter_json
+                  changed = true
+                end
+                
+                if existing_api_method['expected_response_json'] != '{}' && expected_response_json == '{}'
+                  # skip
+                else
+                  existing_api_method['expected_response_json'] = expected_response_json
+                  changed = true
+                end
+                
+                puts "\tChanged: #{method}" if changed
               end
             end
           else
