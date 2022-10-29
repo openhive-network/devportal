@@ -1358,11 +1358,11 @@
 
       Also see: [account_by_key_api.get_key_references]({{ '/apidefinitions/#account_by_key_api.get_key_references' | relative_url }})
     parameter_json:
-    - - STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
+    - - STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9
     expected_response_json:
     - - hiveio
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"condenser_api.get_key_references", "params":[["STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH"]],
+    - '{"jsonrpc":"2.0", "method":"condenser_api.get_key_references", "params":[["STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9"]],
       "id":1}'
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-key-references)"
