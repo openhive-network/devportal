@@ -9,10 +9,10 @@
     since: HF16
     purpose: Returns all accounts that have the key associated with their owner or
       active authorities.
-    parameter_json: '{"keys":[]}'
-    expected_response_json: '{"accounts":[]}'
+    parameter_json: '{"keys":["STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9"]}'
+    expected_response_json: '{"accounts":["hiveio"]}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"account_by_key_api.get_key_references", "params":{"keys":["STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH"]},
+    - '{"jsonrpc":"2.0", "method":"account_by_key_api.get_key_references", "params":{"keys":["STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9"]},
       "id":1}'
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-key-references)'
