@@ -206,9 +206,9 @@ namespace :test do
         method['curl_examples'].each_with_index do |curl_example, index|
           unless mainnet
             # Replace key prefix, e.g.:
-            # STM5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
+            # STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9
             # becomes:
-            # TST5jZtLoV8YbxCxr4imnbWn61zMB24wwonpnVhfXRmv7j6fk3dTH
+            # TST6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9
             curl_example = curl_example.gsub(/"STM([^"]{50})"/) do |_|
               match = Regexp.last_match
               
