@@ -36,7 +36,6 @@ scheduled duration.
 
 #### Tools
 
-* [hivedao.com/](https://hivedao.com/) - Hive Proposals UI by [@dmitrydao](https://hive.blog/@dmitrydao)
 * [peakd.com/proposals](https://peakd.com/proposals) - Hive Proposals UI by [@peakd](https://peakd.com/@peakd)
 * [wallet.hive.blog/proposals](https://wallet.hive.blog/proposals) - Vote for your favorite Hive proposals without leaving the safety of wallet.hive.blog.
 * [joticajulian.github.io/hiveexplorer/#/proposals](https://joticajulian.github.io/hiveexplorer/#/proposals) - Check who voted what by [@jga](https://peakd.com/@jga)
