@@ -687,6 +687,14 @@ a[href*='openApi'] {
   padding-left: .90em;
 }
 
+a[href*='tutorials-php'] {
+  background-image: url(../images/languages/php.svg);
+  background-size: .90em .90em;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: .90em;
+}
+
 a[href*='tutorials-python'] {
   background-image: url(../images/languages/python.svg);
   background-size: .90em .90em;

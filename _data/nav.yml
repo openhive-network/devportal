@@ -22,6 +22,8 @@ toc:
     docs:
       - title: Javascript
         collection: tutorials-javascript
+      - title: Php
+        collection: tutorials-php
       - title: Python
         collection: tutorials-python
       - title: Ruby

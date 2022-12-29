@@ -84,6 +84,11 @@ collections:
     id: tutorials-ruby
     position: 15
     output: true
+  tutorials-php:
+    title: Ruby Tutorials
+    id: tutorials-php
+    position: 16
+    output: true
 
 plugins:
   - jekyll-sitemap
