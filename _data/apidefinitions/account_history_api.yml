@@ -86,7 +86,6 @@
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ops-in-block)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.get_transaction
-      deprecated: true
       purpose: |
         Returns the details of a transaction based on a transaction id.
         
