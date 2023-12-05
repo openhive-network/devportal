@@ -86,25 +86,84 @@
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ops-in-block)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
     - api_method: account_history_api.get_transaction
-      deprecated: true
       purpose: |
-        Returns the details of a transaction based on a transaction id.
+        Returns the details of a transaction based on a transaction id (including their signatures, operations like also a block_num it was included to).
         
         * `id:string` trx_id of expected transaction
         * `include_reversible:boolean` (optional) If set to true also operations from reversible block will be included if block_num points to such block.
       parameter_json: {"id":"0000000000000000000000000000000000000000", "include_reversible": true}
       expected_response_json: |
         {
-          "ref_block_num": 0,
-          "ref_block_prefix": 0,
-          "expiration": "1970-01-01T00:00:00",
-          "operations": [],
-          "extensions": [],
-          "signatures": [],
-          "transaction_id": "0000000000000000000000000000000000000000",
-          "block_num": 0,
-          "transaction_num": 0
+        "jsonrpc": "2.0",
+        "error": {
+          "code": -32003,
+          "message": "Assert Exception:false: Unknown Transaction 0000000000000000000000000000000000000000",
+          "data": {
+            "code": 10,
+            "name": "assert_exception",
+            "message": "Assert Exception",
+            "stack": [
+              {
+                "context": {
+                  "level": "error",
+                  "file": "account_history_api.cpp",
+                  "line": 143,
+                  "method": "get_transaction",
+                  "hostname": "",
+                  "timestamp": "2023-11-09T19:07:07"
+                },
+                "format": "false: Unknown Transaction ${id}",
+                "data": {
+                  "id": "0000000000000000000000000000000000000000"
+                }
+              }
+            ]
+          }
+        },
+        "id": 1
         }
+      parameter_json: {"id":"6fde0190a97835ea6d9e651293e90c89911f933c"}
+      expected_response_json: |
+        {
+         "jsonrpc": "2.0",
+          "result": {
+            "ref_block_num": 36374,
+            "ref_block_prefix": 3218139339,
+            "expiration": "2018-04-09T00:29:06",
+            "operations": [
+              {
+                "type": "claim_reward_balance_operation",
+                "value": {
+                  "account": "social",
+                  "reward_hive": {
+                    "amount": "0",
+                    "precision": 3,
+                    "nai": "@@000000021"
+                  },
+                  "reward_hbd": {
+                    "amount": "0",
+                    "precision": 3,
+                    "nai": "@@000000013"
+                  },
+                  "reward_vests": {
+                    "amount": "1",
+                    "precision": 6,
+                    "nai": "@@000000037"
+                  }
+                }
+              }
+            ],
+            "extensions": [],
+            "signatures": [
+              "1b01bdbb0c0d43db821c09ae8a82881c1ce3ba0eca35f23bc06541eca05560742f210a21243e20d04d5c88cb977abf2d75cc088db0fff2ca9fdf2cba753cf69844"
+            ],
+            "transaction_id": "6fde0190a97835ea6d9e651293e90c89911f933c",
+            "block_num": 21401130,
+            "transaction_num": 25
+          },
+          "id": 1
+        }
+
       curl_examples:
         - '{"jsonrpc":"2.0", "method":"account_history_api.get_transaction", "params":{"id":"6fde0190a97835ea6d9e651293e90c89911f933c"}, "id":1}'
         - '{"jsonrpc":"2.0", "method":"account_history_api.get_transaction", "params":{"id":"6fde0190a97835ea6d9e651293e90c89911f933c", "include_reversible": true}, "id":1}'
