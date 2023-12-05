@@ -26,6 +26,8 @@ build:
   #   name: development
   # only:
   #   - develop
+  tags:
+    - public-runner-docker
 
 deploy_staging:
   stage: deploy_staging
@@ -46,6 +48,8 @@ deploy_staging:
     name: development
   only:
     - develop
+  tags:
+    - public-runner-docker
 
 deploy_master:
   stage: deploy_master
@@ -66,3 +70,5 @@ deploy_master:
     name: production
   only:
     - master
+  tags:
+    - public-runner-docker
