@@ -1,74 +1,77 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 image: ruby:2.6
-
 stages:
-  - build
-  - deploy_staging
-  - deploy_master
-
+- build
+- deploy_staging
+- deploy_master
+- test
 cache:
   untracked: true
   key: "$CI_PROJECT_ID"
-
 build:
   image: ruby:2.6
   stage: build
   script:
-    - ls -l
-    - gem install bundler
-    - bundle install
-    - bundle exec jekyll build -d public
-    - echo "BUILD SUCCESSFULLY"
+  - ls -l
+  - gem install bundler
+  - bundle install
+  - bundle exec jekyll build -d public
+  - echo "BUILD SUCCESSFULLY"
   artifacts:
     paths:
-      - public
+    - public
     expire_in: 20 mins
-  # environment:
-  #   name: development
-  # only:
-  #   - develop
   tags:
-    - public-runner-docker
-
+  - public-runner-docker
 deploy_staging:
   stage: deploy_staging
   image: python:3.5
   dependencies:
-    - build
+  - build
   script:
-    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-    - export S3_BUCKET_NAME=$S3_BUCKET_NAME_STAGING
-    - export DISTRIBUTION_ID=$DISTRIBUTION_ID
-    - pip install awscli --upgrade --user
-    - export PATH=~/.local/bin:$PATH
-    - aws s3 sync --acl public-read --delete public $S3_BUCKET_NAME_STAGING
-    #- aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'
-    - echo "DEPLOYED SUCCESSFULLY TO STAGING - developers-staging.hive.io"
+  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+  - export S3_BUCKET_NAME=$S3_BUCKET_NAME_STAGING
+  - export DISTRIBUTION_ID=$DISTRIBUTION_ID
+  - pip install awscli --upgrade --user
+  - export PATH=~/.local/bin:$PATH
+  - aws s3 sync --acl public-read --delete public $S3_BUCKET_NAME_STAGING
+  - echo "DEPLOYED SUCCESSFULLY TO STAGING - developers-staging.hive.io"
   environment:
     name: development
   only:
-    - develop
+  - develop
   tags:
-    - public-runner-docker
-
+  - public-runner-docker
 deploy_master:
   stage: deploy_master
   image: python:3.5
   dependencies:
-    - build
+  - build
   script:
-    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-    - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-    - export S3_BUCKET_NAME=$S3_BUCKET_NAME_PRODUCTION
-    - export DISTRIBUTION_ID=$DISTRIBUTION_ID
-    - pip install awscli --upgrade --user
-    - export PATH=~/.local/bin:$PATH
-    - aws s3 sync --acl public-read --delete public $S3_BUCKET_NAME_PRODUCTION
-    - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'
-    - echo "DEPLOYED SUCCESSFULLY TO PRODUCTION - developers.hive.io"
+  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+  - export S3_BUCKET_NAME=$S3_BUCKET_NAME_PRODUCTION
+  - export DISTRIBUTION_ID=$DISTRIBUTION_ID
+  - pip install awscli --upgrade --user
+  - export PATH=~/.local/bin:$PATH
+  - aws s3 sync --acl public-read --delete public $S3_BUCKET_NAME_PRODUCTION
+  - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths
+    '/*'
+  - echo "DEPLOYED SUCCESSFULLY TO PRODUCTION - developers.hive.io"
   environment:
     name: production
   only:
-    - master
+  - master
   tags:
-    - public-runner-docker
+  - public-runner-docker
+sast:
+  stage: test
+include:
+- template: Security/SAST.gitlab-ci.yml
