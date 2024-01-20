@@ -3,7 +3,7 @@ title: Welcome to Hive
 position: 1
 ---
 
-#### Welcome to the Hive Developer Portal!
+#### Hive Developer Portal
 
 This site is designed to aid those interested in developing applications on the  **[Hive](https://hive.io){:target="_blank"}** blockchain.
 
@@ -24,6 +24,6 @@ Our **tutorials** section will take you through the basics of interacting with H
 More detailed API specs are available in the **APPBASE API** section. Those apis are under development, so please read
 notes at the top of each section.
 
-You can find community resources, libraries, and more 'human' ways to get help and education in the **communities** section.
+You can find community resources, libraries, and more interactive ways to get help and education in the **Resources->Communities** section.
 
 The **glossary** has Hive specific terms that will help you understand documentation, whitepapers, and the speech of other hivers.
