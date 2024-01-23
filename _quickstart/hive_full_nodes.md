@@ -19,16 +19,17 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
       <tr><td>api.hive.blog</td><td>@blocktrades</td><td style="display: none;"></td></tr>
       <tr><td>api.openhive.network</td><td>@gtg</td><td style="display: none;"></td></tr>
       <tr><td>anyx.io</td><td>@anyx</td><td style="display: none;"></td></tr>
-      <tr><td>hived.privex.io</td><td>@privex</td><td style="display: none;"></td></tr>
       <tr><td>rpc.ausbit.dev</td><td>@ausbitbank</td><td style="display: none;"></td></tr>
+      <tr><td>rpc.mahdiyari.info</td><td>@mahdiyari</td><td style="display: none;"></td></tr>
+      <tr><td>api.hive.blue</td><td>@guiltyparties</td><td style="display: none;"></td></tr>
       <tr><td>techcoderx.com</td><td>@techcoderx</td><td style="display: none;"></td></tr>
-      <tr><td>rpc.ecency.com</td><td>@ecency</td><td style="display: none;"></td></tr>
       <tr><td>hive.roelandp.nl</td><td>@roelandp</td><td style="display: none;"></td></tr>
       <tr><td>hived.emre.sh</td><td>@emrebeyler</td><td style="display: none;"></td></tr>
       <tr><td>api.deathwing.me</td><td>@deathwing</td><td style="display: none;"></td></tr>
       <tr><td>api.c0ff33a.uk</td><td>@c0ff33a</td><td style="display: none;"></td></tr>
       <tr><td>hive-api.arcange.eu</td><td>@arcange</td><td style="display: none;"></td></tr>
-      <tr><td>api.pharesim.me</td><td>@pharesim</td><td style="display: none;"></td></tr>
+      <tr><td>hive-api.3speak.tv</td><td>@threespeak</td><td style="display: none;"></td></tr>
+      <tr><td>hiveapi.actifit.io</td><td>@actifit</td><td style="display: none;"></td></tr>
     </tbody>
   </table>
 </div>
@@ -37,32 +38,27 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
 
 <script>
   $(document).ready(function() {
-    hive.api.getAccounts(['fullnodeupdate'], function(err, result) {
-      var fullnodeupdate = result[0];
-      var reportData = jQuery.parseJSON(fullnodeupdate.json_metadata).report;
-      var failingNodes = jQuery.parseJSON(fullnodeupdate.json_metadata).failing_nodes;
+    $.ajax({
+        url: "https://beacon.peakd.com/api/nodes"
+    }).then(function(data) {
       var reportRows = $('#report > table > tbody > tr');
       var tracked = [];
-      
       jQuery.each(reportRows, function(i, row) {
-        jQuery.each(reportData, function(j, r) {
+        jQuery.each(data, function(j, r) {
           var host = $(row).find('td:nth-child(1)').text();
           
-          if ( (r.node.indexOf(host) != -1 || !r.hive) && !tracked.includes(j) ) {
+          if ( r.name.indexOf(host) != -1 && !tracked.includes(j) ) {
             tracked.push(j);
           }
             
           with ( $(row).find('td:nth-child(3)') ) {
-            if ( r.node.indexOf(host) != -1 && !!r.hive ) {
-              html('Version: <code>' + r.version + '</code> ' + (r.history.ok ? '✅' : '⚠️'));
-            } else {
-              jQuery.each(Object.keys(failingNodes), function(k, f) {
-                if ( f.indexOf(host) != -1 ) {
-                  html('Failing ⛔');
+            if ( r.name.indexOf(host) != -1 ) {
+                if (r.score == 0) {
+                    html('Failing ⛔');
+                } else {
+                    html('Version: <code>' + r.version + '</code> ' + (r.score==100 ? '✅' : '<span title="'+r.score+'%">⚠️</span'));
                 }
-              });
             }
-            
             show();
           }
         });
@@ -76,15 +72,15 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
       with ( $('#untracked_report') ) {
         empty();
         
-        if ( tracked.length != reportData.length ) {
+        if ( tracked.length != data.length ) {
           append("<p>Also see the following public nodes:</p><ul>");
           
-          jQuery.each(reportData, function(i, r) {
-            if ( !!r.hive && !tracked.includes(i) ) {
-              var host = r.node.split('https://')[1];
+          jQuery.each(data, function(i, r) {
+            if (!tracked.includes(i) ) {
+              var host = r.name;
               
               if ( !!host && host.length > 0 ) {
-                append('<li>' + host + ', version: <code>' + r.version + '</code> ' + (r.history.ok ? '✅' : '⚠️') + '</li>');
+                append('<li>' + host + ', version: <code>' + r.version + '</code> ' + (r.score==100 ? '✅' : '<span title="'+r.score+'%">⚠️</span>') + '</li>');
               }
             }
           });
@@ -96,8 +92,6 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
   });
 
 </script>
-
-For a report on the latest public full nodes, check the latest posts on [@fullnodeupdate](https://hive.blog/@fullnodeupdate) by [@holger80](https://hive.blog/@holger80).
 
 ### Private Nodes
 
