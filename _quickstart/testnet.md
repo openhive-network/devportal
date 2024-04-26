@@ -1,6 +1,6 @@
 ---
 title: Hive Testnet
-position: 3
+position: 2
 exclude: true
 ---
 

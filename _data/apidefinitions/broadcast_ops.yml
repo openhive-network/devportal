@@ -74,7 +74,7 @@
         - '["vote", {"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestvote)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#vote)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#vote)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#vote)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.vote)'
@@ -166,7 +166,7 @@
         - '["comment",{"parent_author":"","parent_permlink":"hiveio","author":"alice","permlink":"a-post-by-alice","title":"A Post By Alice","body":"This is my post.","json_metadata":"{\"tags\":[\"hiveio\",\"example\",\"tags\"]}"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#comment)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#comment)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#comment)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.comment)'
@@ -194,7 +194,7 @@
         - '["transfer",{"from":"hiveio","to":"alice","amount":{"amount":"10","precision":3,"nai":"@@000000021"},"memo":"Thanks for all the fish."}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requesttransfer)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#transfer)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#transfer)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer)'
@@ -681,7 +681,7 @@
         - '["custom_json",{"required_auths":["alice"],"required_posting_auths":[],"id":"witness","json":"[\"enable_content_editing\", {\"account\": \"alice\", \"relock_time\": \"2100-01-01T12:00:00\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -931,7 +931,7 @@
         witness according to stake.
         
         See: [#169]({{ 'https://github.com/steemit/steem/issues/169' | archived_url }}), [PY: Account Recovery]({{ '/tutorials-python/account_recovery.html' | relative_url }})
-      roles: 
+      roles:
         - owner
       params:
         - account_to_recover

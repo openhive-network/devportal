@@ -22,7 +22,7 @@ Some other calls that require an access token (or login) are:
 * Follow
 * Reblog
 
-Learn more about [Hivesigner operations here](https://github.com/ledgerconnect/hivesigner.js)
+Learn more about [Hivesigner operations here](https://github.com/ecency/hivesigner-sdk)
 
 ## Steps
 

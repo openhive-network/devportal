@@ -24,24 +24,24 @@ collections:
     id: quickstart
     position: 3
     output: true
-  nodeop:
-    title: Node Operation
-    id: nodeop
-    position: 4
-    output: true
   javascript:
     title: Javascript
     id: javascript
-    position: 5
+    position: 4
     output: true
   tutorials:
     title: Tutorials
     id: tutorials
-    position: 6
+    position: 5
     output: true
   services:
     title: Services
     id: services
+    position: 6
+    output: true
+  nodeop:
+    title: Node Operation
+    id: nodeop
     position: 7
     output: true
   resources:
