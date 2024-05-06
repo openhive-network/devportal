@@ -1,6 +1,6 @@
 ---
 title: Get and Set
-position: 5
+position: 6
 exclude: true
 ---
 #### Fetching data

@@ -7,7 +7,7 @@ canonical_url: getting_started.html
 ---
 Full, runnable src of these tutorials can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just the JavaScript tutorials: [devportal-master-tutorials-javascript.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript)).
 
-For Javascript tutorials, we will use the opensource library [@hivechain/dhive](https://gitlab.syncad.com/hive/dhive).
+For Javascript tutorials, we will use the opensource library [@hiveio/dhive](https://gitlab.syncad.com/hive/dhive).
 
 ### Node.js
 

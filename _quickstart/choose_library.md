@@ -1,6 +1,6 @@
 ---
 title: SDK Libraries
-position: 4
+position: 5
 exclude: true
 ---
 #### Software development kits
@@ -17,17 +17,24 @@ which could be beneficial for your Hive project.
 
 Pure JavaScript Hive crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.
 
+[`@hiveio/hive-js`](https://www.npmjs.com/package/@hiveio/hive-js)
+
+
 ---
 
 **DHive** - [https://gitlab.syncad.com/hive/dhive](https://gitlab.syncad.com/hive/dhive)
 
-A Typescript Hive crypto library for node.js and browsers.
+A Typescript Hive crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.
+
+[`@hiveio/dhive`](https://www.npmjs.com/package/@hiveio/hive-js)
 
 ---
 
-**Hive-TX-JS** - [https://github.com/mahdiyari/hive-tx-js](https://github.com/mahdiyari/hive-tx-js)
+**Hive-TX** - [https://github.com/mahdiyari/hive-tx-js](https://github.com/mahdiyari/hive-tx-js)
 
 Lightweight JavaScript library for creating and signing transactions.  Works with frameworks like Nativescript.  This library is a solution to such cases when other libraries are not working.  And also an alternative for *only* creating, signing, and broadcasting transactions.
+
+[`hive-tx`](https://www.npmjs.com/package/hive-tx)
 
 ---
 

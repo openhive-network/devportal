@@ -1,6 +1,6 @@
 ---
 title: Authentication
-position: 3
+position: 4
 exclude: true
 ---
 #### User authentication
@@ -32,7 +32,12 @@ Overview of steps that user experiences during Login/Authentication in your webs
 3. Access token used by website or application to sign and broadcast transactions on blockchain.
 
 For more detailed instruction please follow [HiveSigner documentation](https://docs.hivesigner.com/).
-HiveSigner SDK: [https://www.npmjs.com/package/hivesigner](https://www.npmjs.com/package/hivesigner) 
+
+HiveSigner SDK: [https://www.npmjs.com/package/hivesigner](https://www.npmjs.com/package/hivesigner)
+
+HiveSigner tutorial: [JS/Node.js]({{ '/tutorials-javascript/hivesigner.html' | relative_url }})
+
+----
 
 #### HiveKeychain
 
@@ -50,7 +55,12 @@ Hive Keychain is an extension for accessing Hive-enabled distributed application
 3. Signature used from website/application to sign transactions going forward, every transaction should be signed by user. 
 
 For more detailed instruction please follow [HiveKeychain documentation](https://github.com/hive-keychain/hive-keychain-extension/blob/master/documentation/README.md).
+
 HiveKeychain SDK: [https://www.npmjs.com/package/keychain-sdk](https://www.npmjs.com/package/keychain-sdk)
+
+Keychain tutorial: [JS/Node.js]({{ '/tutorials-javascript/hivesigner.html' | relative_url }})
+
+----
 
 #### HiveAuth
 
