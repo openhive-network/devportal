@@ -22,7 +22,7 @@ Some other calls that require an access token (or login) are:
 * Follow
 * Reblog
 
-Learn more about [Hivesigner operations here](https://github.com/ledgerconnect/hivesigner.js)
+Learn more about [Hivesigner operations here](https://github.com/ecency/hivesigner-sdk)
 
 ## Steps
 
@@ -36,26 +36,26 @@ Learn more about [Hivesigner operations here](https://github.com/ledgerconnect/h
 
 #### 1. Hivesigner Dashboard<a name="dashboard"></a>
 
-Hivesigner is unified authentification system built on top of Hive.
+Hivesigner is unified OAuth2 authentication system built on top of Hive.
 Layer to ensure easy access and setup for all application developers as well as secure way for users to interact with Hive apps.
 
 Setting up Hivesigner in your app is straight-forward process and never been this easy.
 
 Here are the steps that helps you to setup new app:
 
-1a. Visit [Hivesigner Dashboard](https://hivesigner.com/profile) and login with your Hive credentials for your app
+1a. Visit [Hivesigner Dashboard](https://hivesigner.com/profile) and login with your Hive credentials for **your app account**
 
-![hivesigner_login](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/hivesigner_login.png)
+<img alt="hivesigner_login" height="auto" src="https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/hivesigner_login.png" width="70%"/>
 
 1b. You will see Account type, User and Application section, in Application section fill out details of App
 
-![hivesigner_dashboard](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/account_type_application.png)
+<img alt="hivesigner_dashboard" height="auto" src="https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/account_type_application.png" width="70%"/>
 
 1c. Give your app name, description, icon image link, website (if available) and Redirect URI(s)
 
-Here is an example of [Esteem](https://esteem.app) form to give you idea how to fill form correctly.
+Here is an example of [Ecency](https://ecency.com) form to give you idea how to fill form correctly.
 
-![hivesigner_myapps](https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/hivesigner_myapp.png)
+<img alt="hivesigner_myapps" height="auto" src="https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/02_hivesigner/images/hivesigner_myapp.png" width="70%"/>
 
 Application name and description should give users clear understanding what permissions it requires and what is the purpose of the app.
 
@@ -80,7 +80,7 @@ Now that `hivesigner` is initialized we can start authentication and perform sim
 
 #### 3. Login URL<a name="login-url"></a>
 
-> `getLoginURL` function you see on the right side, returns login URL which will redirect user to sign in with Hivesigner screen. Successfull login will redirect user to Redirect URI or `callbackURL`. Result of successful login will return `access_token`, `expires_in` and `username` information, which application will start utilizing.
+> `getLoginURL` function you see on the right side, returns login URL which will redirect user to sign in with Hivesigner screen. Successfull login will redirect user to Redirect URI or `callbackURL`. Result of successful login will return `access_token`, `expires_in` and `username` information, which application will start utilizing. Make sure to catch access_token parameter from callback URL and store locally until expiry, after expiry reached, request user to relogin to issue new access token. 
 
 #### 4. Request token<a name="request-token"></a>
 
@@ -102,6 +102,8 @@ Now that `hivesigner` is initialized we can start authentication and perform sim
 > In order to logout, you can use `revokeToken` function from hivesigner.
 
 **That's all there is to it.**
+
+To learn more about [Hivesigner SDK](https://github.com/ecency/hivesigner-sdk) or integration guide check [official Hivesigner docs](https://docs.hivesigner.com).
 
 ### To Run the tutorial
 
