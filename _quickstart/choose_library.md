@@ -8,7 +8,7 @@ exclude: true
 Accessing and interacting with Hive data is easy from various options depending on your infrastructure and objectives.
 
 Building a web3 app is a breeze with the [JavaScript, check related tutorials]({{ '/tutorials/#tutorials-javascript' | relative_url }}). 
-There is also a [Python tutorials]({{ '/tutorials/#tutorials-python' | relative_url }}) available, [hive.blog]({{ '/services/#services-hive-blog' | relative_url }}), as well as many [opensource projects]({{ '/resources/#resources-overview' | relative_url }}) 
+There is also a [Python tutorials]({{ '/tutorials/#tutorials-python' | relative_url }}) available, as well as many [opensource projects]({{ '/resources/#resources-overview' | relative_url }}) 
 which could be beneficial for your Hive project.
 
 ---
