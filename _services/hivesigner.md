@@ -31,4 +31,4 @@ A full breakdown of OAuth2 and how it applies to Hive and Hivesigner can be foun
 *   [Community Resources]({{ '/resources/#resources-hivesigner-libs' | relative_url }})
 *   [Hivesigner docs](https://docs.hivesigner.com)
 
-For additional material you can refer to the original Hive [blog](https://hive.blog/hive/@good-karma/hivesigner-released-and-ready) post by [@good-karma](https://hive.blog/)
+For additional material you can refer to the original Hive [blog](https://ecency.com/hive/@good-karma/hivesigner-released-and-ready) post by [@good-karma](https://ecency.com/@good-karma)
