@@ -1,13 +1,13 @@
 ---
-title: hive.blog
+title: Condenser
 position: 1
 canonical_url: hive.blog.html
 ---
 
-#### Hive.blog endpoints
+#### Condenser endpoints
 
-Hive.blog offers a few endpoints for getting common data. User profile and post JSON data is very convenient and simple by appending .json
-to your request. 
+Condenser is codename to [opensource frontend](https://gitlab.syncad.com/hive/condenser) hosted on [Hive.blog](https://hive.blog). It offers a few endpoints for getting common data. 
+User profile and post JSON data is very convenient and simple by appending .json to your request. 
 
 Getting a particular user profile JSON:
 

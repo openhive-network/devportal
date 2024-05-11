@@ -58,7 +58,7 @@ For more detailed instruction please follow [HiveKeychain documentation](https:/
 
 HiveKeychain SDK: [https://www.npmjs.com/package/keychain-sdk](https://www.npmjs.com/package/keychain-sdk)
 
-Keychain tutorial: [JS/Node.js]({{ '/tutorials-javascript/hivesigner.html' | relative_url }})
+Keychain tutorial: [JS/Node.js](https://play.hive-keychain.com/)
 
 ----
 
