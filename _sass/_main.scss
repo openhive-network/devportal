@@ -735,10 +735,18 @@ a[href*='hivesql'] {
   padding-left: .90em;
 }
 
+a[href*='hivexplorer'] {
+	background-image: url(../images/languages/nodejs.svg);
+	background-size: .90em .90em;
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding-left: .90em;
+}
+
 #search-process {
   background-image: url(../images/loading.gif);
   background-size: .90em .90em;
   background-repeat: no-repeat;
   background-position: right top;
-  padding-left: .90em;  
+  padding-left: .90em;
 }

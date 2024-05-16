@@ -54,6 +54,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-history)'
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_account_history)'
     - api_method: account_history_api.get_ops_in_block
       purpose: |
         Returns all operations contained in a block.  Parameter:
@@ -85,6 +86,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-ops-in-block)'
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ops-in-block)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_ops_in_block)'
     - api_method: account_history_api.get_transaction
       purpose: |
         Returns the details of a transaction based on a transaction id (including their signatures, operations like also a block_num it was included to).
@@ -173,6 +175,7 @@
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_transaction)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/database-diagram#blocks-and-transactions)'
     - api_method: account_history_api.enum_virtual_ops
       since: HF24
@@ -230,7 +233,7 @@
           * `escrow_approved_operation                             = 0x8000000000`
           * `escrow_rejected_operation                             = 0x10000000000`
           * `proxy_cleared_operation                               = 0x20000000000`
-          
+
       parameter_json: '{"block_range_begin":1,"block_range_end":2,"include_reversible":true,"group_by_block":false,"operation_begin":0,"limit":1000,"filter":1}'
       expected_response_json: |
         {
@@ -251,3 +254,4 @@
       client_docs:
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations)'
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=enum_virtual_ops)'

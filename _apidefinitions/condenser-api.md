@@ -1,5 +1,5 @@
 ---
-position: 0
+position: 4
 exclude: true
 canonical_url: .#apidefinitions-condenser-api
 ---

@@ -34,12 +34,12 @@ toc:
     url: "/layer2/"
     position: 5
     exclude: true
-  - title: "Appbase API"
+  - title: "JSON-RPC Methods"
     collection: apidefinitions
     url: "/apidefinitions/"
     exclude: true
     position: 6
-  - title: "Node Operation"
+  - title: "Node Configs"
     collection: "nodeop"
     url: "/nodeop/"
     position: 7
