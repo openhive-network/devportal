@@ -18,6 +18,5 @@
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-key-references)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-key-references)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
-      - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountupdates)'
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_key_references)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountupdates2)'
-      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/accounts)'

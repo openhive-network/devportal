@@ -1,5 +1,5 @@
 ---
-position: 1
+position: 3
 group: communities
 exclude: true
 canonical_url: .#apidefinitions-bridge
