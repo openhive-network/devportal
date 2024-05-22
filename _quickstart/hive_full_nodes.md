@@ -1,14 +1,14 @@
 ---
 title: Hive Nodes
-position: 2
+position: 1
 exclude: true
 ---
 
-Applications that interface directly with the Hive blockchain will need to connect to a `hived` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
+Applications that interface directly with the Hive blockchain will need to connect to a `Hive` node. Developers may choose to use one of the public API nodes that are available, or run their own instance of a node.
 
 ### Public Nodes
 
-Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes typically do not.  All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `hived` node or proxy WebSockets to HTTPS using [lineman](https://gitlab.syncad.com/hive/lineman).
+All nodes listed use HTTPS (`https://`).  If you require WebSockets for your solutions, please consider setting up your own `hived` node or proxy WebSockets to HTTPS using [lineman](https://gitlab.syncad.com/hive/lineman).
 
 <div id="report">
   <table>
@@ -97,71 +97,96 @@ Although `hived` fully supports WebSockets (`wss://` and `ws://`) public nodes t
 
 The simplest way to get started is by deploying a pre-built dockerized container.
 
-##### Dockerized p2p Node
+**System Requirements**
 
-To install a witness or seed node:
+We assume the base system will be running at least Ubuntu 22.04 (jammy).  Everything will likely work with later 
+versions of Ubuntu. IMPORTANT UPDATE: experiments have shown 20% better API performance when running U23.10, so this 
+latter version is recommended over Ubuntu 22 as a hosting OS.
 
-```bash
-git clone https://github.com/someguy123/hive-docker.git
-cd hive-docker
-# If you don't already have a docker installation, this will install it for you
-./run.sh install_docker
+For a mainnet API node, we recommend:
 
-# This downloads/updates the low-memory docker image for Hive
-./run.sh install
+* At least 32GB of memory.  If you have 64GB, it will improve the time it takes to sync from scratch, but
+it should make less of a difference if you're starting from a mostly-synced HAF node (i.e.,
+restoring a recent ZFS snapshot)
+* 4TB of NVMe storage
+  * Hive block log & shared memory: 500GB
+  * Base HAF database: 3.5T (before 2x lz4 compression)
+  * Hivemind database: 0.65T (before 2x lz4 compression)
+  * base HAF + Hivemind:  2.14T (compressed)
+  * HAF Block Explorer: ~0.2T
 
-# If you are a witness, you need to adjust the configuration as needed
-# e.g. witness name, private key, logging config, turn off p2p-endpoint etc.
-# If you're running a seed, then don't worry about the config, it will just work
-nano data/witness_node_data_dir/config.ini
+#### Running Hive node with Docker
 
-# (optional) Setting the .env file up (see the env settings section of this readme)
-# will help you to adjust settings for hive-in-a-box
-nano .env
+**Install ZFS support**
 
-# Once you've configured your server, it's recommended to download the block log, as replays can be
-# faster than p2p download
-./run.sh dlblocks
-
-# You'll also want to set the shared memory size (use sudo if not logged in as root). 
-# Adjust 64G to whatever size is needed for your type of server and make sure to leave growth room.
-# Please be aware that the shared memory size changes constantly. Ask in a witness chatroom if you're unsure.
-./run.sh shm_size 64G
-
-# Then after you've downloaded the blockchain, you can start hived in replay mode
-./run.sh replay
-# If you DON'T want to replay, use "start" instead
-./run.sh start
-```
-
-You may want to persist the /dev/shm size (shared memory) across reboots. To do this, you can edit `/etc/fstab`, please be very careful, as any mistakes in this file will cause your system to become unbootable.
-
-##### Dockerized Full Node
-
-To install a full RPC node - follow the same steps as above, but use `install_full` instead of `install`.
-
-Remember to adjust the config, you'll need a higher shared memory size (potentially up to 1 TB), and various plugins.
-
-For handling requests to your full node in docker, I recommend spinning up an nginx container, and connecting nginx to the Hive node using a docker network.
-
-Example:
+We strongly recommend running your HAF instance on a ZFS filesystem, and this documentation assumes you will be running 
+ZFS. Its compression and snapshot features are particularly useful when running a HAF node.
+We intend to publish ZFS snapshots of fully-synced HAF nodes that can downloaded to get a HAF node up & running quickly,
+avoiding multi-day replay times.
 
 ```
-docker network create rpc_default
-# Assuming your RPC container is called "rpc1" instead of witness/seed
-docker network connect rpc_default rpc1
-docker network connect rpc_default nginx
+sudo apt install zfsutils-linux
 ```
 
-Nginx will now be able to access the container RPC1 via `http://rpc1:8090` (assuming 8090 is the RPC port in your config). Then you can set up SSL and container port forwarding as needed for nginx.
+**Install Docker**
 
-##### Customized Docker Node
+Follow official guide [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/).
 
-If the above options do not meet your needs, refer to Hive-in-a-box by [@someguy123](https://hive.blog/@someguy123):
+**Create a ZFS pool**
 
-[https://github.com/someguy123/hive-docker](https://github.com/someguy123/hive-docker)
+Create your ZFS pool if necessary. HAF requires at least 4TB of space, and 2TB NVMe drives are readily available, 
+so we typically construct a pool striping data across several 2TB drives. If you have three or four drives, you will 
+get somewhat better read/write performance, and the extra space can come in handy.
+To create a pool named "haf-pool" using the first two NVMe drives in your system, use a command like:
 
-##### Building Without Docker
+```
+sudo zpool create haf-pool /dev/nvme0n1 /dev/nvme1n1
+```
+If you name your ZFS pool something else, configure the name in the environment file, as described in the next section.
+Note: By default, ZFS tries to detect your disk's actual sector size, but it often gets it wrong for modern NVMe drives,
+which will degrade performance due to having to write the same sector multiple times. If you don't know the actual 
+sector size, we recommend forcing the sector size to 8k by specifying 
+setting ashift=13 (e.g., zfs create -o ashift=13 haf-pool /dev....)
+
+**Configure your environment**
+
+Clone HAF API Node repository from here [https://github.com/openhive-network/haf_api_node](https://github.com/openhive-network/haf_api_node)
+Make a copy of the file .env.example and customize it for your system. This file contains configurable parameters for 
+things like directories versions of hived, HAF, and associated tools
+The docker compose command will automatically read the file named .env. If you want to keep multiple configurations, 
+you can give your environment files different names like .env.dev and .env.prod, then explicitly specify the filename 
+when running docker compose: `docker compose --env-file=.env.dev ...`
+
+**Set up ZFS filesystems**
+
+The HAF installation is spread across multiple ZFS datasets, which allows us to set different ZFS options for different
+portions of the data. We recommend that most nodes keep the default datasets in order to enable easy sharing of snapshots.
+
+**Initializing from scratch**
+
+If you're starting from scratch, after you've created your zpool and configured its name in the .env file as described 
+above, run:
+```
+sudo ./create_zfs_datasets.sh
+```
+
+to create and mount the datasets.
+By default, the dataset holding most of the database storage uses zfs compression. The dataset for the blockchain data 
+directory (which holds the block_log for hived and the shared_memory.bin file) is not compressed because hived directly 
+manages compression of the block_log file.
+If you have a LOT of nvme storage (e.g. 6TB+), you can get better API performance at the cost of disk storage by 
+disabling ZFS compression on the database dataset, but for most nodes this isn't recommended.
+
+**Assisted startup**
+
+```
+./assisted_startup.sh
+```
+
+Depending on your environment variables, assisted start up script will quickly bootstrap the process.
+
+
+#### Building Without Docker
 
 Full non-docker steps can be reviewed here:
 
@@ -169,20 +194,54 @@ Full non-docker steps can be reviewed here:
 
 ### Syncing blockchain
 
-Normally syncing blockchain starts from very first, `0` genesis block.  It might take long time to catch up with live network, because it connects to various p2p nodes in the Hive network and requests blocks from 0 to head block.  It stores blocks in block log file and builds up the current state in the shared memory file.  But there is a way to bootstrap syncing by using trusted `block_log` file.  The block log is an external append only log of the blocks.  It contains blocks that are only added to the log after they are irreversible because the log is append only.
+**Initializing from a snapshot**
 
-Trusted block log file helps to download blocks faster. Various operators provide public block log file which can be downloaded from:
+If you're starting with one of our snapshots, the process of restoring the snapshots will create the correct
+datasets with the correct options set.
+First, download the snapshot file from: [https://gtg.openhive.network/get/snapshot/](https://gtg.openhive.network/get/snapshot/)
+Since these snapshots are huge, it's best to download the snapshot file to a different disk (a magnetic
+HDD will be fine for this) that has enough free space for the snapshot first, then restore it to the ZFS pool.
+This lets you easily resume the download if your transfer is interrupted.  If you download directly to
+the ZFS pool, any interruption would require you to start the download from the beginning.
+```
+wget -c https://whatever.net/snapshot_filename
+```
+
+
+If the transfer gets interrupted, run the same command again to resume.
+Then, to restore the snapshot, run:
+```
+sudo zfs recv -d -v haf-pool < snapshot_filename
+```
+
+**Replay with blocklog**
+
+Normally syncing blockchain starts from very first, `0` genesis block.  It might take long time to catch up with live 
+network, because it connects to various p2p nodes in the Hive network and requests blocks from 0 to head block.  
+It stores blocks in block log file and builds up the current state in the shared memory file.  But there is a way to 
+bootstrap syncing by using trusted `block_log` file.  The block log is an external append only log of the blocks.  
+It contains blocks that are only added to the log after they are irreversible because the log is append only.
+
+Trusted block log file helps to download blocks faster. Various operators provide public block log file which can be 
+downloaded from:
 
 * [https://files.privex.io/hive/](https://files.privex.io/hive/)
 * [https://gtg.openhive.network/get/blockchain/block_log](https://gtg.openhive.network/get/blockchain/block_log)
 
-Both `block_log` files updated periodically, as of March 2021 uncompressed `block_log` file size ~350 GB. (Docker container on `stable` branch of Hive source code has option to use `USE_PUBLIC_BLOCKLOG=1` to download latest block log and start Hive node with replay.)
+Both `block_log` files updated periodically, as of March 2021 uncompressed `block_log` file size ~350 GB. 
+(Docker container on `stable` branch of Hive source code has option to use `USE_PUBLIC_BLOCKLOG=1` to download latest 
+block log and start Hive node with replay.)
 
-Block log should be place in `blockchain` directory below `data_dir` and node should be started with `--replay-blockchain` to ensure block log is valid and continue to sync from the point of snapshot. Replay uses the downloaded block log file to build up the shared memory file up to the highest block stored in that snapshot and then continues with sync up to the head block.
+Block log should be place in `blockchain` directory below `data_dir` and node should be started with 
+`--replay-blockchain` to ensure block log is valid and continue to sync from the point of snapshot. 
+Replay uses the downloaded block log file to build up the shared memory file up to the highest block stored in that 
+snapshot and then continues with sync up to the head block.
 
-Replay helps to sync blockchain in much faster rate, but as blockchain grows in size replay might also take some time to verify blocks.
+Replay helps to sync blockchain in much faster rate, but as blockchain grows in size replay might also take some time 
+to verify blocks.
 
-There is another [trick which might help]({{ 'https://github.com/steemit/steem/issues/2391' | archived_url }}) with faster sync/replay on smaller equipped servers:
+There is another [trick which might help]({{ 'https://github.com/steemit/steem/issues/2391' | archived_url }}) with 
+faster sync/replay on smaller equipped servers:
 
 ```
 while :
@@ -192,11 +251,13 @@ do
 done
 ```
 
-Above bash script drops `block_log` from the OS cache, leaving more memory free for backing the blockchain database. It might also help while running live, but measurement would be needed to determine this.
+Above bash script drops `block_log` from the OS cache, leaving more memory free for backing the blockchain database. 
+It might also help while running live, but measurement would be needed to determine this.
 
 ##### Few other tricks that might help:
 
-For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which results in hived being slowed down by redundant IO operations.  These settings are recommended to optimize reindex time.
+For Linux users, virtual memory writes dirty pages of the shared file out to disk more often than is optimal which 
+results in hived being slowed down by redundant IO operations.  These settings are recommended to optimize reindex time.
 
 ```
 echo    75 | sudo tee /proc/sys/vm/dirty_background_ratio

@@ -10,7 +10,7 @@ If you're wondering what Hivesigner is, go [here]({{ '/services/#services-hivesi
 
 ---
 
-**Hivesigner SDK** - [https://github.com/ledgerconnect/hivesigner.js](https://github.com/ledgerconnect/hivesigner.js)
+**Hivesigner SDK** - [https://github.com/ecency/hivesigner-sdk](https://github.com/ecency/hivesigner-sdk)
 
 An official javascript library for utilizing Hivesigner.
 

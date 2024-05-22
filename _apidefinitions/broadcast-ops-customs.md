@@ -1,22 +1,22 @@
 ---
 position: 100
 exclude: true
-canonical_url: .#apidefinitions-broadcast-ops-communities
+canonical_url: .#apidefinitions-broadcast-ops-customs
 ---
 
 Ops:
 <ul>
-{% for sections in site.data.apidefinitions.broadcast_ops_communities %}
+{% for sections in site.data.apidefinitions.broadcast_ops_customs %}
 {% assign sorted_ops = sections.ops | sort: 'name' %}
 {% for op in sorted_ops %}
 {% unless op.virtual %}
-<li class="button"><a href="#broadcast_ops_communities_{{ op.name | slug}}">{{op.name | split: '.' | last}}</a></li> 
+<li class="button"><a href="#broadcast_ops_customs_{{ op.name | slug}}">{{op.name | split: '.' | last}}</a></li> 
 {% endunless %}
 {% endfor %}
 {% endfor %}
 </ul>
 
-{% for sections in site.data.apidefinitions.broadcast_ops_communities %}
+{% for sections in site.data.apidefinitions.broadcast_ops_customs %}
 {{ sections.description | liquify | markdownify }}
 {% for op in sections.ops %}
 <ul style="float: right; list-style: none;">
@@ -39,9 +39,9 @@ Ops:
 {% assign search_url = '/search/?q=' | append: keywords | split: '_' | join: ' ' %}
 <li class="info"><strong><small><a href="{{ search_url | relative_url }}">Related <i class="fas fa-search fa-xs"></i></a></small></strong></li>
 </ul>
-<h4 id="broadcast_ops_communities_{{ op.name | slug }}">
+<h4 id="broadcast_ops_customs_{{ op.name | slug }}">
 <code>{{op.name}}</code>
-<a href="#broadcast_ops_communities_{{ op.name | slug}}">
+<a href="#broadcast_ops_customs_{{ op.name | slug}}">
 <i class="fas fa-link fa-xs"></i></a>
 </h4>
 {{ op.purpose | liquify | markdownify }}

@@ -1,6 +1,6 @@
 ---
 title: DHF
-position: 5
+position: 7
 canonical_url: dhf.html
 ---
 
@@ -36,6 +36,7 @@ scheduled duration.
 
 #### Tools
 
+* [ecency.com/proposals](https://ecency.com/proposals) - Hive Proposals UI by [@ecency](https://ecency.com/@ecency)
 * [peakd.com/proposals](https://peakd.com/proposals) - Hive Proposals UI by [@peakd](https://peakd.com/@peakd)
 * [wallet.hive.blog/proposals](https://wallet.hive.blog/proposals) - Vote for your favorite Hive proposals without leaving the safety of wallet.hive.blog.
 * [joticajulian.github.io/hiveexplorer/#/proposals](https://joticajulian.github.io/hiveexplorer/#/proposals) - Check who voted what by [@jga](https://peakd.com/@jga)

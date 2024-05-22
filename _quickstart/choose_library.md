@@ -1,12 +1,15 @@
 ---
 title: SDK Libraries
-position: 1
+position: 5
 exclude: true
 ---
+#### Software development kits
 
-Getting started to develop robust and feature rich **Hive** applications couldn't be easier. Accessing hive data is easy from various options depending on your infrastructure and objectives.
+Accessing and interacting with Hive data is easy from various options depending on your infrastructure and objectives.
 
-Building a web3 app is a breeze with the [JavaScript, check related tutorials]({{ '/tutorials/#tutorials-javascript' | relative_url }}). There is also a [Python tutorials]({{ '/tutorials/#tutorials-python' | relative_url }}) available, [hive.blog]({{ '/services/#services-hive-blog' | relative_url }}), as well as many [opensource projects]({{ '/resources/#resources-overview' | relative_url }}) which could be beneficial for your Hive project.
+Building a web3 app is a breeze with the [JavaScript, check related tutorials]({{ '/tutorials/#tutorials-javascript' | relative_url }}).
+There is also a [Python tutorials]({{ '/tutorials/#tutorials-python' | relative_url }}) available, as well as many [opensource projects]({{ '/resources/#resources-overview' | relative_url }})
+which could be beneficial for your Hive project.
 
 ---
 
@@ -14,17 +17,24 @@ Building a web3 app is a breeze with the [JavaScript, check related tutorials]({
 
 Pure JavaScript Hive crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.
 
+[`@hiveio/hive-js`](https://www.npmjs.com/package/@hiveio/hive-js)
+
+
 ---
 
 **DHive** - [https://gitlab.syncad.com/hive/dhive](https://gitlab.syncad.com/hive/dhive)
 
-A Typescript Hive crypto library for node.js and browsers.
+A Typescript Hive crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.
+
+[`@hiveio/dhive`](https://www.npmjs.com/package/@hiveio/hive-js)
 
 ---
 
-**Hive-TX-JS** - [https://github.com/mahdiyari/hive-tx-js](https://github.com/mahdiyari/hive-tx-js)
+**Hive-TX** - [https://github.com/mahdiyari/hive-tx-js](https://github.com/mahdiyari/hive-tx-js)
 
 Lightweight JavaScript library for creating and signing transactions.  Works with frameworks like Nativescript.  This library is a solution to such cases when other libraries are not working.  And also an alternative for *only* creating, signing, and broadcasting transactions.
+
+[`hive-tx`](https://www.npmjs.com/package/hive-tx)
 
 ---
 
@@ -67,3 +77,6 @@ Golang RPC client library for Hive
 **HiveClientRS** - [https://github.com/cyberpunk-ventures/steem-client-rs](https://github.com/cyberpunk-ventures/steem-client-rs)
 
 Client library for Hive blockchain built with Rust -->
+
+
+
