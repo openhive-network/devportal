@@ -31,7 +31,7 @@ Client side signing of transaction is yet another way of interacting with Hive b
 
 {% include local-testnet.html %}
 
-Testnet and Production networks only differ with few settings which helps developers to switch their application from testnet to production. One of these settings is `addressPrefix` - string that is defined and will be in front of every public address on that chain/network. Another one is `chainId` - id of that network. By defining those parameters we are selecting Testnet and connecting to publicly available server with help of `@hivechain/dhive` library. First few lines of code in `public/app.js` gives you example of connection to different networks, testnet and production.
+Testnet and Production networks only differ with few settings which helps developers to switch their application from testnet to production. One of these settings is `addressPrefix` - string that is defined and will be in front of every public address on that chain/network. Another one is `chainId` - id of that network. By defining those parameters we are selecting Testnet and connecting to publicly available server with help of `@hiveio/dhive` library. First few lines of code in `public/app.js` gives you example of connection to different networks, testnet and production.
 
 ```javascript
 opts.addressPrefix = 'TST';

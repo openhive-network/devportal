@@ -1,6 +1,6 @@
 ---
 title: Hivesigner
-position: 2
+position: 5
 canonical_url: hivesigner.html
 ---
 
@@ -23,12 +23,12 @@ Simplified, the process includes the following steps:
 3.  The user is redirected to the application redirect URI along with the access token
 
 Once the application has an access token, it may use the token to access the user's account via the API, limited to the scope of access, until the token expires or is revoked.
-A full breakdown of OAuth2 and how it applies to Hive and Hivesigner can be found [here](https://github.com/ledgerconnect/hivesigner/wiki/OAuth-2#code-authorization-flow).
+A full breakdown of OAuth2 and how it applies to Hive and Hivesigner can be found [here](https://docs.hivesigner.com).
 
 **Useful Links**
 
-*   [Hivesigner Repo](https://github.com/ledgerconnect/hivesigner)
+*   [Hivesigner Repo](https://github.com/ecency/hivesigner-ui)
 *   [Community Resources]({{ '/resources/#resources-hivesigner-libs' | relative_url }})
 *   [Hivesigner docs](https://docs.hivesigner.com)
 
-For additional material you can refer to the original Hive [blog](https://hive.blog/hive/@good-karma/hivesigner-released-and-ready) post by [@good-karma](https://hive.blog/)
+For additional material you can refer to the original Hive [blog](https://ecency.com/hive/@good-karma/hivesigner-released-and-ready) post by [@good-karma](https://ecency.com/@good-karma)

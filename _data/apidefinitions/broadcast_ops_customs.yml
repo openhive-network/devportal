@@ -1,4 +1,4 @@
-- name: broadcast_ops_communities
+- name: broadcast_ops_custom
   group: communities
   description: |
     To interact with the communities framework, use `custom_json` operations with the an `id` of `community`.  Communities also intepret other ids like `follow` and `reblog`.
@@ -27,7 +27,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"setRole\", {\"community\": \"hive-123456\", \"account\": \"edward\", \"role\": \"member\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -44,7 +44,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"setUserTitle\", {\"community\": \"hive-123456\", \"account\": \"alice\", \"title\": \"Founder\"}]"}]'
       client_docs:
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
     - name: mutePost
@@ -56,7 +56,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"mutePost\",{\"community\":\"hive-123456\",\"account\":\"eve\",\"permlink\":\"re-eve-comment-1564339652z\",\"notes\":\"Off Topic\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -66,7 +66,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"unmutePost\",{\"community\":\"hive-123456\",\"account\":\"eve\",\"permlink\":\"re-eve-comment-1564339652z\",\"notes\":\"On Topic (on second thought)\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -75,7 +75,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"updateProps\",{\"community\":\"hive-123456\",\"props\":{\"title\":\"Anti-Knitting\",\"about\":\"A community against knitting.\",\"is_nsfw\":false,\"description\":\"If you like to knitting, go away.\",\"flag_text\":\"Must hate knitting or else you will be muted.\"}}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -85,7 +85,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"subscribe\",{\"community\":\"hive-123456\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -95,7 +95,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"pinPost\",{\"community\":\"hive-123456\",\"account\":\"alice\",\"permlink\":\"a-post-by-alice\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -105,7 +105,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"unsubscribe\",{\"community\":\"hive-123456\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -115,7 +115,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"unpinPost\",{\"community\":\"hive-123456\",\"account\":\"alice\",\"permlink\":\"a-post-by-alice\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
@@ -125,7 +125,7 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["alice"],"id":"community","json":"[\"flagPost\",{\"community\":\"hive-123456\",\"account\":\"eve\",\"permlink\":\"a-post-by-eve\",\"notes\":\"Warning\"}]"}]'
       client_docs:
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ledgerconnect/hivesigner.js#custom-json)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'

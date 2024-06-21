@@ -1,19 +1,21 @@
 ---
 title: ImageHoster
-position: 4
+position: 3
 canonical_url: imageHoster.html
 ---
 # Definition
 
 Imagehoster is a Hive-powered image hosting and proxying service. Any image uploaded to, or proxied through, your Imagehoster has a copy stored within it. This means that the image continues to be available even if 3rd party sites go down or change their URLs. For as long as your instance of imagehoster is running the image will be available, anytime you need it.
 
-The purpose of this tool is to provide a way to host and proxy images used by [condenser](https://gitlab.syncad.com/hive/condenser#condenser) to help maintain the privacy of the authors and general users accessing the images.
+The purpose of this tool is to provide a way to host and proxy images used by Hive applications to help maintain the privacy of the authors and general users accessing the images.
 
 Using ImageHoster will help limit access to IP addresses of the general user.  It will also strip [image metadata](https://en.wikipedia.org/wiki/Exif) related to the author's geographical location.  It also helps to verify that the original author uploaded the image they intended.
 
-The ability to upload images on hive.blog was originally added in January, 2017.  Please note that this tool **does not** store any image data on the blockchain.
+Please note that this tool **does not** store any image data on the blockchain.
 
-Detaied information on Imagehoster can be found in its [repository](https://gitlab.syncad.com/hive/imagehoster/-/blob/master/README.md#imagehoster)
+Detailed information on Imagehoster can be found in its [repository](https://gitlab.syncad.com/hive/imagehoster/-/blob/master/README.md#imagehoster)
+
+Currently there are 2 independent instances of imagehoster run by community, [https://images.hive.blog](https://images.hive.blog) and [https://images.ecency.com](https://images.ecency.com).
 
 ## The API
 

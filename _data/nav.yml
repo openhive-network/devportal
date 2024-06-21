@@ -8,12 +8,11 @@ toc:
     url: "/quickstart/"
     position: 2
     exclude: true
-  - title: "Node Operation"
-    collection: "nodeop"
-    url: "/nodeop/"
-    position: 3
+  - title: "JSON-RPC Methods"
+    collection: apidefinitions
+    url: "/apidefinitions/"
     exclude: true
-    top_level_section: true
+    position: 3
   - title: "Tutorials"
     collection: "tutorials"
     url: "/tutorials/"
@@ -33,13 +32,19 @@ toc:
   - title: "Services"
     collection: "services"
     url: "/services/"
+    position: 5
+    exclude: true
+  - title: "Node Configs"
+    collection: "nodeop"
+    url: "/nodeop/"
     position: 6
     exclude: true
-  - title: "Appbase API"
-    collection: apidefinitions    
-    url: "/apidefinitions/"
+    top_level_section: true
+  - title: "Layer 2s"
+    collection: "layer2"
+    url: "/layer2/"
+    position: 7
     exclude: true
-    position: 7    
   - title: "Resources"
     collection: "resources"
     url: "/resources/"
