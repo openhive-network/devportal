@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-title" content="Hive Devportal" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <link rel="shortcut icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
   <link rel="apple-touch-icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
@@ -70,6 +70,30 @@
 <script>
     document.getElementById("open-nav").addEventListener("click", function () {
         document.body.classList.toggle("nav-open");
+    });
+    // assets/js/post.js
+    let codeBlocks = document.querySelectorAll('pre.highlight');
+
+    codeBlocks.forEach(function (codeBlock) {
+      let copyButton = document.createElement('button');
+      copyButton.className = 'copy';
+      copyButton.type = 'button';
+      copyButton.ariaLabel = 'Copy code to clipboard';
+      copyButton.innerText = 'Copy';
+
+      codeBlock.append(copyButton);
+
+      copyButton.addEventListener('click', function () {
+        let code = codeBlock.querySelector('code').innerText.trim();
+        window.navigator.clipboard.writeText(code);
+
+        copyButton.innerText = 'Copied';
+        let fourSeconds = 4000;
+
+        setTimeout(function () {
+          copyButton.innerText = 'Copy';
+        }, fourSeconds);
+      });
     });
 </script>
 </body>

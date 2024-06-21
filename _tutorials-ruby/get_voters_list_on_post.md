@@ -20,6 +20,34 @@ First, we ask the blockchain for the active votes on a post or comment.  Then, w
 
 Then, we sort the votes by `rshares` to find the top voter.
 
+Final code: 
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+url = ARGV[0]
+slug = url.split('@').last
+author, permlink = slug.split('/')
+api = Radiator::Api.new
+
+api.get_active_votes(author, permlink) do |votes|
+  upvotes = votes.select { |v| v.percent > 0 }.size
+  downvotes = votes.select { |v| v.percent < 0 }.size
+  unvotes = votes.select { |v| v.percent == 0 }.size
+  top_voter = votes.sort_by { |v| v.rshares.to_i }.last.voter
+  
+  puts "Upvotes: #{upvotes}"
+  puts "Downvotes: #{downvotes}"
+  puts "Unvotes: #{unvotes}"
+  puts "Total: #{votes.size}"
+  puts "Top Voter: #{top_voter}"
+end
+
+```
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):

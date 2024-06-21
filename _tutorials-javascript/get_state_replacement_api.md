@@ -521,13 +521,96 @@ This detailed information can be used to track the performance of a specific wit
 }
 ```
 
+Final code:
+
+```javascript
+const dhive = require('@hiveio/dhive');
+
+let opts = {};
+
+//connect to production server
+opts.addressPrefix = 'STM';
+opts.chainId =
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+
+//connect to server which is connected to the network/production
+const client = new dhive.Client('https://api.hive.blog');
+
+
+window.showAccount = async () => {
+    console.log('account : ');
+    var _info = new Array
+    _info = await client.database.getAccounts(['hiveio']);
+    console.log(_info[0]);
+
+}
+
+window.showContent = async () => {
+    console.log('content : ');
+
+    const filter = 'trending';
+    const query = {
+        limit: 20,
+    };
+    var _info = new Array
+    _info = await client.database.getDiscussions(filter, query)
+    console.log(_info)
+
+}
+
+window.showPrice = async () => {
+    console.log('feed_price : ');
+
+    _info = await client.database.getCurrentMedianHistoryPrice()
+    console.log(_info)
+
+}
+
+window.showProps = async () => {
+    console.log('props : ');
+
+    _info = await client.database.getDynamicGlobalProperties()
+    console.log(_info)
+
+}
+
+window.showTags = async () => {
+    console.log('tags : ');
+
+    _info = await client.database.call('get_trending_tags',['', 10])
+    console.log(_info)
+
+}
+
+window.showTagidx = async () => {
+    console.log('tag_idx : ');
+
+    _info = await client.database.call('get_trending_tags',['', 10])
+    _info.forEach(post => {
+        console.log(post.name)
+    });
+
+}
+
+window.showSchedule = async () => {
+    console.log('witness schedule : ');
+
+    _info = await client.database.call('get_witness_schedule',[]);
+    console.log(_info);
+
+}
+
+window.showWitness = async () => {
+    console.log('witnesses : ');
+
+    var _info = await client.database.call('get_witnesses_by_vote',['',10])
+    console.log(_info)
+
+}
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js34getstatereplacementapi?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To run this tutorial
 

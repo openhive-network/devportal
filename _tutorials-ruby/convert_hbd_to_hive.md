@@ -130,6 +130,38 @@ Broadcasting a `convert` operation will require the following fields:
 * `requestid` - conversion request identifier
 * `amount` - amount of HBD to convert
 
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
+}
+tx = Radiator::Transaction.new(options)
+
+tx.operations << {
+  type: :convert,
+  owner: 'social',
+  requestid: 1234,
+  amount: '10.000 TBD' # <- Testnet: TBD; Mainnet: HBD
+}
+
+response = tx.process(true)
+  
+if !!response.error
+  puts response.error.message
+else
+  puts JSON.pretty_generate response
+end
+
+
+```
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository) with the following arguments:

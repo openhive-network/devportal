@@ -76,6 +76,24 @@ From the example we get the following output from our script:
 bob
 ```
 
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+api = Radiator::Api.new
+lower_bound_name, limit = ARGV
+limit = (limit || '10').to_i
+
+api.lookup_accounts(lower_bound_name, limit) do |accounts|
+  puts accounts.join(' ')
+end
+
+```
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):

@@ -59,6 +59,79 @@ The API method we're using here is `condenser.get_following`.  We pass the name 
 
 We also specify `blog` to tell the API method that we're looking for followed, not muted (to locate muted accounts, use `ignore` instead of `blog`).
 
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
+}
+tx = Radiator::Transaction.new(options)
+what = 'blog' # set this to empty string to unfollow
+
+tx.operations << {
+  type: :custom_json,
+  id: 'follow',
+  required_auths: [],
+  required_posting_auths: ['social'],
+  json: [:follow, {
+    follower: 'social',
+    following: 'alice',
+    what: [what]
+  }].to_json
+}
+
+response = tx.process(true)
+
+if !!response.error
+  puts response.error.message
+else
+  puts JSON.pretty_generate response
+end
+
+```
+
+check_follow.rb
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+api = Radiator::Api.new
+account_name = 'social'
+follow_name = 'alice'
+what = 'blog' # use `blog` to find follows, `ignore` to find mutes
+follows = []
+following = false
+limit = 10 # how many follows to read per api call (limit 1000)
+count = 0
+
+loop do
+  follows += api.get_following(account_name, follows.last, what, limit) do |follows|
+    follows.map(&:following)
+  end
+  
+  follows = follows.uniq
+
+  break unless count < follows.size
+  count = follows.size
+end
+
+if follows.include? follow_name
+  puts "#{account_name} is following #{follow_name}"
+else
+  puts "#{account_name} is *not* following #{follow_name}"
+end
+
+```
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):

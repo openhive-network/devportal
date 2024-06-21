@@ -750,3 +750,33 @@ a[href*='hivexplorer'] {
   background-position: right top;
   padding-left: .90em;
 }
+
+pre.highlight {
+	position: relative;
+}
+pre.highlight > button {
+	opacity: 0;
+	color: #f0f0f8;
+	background: #27313E;
+	border-radius: .75rem;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+	position: absolute;
+	right: 1.2rem;
+	top: 1.2rem;
+}
+
+pre.highlight:hover > button {
+	opacity: 1;
+}
+
+pre.highlight > button:active,
+pre.highlight > button:focus {
+	background: rgba(0, 0, 0, 0.7);
+	opacity: 1;
+}
+
+img {
+	max-width: 100%;
+}

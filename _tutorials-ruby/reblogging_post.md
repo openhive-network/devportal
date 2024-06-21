@@ -282,6 +282,47 @@ Broadcasting a `custom_json` operation will require the following fields:
     * `author` - author of the post being reblogged
     * `permlink` - permlink of the post being reblogged
 
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+url = ARGV[0]
+slug = url.split('@').last
+author = slug.split('/')[0]
+permlink = slug.split('/')[1..-1].join('/')
+reblogger = 'social'
+posting_wif = '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: posting_wif
+}
+
+tx = Radiator::Transaction.new(options)
+
+data = [
+  :reblog, {
+    account: reblogger,
+    author: author,
+    permlink: permlink
+  }
+]
+
+tx.operations << {
+  type: :custom_json,
+  id: 'follow',
+  required_auths: [],
+  required_posting_auths: [reblogger],
+  json: data.to_json
+}
+
+puts JSON.pretty_generate tx.process(true)
+
+```
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):

@@ -119,13 +119,54 @@ print('\n' + 'REMAINING ACCOUNT BALANCE:' + '\n' + str(total_hbd) + '\n' + str(t
 
 The HIVE balance will not yet have been fully updated as it takes 3.5 days for the collateral to settle.  The HBD will however show the new balance.
 
+Final code:
+
+```python
+from pick import pick
+import getpass
+from beem import Hive
+from beem.account import Account
+
+# capture user information
+account = input('Enter username: ')
+wif_active_key = getpass.getpass('Enter private ACTIVE key: ')
+
+# node_url = 'https://testnet.openhive.network' # Public Testnet
+node_url = 'http://127.0.0.1:8090' # Local Testnet
+
+# connect node and private active key
+client = Hive(node_url, keys=[wif_active_key])
+
+# get account balance for HIVE and HBD
+account = Account(account, blockchain_instance=client)
+total_hbd = account['hbd_balance']
+total_hive = account['balance']
+
+print('CURRENT ACCOUNT BALANCE:' + '\n' + str(total_hbd) + '\n' + str(total_hive) + '\n')
+
+# get recipient name
+convert_amount = float(input('Enter the amount of HIVE to convert to HBD: ') or '0')
+
+if (convert_amount <= 0):
+  print("Must be greater than zero.")
+  exit()
+
+# parameters: amount, request_id
+account.collateralized_convert(convert_amount)
+
+print('\n' + format(convert_amount, '.3f') + ' HIVE has been converted to HBD')
+
+# get remaining account balance for HBD and HIVE
+account.refresh()
+total_hbd = account['hbd_balance']
+total_hive = account['balance']
+
+print('\n' + 'REMAINING ACCOUNT BALANCE:' + '\n' + str(total_hbd) + '\n' + str(total_hive))
+
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py37converthivetohbd?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

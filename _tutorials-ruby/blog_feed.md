@@ -22,6 +22,44 @@ It also counts the words in the content body by splitting the text into an array
 
 Finally, it creates the canonical URL by combining `parent_permlink`, `author`, and `permlink`.
 
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+account_name = ARGV[0]
+api = Radiator::Api.new
+query = {tag: account_name, limit: 5}
+created = nil
+
+api.get_discussions_by_blog(query) do |posts|
+  posts.each do |post|
+    words = post.body.split(/\s/)
+    author = post.author
+    type = author == account_name ? 'Post' : 'Reblog'
+    uri = []
+
+    uri << post.parent_permlink
+    uri << "@#{author}"
+    uri << post.permlink
+
+    if created != post.created
+      puts created = Time.parse(post.created + 'Z')
+    end
+
+    puts "  #{type}: #{post.title}"
+    puts "  By: #{author}"
+    puts "  Words: #{words.size}"
+    puts "  https://hive.blog/#{uri.join('/')}"
+  end
+end
+
+```
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository):

@@ -19,6 +19,7 @@ Also see:
 * [get discussions]({{ '/search/?q=get discussions' | relative_url }})
 * [tags_api.get_content_replies]({{ '/apidefinitions/#tags_api.get_content_replies' | relative_url }})
 * [condenser_api.get_content_replies]({{ '/apidefinitions/#condenser_api.get_content_replies' | relative_url }})
+* [bridge.get_account_posts]({{ '/apidefinitions/#bridge.get_account_posts' | relative_url }})
 
 ## Steps
 
@@ -267,13 +268,62 @@ if (
 
 We check if `content` is not an empty object and we iterate through each object via its key and extract, `author`, format `created` date and time, parse `body` markdown, get `net_votes` on that reply. Pushing each list item separately and displaying it. That's it!
 
+Final code:
+
+```javascript
+const dhive = require('@hiveio/dhive');
+let opts = {};
+//connect to production server
+opts.addressPrefix = 'STM';
+opts.chainId =
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+//connect to server which is connected to the network/production
+const client = new dhive.Client('https://api.hive.blog');
+
+const Remarkable = require('remarkable');
+const md = new Remarkable({html: true, linkify: true});        
+
+
+//fetch list of replies for certain account
+async function main() {
+    const query = '/@hiveio/recent-replies';
+    client.database
+        .call('get_state', [query])
+        .then(result => {
+            if (!(Object.keys(result.content).length === 0 && result.content.constructor === Object)) {
+                var replies = [];
+                Object.keys(result.content).forEach(key => {
+                    const reply = result.content[key];
+                    const author = reply.author;
+                    const created = new Date(reply.created).toDateString();
+                    const body = md.render(reply.body);
+                    const netvotes = reply.net_votes;
+                    replies.push(
+                        `<div class="list-group-item list-group-item-action flex-column align-items-start">\
+                        <div class="d-flex w-100 justify-content-between">\
+                          <h5 class="mb-1">@${author}</h5>\
+                          <small class="text-muted">${created}</small>\
+                        </div>\
+                        <p class="mb-1">${body}</p>\
+                        <small class="text-muted">&#9650; ${netvotes}</small>\
+                      </div>`
+                    );
+                });
+                document.getElementById('replies').style.display = 'block';
+                document.getElementById('replies').innerHTML = replies.join('');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            alert('Error occured, please reload the page');
+        });
+}
+//catch error messages
+main().catch(console.error);
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js08getaccountreplies?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

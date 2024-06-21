@@ -36,6 +36,8 @@ npm run dev-server
 
 Then open http://localhost:3000/ in your web browser.
 
+You can also **copy** code from pages here and add into your project for quick tests.
+
 ### Github
 
 If you'd rather clone projects in a windowed environment rather than the terminal, consider [Github Desktop](https://desktop.github.com/).

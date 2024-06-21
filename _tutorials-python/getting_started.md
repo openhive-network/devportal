@@ -9,9 +9,12 @@ Full, runnable src of [all python tutorials](https://gitlab.syncad.com/hive/devp
 
 The library was designed to allow Python developers to easily access the network as well as build utilities and applications.
 
-Currently beem documentation is generated in the standard [pydoc format](https://beem.readthedocs.io/en/latest/).
+Currently, beem documentation is generated in the standard [pydoc format](https://beem.readthedocs.io/en/latest/).
 
 Repository: [https://github.com/holgern/beem](https://github.com/holgern/beem).
+
+**<a href="{{ '/quickstart/#quickstart-choose-library' | relative_url }}">Alternative Python libraries</a>**
+
 
 ---
 

@@ -199,6 +199,40 @@ Broadcasting a `vote` operation will require the following fields:
 * `permlink` - permlink of the post being voted for
 * `weight` - percentage of one vote being cast, expressed as an integer (e.g.: `100.0 %` = `10000`)
 
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+url, weight = ARGV
+slug = url.split('@').last
+author = slug.split('/')[0]
+permlink = slug.split('/')[1..-1].join('/')
+voter = 'social'
+posting_wif = '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
+weight = ((weight || '100.0').to_f * 100).to_i
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: posting_wif
+}
+
+tx = Radiator::Transaction.new(options)
+
+tx.operations << {
+  type: :vote,
+  voter: voter,
+  author: author,
+  permlink: permlink,
+  weight: weight
+}
+
+puts JSON.pretty_generate tx.process(true)
+
+```
+
 ### To Run
 
 First, set up your workstation using the steps provided in [Getting Started]({{ '/tutorials-ruby/getting_started.html' | relative_url }}).  Then you can create and execute the script (or clone from this repository) with the following arguments:
