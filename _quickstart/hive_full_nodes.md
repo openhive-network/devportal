@@ -1,5 +1,5 @@
 ---
-title: Hive Nodes
+title: titles.nodes
 position: 1
 exclude: true
 ---

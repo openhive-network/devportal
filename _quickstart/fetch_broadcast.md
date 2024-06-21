@@ -1,5 +1,5 @@
 ---
-title: Get and Set
+title: titles.getset
 position: 6
 exclude: true
 ---

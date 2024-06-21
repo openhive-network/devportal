@@ -1,5 +1,5 @@
 ---
-title: Command Line Options
+title: titles.node_cli
 position: 1
 description: All options available to `hived` at command line interface
 exclude: true

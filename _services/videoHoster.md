@@ -1,5 +1,5 @@
 ---
-title: VideoHoster
+title: titles.videohoster
 position: 4
 canonical_url: videoHoster.html
 ---

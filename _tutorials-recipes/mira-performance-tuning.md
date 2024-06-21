@@ -1,5 +1,5 @@
 ---
-title: 'MIRA: Performance Tuning'
+title: titles.mira_performance_tuning
 position: 1
 description: Provides a way to get the most performance on specific hardware.
 exclude: true

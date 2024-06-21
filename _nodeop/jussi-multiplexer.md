@@ -1,5 +1,5 @@
 ---
-title: Using jussi as a Multiplexer
+title: titles.jussi_multiplexer
 position: 5
 description: Optimize your local applications with jussi
 exclude: true

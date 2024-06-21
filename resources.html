@@ -1,5 +1,5 @@
 ---
-title: Resources
+title: titles.resources
 section: Resources
 layout: default
 permalink: /resources/
@@ -12,7 +12,7 @@ permalink: /resources/
 		<section id="{{doc.id | slugify}}" class="row {{ doc.id | slugify }}">
 			<h3>
 				<a id="{{ doc.id | slugify }}">
-					{{ doc.title }}
+					{% t doc.title %}
 					{% if doc.type %}
 						<span class="endpoint {{ doc.type }}"></span>
 					{% endif %}

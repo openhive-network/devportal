@@ -1,5 +1,5 @@
 ---
-title: Exchange Node
+title: titles.exchange_node
 position: 1
 description: |
   Setting up a node for exchanges.

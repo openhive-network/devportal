@@ -1,5 +1,5 @@
 ---
-title: How to serialize and sign Hive transactions using Javascript
+title: titles.how_to_serialize
 position: 1
 description: Serialization and signing without additional Hive Javascript libraries.
 exclude: true

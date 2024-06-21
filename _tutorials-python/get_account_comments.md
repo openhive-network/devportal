@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Account Comments'
+title: titles.get_account_comments
 position: 9
 description: "Fetch list of comments made by account on posts or comments."
 layout: full
@@ -104,13 +104,46 @@ The example of result returned from the service is a `JSON` object with the foll
 
 From this result you have access to everything associated to the [comments](https://beem.readthedocs.io/en/latest/beem.comment.html#beem.comment.Comment) of account including content of comment, timestamp, active_votes, etc., so that you can use in further development of your applications with Python.
 
+Final code:
+
+```python
+import pprint
+from pick import pick
+# initialize Hive class
+from beem import Hive
+from beem.discussions import Query, Discussions
+
+h = Hive()
+q = Query(limit=2, tag="")
+d = Discussions()
+
+#author list from created post list to randomize account list
+posts = d.get_discussions('created', q, limit=2)
+
+title = 'Please choose account: '
+options = []
+#accounts list
+for post in posts:
+  options.append(post["author"])
+
+# get index and selected account name
+option, index = pick(options, title)
+
+# 5 comments from selected author
+q = Query(limit=5, start_author=option) 
+
+# get comments of selected account
+comments = d.get_discussions('comments', q, limit=5)
+
+# print comment details for selected account
+for comment in comments:
+  pprint.pprint(comment)
+pprint.pprint("Selected: " + option)
+
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py09getaccountcomments?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

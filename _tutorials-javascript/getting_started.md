@@ -1,5 +1,5 @@
 ---
-title: 'JS: Getting Started'
+title: titles.getting_started
 position: 0
 description: "Prepare your development environment to use Javascript with the Hive blockchain."
 layout: full
@@ -35,6 +35,8 @@ npm run dev-server
 ```
 
 Then open http://localhost:3000/ in your web browser.
+
+You can also **copy** code from pages here and add into your project for quick tests.
 
 ### Github
 

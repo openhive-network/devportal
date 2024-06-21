@@ -1,5 +1,5 @@
 ---
-title: 'JS: Blog Feed'
+title: titles.blog_feed
 position: 1
 description: How to fetch most recent five posts from particular user on Hive.
 layout: full
@@ -162,13 +162,45 @@ The result returned form the service is a `JSON` object with the following prope
 
 From this result we have access to everything associated to the post including additional metadata which is a `JSON` string that must be decoded to use. This `JSON` object has additional information and properties for the post including a reference to the image uploaded. And we are displaying this data in meaningful user interface. _Note: it is truncated to one element, but you would get five posts in array_
 
+Final code:
+
+```javascript
+const { Client } = require("@hiveio/dhive");
+
+const client = new Client('https://api.hive.blog');
+
+function fetchBlog() {
+    const query = {
+        tag: 'hiveio',
+        limit: 5,
+    };
+    client.database
+        .getDiscussions('blog', query)
+        .then(result => {
+            var posts = [];
+            result.forEach(post => {
+                const json = JSON.parse(post.json_metadata);
+                const image = json.image ? json.image[0] : '';
+                const title = post.title;
+                const author = post.author;
+                const created = new Date(post.created).toDateString();
+                posts.push(
+                    `<div class="list-group-item"><h4 class="list-group-item-heading">${title}</h4><p>by ${author}</p><center><img src="${image}" class="img-responsive center-block" style="max-width: 450px"/></center><p class="list-group-item-text text-right text-nowrap">${created}</p></div>`
+                );
+            });
+
+            document.getElementById('postList').innerHTML = posts.join('');
+        })
+        .catch(err => {
+            alert('Error occured' + err);
+        });
+}
+
+fetchBlog();
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js01blogfeed?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

@@ -1,5 +1,5 @@
 ---
-title: Node Operation
+title: titles.node_operation
 section: Node Operation
 exclude: true
 exclude_in_index: true
@@ -14,7 +14,7 @@ canonical_url: .
       {% for doc in sorted_docs %}
         {% unless doc.exclude_in_index %}
           <li>
-            <a href="{{ doc.id | relative_url }}.html">{{ doc.title }}</a>
+            <a href="{{ doc.id | relative_url }}.html">{% t doc.title %}</a>
             <span class="overview">{{ doc.description | markdownify }}</span>
           </li>
         {% endunless %}

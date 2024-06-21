@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Post Comments'
+title: titles.get_post_comments
 position: 7
 description: "This example will output the reply details and totals for the post/comment passed as an argument to the script."
 layout: full
@@ -68,6 +68,28 @@ Replies by:
 	mudcat36
 	dkkarolien
 Total replies: 522
+```
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+url = ARGV[0]
+slug = url.split('@').last
+author, permlink = slug.split('/')
+api = Radiator::Api.new
+
+api.get_content_replies(author, permlink) do |replies|
+  reply_authors = replies.map{|reply| reply.author}
+  reply_authors = reply_authors.uniq.join("\n\t")
+  puts "Replies by:\n\t#{reply_authors}"
+  puts "Total replies: #{replies.size}"
+end
+
 ```
 
 ---

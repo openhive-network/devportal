@@ -1,5 +1,5 @@
 ---
-title: Calculating RC costs
+title: titles.calculate_rc_recipe
 position: 1
 description: How to calculate resource credit cost for transactions.
 exclude: true

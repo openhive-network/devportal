@@ -1,5 +1,5 @@
 ---
-title: Understanding Configuration Values
+title: titles.understanding_configuration_values
 position: 1
 description: Low level blockchain constants
 exclude: true

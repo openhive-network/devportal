@@ -1,5 +1,5 @@
 ---
-title: Forum/Market Bandwidth
+title: titles.forum_market_bandwidth
 position: 1
 description: How to interpret raw bandwidth data.
 exclude: true

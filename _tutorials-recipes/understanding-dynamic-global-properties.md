@@ -1,5 +1,5 @@
 ---
-title: Understanding Dynamic Global Properties
+title: titles.understanding_dynamic_props
 position: 1
 description: Maintains global state information
 exclude: true

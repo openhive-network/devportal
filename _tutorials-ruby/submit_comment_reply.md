@@ -1,5 +1,5 @@
 ---
-title: 'RB: Submit Comment Reply'
+title: titles.submit_comment_reply
 position: 11
 description: "How to prepare comments for Hive and then submit using Radiator."
 layout: full
@@ -29,6 +29,46 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 * `title` - Typically empty.
 * `body` - The actual content of the post.
 * `json_metadata` - JSON containing the `parent_permlink` of the root post as a tags array.
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
+}
+tx = Radiator::Transaction.new(options)
+
+tags = %w(tag1)
+metadata = {
+  tags: tags
+}
+
+tx.operations << {
+  type: :comment,
+  author: 'social',
+  permlink: 'test-post-reply',
+  parent_author: 'social',
+  parent_permlink: 'test-post',
+  title: '',
+  body: 'Reply',
+  json_metadata: metadata.to_json
+}
+
+response = tx.process(true)
+
+if !!response.error
+  puts response.error.message
+else
+  puts JSON.pretty_generate response
+end
+
+```
 
 ### To Run
 

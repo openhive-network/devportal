@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Posts'
+title: titles.get_posts
 position: 4
 description: "Tutorial pulls a list of the posts from the blockchain with selected filter and tag then displays output."
 layout: full
@@ -95,13 +95,46 @@ The example of result returned from the service as objects:
 
 From this result you have access to everything associated to the posts including additional metadata which is a `JSON` string (that must be decoded to use), `active_votes` info, post title, body, etc. details that can be used in further development of application with Python.
 
+Final code:
+
+```python
+import pprint
+from pick import pick
+# initialize Hive class
+from beem import Hive
+from beem.discussions import Query, Discussions
+
+h = Hive()
+
+title = 'Please choose filter: '
+#filters list
+options = ['trending', 'hot', 'active', 'created', 'promoted']
+# get index and selected filter name
+option, index = pick(options, title)
+
+q = Query(limit=2, tag="")
+d = Discussions()
+count = 0
+
+#post list for selected query
+posts = {
+  0: d.get_discussions('trending', q, limit=2),
+  1: d.get_discussions('hot', q, limit=2),
+  2: d.get_discussions('active', q, limit=2),
+  3: d.get_discussions('created', q, limit=2),
+  4: d.get_discussions('promoted', q, limit=2)
+}
+
+# print post list for selected filter
+for p in posts[index]:
+  print(("%d. " % (count + 1)) + str(p))
+  count += 1
+
+pprint.pprint("Selected: " + option)
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py04getposts?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

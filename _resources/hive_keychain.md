@@ -1,5 +1,5 @@
 ---
-title: Hive Keychain
+title: titles.hive_keychain
 position: 5
 canonical_url: hive_keychain.html
 ---

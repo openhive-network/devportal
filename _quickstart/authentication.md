@@ -1,5 +1,5 @@
 ---
-title: Authentication
+title: titles.authentication
 position: 4
 exclude: true
 ---

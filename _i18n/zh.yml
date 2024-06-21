@@ -1,0 +1,19 @@
+global:
+  english: English
+  hindi: हिन्दी
+  russian: Русский
+  german: Deutsch
+  french: Français
+  chinese: 汉语
+titles:
+  index: API Docs
+  api-def: API Definitions
+  layer2: Layer 2
+  resources: Resources
+  services: Services
+  search: Search
+  quickstart: Quickstart
+  welcome: Intro to Hive
+  web2web3: Web2 vs Web3
+  workflow: Developer workflow
+

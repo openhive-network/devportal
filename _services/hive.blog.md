@@ -1,5 +1,5 @@
 ---
-title: Condenser
+title: titles.condenser
 position: 1
 canonical_url: hive.blog.html
 ---

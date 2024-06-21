@@ -1,21 +1,21 @@
 <div id="sidebar" class="sidebar">
-  
+
   {% assign sorted_nav = site.data.nav.toc | sort: "position" %}
   {% for nav in sorted_nav %}
     {% assign col = site.collections | where:"id", nav.collection | first %}
     <section class="pnl-main-nav-section main-nav-section" url="{{ nav.url | relative_url }}">
       {% if nav.top_level_section %}
-        <a href="{{ nav.url | relative_url }}"><h6 class="ctrl-nav-section title">{{ nav.title }}</h6></a>
+        <a href="{{ nav.url | relative_url }}"><h6 class="ctrl-nav-section title">{% t nav.title %}</h6></a>
       {% else %}
-        <h6 class="ctrl-nav-section title">{{ nav.title }}</h6>
+        <h6 class="ctrl-nav-section title">{% t nav.title %}</h6>
       {% endif %}
       <ul class="cont-nav-section content">
         {% if nav.docs %}
           {% for doc in nav.docs | sort: "position" %}
             {% if doc.collection %}
-              <li><a href="{{ nav.url | relative_url }}#{{ doc.collection | slugify }}">{{ doc.title }}</a></li>
+              <li><a href="{{ nav.url | relative_url }}#{{ doc.collection | slugify }}">{% t doc.title %}</a></li>
             {% elsif doc.url %}
-              <li><a href="{{ nav.url | relative_url }}{{ doc.url }}">{{ doc.title }}</a></li>
+              <li><a href="{{ nav.url | relative_url }}{{ doc.url }}">{% t doc.title %}</a></li>
             {% endif %}
           {% endfor %}
         {% else %}
@@ -26,7 +26,7 @@
                 {% if nav.collection == 'nodeop' %}
                   <!-- <li><a href="{{ doc.url | relative_url }}.html">{{ doc.title }}</a></li> -->
                 {% else %}
-                  <li><a href="{{ nav.url | relative_url }}#{{ doc.id | slugify }}">{{ doc.title }}</a></li>
+                  <li><a href="{{ nav.url | relative_url }}#{{ doc.id | slugify }}">{% t doc.title %}</a></li>
                 {% endif %}
               {% endunless %}
             {% endfor %}
@@ -35,4 +35,17 @@
       </ul>
     </section>
   {% endfor %}
+  <div class="lang-switch">
+    {% for lang in site.languages %}
+    {% if lang == site.active_lang %}
+      <a href=""><img class="active" src="/images/i18n/{{lang}}.svg"/></a>
+    {% else %}
+    {% if lang == site.default_lang %}
+      <a href=" {{ page.url }}"><img class="active" src="/images/i18n/{{lang}}.svg"/></a>
+    {% else %}
+      <a href="/{{ lang }}{{ page.url }}"><img src="/images/i18n/{{lang}}.svg"/></a>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+  </div>
 </div>

@@ -2,6 +2,7 @@
 position: 3
 group: communities
 exclude: true
+title: titles.bridge
 canonical_url: .#apidefinitions-bridge
 ---
 

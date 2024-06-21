@@ -1,5 +1,5 @@
 ---
-title: Developer workflow
+title: titles.workflow
 position: 3
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Voters List On Post'
+title: titles.get_voters_list
 position: 6
 description: "Voters list and detail of each vote on selected content."
 layout: full
@@ -101,13 +101,43 @@ The example of result returned from the service is a table with the following ou
 
 From this result you have access to everything associated to the voter including reputation of voter, timestamp, voter's account name, percent and weight of vote, rshares reward shares values that you can be use in further development of applications with Python.
 
+Final code:
+
+```python
+import pprint
+from pick import pick
+# initialize Hive class
+from beem import Hive
+from beem.discussions import Query, Discussions
+from beem.vote import ActiveVotes
+
+h = Hive()
+q = {"limit": 5, "tag": "", "before_date": None}
+d = Discussions()
+
+#post list for selected query
+posts = d.get_discussions('hot', q, limit=5)
+
+title = 'Please choose post: '
+options = []
+
+#posts list
+for post in posts:
+	options.append(post["author"] + '/' + post["permlink"])
+
+# get index and selected filter name
+option, index = pick(options, title)
+
+voters = ActiveVotes(option)
+
+# print voters list for selected post
+voters.printAsTable()
+pprint.pprint("Selected: " + option)
+
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py06getvoterslistonpost?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

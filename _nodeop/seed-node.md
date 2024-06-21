@@ -1,5 +1,5 @@
 ---
-title: Seed Node
+title: titles.seed_node
 position: 7
 description: |
   Setting up a seed node.

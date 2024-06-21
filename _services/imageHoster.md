@@ -1,5 +1,5 @@
 ---
-title: ImageHoster
+title: titles.imagehoster
 position: 3
 canonical_url: imageHoster.html
 ---

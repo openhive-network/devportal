@@ -1,6 +1,7 @@
 ---
 position: 99
 exclude: true
+title: titles.broadcast_ops
 canonical_url: .#apidefinitions-broadcast-ops
 ---
 

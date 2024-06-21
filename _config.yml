@@ -8,6 +8,10 @@ url: https://developers.hive.io
 #google_analytics_key: UA-76480270-4
 permalink: /:categories/:title.html
 
+languages: ["en", "hi", "de", "fr", "ru", "zh"]
+exclude_from_localizations: ["unused","tutorials","support","lib","js","images","css","_sass","_plugins","_layouts","_includes","_data"]
+
+
 collections:
   introduction:
     title: Introduction
@@ -98,6 +102,7 @@ collections:
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-multiple-languages-plugin
 
 exclude:
   - readme.md

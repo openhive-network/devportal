@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Posts'
+title: titles.get_posts
 position: 4
 description: Query for the most recent posts having a specific tag, using a Hive filter
 layout: full
@@ -24,6 +24,7 @@ application.
 
 Also see:
 * [get discussions]({{ '/search/?q=get discussions' | relative_url }})
+* [get ranked posts]({{ '/search/?q=get ranked posts' | relative_url }})
 
 ## Steps
 
@@ -207,13 +208,70 @@ The result returned from the service is a `JSON` list. This is an example list w
 
 **And that's all there is to getting top-level posts.** _See [Get post comments](get_post_comments.html) for getting comments_
 
+Final code:
+
+```javascript
+const dhive = require('@hiveio/dhive');
+
+let opts = {};
+
+//connect to production server
+opts.addressPrefix = 'STM';
+opts.chainId =
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+
+//connect to server which is connected to the network/production
+const client = new dhive.Client('https://api.hive.blog');
+
+//filter change selection function
+window.getPosts = async () => {
+    const filter = document.getElementById('filters').value;
+    const query = {
+        tag: document.getElementById('tag').value,
+        limit: 5,
+    };
+
+    console.log('Post assembled.\nFilter:', filter, '\nQuery:', query);
+
+  client.call('bridge', 'get_ranked_posts', [
+    username,
+    startFollow,
+    'blog',
+    limit,
+  ])
+    
+    client.database
+        .getDiscussions(filter, query)
+        .then(result => {
+            console.log('Response received:', result);
+            if (result) {
+                var posts = [];
+                result.forEach(post => {
+                    const json = JSON.parse(post.json_metadata);
+                    const image = json.image ? json.image[0] : '';
+                    const title = post.title;
+                    const author = post.author;
+                    const created = new Date(post.created).toDateString();
+                    posts.push(
+                        `<div class="list-group-item"><h4 class="list-group-item-heading">${title}</h4><p>by ${author}</p><center><img src="${image}" class="img-responsive center-block" style="max-width: 450px"/></center><p class="list-group-item-text text-right text-nowrap">${created}</p></div>`
+                    );
+                });
+
+                document.getElementById('postList').innerHTML = posts.join('');
+            } else {
+                document.getElementById('postList').innerHTML = 'No result.';
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            alert(`Error:${err}, try again`);
+        });
+};
+
+```
+
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js04getposts?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

@@ -1,5 +1,5 @@
 ---
-title: Hivesigner Libs
+title: titles.hivesigner_libs
 position: 4
 canonical_url: hivesigner_libs.html
 ---

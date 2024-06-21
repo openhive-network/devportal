@@ -1,5 +1,5 @@
 ---
-title: Hivesigner
+title: titles.hivesigner
 position: 5
 canonical_url: hivesigner.html
 ---

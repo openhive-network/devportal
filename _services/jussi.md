@@ -1,5 +1,5 @@
 ---
-title: Jussi
+title: titles.jussi
 position: 6
 description: A reverse proxy that forwards json-rpc requests.
 canonical_url: jussi.html

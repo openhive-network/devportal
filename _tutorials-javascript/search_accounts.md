@@ -1,5 +1,5 @@
 ---
-title: 'JS: Search Accounts'
+title: titles.search_accounts
 position: 15
 description: "_How to call a list of user names from the hive blockchain_"
 layout: full
@@ -72,13 +72,35 @@ document.getElementById('accList').innerHTML = _accounts.join('<br>');
 }
 ```
 
+Final code:
+
+```javascript
+const dhive = require('@hiveio/dhive');
+let opts = {};
+//connect to production server
+opts.addressPrefix = 'STM';
+opts.chainId =
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+//connect to server which is connected to the network/production
+const client = new dhive.Client('https://api.hive.blog');
+
+
+
+//submitAcc function from html input
+const max = 10;
+window.submitAcc = async () => {
+    const accSearch = document.getElementById("username").value;
+    
+    const _accounts = await client.database.call('lookup_accounts',[accSearch, max]);
+    console.log(`_accounts:`, _accounts);
+
+//disply list of account names with line breaks
+    document.getElementById('accList').innerHTML = _accounts.join('<br>');
+}
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js15searchaccounts?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ## To run this tutorial
 

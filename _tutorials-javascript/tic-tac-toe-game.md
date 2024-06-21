@@ -1,5 +1,5 @@
 ---
-title: 'JS: Making a Decentralized Game on Hive'
+title: titles.tic_tac_toe
 position: 0.1
 description: "_We will develop a decentralized game by the end of this series._"
 layout: full

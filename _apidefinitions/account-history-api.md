@@ -1,6 +1,7 @@
 ---
 position: 2
 exclude: true
+title: titles.account_history_api
 canonical_url: .#apidefinitions-account-history-api
 ---
 

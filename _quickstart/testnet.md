@@ -1,5 +1,5 @@
 ---
-title: Hive Testnet
+title: titles.testnet
 position: 2
 exclude: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: Quickstart
+title: titles.quickstart
 section: Quickstart
 layout: default
 permalink: /quickstart/
@@ -12,7 +12,7 @@ permalink: /quickstart/
 		<section id="{{doc.id | slugify}}" class="row {{ doc.id | slugify }}">
 			<h3>
 				<a id="{{ doc.id | slugify }}">
-					{{ doc.title }}
+					{% t doc.title %}
 					{% if doc.type %}
 						<span class="endpoint {{ doc.type }}"></span>
 					{% endif %}

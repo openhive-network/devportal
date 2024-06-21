@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: titles.tutorials
 section: Tutorials
 exclude: true
 canonical_url: .
@@ -14,13 +14,13 @@ canonical_url: .
         {% assign collection = site.collections | where: "id", nav_doc.collection | first %}
         {% if collection %}
           <a id="{{ nav_doc.collection | slugify }}"></a>
-          <h3>{{ nav_doc.title }}</h3>
+          <h3>{% t nav_doc.title %}</h3>
           <ul>
             {% assign sorted_collection_docs = collection.docs | sort: "position" %}
             {% for doc in sorted_collection_docs %}
               {% unless doc.exclude_in_index %}
               <li>
-                <a href="{{ doc.id | relative_url }}.html">{{ doc.title }}</a>
+                <a href="{{ doc.id | relative_url }}.html">{% t doc.title %}</a>
                 <span class="overview">{{ doc.description | markdownify }}</span>
               </li>
               {% endunless %}

@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Post Comments'
+title: titles.get_post_comments
 position: 7
 description: "Fetch comments made on each content or post using Python."
 layout: full
@@ -110,13 +110,47 @@ The example of results returned from the service:
 
 From this result you have access to everything associated to the replies including content of reply, author, timestamp, etc., so that you can be use in further development of applications with Python.
 
+Final code:
+
+```python
+import pprint
+from pick import pick
+# initialize Hive class
+from beem import Hive
+from beem.discussions import Query, Discussions
+from beem.comment import Comment
+
+h = Hive()
+q = Query(limit=2, tag="")
+d = Discussions()
+
+#post list for selected query
+posts = d.get_discussions('hot', q, limit=2)
+
+title = 'Please choose post: '
+options = []
+
+#posts list
+for post in posts:
+	options.append(post["author"]+'/'+post["permlink"])
+
+# get index and selected filter name
+option, index = pick(options, title)
+
+details = Comment(option)
+
+# get replies for given post
+replies = details.get_all_replies()
+
+# print post details for selected post
+pprint.pprint(replies)
+pprint.pprint("Selected: " + option)
+pprint.pprint("Number of replies: " + str(len(replies)))
+
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py07getpostcomments?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

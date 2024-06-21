@@ -1,5 +1,5 @@
 ---
-title: Community & Help
+title: titles.community_help
 position: 7
 canonical_url: developeradvocate.html
 ---
