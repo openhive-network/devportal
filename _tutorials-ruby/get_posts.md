@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Posts'
+title: titles.get_posts
 position: 4
 description: "This example will output posts depending on which category is provided as the arguments."
 layout: full

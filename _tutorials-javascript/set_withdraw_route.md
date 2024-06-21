@@ -1,5 +1,5 @@
 ---
-title: 'JS: Set Withdraw Route'
+title: titles.set_withdraw_route
 position: 28
 description: "_Set routes to an account's power downs or withdraws._"
 layout: full

@@ -1,5 +1,5 @@
 ---
-title: 'RB: Getting Started'
+title: titles.getting_started
 position: 0
 description: "To access the Hive blockchain using Ruby, install the Radiator gem: [https://github.com/inertia186/radiator](https://github.com/inertia186/radiator).  Full documentation on Radiator api methods are hosted on [rubydoc.info](https://www.rubydoc.info/gems/radiator)."
 layout: full

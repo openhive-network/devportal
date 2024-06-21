@@ -1,5 +1,5 @@
 ---
-title: 'RB: Reblogging Post'
+title: titles.reblogging_post
 position: 14
 description: "To reblog a post, we can use a `custom_json` operation that is handled by the follow plugin."
 layout: full

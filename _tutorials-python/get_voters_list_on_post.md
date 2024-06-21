@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Voters List On Post'
+title: titles.get_voters_list
 position: 6
 description: "Voters list and detail of each vote on selected content."
 layout: full

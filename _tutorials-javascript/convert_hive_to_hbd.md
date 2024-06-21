@@ -1,5 +1,5 @@
 ---
-title: 'JS: Convert HIVE To HBD'
+title: titles.convert_hive_to_hbd
 position: 37
 description: "_How to convert HIVE to HBD for a specified account._"
 layout: full

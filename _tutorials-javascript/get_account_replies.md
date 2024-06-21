@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Account Replies'
+title: titles.get_account_replies
 position: 8
 description: How to get replies made on particular account's content.
 layout: full

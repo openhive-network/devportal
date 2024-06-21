@@ -1,5 +1,5 @@
 ---
-title: Paginated API Methods
+title: titles.paginated_api_methods
 position: 1
 description: Querying multiple pages of results from the API.
 exclude: true

@@ -5,7 +5,7 @@ layout: default
 	<section class="left-docs">
 		<h3>
 			<a id="{{ page.id | slugify }}">
-				{{ page.title }}
+				{% t page.title %}
 				{% if page.type %}
 					<span class="endpoint {{ page.type }}"></span>
 				{% endif %}
@@ -17,7 +17,7 @@ layout: default
 
 		{{ page.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
 	</section>
-  
+
   {% if page.main_script or page.right_code %}
     <section class="right-code">
       {% if page.main_script %}
@@ -29,7 +29,7 @@ layout: default
 ```{% endcapture %}
         {{ main_script | markdownify }}
       {% endif %}
-      
+
       {% if page.right_code %}
         {{ page.right_code | markdownify }}
       {% endif %}

@@ -1,5 +1,5 @@
 ---
-title: 'JS: Vote On Content'
+title: titles.vote_on_content
 position: 17
 description: "_Create a weighted up or down vote on a comment/post._"
 layout: full

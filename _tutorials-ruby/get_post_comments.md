@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Post Comments'
+title: titles.get_post_comments
 position: 7
 description: "This example will output the reply details and totals for the post/comment passed as an argument to the script."
 layout: full

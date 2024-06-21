@@ -1,5 +1,5 @@
 ---
-title: 'PY: Account Recovery'
+title: titles.account_recovery
 position: 35
 description: "How to recover an account using Python."
 layout: full

@@ -1,5 +1,5 @@
 ---
-title: 'PY: Reblogging Post'
+title: titles.reblogging_post
 position: 14
 description: "We will show how to reblog or reblog post using Python, with username and posting private key."
 layout: full

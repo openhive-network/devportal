@@ -1,5 +1,5 @@
 ---
-title: 'RB: Vote On Content'
+title: titles.vote_on_content
 position: 17
 description: "To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast)."
 layout: full

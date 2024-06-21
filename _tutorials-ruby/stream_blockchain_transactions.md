@@ -1,5 +1,5 @@
 ---
-title: 'RB: Stream Blockchain Transactions'
+title: titles.stream_blockchain_transactions
 position: 13
 description: "*How to stream transactions and operations from Hive blockchain.*"
 layout: full

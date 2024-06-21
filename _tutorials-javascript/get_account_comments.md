@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Account Comments'
+title: titles.get_account_comments
 position: 9
 description: How to retrieve account comments from the Hive blockchain.
 layout: full

@@ -1,5 +1,5 @@
 ---
-title: Hive Engine
+title: titles.hive_engine
 position: 1
 type:
 description:

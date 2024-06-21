@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Account Replies'
+title: titles.get_account_replies
 position: 8
 description: "List of replies received by account to its content, post, comment."
 layout: full

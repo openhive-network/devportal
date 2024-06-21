@@ -1,5 +1,5 @@
 ---
-title: 'JS: Follow A User'
+title: titles.follow_user
 position: 18
 description: "_Follow and unfollow a user / author._"
 layout: full

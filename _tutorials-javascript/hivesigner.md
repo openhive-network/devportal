@@ -1,5 +1,5 @@
 ---
-title: 'JS: Hivesigner'
+title: titles.hivesigner
 position: 2
 description: Understand the basics of using Hivesigner with your Hive application.
 layout: full

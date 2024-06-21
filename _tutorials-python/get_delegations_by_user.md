@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Delegations By User'
+title: titles.get_delegations_by_user
 position: 29
 description: "How to get a list of active or expiring vesting delegations using Python."
 layout: full

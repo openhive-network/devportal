@@ -1,5 +1,5 @@
 ---
-title: 'PHP: Search Accounts'
+title: titles.search_accounts
 position: 3
 description: "How to call a list of user names from the Hive blockchain"
 layout: full

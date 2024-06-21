@@ -1,5 +1,5 @@
 ---
-title: Account creation process
+title: titles.account_creation_process
 position: 1
 description: The methods on how to create a new account.
 exclude: true

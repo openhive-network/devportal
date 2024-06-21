@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Post Details'
+title: titles.get_post_details
 position: 5
 description: "Understand and use the most common fields of the requested content."
 layout: full

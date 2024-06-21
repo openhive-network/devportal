@@ -1,5 +1,5 @@
 ---
-title: Tools
+title: titles.tools
 position: 6
 canonical_url: tools.html
 ---

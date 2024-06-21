@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Voters List On Post'
+title: titles.get_voters_list
 position: 6
 description: "This example will output the active vote totals for the post/comment passed as an argument to the script."
 layout: full

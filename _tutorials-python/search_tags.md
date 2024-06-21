@@ -1,5 +1,5 @@
 ---
-title: 'PY: Search Tags'
+title: titles.search_tags
 position: 16
 description: "How to pull a list of the trending tags from the blockchain using Python."
 layout: full

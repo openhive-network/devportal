@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Follower And Following List'
+title: titles.get_follower_and_following
 position: 19
 description: "Tutorial pulls a list of the followers or authors being followed from the blockchain then displays the result."
 layout: full

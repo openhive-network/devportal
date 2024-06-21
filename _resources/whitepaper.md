@@ -1,5 +1,5 @@
 ---
-title: Whitepaper
+title: titles.whitepaper
 position: 2
 canonical_url: whitepaper.html
 ---

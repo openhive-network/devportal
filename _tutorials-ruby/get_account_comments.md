@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Account Comments'
+title: titles.get_account_comments
 position: 9
 description: "Fetching the comments written by a particular account."
 layout: full

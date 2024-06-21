@@ -1,5 +1,5 @@
 ---
-title: 'JS: Stream Blockchain Transactions'
+title: titles.stream_blockchain_transactions
 position: 13
 description: "_How to stream transactions and blocks from Hive blockchain._"
 layout: full

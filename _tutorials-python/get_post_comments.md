@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Post Comments'
+title: titles.get_post_comments
 position: 7
 description: "Fetch comments made on each content or post using Python."
 layout: full

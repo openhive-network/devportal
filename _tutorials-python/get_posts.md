@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Posts'
+title: titles.get_posts
 position: 4
 description: "Tutorial pulls a list of the posts from the blockchain with selected filter and tag then displays output."
 layout: full

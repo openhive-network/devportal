@@ -1,5 +1,5 @@
 ---
-title: 'JS: Power Down'
+title: titles.power_down
 position: 25
 description: "_Perform a power down on all or part of an account's VESTS using either Hive Signer or client-side signing._"
 layout: full

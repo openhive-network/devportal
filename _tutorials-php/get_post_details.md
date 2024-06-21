@@ -1,5 +1,5 @@
 ---
-title: 'PHP: Get Post Details'
+title: titles.get_post_details
 position: 2
 description: "This tutorial fetches the contents of a single post and explains all data related to that post."
 layout: full

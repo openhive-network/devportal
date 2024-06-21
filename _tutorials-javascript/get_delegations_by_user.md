@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Delegations By User'
+title: titles.get_delegations_by_user
 position: 29
 description: "_View the vesting delegations made by a user as well as the delegations that are expiring._"
 layout: full

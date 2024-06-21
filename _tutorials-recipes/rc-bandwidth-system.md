@@ -1,5 +1,5 @@
 ---
-title: RC Bandwidth System
+title: titles.rc_bandwidth_system
 position: 1
 description: All about the RC bandwidth system, the complete rewrite of the bandwidth system.
 exclude: true

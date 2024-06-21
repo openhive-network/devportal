@@ -1,5 +1,5 @@
 ---
-title: SDK Libraries
+title: titles.sdk
 position: 5
 exclude: true
 ---

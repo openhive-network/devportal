@@ -1,5 +1,5 @@
 ---
-title: 'PY: Search Accounts'
+title: titles.search_accounts
 position: 15
 description: "How to pull a list of the active user accounts or trending tags from the blockchain using Python."
 layout: full

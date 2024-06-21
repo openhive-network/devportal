@@ -1,5 +1,5 @@
 ---
-title: 'PY: Transfer HIVE And HBD To Savings Balance'
+title: titles.transfer_hive_and_hbd_savings
 position: 33
 description: "How to transfer HIVE and HBD to savings using Python."
 layout: full

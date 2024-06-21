@@ -1,5 +1,5 @@
 ---
-title: 'PY: Convert HBD To HIVE'
+title: titles.convert_hbd_to_hive
 position: 32
 description: "How to convert your HBD to HIVE using Python."
 layout: full

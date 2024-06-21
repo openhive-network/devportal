@@ -1,5 +1,5 @@
 ---
-title: HoneyComb
+title: titles.honeycomb
 position: 2
 type:
 description:

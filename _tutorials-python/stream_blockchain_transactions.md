@@ -1,5 +1,5 @@
 ---
-title: 'PY: Stream Blockchain Transactions'
+title: titles.stream_blockchain_transactions
 position: 13
 description: "How to stream transactions on the live **Hive** blockchain"
 layout: full

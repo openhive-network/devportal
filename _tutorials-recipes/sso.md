@@ -1,5 +1,5 @@
 ---
-title: 'Single Sign-on'
+title: titles.sso
 position: 1
 description: "_Login without authority._"
 exclude: true

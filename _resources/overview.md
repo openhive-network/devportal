@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: titles.overview
 position: 1
 canonical_url: overview.html
 ---

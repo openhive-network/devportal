@@ -1,5 +1,5 @@
 ---
-title: 'JS: Claim Rewards'
+title: titles.claim_rewards
 position: 23
 description: "_Learn how to claim rewards from unclaimed reward balance using Hive Signer as well as client signing method._"
 layout: full

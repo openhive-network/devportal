@@ -1,5 +1,5 @@
 ---
-title: 'PY: Password Key Change'
+title: titles.password_key_change
 position: 34
 description: "How to change your accounts password and keys"
 layout: full

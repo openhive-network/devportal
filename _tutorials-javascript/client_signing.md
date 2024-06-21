@@ -1,5 +1,5 @@
 ---
-title: 'JS: Client Signing'
+title: titles.client_signing
 position: 3
 description: How to sign, verify broadcast transactions locally on Hive.
 layout: full

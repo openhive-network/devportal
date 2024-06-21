@@ -1,5 +1,5 @@
 ---
-title: Setting Up a Testnet
+title: titles.setting_up_testnet
 position: 9
 description: |
   "Quick-start" for deploying a Hive-based Testnet.

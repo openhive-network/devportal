@@ -1,5 +1,5 @@
 ---
-title: 'PY: Transfer HIVE And HBD'
+title: titles.transfer_hive_and_hbd
 position: 21
 description: "How to transfer HIVE and HBD to another account using Python."
 layout: full

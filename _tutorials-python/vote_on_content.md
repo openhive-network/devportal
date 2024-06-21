@@ -1,5 +1,5 @@
 ---
-title: 'PY: Vote On Content'
+title: titles.vote_on_content
 position: 17
 description: "How to vote on a post/comment using Python."
 layout: full

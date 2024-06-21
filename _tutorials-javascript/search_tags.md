@@ -1,5 +1,5 @@
 ---
-title: 'JS: Search Tags'
+title: titles.search_tags
 position: 16
 description: "_How to run a search for trending tags_"
 layout: full

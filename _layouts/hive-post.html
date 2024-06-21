@@ -4,7 +4,7 @@ layout: default
 <section id="{{page.id | slugify}}" class="row {{ page.id | slugify }}">
   <h3>
     <a id="{{ page.id | slugify }}">
-      {{ page.title }}
+      {% t page.title %}
       {% if page.type %}
         <span class="endpoint {{ page.type }}"></span>
       {% endif %}

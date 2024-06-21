@@ -1,5 +1,5 @@
 ---
-title: Web2 vs Web3
+title: titles.web2web3
 position: 2
 ---
 

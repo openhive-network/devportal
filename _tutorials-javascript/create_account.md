@@ -1,5 +1,5 @@
 ---
-title: 'JS: Create Account'
+title: titles.create_account
 position: 26
 description: "_Create Hive account using Hive Signer as well as with client-side signing._"
 layout: full

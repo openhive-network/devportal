@@ -1,5 +1,5 @@
 ---
-title: Chain Basics
+title: titles.chain_basics
 position: 1
 description: Dictionary of Chain Basic Terms
 canonical_url: chain_basics.html

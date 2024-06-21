@@ -1,5 +1,5 @@
 ---
-title: 'JS: Account Reputation'
+title: titles.account_reputation
 position: 20
 description: "_Learn how to interpret account reputation._"
 layout: full

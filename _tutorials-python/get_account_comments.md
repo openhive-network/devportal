@@ -1,5 +1,5 @@
 ---
-title: 'PY: Get Account Comments'
+title: titles.get_account_comments
 position: 9
 description: "Fetch list of comments made by account on posts or comments."
 layout: full

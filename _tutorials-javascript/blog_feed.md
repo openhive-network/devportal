@@ -1,5 +1,5 @@
 ---
-title: 'JS: Blog Feed'
+title: titles.blog_feed
 position: 1
 description: How to fetch most recent five posts from particular user on Hive.
 layout: full

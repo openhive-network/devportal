@@ -1,5 +1,5 @@
 ---
-title: Using Multisignature Accounts
+title: titles.using_multisignature_accounts
 position: 1
 description: How to set up and use multisignature accounts on Hive Blockchain.
 exclude: true

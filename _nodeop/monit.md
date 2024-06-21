@@ -1,5 +1,5 @@
 ---
-title: Managing a Node Using Monit
+title: titles.monit
 position: 6
 description: |
   Use monit as a utility for managing and monitoring hived.

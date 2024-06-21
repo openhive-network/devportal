@@ -1,5 +1,5 @@
 ---
-title: API Docs
+title: titles.home
 ---
 {% assign sorted_nav = site.data.nav.toc | sort: "position" %}
 {% for nav in sorted_nav %}
@@ -8,12 +8,12 @@ title: API Docs
 		{% if col %}
 			{% assign sorted_docs = col.docs | sort: "position" %}
 			{% for doc in sorted_docs %}
-				{% unless doc.exclude %}    
+				{% unless doc.exclude %}
 					<section id="section-{{doc.id | slugify}}" class="row {{ doc.id | slugify }}">
 						<section class="row">
 							<h3>
 								<a id="{{ doc.id | slugify }}">
-									{{ doc.title }}
+									{% t doc.title %}
 									{% if doc.type %}
 										<span class="endpoint {{ doc.type }}"></span>
 									{% endif %}
@@ -26,9 +26,9 @@ title: API Docs
 							{{ doc.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
 						</section>
 					</section>
-				{% endunless %}	
+				{% endunless %}
 			{% endfor %}
 		{% endif %}
-	{% endunless %}	
-	
+	{% endunless %}
+
 {% endfor %}

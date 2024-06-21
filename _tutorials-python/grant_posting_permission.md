@@ -1,5 +1,5 @@
 ---
-title: 'PY: Grant Posting Permission'
+title: titles.grant_posting_permission
 position: 30
 description: "How to give another user posting permission on your account using Python."
 layout: full

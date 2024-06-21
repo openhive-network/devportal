@@ -1,5 +1,5 @@
 ---
-title: 'RB: Follow Another User'
+title: titles.follow_user
 position: 18
 description: "*How to follow/unfollow another user.*"
 layout: full

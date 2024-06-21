@@ -1,5 +1,5 @@
 ---
-title: 'RB: Search Accounts'
+title: titles.search_accounts
 position: 15
 description: "Performing a search on account by names starting with a given input."
 layout: full

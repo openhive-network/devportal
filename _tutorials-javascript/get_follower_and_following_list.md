@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Follower And Following List'
+title: titles.get_follower_and_following
 position: 19
 description: "_Get the followers of a user/author & the authors that user is following._"
 layout: full

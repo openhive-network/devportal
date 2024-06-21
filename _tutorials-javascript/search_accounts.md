@@ -1,5 +1,5 @@
 ---
-title: 'JS: Search Accounts'
+title: titles.search_accounts
 position: 15
 description: "_How to call a list of user names from the hive blockchain_"
 layout: full

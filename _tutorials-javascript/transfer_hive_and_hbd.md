@@ -1,5 +1,5 @@
 ---
-title: 'JS: Transfer Hive And Hbd'
+title: titles.transfer_hive_and_hbd
 position: 21
 description: "_Transfer both HIVE and HBD from one account to another._"
 layout: full

@@ -1,5 +1,5 @@
 ---
-title: 'PY: Follow A User'
+title: titles.follow_user
 position: 18
 description: "How to follow or unfollow an author using Python."
 layout: full

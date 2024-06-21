@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Post Details'
+title: titles.get_post_details
 position: 5
 description: How to get post details and use them appropriately.
 layout: full

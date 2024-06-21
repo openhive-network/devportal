@@ -1,5 +1,5 @@
 ---
-title: 'RB: Search Tags'
+title: titles.search_tags
 position: 16
 description: "Performing a search for tags."
 layout: full

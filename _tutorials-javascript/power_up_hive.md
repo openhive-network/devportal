@@ -1,5 +1,5 @@
 ---
-title: 'JS: Power Up Hive'
+title: titles.power_up
 position: 24
 description: "_Power up an account's Hive using either Hive Signer or a client-side signing._"
 layout: full

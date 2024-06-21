@@ -1,5 +1,5 @@
 ---
-title: 'RB: Edit Content Patching'
+title: titles.edit_content_patching
 position: 12
 description: Patching changes to a post on Hive.
 layout: full

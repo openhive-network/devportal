@@ -1,5 +1,5 @@
 ---
-title: 'PY: Power Up Hive'
+title: titles.power_up
 position: 24
 description: "How to power up your HIVE to HIVE Power using Python."
 layout: full

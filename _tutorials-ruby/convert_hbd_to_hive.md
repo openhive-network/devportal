@@ -1,5 +1,5 @@
 ---
-title: 'RB: Convert HBD to Hive'
+title: titles.convert_hbd_to_hive
 position: 32
 description: "How to convert your HBD to HIVE using Ruby."
 layout: full

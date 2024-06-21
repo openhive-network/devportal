@@ -1,5 +1,5 @@
 ---
-title: 'JS: Grant Posting Permission'
+title: titles.grant_posting_permission
 position: 30
 description: "_How to grant and revoke posting permission to another user._"
 layout: full

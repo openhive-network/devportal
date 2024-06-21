@@ -1,5 +1,5 @@
 ---
-title: 'PY: Edit Content Patching'
+title: titles.edit_content_patching
 position: 12
 description: "How to edit post content with diff_match_patch using Python."
 layout: full

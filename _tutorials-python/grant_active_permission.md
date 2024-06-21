@@ -1,5 +1,5 @@
 ---
-title: 'PY: Grant Active Permission'
+title: titles.grant_active_permission
 position: 31
 description: "How to give another user active permission on your account using Python."
 layout: full

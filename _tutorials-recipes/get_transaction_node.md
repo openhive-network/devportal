@@ -1,5 +1,5 @@
 ---
-title: Get Transaction Node
+title: titles.get_transaction_node
 position: 1
 description: |
   Setting up a node that supports `*.get_transaction`.

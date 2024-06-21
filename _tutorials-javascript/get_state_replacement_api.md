@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get State Replacement Api'
+title: titles.get_state_replacement
 position: 34
 description: "This is a list of replacement API calls for each of the different _routes_ available from the `getState` function."
 layout: full

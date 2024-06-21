@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Posts'
+title: titles.get_posts
 position: 4
 description: Query for the most recent posts having a specific tag, using a Hive filter
 layout: full

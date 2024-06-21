@@ -1,5 +1,5 @@
 ---
-title: 'JS: Submit Comment Reply'
+title: titles.submit_comment_reply
 position: 11
 description: "_How to post a simple comment to Hive._"
 layout: full

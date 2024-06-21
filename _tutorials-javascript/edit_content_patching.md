@@ -1,5 +1,5 @@
 ---
-title: 'JS: Edit Content Patching'
+title: titles.edit_content_patching
 position: 12
 description: "_How to patch post edits to Hive._"
 layout: full

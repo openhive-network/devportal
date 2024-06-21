@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Voters List On Post'
+title: titles.get_voters_list
 position: 6
 description: "_By the end of this tutorial you would know how to get voters list on any content._"
 layout: full

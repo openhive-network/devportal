@@ -1,5 +1,5 @@
 ---
-title: 'PY: Delegate Power'
+title: titles.delegate_power
 position: 27
 description: "How to delegate or remove delegation of HIVE POWER to another user using Python."
 layout: full

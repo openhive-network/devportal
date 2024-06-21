@@ -1,5 +1,5 @@
 ---
-title: 'RB: Submit Comment Reply'
+title: titles.submit_comment_reply
 position: 11
 description: "How to prepare comments for Hive and then submit using Radiator."
 layout: full

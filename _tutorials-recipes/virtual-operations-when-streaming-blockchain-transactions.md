@@ -1,5 +1,5 @@
 ---
-title: Streaming blockchain transactions
+title: titles.virtual_operations_streaming
 position: 1
 description: Including virtual operations when streaming blockchain transactions
 exclude: true

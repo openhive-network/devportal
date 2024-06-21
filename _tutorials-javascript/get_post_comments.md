@@ -1,5 +1,5 @@
 ---
-title: 'JS: Get Post Comments'
+title: titles.get_post_comments
 position: 7
 description: By the end of this tutorial you would know how to get comments made by others on any post.
 layout: full

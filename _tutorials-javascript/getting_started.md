@@ -1,5 +1,5 @@
 ---
-title: 'JS: Getting Started'
+title: titles.getting_started
 position: 0
 description: "Prepare your development environment to use Javascript with the Hive blockchain."
 layout: full

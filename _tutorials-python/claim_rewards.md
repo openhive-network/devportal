@@ -1,5 +1,5 @@
 ---
-title: 'PY: Claim Rewards'
+title: titles.claim_rewards
 position: 23
 description: "How to claim rewards using Python."
 layout: full

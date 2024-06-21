@@ -1,5 +1,5 @@
 ---
-title: 'PY: Witness Listing And Voting'
+title: titles.witness_listing_and_voting
 position: 22
 description: "How to vote for or remove a vote for a witness user using Python."
 layout: full

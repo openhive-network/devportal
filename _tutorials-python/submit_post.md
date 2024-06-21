@@ -1,5 +1,5 @@
 ---
-title: 'PY: Submit Post'
+title: titles.submit_post
 position: 10
 description: "How to submit post on Hive blockchain using Python."
 layout: full

@@ -1,56 +1,56 @@
 toc:
-  - title: "Introduction"
+  - title: titles.introduction
     collection: "introduction"
     url: "/"
     position: 1
-  - title: "Quickstart"
+  - title: titles.quickstart
     collection: "quickstart"
     url: "/quickstart/"
     position: 2
     exclude: true
-  - title: "JSON-RPC Methods"
+  - title: titles.json_rpc_methods
     collection: apidefinitions
     url: "/apidefinitions/"
     exclude: true
     position: 3
-  - title: "Tutorials"
+  - title: titles.tutorials
     collection: "tutorials"
     url: "/tutorials/"
     position: 4
     exclude: true
     docs:
-      - title: Javascript
+      - title: titles.javascript
         collection: tutorials-javascript
-      - title: Python
+      - title: titles.python
         collection: tutorials-python
-      - title: Php
+      - title: titles.php
         collection: tutorials-php
-      - title: Ruby
+      - title: titles.ruby
         collection: tutorials-ruby
-      - title: Recipes
+      - title: titles.recipes
         collection: tutorials-recipes
-  - title: "Services"
+  - title: titles.services
     collection: "services"
     url: "/services/"
     position: 5
     exclude: true
-  - title: "Node Configs"
+  - title: titles.node_config
     collection: "nodeop"
     url: "/nodeop/"
     position: 6
     exclude: true
     top_level_section: true
-  - title: "Layer 2s"
+  - title: titles.layer2
     collection: "layer2"
     url: "/layer2/"
     position: 7
     exclude: true
-  - title: "Resources"
+  - title: titles.resources
     collection: "resources"
     url: "/resources/"
     exclude: true
     position: 8
-  - title: "Glossary"
+  - title: titles.glossary
     collection: "glossary"
     url: "/glossary/"
     position: 9

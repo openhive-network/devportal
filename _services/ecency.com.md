@@ -1,5 +1,5 @@
 ---
-title: Vision
+title: titles.vision
 position: 2
 canonical_url: ecency.html
 ---

@@ -1,5 +1,5 @@
 ---
-title: Estimate the value of an upvote
+title: titles.estimate_upvote
 position: 1
 description: Calculate the approximate value of an upvote on Hive
 exclude: true

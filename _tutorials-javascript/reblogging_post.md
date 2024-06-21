@@ -1,5 +1,5 @@
 ---
-title: 'JS: Reblogging Post'
+title: titles.reblogging_post
 position: 14
 description: "_How to reblog a post from hive_"
 layout: full

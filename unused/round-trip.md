@@ -1,8 +1,8 @@
 ---
-title: Round Trip
+title: titles.round_trip
 position: 1
 description: |
-  Usign Hive as your personal "Hash in the Sky"
+  Using Hive as your personal "Hash in the Sky"
 exclude: true
 layout: full
 canonical_url: round-trip.html

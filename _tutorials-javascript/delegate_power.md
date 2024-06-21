@@ -1,5 +1,5 @@
 ---
-title: 'JS: Delegate Power'
+title: titles.delegate_power
 position: 27
 description: "_Delegate power to other users using Hive Signer or Client-side signing._"
 layout: full

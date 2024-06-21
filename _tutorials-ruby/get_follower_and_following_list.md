@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Follower And Following List'
+title: titles.get_follower_and_following
 position: 19
 description: "_How to create a list of followers and accounts that you are following._"
 layout: full

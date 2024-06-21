@@ -1,5 +1,5 @@
 ---
-title: Using Hivemind
+title: titles.using_hivemind
 position: 1
 description: Hivemind setup and API functionality
 exclude: true

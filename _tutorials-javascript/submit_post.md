@@ -1,5 +1,5 @@
 ---
-title: 'JS: Submit Post'
+title: titles.submit_post
 position: 10
 description: "_How to prepare comments for Hive and then submit using the `broadcast.comment` function._"
 layout: full

@@ -1,5 +1,5 @@
 ---
-title: VSC
+title: titles.vsc
 position: 3
 type:
 description:

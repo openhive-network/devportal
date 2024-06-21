@@ -1,5 +1,5 @@
 ---
-title: 'JS: Grant Active Permission'
+title: titles.grant_active_permission
 position: 31
 description: "_How to grant and revoke active permission to another user._"
 layout: full

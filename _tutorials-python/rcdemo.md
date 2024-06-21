@@ -1,5 +1,5 @@
 ---
-title: 'PY: Resource Credit System Developer Guide'
+title: titles.rc_dev
 position: 36
 description: "The goal of this guide is to demystify how resources and RC's work.  The intended audience is developers working on Hive user interfaces,
 applications, and client libraries."

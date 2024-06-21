@@ -1,5 +1,5 @@
 ---
-title: 'PY: Submit Comment Reply'
+title: titles.submit_comment_reply
 position: 11
 description: "How to submit a comment on a post to the Hive blockchain."
 layout: full

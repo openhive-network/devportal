@@ -1,5 +1,5 @@
 ---
-title: 'RB: Get Account Replies'
+title: titles.get_account_replies
 position: 8
 description: "Fetching the replies written to a particular account."
 layout: full
