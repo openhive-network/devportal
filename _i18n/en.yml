@@ -1,10 +1,10 @@
 global:
-  english: English
-  hindi: हिन्दी
-  russian: Русский
-  german: Deutsch
-  french: Français
-  chinese: 汉语
+  en: English
+  hi: हिन्दी
+  ru: Русский
+  de: Deutsch
+  fr: Français
+  zh: 汉语
 titles:
   home: API Docs
   api-def: API Definitions

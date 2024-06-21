@@ -780,3 +780,21 @@ pre.highlight > button:focus {
 img {
 	max-width: 100%;
 }
+
+.lang-switch {
+	padding-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.lang-switch a {
+	padding: 0 4px;
+}
+.lang-switch img {
+	max-width: 40px;
+	height: auto;
+	cursor: pointer;
+}
+img.active {
+	opacity: 0.5;
+}

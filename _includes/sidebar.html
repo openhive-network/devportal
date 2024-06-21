@@ -35,4 +35,17 @@
       </ul>
     </section>
   {% endfor %}
+  <div class="lang-switch">
+    {% for lang in site.languages %}
+    {% if lang == site.active_lang %}
+      <a href=""><img class="active" src="/images/i18n/{{lang}}.svg"/></a>
+    {% else %}
+    {% if lang == site.default_lang %}
+      <a href=" {{ page.url }}"><img class="active" src="/images/i18n/{{lang}}.svg"/></a>
+    {% else %}
+      <a href="/{{ lang }}{{ page.url }}"><img src="/images/i18n/{{lang}}.svg"/></a>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+  </div>
 </div>
