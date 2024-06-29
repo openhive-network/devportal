@@ -1,19 +1,147 @@
 global:
-  english: English
-  hindi: हिन्दी
-  russian: Русский
-  german: Deutsch
-  french: Français
-  chinese: 汉语
+  en: अंग्रेजी
+  hi: हिन्दी
+  ru: Русский
+  de: Deutsch
+  fr: Français
+  zh: 汉语
 titles:
-  index: API Docs
+  home: एपीआई दस्तावेज़
   api-def: API Definitions
-  layer2: Layer 2
-  resources: Resources
-  services: Services
-  search: Search
-  quickstart: Quickstart
+  introduction: परिचय
+  json_rpc_methods: JSON-RPC Methods
+  tutorials: ट्यूटोरियल
+  layer2: परत 2
+  resources: संसाधन
+  services: सेवाएं
+  glossary: शब्दावली
+  search: खोज
+  quickstart: द्रुत-आरंभक
   welcome: Intro to Hive
-  web2web3: Web2 vs Web3
+  web2web3: Web2 बनाम Web3
   workflow: Developer workflow
+  nodes: Hive Nodes
+  accounts: खाते
+  authentication: प्रमाणीकरण
+  sdk: SDK Libraries
+  getset: Get and Set
+  testnet: Hive Testnet
+  account_by_key_api: Account By Key API
+  account_history_api: Account history API
+  block_api: Block API
+  bridge: Bridge
+  condenser_api: Condenser API
+  database_api: Database API
+  debug_node_api: Debug Node API
+  follow_api: Follow API
+  json_rpc: JSON RPC
+  market_history_api: Market History API
+  network_broadcast_api: Network Broadcast API
+  rc_api: RC API
+  reputation_api: Reputation API
+  rewards_api: Rewards API
+  tags_api: Tags API
+  transaction_status_api: Transaction Status API
+  witness_api: Witness API
+  wallet_bridge_api: Wallet Bridge API
+  broadcast_ops: Broadcast OPS
+  broadcast_ops_custom: Broadcast OPS Custom
+  condenser: Condenser
+  vision: Vision
+  imagehoster: ImageHoster
+  videohoster: VideoHoster
+  hivesigner: Hivesigner
+  jussi: Jussi
+  dhf: DHF
+  hive_engine: Hive Engine
+  honeycomb: HoneyComb
+  vsc: VSC
+  overview: अवलोकन
+  whitepaper: सफ़ेद कागज
+  hivesigner_libs: Hivesigner Libs
+  hive_keychain: Hive Keychain
+  tools: टूल्स
+  community_help: Community & Help
+  chain_basics: Chain Basics
+  governance: Governance
+  transactions: लेनदेन
+  api: API
+  market: बाज़ार
+  exchange_node: Exchange Node
+  get_transaction_node: Get Transaction Node
+  jussi_multiplexer: Using jussi as a Multiplexer
+  mira_performance_tuning: MIRA Performance Tuning
+  monit: Managing a Node Using Monit
+  node_cli: कमांड लाइन विकल्प
+  node_config: नोड कॉन्फ़िग
+  plug_and_api_list: Plugin & API List
+  seed_node: Seed Node
+  setting_up_testnet: Setting Up Testnet
+  using_hivemind: Using Hivemind
+  account_creation_process: Account creation process
+  calculate_rc_recipe: Calculating RC costs
+  estimate_upvote: Estimate the value of an upvote
+  forum_market_bandwidth: Forum/Market Bandwidth
+  paginated_api_methods: Paginated API Methods
+  rc_bandwidth_parameters: RC Bandwidth Parameters
+  rc_bandwidth_system: RC Bandwidth System
+  sso: एक बार दर्ज करना
+  understanding_configuration_values: Understanding Configuration Values
+  understanding_dynamic_props: Understanding Dynamic Global Properties
+  understanding_transaction_status: Understanding Transaction Status
+  vest_to_hive: Converting VESTS to HIVE
+  virtual_operations_streaming: Streaming blockchain transactions
+  account_reputation: Account Reputation
+  blog_feed: Blog Feed
+  claim_rewards: ईनाम दावा करें
+  client_signing: Client Signing
+  convert_hbd_to_hive: एचबीडी को हाइव में बदलें
+  convert_hive_to_hbd: Convert HIVE To HBD
+  create_account: खाता बनाएँ
+  delegate_power: प्रत्यायोजित हाइव पावर
+  edit_content_patching: Edit Content Patching
+  follow_user: फॉलो करें
+  get_account_comments: Get Account Comments
+  get_account_replies: Get Account Replies
+  get_delegations_by_user: Get Delegations By User
+  get_follower_and_following: Get Follower And Following List
+  get_post_comments: Get Post Comments
+  get_post_details: Get Post Details
+  get_posts: Get Posts
+  get_state_replacement: Get State Replacement API
+  get_voters_list: Get Voters List On Post
+  getting_started: शुरू करें
+  grant_active_permission: Grant Active Permission
+  grant_posting_permission: पोस्ट करने की अनुमति दें
+  power_down: पावर नीचे करे
+  power_up: Power Up Hive
+  reblogging_post: Reblogging Post
+  search_accounts: Search Accounts
+  search_tags: टैग खोजें
+  set_withdraw_route: निकाशी मार्ग
+  stream_blockchain_transactions: Stream Blockchain Transactions
+  submit_comment_reply: Submit Comment Reply
+  submit_post: Submit Post
+  tic_tac_toe: Making a Decentralized Game on Hive
+  transfer_hive_and_hbd: Transfer HIVE and HBD
+  vote_on_content: Vote On Content
+  witness_listing_and_voting: Witness Listing And Voting
+  account_recovery: अकाउंट पुनर्प्राप्ति
+  password_key_change: Password Key Change
+  rc_dev: Resource Credit System Developer Guide
+  transfer_hive_and_hbd_savings: Transfer HIVE And HBD To Savings Balance
+  using_keys_securely: Using Keys Securely
+  how_to_serialize: How to serialize and sign Hive transactions
+  using_multisignature_accounts: Using Multisignature Accounts
+  round_trip: Round Trip
+  javascript: JavaScript
+  python: Python
+  ruby: Ruby
+  php: PHP
+  recipes: नुसखा
+  node_operation: Node Operation
+
+
+
+
 

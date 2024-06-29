@@ -795,6 +795,9 @@ img {
 	height: auto;
 	cursor: pointer;
 }
-img.active {
+a.active {
+	opacity: 1;
+}
+a.deactive {
 	opacity: 0.5;
 }

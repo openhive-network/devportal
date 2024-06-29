@@ -1,57 +1,71 @@
 toc:
   - title: titles.introduction
     collection: "introduction"
-    url: "/"
+    namespace: introduction
+    permalink: "/"
     position: 1
   - title: titles.quickstart
     collection: "quickstart"
-    url: "/quickstart/"
+    namespace: quickstart
+    permalink: "/quickstart/"
     position: 2
     exclude: true
   - title: titles.json_rpc_methods
-    collection: apidefinitions
-    url: "/apidefinitions/"
+    collection: "apidefinitions"
+    namespace: apidefinitions
+    permalink: "/apidefinitions/"
     exclude: true
     position: 3
   - title: titles.tutorials
     collection: "tutorials"
-    url: "/tutorials/"
+    namespace: tutorials
+    permalink: "/tutorials/"
     position: 4
     exclude: true
     docs:
       - title: titles.javascript
         collection: tutorials-javascript
+        namespace: tutorials-javascript
       - title: titles.python
         collection: tutorials-python
+        namespace: tutorials-python
       - title: titles.php
         collection: tutorials-php
+        namespace: tutorials-php
       - title: titles.ruby
         collection: tutorials-ruby
+        namespace: tutorials-ruby
       - title: titles.recipes
         collection: tutorials-recipes
+        namespace: tutorials-recipes
   - title: titles.services
     collection: "services"
-    url: "/services/"
+    namespace: services
+    permalink: "/services/"
     position: 5
     exclude: true
   - title: titles.node_config
     collection: "nodeop"
-    url: "/nodeop/"
+    namespace: nodeop
+    permalink: "/nodeop/"
     position: 6
     exclude: true
     top_level_section: true
   - title: titles.layer2
     collection: "layer2"
-    url: "/layer2/"
+    namespace: layer2
+    permalink: "/layer2/"
     position: 7
     exclude: true
   - title: titles.resources
     collection: "resources"
-    url: "/resources/"
+    namespace: resources
+    permalink: "/resources/"
     exclude: true
     position: 8
   - title: titles.glossary
     collection: "glossary"
-    url: "/glossary/"
+    namespace: glossary
+    permalink: "/glossary/"
     position: 9
     exclude: true

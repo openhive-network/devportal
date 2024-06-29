@@ -1,19 +1,147 @@
 global:
-  english: English
-  hindi: हिन्दी
-  russian: Русский
-  german: Deutsch
-  french: Français
-  chinese: 汉语
+  en: Английский
+  hi: हिन्दी
+  ru: Русский
+  de: Немецкий
+  fr: Французский
+  zh: 汉语
 titles:
-  index: API Docs
-  api-def: API Definitions
-  layer2: Layer 2
-  resources: Resources
-  services: Services
-  search: Search
-  quickstart: Quickstart
-  welcome: Intro to Hive
-  web2web3: Web2 vs Web3
-  workflow: Developer workflow
+  home: Документация API
+  api-def: Определения API
+  introduction: Введение
+  json_rpc_methods: Методы JSON-RPC
+  tutorials: Обучение
+  layer2: Слой 2
+  resources: Ресурсы
+  services: Службы
+  glossary: Словарь терминов
+  search: Поиск
+  quickstart: Быстрый старт
+  welcome: Введение в Hive
+  web2web3: Сравнение Web2 и Web3
+  workflow: Рабочий процесс разработчика
+  nodes: Hive Nodes
+  accounts: Аккаунты
+  authentication: Аутентификация
+  sdk: Библиотеки SDK
+  getset: Получить и установить
+  testnet: Hive Testnet
+  account_by_key_api: Account By Key API
+  account_history_api: Account history API
+  block_api: Block API
+  bridge: Bridge
+  condenser_api: Condenser API
+  database_api: Database API
+  debug_node_api: Debug Node API
+  follow_api: Follow API
+  json_rpc: JSON-RPC
+  market_history_api: Market History API
+  network_broadcast_api: Network Broadcast API
+  rc_api: RC API
+  reputation_api: Reputation API
+  rewards_api: Rewards API
+  tags_api: Tags API
+  transaction_status_api: Transaction Status API
+  witness_api: Witness API
+  wallet_bridge_api: Wallet Bridge API
+  broadcast_ops: Трансляция OPS
+  broadcast_ops_custom: Трансляция OPS Настраиваемый
+  condenser: Condenser
+  vision: Vision
+  imagehoster: ImageHoster
+  videohoster: VideoHoster
+  hivesigner: Hivesigner
+  jussi: Jussi
+  dhf: DHF
+  hive_engine: Hive Engine
+  honeycomb: HoneyComb
+  vsc: VSC
+  overview: Обзор
+  whitepaper: Белая бумага
+  hivesigner_libs: Hivesigner Libs
+  hive_keychain: Hive Keychain
+  tools: Инструменты
+  community_help: Сообщество и помощь
+  chain_basics: Основы цепи
+  governance: Руководство
+  transactions: Транзакции
+  api: API
+  market: Рынок
+  exchange_node: Узел для обмена
+  get_transaction_node: Получить узел транзакции
+  jussi_multiplexer: Использовать jussi как мультиплексор
+  mira_performance_tuning: Настройка производительности MIRA
+  monit: Управление узлом с использованием Monit
+  node_cli: Параметры командной строки
+  node_config: Конфигурация узла
+  plug_and_api_list: Плагин и Список API
+  seed_node: Семенной узел
+  setting_up_testnet: Настройка Testnet
+  using_hivemind: Использование Hivemind
+  account_creation_process: Процесс создания учетной записи
+  calculate_rc_recipe: Расчет затрат RC
+  estimate_upvote: Подсчитать значение голоса "за"
+  forum_market_bandwidth: Форум/пропускная способность рынка
+  paginated_api_methods: Методы API с разбиением на страницы
+  rc_bandwidth_parameters: Параметры пропускной способности RC
+  rc_bandwidth_system: RC система передачи данных
+  sso: Единый вход SSO
+  understanding_configuration_values: Понимание значений конфигурации
+  understanding_dynamic_props: Понимание динамических глобальных свойств
+  understanding_transaction_status: Понимание статуса транзакции
+  vest_to_hive: Конвертация VESTS в HIVE
+  virtual_operations_streaming: Транзакции потока блокчейн
+  account_reputation: Репутация аккаунта
+  blog_feed: Блог Feed
+  claim_rewards: Получить награду
+  client_signing: Подписка клиента
+  convert_hbd_to_hive: Конвертировать HBD в HIVE
+  convert_hive_to_hbd: Превратить HIVE в HBD
+  create_account: Создать Аккаунт
+  delegate_power: Делегированная сила
+  edit_content_patching: Редактировать патч содержимого
+  follow_user: Подписаться на пользователя
+  get_account_comments: Получить комментарии клиента
+  get_account_replies: Получить ответы на вопросы клиента
+  get_delegations_by_user: Получить делегатов от Пользователя
+  get_follower_and_following: Список подписчиков и подписчиков
+  get_post_comments: Получить комментарии к сообщениям
+  get_post_details: Получить информацию о записи
+  get_posts: Посты
+  get_state_replacement: Получить API замены состояния
+  get_voters_list: Получить список избирателей на пост
+  getting_started: Начало работы
+  grant_active_permission: Предоставить Активное Разрешение
+  grant_posting_permission: Предоставить разрешение на публикацию
+  power_down: Понижение силы
+  power_up: Улучшить Hive силы
+  reblogging_post: Репостнутый пост
+  search_accounts: Поиск клиента
+  search_tags: Поиск тегов
+  set_withdraw_route: Установить маршрут вывода
+  stream_blockchain_transactions: Транзакции потока блокчейн
+  submit_comment_reply: Отправить ответ на комментарий
+  submit_post: Опубликовать запись
+  tic_tac_toe: Децентрализованная игра на Hive
+  transfer_hive_and_hbd: Передача HIVE и HBD
+  vote_on_content: Голосовать за контент
+  witness_listing_and_voting: Список заверителей и голосование
+  account_recovery: Восстановление аккаунта
+  password_key_change: Изменение пароля ключа
+  rc_dev: Руководство разработчика системы кредитования ресурсов
+  transfer_hive_and_hbd_savings: Передача HIVE и HBD на сберегательный баланс
+  using_keys_securely: Безопасное использование ключей
+  how_to_serialize: Как сериализовать и подписывать Hive транзакции
+  using_multisignature_accounts: Использование аккаунтов с мультиподписью
+  round_trip: Круглая поездка
+  javascript: Javascript
+  python: Python
+  ruby: Ruby
+  php: PHP
+  recipes: Рецепты
+  node_operation: Операции с узлами
+
+
+
+
 

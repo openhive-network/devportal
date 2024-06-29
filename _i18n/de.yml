@@ -1,19 +1,143 @@
 global:
-  english: English
-  hindi: हिन्दी
-  russian: Русский
-  german: Deutsch
-  french: Français
-  chinese: 汉语
+  en: Englisch
+  hi: हिन्दी
+  ru: Russisch
+  de: Deutsch
+  fr: Französisch
+  zh: 汉语
 titles:
-  index: API Docs
-  api-def: API Definitions
-  layer2: Layer 2
-  resources: Resources
-  services: Services
-  search: Search
-  quickstart: Quickstart
-  welcome: Intro to Hive
+  home: API Dokumentation
+  api-def: API-Definitionen
+  introduction: Einleitung
+  json_rpc_methods: JSON-RPC-Methoden
+  tutorials: Anleitungen
+  layer2: Ebene 2
+  resources: Ressourcen
+  services: Dienste
+  glossary: Lexikon
+  search: Suchen
+  quickstart: Schnellstart
+  welcome: Einführung in Hive
   web2web3: Web2 vs Web3
-  workflow: Developer workflow
+  workflow: Entwickler-Workflow
+  nodes: Hive Nodes
+  accounts: Konten
+  authentication: Authentifizierung
+  sdk: SDK Bibliotheken
+  getset: Holen und setzen
+  testnet: Hive Testnet
+  account_by_key_api: Account By Key API
+  account_history_api: Account history API
+  block_api: Block API
+  bridge: Bridge
+  condenser_api: Condenser API
+  database_api: Database API
+  debug_node_api: Debug Node API
+  follow_api: Follow API
+  json_rpc: JSON RPC
+  market_history_api: Market History API
+  network_broadcast_api: Network Broadcast API
+  rc_api: RC API
+  reputation_api: Reputation API
+  rewards_api: Rewards API
+  tags_api: Tags API
+  transaction_status_api: Transaction Status API
+  witness_api: Witness API
+  wallet_bridge_api: Wallet Bridge API
+  broadcast_ops: OPS übertragen
+  broadcast_ops_custom: OPS-eigene Broadcast
+  condenser: Condenser
+  vision: Vision
+  imagehoster: ImageHoster
+  videohoster: VideoHoster
+  hivesigner: Hivesigner
+  jussi: Jussi
+  dhf: DHF
+  hive_engine: Hive Engine
+  honeycomb: HoneyComb
+  vsc: VSC
+  overview: Übersicht
+  whitepaper: Whitepaper
+  hivesigner_libs: Hivesigner Libs
+  hive_keychain: Hive Keychain
+  tools: Werkzeuge
+  community_help: Community & Hilfe
+  chain_basics: Kettengrundlagen
+  governance: Governance
+  transactions: Transaktionen
+  api: API
+  market: Markt
+  exchange_node: Austauschknoten
+  get_transaction_node: Transaktionsknoten abrufen
+  jussi_multiplexer: Verwendung von Jussi als Multiplexer
+  mira_performance_tuning: MIRA Performance Tuning
+  monit: Einen Knoten mithilfe von Monit verwalten
+  node_cli: Befehlszeilenoption
+  node_config: Node Konfiguration
+  plug_and_api_list: Plugin & API Liste
+  seed_node: Seed Knoten
+  setting_up_testnet: Testnet einrichten
+  using_hivemind: Hivemind verwenden
+  account_creation_process: Kontoerstellung Prozess
+  calculate_rc_recipe: Berechnung der RC-Kosten
+  estimate_upvote: Schätzen Sie den Wert einer positiven Abstimmung
+  forum_market_bandwidth: Forum/Marktbreite
+  paginated_api_methods: Paginierte API-Methoden
+  rc_bandwidth_parameters: RC Bandbreitenparameter
+  rc_bandwidth_system: RC-Bandbreitensystem
+  sso: Einmaliges Anmelden
+  understanding_configuration_values: Konfigurationswerte verstehen
+  understanding_dynamic_props: Dynamische globale Eigenschaften verstehen
+  understanding_transaction_status: Transaktionsstatus verstehen
+  vest_to_hive: Umwandlung von VESTS in HIVE
+  virtual_operations_streaming: Streame Blockchain Transaktionen
+  account_reputation: Kunden-Ruf
+  blog_feed: Blog-Feed
+  claim_rewards: Belohnungen abholen
+  client_signing: Kundensignierung
+  convert_hbd_to_hive: HBD in HIVE umwandeln
+  convert_hive_to_hbd: HIVE zu HBD konvertieren
+  create_account: Konto erstellen
+  delegate_power: Delegierte Hive-Power
+  edit_content_patching: Inhaltspatch bearbeiten
+  follow_user: Folge Benutzer
+  get_account_comments: Kundenkommentare abrufen
+  get_account_replies: Kundenantworten erhalten
+  get_delegations_by_user: Erhalte Delegationen von Benutzer
+  get_follower_and_following: Follower und folgende Liste erhalten
+  get_post_comments: Beitragskommentare
+  get_post_details: Beitragsdetails abrufen
+  get_posts: Beiträge abrufen
+  get_state_replacement: Staatliche Ersetzungs-API erhalten
+  get_voters_list: Wählerliste beim Beitrag abrufen
+  getting_started: Erste Schritte
+  grant_active_permission: Aktive Berechtigung erteilen
+  grant_posting_permission: Einsendungsberechtigung gewähren
+  power_down: Power Down
+  power_up: Bienenstock
+  reblogging_post: Reblogging-Beitrag
+  search_accounts: Konten durchsuchen
+  search_tags: Tags suchen
+  set_withdraw_route: Auszahlungen
+  stream_blockchain_transactions: Stream-Blockchain-Transaktionen
+  submit_comment_reply: Kommentar Antwort senden
+  submit_post: Beitrag einreichen
+  tic_tac_toe: Ein dezentralisiertes Spiel auf Hive erstellen
+  transfer_hive_and_hbd: HIVE und HBD übertragen
+  vote_on_content: Details über Abstimmung
+  witness_listing_and_voting: Zeugenliste und Abstimmung
+  account_recovery: Kontowiederherstellung
+  password_key_change: Passwortschlüssel ändern
+  rc_dev: Ressourcen-Credit System Entwicklerhandbuch
+  transfer_hive_and_hbd_savings: Übertragung von HIVE und HBD auf Sparguthaben
+  using_keys_securely: Schlüssel sicher verwenden
+  how_to_serialize: Wie man Hive-Transaktionen serialisiert und signiert
+  using_multisignature_accounts: Multisignatur-Konten verwenden
+  round_trip: Rundreise
+  javascript: JavaScript
+  python: Python
+  ruby: Ruby
+  php: PHP
+  recipes: Rezepte
+  node_operation: Knoten-Operationen
 

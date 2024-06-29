@@ -1,19 +1,147 @@
 global:
-  english: English
-  hindi: हिन्दी
-  russian: Русский
-  german: Deutsch
-  french: Français
-  chinese: 汉语
+  en: 英语
+  hi: हिन्दी
+  ru: 俄语
+  de: 德语
+  fr: 法语
+  zh: 汉语
 titles:
-  index: API Docs
-  api-def: API Definitions
-  layer2: Layer 2
-  resources: Resources
-  services: Services
-  search: Search
-  quickstart: Quickstart
-  welcome: Intro to Hive
-  web2web3: Web2 vs Web3
-  workflow: Developer workflow
+  home: API 文档
+  api-def: API 定义
+  introduction: 简介
+  json_rpc_methods: JSON-RPC 方法
+  tutorials: 教程
+  layer2: 第2层
+  resources: 资源
+  services: 服务
+  glossary: 专业术语
+  search: 搜索
+  quickstart: 快速入门
+  welcome: Hive 简介
+  web2web3: Web2 与 Web3
+  workflow: 开发流程
+  nodes: Hive Nodes
+  accounts: 帐户
+  authentication: 认证
+  sdk: SDK 库
+  getset: 获取并设置
+  testnet: Hive 测试网路
+  account_by_key_api: Account By Key API
+  account_history_api: Account History API
+  block_api: Block API
+  bridge: Bridge
+  condenser_api: Condenser API
+  database_api: Database API
+  debug_node_api: Debug Node API
+  follow_api: Follow API
+  json_rpc: JSON-RPC
+  market_history_api: Market History API
+  network_broadcast_api: Network Broadcast API
+  rc_api: RC API
+  reputation_api: Reputation API
+  rewards_api: Rewards API
+  tags_api: Tags API
+  transaction_status_api: Transaction Status API
+  witness_api: Witness API
+  wallet_bridge_api: Wallet Bridge API
+  broadcast_ops: Broadcast OPS
+  broadcast_ops_custom: Broadcast OPS Custom
+  condenser: Condenser
+  vision: Vision
+  imagehoster: ImageHoster
+  videohoster: VideoHoster
+  hivesigner: Hivesigner
+  jussi: Jussi
+  dhf: DHF
+  hive_engine: Hive Engine
+  honeycomb: HoneyComb
+  vsc: VSC
+  overview: 概览
+  whitepaper: 白皮书
+  hivesigner_libs: Hivesigner Libs
+  hive_keychain: Hive Keychain
+  tools: 工具
+  community_help: 社群互助
+  chain_basics: 链式基础知识
+  governance: 治理
+  transactions: 交易
+  api: API
+  market: 市场
+  exchange_node: Exchange 节点
+  get_transaction_node: 获取交易节点
+  jussi_multiplexer: 使用 jussi作为多路程序
+  mira_performance_tuning: MIRA 性能调整
+  monit: 管理一个使用 Monit 的节点
+  node_cli: 命令行选项
+  node_config: 节点配置
+  plug_and_api_list: 插件 & API 列表
+  seed_node: 种子节点
+  setting_up_testnet: 设置测试网
+  using_hivemind: 使用 Hivemind
+  account_creation_process: 帐户创建过程
+  calculate_rc_recipe: 计算RC 成本
+  estimate_upvote: 估计一个赞成票的价值
+  forum_market_bandwidth: 论坛/市场带宽
+  paginated_api_methods: 分页 API 方法
+  rc_bandwidth_parameters: RC 带宽参数
+  rc_bandwidth_system: RC 带宽系统
+  sso: 统一登录
+  understanding_configuration_values: 理解配置值
+  understanding_dynamic_props: 了解动态全局属性
+  understanding_transaction_status: 通过哈希理解交易状态
+  vest_to_hive: 正在将VESTS转换为HIVE
+  virtual_operations_streaming: 流区块链交易
+  account_reputation: 账户信誉积分
+  blog_feed: 博客订阅
+  claim_rewards: 认领奖励
+  client_signing: 客户签名
+  convert_hbd_to_hive: 将HBD转换为HIVE
+  convert_hive_to_hbd: 将艾滋病毒转换为 HBD
+  create_account: 创建帐户
+  delegate_power: 已委托的 Hive Power
+  edit_content_patching: 编辑内容修补中
+  follow_user: 关注一个你感兴趣的人
+  get_account_comments: 获取帐户评论
+  get_account_replies: 获取帐户回复
+  get_delegations_by_user: 按用户获取代表团
+  get_follower_and_following: 获取关注者和关注者列表
+  get_post_comments: 获取帖子评论
+  get_post_details: 获取帖子详细信息
+  get_posts: 获取帖子
+  get_state_replacement: 获取状态替换 API
+  get_voters_list: 在帖子中获取选民列表
+  getting_started: 开始使用
+  grant_active_permission: 授予活动权限
+  grant_posting_permission: 授予 Posting 权限
+  power_down: 减少能量
+  power_up: 增强HIVE
+  reblogging_post: 重新博文
+  search_accounts: 搜索帐号
+  search_tags: 搜索标签
+  set_withdraw_route: 取出到其它账户
+  stream_blockchain_transactions: 流区块链交易
+  submit_comment_reply: 提交评论回复
+  submit_post: 提交帖子
+  tic_tac_toe: 在Hive 上制作一个分散的游戏
+  transfer_hive_and_hbd: 传输艾滋病毒与HBD
+  vote_on_content: 投票内容
+  witness_listing_and_voting: 证人名单和表决
+  account_recovery: 回收账号
+  password_key_change: 密码密钥更改
+  rc_dev: 资源信用系统开发者指南
+  transfer_hive_and_hbd_savings: 将艾滋病毒和HBD转移到储蓄余额
+  using_keys_securely: 安全使用密钥
+  how_to_serialize: 如何序列化和签名 Hive 交易
+  using_multisignature_accounts: 使用多签名账户
+  round_trip: 往返
+  javascript: JavaScript
+  python: Python
+  ruby: Ruby
+  php: PHP
+  recipes: 配方
+  node_operation: 节点操作
+
+
+
+
 
