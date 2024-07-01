@@ -91,11 +91,8 @@ cmake \
   -DCMAKE_INSTALL_PREFIX="~/opt/$HIVE_NAME" \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_HIVE_TESTNET=ON \
-  -DLOW_MEMORY_NODE=OFF \
-  -DCLEAR_VOTES=ON \
   -DSKIP_BY_TX_ID=ON \
   -DHIVE_LINT_LEVEL=OFF \
-  -DENABLE_MIRA=ON \
   ..
 mkdir -p ~/opt/$HIVE_NAME
 make -j$(nproc) install

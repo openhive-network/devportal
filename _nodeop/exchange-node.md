@@ -50,11 +50,8 @@ mkdir -p build
 cd build
 cmake \
   -DCMAKE_BUILD_TYPE=Release \
-  -DLOW_MEMORY_NODE=ON \
-  -DCLEAR_VOTES=ON \
   -DSKIP_BY_TX_ID=OFF \
   -DHIVE_LINT_LEVEL=OFF \
-  -DENABLE_MIRA=OFF \
   ..
 make -j$(nproc)
 sudo make install
