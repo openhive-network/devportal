@@ -1,6 +1,6 @@
 ---
 title: titles.quickstart
-section: Quickstart
+section: titles.quickstart
 layout: default
 namespace: quickstart
 permalink: /quickstart/
@@ -20,7 +20,7 @@ permalink: /quickstart/
 				</a>
 			</h3>
 			{% if doc.description %}
-				<p class="description">{{doc.description}}</p>
+				<p class="description">{% t doc.description %}</p>
 			{% endif %}
 
 			{{ doc.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}

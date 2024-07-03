@@ -1,7 +1,7 @@
 # ----
 # Site
 
-title: Hive Developer
+title: Hive Developers
 description: Hive Developer Documentation.
 baseurl: ''
 url: https://developers.hive.io
@@ -118,8 +118,8 @@ collections:
 
 plugins:
   - jekyll-sitemap
-  - jekyll-seo-tag
   - jekyll-multiple-languages-plugin
+  - jekyll-seo-tag
 
 exclude:
   - readme.md

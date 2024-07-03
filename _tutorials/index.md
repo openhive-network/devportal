@@ -1,6 +1,6 @@
 ---
 title: titles.tutorials
-section: Tutorials
+section: titles.tutorials
 exclude: true
 canonical_url: .
 ---

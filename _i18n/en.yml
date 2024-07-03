@@ -5,7 +5,9 @@ global:
   de: Deutsch
   fr: Français
   zh: 汉语
+Index: index
 titles:
+  portal: Hive Developer Portal
   home: API Docs
   api-def: API Definitions
   introduction: Introduction
@@ -14,6 +16,7 @@ titles:
   layer2: Layer 2
   resources: Resources
   services: Services
+  tools: Tools
   glossary: Glossary
   search: Search
   quickstart: Quickstart
@@ -68,6 +71,9 @@ titles:
   api: API
   market: Market
   exchange_node: Exchange Node
+  clive: Command Line Hive
+  docker: Docker
+  tags: Tags
   get_transaction_node: Get Transaction Node
   jussi_multiplexer: Using jussi as a Multiplexer
   mira_performance_tuning: MIRA Performance Tuning
@@ -142,7 +148,23 @@ titles:
   php: PHP
   recipes: Recipes
   node_operation: Node Operation
-
+  haf_api: Setup HAF API node
+  drone: Drone middleware
+descriptions:
+  jussi: A reverse proxy that forwards json-rpc requests.
+  node_config: All `config.ini` options available to `hived`
+  node_cli: All options available to `hived` at command line interface cli_wallet
+  clive: Interactive command line application for interacting with the Hive
+  plug_and_api_list: Run a `hived` node with your preferred APIs
+  haf_api: Setup full or light Hive nodes with HAF API
+  using_hivemind: Hivemind setup and API functionality
+  jussi_multiplexer: Optimize your local applications with jussi
+  drone: API caching layer application, Jussi replacement
+  monit: Use monit as a utility for managing and monitoring hived
+  seed_node: Setting up a seed node
+  exchange_node: Setting up a node for exchanges
+  get_transaction_node: Setting up a node that supports `*.get_transaction`
+  setting_up_testnet: Quick-start for deploying a Hive-based Testnet.
 
 
 

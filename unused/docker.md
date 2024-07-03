@@ -1,5 +1,5 @@
 ---
-title: Docker
+title: titles.docker
 position: 1
 ---
 

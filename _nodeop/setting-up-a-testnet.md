@@ -1,8 +1,7 @@
 ---
 title: titles.setting_up_testnet
-position: 9
-description: |
-  "Quick-start" for deploying a Hive-based Testnet.
+position: 13
+description: descriptions.setting_up_testnet
 exclude: true
 layout: full
 canonical_url: setting-up-a-testnet.html

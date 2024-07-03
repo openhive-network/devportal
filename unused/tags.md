@@ -1,5 +1,5 @@
 ---
-title: Tags
+title: titles.tags
 position: 3
 ---
 

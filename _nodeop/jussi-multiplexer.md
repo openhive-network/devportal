@@ -1,7 +1,7 @@
 ---
 title: titles.jussi_multiplexer
-position: 5
-description: Optimize your local applications with jussi
+position: 7
+description: descriptions.jussi_multiplexer
 exclude: true
 layout: full
 canonical_url: jussi-multiplexer.html

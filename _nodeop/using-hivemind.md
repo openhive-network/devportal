@@ -1,7 +1,7 @@
 ---
 title: titles.using_hivemind
-position: 4
-description: Hivemind setup and API functionality
+position: 6
+description: descriptions.using_hivemind
 exclude: true
 layout: full
 canonical_url: using-hivemind.html

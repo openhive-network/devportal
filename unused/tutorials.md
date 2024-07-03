@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: titles.tutorials
 position: 2
 ---
 

@@ -1,8 +1,7 @@
 ---
 title: titles.exchange_node
-position: 7
-description: |
-  Setting up a node for exchanges.
+position: 11
+description: descriptions.exchange_node
 exclude: true
 layout: full
 canonical_url: exchange-node.html

@@ -1,6 +1,6 @@
 ---
 title: titles.node_operation
-section: Node Operation
+section: titles.node_operation
 exclude: true
 exclude_in_index: true
 canonical_url: .
@@ -15,7 +15,8 @@ canonical_url: .
         {% unless doc.exclude_in_index %}
           <li>
             <a href="{{ doc.id | relative_url }}.html">{% t doc.title %}</a>
-            <span class="overview">{{ doc.description | markdownify }}</span>
+            {% capture description %}{% t doc.description %}{% endcapture %}
+            <span class="overview">{{ description | markdownify }}</span>
           </li>
         {% endunless %}
       {% endfor %}

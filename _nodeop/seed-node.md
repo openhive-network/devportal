@@ -1,8 +1,7 @@
 ---
 title: titles.seed_node
-position: 7
-description: |
-  Setting up a seed node.
+position: 10
+description: descriptions.seed_node
 exclude: true
 layout: full
 canonical_url: seed-node.html

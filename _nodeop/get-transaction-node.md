@@ -1,8 +1,7 @@
 ---
 title: titles.get_transaction_node
-position: 8
-description: |
-  Setting up a node that supports `*.get_transaction`.
+position: 12
+description: descriptions.get_transaction_node
 exclude: true
 layout: full
 canonical_url: get-transaction-node.html

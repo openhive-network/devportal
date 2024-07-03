@@ -1,10 +1,10 @@
 ---
-title: titles.node_cli
-position: 2
-description: descriptions.node_cli
+title: titles.clive
+position: 3
+description: descriptions.clive
 exclude: true
 layout: full
-canonical_url: node-cli.html
+canonical_url: clive.html
 ---
 
 Command line options are typically expressed with double-dash (e.g., `--replay-blockchain`):
@@ -47,7 +47,7 @@ The following are *only* available as command-line options.
 * [`dump-snapshot`](#dump-snapshot)
 
 * Testnet Only
-  * [`chain-id`](#chain-id)
+    * [`chain-id`](#chain-id)
 
 ### `disable-get-block`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
