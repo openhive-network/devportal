@@ -1,7 +1,7 @@
 ---
 title: titles.getting_started
 position: 0
-description: "One excellent Hive library for Python is `beem`.  It comes with a BIP38 encrypted wallet and a practical CLI utility called `beempy`."
+description: descriptions.getting_started
 layout: full
 canonical_url: getting_started.html
 ---

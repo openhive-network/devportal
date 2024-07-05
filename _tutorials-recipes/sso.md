@@ -1,7 +1,7 @@
 ---
 title: titles.sso
 position: 1
-description: "_Login without authority._"
+description: descriptions.sso
 exclude: true
 layout: full
 canonical_url: sso.html

@@ -1,6 +1,6 @@
 ---
 title: titles.transactions
 position: 3
-description: Dictionary of Transaction Terms
+description: descriptions.transactions
 canonical_url: transactions.html
 ---

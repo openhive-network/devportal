@@ -1,7 +1,7 @@
 ---
 title: titles.get_account_comments
 position: 9
-description: "Fetching the comments written by a particular account."
+description: descriptions.get_account_comments
 layout: full
 canonical_url: get_account_comments.html
 ---

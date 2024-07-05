@@ -1,7 +1,7 @@
 ---
 title: titles.grant_active_permission
 position: 31
-description: "How to give another user active permission on your account using Python."
+description: descriptions.grant_active_permission
 layout: full
 canonical_url: grant_active_permission.html
 ---

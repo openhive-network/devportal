@@ -1,7 +1,7 @@
 ---
 title: titles.create_account
 position: 26
-description: "_Create Hive account using Hive Signer as well as with client-side signing._"
+description: descriptions.create_account
 layout: full
 canonical_url: create_account.html
 ---

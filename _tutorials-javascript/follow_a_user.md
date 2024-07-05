@@ -1,7 +1,7 @@
 ---
 title: titles.follow_user
 position: 18
-description: "_Follow and unfollow a user / author._"
+description: descriptions.follow_user
 layout: full
 canonical_url: follow_a_user.html
 ---

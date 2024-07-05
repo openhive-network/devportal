@@ -1,7 +1,7 @@
 ---
 title: titles.understanding_configuration_values
 position: 1
-description: Low level blockchain constants
+description: descriptions.understanding_configuration_values
 exclude: true
 layout: full
 canonical_url: understanding-configuration-values.html

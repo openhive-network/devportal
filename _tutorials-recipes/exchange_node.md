@@ -1,8 +1,7 @@
 ---
 title: titles.exchange_node
 position: 1
-description: |
-  Setting up a node for exchanges.
+description: descriptions.exchange_node
 exclude: true
 exclude_in_index: true
 excluded_in_search: true

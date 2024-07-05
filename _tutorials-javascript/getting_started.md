@@ -1,7 +1,7 @@
 ---
 title: titles.getting_started
 position: 0
-description: "Prepare your development environment to use Javascript with the Hive blockchain."
+description: descriptions.getting_started
 layout: full
 canonical_url: getting_started.html
 ---

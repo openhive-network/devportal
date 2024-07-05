@@ -1,7 +1,7 @@
 ---
 title: titles.search_tags
 position: 16
-description: "How to pull a list of the trending tags from the blockchain using Python."
+description: descriptions.search_tags
 layout: full
 canonical_url: search_tags.html
 ---

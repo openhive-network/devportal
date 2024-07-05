@@ -1,7 +1,7 @@
 ---
 title: titles.grant_posting_permission
 position: 30
-description: "How to give another user posting permission on your account using Python."
+description: descriptions.grant_posting_permission
 layout: full
 canonical_url: grant_posting_permission.html
 ---

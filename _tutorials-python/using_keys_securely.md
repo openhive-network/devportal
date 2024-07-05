@@ -1,7 +1,7 @@
 ---
 title: titles.using_keys_securely
 position: 1
-description: "Learn how the Beem python library handles transaction signing with Hive user's key and how to securely manage your private keys."
+description: descriptions.using_keys_securely
 layout: full
 canonical_url: using_keys_securely.html
 ---

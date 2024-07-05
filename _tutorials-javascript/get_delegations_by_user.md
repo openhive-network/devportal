@@ -1,7 +1,7 @@
 ---
 title: titles.get_delegations_by_user
 position: 29
-description: "_View the vesting delegations made by a user as well as the delegations that are expiring._"
+description: descriptions.get_delegations_by_user
 layout: full
 canonical_url: get_delegations_by_user.html
 ---

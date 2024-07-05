@@ -1,7 +1,7 @@
 ---
 title: titles.edit_content_patching
 position: 12
-description: "How to edit post content with diff_match_patch using Python."
+description: descriptions.edit_content_patching
 layout: full
 canonical_url: edit_content_patching.html
 ---

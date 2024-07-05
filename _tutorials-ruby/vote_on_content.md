@@ -1,7 +1,7 @@
 ---
 title: titles.vote_on_content
 position: 17
-description: "To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast)."
+description: descriptions.vote_on_content
 layout: full
 canonical_url: vote_on_content.html
 ---

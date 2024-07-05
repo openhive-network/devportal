@@ -1,7 +1,7 @@
 ---
 title: titles.using_hivemind
 position: 1
-description: Hivemind setup and API functionality
+description: descriptions.using_hivemind
 exclude: true
 exclude_in_index: true
 excluded_in_search: true

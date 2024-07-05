@@ -1,7 +1,7 @@
 ---
 title: titles.get_posts
 position: 4
-description: "This example will output posts depending on which category is provided as the arguments."
+description: descriptions.get_posts
 layout: full
 canonical_url: get_posts.html
 ---

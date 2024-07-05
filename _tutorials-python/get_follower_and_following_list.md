@@ -1,7 +1,7 @@
 ---
 title: titles.get_follower_and_following
 position: 19
-description: "Tutorial pulls a list of the followers or authors being followed from the blockchain then displays the result."
+description: descriptions.get_follower_and_following
 layout: full
 canonical_url: get_follower_and_following_list.html
 ---

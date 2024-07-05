@@ -1,7 +1,7 @@
 ---
 title: titles.transfer_hive_and_hbd_savings
 position: 33
-description: "How to transfer HIVE and HBD to savings using Python."
+description: descriptions.transfer_hive_and_hbd_savings
 layout: full
 canonical_url: transfer_hive_and_hbd_to_savings_balance.html
 ---

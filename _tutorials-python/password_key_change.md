@@ -1,7 +1,7 @@
 ---
 title: titles.password_key_change
 position: 34
-description: "How to change your accounts password and keys"
+description: descriptions.password_key_change
 layout: full
 canonical_url: password_key_change.html
 ---

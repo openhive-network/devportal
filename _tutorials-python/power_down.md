@@ -1,7 +1,7 @@
 ---
 title: titles.power_down
 position: 25
-description: "How to power down (withdraw) your vesting shares using Python."
+description: descriptions.power_down
 layout: full
 canonical_url: power_down.html
 ---

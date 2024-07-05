@@ -1,7 +1,7 @@
 ---
 title: titles.stream_blockchain_transactions
 position: 13
-description: "_How to stream transactions and blocks from Hive blockchain._"
+description: descriptions.stream_blockchain_transactions
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---

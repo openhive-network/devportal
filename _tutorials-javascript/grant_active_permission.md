@@ -1,7 +1,7 @@
 ---
 title: titles.grant_active_permission
 position: 31
-description: "_How to grant and revoke active permission to another user._"
+description: descriptions.grant_active_permission
 layout: full
 canonical_url: grant_active_permission.html
 ---

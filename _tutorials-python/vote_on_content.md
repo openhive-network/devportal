@@ -1,7 +1,7 @@
 ---
 title: titles.vote_on_content
 position: 17
-description: "How to vote on a post/comment using Python."
+description: descriptions.vote_on_content
 layout: full
 canonical_url: vote_on_content.html
 ---

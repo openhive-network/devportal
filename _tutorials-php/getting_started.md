@@ -1,7 +1,7 @@
 ---
 title: titles.getting_started
 position: 0
-description: "Before interact with the blockchain, we start with the presentation and configuration of `hive-php-lib`."
+description: descriptions.getting_started
 layout: full
 canonical_url: getting_started.html
 ---

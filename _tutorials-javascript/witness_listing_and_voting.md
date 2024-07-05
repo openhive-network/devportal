@@ -1,7 +1,7 @@
 ---
 title: titles.witness_listing_and_voting
 position: 22
-description: "_Create a list of available witnesses as well as vote for and remove your vote for a witness._"
+description: descriptions.witness_listing_and_voting
 layout: full
 canonical_url: witness_listing_and_voting.html
 ---

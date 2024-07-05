@@ -1,7 +1,7 @@
 ---
 title: titles.get_post_details
 position: 5
-description: "Get post details from list of posts from the blockchain with `created` filter and tag then display selected post details."
+description: descriptions.get_post_details
 layout: full
 canonical_url: get_post_details.html
 ---

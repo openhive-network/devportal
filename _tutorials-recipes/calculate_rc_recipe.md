@@ -1,7 +1,7 @@
 ---
 title: titles.calculate_rc_recipe
 position: 1
-description: How to calculate resource credit cost for transactions.
+description: descriptions.calculate_rc_recipe
 exclude: true
 layout: full
 canonical_url: calculate_rc_recipe.html

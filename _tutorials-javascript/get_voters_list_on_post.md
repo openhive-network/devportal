@@ -1,7 +1,7 @@
 ---
 title: titles.get_voters_list
 position: 6
-description: "_By the end of this tutorial you would know how to get voters list on any content._"
+description: descriptions.get_voters_list
 layout: full
 canonical_url: get_voters_list_on_post.html
 ---

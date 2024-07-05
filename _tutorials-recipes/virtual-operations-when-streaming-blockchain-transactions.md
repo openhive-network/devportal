@@ -1,7 +1,7 @@
 ---
 title: titles.virtual_operations_streaming
 position: 1
-description: Including virtual operations when streaming blockchain transactions
+description: descriptions.virtual_operations_streaming
 exclude: true
 layout: full
 canonical_url: virtual-operations-when-streaming-blockchain-transactions.html

@@ -1,7 +1,7 @@
 ---
 title: titles.search_accounts
 position: 15
-description: "Performing a search on account by names starting with a given input."
+description: descriptions.search_account
 layout: full
 canonical_url: search_accounts.html
 ---

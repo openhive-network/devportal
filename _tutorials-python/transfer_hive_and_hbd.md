@@ -1,7 +1,7 @@
 ---
 title: titles.transfer_hive_and_hbd
 position: 21
-description: "How to transfer HIVE and HBD to another account using Python."
+description: descriptions.transfer_hive_and_hbd
 layout: full
 canonical_url: transfer_hive_and_hbd.html
 ---

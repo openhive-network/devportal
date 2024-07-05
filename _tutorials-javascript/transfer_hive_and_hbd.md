@@ -1,7 +1,7 @@
 ---
 title: titles.transfer_hive_and_hbd
 position: 21
-description: "_Transfer both HIVE and HBD from one account to another._"
+description: descriptions.transfer_hive_and_hbd
 layout: full
 canonical_url: transfer_hive_and_hbd.html
 ---

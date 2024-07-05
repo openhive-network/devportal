@@ -1,7 +1,7 @@
 ---
 title: titles.blog_feed
 position: 1
-description: "This example will output blog details to the terminal for the author specified, limited to five results."
+description: descriptions.blog_feed
 layout: full
 canonical_url: blog_feed.html
 ---

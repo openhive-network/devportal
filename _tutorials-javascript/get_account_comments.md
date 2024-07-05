@@ -1,7 +1,7 @@
 ---
 title: titles.get_account_comments
 position: 9
-description: How to retrieve account comments from the Hive blockchain.
+description: descriptions.get_account_comments
 layout: full
 canonical_url: get_account_comments.html
 ---

@@ -1,7 +1,7 @@
 ---
 title: titles.submit_post
 position: 10
-description: "This example will broadcast a new post to the blockchain using the values provided.  To create a post in `ruby`, we will use a `Radiator::Transaction` containing a `comment` operation, which is how all content is stored internally."
+description: descriptions.submit_post
 layout: full
 canonical_url: submit_post.html
 ---

@@ -1,7 +1,7 @@
 ---
 title: titles.tic_tac_toe
 position: 0.1
-description: "_We will develop a decentralized game by the end of this series._"
+description: descriptions.tic_tac_toe
 layout: full
 canonical_url: tic-tac-toe-game.html
 ---

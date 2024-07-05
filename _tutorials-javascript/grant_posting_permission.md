@@ -1,7 +1,7 @@
 ---
 title: titles.grant_posting_permission
 position: 30
-description: "_How to grant and revoke posting permission to another user._"
+description: descriptions.grant_posting_permission
 layout: full
 canonical_url: grant_posting_permission.html
 ---

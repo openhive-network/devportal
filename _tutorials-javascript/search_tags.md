@@ -1,7 +1,7 @@
 ---
 title: titles.search_tags
 position: 16
-description: "_How to run a search for trending tags_"
+description: descriptions.search_tags
 layout: full
 canonical_url: search_tags.html
 ---

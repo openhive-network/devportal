@@ -1,7 +1,7 @@
 ---
 title: titles.delegate_power
 position: 27
-description: "_Delegate power to other users using Hive Signer or Client-side signing._"
+description: descriptions.delegate_power
 layout: full
 canonical_url: delegate_power.html
 ---

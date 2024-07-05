@@ -1,7 +1,7 @@
 ---
 title: titles.get_post_details
 position: 5
-description: "Understand and use the most common fields of the requested content."
+description: descriptions.get_post_details
 layout: full
 canonical_url: get_post_details.html
 ---

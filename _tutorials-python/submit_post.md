@@ -1,7 +1,7 @@
 ---
 title: titles.submit_post
 position: 10
-description: "How to submit post on Hive blockchain using Python."
+description: descriptions.submit_post
 layout: full
 canonical_url: submit_post.html
 ---

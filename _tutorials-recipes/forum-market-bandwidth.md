@@ -1,7 +1,7 @@
 ---
 title: titles.forum_market_bandwidth
 position: 1
-description: How to interpret raw bandwidth data.
+description: descriptions.forum_market_bandwidth
 exclude: true
 layout: full
 canonical_url: forum-market-bandwidth.html

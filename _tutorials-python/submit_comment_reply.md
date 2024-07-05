@@ -1,7 +1,7 @@
 ---
 title: titles.submit_comment_reply
 position: 11
-description: "How to submit a comment on a post to the Hive blockchain."
+description: descriptions.submit_comment_reply
 layout: full
 canonical_url: submit_comment_reply.html
 ---

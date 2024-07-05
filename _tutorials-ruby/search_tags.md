@@ -1,7 +1,7 @@
 ---
 title: titles.search_tags
 position: 16
-description: "Performing a search for tags."
+description: descriptions.search_tags
 layout: full
 canonical_url: search_tags.html
 ---

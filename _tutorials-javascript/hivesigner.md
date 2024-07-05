@@ -1,7 +1,7 @@
 ---
 title: titles.hivesigner
 position: 2
-description: Understand the basics of using Hivesigner with your Hive application.
+description: descriptions.hivesigner
 layout: full
 canonical_url: hivesigner.html
 ---

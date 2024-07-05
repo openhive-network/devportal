@@ -1,7 +1,7 @@
 ---
 title: titles.reblogging_post
 position: 14
-description: "_How to reblog a post from hive_"
+description: descriptions.reblogging_post
 layout: full
 canonical_url: reblogging_post.html
 ---

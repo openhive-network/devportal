@@ -1,7 +1,7 @@
 ---
 title: titles.claim_rewards
 position: 23
-description: "_Learn how to claim rewards from unclaimed reward balance using Hive Signer as well as client signing method._"
+description: descriptions.claim_rewards
 layout: full
 canonical_url: claim_rewards.html
 ---

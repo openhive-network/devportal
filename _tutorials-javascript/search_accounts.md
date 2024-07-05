@@ -1,7 +1,7 @@
 ---
 title: titles.search_accounts
 position: 15
-description: "_How to call a list of user names from the hive blockchain_"
+description: descriptions.search_accounts
 layout: full
 canonical_url: search_accounts.html
 ---

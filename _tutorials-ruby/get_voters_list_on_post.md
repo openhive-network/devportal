@@ -1,7 +1,7 @@
 ---
 title: titles.get_voters_list
 position: 6
-description: "This example will output the active vote totals for the post/comment passed as an argument to the script."
+description: descriptions.get_voters_list
 layout: full
 canonical_url: get_voters_list_on_post.html
 ---

@@ -1,7 +1,7 @@
 ---
 title: titles.submit_comment_reply
 position: 11
-description: "_How to post a simple comment to Hive._"
+description: descriptions.submit_comment_reply
 layout: full
 canonical_url: submit_comment_reply.html
 ---

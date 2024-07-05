@@ -1,7 +1,7 @@
 ---
 title: titles.get_voters_list
 position: 6
-description: "Voters list and detail of each vote on selected content."
+description: descriptions.get_voters_list
 layout: full
 canonical_url: get_voters_list_on_post.html
 ---

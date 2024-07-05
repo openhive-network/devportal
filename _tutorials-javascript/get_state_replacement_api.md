@@ -1,7 +1,7 @@
 ---
 title: titles.get_state_replacement
 position: 34
-description: "This is a list of replacement API calls for each of the different _routes_ available from the `getState` function."
+description: descriptions.get_state_replacement
 layout: full
 canonical_url: get_state_replacement_api.html
 ---

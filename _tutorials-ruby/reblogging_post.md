@@ -1,7 +1,7 @@
 ---
 title: titles.reblogging_post
 position: 14
-description: "To reblog a post, we can use a `custom_json` operation that is handled by the follow plugin."
+description: descriptions.reblogging_post
 layout: full
 canonical_url: reblogging_post.html
 ---

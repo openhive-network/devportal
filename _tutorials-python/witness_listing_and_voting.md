@@ -1,7 +1,7 @@
 ---
 title: titles.witness_listing_and_voting
 position: 22
-description: "How to vote for or remove a vote for a witness user using Python."
+description: descriptions.witness_listing_and_voting
 layout: full
 canonical_url: witness_listing_and_voting.html
 ---

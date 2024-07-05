@@ -1,7 +1,7 @@
 ---
 title: titles.search_accounts
 position: 15
-description: "How to pull a list of the active user accounts or trending tags from the blockchain using Python."
+description: descriptions.search_accounts
 layout: full
 canonical_url: search_accounts.html
 ---

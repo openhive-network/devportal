@@ -1,7 +1,7 @@
 ---
 title: titles.power_down
 position: 25
-description: "_Perform a power down on all or part of an account's VESTS using either Hive Signer or client-side signing._"
+description: descriptions.power_down
 layout: full
 canonical_url: power_down.html
 ---

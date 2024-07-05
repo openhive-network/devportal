@@ -1,7 +1,7 @@
 ---
 title: titles.get_post_comments
 position: 7
-description: "Fetch comments made on each content or post using Python."
+description: descriptions.get_post_comments
 layout: full
 canonical_url: get_post_comments.html
 ---

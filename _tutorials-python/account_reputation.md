@@ -1,7 +1,7 @@
 ---
 title: titles.account_reputation
 position: 20
-description: "Would you like to know how to interpret account reputation to more human readable format, then this tutorial is for you."
+description: descriptions.reputation
 layout: full
 canonical_url: account_reputation.html
 ---

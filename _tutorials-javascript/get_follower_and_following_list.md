@@ -1,7 +1,7 @@
 ---
 title: titles.get_follower_and_following
 position: 19
-description: "_Get the followers of a user/author & the authors that user is following._"
+description: descriptions.get_follower_and_following
 layout: full
 canonical_url: get_follower_and_following_list.html
 ---

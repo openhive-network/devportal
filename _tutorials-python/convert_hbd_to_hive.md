@@ -1,7 +1,7 @@
 ---
 title: titles.convert_hbd_to_hive
 position: 32
-description: "How to convert your HBD to HIVE using Python."
+description: descriptions.convert_hbd_to_hive
 layout: full
 canonical_url: convert_hbd_to_hive.html
 ---

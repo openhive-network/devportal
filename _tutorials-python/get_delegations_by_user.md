@@ -1,7 +1,7 @@
 ---
 title: titles.get_delegations_by_user
 position: 29
-description: "How to get a list of active or expiring vesting delegations using Python."
+description: descriptions.get_delegations_by_user
 layout: full
 canonical_url: get_delegations_by_user.html
 ---

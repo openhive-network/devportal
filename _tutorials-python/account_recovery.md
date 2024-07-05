@@ -1,7 +1,7 @@
 ---
 title: titles.account_recovery
 position: 35
-description: "How to recover an account using Python."
+description: descriptions.account_recovery
 layout: full
 canonical_url: account_recovery.html
 ---

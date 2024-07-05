@@ -1,7 +1,7 @@
 ---
 title: titles.claim_rewards
 position: 23
-description: "How to claim rewards using Python."
+description: descriptions.claim_rewards
 layout: full
 canonical_url: claim_rewards.html
 ---

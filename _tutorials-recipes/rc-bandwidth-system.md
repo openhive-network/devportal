@@ -1,7 +1,7 @@
 ---
 title: titles.rc_bandwidth_system
 position: 1
-description: All about the RC bandwidth system, the complete rewrite of the bandwidth system.
+description: descriptions.rc_bandwidth_system
 exclude: true
 layout: full
 canonical_url: rc-bandwidth-system.html

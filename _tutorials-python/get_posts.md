@@ -1,7 +1,7 @@
 ---
 title: titles.get_posts
 position: 4
-description: "Tutorial pulls a list of the posts from the blockchain with selected filter and tag then displays output."
+description: descriptions.get_posts
 layout: full
 canonical_url: get_posts.html
 ---

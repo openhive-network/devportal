@@ -1,7 +1,7 @@
 ---
 title: titles.how_to_serialize
 position: 1
-description: Serialization and signing without additional Hive Javascript libraries.
+description: descriptions.how_to_serialize
 exclude: true
 layout: hive-post
 canonical_url: https://hive.blog/steem/@mahdiyari/how-to-serialize-and-sign-steem-transactions-using-javascript-without-steem-javascript-libraries

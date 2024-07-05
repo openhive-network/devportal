@@ -1,7 +1,7 @@
 ---
 title: titles.stream_blockchain_transactions
 position: 13
-description: "How to stream transactions on the live **Hive** blockchain"
+description: descriptions.stream_blockchain_transactions
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---

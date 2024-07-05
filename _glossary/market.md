@@ -1,6 +1,6 @@
 ---
 title: titles.market
 position: 5
-description: Dictionary of Market Terms
+description: descriptions.market
 canonical_url: market.html
 ---

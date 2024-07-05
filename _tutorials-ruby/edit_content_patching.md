@@ -1,7 +1,7 @@
 ---
 title: titles.edit_content_patching
 position: 12
-description: Patching changes to a post on Hive.
+description: descriptions.edit_content_patching
 layout: full
 canonical_url: edit_content_patching.html
 ---

@@ -1,7 +1,7 @@
 ---
 title: titles.rc_bandwidth_parameters
 position: 1
-description: Analyze the dynamics of the resource budget pool.
+description: descriptions.rc_bandwidth_parameters
 exclude: true
 layout: full
 canonical_url: rc-bandwidth-parameters.html

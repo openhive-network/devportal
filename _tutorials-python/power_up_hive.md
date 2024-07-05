@@ -1,7 +1,7 @@
 ---
 title: titles.power_up
 position: 24
-description: "How to power up your HIVE to HIVE Power using Python."
+description: descriptions.power_up
 layout: full
 canonical_url: power_up_hive.html
 ---

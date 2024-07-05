@@ -1,7 +1,7 @@
 ---
 title: titles.submit_post
 position: 10
-description: "_How to prepare comments for Hive and then submit using the `broadcast.comment` function._"
+description: descriptions.submit_post
 layout: full
 canonical_url: submit_post.html
 ---

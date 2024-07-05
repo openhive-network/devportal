@@ -1,8 +1,7 @@
 ---
 title: titles.get_transaction_node
 position: 1
-description: |
-  Setting up a node that supports `*.get_transaction`.
+description: descriptions.get_transaction_node
 exclude: true
 exclude_in_index: true
 excluded_in_search: true

@@ -1,7 +1,7 @@
 ---
 title: titles.get_post_details
 position: 2
-description: "This tutorial fetches the contents of a single post and explains all data related to that post."
+description: descriptions.get_post_details
 layout: full
 canonical_url: get_post_details.html
 ---
