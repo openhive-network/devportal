@@ -1,7 +1,7 @@
 ---
 title: titles.get_post_details
 position: 5
-description: How to get post details and use them appropriately.
+description: descriptions.get_post_details
 layout: full
 canonical_url: get_post_details.html
 ---

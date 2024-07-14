@@ -1,7 +1,7 @@
 ---
 title: titles.paginated_api_methods
 position: 1
-description: Querying multiple pages of results from the API.
+description: descriptions.paginated_api_methods
 exclude: true
 layout: full
 canonical_url: paginated-api-methods.html

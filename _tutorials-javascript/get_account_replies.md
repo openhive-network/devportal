@@ -1,7 +1,7 @@
 ---
 title: titles.get_account_replies
 position: 8
-description: How to get replies made on particular account's content.
+description: descriptions.get_account_replies
 layout: full
 canonical_url: get_account_replies.html
 ---

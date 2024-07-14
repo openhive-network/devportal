@@ -11,7 +11,8 @@ layout: default
     </a>
   </h3>
   {% if page.description %}
-    <span class="description">{{page.description | markdownify}}</span>
+    {% capture description %}{% t page.description %}{% endcapture %}
+    <span class="description">{{description | markdownify}}</span>
   {% endif %}
 
   <div class="hive-content">

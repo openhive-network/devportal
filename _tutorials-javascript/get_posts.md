@@ -1,7 +1,7 @@
 ---
 title: titles.get_posts
 position: 4
-description: Query for the most recent posts having a specific tag, using a Hive filter
+description: descriptions.get_posts
 layout: full
 canonical_url: get_posts.html
 ---

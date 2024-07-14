@@ -1,7 +1,7 @@
 ---
 title: titles.get_post_comments
 position: 7
-description: By the end of this tutorial you would know how to get comments made by others on any post.
+description: descriptions.get_post_comments
 layout: full
 canonical_url: get_post_comments.html
 ---

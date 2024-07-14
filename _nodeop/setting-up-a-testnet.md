@@ -1,6 +1,6 @@
 ---
 title: titles.setting_up_testnet
-position: 13
+position: 15
 description: descriptions.setting_up_testnet
 exclude: true
 layout: full

@@ -1,7 +1,7 @@
 ---
 title: titles.account_reputation
 position: 20
-description: descriptions.reputation
+description: descriptions.account_reputation
 layout: full
 canonical_url: account_reputation.html
 ---

@@ -12,7 +12,8 @@ layout: default
 			</a>
 		</h3>
 		{% if page.description %}
-			<p class="description">{{page.description}}</p>
+            {% capture description %}{% t page.description %}{% endcapture %}
+			<p class="description">{{description}}</p>
 		{% endif %}
 
 		{{ page.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}

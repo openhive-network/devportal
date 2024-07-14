@@ -1,7 +1,7 @@
 ---
 title: titles.client_signing
 position: 3
-description: How to sign, verify broadcast transactions locally on Hive.
+description: descriptions.client_signing
 layout: full
 canonical_url: client_signing.html
 ---

@@ -1,7 +1,7 @@
 ---
 title: titles.search_accounts
 position: 15
-description: descriptions.search_account
+description: descriptions.search_accounts
 layout: full
 canonical_url: search_accounts.html
 ---

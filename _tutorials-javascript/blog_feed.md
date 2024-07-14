@@ -1,7 +1,7 @@
 ---
 title: titles.blog_feed
 position: 1
-description: How to fetch most recent five posts from particular user on Hive.
+description: descriptions.blog_feed
 layout: full
 canonical_url: blog_feed.html
 ---
