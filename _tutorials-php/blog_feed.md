@@ -1,7 +1,7 @@
 ---
-title: 'PHP: Blog Feed'
+title: titles.blog_feed
 position: 1
-description: "This tutorial shows you how to get blogs details from the specified author, limited to five results."
+description: descriptions.blog_feed
 layout: full
 canonical_url: blog_feed.html
 ---

@@ -1,6 +1,7 @@
 ---
-title: API Docs - API Definitions
-section: API Definitions
+title: titles.api-def
+section: titles.api-def
+namespace: apidefinitions
 permalink: /apidefinitions/
 ---
 
@@ -11,14 +12,14 @@ permalink: /apidefinitions/
 		<section id="section-{{doc.id | slugify}}" class="row {{ doc.id | slugify }}">
 			<h3>
 				<a id="{{ doc.id | slugify }}">
-					{{ doc.title }}
+					{% t doc.title %}
 					{% if doc.type %}
 						<span class="endpoint {{ doc.type }}"></span>
 					{% endif %}
 				</a>
 			</h3>
 			{% if doc.description %}
-				<p class="description">{{doc.description}}</p>
+				<p class="description">{% t doc.description %}</p>
 			{% endif %}
 
 			{{ doc.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}

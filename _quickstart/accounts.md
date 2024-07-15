@@ -1,5 +1,5 @@
 ---
-title: Accounts
+title: titles.accounts
 position: 3
 exclude: true
 ---

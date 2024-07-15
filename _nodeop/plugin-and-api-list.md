@@ -1,7 +1,7 @@
 ---
-title: Plugin & API List
-position: 3
-description: Run a `hived` node with your preferred APIs.
+title: titles.plug_and_api_list
+position: 4
+description: descriptions.plug_and_api_list
 exclude: true
 layout: full
 canonical_url: plugin-and-api-list.html

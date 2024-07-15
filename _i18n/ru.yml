@@ -1,0 +1,233 @@
+global:
+  en: Английский
+  hi: हिन्दी
+  ru: Русский
+  de: Немецкий
+  fr: Французский
+  zh: 汉语
+Index: Hive
+titles:
+  portal: Hive Developer Portal
+  home: Документация API
+  api-def: Определения API
+  introduction: Введение
+  json_rpc_methods: Методы JSON-RPC
+  tutorials: Обучение
+  layer2: Слой 2
+  resources: Ресурсы
+  services: Службы
+  tools: Инструменты
+  glossary: Словарь терминов
+  search: Поиск
+  quickstart: Быстрый старт
+  welcome: Введение в Hive
+  web2web3: Сравнение Web2 и Web3
+  workflow: Рабочий процесс разработчика
+  nodes: Hive Nodes
+  accounts: Аккаунты
+  authentication: Аутентификация
+  sdk: Библиотеки SDK
+  getset: Получить и установить
+  testnet: Hive Testnet
+  account_by_key_api: Account By Key API
+  account_history_api: Account history API
+  block_api: Block API
+  bridge: Bridge
+  condenser_api: Condenser API
+  database_api: Database API
+  debug_node_api: Debug Node API
+  follow_api: Follow API
+  json_rpc: JSON-RPC
+  market_history_api: Market History API
+  network_broadcast_api: Network Broadcast API
+  rc_api: RC API
+  reputation_api: Reputation API
+  rewards_api: Rewards API
+  tags_api: Tags API
+  transaction_status_api: Transaction Status API
+  witness_api: Witness API
+  wallet_bridge_api: Wallet Bridge API
+  broadcast_ops: Трансляция OPS
+  broadcast_ops_custom: Трансляция OPS Настраиваемый
+  condenser: Condenser
+  vision: Vision
+  imagehoster: ImageHoster
+  videohoster: VideoHoster
+  hivesigner: Hivesigner
+  jussi: Jussi
+  dhf: DHF
+  hive_engine: Hive Engine
+  honeycomb: HoneyComb
+  vsc: VSC
+  overview: Обзор
+  whitepaper: Белая бумага
+  hivesigner_libs: Hivesigner Libs
+  hive_keychain: Hive Keychain
+  community_help: Сообщество и помощь
+  chain_basics: Основы цепи
+  governance: Руководство
+  transactions: Транзакции
+  api: API
+  market: Рынок
+  exchange_node: Узел для обмена
+  clive: Command Line Hive
+  docker: Docker
+  tags: Tags
+  get_transaction_node: Получить узел транзакции
+  jussi_multiplexer: Использовать jussi как мультиплексор
+  mira_performance_tuning: Настройка производительности MIRA
+  monit: Управление узлом с использованием Monit
+  node_cli: Параметры командной строки
+  node_config: Конфигурация узла
+  plug_and_api_list: Плагин и Список API
+  seed_node: Семенной узел
+  setting_up_testnet: Настройка Testnet
+  using_hivemind: Использование Hivemind
+  account_creation_process: Процесс создания учетной записи
+  calculate_rc_recipe: Расчет затрат RC
+  estimate_upvote: Подсчитать значение голоса "за"
+  forum_market_bandwidth: Форум/пропускная способность рынка
+  paginated_api_methods: Методы API с разбиением на страницы
+  rc_bandwidth_parameters: Параметры пропускной способности RC
+  rc_bandwidth_system: RC система передачи данных
+  sso: Единый вход SSO
+  understanding_configuration_values: Понимание значений конфигурации
+  understanding_dynamic_props: Понимание динамических глобальных свойств
+  understanding_transaction_status: Понимание статуса транзакции
+  vest_to_hive: Конвертация VESTS в HIVE
+  virtual_operations_streaming: Транзакции потока блокчейн
+  account_reputation: Репутация аккаунта
+  blog_feed: Блог Feed
+  claim_rewards: Получить награду
+  client_signing: Подписка клиента
+  convert_hbd_to_hive: Конвертировать HBD в HIVE
+  convert_hive_to_hbd: Превратить HIVE в HBD
+  create_account: Создать Аккаунт
+  delegate_power: Делегированная сила
+  edit_content_patching: Редактировать патч содержимого
+  follow_user: Подписаться на пользователя
+  get_account_comments: Получить комментарии клиента
+  get_account_replies: Получить ответы на вопросы клиента
+  get_delegations_by_user: Получить делегатов от Пользователя
+  get_follower_and_following: Список подписчиков и подписчиков
+  get_post_comments: Получить комментарии к сообщениям
+  get_post_details: Получить информацию о записи
+  get_posts: Посты
+  get_state_replacement: Получить API замены состояния
+  get_voters_list: Получить список избирателей на пост
+  getting_started: Начало работы
+  grant_active_permission: Предоставить Активное Разрешение
+  grant_posting_permission: Предоставить разрешение на публикацию
+  power_down: Понижение силы
+  power_up: Улучшить Hive силы
+  reblogging_post: Репостнутый пост
+  search_accounts: Поиск клиента
+  search_tags: Поиск тегов
+  set_withdraw_route: Установить маршрут вывода
+  stream_blockchain_transactions: Транзакции потока блокчейн
+  submit_comment_reply: Отправить ответ на комментарий
+  submit_post: Опубликовать запись
+  tic_tac_toe: Децентрализованная игра на Hive
+  transfer_hive_and_hbd: Передача HIVE и HBD
+  vote_on_content: Голосовать за контент
+  witness_listing_and_voting: Список заверителей и голосование
+  account_recovery: Восстановление аккаунта
+  password_key_change: Изменение пароля ключа
+  rc_dev: Руководство разработчика системы кредитования ресурсов
+  transfer_hive_and_hbd_savings: Передача HIVE и HBD на сберегательный баланс
+  using_keys_securely: Безопасное использование ключей
+  how_to_serialize: Как сериализовать и подписывать Hive транзакции
+  using_multisignature_accounts: Использование аккаунтов с мультиподписью
+  round_trip: Круглая поездка
+  javascript: Javascript
+  python: Python
+  ruby: Ruby
+  php: PHP
+  recipes: Рецепты
+  node_operation: Операции с узлами
+  haf_api: Setup HAF API node
+  drone: Drone middleware
+  witness_node: Witness node
+  hiab_node: Hive in a box
+descriptions:
+  jussi: A reverse proxy that forwards json-rpc requests.
+  node_config: All `config.ini` options available to `hived`
+  node_cli: All options available to `hived` at command line interface cli_wallet
+  clive: Interactive command line application for interacting with the Hive
+  plug_and_api_list: Run a `hived` node with your preferred APIs
+  haf_api: Setup full or light Hive nodes with HAF API
+  using_hivemind: Hivemind setup and API functionality
+  jussi_multiplexer: Optimize your local applications with jussi
+  drone: API caching layer application, Jussi replacement
+  monit: Use monit as a utility for managing and monitoring hived
+  seed_node: Setting up a seed node
+  exchange_node: Setting up a node for exchanges
+  get_transaction_node: Setting up a node that supports `*.get_transaction`
+  setting_up_testnet: Quick-start for deploying a Hive-based Testnet.
+  tools: Directory of community testnet tools
+  hivesigner: Understand the basics of using Hivesigner with your Hive application
+  api: Dictionary of API Terms
+  chain_basics: Dictionary of Chain Basic Terms
+  governance: Dictionary of Governance Terms
+  market: Dictionary of Market Terms
+  transactions: Dictionary of Transaction Terms
+  follow_user: _Follow and unfollow a user / author._
+  get_account_comments: How to retrieve account comments from the Hive blockchain.
+  get_account_replies: Fetching the replies written to a particular account.
+  power_up: _Power up an account's Hive using either Hive Signer or a client-side signing._
+  blog_feed: This tutorial shows you how to get blogs details from the specified author, limited to five results.
+  edit_content_patching: _How to patch post edits to Hive._
+  get_post_details: This tutorial fetches the contents of a single post and explains all data related to that post.
+  vote_on_content: _Create a weighted up or down vote on a comment/post._
+  getting_started: Before interact with the blockchain, we start with the presentation and configuration of relevant libraries.
+  search_accounts: How to call a list of user names from the Hive blockchain
+  account_recovery: How to recover an account when password is lost/changed.
+  account_reputation: _Learn how to interpret account reputation._
+  submit_post: This example will broadcast a new post to the blockchain using the values provided.
+  search_tags: Performing a search for tags.
+  claim_rewards: _Learn how to claim rewards from unclaimed reward balance using Hive Signer as well as client signing method._
+  convert_hbd_to_hive: _How to convert HBD to HIVE for a specified account._
+  convert_hive_to_hbd: _How to convert HIVE to HBD for a specified account._
+  stream_blockchain_transactions: _How to stream transactions and operations from Hive blockchain._
+  get_follower_and_following: _Get the followers of a user/author & the authors that user is following._
+  round_trip: Using Hive as your personal 'Hash in the Sky'
+  create_account: _Create Hive account using Hive Signer as well as with client-side signing._
+  delegate_power: _Delegate power to other users using Hive Signer or Client-side signing._
+  get_delegations_by_user: _View the vesting delegations made by a user as well as the delegations that are expiring._
+  get_state_replacement: This is a list of replacement API calls for each of the different _routes_ available from the `getState` function.
+  get_voters_list: _By the end of this tutorial you would know how to get voters list on any content._
+  get_post_comments: Fetch comments made on each content or post.
+  grant_active_permission: _How to grant and revoke active permission to another user._
+  grant_posting_permission: _How to grant and revoke posting permission to another user._
+  power_down: _Perform a power down on all or part of an account's VESTS using either Hive Signer or client-side signing._
+  reblogging_post: _How to reblog a post on Hive_
+  set_withdraw_route: _Set routes to an account's power downs or withdraws._
+  submit_comment_reply: _How to post a simple comment to Hive._
+  tic_tac_toe: _We will develop a decentralized game by the end of this series._
+  transfer_hive_and_hbd: _Transfer both HIVE and HBD from one account to another._
+  witness_voting_and_listing: _Create a list of available witnesses as well as vote for and remove your vote for a witness._
+  get_posts: This example will output posts depending on which category is provided as the arguments.
+  using_keys_securely: Learn how the Beem python library handles transaction signing with Hive user's key and how to securely manage your private keys.
+  password_key_change: How to change your accounts password and keys.
+  rc_dev: The goal of this guide is to demystify how resources and RC's work.  The intended audience is developers working on Hive user interfaces, applications, and client libraries.
+  transfer_hive_and_hbd_savings: How to transfer HIVE and HBD to Savings balance.
+  sso: _Login without authority._
+  account_creation_process: The methods on how to create a new account.
+  calculate_rc_recipe: How to calculate resource credit cost for transactions.
+  estimate_upvote: Calculate the approximate value of an upvote on Hive.
+  forum_market_bandwidth: How to interpret raw bandwidth data.
+  how_to_serialize: Serialization and signing without additional Hive Javascript libraries.
+  rc_bandwidth_parameters: Analyze the dynamics of the resource budget pool.
+  rc_bandwidth_system: All about the RC bandwidth system, the complete rewrite of the bandwidth system.
+  understanding_dynamic_props: Maintains global state information
+  virtual_operations_streaming: Including virtual operations when streaming blockchain transactions
+  vest_to_hive: How to convert VESTS to HIVE or HIVE POWER
+  understanding_configuration_values: Low level blockchain constants
+  understanding_transaction_status: How to use the Hive API to check the status of a transaction for a given `trx_id` value.
+  using_multisignature_accounts: How to set up and use multisignature accounts on Hive Blockchain.
+  witness_node: Setting up a consensus or witness node
+  hiab_node: Dockerized, quick node setup tool
+  paginated_api_methods: Querying multiple pages of results from the API
+  client_signing: How to sign, verify broadcast transactions locally on Hive
+  witness_listing_and_voting: Getting witnesses and voting them
+

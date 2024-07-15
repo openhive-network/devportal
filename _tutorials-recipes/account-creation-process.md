@@ -1,7 +1,7 @@
 ---
-title: Account creation process
+title: titles.account_creation_process
 position: 1
-description: The methods on how to create a new account.
+description: descriptions.account_creation_process
 exclude: true
 layout: full
 canonical_url: account-creation-process.html

@@ -1,7 +1,7 @@
 ---
-title: 'PY: Submit Post'
+title: titles.submit_post
 position: 10
-description: "How to submit post on Hive blockchain using Python."
+description: descriptions.submit_post
 layout: full
 canonical_url: submit_post.html
 ---
@@ -114,13 +114,56 @@ A simple confirmation is printed on the screen if the post is committed successf
 
 You can also check on your local testnet using [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }}) for the post.
 
+Final code:
+
+```python
+import random
+import string
+import getpass
+import json
+from beem import Hive
+from beem.transactionbuilder import TransactionBuilder
+from beembase.operations import Comment
+
+#capture variables
+author = input('Username: ')
+title = input('Post Title: ')
+body = input('Post Body: ')
+
+#capture list of tags and separate by " "
+taglimit = 2 #number of tags 1 - 5
+taglist = []
+for i in range(1, taglimit+1):
+  print(i)
+  tag = input(' Tag : ')
+  taglist.append(tag)
+
+#random generator to create post permlink
+permlink = ''.join(random.choices(string.digits, k=10))
+
+# client = Hive('https://testnet.openhive.network') # Public Testnet
+client = Hive('http://127.0.0.1:8090') # Local Testnet
+tx = TransactionBuilder(blockchain_instance=client)
+tx.appendOps(Comment(**{
+  "parent_author": '',
+  "parent_permlink": taglist[0], # we use the first tag as the category
+  "author": author,
+  "permlink": permlink,
+  "title": title,
+  "body": body,
+  "json_metadata": json.dumps({"tags": taglist})
+}))
+
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print("Post created successfully: " + str(broadcast_tx))
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py10submitpost?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

@@ -1,7 +1,7 @@
 ---
-title: Hive Node Config
+title: titles.node_config
 position: 1
-description: All `config.ini` options available to `hived`
+description: descriptions.node_config
 exclude: true
 exclude_in_index: true
 excluded_in_search: true

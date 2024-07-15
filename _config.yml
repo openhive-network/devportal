@@ -1,102 +1,124 @@
 # ----
 # Site
 
-title: Hive Developer
+title: Hive Developers
 description: Hive Developer Documentation.
-baseurl: '/'
+baseurl: ''
 url: https://developers.hive.io
 #google_analytics_key: UA-76480270-4
 permalink: /:categories/:title.html
+
+languages: ["en", "hi", "de", "fr", "ru", "zh"]
+exclude_from_localizations: ["unused","tutorials","support","lib","js","images","css","_sass","_plugins","_layouts","_includes","_data"]
+
 
 collections:
   introduction:
     title: Introduction
     id: introduction
+    namespace: introduction
     position: 1
     output: true
   contributors:
     title: Contributors
     id: contributors
+    namespace: contributors
     position: 2
     output: true
   quickstart:
     title: Quickstart
     id: quickstart
+    namespace: quickstart
     position: 3
     output: true
   javascript:
     title: Javascript
     id: javascript
+    namespace: javascript
     position: 4
     output: true
   tutorials:
     title: Tutorials
     id: tutorials
+    namespace: tutorials
     position: 5
     output: true
   services:
     title: Services
     id: services
+    namespace: services
     position: 6
     output: true
   layer2:
     title: Layer 2
     id: layer2
+    namespace: layer2
     position: 7
     output: true
   nodeop:
     title: Node Operation
     id: nodeop
+    namespace: nodeop
     position: 8
     output: true
   resources:
     title: Resources
     id: resources
+    namespace: resources
     position: 9
     output: true
   glossary:
     title: Glossary
     id: glossary
+    namespace: glossary
     position: 10
     output: true
   tutorials-recipes:
     title: Recipes
     id: tutorials-recipes
+    namespace: tutorials-recipes
     position: 11
     output: true
   tutorials-javascript:
     title: Javascript Tutorials
     id: tutorials-javascript
+    namespace: tutorials-javascript
     position: 12
     output: true
   tutorials-python:
     title: Python Tutorials
     id: tutorials-python
+    namespace: tutorials-python
     position: 13
     output: true
   apidefinitions:
     title: API Definitions
     id: apidefinitions
+    namespace: apidefinitions
     position: 14
     output: true
   testnet:
     title: Testnet
     id: testnet
+    namespace: testnet
     position: 15
     output: true
   tutorials-ruby:
     title: Ruby Tutorials
     id: tutorials-ruby
+    namespace: tutorials-ruby
     position: 16
     output: true
   tutorials-php:
     title: Ruby Tutorials
     id: tutorials-php
+    namespace: tutorials-php
     position: 17
     output: true
 
 plugins:
   - jekyll-sitemap
+  - jekyll-multiple-languages-plugin
   - jekyll-seo-tag
 
 exclude:

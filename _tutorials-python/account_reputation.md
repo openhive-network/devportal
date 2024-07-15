@@ -1,7 +1,7 @@
 ---
-title: 'PY: Account Reputation'
+title: titles.account_reputation
 position: 20
-description: "Would you like to know how to interpret account reputation to more human readable format, then this tutorial is for you."
+description: descriptions.account_reputation
 layout: full
 canonical_url: account_reputation.html
 ---
@@ -103,13 +103,36 @@ if sign < 0:
 
 You can use this to convert from the raw blockchain value.  This is now done internally by libraries like beem.
 
+Final code:
+
+```python
+import pprint
+from pick import pick
+
+# initialize Hive class
+from beem import Hive
+from beem.account import Account
+
+hive = Hive()
+
+title = 'Please choose account: '
+options = ["hiveio","ecency","busy.org","demo"]
+
+# get index and selected filter name
+option, index = pick(options, title)
+
+# option is printed as reference
+pprint.pprint("Selected: " + option)
+
+user = Account(option, blockchain_instance=hive)
+
+# print specified account's reputation
+pprint.pprint(user.get_reputation())
+
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py20accountreputation?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

@@ -1,7 +1,7 @@
 ---
-title: 'RB: Vote On Content'
+title: titles.vote_on_content
 position: 17
-description: "To vote for a post (or reply), we can use a vote operation and provide the voting weight (the percentage of one vote being cast)."
+description: descriptions.vote_on_content
 layout: full
 canonical_url: vote_on_content.html
 ---
@@ -198,6 +198,40 @@ Broadcasting a `vote` operation will require the following fields:
 * `author` - author of the post being voted for
 * `permlink` - permlink of the post being voted for
 * `weight` - percentage of one vote being cast, expressed as an integer (e.g.: `100.0 %` = `10000`)
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+url, weight = ARGV
+slug = url.split('@').last
+author = slug.split('/')[0]
+permlink = slug.split('/')[1..-1].join('/')
+voter = 'social'
+posting_wif = '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
+weight = ((weight || '100.0').to_f * 100).to_i
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: posting_wif
+}
+
+tx = Radiator::Transaction.new(options)
+
+tx.operations << {
+  type: :vote,
+  voter: voter,
+  author: author,
+  permlink: permlink,
+  weight: weight
+}
+
+puts JSON.pretty_generate tx.process(true)
+
+```
 
 ### To Run
 

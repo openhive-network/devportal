@@ -1,6 +1,6 @@
 ---
-title: Governance
+title: titles.governance
 position: 2
-description: Dictionary of Governance Terms
+description: descriptions.dovernance
 canonical_url: governance.html
 ---

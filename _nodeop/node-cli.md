@@ -1,7 +1,7 @@
 ---
-title: Command Line Options
+title: titles.node_cli
 position: 2
-description: All options available to `hived` at command line interface
+description: descriptions.node_cli
 exclude: true
 layout: full
 canonical_url: node-cli.html
@@ -29,7 +29,6 @@ The following are *only* available as command-line options.
 * [`statsd-record-on-replay`](#statsd-record-on-replay)
 * [`transaction-status-rebuild-state`](#transaction-status-rebuild-state)
 * [`p2p-force-validate`](#p2p-force-validate)
-* ~~[`force-validate`](#force-validate)~~
 * [`replay-blockchain`](#replay-blockchain)
 * [`force-open`](#force-open)
 * [`resync-blockchain`](#resync-blockchain)
@@ -39,7 +38,6 @@ The following are *only* available as command-line options.
 * [`dump-memory-details`](#dump-memory-details)
 * [`check-locks`](#check-locks)
 * [`validate-database-invariants`](#validate-database-invariants)
-* ~~[`database-cfg`](#database-cfg)~~
 * [`account-history-rocksdb-immediate-import`](#account-history-rocksdb-immediate-import)
 * [`exit-after-replay`](#exit-after-replay)
 * [`force-replay`](#force-replay)
@@ -89,16 +87,6 @@ Force validation of all transactions.
 
 ```bash
 --p2p-force-validate
-```
-
-### `force-validate`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Force validation of all transactions.
-
-**Deprecated in favor of:** `p2p-force-validate`
-
-```bash
---force-validate
 ```
 
 ### `replay-blockchain`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
@@ -186,16 +174,6 @@ See: [#1477]({{ 'https://github.com/steemit/steem/issues/1477' | archived_url }}
 ```bash
 --validate-database-invariants
 ```
-
-### `database-cfg`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-The database configuration file location  **MIRA only (prior to HF25).**
-
-```bash
---database-cfg=database.cfg
-```
-
-**Removed in:** HF25
 
 ### `account-history-rocksdb-immediate-import`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 

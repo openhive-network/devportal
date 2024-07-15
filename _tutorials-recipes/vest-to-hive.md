@@ -1,7 +1,7 @@
 ---
-title: Converting VESTS to HIVE
+title: titles.vest_to_hive
 position: 1
-description: How to convert VESTS to HIVE or HIVE POWER
+description: descriptions.vest_to_hive
 exclude: true
 layout: full
 canonical_url: vest-to-hive.html

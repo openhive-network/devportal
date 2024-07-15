@@ -1,7 +1,7 @@
 ---
-title: 'JS: Get Voters List On Post'
+title: titles.get_voters_list
 position: 6
-description: "_By the end of this tutorial you would know how to get voters list on any content._"
+description: descriptions.get_voters_list
 layout: full
 canonical_url: get_voters_list_on_post.html
 ---
@@ -103,13 +103,85 @@ From this result, you have access to everything associated with the selected pos
 * `reputation` - The [reputation]({{ '/glossary/#reputation' | relative_url }}) of the account that voted.
 * `time` - Time the vote was submitted.
 
+Final code:
+
+```javascript
+const dhive = require('@hiveio/dhive');
+
+let opts = {};
+
+//connect to production server
+opts.addressPrefix = 'STM';
+opts.chainId =
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+//connect to server which is connected to the network/production
+const client = new dhive.Client('https://api.hive.blog');
+
+//fetch list of trending posts
+async function main() {
+    const query = {
+        tag: '',
+        limit: 5,
+        truncate_body: 1,
+    };
+    client.database
+        .getDiscussions('trending', query)
+        .then(result => {
+            var posts = [];
+            result.forEach(post => {
+                console.log('post', post);
+                const json = JSON.parse(post.json_metadata);
+                const image = json.image ? json.image[0] : '';
+                const title = post.title;
+                const author = post.author;
+                const permlink = post.permlink;
+                const created = new Date(post.created).toDateString();
+                posts.push(
+                    `<div class="list-group-item" onclick=openPost("${author}","${permlink}")><h4 class="list-group-item-heading">${title}</h4><p>by ${author}</p><center><img src="${image}" class="img-responsive center-block" style="max-width: 450px"/></center><p class="list-group-item-text text-right text-nowrap">${created}</p></div>`
+                );
+            });
+            document.getElementById('postList').style.display = 'block';
+            document.getElementById('postList').innerHTML = posts.join('');
+        })
+        .catch(err => {
+            console.log(err);
+            alert('Error occured, please reload the page');
+        });
+}
+//catch error messages
+main().catch(console.error);
+
+//get_content of the post
+window.openPost = async (author, permlink) => {
+    client.database
+        .call('get_active_votes', [author, permlink])
+        .then(result => {
+            console.log('votes', result, JSON.stringify(result));
+
+            var voters = [];
+            voters.push(
+                `<div class='pull-right'><button onclick=goback()>Close</button></div><br>`
+            );
+            result.forEach(voter => {
+                const name = voter.voter;
+                const time = new Date(voter.time).toDateString();
+                voters.push(`${name} (${time})`);
+            });
+
+            document.getElementById('postList').style.display = 'none';
+            document.getElementById('postBody').style.display = 'block';
+            document.getElementById('postBody').innerHTML = voters.join('<li>');
+        });
+};
+//go back from post view to list
+window.goback = async () => {
+    document.getElementById('postList').style.display = 'block';
+    document.getElementById('postBody').style.display = 'none';
+};
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js06getvoterslistonpost?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

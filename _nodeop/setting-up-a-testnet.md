@@ -1,8 +1,7 @@
 ---
-title: Setting Up a Testnet
-position: 9
-description: |
-  "Quick-start" for deploying a Hive-based Testnet.
+title: titles.setting_up_testnet
+position: 15
+description: descriptions.setting_up_testnet
 exclude: true
 layout: full
 canonical_url: setting-up-a-testnet.html
@@ -91,11 +90,8 @@ cmake \
   -DCMAKE_INSTALL_PREFIX="~/opt/$HIVE_NAME" \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_HIVE_TESTNET=ON \
-  -DLOW_MEMORY_NODE=OFF \
-  -DCLEAR_VOTES=ON \
   -DSKIP_BY_TX_ID=ON \
   -DHIVE_LINT_LEVEL=OFF \
-  -DENABLE_MIRA=ON \
   ..
 mkdir -p ~/opt/$HIVE_NAME
 make -j$(nproc) install

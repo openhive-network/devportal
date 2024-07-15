@@ -1,7 +1,7 @@
 ---
-title: 'RB: Search Tags'
+title: titles.search_tags
 position: 16
-description: "Performing a search for tags."
+description: descriptions.search_tags
 layout: full
 canonical_url: search_tags.html
 ---
@@ -78,6 +78,41 @@ Tags in the results of `get_trending_tags` returns the following fields:
 * `total_payouts` - Rewards paid in this tag.
 * `top_posts` - Top votes in this tag.
 * `comments` - Number of comments in this tag.
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+api = Radiator::Api.new
+limit = (ARGV[0] || '10').to_i
+all_tags = []
+
+until all_tags.size >= limit
+  last_tag = if all_tags.any?
+    all_tags.last.name
+  else
+    nil
+  end
+  
+  api.get_trending_tags(last_tag, [limit, 51].min) do |tags|
+    all_tags += tags
+  end
+  
+  all_tags = all_tags.uniq
+end
+
+all_tags.each do |tag|
+  print "tag: #{tag.name.empty? ? '<empty>' : tag.name},"
+  print " total_payouts: #{tag.total_payouts},"
+  print " top_posts: #{tag.top_posts},"
+  print " comments: #{tag.comments}\n"
+end
+
+```
 
 ### To Run
 

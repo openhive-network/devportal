@@ -1,7 +1,7 @@
 ---
-title: 'RB: Search Accounts'
+title: titles.search_accounts
 position: 15
-description: "Performing a search on account by names starting with a given input."
+description: descriptions.search_accounts
 layout: full
 canonical_url: search_accounts.html
 ---
@@ -74,6 +74,24 @@ From the example we get the following output from our script:
 
 ```
 bob
+```
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+api = Radiator::Api.new
+lower_bound_name, limit = ARGV
+limit = (limit || '10').to_i
+
+api.lookup_accounts(lower_bound_name, limit) do |accounts|
+  puts accounts.join(' ')
+end
+
 ```
 
 ### To Run

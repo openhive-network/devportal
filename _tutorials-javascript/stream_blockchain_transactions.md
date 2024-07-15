@@ -1,7 +1,7 @@
 ---
-title: 'JS: Stream Blockchain Transactions'
+title: titles.stream_blockchain_transactions
 position: 13
-description: "_How to stream transactions and blocks from Hive blockchain._"
+description: descriptions.stream_blockchain_transactions
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---
@@ -124,13 +124,64 @@ Example of output:
 }
 ```
 
+Final code:
+
+```javascript
+const dsteem = require('@hiveio/dhive');
+
+let opts = {};
+
+//connect to production server
+opts.addressPrefix = 'STM';
+opts.chainId =
+    'beeab0de00000000000000000000000000000000000000000000000000000000';
+
+//connect to server which is connected to the network/production
+const client = new dsteem.Client('https://api.hive.blog');
+
+let stream;
+let state;
+let blocks = [];
+//start stream
+async function main() {
+    stream = client.blockchain.getBlockStream();
+    stream
+        .on('data', function(block) {
+            //console.log(block);
+            blocks.unshift(
+                `<div class="list-group-item"><h5 class="list-group-item-heading">Block id: ${
+                    block.block_id
+                }</h5><p>Transactions in this block: ${
+                    block.transactions.length
+                } <br>Witness: ${
+                    block.witness
+                }</p><p class="list-group-item-text text-right text-nowrap">Timestamp: ${
+                    block.timestamp
+                }</p></div>`
+            );
+            document.getElementById('blockList').innerHTML = blocks.join('');
+        })
+        .on('end', function() {
+            // done
+            console.log('END');
+        });
+}
+//catch error messages
+main().catch(console.error);
+
+//pause stream
+window.pauseStream = async () => {
+    state = stream.pause();
+};
+
+//resume stream
+window.resumeStream = async () => {
+    state = state.resume();
+};
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/js13streamblockchaintransactions?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

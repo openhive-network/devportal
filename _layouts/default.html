@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
@@ -7,7 +7,12 @@
   <meta name="apple-mobile-web-app-title" content="Hive Devportal" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
+
+  <title>{% t page.title %}</title>
+  <meta property="og:title" content="{% t page.title %}" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:title" content="{% t page.title %}" />
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <link rel="shortcut icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
   <link rel="apple-touch-icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
@@ -22,7 +27,7 @@
   <script src="{{ '/js/main.js' | relative_url }}"></script>
   <script src="{{ '/js/adjust.js' | relative_url }}"></script>
 
-  {% seo %}
+  {% seo title=false %}
 
   {% if jekyll.environment == 'production' %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -59,7 +64,7 @@
 </header>
 <div class="main" id="top">
   <div class="hero">
-    <h1 class="hero__h1">Hive Developer Portal {% if page.section %} - {{ page.section }}{% endif %}</h1>
+    <h1 class="hero__h1">{% t titles.portal %} {% if page.section %} - {% t page.section %}{% endif %}</h1>
     <img class="hero__img" src="{{ '/images/honey-comb-92.png' | relative_url }}" style="position: relative; top: 10px;" />
   </div>
   {{ content }}
@@ -70,6 +75,30 @@
 <script>
     document.getElementById("open-nav").addEventListener("click", function () {
         document.body.classList.toggle("nav-open");
+    });
+    // assets/js/post.js
+    let codeBlocks = document.querySelectorAll('pre.highlight');
+
+    codeBlocks.forEach(function (codeBlock) {
+      let copyButton = document.createElement('button');
+      copyButton.className = 'copy';
+      copyButton.type = 'button';
+      copyButton.ariaLabel = 'Copy code to clipboard';
+      copyButton.innerText = 'Copy';
+
+      codeBlock.append(copyButton);
+
+      copyButton.addEventListener('click', function () {
+        let code = codeBlock.querySelector('code').innerText.trim();
+        window.navigator.clipboard.writeText(code);
+
+        copyButton.innerText = 'Copied';
+        let fourSeconds = 4000;
+
+        setTimeout(function () {
+          copyButton.innerText = 'Copy';
+        }, fourSeconds);
+      });
     });
 </script>
 </body>

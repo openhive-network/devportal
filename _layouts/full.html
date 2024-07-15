@@ -4,14 +4,15 @@ layout: default
 <section id="{{page.id | slugify}}" class="row {{ page.id | slugify }}">
 	<h3>
 		<a id="{{ page.id | slugify }}">
-			{{ page.title }}
+			{% t page.title %}
 			{% if page.type %}
 				<span class="endpoint {{ page.type }}"></span>
 			{% endif %}
 		</a>
 	</h3>
 	{% if page.description %}
-		<span class="description">{{page.description | markdownify}}</span>
+		{% capture description %}{% t page.description %}{% endcapture %}
+		<span class="description">{{description | markdownify}}</span>
 	{% endif %}
 
 	{{ page.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}

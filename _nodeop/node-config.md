@@ -1,7 +1,7 @@
 ---
-title: Hive Node Config
+title: titles.node_config
 position: 1
-description: All `config.ini` options available to `hived`
+description: descriptions.node_config
 exclude: true
 layout: full
 canonical_url: node-config.html
@@ -30,11 +30,8 @@ Also refer to:
 * [`backtrace`](#backtrace)
 * [`plugin`](#plugin)
 * [`account-history-track-account-range`](#account-history-track-account-range)
-* ~~[`track-account-range`](#track-account-range)~~
 * [`account-history-whitelist-ops`](#account-history-whitelist-ops)
-* ~~[`history-whitelist-ops`](#history-whitelist-ops)~~
 * [`account-history-blacklist-ops`](#account-history-blacklist-ops)
-* ~~[`history-blacklist-ops`](#history-blacklist-ops)~~
 * [`history-disable-pruning`](#history-disable-pruning)
 * [`account-history-rocksdb-path`](#account-history-rocksdb-path)
 * [`account-history-rocksdb-track-account-range`](#account-history-rocksdb-track-account-range)
@@ -52,7 +49,6 @@ Also refer to:
 * [`checkpoint`](#checkpoint)
 * [`flush-state-interval`](#flush-state-interval)
 * [`debug-node-edit-script`](#debug-node-edit-script)
-* ~~[`edit-script`](#edit-script)~~
 * [`follow-max-feed-size`](#follow-max-feed-size)
 * [`follow-start-feeds`](#follow-start-feeds)
 * [`log-json-rpc`](#log-json-rpc)
@@ -60,7 +56,6 @@ Also refer to:
 * [`market-history-buckets-per-size`](#market-history-buckets-per-size)
 * [`p2p-endpoint`](#p2p-endpoint)
 * [`p2p-max-connections`](#p2p-max-connections)
-* ~~[`seed-node`](#seed-node)~~
 * [`p2p-seed-node`](#p2p-seed-node)
 * [`p2p-parameters`](#p2p-parameters)
 * [`p2p-user-agent`](#p2p-user-agent)
@@ -79,7 +74,6 @@ Also refer to:
 * [`webserver-http-endpoint`](#webserver-http-endpoint)
 * [`webserver-ws-endpoint`](#webserver-ws-endpoint)
 * [`webserver-unix-endpoint`](#webserver-unix-endpoint)
-* ~~[`rpc-endpoint`](#rpc-endpoint)~~
 * [`webserver-thread-pool-size`](#webserver-thread-pool-size)
 * [`enable-stale-production`](#enable-stale-production)
 * [`required-participation`](#required-participation)
@@ -212,17 +206,6 @@ account-history-track-account-range = ["c", "f"]
 account-history-track-account-range =
 ```
 
-### `track-account-range`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Defines a range of accounts to track as a JSON pair `["from","to"]`.  Can be specified multiple times.
-
-**Deprecated in favor of:** `account-history-track-account-range`
-
-```ini
-# default
-track-account-range =
-```
-
 ### `account-history-whitelist-ops`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 Defines a list of operations which will be explicitly logged.
@@ -239,17 +222,6 @@ account-history-whitelist-ops =
 account-history-whitelist-ops = transfer_operation transfer_to_vesting_operation withdraw_vesting_operation interest_operation transfer_to_savings_operation transfer_from_savings_operation cancel_transfer_from_savings_operation escrow_transfer_operation escrow_approve_operation escrow_dispute_operation escrow_release_operation fill_convert_request_operation fill_order_operation claim_reward_balance_operation author_reward_operation curation_reward_operation fill_vesting_withdraw_operation fill_transfer_from_savings_operation delegate_vesting_shares_operation return_vesting_delegation_operation comment_benefactor_reward_operation
 ```
 
-### `history-whitelist-ops`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Defines a list of operations which will be explicitly logged.
-
-**Deprecated in favor of:** `account-history-whitelist-ops`
-
-```ini
-# default
-history-whitelist-ops =
-```
-
 ### `account-history-blacklist-ops`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 Defines a list of operations which will be explicitly ignored.
@@ -259,17 +231,6 @@ See: [#301]({{ 'https://github.com/steemit/steem/issues/301' | archived_url }}),
 ```ini
 # default
 account-history-blacklist-ops =
-```
-
-### `history-blacklist-ops`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Defines a list of operations which will be explicitly ignored.
-
-**Deprecated in favor of:** `account-history-blacklist-ops`
-
-```ini
-# 
-history-blacklist-ops =
 ```
 
 ### `history-disable-pruning`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
@@ -589,16 +550,6 @@ See: [`debug_node_plugin.md`](https://gitlab.syncad.com/hive/hive/-/blob/master/
 debug-node-edit-script =
 ```
 
-### `edit-script`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Database edits to apply on startup (may specify multiple times).
-
-**Deprecated in favor of:** `debug-node-edit-script`, see: [#1297]({{ 'https://github.com/steemit/steem/issues/1297' | archived_url }})
-
-```ini
-edit-script =
-```
-
 ### `follow-max-feed-size`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 Set the maximum size of cached feed for an account.
@@ -677,16 +628,6 @@ Maxmimum number of incoming connections on P2P endpoint.
 
 ```ini
 p2p-max-connections =
-```
-
-### `seed-node`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-The IP address and port of a remote peer to sync with.
-
-**Deprecated in favor of:** `p2p-seed-node`, see: [#1314]({{ 'https://github.com/steemit/steem/issues/1314' | archived_url }})
-
-```ini
-seed-node =
 ```
 
 ### `p2p-seed-node`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
@@ -976,16 +917,6 @@ See: [#3205]({{ 'https://github.com/steemit/steem/pull/3205' | archived_url }})
 ```ini
 # example
 webserver-unix-endpoint = /tmp/hived.sock
-```
-
-### `rpc-endpoint`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Local http and websocket endpoint for webserver requests.
-
-**Deprecated in favor of:** `webserver-http-endpoint` and `webserver-ws-endpoint`, see: [#1297]({{ 'https://github.com/steemit/steem/issues/1297' | archived_url }})
-
-```ini
-rpc-endpoint =
 ```
 
 ### `webserver-thread-pool-size`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>

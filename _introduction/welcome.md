@@ -1,5 +1,5 @@
 ---
-title: Intro to Hive
+title: titles.welcome
 position: 1
 ---
 

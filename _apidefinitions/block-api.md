@@ -1,6 +1,7 @@
 ---
 position: 3
 exclude: true
+title: titles.block_api
 canonical_url: .#apidefinitions-block-api
 ---
 

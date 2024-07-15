@@ -1,5 +1,5 @@
 ---
-title: DHF
+title: titles.dhf
 position: 7
 canonical_url: dhf.html
 ---

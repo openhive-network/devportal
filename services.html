@@ -1,7 +1,8 @@
 ---
-title: Services
-section: Services
+title: titles.services
+section: titles.services
 layout: default
+namespace: services
 permalink: /services/
 ---
 
@@ -12,14 +13,14 @@ permalink: /services/
 		<section id="{{doc.id | slugify}}" class="row {{ doc.id | slugify }}">
 			<h3>
 				<a id="{{ doc.id | slugify }}">
-					{{ doc.title }}
+					{% t doc.title %}
 					{% if doc.type %}
 						<span class="endpoint {{ doc.type }}"></span>
 					{% endif %}
 				</a>
 			</h3>
 			{% if doc.description %}
-				<p class="description">{{doc.description}}</p>
+				<p class="description">{% t doc.description %}</p>
 			{% endif %}
 
 			{{ doc.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}

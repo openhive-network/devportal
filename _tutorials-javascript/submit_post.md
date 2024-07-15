@@ -1,7 +1,7 @@
 ---
-title: 'JS: Submit Post'
+title: titles.submit_post
 position: 10
-description: "_How to prepare comments for Hive and then submit using the `broadcast.comment` function._"
+description: descriptions.submit_post
 layout: full
 canonical_url: submit_post.html
 ---
@@ -114,6 +114,78 @@ Note that the `parent_author` and `parent_permlink` fields are used for replies 
 After the post has been broadcast to the network, we can simply set all the fields to empty strings and show the post link to check it from a condenser instance running on the selected testnet.
 
 The `broadcast` operation has more to offer than just committing a post/comment to the blockchain. It provides a mulititude of options that can accompany this commit. The max payout and percent of hive dollars can be set. When authors don't want all of the benifits from a post, they can set the payout factors to zero or beneficiaries can be set to receive part of the rewards. You can also set whether votes are allowed or not. The broadcast to the blockchain can be modified to meet the exact requirements of the author. More information on how to use the `broadcast` operation can be found on the Hive [Devportal]({{ '/apidefinitions/#broadcast_ops_comment' | relative_url }}) with a list of the available broadcast options under the specific [Appbase API]({{ '/apidefinitions/#broadcast_ops_comment_options' | relative_url }})
+
+Final code:
+
+```javascript
+import { Client, PrivateKey } from '@hiveio/dhive';
+import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Replace 'Testnet' with 'Mainnet' to connect to the main Hive blockchain.
+
+let opts = { ...NetConfig.net };
+
+//connect to server which is connected to the network/testnet
+const client = new Client(NetConfig.url, opts);
+
+//submit post function
+window.submitPost = async () => {
+    //get private key
+    const privateKey = PrivateKey.fromString(
+        document.getElementById('postingKey').value
+    );
+    //get account name
+    const account = document.getElementById('username').value;
+    //get title
+    const title = document.getElementById('title').value;
+    //get body
+    const body = document.getElementById('body').value;
+    //get tags and convert to array list
+    const tags = document.getElementById('tags').value;
+    const taglist = tags.split(' ');
+    //make simple json metadata including only tags
+    const json_metadata = JSON.stringify({ tags: taglist });
+    //generate random permanent link for post
+    const permlink = Math.random()
+        .toString(36)
+        .substring(2);
+
+    const payload = {
+        author: account,
+        body: body,
+        json_metadata: json_metadata,
+        parent_author: '',
+        parent_permlink: taglist[0],
+        permlink: permlink,
+        title: title,
+    };
+    console.log('client.broadcast.comment:', payload);
+    client.broadcast.comment(payload, privateKey).then(
+        function(result) {
+            console.log('response:', result);
+            document.getElementById('title').value = '';
+            document.getElementById('body').value = '';
+            document.getElementById('tags').value = '';
+            document.getElementById('postLink').style.display = 'block';
+            document.getElementById(
+                'postLink'
+            ).innerHTML = `<br/><p>Included in block: ${
+                result.block_num
+            }</p><br/><br/><a href="http://127.0.0.1:8080/${
+                taglist[0]
+            }/@${account}/${permlink}">Check post here</a>`;
+        },
+        function(error) {
+            console.error(error);
+        }
+    );
+};
+
+window.onload = () => {
+    const account = NetConfig.accounts[0];
+    document.getElementById('username').value = account.address;
+    document.getElementById('postingKey').value = account.privPosting;
+};
+
+```
 
 ### To Run the tutorial
 

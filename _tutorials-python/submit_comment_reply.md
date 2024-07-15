@@ -1,7 +1,7 @@
 ---
-title: 'PY: Submit Comment Reply'
+title: titles.submit_comment_reply
 position: 11
-description: "How to submit a comment on a post to the Hive blockchain."
+description: descriptions.submit_comment_reply
 layout: full
 canonical_url: submit_comment_reply.html
 ---
@@ -119,13 +119,48 @@ A simple confirmation is printed on the screen if the post is committed successf
 
 You can also check on your local testnet using [database_api.find_comments]({{ '/apidefinitions/#database_api.find_comments' | relative_url }}) for the post.
 
+Final code:
+
+```python
+import random
+import string
+import getpass
+from beem import Hive
+from beem.transactionbuilder import TransactionBuilder
+from beembase.operations import Comment
+
+#capture variables
+parent_author = input('Parent author: ')
+parent_permlink = input('Parent permlink: ')
+author = input('Username: ')
+title = input('Post Title: ')
+body = input('Post Body: ')
+
+#random generator to create post permlink
+permlink = ''.join(random.choices(string.digits, k=10))
+
+# client = Hive('https://testnet.openhive.network') # Public Testnet
+client = Hive('http://127.0.0.1:8090') # Local Testnet
+tx = TransactionBuilder(blockchain_instance=client)
+tx.appendOps(Comment(**{
+  "parent_author": parent_author,
+  "parent_permlink": parent_permlink,
+  "author": author,
+  "permlink": permlink,
+  "title": title,
+  "body": body
+}))
+
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print("Comment created successfully: " + str(broadcast_tx))
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py11submitcommentreply?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

@@ -1,6 +1,7 @@
 ---
-title: Search
+title: titles.search
 sitemap: false
+namespace: search
 permalink: /search/
 
 # These ids have their own index based on /_data/**/*.yml so they do not need to
@@ -66,16 +67,16 @@ data_defined_ids:
         {%- endunless -%}
       {%- endfor -%}
     {%- endfor -%}
-    
+
     // # data_defined_ids is as follows
-    
+
     {% for api_defs in site.data.apidefinitions -%}
       {%- for sections in api_defs[1] -%}
         {%- for method in sections.methods -%}
           {%- if added -%},{%- endif -%}
           {%- assign added = false -%}
           {%- assign api_defs_url = '../apidefinitions/#' | append: method.api_method -%}
-          
+
           "{{ method.api_method | strip | slugify }}": {
             "id": "{{ method.api_method | strip | slugify }}",
             "title": "{{ method.api_method | strip | xml_escape }}",
@@ -90,13 +91,13 @@ data_defined_ids:
         {%- endfor -%}
       {%- endfor -%}
     {%- endfor -%}
-    
+
     {% for sections in site.data.apidefinitions.broadcast_ops -%}
       {%- for op in sections.ops -%}
         {%- if added -%},{%- endif -%}
         {%- assign added = false -%}
         {%- assign api_defs_url = '../apidefinitions/#broadcast_ops_' | append: op.name -%}
-        
+
         "broadcast_ops_{{ op.name | strip | slugify }}": {
           "id": "broadcast_ops_{{ op.name | strip | slugify }}",
           "title": "{{ op.name | strip | xml_escape }}",
@@ -110,18 +111,18 @@ data_defined_ids:
         {%- assign added = true -%}
       {%- endfor -%}
     {%- endfor -%}
-    
+
     {% for sections in site.data.objects.dgpo -%}
       {%- for field in sections.fields -%}
         {%- if added -%},{%- endif -%}
         {%- assign added = false -%}
-        
+
         {%- if field.purpose -%}
           {%- assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#' | append: field.name -%}
         {%- else -%}
           {%- assign dgpo_url = '../tutorials-recipes/understanding-dynamic-global-properties.html#not-covered' -%}
         {%- endif -%}
-        
+
         "dgpo_{{ field.name | strip | slugify }}": {
           "id": "dgpo_{{ field.name | strip | slugify }}",
           "title": "{{ field.name | strip | xml_escape }}",
@@ -135,18 +136,18 @@ data_defined_ids:
         {%- assign added = true -%}
       {%- endfor -%}
     {%- endfor -%}
-    
+
     {% for sections in site.data.objects.config -%}
       {%- for field in sections.fields -%}
         {%- if added -%},{%- endif -%}
         {%- assign added = false -%}
-        
+
         {%- if field.purpose -%}
           {%- assign config_url = '../tutorials-recipes/understanding-configuration-values.html#' | append: field.name -%}
         {%- else -%}
           {%- assign config_url = '../tutorials-recipes/understanding-configuration-values.html#not-covered' -%}
         {%- endif -%}
-        
+
         "config_{{ field.name | strip | slugify }}": {
           "id": "config_{{ field.name | strip | slugify }}",
           "title": "{{ field.name | strip | xml_escape }}",
@@ -167,7 +168,7 @@ data_defined_ids:
         {%- assign added = false -%}
         {%- assign term_id = item.term | strip | slugify -%}
         {%- assign glossary_url = '../glossary/#' | append: term_id -%}
-        
+
         "glossary_{{ item.term | strip | slugify }}": {
           "id": "glossary_{{ term_id }}",
           "title": "{{ item.term | strip | xml_escape }}",

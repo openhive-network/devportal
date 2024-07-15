@@ -1,8 +1,7 @@
 ---
-title: Exchange Node
-position: 7
-description: |
-  Setting up a node for exchanges.
+title: titles.exchange_node
+position: 11
+description: descriptions.exchange_node
 exclude: true
 layout: full
 canonical_url: exchange-node.html
@@ -50,11 +49,8 @@ mkdir -p build
 cd build
 cmake \
   -DCMAKE_BUILD_TYPE=Release \
-  -DLOW_MEMORY_NODE=ON \
-  -DCLEAR_VOTES=ON \
   -DSKIP_BY_TX_ID=OFF \
   -DHIVE_LINT_LEVEL=OFF \
-  -DENABLE_MIRA=OFF \
   ..
 make -j$(nproc)
 sudo make install

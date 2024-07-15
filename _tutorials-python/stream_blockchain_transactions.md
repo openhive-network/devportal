@@ -1,7 +1,7 @@
 ---
-title: 'PY: Stream Blockchain Transactions'
+title: titles.stream_blockchain_transactions
 position: 13
-description: "How to stream transactions on the live **Hive** blockchain"
+description: descriptions.stream_blockchain_transactions
 layout: full
 canonical_url: stream_blockchain_transactions.html
 ---
@@ -74,13 +74,27 @@ walterprofe authored a post: Límites 01 Introducción
 poshbot replied to prydefoltz
 ```
 
+Final code:
+
+```python
+from beem.blockchain import Blockchain
+from beem import Hive
+
+h = Hive()
+blockchain = Blockchain(blockchain_instance=h)
+stream = blockchain.stream()
+
+for op in stream:
+  if op["type"] == 'comment':
+    if len(op["parent_author"]) == 0:
+      print(op["author"] + " authored a post: " + op["title"])
+    else:
+      print(op["author"] + " replied to " + op["parent_author"])
+    
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py13streamblockchaintransactions?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

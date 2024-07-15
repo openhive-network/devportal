@@ -1,7 +1,7 @@
 ---
-title: 'PY: Reblogging Post'
+title: titles.reblogging_post
 position: 14
-description: "We will show how to reblog or reblog post using Python, with username and posting private key."
+description: descriptions.reblogging_post
 layout: full
 canonical_url: reblogging_post.html
 ---
@@ -99,13 +99,64 @@ print("Reblogged successfully: " + str(broadcast_tx))
 
 If transaction is successful you shouldn't see any error messages, otherwise you will be notified.
 
+Final code:
+
+```python
+import pprint
+from pick import pick
+import getpass
+import json
+# initialize Hive class
+from beem import Hive
+from beem.discussions import Query, Discussions
+from beem.comment import Comment
+from beem.transactionbuilder import TransactionBuilder
+from beembase.operations import Custom_json
+
+# hive = Hive(['https://testnet.openhive.network']) # Public Testnet
+hive = Hive(['http://127.0.0.1:8090']) # Local Testnet
+q = Query(limit=5, tag="")
+d = Discussions(blockchain_instance=hive)
+
+#author list from hot post list
+posts = d.get_discussions('hot', q, limit=5)
+
+title = 'Please choose post to reblog: '
+options = []
+# post list
+for post in posts:
+  options.append('@' + post["author"] + '/' + post["permlink"])
+
+# get index and selected post
+option, index = pick(options, title)
+pprint.pprint("You selected: " + option)
+
+comment = Comment(option, blockchain_instance=hive)
+
+account = input("Enter your username? ")
+
+tx = TransactionBuilder(blockchain_instance=hive)
+tx.appendOps(Custom_json(**{
+  'required_auths': [],
+  'required_posting_auths': [account],
+  'id': 'reblog',
+  'json': json.dumps(['reblog', {
+    'account': account,
+    'author': comment.author,
+    'permlink': comment.permlink
+  }])
+}))
+
+wif_posting_key = getpass.getpass('Posting Key: ')
+tx.appendWif(wif_posting_key)
+signed_tx = tx.sign()
+broadcast_tx = tx.broadcast(trx_id=True)
+
+print("Reblogged successfully: " + str(broadcast_tx))
+
+```
+
 ---
-
-#### Try it
-
-Click the play button below:
-
-<iframe height="400px" width="100%" src="https://replit.com/@inertia186/py14rebloggingpost?embed=1&output=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ### To Run the tutorial
 

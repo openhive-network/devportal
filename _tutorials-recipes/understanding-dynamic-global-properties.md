@@ -1,7 +1,7 @@
 ---
-title: Understanding Dynamic Global Properties
+title: titles.understanding_dynamic_props
 position: 1
-description: Maintains global state information
+description: descriptions.understanding_dynamic_props
 exclude: true
 layout: full
 canonical_url: understanding-dynamic-global-properties.html

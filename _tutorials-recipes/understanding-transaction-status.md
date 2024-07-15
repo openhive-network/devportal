@@ -1,7 +1,7 @@
 ---
-title: Understanding Transaction Status
+title: titles.understanding_transaction_status
 position: 1
-description: How to use the Hive API to check the status of a transaction for a given `trx_id` value.
+description: descriptions.understanding_transaction_status
 exclude: true
 layout: full
 canonical_url: understanding-transaction-status.html

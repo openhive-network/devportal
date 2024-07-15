@@ -1,8 +1,7 @@
 ---
-title: Managing a Node Using Monit
-position: 6
-description: |
-  Use monit as a utility for managing and monitoring hived.
+title: titles.monit
+position: 9
+description: descriptions.monit
 exclude: true
 layout: full
 canonical_url: monit.html

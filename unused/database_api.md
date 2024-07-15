@@ -1,5 +1,5 @@
 ---
-title: Database API
+title: titles.database_api
 position: 2
 ---
 

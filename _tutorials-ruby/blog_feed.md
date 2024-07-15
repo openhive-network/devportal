@@ -1,7 +1,7 @@
 ---
-title: 'RB: Blog Feed'
+title: titles.blog_feed
 position: 1
-description: "This example will output blog details to the terminal for the author specified, limited to five results."
+description: descriptions.blog_feed
 layout: full
 canonical_url: blog_feed.html
 ---
@@ -21,6 +21,44 @@ The output will be the latest five posts/reblogs for the account specified.  If 
 It also counts the words in the content body by splitting the text into an array of strings, delimited by whitespace.
 
 Finally, it creates the canonical URL by combining `parent_permlink`, `author`, and `permlink`.
+
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+account_name = ARGV[0]
+api = Radiator::Api.new
+query = {tag: account_name, limit: 5}
+created = nil
+
+api.get_discussions_by_blog(query) do |posts|
+  posts.each do |post|
+    words = post.body.split(/\s/)
+    author = post.author
+    type = author == account_name ? 'Post' : 'Reblog'
+    uri = []
+
+    uri << post.parent_permlink
+    uri << "@#{author}"
+    uri << post.permlink
+
+    if created != post.created
+      puts created = Time.parse(post.created + 'Z')
+    end
+
+    puts "  #{type}: #{post.title}"
+    puts "  By: #{author}"
+    puts "  Words: #{words.size}"
+    puts "  https://hive.blog/#{uri.join('/')}"
+  end
+end
+
+```
 
 ### To Run
 

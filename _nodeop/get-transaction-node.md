@@ -1,8 +1,7 @@
 ---
-title: Get Transaction Node
-position: 8
-description: |
-  Setting up a node that supports `*.get_transaction`.
+title: titles.get_transaction_node
+position: 12
+description: descriptions.get_transaction_node
 exclude: true
 layout: full
 canonical_url: get-transaction-node.html
@@ -44,11 +43,8 @@ mkdir -p build
 cd build
 cmake \
   -DCMAKE_BUILD_TYPE=Release \
-  -DLOW_MEMORY_NODE=ON \
-  -DCLEAR_VOTES=ON \
   -DSKIP_BY_TX_ID=OFF \
   -DHIVE_LINT_LEVEL=OFF \
-  -DENABLE_MIRA=OFF \
   ..
 make -j$(nproc)
 sudo make install

@@ -1,7 +1,7 @@
 ---
-title: 'RB: Submit Post'
+title: titles.submit_post
 position: 10
-description: "This example will broadcast a new post to the blockchain using the values provided.  To create a post in `ruby`, we will use a `Radiator::Transaction` containing a `comment` operation, which is how all content is stored internally."
+description: descriptions.submit_post
 layout: full
 canonical_url: submit_post.html
 ---
@@ -25,6 +25,46 @@ You should change `wif` to the posting key that matches your `author`.  This scr
 * `title` - Human readable title.
 * `body` - The actual content of the post.
 * `json_metadata` - JSON containing all of the tags.
+
+Final code:
+
+```ruby
+require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require
+
+options = {
+  url: 'https://testnet.openhive.network',
+  wif: '5JrvPrQeBBvCRdjv29iDvkwn3EQYZ9jqfAHzrCyUvfbEbRkrYFC'
+}
+tx = Radiator::Transaction.new(options)
+
+tags = %w(tag1 tag2 tag3)
+metadata = {
+  tags: tags
+}
+
+tx.operations << {
+  type: :comment,
+  author: 'social',
+  permlink: 'test-post',
+  parent_author: '',
+  parent_permlink: tags[0],
+  title: 'Test Post',
+  body: 'Body',
+  json_metadata: metadata.to_json
+}
+
+response = tx.process(true)
+
+if !!response.error
+  puts response.error.message
+else
+  puts JSON.pretty_generate response
+end
+
+```
 
 ### To Run
 

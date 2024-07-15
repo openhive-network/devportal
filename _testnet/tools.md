@@ -1,7 +1,7 @@
 ---
-title: Tools
+title: titles.tools
 position: 1
-description: Directory of community testnet tools
+description: descriptions.tools
 ---
 
 Testnet ID | Tool | Purpose

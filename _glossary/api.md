@@ -1,6 +1,6 @@
 ---
-title: API
+title: titles.api
 position: 4
-description: Dictionary of API Terms
+description: descriptions.api
 canonical_url: api.html
 ---

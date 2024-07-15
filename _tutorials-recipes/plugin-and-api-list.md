@@ -1,7 +1,7 @@
 ---
-title: Plugin & API List
+title: titles.plug_and_api_list
 position: 1
-description: Run a `hived` node with your preferred APIs.
+description: descriptions.plug_and_api_list
 exclude: true
 exclude_in_index: true
 excluded_in_search: true
