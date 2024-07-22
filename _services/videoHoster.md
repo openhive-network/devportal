@@ -1,6 +1,6 @@
 ---
 title: titles.videohoster
-position: 5
+position: 6
 canonical_url: videoHoster.html
 ---
 # Definition

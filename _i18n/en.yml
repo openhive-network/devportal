@@ -26,6 +26,7 @@ titles:
   workflow: Developer workflow
   nodes: Hive Nodes
   accounts: Accounts
+  hackathon: Hive Hackathons
   authentication: Authentication
   sdk: SDK Libraries
   getset: Get and Set
