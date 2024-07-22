@@ -1,6 +1,6 @@
 ---
 title: titles.hivesigner
-position: 5
+position: 4
 canonical_url: hivesigner.html
 ---
 
@@ -30,5 +30,9 @@ A full breakdown of OAuth2 and how it applies to Hive and Hivesigner can be foun
 *   [Hivesigner Repo](https://github.com/ecency/hivesigner-ui)
 *   [Community Resources]({{ '/resources/#resources-hivesigner-libs' | relative_url }})
 *   [Hivesigner docs](https://docs.hivesigner.com)
+
+**Hivesigner SDK** - [https://github.com/ecency/hivesigner-sdk](https://github.com/ecency/hivesigner-sdk)
+
+An official javascript library for utilizing Hivesigner.
 
 For additional material you can refer to the original Hive [blog](https://ecency.com/hive/@good-karma/hivesigner-released-and-ready) post by [@good-karma](https://ecency.com/@good-karma)

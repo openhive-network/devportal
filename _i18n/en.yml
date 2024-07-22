@@ -1,5 +1,6 @@
 global:
   en: English
+  es: Español
   hi: हिन्दी
   ru: Русский
   de: Deutsch
@@ -11,11 +12,11 @@ titles:
   home: API Docs
   api-def: API Definitions
   introduction: Introduction
-  json_rpc_methods: JSON-RPC Methods
+  json_rpc_methods: JSON-RPC API
   tutorials: Tutorials
   layer2: Layer 2
   resources: Resources
-  services: Services
+  services: Opportunities
   tools: Tools
   glossary: Glossary
   search: Search
@@ -55,7 +56,7 @@ titles:
   videohoster: VideoHoster
   hivesigner: Hivesigner
   jussi: Jussi
-  dhf: DHF
+  dhf: Hive Fund
   hive_engine: Hive Engine
   honeycomb: HoneyComb
   vsc: VSC
@@ -64,7 +65,7 @@ titles:
   hivesigner_libs: Hivesigner Libs
   hive_keychain: Hive Keychain
   tools: Tools
-  community_help: Community & Help
+  community_help: Dev support
   chain_basics: Chain Basics
   governance: Governance
   transactions: Transactions
@@ -79,6 +80,7 @@ titles:
   mira_performance_tuning: MIRA Performance Tuning
   monit: Managing a Node Using Monit
   node_cli: Command Line Options
+  node_setup: Node Setup
   node_config: Node Config
   plug_and_api_list: Plugin & API List
   seed_node: Seed Node
@@ -164,6 +166,8 @@ descriptions:
   drone: API caching layer application, Jussi replacement
   monit: Use monit as a utility for managing and monitoring hived
   seed_node: Setting up a seed node
+  node_setup: Spin up your own Hive node
+  node_setup_desc: In this page you can find configuration and setup guides which helps you to run and host your own custom Hive Node.
   exchange_node: Setting up a node for exchanges
   get_transaction_node: Setting up a node that supports `*.get_transaction`
   setting_up_testnet: Quick-start for deploying a Hive-based Testnet.

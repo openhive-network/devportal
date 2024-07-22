@@ -8,6 +8,10 @@ canonical_url: .
 {% assign nav = site.data.nav.toc | where: "collection", "nodeop" | first %}
 {% assign col = site.collections | where:"id", nav.collection | first %}
 {% assign sorted_docs = col.docs | sort: "position" %}
+<section class="row center">
+<h3>{% t descriptions.node_setup %}</h3>
+<p>{% t descriptions.node_setup_desc %}</p>
+</section>
 <section class="row">
   {% if sorted_docs %}
     <ul>
