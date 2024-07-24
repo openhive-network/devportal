@@ -1,6 +1,6 @@
 ---
 title: titles.imagehoster
-position: 3
+position: 5
 canonical_url: imageHoster.html
 ---
 # Definition

@@ -44,7 +44,7 @@ toc:
     permalink: "/services/"
     position: 5
     exclude: true
-  - title: titles.node_config
+  - title: titles.node_setup
     collection: "nodeop"
     namespace: nodeop
     permalink: "/nodeop/"

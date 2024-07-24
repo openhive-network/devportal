@@ -1,13 +1,16 @@
 ---
 title: titles.vision
-position: 2
+position: 4
 canonical_url: ecency.html
 ---
 
 #### Vision endpoints
 
 Vision is codename to [opensource frontend](https://github.com/ecency/ecency-vision) hosted on [Ecency.com](https://ecency.com). 
-It offers a few endpoints for getting common data and build RSS feed from various communities, accounts and feeds.  
+
+> Developers are encouraged to review, submit improvements and utilize opensource code in their applications.
+
+It offers a few endpoints for getting common data and build RSS feed from various communities, accounts and feeds.
 
 Getting a particular RSS Feed of author/user:
 
