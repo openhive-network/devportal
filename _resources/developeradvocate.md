@@ -1,6 +1,6 @@
 ---
 title: titles.community_help
-position: 8
+position: 9
 canonical_url: developeradvocate.html
 ---
 <!--

@@ -623,7 +623,7 @@ blockquote {
   max-height: 100%;
 }
 
-a[href*='hive-keychain'] {
+a[href*='/hive-keychain'] {
   background-image: url(../images/languages/nodejs.svg);
   background-size: .90em .90em;
   background-repeat: no-repeat;
@@ -631,15 +631,7 @@ a[href*='hive-keychain'] {
   padding-left: .90em;
 }
 
-a[href*='hivesigner.js'] {
-  background-image: url(../images/languages/nodejs.svg);
-  background-size: .90em .90em;
-  background-repeat: no-repeat;
-  background-position: left top;
-  padding-left: .90em;
-}
-
-a[href*='hivesigner'] {
+a[href*='hivesigner-sdk'] {
   background-image: url(../images/languages/nodejs.svg);
   background-size: .90em .90em;
   background-repeat: no-repeat;
@@ -679,8 +671,8 @@ a[href*='dhive'] {
   padding-left: .90em;
 }
 
-a[href*='openApi'] {
-  background-image: url(../images/languages/python.svg);
+a[href*='devs/operations'] {
+  background-image: url(../images/languages/restapi.svg);
   background-size: .90em .90em;
   background-repeat: no-repeat;
   background-position: left top;

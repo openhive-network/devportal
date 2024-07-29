@@ -6,7 +6,8 @@ canonical_url: ecency.html
 
 #### Vision endpoints
 
-Vision is codename to [opensource frontend](https://github.com/ecency/ecency-vision) hosted on [Ecency.com](https://ecency.com). 
+Vision is codename to [opensource frontend](https://github.com/ecency/ecency-vision) hosted on [Ecency.com](https://ecency.com). Vision codebase also being used by 
+[Breakaway Community](https://breakaway.community/) instances to self-host and customise further.  
 
 > Developers are encouraged to review, submit improvements and utilize opensource code in their applications.
 
