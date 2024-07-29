@@ -56,6 +56,7 @@ titles:
   imagehoster: ImageHoster
   videohoster: VideoHoster
   hivesigner: Hivesigner
+  hiveauth: HiveAuth
   jussi: Jussi
   dhf: Hive Fund
   hive_engine: Hive Engine
@@ -64,7 +65,7 @@ titles:
   overview: Overview
   whitepaper: Whitepaper
   hivesigner_libs: Hivesigner Libs
-  hive_keychain: Hive Keychain
+  hive_keychain: HiveKeychain
   tools: Tools
   community_help: Dev support
   chain_basics: Chain Basics

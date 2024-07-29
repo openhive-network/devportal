@@ -1310,7 +1310,7 @@
           proposal_ids
           approve
       json_examples:
-        - '["update_proposal_votes",{"voter":"alice","proposal_ids":[0],"approve":true}]'
+        - '["update_proposal_votes",{"voter":"alice","proposal_ids":[0],"approve":true, "extensions": []}]'
       client_docs:
         - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/45_update_proposal_votes.md)'
         - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestupdateproposalvote)'
