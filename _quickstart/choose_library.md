@@ -13,6 +13,23 @@ which could be beneficial for your Hive project.
 
 ---
 
+**WAX** - [https://gitlab.syncad.com/hive/wax](https://gitlab.syncad.com/hive/wax)
+
+Wax is a multi-language, object-oriented library for interacting with the Hive blockchain network. 
+There are currently three language implementations of the library: TypeScript, C++, and Python.  
+Each implementation of Wax incorporates the same code used by the core Hive protocol library to define Hive objects 
+(operations, transactions, etc). This ensures that Wax will always maintain compatibility with the core blockchain protocol.
+
+[`@hiveio/wax`](https://www.npmjs.com/package/@hiveio/wax)
+
+---
+
+**Workerbee** - [https://gitlab.syncad.com/hive/workerbee](https://gitlab.syncad.com/hive/workerbee)
+
+Hive automation library based on the wax and beekeeper. Library helps to observe, fetch and submit transactions to blockchain with ease.
+
+---
+
 **Hive-JS** - [https://github.com/hive/hive-js](https://gitlab.syncad.com/hive/hive-js)
 
 Pure JavaScript Hive crypto library for node.js and browsers. Can be used to construct, sign and broadcast transactions in JavaScript.

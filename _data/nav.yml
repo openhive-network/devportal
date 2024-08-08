@@ -23,6 +23,9 @@ toc:
     position: 4
     exclude: true
     docs:
+      - title: titles.recipes
+        collection: tutorials-recipes
+        namespace: tutorials-recipes
       - title: titles.javascript
         collection: tutorials-javascript
         namespace: tutorials-javascript
@@ -35,9 +38,6 @@ toc:
       - title: titles.ruby
         collection: tutorials-ruby
         namespace: tutorials-ruby
-      - title: titles.recipes
-        collection: tutorials-recipes
-        namespace: tutorials-recipes
   - title: titles.services
     collection: "services"
     namespace: services
