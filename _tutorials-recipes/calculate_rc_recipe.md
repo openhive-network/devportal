@@ -1,6 +1,6 @@
 ---
 title: titles.calculate_rc_recipe
-position: 1
+position: 2
 description: descriptions.calculate_rc_recipe
 exclude: true
 layout: full
