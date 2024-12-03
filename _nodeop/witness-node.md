@@ -9,8 +9,7 @@ canonical_url: witness-node.html
 
 ### Intro
 
-Witnesses are crucial part for decentralization of the Hive blockchain. In this guide, we will share how to build and start witness node.
-Anyone who has some technical knowledge can setup witness node and start contributing to decentralization and be part of consensus, start earning some rewards.
+Witnesses (aka block producers) are a crucial part for the decentralization of the Hive blockchain. In this guide, we will share how to build and start a witness node. Anyone who has some technical knowledge can set up a witness node and start contributing to the decentralization, be part of consensus, and start earning some rewards.
 
 If you prefer a docker version of these instructions, please refer to:
 
@@ -18,43 +17,21 @@ If you prefer a docker version of these instructions, please refer to:
 
 ### Building hived (Hive blockchain P2P node)
 
-Building a hived node requires at least 16GB of RAM.
-
-A hived node is built using CMake.
-
-By default, Ninja is used as the build executor. Ninja supports parallel compilation and by default will allow up to N simultaneous compiles where N is the number of CPU cores on your build system.
-
-If your build system has a lot of cores and not a lot of memory, you may need to explicitly limit the number of parallel build steps allowed (e.g `ninja -j4` to limit to 4 simultaneous compiles).
+The Hive blockchain P2P node software is called `hived`. Building a hived node requires at least 16GB of RAM.
 
 Only Linux-based systems are supported as a build and runtime platform. Currently Ubuntu 22.04 LTS is the minimum base OS supported by the build and runtime processes. The build process requires tools available in the default Ubuntu package repository.
 
 #### Getting hive source code
 
-To get the source code, clone a git repository using the following command line:
+The first step is to get the source code. Clone the git repository using the following command:
 
 ```
 git clone --recurse --branch master https://github.com/openhive-network/hive
 ```
 
-#### Compile-Time Options (cmake options)
-
-##### CMAKE_BUILD_TYPE=[Release/RelWithDebInfo/Debug]
-
-Specifies whether to build with or without optimizations and without or with
-the symbol table for debugging. Unless you are specifically debugging or
-running tests, it is recommended to build as Release or at least RelWithDebInfo (which includes debugging symbols, but does not have a significant impact on performance).
-
-##### BUILD_HIVE_TESTNET=[OFF/ON]
-
-Builds hived for use in a private testnet. Also required for building unit tests.
-
-##### HIVE_CONVERTER_BUILD=[ON/OFF]
-
-Builds Hive project in MirrorNet configuration (similar to testnet, but enables importing mainnet data to create a better testing environment).
-
 #### Building hived as a docker image
 
-We ship a Dockerfile.
+Probably the easiest way to build hived is as a docker image. Use the `build_instance.sh` helper script to build the image:
 
 ```
     mkdir workdir
@@ -72,13 +49,38 @@ We ship a Dockerfile.
 
 The example command above will build an image named `registry.gitlab.syncad.com/hive/hive/instance:my-tag`
 
-To run the given image, you can use a helper script:
+To run the given image, you can use the `run_hived_img.sh` helper script:
 
 ```
     ../hive/scripts/run_hived_img.sh registry.gitlab.syncad.com/hive/hive/instance:my-tag --name=hived-instance --data-dir=/home/hive/datadir --shared-file-dir=/home/hive/datadir
 ```
 
+To stop, use `docker stop hived-instance`. A successfully stopped docker container should leave the message ***exited cleanly***. 
+
+
 #### Building native binaries on Ubuntu 22.04 LTS
+
+You may alternatively prefer to build hived as a native binary. A hived node is built using CMake.
+
+By default, Ninja is used as the build executor. Ninja supports parallel compilation and by default will allow up to N simultaneous compiles where N is the number of CPU cores on your build system.
+
+If your build system has a lot of cores and not a lot of memory, you may need to explicitly limit the number of parallel build steps allowed (e.g `ninja -j4` to limit to 4 simultaneous compiles).
+
+#### Compile-Time Options (cmake options)
+
+##### CMAKE_BUILD_TYPE=[Release/RelWithDebInfo/Debug]
+
+Specifies whether to build with or without optimizations and without or with
+the symbol table for debugging. Unless you are specifically debugging or
+running tests, it is recommended to build as Release or at least RelWithDebInfo (which includes debugging symbols, but does not have a significant impact on performance).
+
+##### BUILD_HIVE_TESTNET=[OFF/ON]
+
+Builds hived for use in a private testnet. Also required for building unit tests.
+
+##### HIVE_CONVERTER_BUILD=[ON/OFF]
+
+Builds Hive project in MirrorNet configuration (similar to testnet, but enables importing mainnet data to create a better testing environment).
 
 ##### Prerequisites
 
@@ -116,20 +118,16 @@ Or if you want to build only specific binary targets use:
 
 - macOS instructions are old and obsolete, feel free to contribute.
 - Windows build instructions do not exist yet.
-- The developers normally compile with gcc and clang. These compilers should
-  be well-supported.
-- Community members occasionally attempt to compile the code with mingw,
-  Intel and Microsoft compilers. These compilers may work, but the
-  developers do not use them. Pull requests fixing warnings / errors from
-  these compilers are accepted.
+- The developers normally compile with gcc and clang. These compilers should be well-supported.
+- Community members occasionally attempt to compile the code with mingw, Intel and Microsoft compilers. These compilers may work, but the developers do not use them. Pull requests fixing warnings / errors from these compilers are accepted.
 
-### Configure witness node
+### Configure the witness node
 
-After building `hived`, witness or consensus node require `config.ini` file which could be auto generated on first run of `./hived`.
-You can start and stop node immediately which will create config.ini and all necessary files/folders, modify `config.ini` and start node again.
-Code repository reference for [example.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/example_config.ini).
+After building `hived`, the witness or consensus node requires a `config.ini` file and the directories `data-dir` and `shared-file-dir`. `config.ini` has various configuration settings for the node, `data-dir` is where the `block_log` file containing all blockchain history will be put, and `shared-file-dir` is where the file containing the blockchain state will be put. If you use an NVMe, you can keep `shared-file-dir` on disc, otherwise it is recommended to keep it in memory. 
 
-Example of config for witness node:
+These can be auto-generated on the first run of hived. Simply start and then immediately stop the node and this will generate the file and two directories. (Code repository reference for [example.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/example_config.ini).)
+
+Example of config.ini for a witness node:
 
 ```
 #################################################################################
@@ -350,3 +348,122 @@ log-appender = {"appender":"stderr","stream":"std_error"} {"appender":"p2p","fil
 log-logger = {"name":"default","level":"info","appender":"stderr"} {"name":"user","level":"debug","appender":"stderr"} {"name":"p2p","level":"warn","appender":"p2p"}
 ```
 
+To provide a value for the `private-key` setting of config.ini, we first need to generate a witness key pair. We can do this using the CLI wallet. 
+
+
+### Using the CLI wallet
+
+hived comes with a CLI wallet which can be used to sign and broadcast transactions. To use the CLI wallet, you need a running instance of hived. So run your hived instance and then use this helper script to run the CLI wallet:
+
+```
+    /home/hived/hive/scripts/run_cli_wallet_img.sh hived-instance
+```
+
+The wallet will initially ask you to set up a password. It will create a `wallet.json` file in the hived data-dir directory and will use the password to encrypt this file with any keys stored there. So be sure to save your password and then set up the wallet with it - use the `set_password` command and provide your password as the argument:
+
+```
+    set_password my_very_strong_password
+```
+
+After the initial setup, you can unlock your wallet with:
+
+```
+    unlock my_very_strong_password
+```
+
+Then use `suggest_brain_key` to generate a public/private key pair to serve as your witness keys. 
+
+```
+    suggest_brain_key
+```
+
+Save these keys. Then exit the wallet:
+
+```
+    exit
+```
+
+
+### Running your node as a witness
+
+Note: if you are running hived in docker and aren't connected with the docker container via ssh, you can always re-connect with:
+
+```
+    docker exec -it hived-instance /bin/sh
+```
+
+To perform your witness functions, you need your private witness key in your node.  Find the `private-key` setting in `config.ini` and add there your private witness key generated in the CLI wallet section above. It should be without quotes. 
+
+For the `witness` setting, put your witness account name, with quotes. 
+
+Review all other `config.ini` settings and after you are satisfied with them, run your hived node again. It may ask you to force replay, in which case you can add the `--force-replay` option to the command for running hived. 
+
+When you run your node, it will begin downloading the blockchain history from the beginning from other nodes and will put it in the block_log file. It will also validate each transaction in sequence from the beginning. When you make changes to `config.ini`, depending on the change, it will require re-validating the transactions again from the beginning of history - this is called 'replaying'. It takes a while so you will want to finalize your `config.ini` settings and then run the node and leave it until it has replayed all history until the present moment. Making another change may require replaying again. 
+
+While it is replaying, you will see this on the hived logs output:
+
+```
+    Got block: #10000
+```
+
+
+When it has reached the present moment, it will show:
+
+```
+    Got 32 transactions on block 91000000
+```
+
+If at any point you have closed the terminal, you can connect to the hived logs output again with (if you are running hived in docker):
+
+```
+    docker logs --follow hived-instance
+```
+
+When you have reached present time and everything is working smoothly, it's time to activate your witness.
+
+
+### Activating your witness
+
+Without activating, your node will only independently validate each block and transaction. After you have activated your witness, the network will assign blocks to you to validate for the entire network. The more stake-weighted votes your witness gets, the higher it will go in the ranking and the more blocks will be assigned to it. The network gives a reward for each block assigned and successfully validated. 
+
+To activate your witness, first connect to your CLI wallet. Then import into it your account's private active key (this will enable you to sign transactions with it):
+
+```
+    import_key your_private_active_key
+```
+
+Now we are ready to sign the transaction for activating the witness. But for this we need a CLI wallet that is connected to a hived node which has enabled some specific additional plugins besides the `witness` plugin. To do this, we can instruct our CLI wallet to connect to a remote hived node which has those plugins enabled. api.openhive.network is one such node and the following command will connect to it:
+
+```
+    /home/hived/hive/scripts/run_cli_wallet_img.sh hived-instance -sws://api.openhive.network:8090
+```
+
+The connection to the remote server may die quickly so you may need to re-connect if you haven't executed the activating command fast enough. To activate, we use the [witness_update](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/11_witness_update.md) operation:
+
+```
+    update_witness "your_account_name" "https://example.com" "your_public_witness_key" {"account_creation_fee":"3.000 HIVE","maximum_block_size":65536,"hbd_interest_rate":0} true
+```
+
+The second argument is the URL where people can read about your witness. The fourth argument is a JSON with network parameters. You have to be familiar with the network's workings and current state in order to determine what values you want to specify for these parameters. The documentation for them is here: [witness network parameters](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/witness_parameters.md)
+
+You can update your values for these parameters at any time by issuing a [witness_set_properties](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/42_witness_set_properties.md) operation.
+
+After activation, your account will appear in the list of witnesses (it may need some stake to vote for it before it becomes visible in the long tail of the list). Until you sign your first block, the hived version you are running will show as `0.0.0`.
+
+
+### Setting your price feed
+
+One of the useful activities witnesses perform is to regularly publish a price feed which is used to calculate the ratio between HIVE and HBD. There are a few software packages made by the community that you can choose from and install for this purpose:
+
+- https://github.com/someguy123/hivefeed-js
+- https://github.com/therealwolf42/hive-witness-essentials
+- https://github.com/Jolly-Pirate/pricefeed
+
+
+### Avoiding missing blocks
+
+Each witness has a count of missed blocks - the number of times it was assigned a block by the network but missed validating it. You will want to keep your missed blocks number low by taking measures to keep your witness node online and functioning properly. Some of the above software packages can help with that. If for any reason you expect your node to be down or it is currently down, you can temporarily set your witness public key to  `STM1111111111111111111111111111111114T1Anm` so that you will not be scheduled for block production:
+
+```
+    update_witness "your_account_name" "https://example.com" "STM1111111111111111111111111111111114T1Anm" {"account_creation_fee":"3.000 HIVE","maximum_block_size":65536,"hbd_interest_rate":0} true
+```
