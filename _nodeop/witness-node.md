@@ -50,7 +50,7 @@ The example command above will build an image named `registry.gitlab.syncad.com/
 To run the given image, you can use the `run_hived_img.sh` helper script:
 
 ```
-    ../hive/scripts/run_hived_img.sh registry.gitlab.syncad.com/hive/hive/instance:my-tag --name=hived-instance --data-dir=/home/hived/datadir --shared-file-dir=/home/hived/shm_dir --webserver-http-endpoint=0.0.0.0:8091 --webserver-ws-endpoint=0.0.0.0:8090 --p2p-endpoint=0.0.0.0:2001 --detach --preserve-container
+    ../hive/scripts/run_hived_img.sh registry.gitlab.syncad.com/hive/hive/instance:my-tag --name=hived-instance --data-dir=/home/hived/datadir --shared-file-dir=/home/hived/shm_dir --detach --preserve-container
 ```
 
 To stop, use `docker stop hived-instance`. A successfully stopped docker container should leave the message ***exited cleanly***. 
