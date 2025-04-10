@@ -31,11 +31,9 @@ git clone --recurse --branch master https://github.com/openhive-network/hive
 
 #### Building hived as a docker image
 
-Probably the easiest way to build hived is as a docker image. Use the `build_instance.sh` helper script to build the image:
+Probably the easiest way to build hived is as a docker image. Use the `build_instance.sh` helper script to build the image (you would typically change `my-tag` to the hived version number, for example `1.27.8`):
 
 ```
-    mkdir workdir
-    cd workdir # use an out-of-source build directory to keep the source directory clean
     ../hive/scripts/ci-helpers/build_instance.sh my-tag ../hive registry.gitlab.syncad.com/hive/hive
 ```
 
@@ -52,7 +50,7 @@ The example command above will build an image named `registry.gitlab.syncad.com/
 To run the given image, you can use the `run_hived_img.sh` helper script:
 
 ```
-    ../hive/scripts/run_hived_img.sh registry.gitlab.syncad.com/hive/hive/instance:my-tag --name=hived-instance --data-dir=/home/hive/datadir --shared-file-dir=/home/hive/datadir
+    ../hive/scripts/run_hived_img.sh registry.gitlab.syncad.com/hive/hive/instance:my-tag --name=hived-instance --data-dir=/home/hived/datadir --shared-file-dir=/home/hived/shm_dir --detach --preserve-container
 ```
 
 To stop, use `docker stop hived-instance`. A successfully stopped docker container should leave the message ***exited cleanly***. 
