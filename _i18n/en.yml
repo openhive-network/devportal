@@ -57,6 +57,7 @@ titles:
   videohoster: VideoHoster
   hivesigner: Hivesigner
   hiveauth: HiveAuth
+  aioha: Aioha
   jussi: Jussi
   dhf: Hive Fund
   hive_engine: Hive Engine

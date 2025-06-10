@@ -1,6 +1,6 @@
 ---
 title: titles.jussi
-position: 7
+position: 8
 description: descriptions.jussi
 canonical_url: jussi.html
 ---
