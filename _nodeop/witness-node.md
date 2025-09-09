@@ -37,13 +37,16 @@ Probably the easiest way to build hived is as a docker image. Use the `build_ins
     ../hive/scripts/ci-helpers/build_instance.sh my-tag ../hive registry.gitlab.syncad.com/hive/hive
 ```
 
-`build_instance.sh` has optional parameters:
+<details><summary>Expand build_instance.sh optional parameters</summary>
+
 - `--network-type` specifies the type of P2P network supported by the hived node being built. Allowed values are:
     - mainnet (default)
     - mirrornet
     - testnet
 
 - `--export-binaries=PATH` - extracts the built binaries from the created docker image
+
+</details>
 
 The example command above will build an image named `registry.gitlab.syncad.com/hive/hive/instance:my-tag`
 
@@ -125,7 +128,7 @@ After building `hived`, the witness or consensus node requires a `config.ini` fi
 
 These can be auto-generated on the first run of hived. Simply start and then immediately stop the node and this will generate the file and two directories. (Code repository reference for [example.config.ini](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/example_config.ini).)
 
-Example of config.ini for a witness node:
+<details><summary>Expand example config.ini for a witness node:</summary>
 
 ```
 #################################################################################
@@ -345,6 +348,8 @@ log-appender = {"appender":"stderr","stream":"std_error"} {"appender":"p2p","fil
 # Logger definition json: {"name", "level", "appender"}
 log-logger = {"name":"default","level":"info","appender":"stderr"} {"name":"user","level":"debug","appender":"stderr"} {"name":"p2p","level":"warn","appender":"p2p"}
 ```
+
+</details>
 
 To provide a value for the `private-key` setting of config.ini, we first need to generate a witness key pair. We can do this using the CLI wallet. 
 
