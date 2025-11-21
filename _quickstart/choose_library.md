@@ -79,6 +79,12 @@ A (real) PHP library for Hive blockchain
 
 ---
 
+**Aioha** - [https://github.com/aioha-hive/aioha](https://github.com/aioha-hive/aioha)
+
+Aioha (All-In-One Hive Authentication) is an API that provides a common interface for working with different Hive login providers. This allows easier integration of Hive login and transacting on the network with fewer code.
+
+---
+
 <!-- **HiveJ** - [https://github.com/marvin-we/steem-java-api-wrapper](https://github.com/marvin-we/steem-java-api-wrapper)
 
 An API Wrapper for Hive written in Java
