@@ -29,7 +29,7 @@ async function getLatestPost() {
         })
         .catch(err => {
             console.log(err);
-            alert('Error occured, please reload the page');
+            alert('Error occurred, please reload the page');
         });
 }
 

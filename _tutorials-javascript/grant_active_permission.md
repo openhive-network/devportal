@@ -9,7 +9,7 @@ Full, runnable src of [Grant Active Permission](https://gitlab.syncad.com/hive/d
 
 This tutorial will take you through the process of checking a specific users' data, altering the array pertaining to the active `account_auths`, and then broadcasting the changes to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
 
-Providing another user active permission for your account enables them to do fund transfers from your account. This can be usefull in setting up a secondary account(s) to manage funds for a main account or having a backup should you lose passwords for the main account. 
+Providing another user active permission for your account enables them to do fund transfers from your account. This can be useful in setting up a secondary account(s) to manage funds for a main account or having a backup should you lose passwords for the main account. 
 
 One of the common practice nowadays is to lend/delegate HP to another account, above same technique can be used to create market around it with minimum 3rd party trust. All your funds stay in your account. You can use/create automated system where you can lease for certain period of time and system can take care of payments and release of delegations (notify clients). Even better, you can use multi-signature feature to establish 100% trust where clients will have to confirm, approve transactions.
 
