@@ -51,7 +51,7 @@ const client = new dhive.Client('https://api.hive.blog', opts);
 #### 2. Collecting information<a name="collecting_information"></a>
 
 Next we have the `submitPost` function that collects the required fields for the reblog process via an HTML interface
-after wich we assign them to variables for use later.
+after which we assign them to variables for use later.
 
 ```javascript
 //this function will execute when the HTML form is submitted
@@ -183,7 +183,7 @@ function fetchBlog() {
         })
         .catch(err => {
             console.error(err);
-            alert('Error occured' + err);
+            alert('Error occurred' + err);
         });
 }
 
