@@ -71,7 +71,7 @@ client.database
         document.getElementById('postList').innerHTML = posts.join('');
     })
     .catch(err => {
-        alert('Error occured' + err);
+        alert('Error occurred' + err);
     });
 ```
 
@@ -192,7 +192,7 @@ function fetchBlog() {
             document.getElementById('postList').innerHTML = posts.join('');
         })
         .catch(err => {
-            alert('Error occured' + err);
+            alert('Error occurred' + err);
         });
 }
 

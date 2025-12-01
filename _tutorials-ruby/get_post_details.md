@@ -273,7 +273,7 @@ api.get_content(author, permlink) do |content|
   # Value of the maximum payout this content will receive.
   puts "\t\tmax_accepted_payout: #{content.max_accepted_payout}"
   
-  # The percent of Hive Dollars to keep, unkept amounts will be received as
+  # The percent of Hive Dollars to keep, remaining amounts will be received as
   # HIVE Power.
   puts "\t\tpercent_hbd: #{'%.2f %%' % (content.percent_hbd / 100.0)}"
     
