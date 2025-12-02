@@ -7,13 +7,13 @@ canonical_url: vote_on_content.html
 ---
 Full, runnable src of [Vote On Content](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/17_vote_on_content) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python-17_vote_on_content.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python/17_vote_on_content)).
 
-In this tutorial we will explain and show you how to to check if a user has voted on specified content and also how to submit a vote on the **Hive** blockchain using the [beem](https://github.com/holgern/beem) library.
+In this tutorial we will explain and show you how to check if a user has voted on specified content and also how to submit a vote on the **Hive** blockchain using the [beem](https://github.com/holgern/beem) library.
 
 ## Intro
 
-Voting is a way of promoting good content via an `upvote` or reporting misuse, spam or other unfit content by `downvoting`. The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `vote` method found within the `commit` class in the the library. Before we vote on content we first check whether the user has already voted. This is not strictly necessary as a voting operation overrides the previous vote value. We use the [`get_active_votes`](https://beem.readthedocs.io/en/latest/beem.vote.html#beem.vote.ActiveVotes) function to check for this. This function only requires two parameters, the `author` and the `permlink` for the comment/post that the query is for. This returns a list of the current voters for that comment. The `vote` function has 3 parameters:
+Voting is a way of promoting good content via an `upvote` or reporting misuse, spam or other unfit content by `downvoting`. The Hive python library has a built-in function to transmit transactions to the blockchain. We are using the `vote` method found within the `commit` class in the library. Before we vote on content we first check whether the user has already voted. This is not strictly necessary as a voting operation overrides the previous vote value. We use the [`get_active_votes`](https://beem.readthedocs.io/en/latest/beem.vote.html#beem.vote.ActiveVotes) function to check for this. This function only requires two parameters, the `author` and the `permlink` for the comment/post that the query is for. This returns a list of the current voters for that comment. The `vote` function has 3 parameters:
 
-1. _identifier_ - This is a combination of the author and permink of the post/comment that the vote will be on
+1. _identifier_ - This is a combination of the author and permlink of the post/comment that the vote will be on
 1. _weight_ - This value determines whether the vote is an upvote (+100.0), a downvote (-100.0), or zero (0) to remove previous vote.
 1. _username_ - The name of the account that is executing the vote
 
