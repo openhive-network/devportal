@@ -9,7 +9,7 @@ In Web3 unlike Web2, authenticating user has different meaning. Since only user 
 be a secure way to sign the transaction because there is no concept of Login and applications won't have direct access to user private keys. 
 Web3 way of authentication or login, means user has to sign arbitrary message to verify ownership and wallet applications facilitate that.
 In Hive, there are services maintained and developed by community. These services help to decrease trust on all new dapps and services.
-They help to minimize hacks and private key stealing, phishing attacks done by malicious actors. It is recommended to
+They help to minimize hacks and private key stealing, phishing attacks done by malicious actors. It is recommended to 
 utilize and integrate these services into your website or apps so users can quickly authenticate and start using your app
 without fear of losing their private keys.
 
