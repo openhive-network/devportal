@@ -168,12 +168,12 @@ $(document).ready(function() {
         }
     });
 
-    window.onresize(function() {
+    window.onresize = function() {
         inPageContentNodes.forEach(function(content) {
             content.top = content.node.offsetTop;
-            content.bottom = content.node.offsetTop + contentNode.offsetHeight
+            content.bottom = content.node.offsetTop + content.node.offsetHeight
         });
-    });
+    };
 
     $(window).scroll(function (event) {
         var scrollTop = $(window).scrollTop();

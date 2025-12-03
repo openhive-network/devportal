@@ -56,7 +56,7 @@ Below is a url that uses an instance of condenser pointed at our testnet.
 http://127.0.0.1:8080/qbvxoy72qfc/@demo/dsf0yxlox2d
 ```
 
-In this case. `dsf0yxlox2d` will be our parent permlink and `@demo` will be the the parent author.
+In this case. `dsf0yxlox2d` will be our parent permlink and `@demo` will be the parent author.
 
 #### 3. Add content<a name="add-content"></a>
 
