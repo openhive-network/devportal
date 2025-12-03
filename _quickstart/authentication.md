@@ -11,7 +11,7 @@ Web3 way of authentication or login, means user has to sign arbitrary message to
 In Hive, there are services maintained and developed by community. These services help to decrease trust on all new dapps and services.
 They help to minimize hacks and private key stealing, phishing attacks done by malicious actors. It is recommended to 
 utilize and integrate these services into your website or apps so users can quickly authenticate and start using your app
-without fear of loosing their private keys.
+without fear of losing their private keys.
 
 #### HiveSigner
 

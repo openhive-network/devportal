@@ -782,7 +782,7 @@
         the sum of the key weights must be greater than or equal to the weight
         threshold.
 
-        This operation only needs to be signed by the the recovery account.
+        This operation only needs to be signed by the recovery account.
         The account to recover confirms its identity to the blockchain in
         the recover account operation.
 

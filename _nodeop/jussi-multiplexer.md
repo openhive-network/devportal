@@ -42,13 +42,11 @@ git clone https://gitlab.syncad.com/hive/jussi.git
 cd jussi
 ```
 
-Edit the file `DEV_config.json` and change all:
-
-`https://api.steemit.com`
-
-... to ...
+Edit the file `DEV_config.json` and ensure all endpoints use:
 
 `https://api.hive.blog`
+
+(Note: Older versions may reference `https://api.steemit.com` which should be updated)
 
 Also consider adding the [`retries`]({{ '/services/#retry' | relative_url }}) element to your `DEV_config.json`.
 
