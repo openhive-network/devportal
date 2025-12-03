@@ -41,7 +41,7 @@ Drone comes with pre-determined settings, however, you will have to edit ENDPOIN
 before starting the application (or building the Docker image)
 
 ```
-port: The port on which the application will listen for incoming connections (default: 8999).
+port: The port on which the application will listen for incoming connections (default: 9000).
 hostname: The hostname/IP address the application will bind to (default: "0.0.0.0").
 cache_max_capacity: The approximate max size of the cache, in bytes.  Memory usage may slightly exceed this
                     limit, due to lazy eviction, but not by much.
