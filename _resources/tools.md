@@ -28,12 +28,6 @@ eSync extracts Hive blockchain data and saves into Mongodb, written in Nodejs.
 
 ---
 
-**Exxp** - [https://github.com/drov0/exxp](https://github.com/drov0/exxp)
-
-Exxp is a WordPress plugin to allow you to automatically publish your articles to the Hive blockchain whenever you publish them on your blog.
-
----
-
 _**Many more projects and tools can be found at [https://hiveprojects.io](https://hiveprojects.io)**_
 
 ---

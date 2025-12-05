@@ -7,6 +7,8 @@ layout: full
 canonical_url: jussi-multiplexer.html
 ---
 
+> **Note:** Jussi is no longer actively maintained. For new deployments, please use [Drone](https://gitlab.syncad.com/hive/drone), the modern replacement written in Rust.
+
 *How to install `jussi` on your local subnet to take advantage of its features.*
 
 This recipe will take you through the process of setting up `jussi` for a small infrastructure like a home network.
