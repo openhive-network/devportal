@@ -8,6 +8,7 @@ require 'json'
 require 'yaml'
 require 'html-proofer'
 require 'cgi'
+require 'fileutils'
 require 'pathname'
 require 'set'
 
@@ -376,6 +377,7 @@ namespace :test do
   PROOF_SITE_DIR = './_site'.freeze
   
   def run_html_proofer(options = {})
+    FileUtils.rm_rf(PROOF_SITE_DIR)
     sh 'bundle exec jekyll build'
     
     default_options = {
