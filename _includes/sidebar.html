@@ -37,7 +37,7 @@
   {% endfor %}
   <div class="lang-switch">
     {% for lang in site.languages %}
-    <a class="{% if lang == site.lang %}active{%else%}deactive{% endif %}" href="{% if lang == site.default_lang %} {% else %}/{{ lang }}{% endif %}{{ page.url | relative_url }}"><img src="/images/i18n/{{lang}}.svg"/></a>
+    <a class="{% if lang == site.lang %}active{%else%}deactive{% endif %}" href="{% if lang == site.default_lang %}{% else %}/{{ lang }}{% endif %}{{ page.url | relative_url }}"><img src="/images/i18n/{{lang}}.svg" alt="{{ lang }}"/></a>
     {% endfor %}
   </div>
 </div>

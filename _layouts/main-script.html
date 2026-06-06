@@ -3,14 +3,14 @@ layout: default
 ---
 <section id="{{page.id | slugify}}" class="doc-content {{ page.id | slugify }}">
 	<section class="left-docs">
-		<h3>
-			<a id="{{ page.id | slugify }}">
-				{% t page.title %}
-				{% if page.type %}
-					<span class="endpoint {{ page.type }}"></span>
-				{% endif %}
-			</a>
-		</h3>
+			<h3>
+				<span class="heading-anchor">
+					{% t page.title %}
+					{% if page.type %}
+						<span class="endpoint {{ page.type }}"></span>
+					{% endif %}
+				</span>
+			</h3>
 		{% if page.description %}
             {% capture description %}{% t page.description %}{% endcapture %}
 			<p class="description">{{description}}</p>
