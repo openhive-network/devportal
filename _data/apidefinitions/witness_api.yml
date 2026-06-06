@@ -6,6 +6,11 @@
     **API removed in 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url }}#issuecomment-428404844)**
   methods:
   - api_method: witness_api.get_account_bandwidth
+    status: obsolete
+    successors:
+      - api_method: 'rc_api.find_rc_accounts'
+        relationship: 'spiritual_successor'
+        note: 'Hive replaced bandwidth-style accounting with resource credits; use RC account data for current resource availability.'
     disabled: true
     purpose: |
       **Disabled since 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url }}#issuecomment-428404844)**
@@ -14,6 +19,11 @@
     parameter_json: '{"account":"","type":"post"}'
     expected_response_json: "{}"
   - api_method: witness_api.get_reserve_ratio
+    status: obsolete
+    successors:
+      - api_method: 'rc_api.get_resource_params'
+        relationship: 'spiritual_successor'
+        note: 'Hive replaced bandwidth reserve-ratio accounting with resource-credit parameters and pools.'
     disabled: true
     purpose: |
       **Disabled since 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url }}#issuecomment-428404844)**

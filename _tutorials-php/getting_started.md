@@ -12,7 +12,7 @@ canonical_url: getting_started.html
 This is a good choice for all PHP devs:
 
 - All the code is opensource (MIT license), and documented (phpDocumentor),
-- [PHP-PDS](http://php-pds.com/) and [PSR standards](https://www.php-fig.org/psr/) are applied to have a more readable code and easier use,
+- [PHP-PDS](https://php-pds.com/) and [PSR standards](https://www.php-fig.org/psr/) are applied to have a more readable code and easier use,
 - You can interact with Hive blockchain and HiveEngine layer with the same lib,
 - Some shortcuts functions, easy update, and many more...
 
