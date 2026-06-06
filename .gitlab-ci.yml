@@ -1,4 +1,4 @@
-image: ruby:2.6
+image: ruby:3.1.6
 
 stages:
   - build
@@ -10,11 +10,11 @@ cache:
   key: "$CI_PROJECT_ID"
 
 build:
-  image: ruby:2.6
+  image: ruby:3.1.6
   stage: build
   script:
     - ls -l
-    - gem install bundler -v 2.4.22
+    - gem install bundler -v 2.3.19
     - bundle install
     - bundle exec jekyll build -d public
     - echo "BUILD SUCCESSFULLY"
@@ -31,7 +31,7 @@ build:
 
 deploy_staging:
   stage: deploy_staging
-  image: python:3.5
+  image: python:3.11
   dependencies:
     - build
   script:
@@ -53,7 +53,7 @@ deploy_staging:
 
 deploy_master:
   stage: deploy_master
-  image: python:3.5
+  image: python:3.11
   dependencies:
     - build
   script:

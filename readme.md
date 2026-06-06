@@ -8,7 +8,7 @@ The developer portal will also serve as a toolbox for Hive clients, libraries, a
 
 ## Develop
 
-Hive Portal was built with [Jekyll](http://jekyllrb.com/) version 3.1.6, but should support newer versions as well.
+Hive Portal is built with [Jekyll](https://jekyllrb.com/) 4.2.x and Ruby 3.1.x.  The repository pins the local Ruby runtime in `.ruby-version`.
 
 Install the dependencies with [Bundler](http://bundler.io/):
 
