@@ -2,6 +2,7 @@ image: ruby:3.1.6
 
 stages:
   - build
+  - test
   - deploy_staging
   - deploy_master
 
@@ -26,6 +27,17 @@ build:
   #   name: development
   # only:
   #   - develop
+  tags:
+    - public-runner-docker
+
+html_proofer:
+  image: ruby:3.1.6
+  stage: test
+  dependencies: []
+  script:
+    - gem install bundler -v 2.3.19
+    - bundle install
+    - bundle exec rake test:proof:full
   tags:
     - public-runner-docker
 
