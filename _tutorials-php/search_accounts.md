@@ -11,7 +11,7 @@ canonical_url: get_post_details.html
 In this tutorial, we will see how to get accounts list start with the selected string. We made this with [hive-php-lib](https://gitlab.syncad.com/hive/hive-php-lib). You can also find the result PHP file in the `/resources/examples/searchAccounts.php` file in `hive-php-lib` folder.
 
 Also see:
-* [lookup_accounts]({{ '/apidefinitions/#condenser_api.lookup_account' | relative_url }})
+* [lookup_accounts]({{ '/apidefinitions/#condenser_api.lookup_accounts' | relative_url }})
 
 ---
 
@@ -62,5 +62,4 @@ Now, you have an array (`$result`) with 10 first accounts name started with "bam
 ```php
 print_r($result);
 ```
-
 

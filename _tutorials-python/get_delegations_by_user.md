@@ -13,7 +13,7 @@ In this tutorial we will explain and show you how to pull a list of both active 
 
 The Hive python library has a built-in function to pull information from the blockchain. We are using the [`get_vesting_delegations`](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_vesting_delegations) and [`get_expiring_vesting_delegations`](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_expiring_vesting_delegations) methods.  Each of these functions are executed separately.  It should be noted that when a delegation is cancelled the VESTS will only be available again after 7 days.  The value of the delegation can also be changed at any time, either decreased or increased.
 
-The function to query the expiring delegations use the the same parameters except that the `start_account` is replaced by a `start_date`.  If this value is greater than 7 days from present, it will always include all delegations that are pending expiration.
+The function to query the expiring delegations use the same parameters except that the `start_account` is replaced by a `start_date`.  If this value is greater than 7 days from present, it will always include all delegations that are pending expiration.
 
 Also see:
 * [condenser_api.get_vesting_delegations]({{ '/apidefinitions/#condenser_api.get_vesting_delegations' | relative_url }})

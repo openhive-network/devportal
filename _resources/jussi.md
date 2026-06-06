@@ -1,9 +1,11 @@
 ---
 title: titles.jussi
-position: 7
+position: 11
 description: descriptions.jussi
 canonical_url: jussi.html
 ---
+
+> **Note:** Jussi is no longer actively maintained. For new deployments, please use [Drone](https://gitlab.syncad.com/hive/drone), the modern replacement written in Rust.
 
 Jussi is a custom-built caching layer for use with `hived`.
 

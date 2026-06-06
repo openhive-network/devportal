@@ -41,7 +41,7 @@ The following is a series written by [@mahdiyari](https://hive.blog/@mahdiyari) 
 ### `Part 1`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
 <center>
-  <img src="https://images.hive.blog/DQmYne66xZ9RBsrUwF9N76S5XnjJGyzEgBPbbsZRnNAHUzx/tic-tac-toe.png" width="100%" />
+  <img src="https://images.hive.blog/DQmYne66xZ9RBsrUwF9N76S5XnjJGyzEgBPbbsZRnNAHUzx/tic-tac-toe.png" width="100%" alt="Tic-tac-toe game board" />
 </center>
 
 We will develop a decentralized game by the end of this series. The goal is to make learning development on Hive blockchain easier by using a simple game as the training project.
@@ -548,7 +548,7 @@ Accept the pending join request from another player to your created game.
 Play or place an X/O on the board. `col` is the column and `row` is for the row of the placed X/O on the board.
 
 <center>
-  <img src="https://images.hive.blog/DQmYtN2du2ngnu51fernMHqvmp5VKSyZ5JkF6wRgS9MkubP/tic-tac-toe-col-row.jpg" width="100%" />
+  <img src="https://images.hive.blog/DQmYtN2du2ngnu51fernMHqvmp5VKSyZ5JkF6wRgS9MkubP/tic-tac-toe-col-row.jpg" width="100%" alt="Tic-tac-toe column and row positions" />
 </center>
 
 ---
@@ -665,13 +665,13 @@ We can run the app by `node index.js`
 https://hiveblocks.com/tx/44799e6a27c64e935f9072ecb576602330cb80b8
 
 <center>
-  <img src="https://images.hive.blog/DQmSfMrgDbSPjUPWaPeekrWfDFTS6zfdkk4NMySjNQmh3xh/image.png" width="100%" />
+  <img src="https://images.hive.blog/DQmSfMrgDbSPjUPWaPeekrWfDFTS6zfdkk4NMySjNQmh3xh/image.png" width="100%" alt="Hiveblocks transaction page" />
 </center>
 
 And here is the console.log() confirmation in our app:
 
 <center>
-  <img src="https://images.hive.blog/DQmb4kymGnacj2H9D4f2jfU8xYWJdjcd1EKDZeLN6q96q8h/image.png" width="100%" />
+  <img src="https://images.hive.blog/DQmb4kymGnacj2H9D4f2jfU8xYWJdjcd1EKDZeLN6q96q8h/image.png" width="100%" alt="Application console output" />
 </center>
 
 ---
@@ -890,17 +890,17 @@ module.exports = initDatabase
 
 `games`
 <center>
-  <img src="https://images.hive.blog/DQmVCMyNZax6xd6kCc2VZijGjMa9Qbt8Myeev7jF8KmcqXe/image.png" width="100%" />
+  <img src="https://images.hive.blog/DQmVCMyNZax6xd6kCc2VZijGjMa9Qbt8Myeev7jF8KmcqXe/image.png" width="100%" alt="Games database table" />
 </center>
 
 `moves`
 <center>
-  <img src="https://images.hive.blog/DQmVwyDZg1N3KEteDgfA5NdMHeUkjpngHZEmizBXxhh3XPs/image.png" width="100%" />
+  <img src="https://images.hive.blog/DQmVwyDZg1N3KEteDgfA5NdMHeUkjpngHZEmizBXxhh3XPs/image.png" width="100%" alt="Moves database table" />
 </center>
 
 `requests`
 <center>
-  <img src="https://images.hive.blog/DQmQLxfwKEfWSQ614vWb6qfUNVMSyiFgnKEh5nSWcKYFQQv/image.png" width="100%" />
+  <img src="https://images.hive.blog/DQmQLxfwKEfWSQ614vWb6qfUNVMSyiFgnKEh5nSWcKYFQQv/image.png" width="100%" alt="Requests database table" />
 </center>
 
 ---
@@ -1135,7 +1135,7 @@ Run `node api/server.js`. We can see the console.log: `Application started on 12
 Let's open `127.0.0.1:2021/games` in the browser.
 
 <center>
-  <img src="https://images.hive.blog/DQmbTKVAbtUB6nDH8HWuvku8NuiZv3jovu94jtEMAEU1vSX/image.png" width="100%" />
+  <img src="https://images.hive.blog/DQmbTKVAbtUB6nDH8HWuvku8NuiZv3jovu94jtEMAEU1vSX/image.png" width="100%" alt="Games API response in browser" />
 </center>
 
 The API works as expected.
@@ -1479,7 +1479,7 @@ And two functions for changing pages. Simple as that.
 The final result with dummy data looks like this on the browser:
 
 <center>
-  <img src="https://images.hive.blog/DQmcYZC1vixajRW4Ui5dHiSfTy5MYqEYZhXy2bd2ituz4Ar/Capture.PNG" width="100%" />
+  <img src="https://images.hive.blog/DQmcYZC1vixajRW4Ui5dHiSfTy5MYqEYZhXy2bd2ituz4Ar/Capture.PNG" width="100%" alt="Tic-tac-toe game list with pagination" />
 </center>
 
 ---

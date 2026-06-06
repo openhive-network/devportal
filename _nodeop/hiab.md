@@ -4,7 +4,7 @@ position: 14
 description: descriptions.hiab_node
 exclude: true
 layout: full
-canonical_url: hive-in-box-node.html
+canonical_url: hiab.html
 ---
 
 ### Intro
@@ -22,5 +22,4 @@ Please read following posts by community members who give clear instruction on h
 [Guide in DE/EN by @stayoutoftherz](https://ecency.com/hive-121566/@stayoutoftherz/wie-man-einen-hive-witness-node-aufsetzt-ein-tutorial-fur-computerlaien)
 
 [Github Repository](https://github.com/someguy123/hive-docker)
-
 

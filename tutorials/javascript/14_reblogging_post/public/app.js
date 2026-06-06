@@ -42,7 +42,7 @@ function fetchBlog() {
         })
         .catch(err => {
             console.error(err);
-            alert('Error occured' + err);
+            alert('Error occurred' + err);
         });
 }
 

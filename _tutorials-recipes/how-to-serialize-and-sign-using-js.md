@@ -8,7 +8,7 @@ canonical_url: https://hive.blog/steem/@mahdiyari/how-to-serialize-and-sign-stee
 ---
 
 <center>
-  <img src="https://images.hive.blog/1536x0/https://cdn.steemitimages.com/DQmdV8sZiyYpz8qq1WJErHKfgZgPyuZsBgtuzwkhoP8DED2/document-428334_640.jpg" />
+  <img src="https://images.hive.blog/1536x0/https://cdn.steemitimages.com/DQmdV8sZiyYpz8qq1WJErHKfgZgPyuZsBgtuzwkhoP8DED2/document-428334_640.jpg" alt="Document signing illustration" />
 </center>
 
 When you are sending HIVE or HBD to another account, when you are writing a post or a comment, or when you are voting or downvoting a post, you are broadcasting transactions into the Hive blockchain. In other words, any action you take on Hive blockchain is a transaction.

@@ -59,7 +59,7 @@ There are three input components to the UI.
     ```
 
 <center>
-  <img src="https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/04_get_posts/images/Step-01-UI.png" />
+  <img src="https://gitlab.syncad.com/hive/devportal/-/raw/master/tutorials/javascript/04_get_posts/images/Step-01-UI.png" alt="Get Posts button UI" />
 </center>
 
 #### 2. Construct query <a name="Construct-query"></a>

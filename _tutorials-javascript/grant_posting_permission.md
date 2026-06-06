@@ -122,7 +122,7 @@ postingAuth.account_auths.sort();
 postingAuth.account_auths.splice(arrayindex, 1);
 ```
 
-When adding to the array (creaing permission) it is required to sort the array before we can broadcast. The hive blockchain does not accept the new fields in the array if it's not alphabetically sorted.
+When adding to the array (creating permission) it is required to sort the array before we can broadcast. The hive blockchain does not accept the new fields in the array if it's not alphabetically sorted.
 After the posting array has been defined, the broadcast object can be created. This holds all the required information for a successful transaction to be sent to the blockchain. Where there is no change in the authority types, the parameter can be omitted or in the case of required parameters, allocated directly from the database query.
 
 ```javascript

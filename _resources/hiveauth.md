@@ -1,7 +1,7 @@
 ---
 title: titles.hiveauth
 position: 6
-canonical_url: hive_auth.html
+canonical_url: hiveauth.html
 ---
 
 HiveAuth is an authentication service/solution to integrate apps with the Hive blockchain.

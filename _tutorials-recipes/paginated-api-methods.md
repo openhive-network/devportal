@@ -1719,7 +1719,7 @@ curl -s --data '{
 }' https://api.hive.blog | jq
 ```
 
-Also see: [API Definition]({{ '/apidefinitions/#database_api.list_smt_contributions' | relative_url }})
+No current API definition page is documented for this historical method.
 
 ### `database_api.list_smt_token_emissions`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -1755,7 +1755,7 @@ curl -s --data '{
 }' https://api.hive.blog | jq
 ```
 
-Also see: [API Definition]({{ '/apidefinitions/#database_api.list_smt_token_emissions' | relative_url }})
+No current API definition page is documented for this historical method.
 
 ### `database_api.list_smt_tokens`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -1822,7 +1822,7 @@ curl -s --data '{
 }' https://api.hive.blog | jq
 ```
 
-Also see: [API Definition]({{ '/apidefinitions/#database_api.list_smt_tokens' | relative_url }})
+No current API definition page is documented for this historical method.
 
 ### `follow_api.get_account_reputations`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -2039,7 +2039,7 @@ curl -s --data '{
 }' https://api.hive.blog | jq
 ```
 
-Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_feed' | relative_url }})
+Also see: [API Definition]({{ '/apidefinitions/#bridge.get_account_posts' | relative_url }})
 
 ### `condenser_api.get_feed_entries`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -2073,7 +2073,7 @@ curl -s --data '{
 }' https://api.hive.blog | jq
 ```
 
-Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_feed_entries' | relative_url }})
+Also see: [API Definition]({{ '/apidefinitions/#bridge.get_account_posts' | relative_url }})
 
 ### `condenser_api.get_followers`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 
@@ -2179,7 +2179,7 @@ curl -s --data '{
 }' https://api.hive.blog | jq
 ```
 
-Also see: [API Definition]({{ '/apidefinitions/#condenser_api.get_replies_by_last_update' | relative_url }})
+Also see: [API Definition]({{ '/apidefinitions/#bridge.get_discussion' | relative_url }})
 
 ### `condenser_api.get_vesting_delegations`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
 

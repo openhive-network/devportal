@@ -251,7 +251,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.find_change_recovery_account_requests)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: database_api.find_comments
-    purpose: Search for comments by author/permlink.
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_post'
+        relationship: 'spiritual_successor'
+        note: 'Use for current Hivemind-backed lookup of a post or comment by author and permlink.'
+    purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
+      Search for comments by author/permlink.
     parameter_json: '{"comments":[["author", "permlink"]]}'
     expected_response_json: '{"comments":[]}'
     curl_examples:
@@ -469,7 +477,14 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)"
   - api_method: database_api.find_votes
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_post'
+        relationship: 'spiritual_successor'
+        note: 'The bridge post response includes active vote data for the selected post.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns all votes for the given post.  Required (non-empty) parameters: `author:string`; `permlink:string`
 
       | `author` (string) | `permlink` (string) | |
@@ -1554,7 +1569,17 @@
       - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.list_change_recovery_account_requests)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: database_api.list_comments
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use ranked post queries for current indexed content discovery.'
+      - api_method: 'database_api.get_comment_pending_payouts'
+        relationship: 'related'
+        note: 'Use when the migration need is pending payout data for known author/permlink pairs.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns all comments, starting with the specified options.  Parameters: `start:array`; `limit:int`; `order:string`
 
       * `start` depends on `order` (see below)
@@ -1996,7 +2021,14 @@
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
     - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/delegations)"
   - api_method: database_api.list_votes
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_post'
+        relationship: 'spiritual_successor'
+        note: 'Use for active vote data on a known post; full indexed vote scans require an external indexed data source.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns all votes, starting with the specified voter and/or author and permlink.  Parameters: `start:array`; `limit:int`; `order:string`
 
       * `start` depends on `order` (see below)

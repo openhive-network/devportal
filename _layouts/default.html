@@ -65,12 +65,12 @@
 <div class="main" id="top">
   <div class="hero">
     <h1 class="hero__h1">{% t titles.portal %} {% if page.section %} - {% t page.section %}{% endif %}</h1>
-    <img class="hero__img" src="{{ '/images/honey-comb-92.png' | relative_url }}" style="position: relative; top: 10px;" />
+    <img class="hero__img" src="{{ '/images/honey-comb-92.png' | relative_url }}" style="position: relative; top: 10px;" alt="" />
   </div>
   {{ content }}
 </div>
 <div class="footer">
-  <a href="#">Back to top</a>
+  <a href="#top">Back to top</a>
 </div>
 <script>
     document.getElementById("open-nav").addEventListener("click", function () {

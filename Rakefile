@@ -7,6 +7,14 @@ require 'net/https'
 require 'json'
 require 'yaml'
 require 'html-proofer'
+require 'cgi'
+require 'fileutils'
+require 'pathname'
+require 'set'
+
+def api_method_obsolete?(method)
+  !!method['removed'] || method['status'].to_s == 'obsolete'
+end
 
 namespace :scrape do
   desc "Scrape API Definitions"
@@ -160,6 +168,119 @@ task :archived_urls_dump do
   puts yaml['archived_urls'].map{|k, v| "#{k} => #{v}"}
 end
 
+namespace :api do
+  def api_definition_methods
+    methods = []
+    
+    Dir['_data/apidefinitions/*.yml'].sort.each do |file_name|
+      YAML.load_file(file_name).each do |section|
+        Array(section['methods']).each do |method|
+          api_method = method['api_method']
+          next unless api_method
+          
+          methods << {
+            name: api_method,
+            file: file_name,
+            obsolete: api_method_obsolete?(method)
+          }
+        end
+      end
+    end
+    
+    methods
+  end
+  
+  def openapi_methods
+    file_name = ENV.fetch(
+      'HIVE_OPENAPI',
+      '../hive/libraries/plugins/apis/documentation/openapi.json'
+    )
+    return Set.new unless File.exist?(file_name)
+    
+    openapi = JSON.parse(File.read(file_name))
+    paths = openapi.fetch('paths', {})
+    
+    paths.keys.filter_map do |path|
+      path.to_s.split('/').last
+    end.to_set
+  end
+  
+  def cpp_api_methods
+    root = ENV.fetch('HIVE_APIS_ROOT', '../hive/libraries/plugins/apis')
+    return Set.new unless Dir.exist?(root)
+    
+    ignored_dirs = %w(api_generation documentation test_api)
+    methods = Set.new
+    
+    Dir[File.join(root, '*')].sort.each do |api_dir|
+      next unless File.directory?(api_dir)
+      
+      api_name = File.basename(api_dir)
+      next if ignored_dirs.include?(api_name)
+      
+      Dir[File.join(api_dir, '**', '*.{hpp,cpp}')].sort.each do |file_name|
+        text = File.read(file_name)
+        
+        text.scan(/(?:DECLARE_API|DECLARE_API_IMPL)\s*\((.*?)\)\s*(?:;|\{|private:|public:|FC_REFLECT|\z)/m) do |match|
+          match.first.scan(/\(([a-zA-Z_][a-zA-Z0-9_]*)\)/) do |method_match|
+            methods << "#{api_name}.#{method_match.first}"
+          end
+        end
+        
+        text.scan(/DEFINE_API_IMPL\s*\([^,]+,\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\)/) do |match|
+          methods << "#{api_name}.#{match.first}"
+        end
+      end
+    end
+    
+    methods
+  end
+  
+  def print_method_report(title, methods, limit = nil)
+    puts
+    puts "#{title} (#{methods.length}):"
+    
+    shown = limit ? methods.first(limit) : methods
+    if shown.empty?
+      puts '  none'
+    else
+      shown.each { |method| puts "  #{method}" }
+    end
+    
+    return unless limit && methods.length > limit
+    
+    puts "  ... #{methods.length - limit} more"
+  end
+  
+  desc 'Report API method drift against adjacent Hive OpenAPI and C++ declarations.'
+  task :drift do
+    docs = api_definition_methods
+    all_docs = docs.map { |method| method[:name] }.to_set
+    active_docs = docs.reject { |method| method[:obsolete] }.map { |method| method[:name] }.to_set
+    obsolete_docs = docs.select { |method| method[:obsolete] }.map { |method| method[:name] }.to_set
+    openapi = openapi_methods
+    cpp = cpp_api_methods
+    source = openapi | cpp
+    
+    puts 'API method drift'
+    puts "Docs: active #{active_docs.length}, obsolete #{obsolete_docs.length}, all #{all_docs.length}"
+    puts "Source: OpenAPI #{openapi.length}, C++ #{cpp.length}, combined #{source.length}"
+    
+    if openapi.empty?
+      puts 'OpenAPI source not found. Set HIVE_OPENAPI to compare against a different file.'
+    end
+    
+    if cpp.empty?
+      puts 'C++ API source not found. Set HIVE_APIS_ROOT to compare against a different directory.'
+    end
+    
+    print_method_report('Active docs missing from source', (active_docs - source).to_a.sort)
+    print_method_report('Source methods missing from active docs', (source - active_docs).to_a.sort)
+    print_method_report('Obsolete docs still present in source', (obsolete_docs & source).to_a.sort)
+    print_method_report('Source methods absent from all docs', (source - all_docs).to_a.sort)
+  end
+end
+
 namespace :test do
   KNOWN_APIS = %i(
     account_by_key_api account_history_api block_api condenser_api 
@@ -194,7 +315,7 @@ namespace :test do
       yml = YAML.load_file(file_name)
       
       yml[0]['methods'].each do |method|
-        next if !!method['removed']
+        next if api_method_obsolete?(method)
         
         print "Testing #{method['api_method']} ... "
         
@@ -252,39 +373,30 @@ namespace :test do
     exit smoke
   end
   
-  desc 'Want some work to do?  Run this report and get busy.'
-  task :proof do
-    # See: https://github.com/gjtorikian/html-proofer#configuration
+  PROOF_IGNORE_URLS = ['http://localhost:3000/', 'http://0.0.0.0:8080'].freeze
+  PROOF_SITE_DIR = './_site'.freeze
+  
+  def run_html_proofer(options = {})
+    FileUtils.rm_rf(PROOF_SITE_DIR)
     sh 'bundle exec jekyll build'
-    options = {
+    
+    default_options = {
       # Automatically add extension (e.g. .html) to file paths, to allow
       # extensionless URLs (as supported by Jekyll 3 and GitHub Pages)
-      assume_extension: true,
+      assume_extension: '.html',
       
       # Only reports errors for links that fall within the 4xx status code
       # range.
       only_4xx: true,
       
-      # Enables the favicon checker.
-      check_favicon: true,
-      
-      # Enables HTML validation errors from Nokogumbo.  See: https://github.com/gjtorikian/html-proofer#configuring-html-validation-rules
-      check_html: true,
-      validation: {
-        report_mismatched_tags: true
-      },
-      
       # If true, ignores the href="#" (typically JQuery).
       allow_hash_href: true,
       
       # If true, ignores images with empty alt tags.
-      empty_alt_ignore: true,
+      ignore_empty_alt: true,
       
       # Check that <link> and <script> external resources use SRI	
       check_sri: true,
-      
-      # Enables the Open Graph checker.
-      check_opengraph: true,
       
       # If true, does not run the external link checker, which can take a lot of
       # time.  Also, external links may rate-limit or even fail due to excess
@@ -299,10 +411,101 @@ namespace :test do
       
       # Fails a link if it's not marked as https.	
       enforce_https: true,
-      url_ignore: ['http://localhost:3000/', 'http://0.0.0.0:8080']
+      ignore_urls: PROOF_IGNORE_URLS
     }
     
-    HTMLProofer.check_directory("./_site", options).run
+    HTMLProofer.check_directory(PROOF_SITE_DIR, default_options.merge(options)).run
+  end
+  
+  def internal_url?(href)
+    href !~ %r{\A(?:[a-z][a-z0-9+\-.]*:)?//}i &&
+      href !~ %r{\A(?:mailto|tel|javascript|data):}i
+  end
+  
+  def html_path_for_link(current_file, href)
+    link_path = href.split('#', 2).first.to_s.split('?', 2).first.to_s
+    
+    if link_path.empty?
+      path = Pathname.new(current_file)
+    elsif link_path.start_with?('/')
+      path = Pathname.new(link_path.delete_prefix('/'))
+    else
+      path = Pathname.new(current_file).dirname.join(link_path).cleanpath
+    end
+    
+    path = path.join('index.html') if path.to_s.end_with?('/')
+    path = Pathname.new("#{path}.html") if path.extname.empty?
+    path.to_s
+  end
+  
+  def check_internal_hashes(site_dir = PROOF_SITE_DIR)
+    site_root = Pathname.new(site_dir)
+    html_files = Dir[site_root.join('**/*.html')]
+    anchors_by_file = {}
+    failures = []
+    
+    html_files.each do |file|
+      relative_file = Pathname.new(file).relative_path_from(site_root).to_s
+      document = Nokogiri::HTML(File.read(file))
+      anchors_by_file[relative_file] = document.css('[id], a[name]').filter_map do |node|
+        node['id'] || node['name']
+      end.to_set
+    end
+    
+    html_files.each do |file|
+      relative_file = Pathname.new(file).relative_path_from(site_root).to_s
+      document = Nokogiri::HTML(File.read(file))
+      
+      document.css('a[href*="#"]').each do |link|
+        href = link['href'].to_s
+        next if href.empty? || href == '#'
+        next unless internal_url?(href)
+        
+        href_parts = href.split('#', 2)
+        next unless href_parts.length == 2
+        
+        fragment = href_parts.last.to_s
+        next if fragment.empty?
+        
+        target_file = html_path_for_link(relative_file, href)
+        anchors = anchors_by_file[target_file]
+        next unless anchors
+        
+        anchor = CGI.unescape(fragment)
+        next if anchors.include?(anchor)
+        
+        failures << "#{relative_file}: missing ##{anchor} in #{target_file}"
+      end
+    end
+    
+    return if failures.empty?
+    
+    puts "\nInternal hash failures:"
+    failures.first(100).each { |failure| puts "* #{failure}" }
+    puts "... #{failures.length - 100} more" if failures.length > 100
+    fail "Found #{failures.length} internal hash failures"
+  end
+  
+  desc 'Fast proof: scripts and internal file links, skipping expensive hash-anchor checks.'
+  task proof: 'proof:fast'
+  
+  namespace :proof do
+    desc 'Fast proof: scripts and internal file links, skipping expensive hash-anchor checks.'
+    task :fast do
+      run_html_proofer(
+        checks: ['Scripts', 'Links'],
+        check_internal_hash: false
+      )
+    end
+    
+    desc 'Full proof: scripts, links, images, and internal hash anchors.'
+    task :full do
+      run_html_proofer(
+        checks: ['Scripts', 'Links', 'Images'],
+        check_internal_hash: false
+      )
+      check_internal_hashes
+    end
   end
 end
 

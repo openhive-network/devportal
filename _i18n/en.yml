@@ -57,11 +57,12 @@ titles:
   videohoster: VideoHoster
   hivesigner: Hivesigner
   hiveauth: HiveAuth
+  aioha: Aioha
   jussi: Jussi
   dhf: Hive Fund
   hive_engine: Hive Engine
   honeycomb: HoneyComb
-  vsc: VSC
+  magi: MAGI
   overview: Overview
   whitepaper: Whitepaper
   hivesigner_libs: Hivesigner Libs

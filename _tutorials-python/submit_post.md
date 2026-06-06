@@ -11,7 +11,7 @@ In this tutorial will explain and show you how to submit a new post to the `Hive
 
 ## Intro
 
-The beem library has a built-in function to transmit transactions to the blockchain.  We are using the [`transactionbuilder`](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html) in the the library.  It should be noted that comments and new post are both treated as the `comment` operation with the only difference being that a comment/reply has an additional parameter containing the `parent_author`/`parent_permlink` that corresponds to the original post/comment.
+The beem library has a built-in function to transmit transactions to the blockchain.  We are using the [`transactionbuilder`](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html) in the library.  It should be noted that comments and new post are both treated as the `comment` operation with the only difference being that a comment/reply has an additional parameter containing the `parent_author`/`parent_permlink` that corresponds to the original post/comment.
 
 * _author_ - The account that you are posting from
 * _title_ - The title of the post

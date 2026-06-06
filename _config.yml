@@ -110,7 +110,7 @@ collections:
     position: 16
     output: true
   tutorials-php:
-    title: Ruby Tutorials
+    title: PHP Tutorials
     id: tutorials-php
     namespace: tutorials-php
     position: 17

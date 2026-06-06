@@ -63,14 +63,14 @@ App Icon field should be publicly accessible and available link to your logo or 
 
 Website field is homepage for the application if exist.
 
-Redirect URI(s) will be used within your application to forward user after authentification is successful. You can specify multiple callback URLs with each new line. Callback in Hivesigner SDK should match exactly one of URI(s) specified on this page. Due to security reasons if redirect URI(s) used in SDK is other than you specified, it will not work.
+Redirect URI(s) will be used within your application to forward user after authentication is successful. You can specify multiple callback URLs with each new line. Callback in Hivesigner SDK should match exactly one of URI(s) specified on this page. Due to security reasons if redirect URI(s) used in SDK is other than you specified, it will not work.
 This is typical backend web development, we hope you know how to set up your backend/app to handle callback URLs.
 
 *   Disclaimer: All images/screenshots of user interface may change as Hivesigner evolves
 
 #### 2. Initialize Hivesigner<a name="init"></a>
 
-Once you have setup account for new application, you can setup application with Hivesigner authentification and API processes.
+Once you have setup account for new application, you can setup application with Hivesigner authentication and API processes.
 To do that, you will need to install `hivesigner` nodejs package with `npm i hivesigner`.
 Within application you can initialize Hivesigner
 
