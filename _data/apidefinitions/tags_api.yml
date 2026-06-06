@@ -6,9 +6,13 @@
     AppBase API methods are still under development and subject to change.**
   methods:
   - api_method: tags_api.get_active_votes
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'condenser_api.get_active_votes'
+        relationship: 'replacement'
+        note: 'Use the condenser endpoint for active votes on a known post.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_active_votes`]({{ '/apidefinitions/#condenser_api.get_active_votes' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -16,10 +20,14 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-votes)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_comment_discussions_by_payout
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: payout_comments` for payout-ranked comment discovery.'
     since: HF17
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_comment_discussions_by_payout`]({{ '/apidefinitions/#condenser_api.get_comment_discussions_by_payout' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -27,9 +35,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-comment-discussions-by-payout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_content_replies
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_discussion'
+        relationship: 'spiritual_successor'
+        note: 'Use when the caller needs reply or thread context for a post.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_content_replies`]({{ '/apidefinitions/#condenser_api.get_content_replies' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -37,7 +49,14 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content-replies)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussion
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_discussion'
+        relationship: 'spiritual_successor'
+        note: 'Use for the current Hivemind-backed flattened discussion tree.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines the `tags_api` plugin. Historical documentation is retained for compatibility context.
+      
       Returns the discussion given an author and permlink.
       
       Also see: [bridge.get_discussion]({{ '/apidefinitions/#bridge.get_discussion' | relative_url }})
@@ -127,9 +146,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Discussions.get_discussions)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_active
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use `bridge.get_ranked_posts` with `sort: hot`, `sort: trending`, or `sort: created` depending on the product intent; none is an exact active-date query.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_active`]({{ '/apidefinitions/#condenser_api.get_discussions_by_active' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -137,9 +160,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-active)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_author_before_date
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: posts` or `sort: replies` with pagination; it is not a 1-to-1 date-before query.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_author_before_date`]({{ '/apidefinitions/#condenser_api.get_discussions_by_author_before_date' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#tags_apiget_discussions_by_author_before_date' | relative_url }})
       
@@ -149,9 +176,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-author-before-date)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_blog
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: blog` for account blog and reblog listings.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_blog`]({{ '/apidefinitions/#condenser_api.get_discussions_by_blog' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -159,9 +190,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_cashout
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: payout` for payout-oriented post discovery; exact cashout-time ordering is not preserved.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_cashout`]({{ '/apidefinitions/#condenser_api.get_discussions_by_cashout' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -169,9 +204,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-cashout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_children
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL data when child-count ordering is required.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_children`]({{ '/apidefinitions/#condenser_api.get_discussions_by_children' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Returns a list of discussions by children.
       
@@ -181,9 +220,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-children)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_comments
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL data when comment-count ordering is required.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_comments`]({{ '/apidefinitions/#condenser_api.get_discussions_by_comments' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -191,9 +234,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-comments)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_created
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: created` for current newest-post discovery.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_created`]({{ '/apidefinitions/#condenser_api.get_discussions_by_created' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -201,10 +248,14 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-created)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_feed
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: feed` for account feed listings.'
     since: HF14
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_feed`]({{ '/apidefinitions/#condenser_api.get_discussions_by_feed' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -212,9 +263,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-feed)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_hot
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: hot` for current hot-ranked post discovery.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_hot`]({{ '/apidefinitions/#condenser_api.get_discussions_by_hot' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -222,10 +277,14 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-hot)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_promoted
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: promoted` for promoted post discovery.'
     since: HF13
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_promoted`]({{ '/apidefinitions/#condenser_api.get_discussions_by_promoted' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -233,9 +292,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-promoted)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_trending
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: trending` for current trending post discovery.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_trending`]({{ '/apidefinitions/#condenser_api.get_discussions_by_trending' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -243,9 +306,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_discussions_by_votes
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use `bridge.get_ranked_posts` for hot/trending discovery, or an indexed data source when strict vote ordering is required.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_discussions_by_votes`]({{ '/apidefinitions/#condenser_api.get_discussions_by_votes' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -253,10 +320,14 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-votes)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_post_discussions_by_payout
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: payout` for payout-ranked post discovery.'
     since: HF17
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_post_discussions_by_payout`]({{ '/apidefinitions/#condenser_api.get_post_discussions_by_payout' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -264,9 +335,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Post_discussions_by_payout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_replies_by_last_update
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_discussion'
+        relationship: 'spiritual_successor'
+        note: 'Use for reply context on a known post; exact last-update ordering requires indexed data.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_replies_by_last_update`]({{ '/apidefinitions/#condenser_api.get_replies_by_last_update' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -274,9 +349,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Replies_by_last_update)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_tags_used_by_author
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL data for per-author tag aggregates.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_tags_used_by_author`]({{ '/apidefinitions/#condenser_api.get_tags_used_by_author' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -284,9 +363,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_tags_used_by_author)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: tags_api.get_trending_tags
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'bridge.get_trending_topics'
+        relationship: 'spiritual_successor'
+        note: 'Use the Hivemind bridge trending-topics endpoint where available; it is not currently documented as a full method page here.'
     purpose: |
-      **Removed since HF24**  Use: [`condenser_api.get_trending_tags`]({{ '/apidefinitions/#condenser_api.get_trending_tags' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:

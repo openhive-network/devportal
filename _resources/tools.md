@@ -1,6 +1,6 @@
 ---
 title: titles.tools
-position: 8
+position: 9
 canonical_url: tools.html
 ---
 
@@ -25,12 +25,6 @@ A private Microsoft SQL server database with Hive blockchain data, subscription 
 **eSync** - [https://github.com/ecency/esync](https://github.com/ecency/esync)
 
 eSync extracts Hive blockchain data and saves into Mongodb, written in Nodejs.
-
----
-
-**Exxp** - [https://github.com/drov0/exxp](https://github.com/drov0/exxp)
-
-Exxp is a WordPress plugin to allow you to automatically publish your articles to the Hive blockchain whenever you publish them on your blog.
 
 ---
 

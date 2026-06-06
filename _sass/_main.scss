@@ -102,12 +102,14 @@ p {
 	margin-top: 0;
 }
 
-h3 a {
+h3 a,
+h3 .heading-anchor {
 	text-decoration: none;
 	color: #474a54;
 }
 
-h3 a:hover {
+h3 a:hover,
+h3 .heading-anchor:hover {
 	text-decoration: none;
 	color: #474a54;
 }

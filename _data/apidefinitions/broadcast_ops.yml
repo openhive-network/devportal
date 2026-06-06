@@ -625,9 +625,9 @@
           * When votable assets are greater than maximum votable assets: *"Too much votable assets specified"*
           * When the symbol is not allowed in the list for votable assets: *"HIVE can not be explicitly specified as one of allowed_vote_assets"*
         * `max_accepted_payout`: HBD value of the maximum payout this post will receive
-        * `percent_hbd`: the percent of Hive Dollars to key, unkept amounts will be received as Hive Power
+        * `percent_hbd`: the percent of Hive Dollars to keep, remaining amounts will be received as Hive Power
         * `allow_votes`: allows/disallows a post to receive votes;
-        * `allow_curation_rewards`: allows/disllows voters to recieve curation rewards. Rewards return to reward fund.
+        * `allow_curation_rewards`: allows/disallows voters to receive curation rewards. Rewards return to reward fund.
         * `beneficiaries`
           * Must have at least one (empty `beneficiaries` not allowed).
           * Cannot have more than 127 (witness currently only allow up to 8).
@@ -782,7 +782,7 @@
         the sum of the key weights must be greater than or equal to the weight
         threshold.
 
-        This operation only needs to be signed by the the recovery account.
+        This operation only needs to be signed by the recovery account.
         The account to recover confirms its identity to the blockchain in
         the recover account operation.
 
@@ -1670,7 +1670,7 @@
         **Parameters:**
         * `control_account` - The name of the controlling account.
         * `symbol` - The asset symbol of the created token.
-        * `smt_creation_fee` - The amount to be transfered from @account to null account as elevation fee.  The amount required is set by the `smt_creation_fee` field of the `dynamic_global_properties` object.  This field may contain a value in HIVE or HBD.
+        * `smt_creation_fee` - The amount to be transferred from @account to null account as elevation fee.  The amount required is set by the `smt_creation_fee` field of the `dynamic_global_properties` object.  This field may contain a value in HIVE or HBD.
         * `precision` - Separately provided precision for clarity and redundancy.
         
         See: [SMT Object Creation]({{ 'https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md' | archived_url}}#smt-object-creation)

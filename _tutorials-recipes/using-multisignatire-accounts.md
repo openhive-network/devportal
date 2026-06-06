@@ -7,7 +7,7 @@ layout: hive-post
 canonical_url: using-multisignatire-accounts.html
 ---
 <center>
-  <img src="https://images.hive.blog/1536x0/https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQme59Hypf9j6W186aPhDKoeaRSKRMe4yLvNFemZXeuy9q8/image.png" /><br />
+  <img src="https://images.hive.blog/1536x0/https://steemitimages.com/640x0/https://cdn.steemitimages.com/DQme59Hypf9j6W186aPhDKoeaRSKRMe4yLvNFemZXeuy9q8/image.png" alt="Keys on a keyboard" /><br />
 	<sup>Image: Skitterphoto, CC0</sup>
 </center>
 	
@@ -44,14 +44,14 @@ Advanced
 The @hiveio account is an example of an account that has multiple key authorities for each role:
 
 <center>
-  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/Qmey6EuUPcscSPoCJTNMx6x2R1nNnKMZ6P4tCmV3dR8LoN" />
+  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/Qmey6EuUPcscSPoCJTNMx6x2R1nNnKMZ6P4tCmV3dR8LoN" alt="Hive account authorities with threshold one" />
 </center>
 
 Blockchain transactions sent in the name of the @hiveio account can be signed by any of the two keys per role (owner/active/posting). While this account has multiple authorities, it is not a multi-signature account since the threshold parameter on each role is set to 1 - this means that a signature with weight 1 is sufficient to authorize the transaction.
 An account becomes a multi-signature account as soon as the weight of a single signature is not sufficient to reach the threshold. Here is an example of a multi-sig account where this condition is fulfilled:
 
 <center>
-  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/QmTbTCagz39yLo8u9jhT6M276sQarAuQ8inPCVTcCn9wwH" />
+  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/QmTbTCagz39yLo8u9jhT6M276sQarAuQ8inPCVTcCn9wwH" alt="Hive multisignature account authorities" />
 </center>
 
 This account has an active threshold of 40 while each of the authorized keys can provide a weight of at most 25 or 10. This means that transactions requiring the active authority need to be signed by multiple of the authorized keys.
@@ -127,7 +127,7 @@ Supported `--role` parameters are `active` and `posting`. The `--key-weight` par
 This is the resulting transaction from this script:
 
 <center>
-  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/QmNeiJmtrtRWXnr8yv3KY5MQig4ysE5vP6ua7wvpeHdo5b" />
+  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/QmNeiJmtrtRWXnr8yv3KY5MQig4ysE5vP6ua7wvpeHdo5b" alt="Account update transaction output" />
 </center>
 
 Edit: the same state can be achieved via multiple`beempy` commands as suggested by @tcpolymath in the comments, e.g.:
@@ -244,7 +244,7 @@ here's the resulting transaction on hived:
 https://hiveblocks.com/tx/5d1124e30b20c47f31517848500636cf7ec2e886
 
 <center>
-  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/QmdSjjL4TtCqMwrdfJhXL2HfyRgxnFTfgeWPVHNfjaq6Vq" />
+  <img src="https://images.hive.blog/1536x0/https://ipfs.busy.org/ipfs/QmdSjjL4TtCqMwrdfJhXL2HfyRgxnFTfgeWPVHNfjaq6Vq" alt="Signed multisignature transaction on hived" />
 </center>
 
 And an example transferring 0.001 HIVE to my account with 4 signatures as required when using only the keys with weight=10:
@@ -252,7 +252,7 @@ And an example transferring 0.001 HIVE to my account with 4 signatures as requir
 https://hiveblocks.com/tx/ae16ba50728536b6a3a10ace03cb82512a51f6b4
 
 <center>
-  <img src="https://images.hive.blog/1536x0/https://cdn.steemitimages.com/DQmbSHNXy7Ue7dqBxZwoLmQkSDqUii3jshputHrgpQMctqG/Screenshot_trx4.png" />
+  <img src="https://images.hive.blog/1536x0/https://cdn.steemitimages.com/DQmbSHNXy7Ue7dqBxZwoLmQkSDqUii3jshputHrgpQMctqG/Screenshot_trx4.png" alt="Transfer transaction with four signatures" />
 </center>
 
 (this step is currently not yet possible with `beempy`, but there is work in progress to fully integrate all steps)

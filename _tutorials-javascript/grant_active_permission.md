@@ -9,11 +9,11 @@ Full, runnable src of [Grant Active Permission](https://gitlab.syncad.com/hive/d
 
 This tutorial will take you through the process of checking a specific users' data, altering the array pertaining to the active `account_auths`, and then broadcasting the changes to the blockchain. Demo account information has been provided to assist with the tutorial. This tutorial has been set up for the `testnet` but can be easily be changed for `production`.
 
-Providing another user active permission for your account enables them to do fund transfers from your account. This can be usefull in setting up a secondary account(s) to manage funds for a main account or having a backup should you lose passwords for the main account. 
+Providing another user active permission for your account enables them to do fund transfers from your account. This can be useful in setting up a secondary account(s) to manage funds for a main account or having a backup should you lose passwords for the main account. 
 
 One of the common practice nowadays is to lend/delegate HP to another account, above same technique can be used to create market around it with minimum 3rd party trust. All your funds stay in your account. You can use/create automated system where you can lease for certain period of time and system can take care of payments and release of delegations (notify clients). Even better, you can use multi-signature feature to establish 100% trust where clients will have to confirm, approve transactions.
 
-Active permissions and authority should be used with utmost care, you don't want to loose your funds. It is really not easy to hack Hive accounts, let alone take control over it. But without careful use (revealing private keys) loosing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
+Active permissions and authority should be used with utmost care, you don't want to lose your funds. It is really not easy to hack Hive accounts, let alone take control over it. But without careful use (revealing private keys) losing liquid funds are not that difficult and it takes only couple seconds to do that, keeping most value powered up always helps.
 
 [this article](https://hive.blog/hive/@good-karma/steem-multi-authority-permissions-and-how-active-authority-works-part-2-f158813ec0ec1) has more detail around active authorities
 
@@ -134,7 +134,7 @@ activeAuth.account_auths.sort();
 activeAuth.account_auths.splice(arrayindex, 1);
 ```
 
-When adding to the array (creaing permission) it is required to sort the array before we can broadcast. The Hive blockchain does not accept the new fields in the array if it's not alphabetically sorted.
+When adding to the array (creating permission) it is required to sort the array before we can broadcast. The Hive blockchain does not accept the new fields in the array if it's not alphabetically sorted.
 After the active array has been defined, the broadcast object can be created. This holds all the required information for a successful transaction to be sent to the blockchain. Where there is no change in the authority types, the parameter can be omitted or in the case of required parameters, allocated directly from the database query.
 
 ```javascript
@@ -186,7 +186,7 @@ import { Testnet as NetConfig } from '../../configuration'; //A Hive Testnet. Re
 
 let opts = { ...NetConfig.net };
 
-//connect to a steem node, testnet in this case
+//connect to a hive node, testnet in this case
 const client = new Client(NetConfig.url, opts);
 
 //check permission status

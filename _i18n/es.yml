@@ -26,6 +26,7 @@ titles:
   workflow: Flujo de trabajo de desarrollo
   nodes: Hive Nodes
   accounts: Cuentas
+  hackathon: Hackathons de Hive
   authentication: Autenticación
   sdk: Bibliotecas SDK
   getset: Obtener y establecer
@@ -55,11 +56,13 @@ titles:
   imagehoster: ImageHoster
   videohoster: VideoHoster
   hivesigner: Hivesigner
+  hiveauth: HiveAuth
+  aioha: Aioha
   jussi: Jussi
   dhf: Hive Fund
   hive_engine: Hive Engine
   honeycomb: HoneyComb
-  vsc: VSC
+  magi: MAGI
   overview: Información general
   whitepaper: Documento técnico
   hivesigner_libs: Hivesigner Libs
@@ -234,4 +237,3 @@ descriptions:
   paginated_api_methods: _Consultando varias páginas de resultados de la API_
   client_signing: _Cómo firmar, verificar las transacciones de difusión localmente en Hive_
   witness_listing_and_voting: _Obtener testigos y votarlos_
-

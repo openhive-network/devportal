@@ -7,7 +7,7 @@ canonical_url: transfer_hive_and_hbd.html
 ---
 Full, runnable src of [Transfer HIVE And HBD](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python/21_transfer_hive_and_hbd) can be downloaded as part of: [tutorials/python](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/python) (or download just this tutorial: [devportal-master-tutorials-python-21_transfer_hive_and_hbd.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/python/21_transfer_hive_and_hbd)).
 
-In this tutorial we will explain and show you how to to check the HIVE and HBD balance of an account and also how to transfer a portion of that to another user on the **Hive** blockchain using the [beem](https://github.com/holgern/beem) library.
+In this tutorial we will explain and show you how to check the HIVE and HBD balance of an account and also how to transfer a portion of that to another user on the **Hive** blockchain using the [beem](https://github.com/holgern/beem) library.
 
 ## Intro
 

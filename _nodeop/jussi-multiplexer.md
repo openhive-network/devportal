@@ -7,6 +7,8 @@ layout: full
 canonical_url: jussi-multiplexer.html
 ---
 
+> **Note:** Jussi is no longer actively maintained. For new deployments, please use [Drone](https://gitlab.syncad.com/hive/drone), the modern replacement written in Rust.
+
 *How to install `jussi` on your local subnet to take advantage of its features.*
 
 This recipe will take you through the process of setting up `jussi` for a small infrastructure like a home network.
@@ -42,15 +44,13 @@ git clone https://gitlab.syncad.com/hive/jussi.git
 cd jussi
 ```
 
-Edit the file `DEV_config.json` and change all:
-
-`https://api.steemit.com`
-
-... to ...
+Edit the file `DEV_config.json` and ensure all endpoints use:
 
 `https://api.hive.blog`
 
-Also consider adding the [`retries`]({{ '/services/#retry' | relative_url }}) element to your `DEV_config.json`.
+(Note: Older versions may reference `https://api.steemit.com` which should be updated)
+
+Also consider adding the [`retries`]({{ '/resources/#retry' | relative_url }}) element to your `DEV_config.json`.
 
 Then build and run:
 

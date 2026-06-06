@@ -11,10 +11,8 @@ Historically, applications that wanted to retrieve comments written by a particu
 
 Also see:
 * [get discussions]({{ '/search/?q=get discussions' | relative_url }})
-* [tags_api.get_discussions_by_comments]({{ '/apidefinitions/#tags_api.get_discussions_by_comments' | relative_url }})
-* [condenser_api.get_discussions_by_comments]({{ '/apidefinitions/#condenser_api.get_discussions_by_comments' | relative_url }})
-* [tags_api.get_discussions_by_created]({{ '/apidefinitions/#tags_api.get_discussions_by_created' | relative_url }})
-* [condenser_api.get_discussions_by_created]({{ '/apidefinitions/#condenser_api.get_discussions_by_created' | relative_url }})
+* [bridge.get_account_posts]({{ '/apidefinitions/#bridge.get_account_posts' | relative_url }})
+* [bridge.get_ranked_posts]({{ '/apidefinitions/#bridge.get_ranked_posts' | relative_url }})
 
 ### Sections
 
