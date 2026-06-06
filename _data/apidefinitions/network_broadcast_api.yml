@@ -9,7 +9,11 @@
     Also see: [Blockchain Ops]({{ '/apidefinitions/broadcast-ops.html' | relative_url }})
   methods:
   - api_method: network_broadcast_api.broadcast_block
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No public replacement'
+        relationship: 'none'
+        note: 'Block propagation is node-internal behavior in current Hive; public clients should broadcast signed transactions instead.'
     purpose: |
       **Removed: HF26**
       

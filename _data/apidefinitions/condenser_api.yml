@@ -418,7 +418,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_blog
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: blog` for current Hivemind-backed blog and reblog listings.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns the list of blog entries for an account.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
 
       | `account` (string) | `start_entry_id` (int) | `limit` (int) | |
@@ -493,7 +500,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_blog_authors
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use an indexed Hivemind, HAFSQL, or HiveSQL data source when you need reblog-author aggregates.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns a list of authors that have had their content reblogged on a given blog account.  Parameters: `account:string`
 
       | `account` (string) | |
@@ -515,7 +529,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-authors)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_blog_entries
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: blog` for current Hivemind-backed blog and reblog listings.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns a list of blog entries for an account.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
 
       | `account` (string) | `start_entry_id` (int) | `limit` (int) | |
@@ -561,8 +582,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-chain-properties)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_comment_discussions_by_payout
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_ranked_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: payout_comments` for payout-ranked comment discovery.'
     since: HF17
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns a list of discussions based on payout.
 
       Also see: [tags_api.get_comment_discussions_by_payout]({{ '/apidefinitions/#tags_api.get_comment_discussions_by_payout' | relative_url }})
@@ -601,7 +629,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-config)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_content
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_post'
+        relationship: 'spiritual_successor'
+        note: 'Use for current Hivemind-backed post or comment lookup by author and permlink.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns the content (post or comment).  Parameters: `author:string`; `permlink:string`
 
       | `author` (string) | `permlink` (string) | |
@@ -672,7 +707,14 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)"
   - api_method: condenser_api.get_content_replies
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_discussion'
+        relationship: 'spiritual_successor'
+        note: 'Use when the caller needs reply or thread context for a post.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns a list of replies.  Parameters: `author:string`; `permlink:string`
 
 
@@ -781,7 +823,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-current-median-history-price)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_discussions_by_author_before_date
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: posts` or `sort: replies` with pagination; it is not a 1-to-1 date-before query.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns a list of discussions based on author before date.
 
       Also see: [tags_api.get_discussions_by_author_before_date]({{ '/apidefinitions/#tags_api.get_discussions_by_author_before_date' | relative_url }}), [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_discussions_by_author_before_date' | relative_url }})
@@ -910,8 +959,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed-history)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_follow_count
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_profile'
+        relationship: 'spiritual_successor'
+        note: 'The profile response includes follower and following counts.'
     since: HF9
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns the count of followers/following for an account.  Parameters: `account:string`
 
       | `account` (string) | |
@@ -936,8 +992,15 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)"
   - api_method: condenser_api.get_followers
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL follower data for full follower lists; `bridge.get_relationship_between_accounts` only answers pairwise relationship questions.'
     since: HF9
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns the list of followers for an account.  Parameters: `account:string`; `start:string` (account to start from); `type:string` e.g.: `blog`; `limit:int` up to 1000
 
       | `account` (string) | `start` (string) | `type` (string) | `limit` (int) | |
@@ -971,8 +1034,15 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)"
   - api_method: condenser_api.get_following
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL follower data for full following lists; `bridge.get_relationship_between_accounts` only answers pairwise relationship questions.'
     since: HF9
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns the list of accounts that are following an account.  Parameters: `account:string`; `start:string` (account to start from); `type:string` e.g.: `blog`; `limit:int` up to 1000
 
       | `account` (string) | `start` (string) | `type` (string) | `limit` (int) | |
@@ -1233,8 +1303,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-potential-signatures)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_reblogged_by
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL reblog data when you need every account that reblogged a post.'
     since: HF14
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns a list of authors that have reblogged a post.  Parameters: `author:string`; `permlink:string`
 
       | `author` (string) | `permlink` (string) | |
@@ -1493,7 +1570,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction-hex)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_trending_tags
+    status: obsolete
+    successors:
+      - label: 'bridge.get_trending_topics'
+        relationship: 'spiritual_successor'
+        note: 'Use the Hivemind bridge trending-topics endpoint where available; it is not currently documented as a full method page here.'
     purpose: |
+      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      
       Returns the list of trending tags.  Parameter: `start_tag:string`; `limit:int` up to 100
 
       | `tag` (string) | `limit` (int) | |

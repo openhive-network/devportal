@@ -167,6 +167,119 @@ task :archived_urls_dump do
   puts yaml['archived_urls'].map{|k, v| "#{k} => #{v}"}
 end
 
+namespace :api do
+  def api_definition_methods
+    methods = []
+    
+    Dir['_data/apidefinitions/*.yml'].sort.each do |file_name|
+      YAML.load_file(file_name).each do |section|
+        Array(section['methods']).each do |method|
+          api_method = method['api_method']
+          next unless api_method
+          
+          methods << {
+            name: api_method,
+            file: file_name,
+            obsolete: api_method_obsolete?(method)
+          }
+        end
+      end
+    end
+    
+    methods
+  end
+  
+  def openapi_methods
+    file_name = ENV.fetch(
+      'HIVE_OPENAPI',
+      '../hive/libraries/plugins/apis/documentation/openapi.json'
+    )
+    return Set.new unless File.exist?(file_name)
+    
+    openapi = JSON.parse(File.read(file_name))
+    paths = openapi.fetch('paths', {})
+    
+    paths.keys.filter_map do |path|
+      path.to_s.split('/').last
+    end.to_set
+  end
+  
+  def cpp_api_methods
+    root = ENV.fetch('HIVE_APIS_ROOT', '../hive/libraries/plugins/apis')
+    return Set.new unless Dir.exist?(root)
+    
+    ignored_dirs = %w(api_generation documentation test_api)
+    methods = Set.new
+    
+    Dir[File.join(root, '*')].sort.each do |api_dir|
+      next unless File.directory?(api_dir)
+      
+      api_name = File.basename(api_dir)
+      next if ignored_dirs.include?(api_name)
+      
+      Dir[File.join(api_dir, '**', '*.{hpp,cpp}')].sort.each do |file_name|
+        text = File.read(file_name)
+        
+        text.scan(/(?:DECLARE_API|DECLARE_API_IMPL)\s*\((.*?)\)\s*(?:;|\{|private:|public:|FC_REFLECT|\z)/m) do |match|
+          match.first.scan(/\(([a-zA-Z_][a-zA-Z0-9_]*)\)/) do |method_match|
+            methods << "#{api_name}.#{method_match.first}"
+          end
+        end
+        
+        text.scan(/DEFINE_API_IMPL\s*\([^,]+,\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\)/) do |match|
+          methods << "#{api_name}.#{match.first}"
+        end
+      end
+    end
+    
+    methods
+  end
+  
+  def print_method_report(title, methods, limit = nil)
+    puts
+    puts "#{title} (#{methods.length}):"
+    
+    shown = limit ? methods.first(limit) : methods
+    if shown.empty?
+      puts '  none'
+    else
+      shown.each { |method| puts "  #{method}" }
+    end
+    
+    return unless limit && methods.length > limit
+    
+    puts "  ... #{methods.length - limit} more"
+  end
+  
+  desc 'Report API method drift against adjacent Hive OpenAPI and C++ declarations.'
+  task :drift do
+    docs = api_definition_methods
+    all_docs = docs.map { |method| method[:name] }.to_set
+    active_docs = docs.reject { |method| method[:obsolete] }.map { |method| method[:name] }.to_set
+    obsolete_docs = docs.select { |method| method[:obsolete] }.map { |method| method[:name] }.to_set
+    openapi = openapi_methods
+    cpp = cpp_api_methods
+    source = openapi | cpp
+    
+    puts 'API method drift'
+    puts "Docs: active #{active_docs.length}, obsolete #{obsolete_docs.length}, all #{all_docs.length}"
+    puts "Source: OpenAPI #{openapi.length}, C++ #{cpp.length}, combined #{source.length}"
+    
+    if openapi.empty?
+      puts 'OpenAPI source not found. Set HIVE_OPENAPI to compare against a different file.'
+    end
+    
+    if cpp.empty?
+      puts 'C++ API source not found. Set HIVE_APIS_ROOT to compare against a different directory.'
+    end
+    
+    print_method_report('Active docs missing from source', (active_docs - source).to_a.sort)
+    print_method_report('Source methods missing from active docs', (source - active_docs).to_a.sort)
+    print_method_report('Obsolete docs still present in source', (obsolete_docs & source).to_a.sort)
+    print_method_report('Source methods absent from all docs', (source - all_docs).to_a.sort)
+  end
+end
+
 namespace :test do
   KNOWN_APIS = %i(
     account_by_key_api account_history_api block_api condenser_api 
