@@ -28,7 +28,7 @@ A full breakdown of OAuth2 and how it applies to Hive and Hivesigner can be foun
 **Useful Links**
 
 *   [Hivesigner Repo](https://github.com/ecency/hivesigner-ui)
-*   [Community Resources]({{ '/resources/#resources-hivesigner-libs' | relative_url }})
+*   [Community Resources]({{ '/resources/#resources-tools' | relative_url }})
 *   [Hivesigner docs](https://docs.hivesigner.com)
 
 **Hivesigner SDK** - [https://github.com/ecency/hivesigner-sdk](https://github.com/ecency/hivesigner-sdk)

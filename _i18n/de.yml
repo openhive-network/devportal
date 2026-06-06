@@ -26,6 +26,7 @@ titles:
   workflow: Entwickler-Workflow
   nodes: Hive Nodes
   accounts: Konten
+  hackathon: Hive Hackathons
   authentication: Authentifizierung
   sdk: SDK Bibliotheken
   getset: Holen und setzen
@@ -55,6 +56,8 @@ titles:
   imagehoster: ImageHoster
   videohoster: VideoHoster
   hivesigner: Hivesigner
+  hiveauth: HiveAuth
+  aioha: Aioha
   jussi: Jussi
   dhf: Hive-Fonds
   hive_engine: Hive Engine
@@ -234,4 +237,3 @@ descriptions:
   paginated_api_methods: _Mehrere Seiten mit Ergebnissen von der API abfragen_
   client_signing: _Wie unterzeichnen, Broadcast-Transaktionen lokal auf Hive überprüfen_
   witness_listing_and_voting: _Erhalte Zeugen und wähle sie_
-

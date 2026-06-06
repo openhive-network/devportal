@@ -50,7 +50,7 @@ Edit the file `DEV_config.json` and ensure all endpoints use:
 
 (Note: Older versions may reference `https://api.steemit.com` which should be updated)
 
-Also consider adding the [`retries`]({{ '/services/#retry' | relative_url }}) element to your `DEV_config.json`.
+Also consider adding the [`retries`]({{ '/resources/#retry' | relative_url }}) element to your `DEV_config.json`.
 
 Then build and run:
 

@@ -6,6 +6,7 @@ gem 'rake'
 gem 'hive-ruby'
 gem 'html-proofer'
 gem 'jekyll-multiple-languages-plugin'
+gem 'webrick'
 
 group :jekyll_plugins do
     gem 'jekyll-seo-tag'

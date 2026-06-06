@@ -44,12 +44,22 @@
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: debug_node_api.debug_pop_block
+    status: obsolete
+    successors:
+      - label: 'debug_node_api.debug_get_head_block'
+        relationship: 'replacement'
+        note: 'The current API renamed this endpoint to return the current head block.'
     purpose: Pop a block from the blockchain, returning it.
     parameter_json: "{}"
     expected_response_json: "{}"
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: debug_node_api.debug_push_blocks
+    status: obsolete
+    successors:
+      - label: 'No direct replacement'
+        relationship: 'none'
+        note: 'Current Hive debug node APIs no longer expose a block-log push endpoint.'
     purpose: Push blocks from existing database.
     parameter_json: '{"src_filename":"","count":0,"skip_validate_invariants":false}'
     expected_response_json: '{"blocks":0}'

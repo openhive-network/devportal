@@ -35,7 +35,7 @@ As mentioned in our previous tutorials we can fetch various lists of posts with 
 
 #### 2. Post comments<a name="post-comments"></a>
 
-On selection of a particular post from the list, `openPost` function is fired as it is explained in [**Get Post Details**]() tutorial. This function will call the `get_content` function to fetch content of the post. Right after root post is displayed properly, we use `get_content_replies` function to fetch comments made on that post, function requires author and permlink of the root post to fetch its comments.
+On selection of a particular post from the list, `openPost` function is fired as it is explained in [**Get Post Details**]({{ '/tutorials-javascript/get_post_details.html' | relative_url }}) tutorial. This function will call the `get_content` function to fetch content of the post. Right after root post is displayed properly, we use `get_content_replies` function to fetch comments made on that post, function requires author and permlink of the root post to fetch its comments.
 
 ```javascript
 client.database.call('get_content_replies', [author, permlink]).then(result => {

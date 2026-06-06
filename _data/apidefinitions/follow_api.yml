@@ -7,8 +7,15 @@
     to change.**
   methods:
   - api_method: follow_api.get_account_reputations
+    status: obsolete
+    successors:
+      - api_method: 'reputation_api.get_account_reputations'
+        relationship: 'replacement'
+        note: 'Use the dedicated reputation API for reputation lookups.'
     since: HF13
     purpose: |
+      **Obsolete.** Current Hive source no longer defines the `follow_api` plugin. Historical documentation is retained for compatibility context.
+      
       Returns a list of account reputations.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#follow_apiget_account_reputations' | relative_url }})
@@ -32,9 +39,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-reputations)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: blog` for current Hivemind-backed blog and reblog listings.'
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_blog`]({{ '/apidefinitions/#condenser_api.get_blog' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog' | relative_url }})
       
@@ -44,9 +55,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog_authors
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use an indexed Hivemind, HAFSQL, or HiveSQL data source when you need reblog-author aggregates.'
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_blog_authors`]({{ '/apidefinitions/#condenser_api.get_blog_authors' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -54,9 +69,13 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-authors)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_blog_entries
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: blog` for current Hivemind-backed blog and reblog listings.'
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_blog_entries`]({{ '/apidefinitions/#condenser_api.get_blog_entries' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_blog_entries' | relative_url }})
       
@@ -66,10 +85,14 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-entries)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_feed
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: feed` for the current feed-style account post listing.'
     since: HF14
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_feed`]({{ '/apidefinitions/#condenser_api.get_feed' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed' | relative_url }})
       
@@ -79,23 +102,31 @@
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_feed_entries
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_account_posts'
+        relationship: 'spiritual_successor'
+        note: 'Use `sort: feed` for the current feed-style account post listing.'
     since: HF14
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_feed_entries`]({{ '/apidefinitions/#condenser_api.get_feed_entries' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_feed_entries' | relative_url }})
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></p>
+      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-feed-entries)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed-entries)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: follow_api.get_follow_count
-    removed: true
+    status: obsolete
+    successors:
+      - api_method: 'bridge.get_profile'
+        relationship: 'spiritual_successor'
+        note: 'The profile response includes follower and following counts.'
     since: HF9
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_follow_count`]({{ '/apidefinitions/#condenser_api.get_follow_count' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
 
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
@@ -104,10 +135,14 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: follow_api.get_followers
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL follower data for full follower lists; `bridge.get_relationship_between_accounts` only answers pairwise relationship questions.'
     since: HF9
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_followers`]({{ '/apidefinitions/#condenser_api.get_followers' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_followers' | relative_url }})
 
@@ -118,10 +153,14 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: follow_api.get_following
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL follower data for full following lists; `bridge.get_relationship_between_accounts` only answers pairwise relationship questions.'
     since: HF9
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_following`]({{ '/apidefinitions/#condenser_api.get_following' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#condenser_apiget_following' | relative_url }})
 
@@ -132,10 +171,14 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: follow_api.get_reblogged_by
-    removed: true
+    status: obsolete
+    successors:
+      - label: 'No direct documented replacement'
+        relationship: 'none'
+        note: 'Use indexed Hivemind, HAFSQL, or HiveSQL reblog data when you need every account that reblogged a post.'
     since: HF14
     purpose: |
-      **Removed since HF24** Use: [`condenser_api.get_reblogged_by`]({{ '/apidefinitions/#condenser_api.get_reblogged_by' | relative_url }})
+      **Removed since HF24.** See successor guidance below.
 
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
