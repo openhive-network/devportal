@@ -11,7 +11,7 @@ canonical_url: blog_feed.html
 In this tutorial, we will see how to get blog feed from the selected author with [hive-php-lib](https://gitlab.syncad.com/hive/hive-php-lib). You can also find the result PHP file in the `/resources/examples/blogFeed.php` file in `hive-php-lib` folder.
 
 Also see:
-* [get_discussions_by_blog]({{ '/apidefinitions/#condenser_api.get_discussions_by_blog' | relative_url }})
+* [bridge.get_account_posts]({{ '/apidefinitions/#bridge.get_account_posts' | relative_url }})
 
 ---
 

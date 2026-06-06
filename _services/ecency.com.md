@@ -1,7 +1,7 @@
 ---
 title: titles.vision
 position: 4
-canonical_url: ecency.html
+canonical_url: ecency.com.html
 ---
 
 #### Vision endpoints
@@ -1179,4 +1179,3 @@ XML feed for hive-125125 (Ecency community)
     </channel>
 </rss>
 ```
-
