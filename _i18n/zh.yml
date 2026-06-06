@@ -26,6 +26,7 @@ titles:
   workflow: 开发流程
   nodes: Hive Nodes
   accounts: 帐户
+  hackathon: Hive 黑客松
   authentication: 认证
   sdk: SDK 库
   getset: 获取并设置
@@ -55,6 +56,8 @@ titles:
   imagehoster: ImageHoster
   videohoster: VideoHoster
   hivesigner: Hivesigner
+  hiveauth: HiveAuth
+  aioha: Aioha
   jussi: Jussi
   dhf: Hive 基金
   hive_engine: Hive Engine
@@ -234,4 +237,3 @@ descriptions:
   paginated_api_methods: _查询来自API的多个页面结果_
   client_signing: _如何签名，验证本地广播交易在 Hive_
   witness_listing_and_voting: _获取证人并投票他们_
-

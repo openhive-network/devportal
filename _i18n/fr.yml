@@ -26,6 +26,7 @@ titles:
   workflow: Flux de travail des développeurs
   nodes: Hive Nodes
   accounts: Comptes
+  hackathon: Hackathons Hive
   authentication: Authentification
   sdk: Librairies SDK
   getset: Obtenir et définir
@@ -55,6 +56,8 @@ titles:
   imagehoster: ImageHoster
   videohoster: VideoHoster
   hivesigner: Hivesigner
+  hiveauth: HiveAuth
+  aioha: Aioha
   jussi: Jussi
   dhf: Fond Hive
   hive_engine: Hive Engine
@@ -234,4 +237,3 @@ descriptions:
   paginated_api_methods: _Interrogation de plusieurs pages de résultats de l'API_
   client_signing: _Comment signer, vérifier localement les transactions de diffusion sur Hive_
   witness_listing_and_voting: _Obtenir des témoins et les voter_
-
