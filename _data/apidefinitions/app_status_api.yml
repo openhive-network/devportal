@@ -1,0 +1,46 @@
+---
+- name: App Status API
+  description: |
+    Reports application status information collected by `hived`.
+    
+    This API is only available when the `app_status_api` plugin is enabled.
+  methods:
+  - api_method: app_status_api.get_app_status
+    purpose: |
+      Returns application status records gathered by the app status collector.
+      
+      The public `api.hive.blog` endpoint did not have `app_status_api` enabled
+      during verification, so the example below reflects the source return
+      shape rather than a live public-node response.
+    parameter_json: "{}"
+    expected_response_json: |
+      {
+        "last_update": "2026-06-06T21:32:57",
+        "records": {
+          "example": {
+            "status": "ok"
+          }
+        },
+        "statuses": [
+          {
+            "timestamp": "2026-06-06T21:32:57",
+            "status": "ok"
+          }
+        ],
+        "webservers": {
+          "json_rpc": {
+            "timestamp": "2026-06-06T21:32:57",
+            "address": "0.0.0.0",
+            "port": 8090
+          }
+        },
+        "forks": [
+          {
+            "timestamp": "2026-06-06T21:32:57",
+            "new_head_block_num": 107046041,
+            "new_head_block_id": "06615e9900000000000000000000000000000000"
+          }
+        ]
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"app_status_api.get_app_status", "params":{}, "id":1}'

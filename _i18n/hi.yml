@@ -33,18 +33,24 @@ titles:
   testnet: Hive Testnet
   account_by_key_api: Account By Key API
   account_history_api: Account history API
+  app_status_api: App Status API
   block_api: Block API
   bridge: Bridge
+  chain_api: Chain API
   condenser_api: Condenser API
   database_api: Database API
   debug_node_api: Debug Node API
   follow_api: Follow API
+  hive_api: Hive API
   json_rpc: JSON RPC
   market_history_api: Market History API
   network_broadcast_api: Network Broadcast API
+  network_node_api: Network Node API
+  node_status_api: Node Status API
   rc_api: RC API
   reputation_api: Reputation API
   rewards_api: Rewards API
+  search_api: Search API
   tags_api: Tags API
   transaction_status_api: Transaction Status API
   witness_api: Witness API

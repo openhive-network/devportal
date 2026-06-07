@@ -3,8 +3,33 @@
 ---
 - name: Witness API
   description: |
-    **API removed in 0.20.6, see: [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url }}#issuecomment-428404844)**
+    Provides witness-node controls.
+
+    The legacy bandwidth methods in this section were disabled in 0.20.6, see:
+    [#3029]({{ 'https://github.com/steemit/steem/issues/3029' | archived_url }}#issuecomment-428404844).
+    Current fast-confirm methods are available when the `witness_api` plugin is
+    enabled, and are intended for trusted witness-node operator endpoints.
   methods:
+  - api_method: witness_api.disable_fast_confirm
+    since: HF26
+    purpose: |
+      Disables automatic fast-confirm transaction broadcasting by this witness node.
+
+      When disabled, the witness plugin does not broadcast fast-confirm
+      transactions even when the node is scheduled and has the required signing
+      key.
+    parameter_json: "{}"
+    expected_response_json: "{}"
+  - api_method: witness_api.enable_fast_confirm
+    since: HF26
+    purpose: |
+      Enables automatic fast-confirm transaction broadcasting by this witness node.
+
+      When enabled, the witness plugin can broadcast fast-confirm transactions
+      for eligible scheduled witnesses when the node has the required signing
+      key.
+    parameter_json: "{}"
+    expected_response_json: "{}"
   - api_method: witness_api.get_account_bandwidth
     status: obsolete
     successors:
@@ -41,3 +66,10 @@
     - Could not find API witness_api
     client_docs:
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
+  - api_method: witness_api.is_fast_confirm_enabled
+    since: HF26
+    purpose: |
+      Returns whether automatic fast-confirm broadcasting is currently enabled
+      on this witness node.
+    parameter_json: "{}"
+    expected_response_json: "true"
