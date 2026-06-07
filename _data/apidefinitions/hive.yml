@@ -1,0 +1,33 @@
+---
+- name: Hive API
+  description: |
+    Reports Hivemind service and database status.
+  methods:
+  - api_method: hive.db_head_state
+    purpose: |
+      Returns the current head block state from the Hivemind database.
+    parameter_json: "{}"
+    expected_response_json: |
+      {
+        "db_head_age": 2.433090925216675,
+        "db_head_time": "2026-06-06 21:47:45",
+        "db_head_block": 107046337
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"hive.db_head_state", "params":{}, "id":1}'
+  - api_method: hive.get_info
+    purpose: |
+      Returns version, revision, schema, and database head information for the Hivemind node.
+    parameter_json: "{}"
+    expected_response_json: |
+      {
+        "hivemind_git_rev": "cab9e328bfd5bd9da2d228d68db75b07b7ae8f93",
+        "hivemind_version": "1.28.6+gcab9e328-dirty.20260504T223118",
+        "hivemind_git_date": "2026-05-04T22:31:18",
+        "database_head_block": 107046337,
+        "database_patch_date": "2026-05-07 22:15:43.01328",
+        "database_schema_version": 5,
+        "database_patched_to_revision": "cab9e328bfd5bd9da2d228d68db75b07b7ae8f93"
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"hive.get_info", "params":{}, "id":1}'

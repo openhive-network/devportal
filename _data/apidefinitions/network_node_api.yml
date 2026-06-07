@@ -1,0 +1,73 @@
+---
+- name: Network Node API
+  description: |
+    Reports and controls P2P network connections for a `hived` node.
+
+    This API is only available when the `network_node_api` plugin is enabled.
+    It is intended for node operators and is not normally exposed by public API
+    endpoints.
+  methods:
+  - api_method: network_node_api.add_node
+    purpose: |
+      Requests that the node add a peer endpoint to its P2P connection set.
+
+      This is a node-operator control method. The public `api.hive.blog`
+      endpoint did not have `network_node_api` enabled during verification, so
+      the example below reflects the source argument and return shape rather
+      than a live public-node response.
+    parameter_json: '{"endpoint":"127.0.0.1:2001"}'
+    expected_response_json: "{}"
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"network_node_api.add_node", "params":{"endpoint":"127.0.0.1:2001"}, "id":1}'
+  - api_method: network_node_api.get_connected_peers
+    purpose: |
+      Returns the node's currently connected P2P peers.
+
+      Each peer entry includes the peer protocol `version`, remote `host`, and
+      implementation-defined `info` returned by the P2P layer.
+    parameter_json: "{}"
+    expected_response_json: |
+      {
+        "connected_peers": [
+          {
+            "version": 0,
+            "host": "127.0.0.1:2001",
+            "info": {
+              "addr": "127.0.0.1:2001",
+              "peer": "example",
+              "direction": "outbound"
+            }
+          }
+        ]
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"network_node_api.get_connected_peers", "params":{}, "id":1}'
+  - api_method: network_node_api.get_info
+    purpose: |
+      Returns P2P network metadata for the node.
+
+      The response is sourced from the P2P plugin and includes the listening
+      endpoint, public node key, node id, firewall status, and current
+      connection count.
+    parameter_json: "{}"
+    expected_response_json: |
+      {
+        "listening_on": "0.0.0.0:2001",
+        "node_public_key": "STM1111111111111111111111111111111114T1Anm",
+        "node_id": "0000000000000000000000000000000000000000",
+        "firewalled": "unknown",
+        "connection_count": 8
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"network_node_api.get_info", "params":{}, "id":1}'
+  - api_method: network_node_api.set_allowed_peers
+    purpose: |
+      Sets the node ids that are allowed to connect to this P2P node.
+
+      Passing an empty list clears the explicit allow-list. This is a
+      node-operator control method and should only be exposed on trusted
+      administrative endpoints.
+    parameter_json: '{"allowed_peers":[]}'
+    expected_response_json: "{}"
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"network_node_api.set_allowed_peers", "params":{"allowed_peers":[]}, "id":1}'

@@ -280,11 +280,106 @@
     client_docs:
     - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: rc_api.get_rc_stats
+    since: HF20
+    purpose: |
+      Returns Resource Credit statistics gathered by the RC plugin.
+    parameter_json: "{}"
+    expected_response_json: |
+      {
+        "rc_stats": {
+          "block": 106992000,
+          "stamp": "904e0d3b2d44eb0d91b700782e2f674275cb7f208af1d4e9799773d1ef187d4f",
+          "regen": 2361977031866,
+          "budget": [43403, 797, 72338, 43546196, 40000000],
+          "pool": [23999138072, 13621407, 1977594800, 25983333629097, 66085166896],
+          "share": [5133, 10000, 568, 1942, 2355],
+          "vote": 96911717,
+          "comment": 1283929057,
+          "transfer": 170192543,
+          "ops": {
+            "vote_operation": {
+              "count": 189671,
+              "avg_cost": 97340472
+            },
+            "comment_operation": {
+              "count": 5321,
+              "avg_cost": 1227550186
+            },
+            "transfer_operation": {
+              "count": 4651,
+              "avg_cost": 165637376
+            }
+          },
+          "payers": [
+            {
+              "rank": 0,
+              "count": 9098,
+              "lt5": 419,
+              "lt10": 460,
+              "lt20": 529,
+              "cant_afford": {
+                "vote": 342,
+                "comment": 539,
+                "transfer": 383
+              }
+            }
+          ]
+        }
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"rc_api.get_rc_stats", "params":{}, "id":1}'
+    client_docs:
+    - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
+    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: rc_api.get_rc_operation_stats
+    since: HF20
+    purpose: |
+      Returns Resource Credit statistics for a single operation.
+      
+      The `operation` value can be an operation name such as `vote_operation`
+      or `comment_operation`.
+    parameter_json: '{"operation":"vote_operation"}'
+    expected_response_json: |
+      {
+        "count": 189671,
+        "avg_cost_rc": 97340472,
+        "resource_cost": {
+          "history_rc": 66641922,
+          "tokens_rc": 0,
+          "market_rc": 0,
+          "state_rc": 3762273,
+          "exec_rc": 26936276
+        },
+        "resource_cost_share": {
+          "history_bp": 6846,
+          "tokens_bp": 0,
+          "market_bp": 0,
+          "state_bp": 386,
+          "exec_bp": 2767
+        },
+        "resource_usage": {
+          "history_bytes": 140,
+          "tokens": "0.0000",
+          "market_bytes": 0,
+          "state_hbytes": 24320,
+          "exec_ns": 119099
+        }
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"rc_api.get_rc_operation_stats", "params":{"operation":"vote_operation"}, "id":1}'
+    client_docs:
+    - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
+    - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.list_rc_accounts
     purpose:
     parameter_json: '{"start":null,"limit":0}'
     expected_response_json: '{"rc_accounts":[]}'
+    client_docs:
+    - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_accounts)"
   - api_method: rc_api.list_rc_direct_delegations
     purpose:
     parameter_json: '{"start":null,"limit":0}'
     expected_response_json: '{"rc_direct_delegations":[]}'
+    client_docs:
+    - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_direct_delegations)"

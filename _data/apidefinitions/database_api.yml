@@ -2231,15 +2231,23 @@
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
     - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)"
   - api_method: database_api.verify_account_authority
-    disabled: true
     purpose: |
-      **Not Implemented**
-    parameter_json: '{"account":"","signers":[]}'
+      Returns true if the provided public keys satisfy the requested authority
+      level for an account.
+
+      Parameters:
+
+      * `account` - account name to verify
+      * `signers` - public keys to test against the account authority
+      * `level` - optional authority level, one of `active`, `owner`, or `posting`; defaults to `active`
+
+      Also see: [condenser_api.verify_account_authority]({{ '/apidefinitions/#condenser_api.verify_account_authority' | relative_url }})
+    parameter_json: '{"account":"hiveio","signers":["STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"],"level":"active"}'
     expected_response_json: '{"valid":false}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.verify_account_authority", "params":{"account":"temp","signers":["STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"]}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.verify_account_authority", "params":{"account":"hiveio","signers":["STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"],"level":"active"}, "id":1}'
     expected_curl_responses:
-    - Missing Active Authority hiveio
+    - false
     client_docs:
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#verify-account-authority)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.verify_account_authority)"

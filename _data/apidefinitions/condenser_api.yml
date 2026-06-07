@@ -305,6 +305,25 @@
       - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/accounts)"
+  - api_method: condenser_api.get_account_references
+    disabled: true
+    purpose: |
+      **Not Implemented**
+
+      Current Hive source still registers this method, but the implementation
+      always fails with: `condenser_api::get_account_references --- Needs to be
+      refactored for Hive.`
+    parameter_json:
+      - hiveio
+    expected_response_json: []
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_references", "params":["hiveio"], "id":1}'
+    expected_curl_responses:
+      - Needs to be refactored for Hive.
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-references)"
+      - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-references)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_active_votes
     purpose: |
       Returns all votes for the given post.  Parameters: `author:string`; `permlink:string`
@@ -613,6 +632,288 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-comment-discussions-by-payout)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)"
+  - api_method: condenser_api.get_discussions_by_blog
+    purpose: |
+      Returns discussions from an account blog. This is a Hivemind-supported
+      compatibility endpoint.
+
+      Parameters use the discussion query object. `tag` is required and is the
+      blog account. `start_author` and `start_permlink` can be used for
+      pagination.
+    parameter_json: '{"tag":"hiveio","limit":1,"truncate_body":80}'
+    expected_response_json: |
+      [
+        {
+          "url": "/happynewyear2026/@hiveio/hive-reflects-on-2025-a-year-of-relentless-building",
+          "body": "![image.png](https://images.hive.blog/DQmefPVpvA4a5U2vN8K6JmYFnv7QKfnH98XwSn7zxq",
+          "depth": 0,
+          "title": "Hive Reflects on 2025: A Year of Relentless Building",
+          "author": "hiveio",
+          "created": "2025-12-31T19:41:36",
+          "category": "happynewyear2026",
+          "children": 95,
+          "permlink": "hive-reflects-on-2025-a-year-of-relentless-building",
+          "root_title": "Hive Reflects on 2025: A Year of Relentless Building",
+          "body_length": 40480,
+          "last_payout": "2026-01-07T19:41:36",
+          "last_update": "2026-01-01T05:46:06",
+          "net_rshares": 338142259487950,
+          "percent_hbd": 10000,
+          "active_votes": [
+            {
+              "voter": "blocktrades",
+              "percent": "5000",
+              "rshares": 184082573269364,
+              "reputation": 1224525196468156
+            }
+          ],
+          "json_metadata": "{\"app\":\"peakd/2025.12.9\",\"tags\":[\"happynewyear2026\",\"hive\",\"ecosystem\"]}",
+          "parent_author": "",
+          "parent_permlink": "happynewyear2026",
+          "author_reputation": 304210494623626,
+          "pending_payout_value": "0.000 HBD"
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_blog", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-blog)"
+      - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.get_discussions_by_comments
+    purpose: |
+      Returns discussions ordered by comments. This is a Hivemind-supported
+      compatibility endpoint.
+
+      `start_author` is required. `start_permlink`, `limit`, `truncate_body`,
+      and `observer` are optional.
+    parameter_json: '{"start_author":"hiveio","limit":1,"truncate_body":80}'
+    expected_response_json: |
+      [
+        {
+          "url": "/hive/@hiveio/hive-at-blockchain-rio#@hiveio/sh7evp",
+          "body": "We are very happy that so many people were able to make it.",
+          "depth": 3,
+          "title": "",
+          "author": "hiveio",
+          "created": "2024-07-26T00:04:36",
+          "category": "hive",
+          "children": 0,
+          "permlink": "sh7evp",
+          "root_title": "Hive at Blockchain Rio",
+          "body_length": 59,
+          "last_payout": "2024-08-02T00:04:36",
+          "last_update": "2024-07-26T00:04:36",
+          "net_rshares": 0,
+          "percent_hbd": 10000,
+          "active_votes": [],
+          "json_metadata": "{\"app\":\"hiveblog/0.1\"}",
+          "parent_author": "vaipraonde",
+          "parent_permlink": "re-wagnertamanaha-sh5wj7",
+          "author_reputation": 304210494623626,
+          "pending_payout_value": "0.000 HBD"
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_comments", "params":[{"start_author":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)"
+      - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-comments)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.get_discussions_by_created
+    purpose: |
+      Returns discussions ordered by creation time. This is a Hivemind-supported
+      compatibility endpoint.
+    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    expected_response_json: |
+      [
+        {
+          "url": "/hive-125125/@igormuba/hive-all-time-low-just",
+          "body": "![](https://i.ecency.com/DQmSk4VPhkcYdFK4XDss2oCYmcLfEwDNqvpmUZ2oKe6VRcm/screens",
+          "depth": 0,
+          "title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "author": "igormuba",
+          "created": "2026-06-05T16:23:36",
+          "category": "hive-125125",
+          "children": 71,
+          "permlink": "hive-all-time-low-just",
+          "root_title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "body_length": 13894,
+          "last_payout": "1969-12-31T23:59:59",
+          "last_update": "2026-06-05T16:23:36",
+          "net_rshares": 579903608850238,
+          "percent_hbd": 0,
+          "active_votes": [
+            {
+              "voter": "adm",
+              "percent": "10000",
+              "rshares": 27272590202586,
+              "reputation": 9648449065244
+            }
+          ],
+          "json_metadata": "{\"app\":\"ecency/4.4.0-vision\",\"tags\":[\"hive-125125\",\"hbd\",\"hive\"]}",
+          "parent_author": "",
+          "parent_permlink": "hive-125125",
+          "author_reputation": 137152129553093,
+          "pending_payout_value": "42.703 HBD"
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_created", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)"
+      - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-created)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.get_discussions_by_feed
+    purpose: |
+      Returns discussions from an account feed. This is a Hivemind-supported
+      compatibility endpoint.
+
+      Parameters use the same object shape as `get_discussions_by_blog`; `tag`
+      is required and identifies the account feed.
+    parameter_json: '{"tag":"hiveio","limit":1,"truncate_body":80}'
+    expected_response_json: |
+      [
+        {
+          "url": "/happynewyear2026/@hiveio/hive-reflects-on-2025-a-year-of-relentless-building",
+          "body": "![image.png](https://images.hive.blog/DQmefPVpvA4a5U2vN8K6JmYFnv7QKfnH98XwSn7zxq",
+          "depth": 0,
+          "title": "Hive Reflects on 2025: A Year of Relentless Building",
+          "author": "hiveio",
+          "created": "2025-12-31T19:41:36",
+          "category": "happynewyear2026",
+          "children": 95,
+          "permlink": "hive-reflects-on-2025-a-year-of-relentless-building",
+          "root_title": "Hive Reflects on 2025: A Year of Relentless Building",
+          "body_length": 40480,
+          "active_votes": [],
+          "json_metadata": "{\"app\":\"peakd/2025.12.9\",\"tags\":[\"happynewyear2026\",\"hive\",\"ecosystem\"]}",
+          "parent_author": "",
+          "parent_permlink": "happynewyear2026",
+          "author_reputation": 304210494623626,
+          "pending_payout_value": "0.000 HBD"
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_feed", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-feed)"
+      - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-feed)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.get_discussions_by_hot
+    purpose: |
+      Returns discussions ordered by recent popularity. This is a
+      Hivemind-supported compatibility endpoint.
+    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    expected_response_json: |
+      [
+        {
+          "url": "/hive-125125/@igormuba/hive-all-time-low-just",
+          "body": "![](https://i.ecency.com/DQmSk4VPhkcYdFK4XDss2oCYmcLfEwDNqvpmUZ2oKe6VRcm/screens",
+          "depth": 0,
+          "title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "author": "igormuba",
+          "created": "2026-06-05T16:23:36",
+          "category": "hive-125125",
+          "children": 71,
+          "permlink": "hive-all-time-low-just",
+          "root_title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "body_length": 13894,
+          "active_votes": [],
+          "json_metadata": "{\"app\":\"ecency/4.4.0-vision\",\"tags\":[\"hive-125125\",\"hbd\",\"hive\"]}",
+          "parent_author": "",
+          "parent_permlink": "hive-125125",
+          "author_reputation": 137152129553093,
+          "pending_payout_value": "42.703 HBD"
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_hot", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-hot)"
+      - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-hot)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.get_discussions_by_trending
+    purpose: |
+      Returns discussions ordered by popularity. This is a Hivemind-supported
+      compatibility endpoint.
+    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    expected_response_json: |
+      [
+        {
+          "url": "/hive-125125/@igormuba/hive-all-time-low-just",
+          "body": "![](https://i.ecency.com/DQmSk4VPhkcYdFK4XDss2oCYmcLfEwDNqvpmUZ2oKe6VRcm/screens",
+          "depth": 0,
+          "title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "author": "igormuba",
+          "created": "2026-06-05T16:23:36",
+          "category": "hive-125125",
+          "children": 71,
+          "permlink": "hive-all-time-low-just",
+          "root_title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "body_length": 13894,
+          "active_votes": [],
+          "json_metadata": "{\"app\":\"ecency/4.4.0-vision\",\"tags\":[\"hive-125125\",\"hbd\",\"hive\"]}",
+          "parent_author": "",
+          "parent_permlink": "hive-125125",
+          "author_reputation": 137152129553093,
+          "pending_payout_value": "42.703 HBD"
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_trending", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)"
+      - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.get_post_discussions_by_payout
+    purpose: |
+      Returns posts ordered by payout. This is a Hivemind-supported
+      compatibility endpoint.
+    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    expected_response_json: |
+      [
+        {
+          "url": "/hive-125125/@igormuba/hive-all-time-low-just",
+          "body": "![](https://i.ecency.com/DQmSk4VPhkcYdFK4XDss2oCYmcLfEwDNqvpmUZ2oKe6VRcm/screens",
+          "depth": 0,
+          "title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "author": "igormuba",
+          "created": "2026-06-05T16:23:36",
+          "category": "hive-125125",
+          "children": 71,
+          "permlink": "hive-all-time-low-just",
+          "root_title": "HIVE all time low, just hit 5 cents. I am buying, powering up, but I think the current model is failing.",
+          "body_length": 13894,
+          "active_votes": [],
+          "json_metadata": "{\"app\":\"ecency/4.4.0-vision\",\"tags\":[\"hive-125125\",\"hbd\",\"hive\"]}",
+          "parent_author": "",
+          "parent_permlink": "hive-125125",
+          "author_reputation": 137152129553093,
+          "pending_payout_value": "42.703 HBD"
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_post_discussions_by_payout", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-payout)"
+      - "[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Post_discussions_by_payout)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.get_replies_by_last_update
+    purpose: |
+      Returns replies ordered by last update. This is a Hivemind-supported
+      compatibility endpoint.
+
+      `start_author` is required. `start_permlink`, `limit`, `truncate_body`,
+      and `observer` are optional.
+    parameter_json: '{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"truncate_body":80}'
+    expected_response_json: []
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_replies_by_last_update", "params":[{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"truncate_body":80}], "id":1}'
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#content)"
+      - "[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Replies_by_last_update)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_config
     purpose: |
       Returns information about compile-time constants.  See: [Understanding
@@ -2036,6 +2337,29 @@
     client_docs:
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#verify-authority)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#verify-authority)"
+      - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
+  - api_method: condenser_api.verify_account_authority
+    purpose: |
+      Returns true if the provided public keys satisfy the requested authority
+      level for an account.
+
+      Parameters are the account name, signer public keys, and an optional
+      authority level (`active`, `owner`, or `posting`). When omitted, the
+      authority level defaults to `active`.
+
+      Also see: [database_api.verify_account_authority]({{ '/apidefinitions/#database_api.verify_account_authority' | relative_url }})
+    parameter_json:
+      - hiveio
+      - - STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX
+      - active
+    expected_response_json: false
+    curl_examples:
+      - '{"jsonrpc":"2.0", "method":"condenser_api.verify_account_authority", "params":["hiveio",["STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"],"active"], "id":1}'
+    expected_curl_responses:
+      - false
+    client_docs:
+      - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#verify-account-authority)"
+      - "[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.verify_account_authority)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.find_proposals
     purpose: |
