@@ -9,11 +9,27 @@ require 'yaml'
 require 'html-proofer'
 require 'cgi'
 require 'fileutils'
+require 'open3'
 require 'pathname'
 require 'set'
+require 'uri'
 
 def api_method_obsolete?(method)
   !!method['removed'] || method['status'].to_s == 'obsolete'
+end
+
+def validated_http_url(value, env_name)
+  uri = URI.parse(value)
+  return value if %w(http https).include?(uri.scheme) && uri.host
+
+  fail "#{env_name} must be an http or https URL"
+rescue URI::InvalidURIError
+  fail "#{env_name} must be an http or https URL"
+end
+
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'test'
+  t.pattern = 'test/**/*_test.rb'
 end
 
 namespace :scrape do
@@ -37,38 +53,48 @@ namespace :production do
   
   task :build do
     baseurl = ENV.fetch('BASEURL', '/')
-    cmd = 'bundle exec jekyll build --destination docs'
+    cmd = ['bundle', 'exec', 'jekyll', 'build', '--destination', 'docs']
     
     if !!baseurl && baseurl != '/'
-      cmd += " --baseurl #{baseurl}"
+      cmd += ['--baseurl', baseurl]
     end
     
-    sh cmd
+    sh(*cmd)
   end
   
   task :drop_previous_build do
-    sh 'git checkout master'
-    sh 'git rm -rf docs'
-    sh 'git commit -m "jekyll dropped previous site"'
+    sh 'git', 'checkout', 'master'
+    sh 'git', 'rm', '-rf', 'docs'
+    sh 'git', 'commit', '-m', 'jekyll dropped previous site'
   end
   
   desc "Deploy current master to GH Pages"
   task deploy: [:prevent_dirty_builds, :drop_previous_build, :build] do
     remote = ENV.fetch('REMOTE', 'origin')
     
-    sh 'git add -A'
-    sh 'git commit -m "jekyll base sources"'
-    sh "git push #{remote} master"
+    sh 'git', 'add', '-A'
+    sh 'git', 'commit', '-m', 'jekyll base sources'
+    sh 'git', 'push', remote, 'master'
     
     exit(0)
   end
   
   desc "Rollback GH Pages"
   task rollback: [:prevent_dirty_builds] do
-    sh 'git checkout master'
-    sh 'git reset --hard HEAD^'
-    sh 'git push origin master'
-    
+    fail 'Set CONFIRM_ROLLBACK=1 to rewrite the published master branch.' unless ENV['CONFIRM_ROLLBACK'] == '1'
+
+    remote = ENV.fetch('REMOTE', 'origin')
+
+    sh 'git', 'checkout', 'master'
+
+    subject = `git log -1 --pretty=%s`.chomp
+    unless subject == 'jekyll base sources'
+      fail "Rollback aborted: HEAD is not a generated deploy commit: #{subject.inspect}"
+    end
+
+    sh 'git', 'reset', '--hard', 'HEAD^'
+    sh 'git', 'push', remote, 'master'
+
     exit(0)
   end
   
@@ -291,11 +317,12 @@ namespace :test do
   desc "Tests the curl examples of api definitions.  Known APIs: #{KNOWN_APIS.join(' ')}"
   task :curl, [:apis] do |t, args|
     smoke = 0
-    url = ENV.fetch('TEST_NODE', 'https://api.hive.blog')
+    url = validated_http_url(ENV.fetch('TEST_NODE', 'https://api.hive.blog'), 'TEST_NODE')
     apis = [args[:apis].split(' ').map(&:to_sym)].flatten if !!args[:apis]
     apis ||= KNOWN_APIS
     
-    version = `curl -s --data '{"jsonrpc":"2.0", "method":"condenser_api.get_version", "params":[], "id":1}' #{url}`
+    version_payload = '{"jsonrpc":"2.0", "method":"condenser_api.get_version", "params":[], "id":1}'
+    version, = Open3.capture2('curl', '-s', '--data', version_payload, url)
     version = JSON[version]['result']
     blockchain_version = version['blockchain_version']
     hive_rev = version['hive_revision'][0..5]
@@ -337,8 +364,8 @@ namespace :test do
             end
           end
           
-          response = `curl -s -w \"HTTP_CODE:%{http_code}\" --data '#{curl_example}' #{url}`
-          response = response.split('HTTP_CODE:')
+          response, = Open3.capture2('curl', '-s', '-w', 'HTTP_CODE:%{http_code}', '--data', curl_example, url)
+          response = response.split('HTTP_CODE:', 2)
           json = response[0]
           code = response[1]
           
@@ -485,6 +512,11 @@ namespace :test do
     puts "... #{failures.length - 100} more" if failures.length > 100
     fail "Found #{failures.length} internal hash failures"
   end
+
+  desc 'Assert key build and rendered-content invariants.'
+  task :assertions do
+    Rake::Task[:test].invoke
+  end
   
   desc 'Fast proof: scripts and internal file links, skipping expensive hash-anchor checks.'
   task proof: 'proof:fast'
@@ -504,6 +536,18 @@ namespace :test do
         checks: ['Scripts', 'Links', 'Images'],
         check_internal_hash: false
       )
+      begin
+        previous_site_dir = ENV['SITE_DIR']
+        ENV['SITE_DIR'] = PROOF_SITE_DIR
+        Rake::Task['test:assertions'].invoke
+      ensure
+        if previous_site_dir
+          ENV['SITE_DIR'] = previous_site_dir
+        else
+          ENV.delete('SITE_DIR')
+        end
+      end
+
       check_internal_hashes
     end
   end

@@ -307,6 +307,18 @@ hr {
 	border-color: #B2D2EF;
 }
 
+.api-method-metadata {
+	float: right;
+	list-style: none;
+	margin-left: 20px;
+
+	@media (max-width: $mobile-break) {
+		float: none;
+		margin-left: 0;
+		padding-left: 0;
+	}
+}
+
 .error {
 	border-color: #F09F99;
 }

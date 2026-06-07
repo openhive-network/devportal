@@ -14,7 +14,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-votes)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-votes)'
@@ -29,7 +28,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-comment-discussions-by-payout)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-comment-discussions-by-payout)'
@@ -43,7 +41,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content-replies)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content-replies)'
@@ -154,7 +151,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-active)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-active)'
@@ -170,7 +166,6 @@
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#tags_apiget_discussions_by_author_before_date' | relative_url }})
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-author-before-date)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-author-before-date)'
@@ -184,7 +179,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-blog)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)'
@@ -198,7 +192,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-cashout)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-cashout)'
@@ -214,7 +207,6 @@
       
       Returns a list of discussions by children.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-children)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-children)'
@@ -228,7 +220,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-comments)'
@@ -242,7 +233,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-created)'
@@ -257,7 +247,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-feed)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-feed)'
@@ -271,7 +260,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-hot)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-hot)'
@@ -286,7 +274,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-promoted)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-promoted)'
@@ -300,7 +287,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)'
@@ -314,7 +300,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-votes)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-votes)'
@@ -329,7 +314,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-payout)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Post_discussions_by_payout)'
@@ -343,7 +327,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#content)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Replies_by_last_update)'
@@ -357,7 +340,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#tags)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_tags_used_by_author)'
@@ -371,7 +353,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-trending-tags)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Trending_tags)'

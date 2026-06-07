@@ -25,7 +25,7 @@ Methods:
 {% if method_status == 'obsolete' or method.removed %}
   {% assign method_obsolete = true %}
 {% endif %}
-<ul style="float: right; list-style: none;">
+<ul class="api-method-metadata">
 {% if method.since %}
 <li class="success"><strong><small>Since: {{method.since}}</small></strong></li>
 {% endif %}
@@ -75,7 +75,7 @@ Methods:
 {{method.parameter_json | neat_json}}
 ```
 {% endif %}
-{% if method.parameter_json %}
+{% if method.expected_response_json %}
 <h5 id="{{ method.api_method | slug }}-expected_response_json">Expected Response JSON <a href="#{{ method.api_method | slug}}-expected_response_json"><i class="fas fa-link fa-sm"></i></a></h5>
 ```json
 {{method.expected_response_json | neat_json}}
