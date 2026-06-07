@@ -16,7 +16,7 @@ layout: default
 			<p class="description">{{description}}</p>
 		{% endif %}
 
-		{{ page.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
+		{{ content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
 	</section>
 
   {% if page.main_script or page.right_code %}

@@ -124,10 +124,14 @@ plugins:
 
 exclude:
   - readme.md
+  - README.md
   - LICENCE
   - vendor
   - Makefile
-  - "tutorials"
+  - tutorials
+  - Gemfile.lock
+  - Gemfile
+  - CONTRIBUTING.md
 
 defaults:
   -
@@ -144,5 +148,3 @@ types:
 
 kramdown:
   auto_ids: true
-
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'CONTRIBUTING.md','tutorials']

@@ -2508,9 +2508,6 @@
     purpose: |
       Returns objects corresponding with `collateralized_convert` operations.
         
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
     parameter_json: '{"account":""}'
     expected_response_json: '{"requests":[]}'
     client_docs:
@@ -2521,9 +2518,6 @@
     purpose: |
       Returns objects corresponding with `collateralized_convert` operations.
         
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
     parameter_json: '{"start":null,"limit":0,"order":"by_name"}'
     expected_response_json: '{"requests":[]}'
     client_docs:

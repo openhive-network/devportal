@@ -1403,10 +1403,6 @@
     - name: prove_authority
       virtual: false
       purpose: |
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
         - active
           owner
@@ -2242,9 +2238,6 @@
       purpose: |
         Issued when a recurrent transfer has failed to be executed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})).
         
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - from
@@ -2265,9 +2258,6 @@
       purpose: |
         Issued when a HIVE to HBD conversion is completed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_collateralized_convert' | relative_url }})).
         
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - owner
@@ -2287,9 +2277,6 @@
       purpose: |
         Issued when a recurrent transfer is executed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})).
         
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - from
@@ -2309,8 +2296,6 @@
         Issued when a power-up is finally taken into account for governance votes (see: [transfer_to_vesting]({{ '/apidefinitions/#broadcast_ops_transfer_to_vesting' | relative_url }})).
         
         See: [#111](https://gitlab.syncad.com/hive/hive/-/issues/111) 
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - from_account
