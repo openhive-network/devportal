@@ -29,6 +29,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"reputation_api.get_account_reputations", "params": {"account_lower_bound": "hive"}, "id":1}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/reputation_api/get_account_reputations)"
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-reputations)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_reputation)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"

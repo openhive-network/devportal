@@ -694,7 +694,8 @@ a[href*='devs/operations'] {
 }
 
 a[href*='openApi'],
-a[href*='openapi'] {
+a[href*='openapi'],
+a[href*='api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API'] {
   background-image: url(../images/languages/openapi.svg);
   background-size: .90em .90em;
   background-repeat: no-repeat;

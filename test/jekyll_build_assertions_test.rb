@@ -31,6 +31,15 @@ class JekyllBuildAssertionsTest < Minitest::Test
     assert_file_includes project_path('_includes', 'api-template.html'), '{% if method.expected_response_json %}'
   end
 
+  def test_main_script_layout_renders_markdown_descriptions
+    site_dir_for_assertions do |site_dir|
+      resources_index = File.join(site_dir, 'resources', 'index.html')
+
+      assert_file_includes resources_index, '<em>SDK and client library links for building Hive applications.</em>'
+      assert_file_excludes resources_index, '_SDK and client library links for building Hive applications._'
+    end
+  end
+
   def test_api_metadata_layout_does_not_need_content_spacer_hacks
     assert_file_includes project_path('_includes', 'api-template.html'), 'class="api-method-metadata"'
     assert_file_excludes project_path('_includes', 'api-template.html'), 'style="float: right; list-style: none;"'

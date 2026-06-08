@@ -42,6 +42,7 @@
     - Internal Error
     - Internal Error
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#broadcast-api)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/TransactionBuilder)'

@@ -29,6 +29,7 @@ titles:
   hackathon: Hive 黑客松
   authentication: 认证
   sdk: SDK 库
+  sdk_reference: SDK 参考
   getset: 获取并设置
   testnet: Hive 测试网路
   account_by_key_api: Account By Key API
@@ -178,6 +179,7 @@ descriptions:
   get_transaction_node: 设置一个支持 `*.get_transaction` 的节点
   setting_up_testnet: 部署基于Hive的测试网的快速启动。
   tools: 社区测试网工具目录
+  sdk_reference: _SDK and client library links for building Hive applications._
   hivesigner: _理解使用Hivesigner的基本原理与你的 Hive 应用程序_
   api: API 条款词典
   chain_basics: 链条基本条款词典

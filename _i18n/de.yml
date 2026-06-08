@@ -29,6 +29,7 @@ titles:
   hackathon: Hive Hackathons
   authentication: Authentifizierung
   sdk: SDK Bibliotheken
+  sdk_reference: SDK Referenz
   getset: Holen und setzen
   testnet: Hive Testnet
   account_by_key_api: Account By Key API
@@ -178,6 +179,7 @@ descriptions:
   get_transaction_node: Einen Knoten einrichten, der `*.get_transaction` unterstützt
   setting_up_testnet: Schnellstart für die Bereitstellung eines Hive-basierten Testnetzes.
   tools: Verzeichnis der Community-Testnet-Tools
+  sdk_reference: _SDK and client library links for building Hive applications._
   hivesigner: _Verstehe die Grundlagen des Einsatzes von Hivesigner mit deiner Hive-Anwendung_
   api: Wörterbuch der API-Begriffe
   chain_basics: Wörterbuch der Kettengrundbegriffe
