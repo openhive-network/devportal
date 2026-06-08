@@ -41,6 +41,7 @@
     - missing required posting authority
     - transaction tapos exception
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_broadcast_transaction)"
     - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#broadcast-api)"
     - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#broadcast-transaction)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -69,6 +70,7 @@
       - missing required posting authority
       - transaction tapos exception
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_broadcast_transaction_synchronous)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#broadcast-api)"
       - "[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/TransactionBuilder)"
@@ -80,6 +82,7 @@
     - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_count", "params":[],
       "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_account_count)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_account_count)"
   - api_method: condenser_api.get_account_history
     purpose: |
@@ -130,6 +133,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_history", "params":["emma",
         -1, 1000, 0, 1], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_account_history)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_account_history)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-history)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)"
@@ -156,6 +160,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_account_reputations", "params":["a",
       10], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_account_reputations)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_account_reputations)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-reputations)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-reputations)"
@@ -300,6 +305,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio", "alice"], true], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_accounts)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_accounts)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-accounts)"
       - "[beem](https://beem.readthedocs.io/en/latest/beem.blockchain.html#beem.blockchain.Blockchain.get_all_accounts)"
@@ -351,6 +357,7 @@
       - Invalid parameters
       - Invalid parameters
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_active_votes)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_active_votes)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-votes)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-votes)"
@@ -366,6 +373,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_witnesses", "params":[],
       "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_active_witnesses)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_active_witnesses)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-witnesses)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-witnesses)"
@@ -401,6 +409,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_block", "params":[62396745],
       "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_block)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_block)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block)"
@@ -432,6 +441,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_block_header", "params":[62396745],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_block_header)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_block_header)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-block-header)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)"
@@ -514,6 +524,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_blog", "params":["alice",0,50],
       "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_blog)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_blog)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-blog)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog)"
@@ -580,6 +591,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_blog_entries", "params":["alice",0,50],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_blog_entries)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_blog_entries)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-blog-entries)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-entries)"
@@ -596,6 +608,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_chain_properties", "params":[],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_chain_properties)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_chain_properties)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-chain-properties)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-chain-properties)"
@@ -627,6 +640,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_comment_discussions_by_payout",
         "params":[{"tag":"photography","limit":10,"truncate_body":0}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_comment_discussions_by_payout)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_comment_discussions_by_payout)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-comment-discussions-by-payout)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-comment-discussions-by-payout)"
@@ -677,6 +691,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_blog", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_blog)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-blog)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -717,6 +732,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_comments", "params":[{"start_author":"hiveio","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_comments)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-comments)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -761,6 +777,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_created", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_created)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-created)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -797,6 +814,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_feed", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_feed)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-feed)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-feed)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -830,6 +848,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_hot", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_hot)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-hot)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-hot)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -863,6 +882,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_trending", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_trending)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -896,6 +916,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_post_discussions_by_payout", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_post_discussions_by_payout)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-payout)"
       - "[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Post_discussions_by_payout)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -911,6 +932,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_replies_by_last_update", "params":[{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"truncate_body":80}], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_replies_by_last_update)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#content)"
       - "[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Replies_by_last_update)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -925,6 +947,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_config", "params":[], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_config)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_config)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-config)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-config)"
@@ -1002,6 +1025,7 @@
       - Invalid parameters
       - Invalid parameters
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_content)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_content)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content)"
@@ -1083,6 +1107,7 @@
       - Invalid parameters
       - Invalid parameters
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_content_replies)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_content_replies)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content-replies)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content-replies)"
@@ -1105,6 +1130,7 @@
     expected_curl_responses:
       - Given account does not exist
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_conversion_requests)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_conversion_requests)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-conversion-requests)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-conversion-requests)"
@@ -1119,6 +1145,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_current_median_history_price",
         "params":[], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_current_median_history_price)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_current_median_history_price)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-current-median-history-price)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-current-median-history-price)"
@@ -1147,6 +1174,7 @@
     expected_curl_responses:
       - Invalid parameters
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_author_before_date)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_discussions_by_author_before_date)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-author-before-date)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-author-before-date)"
@@ -1189,6 +1217,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_dynamic_global_properties)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_dynamic_global_properties)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-dynamic-global-properties)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-dynamic-global-properties)"
@@ -1208,6 +1237,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_escrow", "params":["hiveio",
         1234], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_escrow)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_escrow)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-escrow)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-escrow)"
@@ -1235,6 +1265,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_expiring_vesting_delegations",
         "params":["alice","2017-12-01T00:00:00"], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_expiring_vesting_delegations)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_expiring_vesting_delegations)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#api-call)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-expiring-vesting-delegations)"
@@ -1255,6 +1286,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_feed_history", "params":[], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_feed_history)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_feed_history)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-feed-history)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed-history)"
@@ -1287,6 +1319,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_follow_count", "params":["alice"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_follow_count)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_follow_count)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-follow-count)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-follow-count)"
@@ -1329,6 +1362,7 @@
       detail: Will not work because this function requires jussi to work correctly
         which is not available on the testnet
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_followers)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_followers)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-followers)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-followers)"
@@ -1364,6 +1398,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_following", "params":["alice",null,"ignore",100],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_following)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_following)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-following)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-following)"
@@ -1380,6 +1415,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_hardfork_version", "params":[],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_hardfork_version)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_hardfork_version)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-hardfork-version)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-hardfork-version)"
@@ -1398,6 +1434,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_key_references", "params":[["STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9"]],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_key_references)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_key_references)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-key-references)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-key-references)"
@@ -1447,6 +1484,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_market_history", "params":[86400,"2018-01-01T00:00:00","2018-01-02T00:00:00"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_market_history)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_market_history)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#api-call)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-market-history)"
@@ -1467,6 +1505,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_market_history_buckets", "params":[],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_market_history_buckets)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_market_history_buckets)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-market-history-buckets)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-market-history-buckets)"
@@ -1484,6 +1523,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_next_scheduled_hardfork", "params":[],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_next_scheduled_hardfork)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_next_scheduled_hardfork)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-next-scheduled-hardfork)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-next-scheduled-hardfork)"
@@ -1502,6 +1542,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_open_orders", "params":["alice"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_open_orders)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_open_orders)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-open-orders)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-open-orders)"
@@ -1536,6 +1577,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_ops_in_block", "params":[5443322,true],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_ops_in_block)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_ops_in_block)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-ops-in-block)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ops-in-block)"
@@ -1559,6 +1601,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_order_book", "params":[10], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_order_book", "params":[50], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_order_book)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_order_book)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-order-book)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-order-book)"
@@ -1579,6 +1622,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_owner_history", "params":["hiveio"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_owner_history)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_owner_history)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-owner-history)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-owner-history)"
@@ -1600,6 +1644,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_potential_signatures", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_potential_signatures)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-potential-signatures)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-potential-signatures)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -1632,6 +1677,7 @@
       - Invalid parameters
       - Invalid parameters
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_reblogged_by)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_reblogged_by)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-reblogged-by)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-reblogged-by)"
@@ -1659,6 +1705,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_recent_trades", "params":[500],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_recent_trades)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_recent_trades)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-recent-trades)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-recent-trades)"
@@ -1680,6 +1727,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_recovery_request", "params":["hiveio"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_recovery_request)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_recovery_request)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-recovery-request)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-recovery-request)"
@@ -1702,6 +1750,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_required_signatures", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]},[]],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_required_signatures)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-required-signatures)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-required-signatures)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -1728,6 +1777,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_reward_fund", "params":["post"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_reward_fund)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_reward_fund)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-reward-fund)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-reward-fund)"
@@ -1749,6 +1799,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_savings_withdraw_from", "params":["hiveio"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_savings_withdraw_from)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_savings_withdraw_from)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-savings-withdraw-from)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-savings-withdraw-from)"
@@ -1770,6 +1821,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_savings_withdraw_to", "params":["hiveio"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_savings_withdraw_to)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_savings_withdraw_to)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-savings-withdraw-to)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-savings-withdraw-to)"
@@ -1790,6 +1842,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_ticker", "params":[], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_ticker)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_ticker)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-ticker)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ticker)"
@@ -1815,6 +1868,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_trade_history", "params":["2018-01-01T00:00:00","2018-01-02T00:00:00",10],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_trade_history)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_trade_history)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-trade-history)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-trade-history)"
@@ -1903,6 +1957,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_trending_tags", "params":["hive",10],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_trending_tags)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_trending_tags)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-trending-tags)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-trending-tags)"
@@ -1921,6 +1976,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_version", "params":[], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_version)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_version)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-version)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-version)"
@@ -1949,6 +2005,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_vesting_delegations", "params":["hiveio",null,10],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_vesting_delegations)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_vesting_delegations)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-vesting-delegations)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-vesting-delegations)"
@@ -1966,6 +2023,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_volume", "params":[], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_volume)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_volume)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-volume)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-volume)"
@@ -1998,6 +2056,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_withdraw_routes", "params":["hiveio","all"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_withdraw_routes)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_withdraw_routes)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-withdraw-routes)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-withdraw-routes)"
@@ -2043,6 +2102,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_by_account", "params":["hiveio"],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_witness_by_account)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_witness_by_account)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witness-by-account)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witness-by-account)"
@@ -2056,6 +2116,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_count", "params":[],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_witness_count)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_witness_count)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witness-count)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witness-count)"
@@ -2089,6 +2150,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_schedule", "params":[],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_witness_schedule)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_witness_schedule)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witness-schedule)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witness-schedule)"
@@ -2105,6 +2167,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_witnesses", "params":[[28]],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_witnesses)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_witnesses)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witnesses)"
@@ -2130,6 +2193,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_witnesses_by_vote", "params":["a",
         1], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_witnesses_by_vote)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_witnesses_by_vote)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-witnesses-by-vote)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-witnesses-by-vote)"
@@ -2271,6 +2335,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"], false], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_lookup_account_names)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=lookup_account_names)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#lookup-account-names)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#lookup-account-names)"
@@ -2292,6 +2357,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_accounts", "params":["a",10],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_lookup_accounts)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=lookup_accounts)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#lookup-accounts)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#lookup-accounts)"
@@ -2313,6 +2379,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_witness_accounts", "params":["a",10],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_lookup_witness_accounts)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=lookup_witness_accounts)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#lookup-witness-accounts)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#lookup-witness-accounts)"
@@ -2335,6 +2402,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.verify_authority", "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["pow",{"worker_account":"cloop3","block_id":"00000449f7860b82b4fbe2f317c670e9f01d6d9a","nonce":3899,"work":{"worker":"STM7P5TDnA87Pj9T4mf6YHrhzjC1KbPZpNxLWCcVcHxNYXakpoT4F","input":"ae8e7c677119d22385f8c48026fee7aad7bba693bf788d7f27047f40b47738c0","signature":"1f38fe9a3f9989f84bd94aa5bbc88beaf09b67f825aa4450cf5105d111149ba6db560b582c7dbb026c7fc9c2eb5051815a72b17f6896ed59d3851d9a0f9883ca7a","work":"000e7b209d58f2e64b36e9bf12b999c6c7af168cc3fc41eb7f8a4bf796c174c3"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]],"extensions":[],"signatures":[]}],
         "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_verify_authority)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#verify-authority)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#verify-authority)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -2386,6 +2454,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.find_proposals", "params":[[0]], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_find_proposals)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=find_proposals)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposals)"
@@ -2443,6 +2512,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[""], 10, "by_voter_proposal", "ascending", "active"], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[0], 10, "by_proposal_voter", "ascending", "active"], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_list_proposal_votes)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_proposal_votes)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposalsapprovals)"
@@ -2506,6 +2576,7 @@
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[[""], 1000, "by_creator", "ascending", "votable"], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[[10], 1000, "by_total_votes", "ascending", "votable"], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_list_proposals)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_proposals)"
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/proposals)'
@@ -2521,6 +2592,8 @@
     expected_response_json: 'false'
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.is_known_transaction", "params":["0000000000000000000000000000000000000000"]}, "id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_is_known_transaction)"
   - api_method: condenser_api.get_collateralized_conversion_requests
     since: HF25
     purpose: |
@@ -2529,6 +2602,7 @@
     parameter_json: "[]"
     expected_response_json: "[]"
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_collateralized_conversion_requests)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_collateralized_conversion_requests)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
       - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)"
@@ -2556,6 +2630,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.find_recurrent_transfers", "params":["alice"], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_find_recurrent_transfers)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=find_recurrent_transfers)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/operations/txrecurrenttransfers-hf25)"
   - api_method: condenser_api.find_rc_accounts
@@ -2584,6 +2659,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.find_rc_accounts", "params":[["alice","demo"]], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_find_rc_accounts)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=find_rc_accounts)"
   - api_method: condenser_api.list_rc_accounts
     since: HF26
@@ -2610,6 +2686,7 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_rc_accounts", "params":["ecency",10], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_list_rc_accounts)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_accounts)"
   - api_method: condenser_api.list_rc_direct_delegations
     since: HF26
@@ -2631,4 +2708,5 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_rc_direct_delegations", "params":[["ecency",""],2], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_list_rc_direct_delegations)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_direct_delegations)"

@@ -39,6 +39,7 @@
     - '{"jsonrpc":"2.0", "method":"rc_api.find_rc_accounts", "params":{"accounts":["alice","bob"]},
       "id":1}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/find_rc_accounts)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.get_resource_params
@@ -248,6 +249,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"rc_api.get_resource_params", "id":1}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/get_resource_params)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.get_resource_pool
@@ -278,6 +280,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"rc_api.get_resource_pool", "id":1}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/get_resource_pool)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.get_rc_stats
@@ -330,6 +333,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"rc_api.get_rc_stats", "params":{}, "id":1}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/get_rc_stats)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.get_rc_operation_stats
@@ -369,6 +373,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"rc_api.get_rc_operation_stats", "params":{"operation":"vote_operation"}, "id":1}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/get_rc_operation_stats)"
     - "[beem](https://beem.readthedocs.io/en/latest/beem.rc.html)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: rc_api.list_rc_accounts
@@ -376,10 +381,12 @@
     parameter_json: '{"start":null,"limit":0}'
     expected_response_json: '{"rc_accounts":[]}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/list_rc_accounts)"
     - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_accounts)"
   - api_method: rc_api.list_rc_direct_delegations
     purpose:
     parameter_json: '{"start":null,"limit":0}'
     expected_response_json: '{"rc_direct_delegations":[]}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/list_rc_direct_delegations)"
     - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_direct_delegations)"

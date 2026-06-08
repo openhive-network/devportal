@@ -19,7 +19,8 @@ permalink: /apidefinitions/
 					</span>
 				</h3>
 			{% if doc.description %}
-				<p class="description">{% t doc.description %}</p>
+				{% capture description %}{% t doc.description %}{% endcapture %}
+				<div class="description">{{ description | markdownify }}</div>
 			{% endif %}
 
 			{{ doc.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}

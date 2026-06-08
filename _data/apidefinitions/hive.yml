@@ -15,6 +15,8 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"hive.db_head_state", "params":{}, "id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/hive/db_head_state)"
   - api_method: hive.get_info
     purpose: |
       Returns version, revision, schema, and database head information for the Hivemind node.
@@ -31,3 +33,5 @@
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"hive.get_info", "params":{}, "id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/hive/get_info)"

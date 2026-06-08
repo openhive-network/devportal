@@ -51,10 +51,11 @@
         - Could not find API account_history_api
         - Could not find API account_history_api
       client_docs:
+        - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/account_history_api/get_account_history)"
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_account_history)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-account-history)'
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-account-history)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
-        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_account_history)'
     - api_method: account_history_api.get_ops_in_block
       purpose: |
         Returns all operations contained in a block.  Parameter:
@@ -83,10 +84,11 @@
         - Could not find API account_history_api
         - Could not find API account_history_api
       client_docs:
+        - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/account_history_api/get_ops_in_block)"
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_ops_in_block)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-ops-in-block)'
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-ops-in-block)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
-        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_ops_in_block)'
     - api_method: account_history_api.get_transaction
       purpose: |
         Returns the details of a transaction based on a transaction id (including their signatures, operations like also a block_num it was included to).
@@ -172,10 +174,11 @@
       expected_curl_responses:
         - Could not find API account_history_api
       client_docs:
+        - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/account_history_api/get_transaction)"
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
-        - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_transaction)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/database-diagram#blocks-and-transactions)'
     - api_method: account_history_api.enum_virtual_ops
       since: HF24
@@ -252,6 +255,7 @@
         - '{"jsonrpc":"2.0", "method":"account_history_api.enum_virtual_ops", "params":{"block_range_begin":1,"block_range_end":2}, "id":1}'
         - '{"jsonrpc":"2.0", "method":"account_history_api.enum_virtual_ops", "params":{"block_range_begin":1,"block_range_end":2,"include_reversible":true}, "id":1}'
       client_docs:
+        - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/account_history_api/enum_virtual_ops)"
+        - '[hivexplorer](https://hivexplorer.com/api-docs?q=enum_virtual_ops)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/virtual-operations)'
-        - '[hivexplorer](https://hivexplorer.com/api-docs?q=enum_virtual_ops)'

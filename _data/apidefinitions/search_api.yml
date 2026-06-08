@@ -65,3 +65,5 @@
       ]
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"search_api.find_text", "params":{"pattern":"aggrandizement","sort":"relevance","limit":1,"truncate_body":160}, "id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/search_api/find_text)"

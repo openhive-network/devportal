@@ -13,7 +13,7 @@ layout: default
 			</h3>
 		{% if page.description %}
             {% capture description %}{% t page.description %}{% endcapture %}
-			<p class="description">{{description}}</p>
+			<div class="description">{{ description | markdownify }}</div>
 		{% endif %}
 
 		{{ content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
