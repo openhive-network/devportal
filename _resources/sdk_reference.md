@@ -20,6 +20,6 @@ Use this page as a starting point for choosing a Hive SDK or client library. API
 | hive-php | PHP | PHP client for Hive blockchain APIs | - | [Source](https://gitlab.com/mahdiyari/hive-php) |
 | Aioha | JavaScript / TypeScript | Authentication provider integration | [`@aioha/aioha`](https://www.npmjs.com/package/@aioha/aioha) | [Source](https://github.com/aioha-hive/aioha) |
 | Hivesigner SDK | JavaScript | Hivesigner login and transaction flows | [`hivesigner`](https://www.npmjs.com/package/hivesigner) | [Source](https://github.com/ecency/hivesigner-sdk) |
-| Hive Keychain SDK | JavaScript | Hive Keychain browser extension integration | [`keychain-sdk`](https://www.npmjs.com/package/keychain-sdk) | [Resource page]({{ '/resources/#resources-hive_keychain' | relative_url }}) |
+| Hive Keychain SDK | JavaScript | Hive Keychain browser extension integration | [`keychain-sdk`](https://www.npmjs.com/package/keychain-sdk) | [Resource page]({{ '/resources/#resources-hive-keychain' | relative_url }}) |
 
 For language-specific walkthroughs, see the [JavaScript tutorials]({{ '/tutorials/#tutorials-javascript' | relative_url }}), [Python tutorials]({{ '/tutorials/#tutorials-python' | relative_url }}), [Ruby tutorials]({{ '/tutorials/#tutorials-ruby' | relative_url }}), and [PHP tutorials]({{ '/tutorials/#tutorials-php' | relative_url }}).
