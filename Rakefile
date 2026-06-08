@@ -1,6 +1,7 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'scrape/api_definitions_job'
+require 'verify/methods_report'
 
 require 'rake/testtask'
 require 'net/https'
@@ -41,6 +42,26 @@ namespace :scrape do
     
     puts "Methods added or changed: #{count}"
   end
+end
+
+namespace :verify do
+  desc 'Generate API method verification reports under reports/.'
+  task :methods do
+    project_root = File.expand_path(__dir__)
+    hive_root = ENV['HIVE_ROOT'] || File.join(project_root, '..', 'hive')
+    reports_dir = ENV['REPORTS_DIR'] || File.join(project_root, 'reports')
+    result = Verify::MethodsReport.new(
+      project_root: project_root,
+      hive_root: hive_root,
+      reports_dir: reports_dir
+    ).write
+
+    summary = result[:report].fetch(:summary)
+    puts "Wrote #{result[:json]}"
+    puts "Wrote #{result[:markdown]}"
+    puts "Verified methods report: #{summary.fetch(:method_count)} methods across #{summary.fetch(:namespace_count)} namespaces"
+  end
+
 end
 
 namespace :production do

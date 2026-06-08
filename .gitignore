@@ -1,4 +1,5 @@
 _site/
+reports/
 .sass-cache/
 .idea
 vendor
