@@ -1,5 +1,5 @@
 ---
-position: 11
+position: 18
 exclude: true
 title: titles.reputation_api
 canonical_url: .#apidefinitions-reputation-api

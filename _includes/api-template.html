@@ -25,6 +25,16 @@ Methods:
 {% if method_status == 'obsolete' or method.removed %}
   {% assign method_obsolete = true %}
 {% endif %}
+<div class="api-method" markdown="1">
+<div class="api-method-summary">
+<div class="api-method-copy">
+{% if method_obsolete %}
+  <h4 id="{{ method.api_method | slug }}"><strike>{{method.api_method}}</strike> <a href="#{{ method.api_method | slug}}"><i class="fas fa-link fa-xs"></i></a></h4>
+{% else %}
+  <h4 id="{{ method.api_method | slug }}">{{method.api_method}} <a href="#{{ method.api_method | slug}}"><i class="fas fa-link fa-xs"></i></a></h4>
+{% endif %}
+{{ method.purpose | liquify | markdownify }}
+</div>
 <ul class="api-method-metadata">
 {% if method.since %}
 <li class="success"><strong><small>Since: {{method.since}}</small></strong></li>
@@ -46,12 +56,7 @@ Methods:
 <li class="info"><strong><small><a href="{{ search_url | relative_url }}">Related <i class="fas fa-search fa-xs"></i></a></small></strong></li>
 
 </ul>
-{% if method_obsolete %}
-  <h4 id="{{ method.api_method | slug }}"><strike>{{method.api_method}}</strike> <a href="#{{ method.api_method | slug}}"><i class="fas fa-link fa-xs"></i></a></h4>
-{% else %}
-  <h4 id="{{ method.api_method | slug }}">{{method.api_method}} <a href="#{{ method.api_method | slug}}"><i class="fas fa-link fa-xs"></i></a></h4>
-{% endif %}
-{{ method.purpose | liquify | markdownify }}
+</div>
 {% if method_obsolete and method.successors %}
 <h5 id="{{ method.api_method | slug }}-successors">Replacement / Successor <a href="#{{ method.api_method | slug}}-successors"><i class="fas fa-link fa-sm"></i></a></h5>
 <ul>
@@ -90,5 +95,6 @@ curl -s --data '{{curl}}' https://api.hive.blog
 {% endfor %}
 {% endif %}
 ---
+</div>
 {% endfor %}
 {% endfor %}

@@ -1,5 +1,5 @@
 ---
-position: 14
+position: 15
 exclude: true
 title: titles.network_node_api
 canonical_url: .#apidefinitions-network-node-api

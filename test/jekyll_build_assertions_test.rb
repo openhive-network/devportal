@@ -40,12 +40,146 @@ class JekyllBuildAssertionsTest < Minitest::Test
     end
   end
 
+  def test_main_stylesheet_url_is_cache_busted
+    site_dir_for_assertions do |site_dir|
+      index = File.join(site_dir, 'index.html')
+
+      assert_match %r{href="/css/style\.css\?v=\d+"}, File.read(index)
+    end
+  end
+
   def test_api_metadata_layout_does_not_need_content_spacer_hacks
     assert_file_includes project_path('_includes', 'api-template.html'), 'class="api-method-metadata"'
+    assert_file_includes project_path('_includes', 'api-template.html'), 'class="api-method" markdown="1"'
+    assert_file_includes project_path('_includes', 'api-template.html'), 'class="api-method-summary"'
     assert_file_excludes project_path('_includes', 'api-template.html'), 'style="float: right; list-style: none;"'
+    assert_file_excludes project_path('_apidefinitions', 'broadcast-ops.md'), 'style="float: right; list-style: none;"'
+    assert_file_excludes project_path('_apidefinitions', 'broadcast-ops-customs.md'), 'style="float: right; list-style: none;"'
 
     Dir[project_path('_data', 'apidefinitions', '*.yml')].each do |file_name|
       assert_file_excludes file_name, '<p>&nbsp;</p>'
+    end
+  end
+
+  def test_header_logo_links_to_site_root
+    assert_file_includes project_path('_layouts', 'default.html'), '<a href="{{ \'/\' | relative_url }}"  class="logo-link">'
+    assert_file_excludes project_path('_sass', '_main.scss'), 'pointer-events: none;'
+    assert_file_excludes project_path('_sass', '_main.scss'), 'cursor: default;'
+  end
+
+  def test_theme_switch_is_available_below_language_switch
+    sidebar = File.read(project_path('_includes', 'sidebar.html'))
+    assert_match %r{<div class="lang-switch">.*<div class="theme-switch" aria-label="Theme">}m, sidebar
+    assert_file_includes project_path('_includes', 'sidebar.html'), 'data-theme-option="light"'
+    assert_file_includes project_path('_includes', 'sidebar.html'), 'data-theme-option="dark"'
+    assert_file_includes project_path('_includes', 'sidebar.html'), 'data-theme-option="system"'
+    assert_file_includes project_path('_includes', 'sidebar.html'), 'class="fas fa-sun"'
+    assert_file_includes project_path('_includes', 'sidebar.html'), 'class="fas fa-moon"'
+    assert_file_includes project_path('_includes', 'sidebar.html'), 'class="fas fa-desktop"'
+    assert_file_includes project_path('_layouts', 'default.html'), "localStorage.getItem('hive-devportal-theme')"
+    assert_file_includes project_path('_layouts', 'default.html'), "localStorage.setItem('hive-devportal-theme', theme)"
+    assert_file_includes project_path('_sass', '_main.scss'), "html[data-theme='dark']"
+    assert_file_includes project_path('_sass', '_main.scss'), "html[data-theme='system']"
+  end
+
+  def test_api_definition_nav_positions_are_alphabetical
+    expected_order = [
+      'account-by-key-api.md',
+      'account-history-api.md',
+      'app-status-api.md',
+      'block-api.md',
+      'bridge.md',
+      'chain-api.md',
+      'condenser-api.md',
+      'database-api.md',
+      'debug-node-api.md',
+      'follow-api.md',
+      'hive.md',
+      'jsonrpc.md',
+      'market-history-api.md',
+      'network-broadcast-api.md',
+      'network-node-api.md',
+      'node-status-api.md',
+      'rc-api.md',
+      'reputation-api.md',
+      'rewards-api.md',
+      'search-api.md',
+      'tags-api.md',
+      'transaction-status-api.md',
+      'wallet-bridge-api.md',
+      'witness-api.md',
+      'broadcast-ops.md',
+      'broadcast-ops-customs.md'
+    ]
+
+    actual_order = Dir[project_path('_apidefinitions', '*.md')]
+      .reject { |path| File.basename(path) == '_defaults.md' }
+      .sort_by { |path| File.read(path)[/^position:\s*(\d+)/, 1].to_i }
+      .map { |path| File.basename(path) }
+
+    assert_equal expected_order, actual_order
+    assert_file_includes project_path('_includes', 'sidebar.html'), 'class="nav-group-separated"'
+  end
+
+  def test_text_sitemap_lists_public_urls_for_all_locales
+    site_dir_for_assertions do |site_dir|
+      sitemap_path = File.join(site_dir, 'sitemap.txt')
+      assert File.exist?(sitemap_path), 'Expected sitemap.txt to be generated'
+
+      urls = File.readlines(sitemap_path, chomp: true).map(&:strip).reject(&:empty?)
+
+      assert_includes urls, 'https://developers.hive.io/'
+      assert_includes urls, 'https://developers.hive.io/es/'
+      assert_includes urls, 'https://developers.hive.io/apidefinitions/'
+      assert_includes urls, 'https://developers.hive.io/es/apidefinitions/'
+      assert_includes urls, 'https://developers.hive.io/quickstart/accounts'
+      assert_includes urls, 'https://developers.hive.io/es/quickstart/accounts'
+
+      urls.each do |url|
+        assert_match %r{\Ahttps://developers\.hive\.io/}, url
+        refute_match %r{/search/?\z}, url
+        refute_match %r{/sitemap\.txt\z}, url
+        refute_match %r{\.(css|js|png|svg|ico|gif|jpg|jpeg|xml)\z}, url
+      end
+
+      assert_equal urls, urls.uniq, 'Expected sitemap.txt URLs to be unique'
+
+      Dir[File.join(site_dir, '*', 'sitemap.txt')].each do |localized_sitemap|
+        flunk "Expected sitemap.txt to be generated only at the site root, but found #{localized_sitemap}"
+      end
+    end
+  end
+
+  def test_llms_txt_lists_english_documentation_index
+    site_dir_for_assertions do |site_dir|
+      llms_path = File.join(site_dir, 'llms.txt')
+      assert File.exist?(llms_path), 'Expected llms.txt to be generated'
+
+      content = File.read(llms_path)
+      urls = content.scan(%r{https://developers\.hive\.io/[^\)\s]+})
+
+      assert_includes content, '# Hive Developers'
+      assert_includes content, 'Hive Developer Documentation.'
+      assert_includes content, '[Introduction](https://developers.hive.io/)'
+      assert_includes content, '](https://developers.hive.io/quickstart/)'
+      assert_includes content, '[JSON-RPC API](https://developers.hive.io/apidefinitions/)'
+      assert_includes content, '[Accounts](https://developers.hive.io/quickstart/accounts)'
+      assert_includes content, '[Account By Key API](https://developers.hive.io/apidefinitions/#apidefinitions-account-by-key-api)'
+
+      urls.each do |url|
+        assert_match %r{\Ahttps://developers\.hive\.io/}, url
+        refute_match %r{/es/}, url
+        refute_match %r{/search/?\z}, url
+        refute_match %r{/sitemap\.txt\z}, url
+        refute_match %r{/llms\.txt\z}, url
+        refute_match %r{\.(css|js|png|svg|ico|gif|jpg|jpeg|xml)\z}, url
+      end
+
+      assert_equal urls, urls.uniq, 'Expected llms.txt URLs to be unique'
+
+      Dir[File.join(site_dir, '*', 'llms.txt')].each do |localized_llms|
+        flunk "Expected llms.txt to be generated only at the site root, but found #{localized_llms}"
+      end
     end
   end
 

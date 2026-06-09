@@ -9,7 +9,7 @@ url: https://developers.hive.io
 permalink: /:categories/:title.html
 
 languages: ["en", "es", "hi", "de", "fr", "ru", "zh"]
-exclude_from_localizations: ["unused","tutorials","support","lib","js","images","css","_sass","_plugins","_layouts","_includes","_data"]
+exclude_from_localizations: ["unused","tutorials","support","lib","js","images","css","_sass","_plugins","_layouts","_includes","_data","sitemap.txt","llms.txt"]
 
 
 collections:
