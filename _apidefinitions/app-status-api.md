@@ -1,5 +1,5 @@
 ---
-position: 14
+position: 3
 exclude: true
 title: titles.app_status_api
 canonical_url: .#apidefinitions-app-status-api

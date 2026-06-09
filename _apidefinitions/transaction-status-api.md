@@ -1,5 +1,5 @@
 ---
-position: 14
+position: 22
 exclude: true
 title: titles.transaction_status_api
 canonical_url: .#apidefinitions-transaction-status-api

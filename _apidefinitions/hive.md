@@ -1,5 +1,5 @@
 ---
-position: 14
+position: 11
 exclude: true
 title: titles.hive_api
 canonical_url: .#apidefinitions-hive-api

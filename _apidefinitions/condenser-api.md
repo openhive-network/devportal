@@ -1,5 +1,5 @@
 ---
-position: 4
+position: 7
 exclude: true
 title: titles.condenser_api
 canonical_url: .#apidefinitions-condenser-api

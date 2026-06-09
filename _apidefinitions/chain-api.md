@@ -1,5 +1,5 @@
 ---
-position: 4
+position: 6
 exclude: true
 title: titles.chain_api
 canonical_url: .#apidefinitions-chain-api

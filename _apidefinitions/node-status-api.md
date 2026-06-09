@@ -1,5 +1,5 @@
 ---
-position: 14
+position: 16
 exclude: true
 title: titles.node_status_api
 canonical_url: .#apidefinitions-node-status-api

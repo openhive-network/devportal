@@ -1,5 +1,5 @@
 ---
-position: 14
+position: 20
 exclude: true
 title: titles.search_api
 canonical_url: .#apidefinitions-search-api
