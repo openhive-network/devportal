@@ -26,7 +26,7 @@
                 {% if nav.collection == 'nodeop' %}
                   <!-- <li><a href="{{ doc.url | relative_url }}.html">{{ doc.title }}</a></li> -->
                 {% else %}
-                  <li><a href="{{ site.baseurl }}{{nav.permalink}}#{{ doc.id | slugify }}">{% t doc.title %}</a></li>
+                  <li{% if nav.collection == 'apidefinitions' and doc.id contains 'broadcast-ops' %}{% unless doc.id contains 'customs' %} class="nav-group-separated"{% endunless %}{% endif %}><a href="{{ site.baseurl }}{{nav.permalink}}#{{ doc.id | slugify }}">{% t doc.title %}</a></li>
                 {% endif %}
               {% endunless %}
             {% endfor %}
@@ -39,5 +39,10 @@
     {% for lang in site.languages %}
     <a class="{% if lang == site.lang %}active{%else%}deactive{% endif %}" href="{% if lang == site.default_lang %}{% else %}/{{ lang }}{% endif %}{{ page.url | relative_url }}"><img src="/images/i18n/{{lang}}.svg" alt="{{ lang }}"/></a>
     {% endfor %}
+  </div>
+  <div class="theme-switch" aria-label="Theme">
+    <button type="button" data-theme-option="light" aria-label="Light theme" title="Light theme" aria-pressed="false"><i class="fas fa-sun" aria-hidden="true"></i></button>
+    <button type="button" data-theme-option="dark" aria-label="Dark theme" title="Dark theme" aria-pressed="false"><i class="fas fa-moon" aria-hidden="true"></i></button>
+    <button type="button" data-theme-option="system" aria-label="System theme" title="System theme" aria-pressed="false"><i class="fas fa-desktop" aria-hidden="true"></i></button>
   </div>
 </div>

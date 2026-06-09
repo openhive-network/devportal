@@ -1,5 +1,5 @@
 ---
-position: 6
+position: 10
 exclude: true
 title: titles.follow_api
 canonical_url: .#apidefinitions-follow-api

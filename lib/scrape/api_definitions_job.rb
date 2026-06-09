@@ -46,6 +46,8 @@ module Scrape
           parameter_json = signature.args.to_json
           expected_response_json = signature.ret.to_json
 
+          changed = false
+
           if existing_api_method
 
             case api
@@ -57,7 +59,6 @@ module Scrape
               # puts "D: " + expected_response_json.inspect
               next
             else
-              changed = false
               if existing_api_method['parameter_json'] == parameter_json &&
                   existing_api_method['expected_response_json'] == expected_response_json
                 next
@@ -81,7 +82,10 @@ module Scrape
             end
           else
             puts "\tAdding: #{method}"
+            changed = true
           end
+
+          next unless changed
 
           dirty = true
           unless existing_api_method

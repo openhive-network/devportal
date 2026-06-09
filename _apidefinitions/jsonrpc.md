@@ -1,5 +1,5 @@
 ---
-position: 7
+position: 12
 exclude: true
 title: titles.json_rpc
 canonical_url: .#apidefinitions-jsonrpc

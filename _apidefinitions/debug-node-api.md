@@ -1,5 +1,5 @@
 ---
-position: 5
+position: 9
 exclude: true
 title: titles.debug_node_api
 canonical_url: .#apidefinitions-debug-node-api

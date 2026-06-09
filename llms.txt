@@ -1,0 +1,65 @@
+---
+layout: null
+sitemap: false
+permalink: /llms.txt
+languages: ["en"]
+---
+{%- capture newline %}
+{% endcapture -%}
+
+*Greetings Program.  The Master Control Program has chosen you to serve your system on the Hive Blockchain.*
+
+{% assign llms_content = '# ' | append: site.title | append: newline | append: newline | append: site.description | append: newline | append: newline | append: '## Docs' | append: newline -%}
+{%- assign sorted_nav = site.data.nav.toc | sort: "position" -%}
+{%- for nav in sorted_nav -%}
+  {%- assign nav_url = site.url | append: site.baseurl | append: nav.permalink -%}
+  {%- assign col = site.collections | where: "id", nav.collection | first -%}
+  {%- capture nav_title -%}{% t nav.title %}{%- endcapture -%}
+  {%- assign llms_content = llms_content | append: newline | append: '### [' | append: nav_title | append: '](' | append: nav_url | append: ')' | append: newline -%}
+
+  {%- if nav.docs -%}
+    {%- assign sorted_doc_groups = nav.docs | sort: "position" -%}
+    {%- for doc_group in sorted_doc_groups -%}
+      {%- if doc_group.collection -%}
+        {%- assign group_url = site.url | append: site.baseurl | append: nav.permalink | append: '#' | append: doc_group.collection -%}
+        {%- assign group_col = site.collections | where: "id", doc_group.collection | first -%}
+        {%- capture group_title -%}{% t doc_group.title %}{%- endcapture -%}
+        {%- assign llms_content = llms_content | append: '- [' | append: group_title | append: '](' | append: group_url | append: ')' | append: newline -%}
+        {%- if group_col -%}
+          {%- assign sorted_docs = group_col.docs | sort: "position" -%}
+          {%- for doc in sorted_docs -%}
+            {%- unless doc.sitemap == false or doc.exclude_in_index -%}
+              {%- assign doc_path = doc.url | replace: "index.html", "" | replace: ".html", "" -%}
+              {%- assign doc_url = site.url | append: site.baseurl | append: doc_path -%}
+              {%- capture doc_title -%}{% t doc.title %}{%- endcapture -%}
+              {%- assign llms_content = llms_content | append: '- [' | append: doc_title | append: '](' | append: doc_url | append: ')' | append: newline -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- elsif doc_group.url -%}
+        {%- assign doc_url = site.url | append: site.baseurl | append: nav.permalink | append: doc_group.url -%}
+        {%- capture doc_title -%}{% t doc_group.title %}{%- endcapture -%}
+        {%- assign llms_content = llms_content | append: '- [' | append: doc_title | append: '](' | append: doc_url | append: ')' | append: newline -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- elsif col -%}
+    {%- assign sorted_docs = col.docs | sort: "position" -%}
+    {%- for doc in sorted_docs -%}
+      {%- unless doc.sitemap == false or doc.exclude_in_index -%}
+        {%- if nav.collection == 'apidefinitions' -%}
+          {%- assign doc_anchor = doc.id | slugify -%}
+          {%- assign doc_path = nav.permalink | append: '#' | append: doc_anchor -%}
+        {%- else -%}
+          {%- assign doc_path = doc.url | replace: "index.html", "" | replace: ".html", "" -%}
+        {%- endif -%}
+        {%- assign doc_url = site.url | append: site.baseurl | append: doc_path -%}
+        {%- capture doc_title -%}{% t doc.title %}{%- endcapture -%}
+        {%- assign llms_content = llms_content | append: '- [' | append: doc_title | append: '](' | append: doc_url | append: ')' | append: newline -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+{{ llms_content }}
+
+*End Of Line*
+

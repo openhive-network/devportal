@@ -1,5 +1,5 @@
 ---
-position: 15
+position: 24
 exclude: true
 title: titles.witness_api
 canonical_url: .#apidefinitions-witness-api

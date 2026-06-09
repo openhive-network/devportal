@@ -14,7 +14,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-active-votes)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-active-votes)'
@@ -29,8 +28,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_comment_discussions_by_payout)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-comment-discussions-by-payout)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-comment-discussions-by-payout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -43,8 +42,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_content_replies)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-content-replies)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-content-replies)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -142,6 +141,7 @@
     - Invalid parameters
     - Invalid parameters
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_discussion)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Discussions.get_discussions)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -154,7 +154,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-active)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-active)'
@@ -170,8 +169,8 @@
       
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#tags_apiget_discussions_by_author_before_date' | relative_url }})
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_discussions_by_author_before_date)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-author-before-date)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-author-before-date)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -184,8 +183,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_discussions_by_blog)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-blog)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-blog)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -198,7 +197,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-cashout)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-cashout)'
@@ -214,7 +212,6 @@
       
       Returns a list of discussions by children.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-children)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-children)'
@@ -228,8 +225,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_discussions_by_comments)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-comments)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -242,8 +239,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_discussions_by_created)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-created)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -257,7 +254,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-feed)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-feed)'
@@ -271,8 +267,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_discussions_by_hot)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-hot)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-hot)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -286,7 +282,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-promoted)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-promoted)'
@@ -300,8 +295,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_discussions_by_trending)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-trending)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -314,7 +309,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-votes)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-discussions-by-votes)'
@@ -329,8 +323,8 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/tags_api/tags_get_post_discussions_by_payout)"
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-payout)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Post_discussions_by_payout)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
@@ -343,7 +337,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#content)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Replies_by_last_update)'
@@ -357,7 +350,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#tags)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.account.html#beem.account.Account.get_tags_used_by_author)'
@@ -371,7 +363,6 @@
     purpose: |
       **Removed since HF24.** See successor guidance below.
       
-      <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     client_docs:
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-trending-tags)'
       - '[beem](https://beem.readthedocs.io/en/latest/beem.discussions.html#beem.discussions.Trending_tags)'

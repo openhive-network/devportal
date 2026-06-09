@@ -20,7 +20,17 @@ Ops:
 {% for sections in site.data.apidefinitions.broadcast_ops_customs %}
 {{ sections.description | liquify | markdownify }}
 {% for op in sections.ops %}
-<ul style="float: right; list-style: none;">
+<div class="api-method" markdown="1">
+<div class="api-method-summary">
+<div class="api-method-copy">
+<h4 id="broadcast_ops_customs_{{ op.name | slug }}">
+<code>{{op.name}}</code>
+<a href="#broadcast_ops_customs_{{ op.name | slug}}">
+<i class="fas fa-link fa-xs"></i></a>
+</h4>
+{{ op.purpose | liquify | markdownify }}
+</div>
+<ul class="api-method-metadata">
 {% if op.since %}
 <li class="success"><strong><small>Since: {{op.since}}</small></strong></li>
 {% endif %}
@@ -40,12 +50,7 @@ Ops:
 {% assign search_url = '/search/?q=' | append: keywords | split: '_' | join: ' ' %}
 <li class="info"><strong><small><a href="{{ search_url | relative_url }}">Related <i class="fas fa-search fa-xs"></i></a></small></strong></li>
 </ul>
-<h4 id="broadcast_ops_customs_{{ op.name | slug }}">
-<code>{{op.name}}</code>
-<a href="#broadcast_ops_customs_{{ op.name | slug}}">
-<i class="fas fa-link fa-xs"></i></a>
-</h4>
-{{ op.purpose | liquify | markdownify }}
+</div>
 <h5 id="{{ op.name | slug }}-roles">Roles: <code>{{op.roles}}</code></h5>
 <h5 id="{{ op.name | slug }}-parameter">Parameters: <code>{{op.params}}</code></h5>
 {% if op.json_examples %}
@@ -57,5 +62,6 @@ Ops:
 {% endfor %}
 {% endif %}
 <hr />
+</div>
 {% endfor %}
 {% endfor %}
