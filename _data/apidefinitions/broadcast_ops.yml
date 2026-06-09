@@ -73,13 +73,13 @@
       json_examples:
         - '["vote", {"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/00_vote.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestvote)'
-        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#vote)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#vote)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.vote)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txvotes)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestvote)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#vote)'
     - name: comment
       virtual: false
       purpose: |
@@ -166,13 +166,13 @@
       json_examples:
         - '["comment",{"parent_author":"","parent_permlink":"hiveio","author":"alice","permlink":"a-post-by-alice","title":"A Post By Alice","body":"This is my post.","json_metadata":"{\"tags\":[\"hiveio\",\"example\",\"tags\"]}"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/01_comment.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
-        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#comment)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#comment)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.comment)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcomments)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#comment)'
     - name: transfer
       virtual: false
       purpose: |
@@ -195,13 +195,13 @@
       json_examples:
         - '["transfer",{"from":"hiveio","to":"alice","amount":{"amount":"10","precision":3,"nai":"@@000000021"},"memo":"Thanks for all the fish."}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/02_transfer.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requesttransfer)'
-        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#transfer)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requesttransfer)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#transfer)'
     - name: transfer_to_vesting
       virtual: false
       purpose: |
@@ -225,12 +225,12 @@
       json_examples:
         - '["transfer_to_vesting",{"from":"alice","to":"","amount":{"amount":"357000","precision":3,"nai":"@@000000021"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/03_transfer_to_vesting.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpowerup)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-to-vesting)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_to_vesting)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txtransfers)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpowerup)'
     - name: withdraw_vesting
       virtual: false
       purpose: |
@@ -255,12 +255,12 @@
       json_examples:
         - '["withdraw_vesting",{"account":"hiveio","vesting_shares":{"amount":"200000000000","precision":6,"nai":"@@000000037"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/04_withdraw_vesting.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpowerdown)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#withdraw-vesting)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.withdraw_vesting)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txwithdraws)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpowerdown)'
     - name: limit_order_create
       virtual: false
       purpose: |
@@ -279,7 +279,7 @@
       json_examples:
         - '["limit_order_create",{"owner":"hiveio","orderid":10,"amount_to_sell":{"amount":"9950","precision":3,"nai":"@@000000021"},"min_to_receive":{"amount":"3500","precision":3,"nai":"@@000000013"},"fill_or_kill":false,"expiration":"2035-10-29T06:32:22"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/05_limit_order_create.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-create)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.limit_order_create)'
@@ -297,7 +297,7 @@
       json_examples:
         - '["limit_order_cancel",{"owner":"hiveio","orderid":10}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/06_limit_order_cancel.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-cancel)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.limit_order_cancel)'
@@ -328,7 +328,7 @@
       json_examples:
         - '["feed_publish",{"publisher":"alice","exchange_rate":{"base":{"amount":"1000","precision":3,"nai":"@@000000013"},"quote":{"amount":"1000000","precision":3,"nai":"@@000000021"}}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/07_feed_publish.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#feed-publish)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.feed_publish)'
@@ -350,7 +350,7 @@
       json_examples:
         - '["convert",{"owner":"hiveio","requestid":1467592156,"amount":{"amount":"5000","precision":3,"nai":"@@000000013"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/08_convert.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#convert)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.convert)'
@@ -374,7 +374,7 @@
       json_examples:
         - '["account_create",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/09_account_create.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-create)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_create)'
@@ -396,7 +396,7 @@
       json_examples:
         - '["account_update",{"account":"hiveio","posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo",1],["STM76EQNV2RTA6yF9TnBvGSV71mW7eW36MM7XQp24JxdoArTfKA76",1]]},"memo_key":"STM6FATHLohxTN8RWWkU9ZZwVywXo6MEDjHHui1jEBYkG2tTdvMYo","json_metadata":""}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/10_account_update.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-update)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_update)'
@@ -425,7 +425,7 @@
       json_examples:
         - '["witness_update",{"owner":"alice","url":"witness-category/my-witness","block_signing_key":"STM8LoQjQqJHvotqBo7HjnqmUbFW9oJ2theyqonzUd9DdJ7YYHsvD","props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000},"fee":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/11_witness_update.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#witness-update)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.witness_update)'
@@ -447,12 +447,12 @@
       json_examples:
         - '["account_witness_vote",{"account":"alice","witness":"bob","approve":true}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/12_account_witness_vote.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestwitnessvote)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-witness-vote)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_witness_vote)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountwitnessvotes)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestwitnessvote)'
     - name: account_witness_proxy
       virtual: false
       purpose: |
@@ -472,12 +472,12 @@
       json_examples:
         - '["account_witness_proxy",{"account":"alice","proxy":"bob"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/13_account_witness_proxy.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestproxy)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-witness-proxy)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_witness_proxy)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountwitnessproxies)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestproxy)'
     - name: pow
       disabled: true
       virtual: false
@@ -494,7 +494,7 @@
       json_examples:
         - '["pow",{"worker_account":"admin","block_id":"000004433bd4602cf5f74dbb564183837df9cef8","nonce":82,"work":{"worker":"STM65wH1LZ7BfSHcK69SShnqCAH5xdoSZpGkUjmzHJ5GCuxEK9V5G","input":"59b009f89477919f95914151cef06f28bf344dd6fb7670aca1c1f4323c80446b","signature":"1f3f83209097efcd01b7d6f27ce726164323d503d6fcf4d55bfb7cb3032796f6766738b36062b5850d69447fdf9c091cbc70825df5eeacc4710a0b11ffdbf0912a","work":"0b62f4837801cd857f01d6a541faeb13d6bb95f1c36c6b4b14a47df632aa6c92"},"props":{"account_creation_fee":{"amount":"100000","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/14_pow.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#pow)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txpows)'
@@ -516,7 +516,7 @@
       json_examples:
         - '["custom",{"required_auths":["bytemaster"],"id":777,"data":"0a627974656d617374657207737465656d697402a3d13897d82114466ad87a74b73a53292d8331d1bd1d3082da6bfbcff19ed097029db013797711c88cccca3692407f9ff9b9ce7221aaa2d797f1692be2215d0a5f6d2a8cab6832050078bc5729201e3ea24ea9f7873e6dbdc65a6bd9899053b9acda876dc69f11a13df9ca8b26b6"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/15_custom.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom)'
@@ -531,7 +531,7 @@
           witness
           block_id
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/16_witness_block_approve.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
     - name: delete_comment
       virtual: false
       purpose: |
@@ -546,7 +546,7 @@
       json_examples:
         - '["delete_comment",{"author":"alice","permlink":"a-post-by-alice"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/17_delete_comment.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#delete-comment)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.delete_comment)'
@@ -592,13 +592,13 @@
         - '["custom_json",{"required_auths":[],"required_posting_auths":["bob"],"id":"reblog","json":"[\"reblog\", {\"account\":\"bob\",\"author\":\"alice\",\"permlink\":\"a-post-by-alice\"}]"}]'
         - '["custom_json",{"required_auths":["alice"],"required_posting_auths":[],"id":"witness","json":"[\"enable_content_editing\", {\"account\": \"alice\", \"relock_time\": \"2100-01-01T12:00:00\"}]"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/18_custom_json.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
-        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#custom-json)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.custom_json)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcustoms)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcustomjson)'
+        - '[hivesigner.js](https://github.com/ecency/hivesigner-sdk#custom-json)'
     - name: comment_options
       virtual: false
       purpose: |
@@ -651,12 +651,12 @@
         - '["comment_options",{"author":"bob","permlink":"a-post-with-a-beneficiary","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":63,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"charlie","weight":1000}]}]]}]'
         - '["comment_options",{"author":"charlie","permlink":"a-post-with-multiple-beneficiaries","max_accepted_payout":{"amount":"1000000","precision":3,"nai":"@@000000013"},"percent_hbd":62688,"allow_votes":true,"allow_curation_rewards":true,"extensions":[[0,{"beneficiaries":[{"account":"david","weight":500},{"account":"erin","weight":500},{"account":"faythe","weight":1000},{"account":"frank","weight":500}]}]]}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/19_comment_options.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#comment-options)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.comment)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcommentsoptions)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestpost)'
     - name: set_withdraw_vesting_route
       virtual: false
       purpose: |
@@ -679,7 +679,7 @@
       json_examples:
         - '["set_withdraw_vesting_route",{"from_account":"alice","to_account":"bob","percent":10000,"auto_vest":true}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/20_set_withdraw_vesting_route.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#set-withdraw-vesting-route)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.set_withdraw_vesting_route)'
@@ -708,7 +708,7 @@
       json_examples:
         - '["limit_order_create2",{"owner":"alice","orderid":492991,"amount_to_sell":{"amount":"1","precision":3,"nai":"@@000000013"},"exchange_rate":{"base":{"amount":"1","precision":3,"nai":"@@000000013"},"quote":{"amount":"10","precision":3,"nai":"@@000000021"}},"fill_or_kill":false,"expiration":"2017-05-12T23:11:13"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/21_limit_order_create2.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#limit-order-create2)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txlimitorders)'
@@ -729,7 +729,7 @@
       json_examples:
         - '["claim_account",{"fee":{"amount":"0","precision":3,"nai":"@@000000021"},"creator":"hiveio","extensions":[]}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/22_claim_account.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.claim_account)'
     - name: create_claimed_account
@@ -751,11 +751,11 @@
       json_examples:
         - '["create_claimed_account",{"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5b4i9gBqvh4sbgrooXPu2dbGLewNPZkXeuNeBjyiswnu2szgXx",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7ko5nzqaYfjbD4tKWGmiy3xtT9eQFZ3Pcmq5JmygTRptWSiVQy",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5xAKxnMT2y9VoVJdF63K8xRQAohsiQy9bA33aHeyMB5vgkzaay",1]]},"memo_key":"STM8ZSyzjPm48GmUuMSRufkVYkwYbZzbxeMysAVp7KFQwbTf98TcG","json_metadata":"{}"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/23_create_claimed_account.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcreateclaimedaccount)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.create_claimed_account)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountcreates)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestcreateclaimedaccount)'
     - name: request_account_recovery
       since: HF11
       virtual: false
@@ -808,7 +808,7 @@
       json_examples:
         - '["request_account_recovery",{"recovery_account":"hiveio","account_to_recover":"alice","new_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LYxj96zdypHYqgDdD6Nyh2NxerN3P1Mp3ddNm7gci63nfrSuZ",1]]},"extensions":[]}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/24_request_account_recovery.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#request-account-recovery)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.request_account_recovery)'
@@ -828,7 +828,7 @@
       json_examples:
         - '["recover_account",{"account_to_recover":"alice","new_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM7j3nhkhHTpXqLEvdx2yEGhQeeorTcxSV6WDL2DZGxwUxYGrHvh",1]]},"recent_owner_authority":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM78Xth94gNxp8nmByFV2vNAhg9bsSdviJ6fQXUTFikySLK3uTxC",1]]},"extensions":[]}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/25_recover_account.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#recover-account)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.recover_account)'
@@ -864,7 +864,7 @@
       json_examples:
         - '["change_recovery_account",{"account_to_recover":"alice","new_recovery_account":"bob","extensions":[]}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/26_change_recovery_account.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#change-recovery-account)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.change_recovery_account)'
@@ -911,7 +911,7 @@
       json_examples:
         - '["escrow_transfer",{"from":"alice","to":"bob","hbd_amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"hive_amount":{"amount":"0","precision":3,"nai":"@@000000021"},"escrow_id":23456789,"agent":"charlie","fee":{"amount":"100","precision":3,"nai":"@@000000013"},"json_meta":"{}","ratification_deadline":"2017-02-26T11:22:39","escrow_expiration":"2017-02-28T11:22:39"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/27_escrow_transfer.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-transfer)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_transfer)'
@@ -937,7 +937,7 @@
       json_examples:
         - '["escrow_dispute",{"from":"alice","to":"bob","agent":"charlie","who":"alice","escrow_id":72526562}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/28_escrow_dispute.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-dispute)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_dispute)'
@@ -975,7 +975,7 @@
       json_examples:
         - '["escrow_release",{"from":"alice","to":"bob","agent":"charlie","who":"charlie","receiver":"bob","escrow_id":72526562,"hbd_amount":{"amount":"5000","precision":3,"nai":"@@000000013"},"hive_amount":{"amount":"0","precision":3,"nai":"@@000000021"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/29_escrow_release.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-release)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_release)'
@@ -994,7 +994,7 @@
       json_examples:
         - '["pow2",{"work":[0,{"input":{"worker_account":"alice","prev_block":"003ea604345523c344fbadab605073ea712dd76f","nonce":"1052853013628665497"},"pow_summary":3817904373}],"props":{"account_creation_fee":{"amount":"1","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/30_pow2.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#pow2)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txpows)'
@@ -1023,7 +1023,7 @@
       json_examples:
         - '["escrow_approve",{"from":"alice","to":"bob","agent":"charlie","who":"charlie","escrow_id":59102208,"approve":true}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/31_escrow_approve.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#escrow-approve)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.escrow_approve)'
@@ -1052,7 +1052,7 @@
       json_examples:
         - '["transfer_to_savings",{"from":"alice","to":"alice","amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"memo":""}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/32_transfer_to_savings.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-to-savings)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_to_savings)'
@@ -1074,7 +1074,7 @@
       json_examples:
         - '["transfer_from_savings",{"from":"alice","request_id":101,"to":"alice","amount":{"amount":"1000","precision":3,"nai":"@@000000013"},"memo":""}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/33_transfer_from_savings.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#transfer-from-savings)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.transfer_from_savings)'
@@ -1093,7 +1093,7 @@
       json_examples:
         - '["cancel_transfer_from_savings",{"from":"alice","request_id":1}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/34_cancel_transfer_from_savings.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#cancel-transfer-from-savings)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.cancel_transfer_from_savings)'
@@ -1117,7 +1117,7 @@
       json_examples:
         - '["decline_voting_rights",{"account":"judy","decline":true}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/36_decline_voting_rights.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.decline_voting_rights)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txdeclinevotingrights)'
@@ -1137,7 +1137,7 @@
       json_examples:
         - '["claim_reward_balance",{"account":"alice","reward_hive":{"amount":"17","precision":3,"nai":"@@000000021"},"reward_hbd":{"amount":"11","precision":3,"nai":"@@000000013"},"reward_vests":{"amount":"185025103","precision":6,"nai":"@@000000037"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/39_claim_reward_balance.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#claim-reward-balance)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.claim_reward_balance)'
@@ -1167,7 +1167,7 @@
       json_examples:
         - '["delegate_vesting_shares",{"delegator":"alice","delegatee":"bob","vesting_shares":{"amount":"94599167138276","precision":6,"nai":"@@000000037"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/40_delegate_vesting_shares.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#delegate-vesting-shares)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.delegate_vesting_shares)'
@@ -1212,7 +1212,7 @@
       json_examples:
         - '["account_create_with_delegation",{"fee":{"amount":"3000","precision":3,"nai":"@@000000021"},"delegation":{"amount":"0","precision":6,"nai":"@@000000037"},"creator":"hiveio","new_account_name":"alice","owner":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM5Tki3ecCdCCHCjhhwvQvXuKryL2s34Ma6CXsRzntSUTYVYxCQ9",1]]},"active":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM6LUoAA8gCL9tHRz7v9xcwR4ZWD3KDRHP5t1U7UAZHdfanLxyBE",1]]},"posting":{"weight_threshold":1,"account_auths":[],"key_auths":[["STM8anmpHdfVE4AmwsDpcSXpRsydHysEbv6vGJkRQy1d1CC83zeTA",1]]},"memo_key":"STM67RYDyEkP1Ja1jFehJ45BFGA9oHHUnRnYbxKJEtMhVQiHW3S3k","json_metadata":"{}","extensions":[]}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/41_account_create_with_delegation.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-create-with-delegation)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_create_with_delegation)'
@@ -1233,7 +1233,7 @@
       json_examples:
         - '["witness_set_properties",{"owner":"alice", "props":{"account_creation_fee":"0.000 HIVE","account_subsidy_budget":10000,"account_subsidy_decay":330782,"maximum_block_size":65536,"hbd_interest_rate": "0.000 HIVE","hbd_exchange_rate":{"base": "0.000 HBD", "quote": "0.000 HIVE"}, "url": "68747470733A2F2F737465656D69742E636F6D", "new_signing_key": "25688bbe7b1204f26e40be054c8b2ff1997eec6d4e7be6a105aab8a0e6f11c616d7cb6066"}, "extensions": []}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/42_witness_set_properties.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#witness-set-properties)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.witness_set_properties)'
@@ -1263,7 +1263,7 @@
       json_examples:
         - '["account_update",{"account":"hiveio","posting_json_metadata":""}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/43_account_update2.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#account-update2)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.account_update2)'
@@ -1289,7 +1289,7 @@
       json_examples:
         - '["create_proposal",{"creator":"alice","receiver":"bob","start_date":"2019-08-26T11:22:39","end_date":"2019-08-26T11:22:39","daily_pay":{"amount":"3000","precision":3,"nai":"@@000000013"},"subject":"subject","permlink":"creator-proposal-permlink"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/44_create_proposal.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.create_proposal)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalcreates)'
@@ -1312,11 +1312,11 @@
       json_examples:
         - '["update_proposal_votes",{"voter":"alice","proposal_ids":[0],"approve":true, "extensions": []}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/45_update_proposal_votes.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestupdateproposalvote)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.blockchaininstance.html?#beem.blockchaininstance.BlockChainInstance.update_proposal_votes)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal_votes)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalvoteupdates)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestupdateproposalvote)'
     - name: remove_proposal
       since: HF21
       deprecated: false
@@ -1333,11 +1333,11 @@
       json_examples:
         - '["remove_proposal",{"creator":"alice","proposal_ids":[0]}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/46_remove_proposal.md)'
-        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestremoveproposal)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.remove_proposal)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalremoves)'
+        - '[hive-keychain](https://github.com/stoodkev/hive-keychain#requestremoveproposal)'
     - name: update_proposal
       since: HF24
       deprecated: false
@@ -1357,7 +1357,7 @@
       json_examples:
         - '["update_proposal",{"proposal_id":0,"creator":"alice","daily_pay":{"amount":"3000","precision":3,"nai":"@@000000013"},"subject":"New Subject","permlink":"creator-proposal-permlink"}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/47_update_proposal.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[beem](https://beem.readthedocs.io/en/latest/beem.transactionbuilder.html)'
         - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Broadcast.update_proposal)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txproposalupdates)'
@@ -1375,7 +1375,7 @@
       json_examples:
         - '["collateralized_convert", {"owner":"hiveio","requestid":1467592156,"amount":{"amount":"5000","precision":3,"nai":"@@000000021"}}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/48_collateralized_convert.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hive-js](https://gitlab.syncad.com/hive/hive-js/-/blob/master/doc/README.md#collateralized-convert)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txcollateralizedconverts-hf25)'
     - name: recurrent_transfer
@@ -1398,15 +1398,11 @@
       # json_examples:
       #   - '["recurrent_transfer", {}]'
       client_docs:
-        - '[openApi](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/devs/operations/49_recurrent_transfer.md)'
+        - '[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/network_broadcast_api/broadcast_transaction)'
         - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txrecurrenttransfers-hf25)'
     - name: prove_authority
       virtual: false
       purpose: |
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
         - active
           owner
@@ -2242,9 +2238,6 @@
       purpose: |
         Issued when a recurrent transfer has failed to be executed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})).
         
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - from
@@ -2265,9 +2258,6 @@
       purpose: |
         Issued when a HIVE to HBD conversion is completed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_collateralized_convert' | relative_url }})).
         
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - owner
@@ -2287,9 +2277,6 @@
       purpose: |
         Issued when a recurrent transfer is executed (see: [recurrent_transfer]({{ '/apidefinitions/#broadcast_ops_recurrent_transfer' | relative_url }})).
         
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - from
@@ -2309,8 +2296,6 @@
         Issued when a power-up is finally taken into account for governance votes (see: [transfer_to_vesting]({{ '/apidefinitions/#broadcast_ops_transfer_to_vesting' | relative_url }})).
         
         See: [#111](https://gitlab.syncad.com/hive/hive/-/issues/111) 
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       roles:
       params:
         - from_account

@@ -1,0 +1,18 @@
+---
+- name: Node Status API
+  description: |
+    Reports the block processing status of a `hived` node.
+    
+    This API is only available when the `node_status_api` plugin is enabled.
+  methods:
+  - api_method: node_status_api.get_node_status
+    purpose: |
+      Returns the latest block number and block time processed by a node.
+    parameter_json: "{}"
+    expected_response_json: |
+      {
+        "last_processed_block_num": 107046041,
+        "last_processed_block_time": "2026-06-06T21:32:57"
+      }
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"node_status_api.get_node_status", "params":{}, "id":1}'

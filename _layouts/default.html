@@ -20,7 +20,18 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/favicon.png' | relative_url }}" />
   <link rel="apple-touch-icon" sizes="167x167" href="{{ '/favicon.png' | relative_url }}" />
 
-  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}" />
+  <script>
+    (function () {
+      var theme = 'system';
+
+      try {
+        theme = localStorage.getItem('hive-devportal-theme') || theme;
+      } catch (error) {}
+
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
   <link rel="stylesheet" href="{{ '/css/css/fontawesome-all.min.css' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/css/css/work-sans-v7.css' | relative_url }}" />
   <script src="{{ '/js/hive.min.js' | relative_url }}"></script>
@@ -29,7 +40,7 @@
 
   {% seo title=false %}
 
-  {% if jekyll.environment == 'production' %}
+  {% if jekyll.environment == 'production' and site.google_analytics_key %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_key }}"></script>
 <script>
@@ -100,6 +111,38 @@
         }, fourSeconds);
       });
     });
+
+    let themeSwitch = document.querySelector('.theme-switch');
+    let themeButtons = document.querySelectorAll('[data-theme-option]');
+    let storedTheme = 'system';
+
+    try {
+      storedTheme = localStorage.getItem('hive-devportal-theme') || storedTheme;
+    } catch (error) {}
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+
+      try {
+        localStorage.setItem('hive-devportal-theme', theme);
+      } catch (error) {}
+
+      themeButtons.forEach(function (button) {
+        let selected = button.dataset.themeOption === theme;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      });
+    }
+
+    if (themeSwitch) {
+      setTheme(storedTheme);
+
+      themeButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          setTheme(button.dataset.themeOption);
+        });
+      });
+    }
 </script>
 </body>
 </html>

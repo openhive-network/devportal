@@ -15,5 +15,5 @@ layout: default
 		<span class="description">{{description | markdownify}}</span>
 	{% endif %}
 
-	{{ page.content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
+	{{ content | replace: "<dl>", "<h6>Parameters</h6><dl>" }}
 </section>

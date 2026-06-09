@@ -15,8 +15,9 @@
     - '{"jsonrpc":"2.0", "method":"account_by_key_api.get_key_references", "params":{"keys":["STM6vJmrwaX5TjgTS9dPH8KsArso5m91fVodJvv91j7G765wqcNM9"]},
       "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/account_by_key_api/get_key_references)"
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_key_references)'
       - '[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-key-references)'
       - '[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-key-references)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
-      - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_key_references)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/operations/txaccountupdates2)'

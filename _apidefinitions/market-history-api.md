@@ -1,5 +1,5 @@
 ---
-position: 8
+position: 13
 exclude: true
 title: titles.market_history_api
 canonical_url: .#apidefinitions-market-history-api

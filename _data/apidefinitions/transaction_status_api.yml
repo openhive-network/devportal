@@ -35,4 +35,5 @@
     -  '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params": {"transaction_id": "0000000000000000000000000000000000000000"}, "id":1}'
     -  '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params": {"transaction_id": "0000000000000000000000000000000000000000", "expiration":"2016-03-24T18:00:21"}, "id":1}'
     client_docs:
+    - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/transaction_status_api/find_transaction)"
     - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"

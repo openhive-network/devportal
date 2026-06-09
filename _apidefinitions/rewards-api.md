@@ -1,5 +1,5 @@
 ---
-position: 12
+position: 19
 exclude: true
 title: titles.rewards_api
 canonical_url: .#apidefinitions-rewards-api

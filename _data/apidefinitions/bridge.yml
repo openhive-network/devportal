@@ -65,6 +65,7 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"bridge.get_ranked_posts", "params":{"sort":"trending","tag":"","observer":"alice"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_ranked_posts)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_ranked_posts)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: bridge.account_notifications
@@ -103,8 +104,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"bridge.account_notifications", "params":{"account":"alice","limit":100}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/account_notifications)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=account_notifications)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_account_notifications)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: bridge.does_user_follow_any_lists
@@ -115,8 +116,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.does_user_follow_any_lists", "params":{"observer":"alice"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/does_user_follow_any_lists)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=does_user_follow_any_lists)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_does_user_follow_any_lists)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/blacklistsfollows)'
   - api_method: bridge.get_account_posts
@@ -194,8 +195,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.get_account_posts", "params":{"sort":"blog", "account": "alice", "limit": 1}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_account_posts)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_account_posts)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_account_posts)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/reblogs)'
   - api_method: bridge.get_community_context
@@ -205,8 +206,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.get_community_context", "params":{"name": "hive-111111", "account": "therealwolf"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_community_context)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_community_context)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_community_context)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
   - api_method: bridge.get_discussion
@@ -271,8 +272,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.get_discussion", "params":{"author": "hiveio", "permlink": "around-the-hive-reflections", "observer": "alice"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_discussion)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_discussion)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_discussion)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/tags)'
   - api_method: bridge.get_follow_list
@@ -290,8 +291,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.get_follow_list", "params":{"observer": "blocktrades", "follow_type": "follow_blacklist"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_follow_list)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_follow_list)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_follow_list)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)'
   - api_method: bridge.get_profile
@@ -334,8 +335,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.get_profile", "params":{"account": "alice", "observer": "bob"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_profile)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_profile)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_profile)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/accounts)'
   - api_method: bridge.list_communities
@@ -376,8 +377,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.list_communities", "params":{"limit": 1, "query": "wall street bets"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/list_communities)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=list_communities)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_communities)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
   - api_method: bridge.list_pop_communities
@@ -402,8 +403,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.list_pop_communities", "params":{"limit": 10}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/list_pop_communities)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=list_pop_communities)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_pop_communities)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
   - api_method: bridge.list_subscribers
     purpose: |
@@ -429,8 +430,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.list_subscribers", "params":{"community": "hive-111111", "limit": 10}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/list_subscribers)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=list_subscribers)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_subscribers)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.list_community_roles
@@ -449,8 +450,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"bridge.list_community_roles", "params":{"community":"hive-123456"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/list_community_roles)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=list_community_roles)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_community_roles)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiesroles)'
   - api_method: bridge.list_all_subscriptions
@@ -467,8 +468,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"bridge.list_all_subscriptions", "params":{"account":"alice"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/list_all_subscriptions)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=list_all_subscriptions)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_list_all_subscriptions)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communitiessubscribers)'
   - api_method: bridge.get_community
@@ -509,8 +510,8 @@
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"bridge.get_community", "params":{"name":"hive-123456","observer":"alice"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_community)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_community)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_community)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
   - api_method: bridge.get_relationship_between_accounts
@@ -527,8 +528,8 @@
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"bridge.get_relationship_between_accounts", "params":["alice", "bob"], "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_relationship_between_accounts)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_relationship_between_accounts)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_relationship_between_accounts)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/blacklists)'
   - api_method: bridge.get_payout_stats
@@ -555,8 +556,8 @@
       - '{"jsonrpc":"2.0", "method":"bridge.get_payout_stats", "params":{"limit": 1}, "id":1}'
       - '{"jsonrpc":"2.0", "method":"bridge.get_payout_stats", "params":{"limit": 250}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_payout_stats)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_payout_stats)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_payout_stats)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
   - api_method: bridge.get_post
@@ -625,8 +626,8 @@
       - '{"jsonrpc":"2.0", "method":"bridge.get_post", "params":{"author": "alice", "permlink": "that-march-hare", "observer": "bob"}, "id":1}'
       - '{"jsonrpc":"2.0", "method":"bridge.get_post", "params":{"author": "hiveio", "permlink": "around-the-hive-reflections"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_post)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_post)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_get_post)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
   - api_method: bridge.get_post_header
@@ -647,7 +648,165 @@
       - '{"jsonrpc":"2.0", "method":"bridge.get_post_header", "params":{"author": "alice", "permlink": "that-march-hare"}, "id":1}'
       - '{"jsonrpc":"2.0", "method":"bridge.get_post_header", "params":{"author": "hiveio", "permlink": "around-the-hive-reflections"}, "id":1}'
     client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_post_header)"
       - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_post_header)'
-      - '[openApi](https://gitlab.syncad.com/hive/hivemind/-/blob/pczempiel_openapi_bridge/openApi/client/docs/DefaultApi.md#bridge_post_header)'
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
       - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
+  - api_method: bridge.get_profiles
+    purpose: |
+      Gets a list of account profiles.
+      
+      * `accounts` - array of account names to look up
+      * `observer` - optional account name used for relationship context
+    parameter_json: {"accounts": ["hiveio"], "observer": "hiveio"}
+    expected_response_json: |
+      [
+        {
+          "id": 1370485,
+          "name": "hiveio",
+          "stats": {
+            "rank": 0,
+            "followers": 2263,
+            "following": 0
+          },
+          "active": "2025-12-31T19:41:36",
+          "context": {
+            "muted": false,
+            "followed": false
+          },
+          "created": "2020-03-06T12:22:48",
+          "metadata": {
+            "profile": {
+              "website": "http://hive.io",
+              "cover_image": "https://files.peakd.com/file/peakd-hive/hiveio/Xe1TcEBi-hive-banner.png",
+              "profile_image": "https://files.peakd.com/file/peakd-hive/hiveio/Jp2YHc6Q-hive-logo.png"
+            }
+          },
+          "blacklists": [],
+          "post_count": 80,
+          "reputation": 74.35
+        }
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0","method":"bridge.get_profiles","params":{"accounts":["hiveio"],"observer":"hiveio"},"id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_profiles)"
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_profiles)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+  - api_method: bridge.get_trending_topics
+    purpose: |
+      Gets a list of trending community topics.
+      
+      * `limit` - maximum number of topics to return
+      * `observer` - optional account name used for observer context
+    parameter_json: {"limit": 3, "observer": "hiveio"}
+    expected_response_json: |
+      [
+        ["hive-163772", "Worldmappin"],
+        ["hive-105017", "HIVE CN 中文社区"],
+        ["hive-13323", "Splinterlands"]
+      ]
+    curl_examples:
+      - '{"jsonrpc":"2.0","method":"bridge.get_trending_topics","params":{"limit":3,"observer":"hiveio"},"id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/get_trending_topics)"
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=get_trending_topics)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
+  - api_method: bridge.list_muted_reasons_enum
+    purpose: Gets the muted-reason enum map used by Hivemind moderation data.
+    parameter_json: {}
+    expected_response_json: |
+      {
+        "MUTED_PARENT": 2,
+        "MUTED_REPUTATION": 3,
+        "MUTED_COMMUNITY_TYPE": 1,
+        "MUTED_ROLE_COMMUNITY": 4,
+        "MUTED_COMMUNITY_MODERATION": 0
+      }
+    curl_examples:
+      - '{"jsonrpc":"2.0","method":"bridge.list_muted_reasons_enum","params":{},"id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/list_muted_reasons_enum)"
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=list_muted_reasons_enum)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/communities)'
+  - api_method: bridge.normalize_post
+    purpose: |
+      Normalizes a legacy post reference into the current Bridge post response shape.
+      
+      The live Bridge endpoint expects the post reference under `post`.  During
+      verification, top-level `author` and `permlink` parameters returned a
+      missing-argument error.
+    parameter_json: {"post": {"author": "hiveio", "permlink": "around-the-hive-reflections"}}
+    expected_response_json: |
+      {
+        "author": "hiveio",
+        "permlink": "around-the-hive-reflections",
+        "category": "hiveecosystem",
+        "title": "Around the Hive: Reflections",
+        "created": "2021-02-14T08:16:03",
+        "updated": "2021-02-14T08:16:03",
+        "depth": 0,
+        "children": 16,
+        "is_paidout": true,
+        "payout": 0.000,
+        "payout_at": "2021-02-21T08:16:03",
+        "url": "/hiveecosystem/@hiveio/around-the-hive-reflections",
+        "stats": {
+          "gray": false,
+          "hide": false,
+          "flag_weight": 0.00,
+          "total_votes": 129
+        },
+        "blacklists": [],
+        "active_votes": [
+          {"voter": "tombstone", "rshares": 651445742025}
+        ],
+        "author_reputation": 74.35,
+        "pending_payout_value": "0.000 HBD"
+      }
+    curl_examples:
+      - '{"jsonrpc":"2.0","method":"bridge.normalize_post","params":{"post":{"author":"hiveio","permlink":"around-the-hive-reflections"}},"id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/normalize_post)"
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=normalize_post)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+      - '[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)'
+  - api_method: bridge.post_notifications
+    purpose: |
+      Gets notification records associated with a post when notification data is
+      available.
+      
+      * `author` - post author
+      * `permlink` - post permlink
+      * `min_score` - optional minimum score threshold
+      * `last_id` - optional last notification id for pagination
+      * `limit` - optional maximum number of notifications to return
+    parameter_json: {"author": "hiveio", "permlink": "around-the-hive-reflections", "min_score": 0, "last_id": 0, "limit": 3}
+    expected_response_json: |
+      null
+    curl_examples:
+      - '{"jsonrpc":"2.0","method":"bridge.post_notifications","params":{"author":"hiveio","permlink":"around-the-hive-reflections","min_score":0,"last_id":0,"limit":3},"id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/post_notifications)"
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=post_notifications)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'
+  - api_method: bridge.unread_notifications
+    purpose: |
+      Gets the count of unread notifications for an account.
+      
+      * `account` - account name to check
+      * `min_score` - optional minimum score threshold
+    parameter_json: {"account": "hiveio", "min_score": 0}
+    expected_response_json: |
+      {
+        "unread": 116,
+        "lastread": "2020-03-22 21:33:18"
+      }
+    curl_examples:
+      - '{"jsonrpc":"2.0","method":"bridge.unread_notifications","params":{"account":"hiveio","min_score":0},"id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/bridge/unread_notifications)"
+      - '[hivexplorer](https://hivexplorer.com/api-docs?q=unread_notifications)'
+      - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Bridge)'

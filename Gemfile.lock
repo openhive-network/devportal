@@ -83,6 +83,7 @@ GEM
       multi_json (~> 1.14)
     mercenary (0.4.0)
     mini_portile2 (2.8.0)
+    minitest (5.27.0)
     multi_json (1.15.0)
     neatjson (0.9)
     nokogiri (1.13.8)
@@ -124,6 +125,7 @@ DEPENDENCIES
   jekyll-multiple-languages-plugin
   jekyll-seo-tag
   jekyll-sitemap
+  minitest
   neatjson
   rake
   webrick

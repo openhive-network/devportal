@@ -1,0 +1,69 @@
+---
+- name: Search API
+  description: |
+    Searches Hivemind-indexed posts.
+  methods:
+  - api_method: search_api.find_text
+    purpose: |
+      Finds posts matching a text pattern.
+
+      Required parameters:
+
+      * `pattern` - text pattern to search for in indexed posts
+      * `sort` - result ordering; known values include `relevance`, `trending`, and `created`
+
+      Optional parameters:
+
+      * `author` - restricts results to posts by a single author account
+      * `start_author` - author of the last post from the previous page; use with `start_permlink` for pagination
+      * `start_permlink` - permlink of the last post from the previous page; use with `start_author` for pagination
+      * `limit` - maximum number of posts to return
+      * `observer` - account used for observer-specific context, such as mute or blacklist state
+      * `truncate_body` - when greater than `0`, truncates returned post bodies to the requested length
+    parameter_json: '{"pattern":"aggrandizement","sort":"relevance","limit":1,"truncate_body":160}'
+    expected_response_json: |
+      [
+        {
+          "url": "/aggrandizement/@aggrandizement/aggrandizement",
+          "body": "> Aggrandizement is the act of enlarging or expanding something's power or status. It's hard sometimes to tell if politicians run for office in order to help th",
+          "depth": 0,
+          "stats": {
+            "gray": true,
+            "hide": false,
+            "flag_weight": 0.0,
+            "total_votes": 12,
+            "muted_reasons": [
+              3
+            ]
+          },
+          "title": "aggrandizement",
+          "author": "aggrandizement",
+          "payout": 7.232,
+          "created": "2018-02-05T06:52:39",
+          "category": "aggrandizement",
+          "children": 6,
+          "permlink": "aggrandizement",
+          "blacklists": [
+            "reputation-0"
+          ],
+          "active_votes": [
+            {
+              "voter": "tuck-fheman",
+              "rshares": 20209795818
+            }
+          ],
+          "json_metadata": {
+            "app": "steemit/0.1",
+            "tags": [
+              "aggrandizement"
+            ],
+            "format": "markdown"
+          },
+          "author_reputation": -4.69,
+          "pending_payout_value": "0.000 HBD"
+        }
+      ]
+    curl_examples:
+    - '{"jsonrpc":"2.0", "method":"search_api.find_text", "params":{"pattern":"aggrandizement","sort":"relevance","limit":1,"truncate_body":160}, "id":1}'
+    client_docs:
+      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/search_api/find_text)"
