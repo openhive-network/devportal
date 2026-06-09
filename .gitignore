@@ -1,4 +1,5 @@
 _site/
+public/
 reports/
 .sass-cache/
 .idea
@@ -9,3 +10,4 @@ node_modules/
 .env
 .env.*
 !.env.example
+deploy.log
