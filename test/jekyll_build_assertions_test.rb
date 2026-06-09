@@ -150,6 +150,21 @@ class JekyllBuildAssertionsTest < Minitest::Test
     end
   end
 
+  def test_build_output_excludes_source_and_nested_destination_artifacts
+    site_dir_for_assertions do |site_dir|
+      assert_empty Dir[File.join(site_dir, '**', 'public')],
+        'Expected generated site not to contain nested public directories'
+      assert_empty Dir[File.join(site_dir, '**', 'test', '*')],
+        'Expected generated site not to contain test files'
+      assert_empty Dir[File.join(site_dir, '**', 'Rakefile')],
+        'Expected generated site not to contain Rakefile'
+      assert_empty Dir[File.join(site_dir, '**', '.gitlab-ci.yml')],
+        'Expected generated site not to contain GitLab CI config'
+      assert_empty Dir[File.join(site_dir, '**', 'deploy.log')],
+        'Expected generated site not to contain local deploy logs'
+    end
+  end
+
   def test_llms_txt_lists_english_documentation_index
     site_dir_for_assertions do |site_dir|
       llms_path = File.join(site_dir, 'llms.txt')
