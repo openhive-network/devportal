@@ -73,6 +73,20 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     assert_includes list_proposals['parameter_json'], '"last_id"'
   end
 
+  def test_list_proposal_votes_documents_proposal_filtering_and_pagination
+    [
+      api_method('condenser_api.yml', 'condenser_api.list_proposal_votes'),
+      api_method('database_api.yml', 'database_api.list_proposal_votes')
+    ].each do |method|
+      purpose = method['purpose'].to_s
+
+      assert_includes purpose, 'does not stop when the result set reaches a different proposal'
+      assert_includes purpose, 'Filter returned rows by `proposal.id`'
+      assert_includes purpose, 'last row\'s `[proposal.id, voter]`'
+      assert_includes purpose, '[10, "alice"]'
+    end
+  end
+
   def test_database_api_methods_have_single_client_docs_block
     yaml = File.read(project_path('_data', 'apidefinitions', 'database_api.yml'))
     yaml.split(/^  - api_method: /).drop(1).each do |method_block|

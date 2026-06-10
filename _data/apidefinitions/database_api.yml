@@ -2405,6 +2405,10 @@
       | `["alice"]` | 10 | `by_voter_proposal` | `ascending` | `active` | list 10 proposals with active status, ordered by voter, ascending |
       | `[10]` | 1000 | `by_proposal_voter` | `ascending` | `votable` | list 1000 votes on proposal 10, ordered by `proposal.id`, ascending |
 
+      When using `by_proposal_voter`, the API starts at the provided `proposal.id` but does not stop when the result set reaches a different proposal. If the target proposal has fewer votes than `limit`, later rows can belong to higher proposal ids. Filter returned rows by `proposal.id` when you need votes for one proposal only.
+
+      To continue past the 1000 row limit, request the next page with `start` set to the last row's `[proposal.id, voter]`. For example, if the previous page for proposal `10` ended with voter `alice`, use `[10, "alice"]` as the next `start` value.
+
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_proposal_votes' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name","order_direction":"ascending","status":"all"}'
     expected_response_json: |
