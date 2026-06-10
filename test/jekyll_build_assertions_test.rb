@@ -61,6 +61,20 @@ class JekyllBuildAssertionsTest < Minitest::Test
     end
   end
 
+  def test_api_template_renders_multiple_query_response_examples
+    site_dir_for_assertions do |site_dir|
+      api_index = File.join(site_dir, 'apidefinitions', 'index.html')
+      html = File.read(api_index)
+
+      assert_includes html, 'Query Parameters JSON - Unknown transaction'
+      assert_includes html, 'Expected Response JSON - Unknown transaction'
+      assert_includes html, 'Query Parameters JSON - Found transaction'
+      assert_includes html, 'Expected Response JSON - Found transaction'
+      assert_includes html, 'Unknown Transaction'
+      assert_includes html, '6fde0190a97835ea6d9e651293e90c89911f933c'
+    end
+  end
+
   def test_header_logo_links_to_site_root
     assert_file_includes project_path('_layouts', 'default.html'), '<a href="{{ \'/\' | relative_url }}"  class="logo-link">'
     assert_file_excludes project_path('_sass', '_main.scss'), 'pointer-events: none;'

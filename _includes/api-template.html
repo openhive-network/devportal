@@ -74,6 +74,28 @@ Methods:
 {% endfor %}
 </ul>
 {% endif %}
+{% if method.query_response_examples %}
+{% for example in method.query_response_examples %}
+{% assign example_index = forloop.index %}
+{% if example.label %}
+{% assign example_label = example.label %}
+{% else %}
+{% assign example_label = 'Example ' | append: example_index %}
+{% endif %}
+{% if example.parameter_json %}
+<h5 id="{{ method.api_method | slug }}-parameter_json-{{ example_index }}">Query Parameters JSON - {{ example_label }} <a href="#{{ method.api_method | slug}}-parameter_json-{{ example_index }}"><i class="fas fa-link fa-sm"></i></a></h5>
+```json
+{{example.parameter_json | neat_json}}
+```
+{% endif %}
+{% if example.expected_response_json %}
+<h5 id="{{ method.api_method | slug }}-expected_response_json-{{ example_index }}">Expected Response JSON - {{ example_label }} <a href="#{{ method.api_method | slug}}-expected_response_json-{{ example_index }}"><i class="fas fa-link fa-sm"></i></a></h5>
+```json
+{{example.expected_response_json | neat_json}}
+```
+{% endif %}
+{% endfor %}
+{% else %}
 {% if method.parameter_json %}
 <h5 id="{{ method.api_method | slug }}-parameter_json">Query Parameters JSON <a href="#{{ method.api_method | slug}}-parameter_json"><i class="fas fa-link fa-sm"></i></a></h5>
 ```json
@@ -85,6 +107,7 @@ Methods:
 ```json
 {{method.expected_response_json | neat_json}}
 ```
+{% endif %}
 {% endif %}
 {% if method.curl_examples %}
 <h5 id="{{ method.api_method | slug }}-curl-examples">Example <code>curl</code> <a href="#{{ method.api_method | slug}}-curl-examples"><i class="fas fa-link fa-sm"></i></a></h5>

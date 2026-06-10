@@ -18,6 +18,11 @@ class ApiDefinitionInvariantsTest < Minitest::Test
 
     get_transaction = api_method('account_history_api.yml', 'account_history_api.get_transaction')
     assert_includes get_transaction['purpose'], 'include_reversible'
+    examples = get_transaction['query_response_examples']
+    assert_equal 2, examples.size
+    assert_equal ['Unknown transaction', 'Found transaction'], examples.map { |example| example['label'] }
+    assert_includes examples.first['expected_response_json'], 'Unknown Transaction'
+    assert_includes examples.last['expected_response_json'], '6fde0190a97835ea6d9e651293e90c89911f933c'
 
     assert_equal 'obsolete', api_method('tags_api.yml', 'tags_api.get_active_votes')['status']
     assert api_method('block_api.yml', 'block_api.get_block_range')
