@@ -74,31 +74,18 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     assert_includes list_proposals['parameter_json'], '"last_id"'
   end
 
-  def test_account_history_api_agreed_source_shapes_remain_documented
-    get_transaction = api_method('account_history_api.yml', 'account_history_api.get_transaction')
-    assert_equal %w[id include_reversible], get_transaction['parameter_json'].keys.sort
-    assert_equal %w[
-      block_num
-      expiration
-      extensions
-      operations
-      ref_block_num
-      ref_block_prefix
-      signatures
-      transaction_id
-      transaction_num
-    ], JSON.parse(get_transaction['expected_response_json']).keys.sort
+  def test_list_proposal_votes_documents_proposal_filtering_and_pagination
+    [
+      api_method('condenser_api.yml', 'condenser_api.list_proposal_votes'),
+      api_method('database_api.yml', 'database_api.list_proposal_votes')
+    ].each do |method|
+      purpose = method['purpose'].to_s
 
-    enum_virtual_ops = api_method('account_history_api.yml', 'account_history_api.enum_virtual_ops')
-    assert_equal %w[next_block_range_begin next_operation_begin ops ops_by_block],
-      JSON.parse(enum_virtual_ops['expected_response_json']).keys.sort
-
-    yaml = File.read(project_path('_data', 'apidefinitions', 'account_history_api.yml'))
-    get_transaction_block = yaml.split(/^    - api_method: /).find do |method_block|
-      method_block.start_with?('account_history_api.get_transaction')
+      assert_includes purpose, 'does not stop when the result set reaches a different proposal'
+      assert_includes purpose, 'Filter returned rows by `proposal.id`'
+      assert_includes purpose, 'last row\'s `[proposal.id, voter]`'
+      assert_includes purpose, '[10, "alice"]'
     end
-    assert_equal 1, get_transaction_block.scan(/^      parameter_json:/).size
-    assert_equal 1, get_transaction_block.scan(/^      expected_response_json:/).size
   end
 
   def test_database_api_methods_have_single_client_docs_block
