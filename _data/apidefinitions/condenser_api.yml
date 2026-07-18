@@ -654,7 +654,7 @@
       Parameters use the discussion query object. `tag` is required and is the
       blog account. `start_author` and `start_permlink` can be used for
       pagination.
-    parameter_json: '{"tag":"hiveio","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -689,7 +689,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_blog", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_blog", "params":[{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_blog)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-blog)"
@@ -702,7 +702,7 @@
 
       `start_author` is required. `start_permlink`, `limit`, `truncate_body`,
       and `observer` are optional.
-    parameter_json: '{"start_author":"hiveio","limit":1,"truncate_body":80}'
+    parameter_json: '{"start_author":"hiveio","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -730,7 +730,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_comments", "params":[{"start_author":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_comments", "params":[{"start_author":"hiveio","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_comments)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)"
@@ -740,7 +740,7 @@
     purpose: |
       Returns discussions ordered by creation time. This is a Hivemind-supported
       compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -775,7 +775,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_created", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_created", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_created)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)"
@@ -788,7 +788,7 @@
 
       Parameters use the same object shape as `get_discussions_by_blog`; `tag`
       is required and identifies the account feed.
-    parameter_json: '{"tag":"hiveio","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -812,7 +812,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_feed", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_feed", "params":[{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_feed)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-feed)"
@@ -822,7 +822,7 @@
     purpose: |
       Returns discussions ordered by recent popularity. This is a
       Hivemind-supported compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -846,7 +846,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_hot", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_hot", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_hot)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-hot)"
@@ -856,7 +856,7 @@
     purpose: |
       Returns discussions ordered by popularity. This is a Hivemind-supported
       compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -880,7 +880,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_trending", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_trending", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_trending)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)"
@@ -890,7 +890,7 @@
     purpose: |
       Returns posts ordered by payout. This is a Hivemind-supported
       compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -914,7 +914,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_post_discussions_by_payout", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_post_discussions_by_payout", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_post_discussions_by_payout)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-payout)"
@@ -927,10 +927,10 @@
 
       `start_author` is required. `start_permlink`, `limit`, `truncate_body`,
       and `observer` are optional.
-    parameter_json: '{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: []
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_replies_by_last_update", "params":[{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_replies_by_last_update", "params":[{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_replies_by_last_update)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#content)"
