@@ -244,7 +244,6 @@ module Verify
       if openapi_response && cpp_response && openapi_response != cpp_response
         notes << "OpenAPI and C++ response fields differ; OpenAPI: #{openapi_response.join(', ')}; C++: #{cpp_response.join(', ')}"
       end
-
       return 'verified' if matching_source
       return 'mismatch' if known_source
 
@@ -601,8 +600,15 @@ module Verify
         lines = File.readlines(file_name)
         api_namespace = api_namespace_for(file_name)
         lines.each_with_index do |line, index|
+          line.scan(/DEFINE_API_ARGS\s*\(\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*,\s*(.*?)\s*,\s*(.*?)\s*\)/) do |method_name, args_type, return_type|
+            next if method_name == 'api_name'
+
+            aliases["#{method_name}_args"] = qualify_alias_target(normalize_type(args_type), api_namespace)
+            aliases["#{method_name}_return"] = qualify_alias_target(normalize_type(return_type), api_namespace)
+          end
+
           line.scan(/typedef\s+(.+?)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*;/) do |target, name|
-            normalized_target = normalize_type(target)
+            normalized_target = qualify_alias_target(normalize_type(target), api_namespace)
             aliases[name] = normalized_target
             aliases["#{api_namespace}::#{name}"] = normalized_target if api_namespace
           end
@@ -623,8 +629,11 @@ module Verify
           next unless match
 
           fields = match[2].scan(/\(([a-zA-Z_][a-zA-Z0-9_]*)\)/).flatten.sort
-          reflections[match[1]] = fields
-          reflections[short_type(match[1])] = fields
+          reflected_type = match[1]
+          reflections[reflected_type] = fields
+          reflections[short_type(reflected_type)] = fields
+          type_parts = reflected_type.split('::')
+          reflections[type_parts.last(2).join('::')] = fields if type_parts.length > 1
         end
       end
 
@@ -693,7 +702,7 @@ module Verify
     end
 
     def collection_type?(type)
-      normalize_type(type).match?(/\A(?:(?:std|fc)::)?(?:vector|set|map)</)
+      normalize_type(type).match?(/\A(?:(?:std|fc)::)?(?:vector|set|flat_set|map)</)
     end
 
     def scalar_shape(type)
@@ -722,6 +731,17 @@ module Verify
       relative.split(File::SEPARATOR).first
     rescue ArgumentError
       nil
+    end
+
+    def qualify_alias_target(type, api_namespace)
+      return type unless api_namespace
+      return type if type.include?('::') || type.include?('<')
+      return type if %w[
+        bool double float int long size_t string variant void
+        int8_t int16_t int32_t int64_t uint8_t uint16_t uint32_t uint64_t
+      ].include?(type)
+
+      "#{api_namespace}::#{type}"
     end
 
     def relative_path(path)
