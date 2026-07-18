@@ -338,7 +338,7 @@ module Verify
 
     def documented_status(method)
       return 'removed' if method['removed']
-      return 'obsolete' if method['status'].to_s == 'obsolete'
+      return method['status'].to_s unless method['status'].to_s.empty?
 
       'active'
     end
@@ -424,6 +424,12 @@ module Verify
       errors << "#{path} must contain at most #{max_items} item(s)" if max_items && value.length > max_items
       if constraints[:item] && !value.empty?
         errors.concat(validate_constraints(value.first, constraints[:item], "#{path}[0]"))
+      end
+      Array(constraints[:prefix_types]).each_with_index do |expected_type, index|
+        next unless expected_type && index < value.length
+        next if shape_matches?(value_shape(value[index]), expected_type)
+
+        errors << "#{path}[#{index}] must be #{expected_type}, got #{value_shape(value[index])}"
       end
       errors
     end
@@ -892,14 +898,30 @@ module Verify
         inner_minimum = implementation[/verify_args\s*\(\s*arguments\s*,\s*(\d+)\s*\)/, 1]
         constraints = { min_items: 1, item: {} }
         constraints[:item][:min_items] = inner_minimum.to_i if inner_minimum
+        inner_types = argument_types(implementation, 'arguments')
+        constraints[:item][:prefix_types] = inner_types unless inner_types.empty?
         return constraints
       end
 
       exact_size = implementation[/CHECK_ARG_SIZE\s*\(\s*(\d+)\s*\)/, 1]
-      return { min_items: exact_size.to_i, max_items: exact_size.to_i } if exact_size
+      constraints = exact_size ? { min_items: exact_size.to_i, max_items: exact_size.to_i } : {}
 
       minimum = implementation[/verify_args\s*\(\s*args\s*,\s*(\d+)\s*\)/, 1]
-      minimum ? { min_items: minimum.to_i } : nil
+      constraints[:min_items] = minimum.to_i if minimum
+      maximum = implementation[/args\.size\(\)\s*<=\s*(\d+)/, 1]
+      constraints[:max_items] = maximum.to_i if maximum
+      types = argument_types(implementation, 'args')
+      constraints[:prefix_types] = types unless types.empty?
+      constraints.empty? ? nil : constraints
+    end
+
+    def argument_types(implementation, variable_name)
+      types = []
+      pattern = /#{Regexp.escape(variable_name)}\.at\(\s*(\d+)\s*\)\.as<\s*([^>]+?)\s*>/
+      implementation.scan(pattern) do |index, type|
+        types[index.to_i] = scalar_shape(normalize_type(type))
+      end
+      types
     end
 
     def resolve_alias(name, aliases, global_aliases)

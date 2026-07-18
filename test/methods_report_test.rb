@@ -155,6 +155,22 @@ class MethodsReportTest < Minitest::Test
     assert_empty valid
   end
 
+  def test_cpp_positional_constraints_check_optional_argument_type
+    cpp = Verify::CppSource.new('/tmp/unused-apis', project_root: project_path)
+    implementation = <<~CPP
+      FC_ASSERT(args.size() <= 1, "at most one argument");
+      if(args.size() > 0)
+        args.at(0).as<bool>();
+    CPP
+    constraints = cpp.send(:positional_constraints, implementation, false)
+    report = Verify::MethodsReport.new(project_root: project_path)
+
+    assert_equal({ max_items: 1, prefix_types: ['boolean'] }, constraints)
+    assert_empty report.send(:validate_constraints, [true], constraints)
+    assert_includes report.send(:validate_constraints, ['true'], constraints).join(' | '), 'must be boolean'
+    assert_includes report.send(:validate_constraints, [true, false], constraints).join(' | '), 'at most 1 item(s)'
+  end
+
   def test_documented_shapes_accept_yaml_native_values_and_scalar_examples
     report = Verify::MethodsReport.new(project_root: project_path)
 
@@ -164,6 +180,7 @@ class MethodsReportTest < Minitest::Test
     assert_equal 'array[array[boolean]]', report.send(:json_shape, [[true]])
     assert_equal 'null', report.send(:json_shape, nil)
     assert_equal 'string', report.send(:json_shape, '')
+    assert_equal 'deprecated', report.send(:documented_status, { 'status' => 'deprecated' })
   end
 
   def test_cpp_source_resolves_wallet_bridge_shapes_and_cross_api_aliases
@@ -201,6 +218,7 @@ class MethodsReportTest < Minitest::Test
             FC_ASSERT(args.get_array().at(0).is_array(), "nested arguments required");
             const auto arguments = args.get_array().at(0);
             verify_args(arguments, 2);
+            arguments.at(0).as<bool>();
           }
         CPP
       )
@@ -212,7 +230,10 @@ class MethodsReportTest < Minitest::Test
       legacy_items = methods.fetch('wallet_bridge_api.legacy_items')
 
       assert_equal 'array[array]', get_shared.fetch(:args_shape)
-      assert_equal({ min_items: 1, item: { min_items: 2 } }, get_shared.fetch(:args_constraints))
+      assert_equal(
+        { min_items: 1, item: { min_items: 2, prefix_types: ['boolean'] } },
+        get_shared.fetch(:args_constraints)
+      )
       assert_equal 'object', get_shared.fetch(:return_shape)
       assert_equal %w[id value], get_shared.fetch(:return_keys)
       assert_equal 'array', list_items.fetch(:return_shape)
