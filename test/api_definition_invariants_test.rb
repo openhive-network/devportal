@@ -141,6 +141,20 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     version = methods.find { |method| method['api_method'] == 'wallet_bridge_api.get_version' }
     assert_equal %w[blockchain_version chain_id fc_revision haf_revision hive_revision node_type],
       JSON.parse(version.fetch('expected_response_json')).keys.sort
+
+    active_witnesses = methods.find do |method|
+      method['api_method'] == 'wallet_bridge_api.get_active_witnesses'
+    end
+    assert_equal [true], active_witnesses.fetch('parameter_json')
+    assert JSON.parse(active_witnesses.fetch('expected_response_json')).key?('future_witnesses')
+
+    witness_schedule = methods.find do |method|
+      method['api_method'] == 'wallet_bridge_api.get_witness_schedule'
+    end
+    assert_equal [true], witness_schedule.fetch('parameter_json')
+    %w[future_changes future_shuffled_witnesses].each do |field|
+      assert JSON.parse(witness_schedule.fetch('expected_response_json')).key?(field)
+    end
   end
 
   def test_hosted_openapi_links_use_openapi_glyph
