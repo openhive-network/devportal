@@ -617,8 +617,11 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)"
   - api_method: database_api.get_active_witnesses
-    purpose: Returns the list of active witnesses.
-    parameter_json: "{}"
+    purpose: |
+      Returns the list of active witnesses. Set `include_future` to `true` to
+      include `future_witnesses`; that response field is omitted when the
+      parameter is false or absent.
+    parameter_json: '{"include_future":true}'
     expected_response_json: |
       {
         "witnesses": [
@@ -649,7 +652,7 @@
         ]
       }
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"database_api.get_active_witnesses", "id":1}'
+      - '{"jsonrpc":"2.0", "method":"database_api.get_active_witnesses", "params":{"include_future":true}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/database_api/get_active_witnesses)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_active_witnesses)"
@@ -2337,11 +2340,11 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: database_api.verify_signatures
     purpose:
-      This method validates if transaction was signed by person listed in required_owner, required_active or required_posting parameter. `Hash` is a mix of chain_id and transaction data.
-    parameter_json: '{"hash":"0000000000000000000000000000000000000000000000000000000000000000","signatures":[],"required_owner":[],"required_active":[],"required_posting":[],"required_other":[]}'
-    expected_response_json: '{"valid":false}'
+      This method validates whether the supplied signatures satisfy the listed owner, active, posting, witness, and other authorities. `Hash` is a mix of chain_id and transaction data.
+    parameter_json: '{"hash":"0000000000000000000000000000000000000000000000000000000000000000","signatures":[],"required_owner":[],"required_active":[],"required_posting":[],"required_witness":[],"required_other":[]}'
+    expected_response_json: '{"valid":true}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.verify_signatures", "params":{"hash": "0000000000000000000000000000000000000000000000000000000000000000", "signatures": [], "required_owner": [], "required_active": [], "required_posting": [], "required_other": []}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.verify_signatures", "params":{"hash": "0000000000000000000000000000000000000000000000000000000000000000", "signatures": [], "required_owner": [], "required_active": [], "required_posting": [], "required_witness": [], "required_other": []}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/database_api/verify_signatures)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"

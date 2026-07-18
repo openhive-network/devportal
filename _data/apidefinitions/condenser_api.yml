@@ -335,7 +335,9 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_active_votes
     purpose: |
-      Returns all votes for the given post.  Parameters: `author:string`; `permlink:string`
+      Returns all votes for the given post. Parameters: `author:string`;
+      `permlink:string`. Both positional `params:[author,permlink]` and named
+      `params:{"author":author,"permlink":permlink}` forms are supported.
 
       | `author` (string) | `permlink` (string) | |
       |----------------------------|---------------|-|
@@ -356,9 +358,7 @@
         "firstpost"], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_votes", "params":["alice",
         "a-post-by-alice"], "id":1}'
-    expected_curl_responses:
-      - Invalid parameters
-      - Invalid parameters
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_votes", "params":{"author":"hiveio","permlink":"firstpost"}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_active_votes)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_active_votes)"
@@ -367,13 +367,15 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_active_witnesses
     purpose: |
-      Returns the list of active witnesses.
+      Returns the list of active witnesses. The optional positional boolean
+      includes the future witness schedule when true; the server inserts an
+      empty-string separator between the active and future lists.
 
       Also see: [database_api.get_active_witnesses]({{ '/apidefinitions/#database_api.get_active_witnesses' | relative_url }})
-    parameter_json: []
+    parameter_json: [true]
     expected_response_json: []
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_witnesses", "params":[],
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_witnesses", "params":[true],
       "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_active_witnesses)"
@@ -450,13 +452,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_blog
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_account_posts'
         relationship: 'spiritual_successor'
         note: 'Use `sort: blog` for current Hivemind-backed blog and reblog listings.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind, but new integrations should prefer the
+      Bridge successor below.
       
       Returns the list of blog entries for an account.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
 
@@ -957,13 +961,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-config)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_content
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_post'
         relationship: 'spiritual_successor'
         note: 'Use for current Hivemind-backed post or comment lookup by author and permlink.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind, but new integrations should prefer the
+      Bridge successor below.
       
       Returns the content (post or comment).  Parameters: `author:string`; `permlink:string`
 
@@ -1357,14 +1363,16 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)"
   - api_method: condenser_api.get_followers
-    status: obsolete
+    status: deprecated
     successors:
       - label: 'No direct documented replacement'
         relationship: 'none'
         note: 'Use indexed Hivemind, HAFSQL, or HiveSQL follower data for full follower lists; `bridge.get_relationship_between_accounts` only answers pairwise relationship questions.'
     since: HF9
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind. Prefer indexed Hivemind/HAFSQL data for new
+      integrations that need follower lists.
       
       Returns the list of followers for an account.  Parameters: `account:string`; `start:string` (account to start from); `type:string` e.g.: `blog`; `limit:int` up to 1000
 
@@ -2157,10 +2165,12 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_witness_schedule
     purpose: |
-      Returns the current witness schedule.
+      Returns the current witness schedule. Pass the optional positional
+      boolean `true` to include `future_shuffled_witnesses` and
+      `future_changes`; those fields are omitted by default.
 
       Also see: [database_api.get_witness_schedule]({{ '/apidefinitions/#database_api.get_witness_schedule' | relative_url }})
-    parameter_json: []
+    parameter_json: [true]
     expected_response_json:
       id: 0
       current_virtual_time: '0'
@@ -2201,8 +2211,10 @@
           decay_per_time_unit_denom_shift: 36
         min_decay: 612
       min_witness_account_subsidy_decay: 0
+      future_shuffled_witnesses: []
+      future_changes: null
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_schedule", "params":[],
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_schedule", "params":[true],
         "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_witness_schedule)"

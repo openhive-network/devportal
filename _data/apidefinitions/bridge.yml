@@ -25,7 +25,6 @@
     expected_response_json: |
       [
         {
-           "post_id":12345678,
            "author":"alice",
            "permlink":"that-march-hare",
            "category":"wonderland",
@@ -139,7 +138,6 @@
     expected_response_json: |
       [
         {
-          "post_id": 101867403,
           "author": "hiveio",
           "permlink": "around-the-hive-reflections",
           "category": "hiveecosystem",
@@ -216,7 +214,6 @@
     expected_response_json: |
       {"hiveio/around-the-hive-reflections":
         {
-          "post_id": 101867403,
           "author": "hiveio",
           "permlink": "around-the-hive-reflections",
           "category": "hiveecosystem",
@@ -575,7 +572,6 @@
     parameter_json: {"author": "hiveio", "permlink": "around-the-hive-reflections", "observer": "alice"}
     expected_response_json: |
       {
-        "post_id": 101867403,
         "author": "hiveio",
         "author_role": "guest",
         "author_title": "",
@@ -753,7 +749,6 @@
     parameter_json: {"post": {"author": "hiveio", "permlink": "around-the-hive-reflections"}}
     expected_response_json: |
       {
-        "post_id": 101867403,
         "author": "hiveio",
         "author_role": "guest",
         "author_title": "",

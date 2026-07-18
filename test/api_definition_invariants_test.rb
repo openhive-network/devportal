@@ -208,9 +208,18 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     methods.each do |method|
       refute_empty method.fetch('purpose').to_s,
         "Expected #{method.fetch('api_method')} to describe its behavior"
-      assert_kind_of Array, method.fetch('parameter_json'),
+      params = method.fetch('parameter_json')
+      assert_kind_of Array, params,
         "Expected #{method.fetch('api_method')} parameters to use a positional array"
+      next if params.empty?
+
+      assert_equal 1, params.length,
+        "Expected #{method.fetch('api_method')} to receive one variant argument"
+      assert_kind_of Array, params.first,
+        "Expected #{method.fetch('api_method')} variant argument to contain the positional array"
     end
+    assert_equal 29, methods.count { |method| !method.fetch('parameter_json').empty? }
+    assert_equal 6, methods.count { |method| method.fetch('parameter_json').empty? }
 
     broadcast = methods.find do |method|
       method['api_method'] == 'wallet_bridge_api.broadcast_transaction_synchronous'
@@ -232,15 +241,46 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     active_witnesses = methods.find do |method|
       method['api_method'] == 'wallet_bridge_api.get_active_witnesses'
     end
-    assert_equal [true], active_witnesses.fetch('parameter_json')
+    assert_equal [[true]], active_witnesses.fetch('parameter_json')
     assert JSON.parse(active_witnesses.fetch('expected_response_json')).key?('future_witnesses')
 
     witness_schedule = methods.find do |method|
       method['api_method'] == 'wallet_bridge_api.get_witness_schedule'
     end
-    assert_equal [true], witness_schedule.fetch('parameter_json')
+    assert_equal [[true]], witness_schedule.fetch('parameter_json')
     %w[future_changes future_shuffled_witnesses].each do |field|
       assert JSON.parse(witness_schedule.fetch('expected_response_json')).key?(field)
+    end
+  end
+
+  def test_adversarial_optional_response_and_compatibility_contracts
+    active_witnesses = api_method('database_api.yml', 'database_api.get_active_witnesses')
+    assert_equal({ 'include_future' => true }, JSON.parse(active_witnesses.fetch('parameter_json')))
+    assert JSON.parse(active_witnesses.fetch('expected_response_json')).key?('future_witnesses')
+
+    signatures = api_method('database_api.yml', 'database_api.verify_signatures')
+    assert JSON.parse(signatures.fetch('parameter_json')).key?('required_witness')
+    assert_equal true, JSON.parse(signatures.fetch('expected_response_json')).fetch('valid')
+
+    transaction = api_method('transaction_status_api.yml', 'transaction_status_api.find_transaction')
+    assert_equal %w[block_num rc_cost status], JSON.parse(transaction.fetch('expected_response_json')).keys.sort
+
+    %w[bridge.get_post bridge.normalize_post].each do |name|
+      refute JSON.parse(api_method('bridge.yml', name).fetch('expected_response_json')).key?('post_id')
+    end
+
+    active_votes = api_method('condenser_api.yml', 'condenser_api.get_active_votes')
+    assert active_votes.fetch('curl_examples').any? { |example| JSON.parse(example).fetch('params').is_a?(Array) }
+    assert active_votes.fetch('curl_examples').any? { |example| JSON.parse(example).fetch('params').is_a?(Hash) }
+
+    %w[condenser_api.get_active_witnesses condenser_api.get_witness_schedule].each do |name|
+      assert_equal [true], api_method('condenser_api.yml', name).fetch('parameter_json')
+    end
+
+    %w[condenser_api.get_blog condenser_api.get_content condenser_api.get_followers].each do |name|
+      method = api_method('condenser_api.yml', name)
+      assert_equal 'deprecated', method.fetch('status')
+      assert_includes method.fetch('purpose'), 'public Hive API still routes'
     end
   end
 

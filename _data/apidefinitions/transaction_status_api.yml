@@ -29,8 +29,12 @@
       | `expired_reversible` | Transaction has expired, transaction is not irreversible (transaction could be in a fork) |
       | `expired_irreversible` | Transaction has expired, transaction is irreversible (transaction cannot be in a fork) |
       | `too_old` | Transaction is too old, I don't know about it |
+
+      Results for transactions found in a block can also include `block_num`
+      and `rc_cost`; these fields are conditional and are omitted when that
+      information is not available.
     parameter_json: '{"transaction_id":"0000000000000000000000000000000000000000", "expiration":"2016-03-24T18:00:21"}'
-    expected_response_json: '{"status":"unknown"}'
+    expected_response_json: '{"status":"within_irreversible_block","block_num":108228760,"rc_cost":146036130}'
     curl_examples:
     -  '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params": {"transaction_id": "0000000000000000000000000000000000000000"}, "id":1}'
     -  '{"jsonrpc":"2.0", "method":"transaction_status_api.find_transaction", "params": {"transaction_id": "0000000000000000000000000000000000000000", "expiration":"2016-03-24T18:00:21"}, "id":1}'
