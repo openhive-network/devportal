@@ -1,4 +1,5 @@
 require_relative 'test_helper'
+require 'json'
 
 class ApiDefinitionInvariantsTest < Minitest::Test
   include JekyllBuildTestHelper
@@ -82,6 +83,50 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       assert_operator client_docs_blocks, :<=, 1,
         "Expected #{method_name} to define at most one client_docs block"
     end
+  end
+
+  def test_condenser_api_current_response_shapes_remain_documented
+    %w[get_accounts lookup_account_names].each do |method_name|
+      response = JSON.parse(
+        api_method('condenser_api.yml', "condenser_api.#{method_name}").fetch('expected_response_json')
+      )
+      assert_kind_of Array, response
+      assert_kind_of Hash, response.first
+    end
+
+    broadcast = api_method(
+      'condenser_api.yml',
+      'condenser_api.broadcast_transaction_synchronous'
+    ).fetch('expected_response_json')
+    assert broadcast.key?('rc_cost')
+
+    fields_by_method = {
+      'get_chain_properties' => %w[account_subsidy_budget account_subsidy_decay],
+      'get_dynamic_global_properties' => %w[
+        available_account_subsidies current_remove_threshold dhf_interval_ledger
+        max_consecutive_recurrent_transfer_failures next_daily_maintenance_time
+      ],
+      'get_feed_history' => %w[current_min_history current_max_history market_median_history],
+      'get_version' => %w[chain_id haf_revision node_type],
+      'get_witness_schedule' => %w[
+        account_subsidy_rd account_subsidy_witness_rd elected_weight
+        min_witness_account_subsidy_decay
+      ]
+    }
+
+    fields_by_method.each do |method_name, fields|
+      response = api_method(
+        'condenser_api.yml', "condenser_api.#{method_name}"
+      ).fetch('expected_response_json')
+      fields.each { |field| assert response.key?(field), "Expected #{method_name} to include #{field}" }
+    end
+
+    refute api_method(
+      'condenser_api.yml', 'condenser_api.get_chain_properties'
+    ).fetch('expected_response_json').key?('account_subsidy_limit')
+    refute api_method(
+      'condenser_api.yml', 'condenser_api.get_witness_schedule'
+    ).fetch('expected_response_json').key?('top19_weight')
   end
 
   def test_hosted_openapi_links_use_openapi_glyph

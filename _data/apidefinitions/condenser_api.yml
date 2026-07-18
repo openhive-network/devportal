@@ -59,6 +59,7 @@
       block_num: 0
       trx_num: 0
       expired: false
+      rc_cost: null
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction_synchronous",
         "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["vote",{"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]],"extensions":[],"signatures":[]}],
@@ -178,6 +179,7 @@
     parameter_json:
       - - ''
     expected_response_json: |
+      [
       {
         "id": 1370484,
         "name": "hiveio",
@@ -301,6 +303,7 @@
         "tags_usage": [],
         "guest_bloggers": []
       }
+      ]
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio", "alice"], true], "id":1}'
@@ -603,7 +606,8 @@
       account_creation_fee: 0.100 HIVE
       maximum_block_size: 131072
       hbd_interest_rate: 1000
-      account_subsidy_limit: 0
+      account_subsidy_budget: 797
+      account_subsidy_decay: 347321
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_chain_properties", "params":[],
         "id":1}'
@@ -1188,6 +1192,7 @@
       Also see: [database_api.get_dynamic_global_properties]({{ '/apidefinitions/#database_api.get_dynamic_global_properties' | relative_url }})
     parameter_json: []
     expected_response_json:
+      id: 0
       head_block_number: 0
       head_block_id: '0000000000000000000000000000000000000000'
       time: '1970-01-01T00:00:00'
@@ -1196,23 +1201,40 @@
       num_pow_witnesses: 0
       virtual_supply: 0.000 HIVE
       current_supply: 0.000 HIVE
-      confidential_supply: 0.000 HIVE
+      init_hbd_supply: 0.000 HBD
       current_hbd_supply: 0.000 HIVE
-      confidential_hbd_supply: 0.000 HIVE
       total_vesting_fund_hive: 0.000 HIVE
       total_vesting_shares: 0.000 HIVE
-      total_reward_fund_hive: 0.000 HIVE
-      total_reward_shares2: '0'
-      pending_rewarded_vesting_shares: 0.000 HIVE
+      pending_rewarded_vesting_shares: 0.000000 VESTS
       pending_rewarded_vesting_hive: 0.000 HIVE
       hbd_interest_rate: 0
       hbd_print_rate: 10000
       maximum_block_size: 0
+      current_remove_threshold: 0
       current_aslot: 0
       recent_slots_filled: '0'
       participation_count: 0
       last_irreversible_block_num: 0
+      delegation_return_period: 432000
+      reverse_auction_seconds: 0
+      early_voting_seconds: 0
+      mid_voting_seconds: 0
+      available_account_subsidies: 0
+      hbd_stop_percent: 1000
+      hbd_start_percent: 900
+      next_maintenance_time: '1970-01-01T00:00:00'
+      next_daily_maintenance_time: '1970-01-01T00:00:00'
+      last_budget_time: '1970-01-01T00:00:00'
+      content_reward_percent: 6500
+      vesting_reward_percent: 1500
+      proposal_fund_percent: 1000
+      dhf_interval_ledger: 0.000 HBD
+      downvote_pool_percent: 2500
       vote_power_reserve_rate: 40
+      min_recurrent_transfers_recurrence: 24
+      max_open_recurrent_transfers: 255
+      max_recurrent_transfer_end_date: 730
+      max_consecutive_recurrent_transfer_failures: 10
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[],
         "id":1}'
@@ -1279,8 +1301,17 @@
     parameter_json: []
     expected_response_json:
       id: 0
+      current_min_history:
+        base: 0.000 HBD
+        quote: 0.000 HIVE
       current_median_history:
-        base: 0.000 HIVE
+        base: 0.000 HBD
+        quote: 0.000 HIVE
+      current_max_history:
+        base: 0.000 HBD
+        quote: 0.000 HIVE
+      market_median_history:
+        base: 0.000 HBD
         quote: 0.000 HIVE
       price_history: []
     curl_examples:
@@ -1973,6 +2004,9 @@
       blockchain_version: ''
       hive_revision: ''
       fc_revision: ''
+      chain_id: '0000000000000000000000000000000000000000000000000000000000000000'
+      node_type: hived
+      haf_revision: ''
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_version", "params":[], "id":1}'
     client_docs:
@@ -2133,7 +2167,7 @@
       next_shuffle_block_num: 1
       current_shuffled_witnesses: []
       num_scheduled_witnesses: 1
-      top19_weight: 1
+      elected_weight: 1
       timeshare_weight: 5
       miner_weight: 1
       witness_pay_normalization_factor: 25
@@ -2141,11 +2175,32 @@
         account_creation_fee: 0.000 HIVE
         maximum_block_size: 131072
         hbd_interest_rate: 1000
+        account_subsidy_budget: 797
+        account_subsidy_decay: 347321
       majority_version: 0.0.0
       max_voted_witnesses: 19
       max_miner_witnesses: 1
       max_runner_witnesses: 1
       hardfork_required_witnesses: 17
+      account_subsidy_rd:
+        resource_unit: 10000
+        budget_per_time_unit: 797
+        pool_eq: 157691079
+        max_pool_size: 157691079
+        decay_params:
+          decay_per_time_unit: 347321
+          decay_per_time_unit_denom_shift: 36
+        min_decay: 0
+      account_subsidy_witness_rd:
+        resource_unit: 10000
+        budget_per_time_unit: 996
+        pool_eq: 9384019
+        max_pool_size: 9384019
+        decay_params:
+          decay_per_time_unit: 7293741
+          decay_per_time_unit_denom_shift: 36
+        min_decay: 612
+      min_witness_account_subsidy_decay: 0
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_schedule", "params":[],
         "id":1}'
@@ -2208,6 +2263,7 @@
       - - hiveio
         - true
     expected_response_json: |
+      [
       {
         "id": 1370484,
         "name": "hiveio",
@@ -2331,6 +2387,7 @@
         "tags_usage": [],
         "guest_bloggers": []
       }
+      ]
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"], false], "id":1}'
