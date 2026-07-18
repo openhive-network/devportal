@@ -83,6 +83,8 @@ module Verify
       doc_response = doc && doc[:response_keys]
       openapi_param_shape = openapi_method && openapi_method[:request_shape]
       openapi_response_shape = openapi_method && openapi_method[:response_shape]
+      cpp_param_shape = cpp_method && cpp_method[:args_shape]
+      cpp_response_shape = cpp_method && cpp_method[:return_shape]
       doc_param_shape = doc && doc[:parameter_shape]
       doc_response_shape = doc && doc[:response_shape]
 
@@ -104,8 +106,10 @@ module Verify
             cpp_response: cpp_response,
             doc_param_shape: doc_param_shape,
             openapi_param_shape: openapi_param_shape,
+            cpp_param_shape: cpp_param_shape,
             doc_response_shape: doc_response_shape,
             openapi_response_shape: openapi_response_shape,
+            cpp_response_shape: cpp_response_shape,
             notes: notes
           )
         end
@@ -122,7 +126,7 @@ module Verify
         classification: classification,
         documented: !!doc,
         openapi: source_details(openapi_method, openapi_params, openapi_response, openapi_param_shape, openapi_response_shape),
-        cpp: source_details(cpp_method, cpp_params, cpp_response),
+        cpp: source_details(cpp_method, cpp_params, cpp_response, cpp_param_shape, cpp_response_shape),
         documented_fields: {
           parameters: doc_params || [],
           response: doc_response || []
@@ -192,13 +196,14 @@ module Verify
     private
 
     def compare_fields(name:, doc_params:, openapi_params:, cpp_params:, doc_response:, openapi_response:, cpp_response:,
-      doc_param_shape:, openapi_param_shape:, doc_response_shape:, openapi_response_shape:, notes:)
+      doc_param_shape:, openapi_param_shape:, cpp_param_shape:, doc_response_shape:, openapi_response_shape:,
+      cpp_response_shape:, notes:)
       known_source = false
       matching_source = false
 
       [
         ['OpenAPI', openapi_params, openapi_response, openapi_param_shape, openapi_response_shape],
-        ['C++', cpp_params, cpp_response, nil, nil]
+        ['C++', cpp_params, cpp_response, cpp_param_shape, cpp_response_shape]
       ].each do |source_name, params, response, param_shape, response_shape|
         source_known = false
         source_matches = true
@@ -527,6 +532,8 @@ module Verify
 
     def load
       methods = {}
+      all_files = api_dirs.flat_map { |api_dir| Dir[File.join(api_dir, '**', '*.{hpp,cpp}')].sort }
+      global_reflections, global_aliases = reflected_fields(all_files)
 
       api_dirs.each do |api_dir|
         api_name = File.basename(api_dir)
@@ -561,8 +568,15 @@ module Verify
         method_names.each do |method_name|
           name = "#{api_name}.#{method_name}"
           methods[name] = {
-            args_keys: keys_for("#{method_name}_args", reflections, aliases),
-            return_keys: keys_for("#{method_name}_return", reflections, aliases),
+            args_keys: keys_for("#{method_name}_args", reflections, aliases, global_reflections, global_aliases),
+            return_keys: keys_for("#{method_name}_return", reflections, aliases, global_reflections, global_aliases),
+            args_shape: shape_for(
+              "#{method_name}_args", reflections, aliases, global_reflections, global_aliases,
+              positional_variant: api_name == 'wallet_bridge_api'
+            ),
+            return_shape: shape_for(
+              "#{method_name}_return", reflections, aliases, global_reflections, global_aliases
+            ),
             source_references: references[method_name].uniq
           }
         end
@@ -585,9 +599,12 @@ module Verify
 
       files.each do |file_name|
         lines = File.readlines(file_name)
+        api_namespace = api_namespace_for(file_name)
         lines.each_with_index do |line, index|
-          line.scan(/typedef\s+([a-zA-Z_][a-zA-Z0-9_:<>]*)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*;/) do |target, name|
-            aliases[name] = target.split('::').last
+          line.scan(/typedef\s+(.+?)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*;/) do |target, name|
+            normalized_target = normalize_type(target)
+            aliases[name] = normalized_target
+            aliases["#{api_namespace}::#{name}"] = normalized_target if api_namespace
           end
 
           next unless line.include?('FC_REFLECT(')
@@ -602,31 +619,109 @@ module Verify
           end
 
           text = block.join
-          match = text.match(/FC_REFLECT\s*\(\s*(?:[a-zA-Z_][a-zA-Z0-9_]*::)*([a-zA-Z_][a-zA-Z0-9_]*)\s*,(.*)\)\s*$/m)
+          match = text.match(/FC_REFLECT\s*\(\s*([a-zA-Z_][a-zA-Z0-9_:]*)\s*,(.*)\)\s*$/m)
           next unless match
 
-          reflections[match[1]] = match[2].scan(/\(([a-zA-Z_][a-zA-Z0-9_]*)\)/).flatten.sort
+          fields = match[2].scan(/\(([a-zA-Z_][a-zA-Z0-9_]*)\)/).flatten.sort
+          reflections[match[1]] = fields
+          reflections[short_type(match[1])] = fields
         end
       end
 
       [reflections, aliases]
     end
 
-    def keys_for(name, reflections, aliases)
-      resolved = resolve_alias(name, aliases)
-      return [] if resolved == 'void_type'
+    def keys_for(name, reflections, aliases, global_reflections, global_aliases)
+      resolved = resolve_alias(name, aliases, global_aliases)
+      return [] if short_type(resolved) == 'void_type'
+      return nil if optional_type?(resolved) || collection_type?(resolved)
 
-      reflections[resolved]
+      scalar = scalar_shape(resolved)
+      return nil if scalar && scalar != 'object'
+
+      reflections[resolved] || reflections[short_type(resolved)] ||
+        global_reflections[resolved] || global_reflections[short_type(resolved)]
     end
 
-    def resolve_alias(name, aliases)
+    def shape_for(name, reflections, aliases, global_reflections, global_aliases, positional_variant: false)
+      resolved = resolve_alias(name, aliases, global_aliases)
+      normalized = normalize_type(resolved)
+
+      return 'array' if positional_variant && short_type(normalized) == 'variant'
+      return optional_shape(normalized, reflections, global_reflections) if optional_type?(normalized)
+      return 'array' if collection_type?(normalized)
+
+      scalar = scalar_shape(normalized)
+      return scalar if scalar
+
+      fields = reflections[normalized] || reflections[short_type(normalized)] ||
+        global_reflections[normalized] || global_reflections[short_type(normalized)]
+      fields ? 'object' : nil
+    end
+
+    def resolve_alias(name, aliases, global_aliases)
       seen = Set.new
-      current = name
-      while aliases[current] && !seen.include?(current)
+      current = normalize_type(name)
+      loop do
+        lookup_name = short_type(current)
+        target = aliases[current] || global_aliases[current]
+        unless current.include?('::')
+          target ||= aliases[lookup_name] || global_aliases[lookup_name]
+        end
+        break unless target && !seen.include?(current)
+
         seen << current
-        current = aliases[current]
+        current = normalize_type(target)
       end
       current
+    end
+
+    def optional_shape(type, reflections, global_reflections)
+      inner = type[/\A(?:fc::)?optional<(.+)>\z/, 1]
+      return 'null' unless inner
+
+      normalized = normalize_type(inner)
+      inner_shape = scalar_shape(normalized)
+      inner_shape ||= 'array' if collection_type?(normalized)
+      inner_shape ||= 'object' if reflections[normalized] || reflections[short_type(normalized)] ||
+        global_reflections[normalized] || global_reflections[short_type(normalized)]
+      inner_shape ? "#{inner_shape}|null" : 'null'
+    end
+
+    def optional_type?(type)
+      normalize_type(type).match?(/\A(?:fc::)?optional</)
+    end
+
+    def collection_type?(type)
+      normalize_type(type).match?(/\A(?:(?:std|fc)::)?(?:vector|set|map)</)
+    end
+
+    def scalar_shape(type)
+      name = short_type(normalize_type(type))
+      return 'object' if name == 'void_type'
+      return 'object' if %w[variant_object mutable_variant_object].include?(name)
+      return 'object' if name == 'price' || name.end_with?('_object', '_properties', '_transaction')
+      return 'boolean' if name == 'bool'
+      return 'integer' if name.match?(/\A(?:u?int(?:8|16|32|64)_t|size_t|int|long)\z/)
+      return 'number' if %w[float double].include?(name)
+      return 'string' if name == 'string' || name.end_with?('_type', '_version')
+
+      nil
+    end
+
+    def normalize_type(type)
+      type.to_s.gsub(/\s+/, '').sub(/\Aconst/, '').sub(/&\z/, '')
+    end
+
+    def short_type(type)
+      normalize_type(type).split('::').last
+    end
+
+    def api_namespace_for(file_name)
+      relative = Pathname.new(file_name).relative_path_from(Pathname.new(@apis_root)).to_s
+      relative.split(File::SEPARATOR).first
+    rescue ArgumentError
+      nil
     end
 
     def relative_path(path)

@@ -103,6 +103,48 @@ class MethodsReportTest < Minitest::Test
     assert_equal 'string', report.send(:json_shape, '')
   end
 
+  def test_cpp_source_resolves_wallet_bridge_shapes_and_cross_api_aliases
+    Dir.mktmpdir('cpp-source-') do |root|
+      apis_root = File.join(root, 'apis')
+      database_dir = File.join(apis_root, 'database_api')
+      wallet_dir = File.join(apis_root, 'wallet_bridge_api')
+      FileUtils.mkdir_p(database_dir)
+      FileUtils.mkdir_p(wallet_dir)
+
+      File.write(
+        File.join(database_dir, 'database_api.hpp'),
+        <<~CPP
+          struct shared_result {};
+          typedef shared_result get_shared_return;
+          FC_REFLECT(database_api::shared_result, (id)(value))
+        CPP
+      )
+      File.write(
+        File.join(wallet_dir, 'wallet_bridge_api.hpp'),
+        <<~CPP
+          typedef variant get_shared_args;
+          typedef database_api::get_shared_return get_shared_return;
+          typedef variant list_items_args;
+          typedef std::vector<database_api::shared_result> list_items_return;
+          typedef variant maybe_item_args;
+          typedef fc::optional<database_api::shared_result> maybe_item_return;
+          DECLARE_API((get_shared)(list_items)(maybe_item));
+        CPP
+      )
+
+      methods = Verify::CppSource.new(apis_root, project_root: root).load.fetch(:methods)
+      get_shared = methods.fetch('wallet_bridge_api.get_shared')
+      list_items = methods.fetch('wallet_bridge_api.list_items')
+      maybe_item = methods.fetch('wallet_bridge_api.maybe_item')
+
+      assert_equal 'array', get_shared.fetch(:args_shape)
+      assert_equal 'object', get_shared.fetch(:return_shape)
+      assert_equal %w[id value], get_shared.fetch(:return_keys)
+      assert_equal 'array', list_items.fetch(:return_shape)
+      assert_equal 'object|null', maybe_item.fetch(:return_shape)
+    end
+  end
+
   def test_compare_method_classifies_source_only_and_docs_only
     report = Verify::MethodsReport.new(project_root: project_path)
 
