@@ -93,6 +93,45 @@ class MethodsReportTest < Minitest::Test
     assert_empty method.fetch(:notes)
   end
 
+  def test_compare_method_allows_omitted_optional_source_fields
+    report = Verify::MethodsReport.new(project_root: project_path)
+    documented = {
+      status: 'active',
+      obsolete: false,
+      parameter_keys: %w[transaction_id],
+      response_keys: %w[status],
+      parameter_shape: 'object',
+      response_shape: 'object',
+      parameter_value: { 'transaction_id' => '0' * 40 },
+      response_value: { 'status' => 'too_old' }
+    }
+    openapi = {
+      request_keys: %w[expiration transaction_id],
+      response_keys: %w[block_num rc_cost status],
+      request_required_keys: %w[transaction_id],
+      response_required_keys: %w[status],
+      request_shape: 'object',
+      response_shape: 'object',
+      request_validator: ->(_value) { [] },
+      response_validator: ->(_value) { [] },
+      source_references: []
+    }
+    cpp = {
+      args_keys: %w[expiration transaction_id],
+      return_keys: %w[block_num rc_cost status],
+      args_required_keys: %w[transaction_id],
+      return_required_keys: %w[status],
+      args_shape: 'object',
+      return_shape: 'object',
+      source_references: []
+    }
+
+    method = report.compare_method('transaction_status_api.find_transaction', documented, openapi, cpp)
+
+    assert_equal 'verified', method.fetch(:classification)
+    assert_empty method.fetch(:notes)
+  end
+
   def test_compare_method_rejects_openapi_example_that_fails_nested_validation
     report = Verify::MethodsReport.new(project_root: project_path)
 
