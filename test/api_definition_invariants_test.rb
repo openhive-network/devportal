@@ -244,6 +244,37 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     end
   end
 
+  def test_condenser_discussion_query_parameters_match_openapi
+    common_keys = %w[limit observer start_author start_permlink tag truncate_body]
+    %w[
+      condenser_api.get_discussions_by_blog
+      condenser_api.get_discussions_by_created
+      condenser_api.get_discussions_by_feed
+      condenser_api.get_discussions_by_hot
+      condenser_api.get_discussions_by_trending
+      condenser_api.get_post_discussions_by_payout
+    ].each do |method_name|
+      parameters = JSON.parse(api_method('condenser_api.yml', method_name)['parameter_json'])
+      assert_equal common_keys, parameters.keys.sort, "Expected #{method_name} query fields to match OpenAPI"
+    end
+
+    %w[
+      condenser_api.get_discussions_by_comments
+      condenser_api.get_replies_by_last_update
+    ].each do |method_name|
+      parameters = JSON.parse(api_method('condenser_api.yml', method_name)['parameter_json'])
+      assert_equal %w[limit observer start_author start_permlink truncate_body], parameters.keys.sort,
+        "Expected #{method_name} query fields to match OpenAPI"
+    end
+  end
+
+  def test_get_active_votes_preserves_the_live_positional_contract
+    parameters = api_method('condenser_api.yml', 'condenser_api.get_active_votes')['parameter_json']
+
+    assert_kind_of Array, parameters
+    assert_equal 2, parameters.length
+  end
+
   def test_hosted_openapi_links_use_openapi_glyph
     stylesheet = File.read(project_path('_sass', '_main.scss'))
 
