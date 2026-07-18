@@ -5,7 +5,7 @@ require 'json'
 class MethodsReportTest < Minitest::Test
   include JekyllBuildTestHelper
 
-  def test_compare_method_verifies_docs_that_match_cpp_when_openapi_disagrees
+  def test_compare_method_rejects_docs_when_openapi_and_cpp_disagree
     report = Verify::MethodsReport.new(project_root: project_path)
 
     method = report.compare_method(
@@ -30,7 +30,7 @@ class MethodsReportTest < Minitest::Test
       }
     )
 
-    assert_equal 'verified', method.fetch(:classification)
+    assert_equal 'source_disagreement', method.fetch(:classification)
     assert method.fetch(:source_disagreement)
     assert method.fetch(:notes).any? { |note| note.include?('OpenAPI parameter fields differ') }
     assert method.fetch(:notes).any? { |note| note.include?('OpenAPI and C++ parameter fields differ') }
@@ -55,7 +55,7 @@ class MethodsReportTest < Minitest::Test
         source_references: []
       },
       {
-        args_keys: %w[id include_future],
+        args_keys: %w[id],
         return_keys: %w[value],
         source_references: []
       }
@@ -93,12 +93,75 @@ class MethodsReportTest < Minitest::Test
     assert_empty method.fetch(:notes)
   end
 
+  def test_compare_method_rejects_openapi_example_that_fails_nested_validation
+    report = Verify::MethodsReport.new(project_root: project_path)
+
+    method = report.compare_method(
+      'sample_api.create_thing',
+      {
+        status: 'active',
+        obsolete: false,
+        parameter_keys: %w[thing],
+        response_keys: %w[ok],
+        parameter_shape: 'object',
+        response_shape: 'object',
+        parameter_value: { 'thing' => {} },
+        response_value: { 'ok' => true }
+      },
+      {
+        request_keys: %w[thing],
+        response_keys: %w[ok],
+        request_shape: 'object',
+        response_shape: 'object',
+        request_validator: ->(_value) { ['$.thing missing required field(s): id'] },
+        response_validator: ->(_value) { [] },
+        source_references: []
+      },
+      {
+        args_keys: %w[thing],
+        return_keys: %w[ok],
+        args_shape: 'object',
+        return_shape: 'object',
+        source_references: []
+      }
+    )
+
+    assert_equal 'source_disagreement', method.fetch(:classification)
+    assert method.fetch(:notes).any? { |note| note.include?('missing required field(s): id') }
+  end
+
+  def test_openapi_validator_checks_required_fields_array_arity_and_item_types
+    source = Verify::OpenapiSource.new('/tmp/unused-openapi.json', project_root: project_path)
+    schema = {
+      'type' => 'object',
+      'required' => ['items'],
+      'properties' => {
+        'items' => {
+          'type' => 'array',
+          'minItems' => 2,
+          'maxItems' => 2,
+          'items' => { 'type' => 'integer' }
+        }
+      }
+    }
+
+    missing = source.send(:validate_value, {}, schema, {})
+    invalid = source.send(:validate_value, { 'items' => [1, 'two', 3] }, schema, {})
+    valid = source.send(:validate_value, { 'items' => [1, 2] }, schema, {})
+
+    assert_includes missing.join(' | '), 'missing required field(s): items'
+    assert_includes invalid.join(' | '), 'at most 2 item(s)'
+    assert_includes invalid.join(' | '), '$.items[1] must be integer'
+    assert_empty valid
+  end
+
   def test_documented_shapes_accept_yaml_native_values_and_scalar_examples
     report = Verify::MethodsReport.new(project_root: project_path)
 
     assert_equal %w[id name], report.send(:json_top_level_keys, { 'name' => 'alice', 'id' => 1 })
     assert_equal 'object', report.send(:json_shape, { 'id' => 1 })
-    assert_equal 'array', report.send(:json_shape, [{ 'id' => 1 }])
+    assert_equal 'array[object]', report.send(:json_shape, [{ 'id' => 1 }])
+    assert_equal 'array[array[boolean]]', report.send(:json_shape, [[true]])
     assert_equal 'null', report.send(:json_shape, nil)
     assert_equal 'string', report.send(:json_shape, '')
   end
@@ -132,6 +195,13 @@ class MethodsReportTest < Minitest::Test
           struct legacy_items_args {};
           FC_REFLECT(wallet_bridge_api::legacy_items_args, (query))
           DECLARE_API((get_shared)(list_items)(maybe_item)(legacy_items));
+          DEFINE_API_IMPL(wallet_bridge_api_impl, get_shared)
+          {
+            verify_args(args, 1);
+            FC_ASSERT(args.get_array().at(0).is_array(), "nested arguments required");
+            const auto arguments = args.get_array().at(0);
+            verify_args(arguments, 2);
+          }
         CPP
       )
 
@@ -141,7 +211,8 @@ class MethodsReportTest < Minitest::Test
       maybe_item = methods.fetch('wallet_bridge_api.maybe_item')
       legacy_items = methods.fetch('wallet_bridge_api.legacy_items')
 
-      assert_equal 'array', get_shared.fetch(:args_shape)
+      assert_equal 'array[array]', get_shared.fetch(:args_shape)
+      assert_equal({ min_items: 1, item: { min_items: 2 } }, get_shared.fetch(:args_constraints))
       assert_equal 'object', get_shared.fetch(:return_shape)
       assert_equal %w[id value], get_shared.fetch(:return_keys)
       assert_equal 'array', list_items.fetch(:return_shape)
@@ -188,7 +259,7 @@ class MethodsReportTest < Minitest::Test
               {
                 'api_method' => 'sample_api.get_thing',
                 'parameter_json' => '{"id":0}',
-                'expected_response_json' => '{"thing":null,"extra":true}'
+                'expected_response_json' => '{"thing":{},"extra":true}'
               },
               {
                 'api_method' => 'sample_api.no_params',
