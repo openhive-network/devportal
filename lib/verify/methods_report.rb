@@ -84,8 +84,12 @@ module Verify
       doc_response = doc && doc[:response_keys]
       openapi_param_shape = openapi_method && openapi_method[:request_shape]
       openapi_response_shape = openapi_method && openapi_method[:response_shape]
+      openapi_param_required = openapi_method && openapi_method[:request_required_keys]
+      openapi_response_required = openapi_method && openapi_method[:response_required_keys]
       cpp_param_shape = cpp_method && cpp_method[:args_shape]
       cpp_response_shape = cpp_method && cpp_method[:return_shape]
+      cpp_param_required = cpp_method && cpp_method[:args_required_keys]
+      cpp_response_required = cpp_method && cpp_method[:return_required_keys]
       doc_param_shape = doc && doc[:parameter_shape]
       doc_response_shape = doc && doc[:response_shape]
       doc_param_value = doc && doc[:parameter_value]
@@ -116,6 +120,10 @@ module Verify
             doc_response_shape: doc_response_shape,
             openapi_response_shape: openapi_response_shape,
             cpp_response_shape: cpp_response_shape,
+            openapi_param_required: openapi_param_required,
+            openapi_response_required: openapi_response_required,
+            cpp_param_required: cpp_param_required,
+            cpp_response_required: cpp_response_required,
             openapi_param_errors: openapi_param_errors,
             openapi_response_errors: openapi_response_errors,
             cpp_param_errors: cpp_param_errors,
@@ -134,10 +142,13 @@ module Verify
         doc_status: doc_status,
         classification: classification,
         documented: !!doc,
-        openapi: source_details(openapi_method, openapi_params, openapi_response, openapi_param_shape, openapi_response_shape),
+        openapi: source_details(
+          openapi_method, openapi_params, openapi_response, openapi_param_shape, openapi_response_shape,
+          nil, openapi_param_required, openapi_response_required
+        ),
         cpp: source_details(
           cpp_method, cpp_params, cpp_response, cpp_param_shape, cpp_response_shape,
-          cpp_method && cpp_method[:args_constraints]
+          cpp_method && cpp_method[:args_constraints], cpp_param_required, cpp_response_required
         ),
         documented_fields: {
           parameters: doc_params || [],
@@ -210,24 +221,27 @@ module Verify
 
     def compare_fields(name:, doc_params:, openapi_params:, cpp_params:, doc_response:, openapi_response:, cpp_response:,
       doc_param_shape:, openapi_param_shape:, cpp_param_shape:, doc_response_shape:, openapi_response_shape:,
-      cpp_response_shape:, openapi_param_errors:, openapi_response_errors:, cpp_param_errors:, notes:)
+      cpp_response_shape:, openapi_param_required:, openapi_response_required:, cpp_param_required:,
+      cpp_response_required:, openapi_param_errors:, openapi_response_errors:, cpp_param_errors:, notes:)
       source_results = {}
 
       [
         ['OpenAPI', openapi_params, openapi_response, openapi_param_shape, openapi_response_shape,
-          openapi_param_errors, openapi_response_errors],
-        ['C++', cpp_params, cpp_response, cpp_param_shape, cpp_response_shape, cpp_param_errors, []]
-      ].each do |source_name, params, response, param_shape, response_shape, param_errors, response_errors|
+          openapi_param_required, openapi_response_required, openapi_param_errors, openapi_response_errors],
+        ['C++', cpp_params, cpp_response, cpp_param_shape, cpp_response_shape,
+          cpp_param_required, cpp_response_required, cpp_param_errors, []]
+      ].each do |source_name, params, response, param_shape, response_shape, param_required, response_required,
+        param_errors, response_errors|
         source_known = false
         source_matches = true
 
         [
-          ['parameter', doc_params, params, doc_param_shape, param_shape],
-          ['response', doc_response, response, doc_response_shape, response_shape]
-        ].each do |kind, docs, source, docs_shape, source_shape|
+          ['parameter', doc_params, params, doc_param_shape, param_shape, param_required],
+          ['response', doc_response, response, doc_response_shape, response_shape, response_required]
+        ].each do |kind, docs, source, docs_shape, source_shape, required|
           if source
             source_known = true
-            missing = source - docs
+            missing = (required || source) - docs
             extra = docs - source
             next if missing.empty? && extra.empty?
 
@@ -291,14 +305,17 @@ module Verify
       'insufficient_source'
     end
 
-    def source_details(method, params, response, param_shape = nil, response_shape = nil, parameter_constraints = nil)
+    def source_details(method, params, response, param_shape = nil, response_shape = nil, parameter_constraints = nil,
+      required_params = nil, required_response = nil)
       {
         present: !!method,
         parameter_fields: params || [],
         response_fields: response || [],
         parameter_shape: param_shape,
         response_shape: response_shape,
-        parameter_constraints: parameter_constraints
+        parameter_constraints: parameter_constraints,
+        required_parameter_fields: required_params || [],
+        required_response_fields: required_response || []
       }
     end
 
@@ -530,6 +547,8 @@ module Verify
           {
             request_keys: property_keys(request_schema),
             response_keys: property_keys(response_schema),
+            request_required_keys: required_keys(request_schema),
+            response_required_keys: required_keys(response_schema),
             request_shape: schema_shape(request_schema, schemas),
             response_shape: schema_shape(response_schema, schemas),
             request_validator: schema_validator(
@@ -566,11 +585,12 @@ module Verify
 
       return schema unless schema['allOf']
 
-      schema['allOf'].each_with_object({ 'type' => 'object', 'properties' => {} }) do |item, merged|
+      schema['allOf'].each_with_object({ 'type' => 'object', 'properties' => {}, 'required' => [] }) do |item, merged|
         resolved = resolve_schema(item, schemas, seen.dup)
         next unless resolved
 
         merged['properties'].merge!(resolved.fetch('properties', {}))
+        merged['required'] |= Array(resolved['required'])
       end
     end
 
@@ -582,6 +602,12 @@ module Verify
       return properties.keys.sort unless properties.empty?
 
       nil
+    end
+
+    def required_keys(schema)
+      return nil unless schema
+
+      Array(schema['required']).sort
     end
 
     def schema_shape(schema, schemas)
@@ -734,13 +760,13 @@ module Verify
     def load
       methods = {}
       all_files = api_dirs.flat_map { |api_dir| Dir[File.join(api_dir, '**', '*.{hpp,cpp}')].sort }
-      global_reflections, global_aliases = reflected_fields(all_files)
+      global_reflections, global_aliases, global_optional_fields = reflected_fields(all_files)
 
       api_dirs.each do |api_dir|
         api_name = File.basename(api_dir)
         files = Dir[File.join(api_dir, '**', '*.{hpp,cpp}')].sort
         file_texts = files.to_h { |file_name| [file_name, File.read(file_name)] }
-        reflections, aliases = reflected_fields(files)
+        reflections, aliases, optional_fields = reflected_fields(files)
         method_names = Set.new
         references = Hash.new { |hash, key| hash[key] = [] }
 
@@ -772,9 +798,19 @@ module Verify
           implementation = implementation_body(method_name, file_texts)
           nested_positional = api_name == 'wallet_bridge_api' &&
             implementation.to_s.match?(/args\.get_array\(\)\.at\(0\)\.is_array\(\)/)
+          args_type = "#{method_name}_args"
+          return_type = "#{method_name}_return"
+          args_keys = keys_for(args_type, reflections, aliases, global_reflections, global_aliases)
+          return_keys = keys_for(return_type, reflections, aliases, global_reflections, global_aliases)
           methods[name] = {
-            args_keys: keys_for("#{method_name}_args", reflections, aliases, global_reflections, global_aliases),
-            return_keys: keys_for("#{method_name}_return", reflections, aliases, global_reflections, global_aliases),
+            args_keys: args_keys,
+            return_keys: return_keys,
+            args_required_keys: required_keys_for(
+              args_type, args_keys, aliases, global_aliases, optional_fields, global_optional_fields
+            ),
+            return_required_keys: required_keys_for(
+              return_type, return_keys, aliases, global_aliases, optional_fields, global_optional_fields
+            ),
             args_shape: shape_for(
               "#{method_name}_args", reflections, aliases, global_reflections, global_aliases,
               positional_variant: api_name == 'wallet_bridge_api', nested_positional: nested_positional
@@ -802,10 +838,16 @@ module Verify
     def reflected_fields(files)
       reflections = {}
       aliases = {}
+      optional_fields = {}
 
       files.each do |file_name|
         lines = File.readlines(file_name)
+        text = lines.join
         api_namespace = api_namespace_for(file_name)
+        struct_optional_fields(text).each do |type_name, fields|
+          optional_fields[type_name] = fields
+          optional_fields["#{api_namespace}::#{type_name}"] = fields if api_namespace
+        end
         lines.each_with_index do |line, index|
           line.scan(/DEFINE_API_ARGS\s*\(\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*,\s*(.*?)\s*,\s*(.*?)\s*\)/) do |method_name, args_type, return_type|
             next if method_name == 'api_name'
@@ -844,7 +886,26 @@ module Verify
         end
       end
 
-      [reflections, aliases]
+      [reflections, aliases, optional_fields]
+    end
+
+    def struct_optional_fields(text)
+      text.scan(/struct\s+([a-zA-Z_][a-zA-Z0-9_]*)[^;{]*\{(.*?)^\s*\};/m).to_h do |type_name, body|
+        fields = body.lines.filter_map do |line|
+          match = line.match(/(?:fc::|std::)?optional\s*<.+>\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(?:=[^;]+)?;/)
+          match && match[1]
+        end
+        [type_name, fields.sort]
+      end
+    end
+
+    def required_keys_for(name, keys, aliases, global_aliases, optional_fields, global_optional_fields)
+      return nil unless keys
+
+      resolved = resolve_alias(name, aliases, global_aliases)
+      optional = optional_fields[resolved] || optional_fields[short_type(resolved)] ||
+        global_optional_fields[resolved] || global_optional_fields[short_type(resolved)] || []
+      keys - optional
     end
 
     def keys_for(name, reflections, aliases, global_reflections, global_aliases)
@@ -906,6 +967,12 @@ module Verify
       exact_size = implementation[/CHECK_ARG_SIZE\s*\(\s*(\d+)\s*\)/, 1]
       constraints = exact_size ? { min_items: exact_size.to_i, max_items: exact_size.to_i } : {}
 
+      allowed_sizes = implementation.scan(/args\.size\(\)\s*==\s*(\d+)/).flatten.map(&:to_i)
+      unless allowed_sizes.empty?
+        constraints[:min_items] = allowed_sizes.min
+        constraints[:max_items] = allowed_sizes.max
+      end
+
       minimum = implementation[/verify_args\s*\(\s*args\s*,\s*(\d+)\s*\)/, 1]
       constraints[:min_items] = minimum.to_i if minimum
       maximum = implementation[/args\.size\(\)\s*<=\s*(\d+)/, 1]
@@ -917,11 +984,38 @@ module Verify
 
     def argument_types(implementation, variable_name)
       types = []
-      pattern = /#{Regexp.escape(variable_name)}\.at\(\s*(\d+)\s*\)\.as<\s*([^>]+?)\s*>/
-      implementation.scan(pattern) do |index, type|
-        types[index.to_i] = scalar_shape(normalize_type(type))
+      pattern = /#{Regexp.escape(variable_name)}\.at\s*\(\s*(\d+)\s*\)\.as\s*</
+      cursor = 0
+      while (match = pattern.match(implementation, cursor))
+        type, cursor = balanced_template_argument(implementation, match.end(0))
+        break unless type
+
+        types[match[1].to_i] = argument_type_shape(type)
       end
       types
+    end
+
+    def balanced_template_argument(text, start_index)
+      depth = 1
+      index = start_index
+      while index < text.length
+        case text[index]
+        when '<' then depth += 1
+        when '>'
+          depth -= 1
+          return [text[start_index...index], index + 1] if depth.zero?
+        end
+        index += 1
+      end
+      [nil, text.length]
+    end
+
+    def argument_type_shape(type)
+      normalized = normalize_type(type)
+      return 'object' if normalized.match?(/\A(?:(?:std|fc)::)?map</)
+      return 'array' if collection_type?(normalized)
+
+      scalar_shape(normalized)
     end
 
     def resolve_alias(name, aliases, global_aliases)
@@ -969,7 +1063,7 @@ module Verify
       return 'boolean' if name == 'bool'
       return 'integer' if name.match?(/\A(?:u?int(?:8|16|32|64)_t|size_t|int|long)\z/)
       return 'number' if %w[float double].include?(name)
-      return 'string' if name == 'string' || name.end_with?('_type', '_version')
+      return 'string' if name == 'string' || name.end_with?('_type', '_version', '_level', '_direction', '_status')
 
       nil
     end

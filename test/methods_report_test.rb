@@ -171,6 +171,22 @@ class MethodsReportTest < Minitest::Test
     assert_includes report.send(:validate_constraints, [true, false], constraints).join(' | '), 'at most 1 item(s)'
   end
 
+  def test_cpp_positional_constraints_parse_nested_collection_types
+    cpp = Verify::CppSource.new('/tmp/unused-apis', project_root: project_path)
+    implementation = <<~CPP
+      FC_ASSERT(args.size() == 2 || args.size() == 3, "expected 2-3 arguments");
+      args.at(0).as<account_name_type>();
+      args.at(1).as<flat_set<public_key_type>>();
+      args.at(2).as<hive::plugins::database_api::authority_level>();
+    CPP
+
+    constraints = cpp.send(:positional_constraints, implementation, false)
+
+    assert_equal 2, constraints.fetch(:min_items)
+    assert_equal 3, constraints.fetch(:max_items)
+    assert_equal %w[string array string], constraints.fetch(:prefix_types)
+  end
+
   def test_documented_shapes_accept_yaml_native_values_and_scalar_examples
     report = Verify::MethodsReport.new(project_root: project_path)
 
@@ -194,9 +210,14 @@ class MethodsReportTest < Minitest::Test
       File.write(
         File.join(database_dir, 'database_api.hpp'),
         <<~CPP
-          struct shared_result {};
+          struct shared_result
+          {
+            int id;
+            int value;
+            fc::optional<int> future_value;
+          };
           typedef shared_result get_shared_return;
-          FC_REFLECT(database_api::shared_result, (id)(value))
+          FC_REFLECT(database_api::shared_result, (id)(value)(future_value))
         CPP
       )
       File.write(
@@ -235,7 +256,8 @@ class MethodsReportTest < Minitest::Test
         get_shared.fetch(:args_constraints)
       )
       assert_equal 'object', get_shared.fetch(:return_shape)
-      assert_equal %w[id value], get_shared.fetch(:return_keys)
+      assert_equal %w[future_value id value], get_shared.fetch(:return_keys)
+      assert_equal %w[id value], get_shared.fetch(:return_required_keys)
       assert_equal 'array', list_items.fetch(:return_shape)
       assert_equal 'object|null', maybe_item.fetch(:return_shape)
       assert_equal 'object', legacy_items.fetch(:args_shape)
