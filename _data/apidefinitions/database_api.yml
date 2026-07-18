@@ -1288,8 +1288,11 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-version)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: database_api.get_witness_schedule
-    purpose: Returns the current witness schedule.
-    parameter_json: "{}"
+    purpose: |
+      Returns the current witness schedule. Set `include_future` to `true` to
+      include `future_shuffled_witnesses`. `future_changes` is also returned
+      when the future schedule contains pending property changes.
+    parameter_json: '{"include_future":true}'
     expected_response_json: |
       {
         "id": 0,
@@ -1317,6 +1320,9 @@
           "drakos",
           "gtg",
           "init-7"
+        ],
+        "future_shuffled_witnesses": [
+          "future-witness"
         ],
         "num_scheduled_witnesses": 21,
         "elected_weight": 1,
@@ -1364,7 +1370,7 @@
         "min_witness_account_subsidy_decay": 0
       }
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"database_api.get_witness_schedule", "id":1}'
+      - '{"jsonrpc":"2.0", "method":"database_api.get_witness_schedule", "params":{"include_future":true}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/database_api/get_witness_schedule)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_witness_schedule)"

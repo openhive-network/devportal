@@ -43,6 +43,7 @@
            "author_payout_value":"0.000 HBD",
            "curator_payout_value":"0.000 HBD",
            "promoted":"0.000 HBD",
+           "reblogs":21,
            "replies":[],
            "active_votes":[
               {"voter":"bob", "rshares":"67759296290"}
@@ -174,6 +175,7 @@
           "author_payout_value": "0.000 HBD",
           "curator_payout_value": "0.000 HBD",
           "promoted": "0.000 HBD",
+          "reblogs": 55,
           "replies": [],
           "author_reputation": 69.29,
           "stats": {

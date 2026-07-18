@@ -248,9 +248,10 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       method['api_method'] == 'wallet_bridge_api.get_witness_schedule'
     end
     assert_equal [[true]], witness_schedule.fetch('parameter_json')
-    %w[future_changes future_shuffled_witnesses].each do |field|
-      assert JSON.parse(witness_schedule.fetch('expected_response_json')).key?(field)
-    end
+    witness_response = JSON.parse(witness_schedule.fetch('expected_response_json'))
+    assert witness_response.key?('future_shuffled_witnesses')
+    refute witness_response.key?('future_changes')
+    assert_includes witness_schedule.fetch('purpose'), 'when unavailable'
   end
 
   def test_adversarial_optional_response_and_compatibility_contracts
@@ -263,7 +264,7 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     assert_equal true, JSON.parse(signatures.fetch('expected_response_json')).fetch('valid')
 
     transaction = api_method('transaction_status_api.yml', 'transaction_status_api.find_transaction')
-    assert_equal %w[block_num rc_cost status], JSON.parse(transaction.fetch('expected_response_json')).keys.sort
+    assert_equal({ 'status' => 'too_old' }, JSON.parse(transaction.fetch('expected_response_json')))
 
     %w[bridge.get_post bridge.normalize_post].each do |name|
       refute JSON.parse(api_method('bridge.yml', name).fetch('expected_response_json')).key?('post_id')
@@ -277,10 +278,55 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       assert_equal [true], api_method('condenser_api.yml', name).fetch('parameter_json')
     end
 
-    %w[condenser_api.get_blog condenser_api.get_content condenser_api.get_followers].each do |name|
+    database_witnesses = api_method('database_api.yml', 'database_api.get_witness_schedule')
+    assert_equal({ 'include_future' => true }, JSON.parse(database_witnesses.fetch('parameter_json')))
+    assert JSON.parse(database_witnesses.fetch('expected_response_json')).key?('future_shuffled_witnesses')
+    refute JSON.parse(database_witnesses.fetch('expected_response_json')).key?('future_changes')
+
+    condenser_witnesses = api_method('condenser_api.yml', 'condenser_api.get_witness_schedule')
+    refute condenser_witnesses.fetch('expected_response_json').key?('future_changes')
+
+    lookup_names = api_method('condenser_api.yml', 'condenser_api.lookup_account_names')
+    assert_equal [['hiveio'], true], lookup_names.fetch('parameter_json')
+
+    conversions = api_method('condenser_api.yml', 'condenser_api.get_conversion_requests')
+    assert_equal ['hiveio'], conversions.fetch('parameter_json')
+
+    %w[bridge.get_ranked_posts bridge.get_account_posts].each do |name|
+      response = JSON.parse(api_method('bridge.yml', name).fetch('expected_response_json'))
+      assert_kind_of Integer, response.first.fetch('reblogs')
+    end
+
+    %w[
+      condenser_api.get_blog
+      condenser_api.get_blog_entries
+      condenser_api.get_comment_discussions_by_payout
+      condenser_api.get_content
+      condenser_api.get_content_replies
+      condenser_api.get_discussions_by_author_before_date
+      condenser_api.get_follow_count
+      condenser_api.get_followers
+      condenser_api.get_following
+      condenser_api.get_reblogged_by
+      condenser_api.get_trending_tags
+    ].each do |name|
       method = api_method('condenser_api.yml', name)
       assert_equal 'deprecated', method.fetch('status')
       assert_includes method.fetch('purpose'), 'public Hive API still routes'
+    end
+  end
+
+  def test_all_curl_examples_are_strict_json
+    Dir[project_path('_data', 'apidefinitions', '*.yml')].sort.each do |file|
+      Array(YAML.load_file(file)).each do |section|
+        Array(section['methods']).each do |method|
+          Array(method['curl_examples']).each_with_index do |example, index|
+            JSON.parse(example)
+          rescue JSON::ParserError => error
+            flunk "Invalid curl example #{index} for #{method['api_method']} in #{File.basename(file)}: #{error.message}"
+          end
+        end
+      end
     end
   end
 
