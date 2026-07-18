@@ -5,7 +5,7 @@ require 'json'
 class MethodsReportTest < Minitest::Test
   include JekyllBuildTestHelper
 
-  def test_compare_method_detects_openapi_cpp_disagreement
+  def test_compare_method_verifies_docs_that_match_cpp_when_openapi_disagrees
     report = Verify::MethodsReport.new(project_root: project_path)
 
     method = report.compare_method(
@@ -14,7 +14,9 @@ class MethodsReportTest < Minitest::Test
         status: 'active',
         obsolete: false,
         parameter_keys: %w[account level signers],
-        response_keys: %w[valid]
+        response_keys: %w[valid],
+        parameter_shape: 'object',
+        response_shape: 'object'
       },
       {
         request_keys: %w[account signers],
@@ -28,9 +30,77 @@ class MethodsReportTest < Minitest::Test
       }
     )
 
-    assert_equal 'mismatch', method.fetch(:classification)
+    assert_equal 'verified', method.fetch(:classification)
+    assert method.fetch(:source_disagreement)
     assert method.fetch(:notes).any? { |note| note.include?('OpenAPI parameter fields differ') }
     assert method.fetch(:notes).any? { |note| note.include?('OpenAPI and C++ parameter fields differ') }
+  end
+
+  def test_compare_method_reports_mismatch_when_docs_match_neither_source
+    report = Verify::MethodsReport.new(project_root: project_path)
+
+    method = report.compare_method(
+      'sample_api.get_thing',
+      {
+        status: 'active',
+        obsolete: false,
+        parameter_keys: %w[legacy_id],
+        response_keys: %w[legacy_value],
+        parameter_shape: 'object',
+        response_shape: 'object'
+      },
+      {
+        request_keys: %w[id],
+        response_keys: %w[value],
+        source_references: []
+      },
+      {
+        args_keys: %w[id include_future],
+        return_keys: %w[value],
+        source_references: []
+      }
+    )
+
+    assert_equal 'mismatch', method.fetch(:classification)
+    assert method.fetch(:notes).any? { |note| note.include?('OpenAPI parameter fields differ') }
+    assert method.fetch(:notes).any? { |note| note.include?('C++ parameter fields differ') }
+  end
+
+  def test_compare_method_verifies_positional_openapi_shapes
+    report = Verify::MethodsReport.new(project_root: project_path)
+
+    method = report.compare_method(
+      'condenser_api.get_accounts',
+      {
+        status: 'active',
+        obsolete: false,
+        parameter_keys: [],
+        response_keys: [],
+        parameter_shape: 'array',
+        response_shape: 'array'
+      },
+      {
+        request_keys: nil,
+        response_keys: nil,
+        request_shape: 'array',
+        response_shape: 'array',
+        source_references: []
+      },
+      nil
+    )
+
+    assert_equal 'verified', method.fetch(:classification)
+    assert_empty method.fetch(:notes)
+  end
+
+  def test_documented_shapes_accept_yaml_native_values_and_scalar_examples
+    report = Verify::MethodsReport.new(project_root: project_path)
+
+    assert_equal %w[id name], report.send(:json_top_level_keys, { 'name' => 'alice', 'id' => 1 })
+    assert_equal 'object', report.send(:json_shape, { 'id' => 1 })
+    assert_equal 'array', report.send(:json_shape, [{ 'id' => 1 }])
+    assert_equal 'null', report.send(:json_shape, nil)
+    assert_equal 'string', report.send(:json_shape, '')
   end
 
   def test_compare_method_classifies_source_only_and_docs_only

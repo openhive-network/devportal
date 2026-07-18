@@ -81,6 +81,10 @@ module Verify
       cpp_response = cpp_method && cpp_method[:return_keys]
       doc_params = doc && doc[:parameter_keys]
       doc_response = doc && doc[:response_keys]
+      openapi_param_shape = openapi_method && openapi_method[:request_shape]
+      openapi_response_shape = openapi_method && openapi_method[:response_shape]
+      doc_param_shape = doc && doc[:parameter_shape]
+      doc_response_shape = doc && doc[:response_shape]
 
       classification =
         if doc.nil?
@@ -98,6 +102,10 @@ module Verify
             doc_response: doc_response,
             openapi_response: openapi_response,
             cpp_response: cpp_response,
+            doc_param_shape: doc_param_shape,
+            openapi_param_shape: openapi_param_shape,
+            doc_response_shape: doc_response_shape,
+            openapi_response_shape: openapi_response_shape,
             notes: notes
           )
         end
@@ -113,12 +121,17 @@ module Verify
         doc_status: doc_status,
         classification: classification,
         documented: !!doc,
-        openapi: source_details(openapi_method, openapi_params, openapi_response),
+        openapi: source_details(openapi_method, openapi_params, openapi_response, openapi_param_shape, openapi_response_shape),
         cpp: source_details(cpp_method, cpp_params, cpp_response),
         documented_fields: {
           parameters: doc_params || [],
           response: doc_response || []
         },
+        documented_shapes: {
+          parameters: doc_param_shape,
+          response: doc_response_shape
+        },
+        source_disagreement: notes.any? { |note| note.start_with?('OpenAPI and C++') },
         notes: notes.uniq,
         source_references: source_references(openapi_method, cpp_method)
       }
@@ -139,6 +152,7 @@ module Verify
       report.fetch(:summary).fetch(:classifications).each do |classification, count|
         lines << "- `#{classification}`: #{count}"
       end
+      lines << "- source disagreements: #{report.fetch(:summary).fetch(:source_disagreement_count)}"
       lines << "- namespaces: #{report.fetch(:summary).fetch(:namespace_count)}"
       lines << "- methods: #{report.fetch(:summary).fetch(:method_count)}"
       lines << ''
@@ -177,49 +191,69 @@ module Verify
 
     private
 
-    def compare_fields(name:, doc_params:, openapi_params:, cpp_params:, doc_response:, openapi_response:, cpp_response:, notes:)
-      mismatch = false
+    def compare_fields(name:, doc_params:, openapi_params:, cpp_params:, doc_response:, openapi_response:, cpp_response:,
+      doc_param_shape:, openapi_param_shape:, doc_response_shape:, openapi_response_shape:, notes:)
       known_source = false
+      matching_source = false
 
       [
-        ['parameter', doc_params, openapi_params, 'OpenAPI'],
-        ['parameter', doc_params, cpp_params, 'C++'],
-        ['response', doc_response, openapi_response, 'OpenAPI'],
-        ['response', doc_response, cpp_response, 'C++']
-      ].each do |kind, docs, source, source_name|
-        next unless source
+        ['OpenAPI', openapi_params, openapi_response, openapi_param_shape, openapi_response_shape],
+        ['C++', cpp_params, cpp_response, nil, nil]
+      ].each do |source_name, params, response, param_shape, response_shape|
+        source_known = false
+        source_matches = true
 
-        known_source = true
-        missing = source - docs
-        extra = docs - source
-        next if missing.empty? && extra.empty?
+        [
+          ['parameter', doc_params, params, doc_param_shape, param_shape],
+          ['response', doc_response, response, doc_response_shape, response_shape]
+        ].each do |kind, docs, source, docs_shape, source_shape|
+          if source
+            source_known = true
+            known_source = true
+            missing = source - docs
+            extra = docs - source
+            next if missing.empty? && extra.empty?
 
-        mismatch = true
-        notes << "#{source_name} #{kind} fields differ; source-only: #{list_or_none(missing)}; docs-only: #{list_or_none(extra)}"
+            source_matches = false
+            notes << "#{source_name} #{kind} fields differ; source-only: #{list_or_none(missing)}; docs-only: #{list_or_none(extra)}"
+            next
+          end
+
+          next unless source_shape
+
+          source_known = true
+          known_source = true
+          next if shape_matches?(docs_shape, source_shape)
+
+          source_matches = false
+          notes << "#{source_name} #{kind} shapes differ; source: #{source_shape}; docs: #{docs_shape || 'unknown'}"
+        end
+
+        matching_source ||= source_known && source_matches
       end
 
       if openapi_params && cpp_params && openapi_params != cpp_params
-        mismatch = true
         notes << "OpenAPI and C++ parameter fields differ; OpenAPI: #{openapi_params.join(', ')}; C++: #{cpp_params.join(', ')}"
       end
 
       if openapi_response && cpp_response && openapi_response != cpp_response
-        mismatch = true
         notes << "OpenAPI and C++ response fields differ; OpenAPI: #{openapi_response.join(', ')}; C++: #{cpp_response.join(', ')}"
       end
 
-      return 'mismatch' if mismatch
-      return 'verified' if known_source
+      return 'verified' if matching_source
+      return 'mismatch' if known_source
 
       notes << "source method exists but schema fields could not be extracted for #{name}"
       'insufficient_source'
     end
 
-    def source_details(method, params, response)
+    def source_details(method, params, response, param_shape = nil, response_shape = nil)
       {
         present: !!method,
         parameter_fields: params || [],
-        response_fields: response || []
+        response_fields: response || [],
+        parameter_shape: param_shape,
+        response_shape: response_shape
       }
     end
 
@@ -245,7 +279,9 @@ module Verify
               status: documented_status(method),
               obsolete: method['removed'] || method['status'].to_s == 'obsolete',
               parameter_keys: json_top_level_keys(method['parameter_json']),
-              response_keys: json_top_level_keys(method['expected_response_json'])
+              response_keys: json_top_level_keys(method['expected_response_json']),
+              parameter_shape: json_shape(method['parameter_json']),
+              response_shape: json_shape(method['expected_response_json'])
             }
           end
         end
@@ -263,12 +299,49 @@ module Verify
     def json_top_level_keys(value)
       return [] if value.nil? || value.to_s.strip.empty?
 
-      parsed = JSON.parse(value.to_s)
+      parsed = documented_json_value(value)
       return parsed.keys.sort if parsed.is_a?(Hash)
 
       []
+    end
+
+    def json_shape(value)
+      value_shape(documented_json_value(value))
+    end
+
+    def documented_json_value(value)
+      return value unless value.is_a?(String)
+
+      JSON.parse(value)
     rescue JSON::ParserError
-      []
+      value
+    end
+
+    def value_shape(value)
+      case value
+      when Hash
+        'object'
+      when Array
+        'array'
+      when String
+        'string'
+      when Integer
+        'integer'
+      when Float
+        'number'
+      when TrueClass, FalseClass
+        'boolean'
+      when NilClass
+        'null'
+      else
+        value.class.name.downcase
+      end
+    end
+
+    def shape_matches?(documented, source)
+      return false unless documented && source
+
+      source.split('|').include?(documented)
     end
 
     def namespace_summary(method_reports)
@@ -285,7 +358,8 @@ module Verify
       {
         method_count: method_reports.length,
         namespace_count: namespaces.length,
-        classifications: classification_counts(method_reports)
+        classifications: classification_counts(method_reports),
+        source_disagreement_count: method_reports.count { |method| method[:source_disagreement] }
       }
     end
 
@@ -366,6 +440,8 @@ module Verify
           {
             request_keys: property_keys(request_schema),
             response_keys: property_keys(response_schema),
+            request_shape: schema_shape(request_schema, schemas),
+            response_shape: schema_shape(response_schema, schemas),
             source_references: source_references(name, lines)
           }
         ]
@@ -410,6 +486,23 @@ module Verify
       return properties.keys.sort unless properties.empty?
 
       nil
+    end
+
+    def schema_shape(schema, schemas)
+      resolved = resolve_schema(schema, schemas)
+      return nil unless resolved
+
+      alternatives = resolved['oneOf'] || resolved['anyOf']
+      if alternatives
+        shapes = alternatives.filter_map { |item| schema_shape(item, schemas) }.uniq.sort
+        return shapes.join('|') unless shapes.empty?
+      end
+
+      type = resolved['type']
+      type = 'object' if type.nil? && resolved['properties']
+      return nil unless type
+
+      Array(type).map(&:to_s).uniq.sort.join('|')
     end
 
     def source_references(name, lines)
