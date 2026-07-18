@@ -19,7 +19,7 @@
     since: HF26
     purpose:
     parameter_json: 'null'
-    expected_response_json: '{"id":"0000000000000000000000000000000000000000","block_num":0,"trx_num":0,"expired":false}'
+    expected_response_json: '{"id":"0000000000000000000000000000000000000000","block_num":0,"trx_num":0,"rc_cost":null,"expired":false}'
   - api_method: wallet_bridge_api.find_proposals
     since: HF26
     purpose:
