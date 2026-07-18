@@ -115,6 +115,53 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     assert_equal 1, get_transaction_block.scan(/^      expected_response_json:/).size
   end
 
+  def test_bridge_api_openapi_parameters_remain_documented
+    expected_parameters = {
+      'bridge.get_account_posts' => %w[account limit observer sort start_author start_permlink],
+      'bridge.list_communities' => %w[last limit observer query sort],
+      'bridge.list_subscribers' => %w[community last limit],
+      'bridge.list_community_roles' => %w[community last limit],
+      'bridge.get_relationship_between_accounts' => %w[account1 account2 observer],
+      'bridge.get_post' => %w[author observer permlink]
+    }
+
+    expected_parameters.each do |method_name, keys|
+      method = api_method('bridge.yml', method_name)
+      parameters = method['parameter_json']
+      parameters = JSON.parse(parameters) if parameters.is_a?(String)
+      assert_equal keys, parameters.keys.sort, "Expected #{method_name} parameters to match OpenAPI"
+    end
+
+    get_post = JSON.parse(api_method('bridge.yml', 'bridge.get_post')['expected_response_json'])
+    %w[
+      author_role
+      author_title
+      community
+      community_title
+      parent_author
+      parent_permlink
+      reblogged_by
+      reblogs
+    ].each { |field| assert get_post.key?(field), "Expected bridge.get_post response to include #{field}" }
+    refute get_post.key?('promoted')
+
+    notifications = JSON.parse(api_method('bridge.yml', 'bridge.post_notifications')['expected_response_json'])
+    assert_kind_of Array, notifications
+    assert_kind_of Hash, notifications.first
+  end
+
+  def test_normalize_post_preserves_the_hivemind_runtime_contract
+    normalize_post = api_method('bridge.yml', 'bridge.normalize_post')
+    parameters = normalize_post['parameter_json']
+    parameters = JSON.parse(parameters) if parameters.is_a?(String)
+    normalize_response = JSON.parse(normalize_post['expected_response_json'])
+    get_post_response = JSON.parse(api_method('bridge.yml', 'bridge.get_post')['expected_response_json'])
+
+    assert_equal ['post'], parameters.keys
+    assert_includes normalize_post['purpose'], 'live Bridge endpoint expects the post reference under `post`'
+    assert_equal get_post_response.keys.sort, normalize_response.keys.sort
+  end
+
   def test_database_api_methods_have_single_client_docs_block
     yaml = File.read(project_path('_data', 'apidefinitions', 'database_api.yml'))
     yaml.split(/^  - api_method: /).drop(1).each do |method_block|
