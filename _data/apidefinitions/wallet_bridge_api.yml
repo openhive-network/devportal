@@ -65,8 +65,8 @@
   - api_method: wallet_bridge_api.get_active_witnesses
     since: HF26
     purpose: Returns active witnesses, optionally including the future schedule.
-    parameter_json: [false]
-    expected_response_json: '{"witnesses":[]}'
+    parameter_json: [true]
+    expected_response_json: '{"witnesses":[],"future_witnesses":[]}'
   - api_method: wallet_bridge_api.get_block
     since: HF26
     purpose: Returns a block by block number.
@@ -155,8 +155,8 @@
   - api_method: wallet_bridge_api.get_witness_schedule
     since: HF26
     purpose: Returns the witness schedule, optionally including future schedule fields.
-    parameter_json: [false]
-    expected_response_json: '{"id":0,"current_virtual_time":"0","next_shuffle_block_num":944743200,"current_shuffled_witnesses":[],"num_scheduled_witnesses":8,"elected_weight":226,"timeshare_weight":142,"miner_weight":10,"witness_pay_normalization_factor":32765,"median_props":{"account_creation_fee":{"amount":"1","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000,"account_subsidy_budget":797,"account_subsidy_decay":347321},"majority_version":"0.0.0","max_voted_witnesses":32,"max_miner_witnesses":41,"max_runner_witnesses":203,"hardfork_required_witnesses":52,"account_subsidy_rd":{"resource_unit":0,"budget_per_time_unit":0,"pool_eq":0,"max_pool_size":0,"decay_params":{"decay_per_time_unit":0,"decay_per_time_unit_denom_shift":0},"min_decay":0},"account_subsidy_witness_rd":{"resource_unit":0,"budget_per_time_unit":0,"pool_eq":0,"max_pool_size":0,"decay_params":{"decay_per_time_unit":0,"decay_per_time_unit_denom_shift":0},"min_decay":0},"min_witness_account_subsidy_decay":0}'
+    parameter_json: [true]
+    expected_response_json: '{"id":0,"current_virtual_time":"0","next_shuffle_block_num":944743200,"current_shuffled_witnesses":[],"future_shuffled_witnesses":[],"num_scheduled_witnesses":8,"elected_weight":226,"timeshare_weight":142,"miner_weight":10,"witness_pay_normalization_factor":32765,"median_props":{"account_creation_fee":{"amount":"1","precision":3,"nai":"@@000000021"},"maximum_block_size":131072,"hbd_interest_rate":1000,"account_subsidy_budget":797,"account_subsidy_decay":347321},"majority_version":"0.0.0","max_voted_witnesses":32,"max_miner_witnesses":41,"max_runner_witnesses":203,"hardfork_required_witnesses":52,"account_subsidy_rd":{"resource_unit":0,"budget_per_time_unit":0,"pool_eq":0,"max_pool_size":0,"decay_params":{"decay_per_time_unit":0,"decay_per_time_unit_denom_shift":0},"min_decay":0},"account_subsidy_witness_rd":{"resource_unit":0,"budget_per_time_unit":0,"pool_eq":0,"max_pool_size":0,"decay_params":{"decay_per_time_unit":0,"decay_per_time_unit_denom_shift":0},"min_decay":0},"min_witness_account_subsidy_decay":0,"future_changes":null}'
   - api_method: wallet_bridge_api.is_known_transaction
     since: HF26
     purpose: Returns whether a transaction id is known to the node.
