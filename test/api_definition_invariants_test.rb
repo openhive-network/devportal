@@ -1,4 +1,5 @@
 require_relative 'test_helper'
+require 'json'
 
 class ApiDefinitionInvariantsTest < Minitest::Test
   include JekyllBuildTestHelper
@@ -82,6 +83,37 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       assert_operator client_docs_blocks, :<=, 1,
         "Expected #{method_name} to define at most one client_docs block"
     end
+  end
+
+  def test_wallet_bridge_api_definitions_use_current_positional_contracts
+    methods = YAML.load_file(
+      project_path('_data', 'apidefinitions', 'wallet_bridge_api.yml')
+    ).first.fetch('methods')
+
+    assert_equal 35, methods.length
+    methods.each do |method|
+      refute_empty method.fetch('purpose').to_s,
+        "Expected #{method.fetch('api_method')} to describe its behavior"
+      assert_kind_of Array, method.fetch('parameter_json'),
+        "Expected #{method.fetch('api_method')} parameters to use a positional array"
+    end
+
+    broadcast = methods.find do |method|
+      method['api_method'] == 'wallet_bridge_api.broadcast_transaction_synchronous'
+    end
+    assert JSON.parse(broadcast.fetch('expected_response_json')).key?('rc_cost')
+
+    dgpo = methods.find do |method|
+      method['api_method'] == 'wallet_bridge_api.get_dynamic_global_properties'
+    end
+    dgpo_response = JSON.parse(dgpo.fetch('expected_response_json'))
+    %w[total_reward_fund_hive total_reward_shares2 required_actions_partition_percent].each do |field|
+      refute dgpo_response.key?(field), "Expected Wallet Bridge DGPO to omit retired #{field}"
+    end
+
+    version = methods.find { |method| method['api_method'] == 'wallet_bridge_api.get_version' }
+    assert_equal %w[blockchain_version chain_id fc_revision haf_revision hive_revision node_type],
+      JSON.parse(version.fetch('expected_response_json')).keys.sort
   end
 
   def test_hosted_openapi_links_use_openapi_glyph
