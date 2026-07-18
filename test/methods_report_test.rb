@@ -129,6 +129,8 @@ class MethodsReportTest < Minitest::Test
           typedef variant maybe_item_args;
           typedef fc::optional<database_api::shared_result> maybe_item_return;
           DEFINE_API_ARGS(legacy_items, vector< variant >, vector< database_api::shared_result >)
+          struct legacy_items_args {};
+          FC_REFLECT(wallet_bridge_api::legacy_items_args, (query))
           DECLARE_API((get_shared)(list_items)(maybe_item)(legacy_items));
         CPP
       )
@@ -144,7 +146,8 @@ class MethodsReportTest < Minitest::Test
       assert_equal %w[id value], get_shared.fetch(:return_keys)
       assert_equal 'array', list_items.fetch(:return_shape)
       assert_equal 'object|null', maybe_item.fetch(:return_shape)
-      assert_equal 'array', legacy_items.fetch(:args_shape)
+      assert_equal 'object', legacy_items.fetch(:args_shape)
+      assert_equal ['query'], legacy_items.fetch(:args_keys)
       assert_equal 'array', legacy_items.fetch(:return_shape)
     end
   end

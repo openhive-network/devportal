@@ -641,6 +641,8 @@ module Verify
     end
 
     def keys_for(name, reflections, aliases, global_reflections, global_aliases)
+      return reflections[name] if reflections.key?(name)
+
       resolved = resolve_alias(name, aliases, global_aliases)
       return [] if short_type(resolved) == 'void_type'
       return nil if optional_type?(resolved) || collection_type?(resolved)
@@ -653,6 +655,8 @@ module Verify
     end
 
     def shape_for(name, reflections, aliases, global_reflections, global_aliases, positional_variant: false)
+      return 'object' if reflections.key?(name)
+
       resolved = resolve_alias(name, aliases, global_aliases)
       normalized = normalize_type(resolved)
 
