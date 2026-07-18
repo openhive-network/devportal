@@ -88,6 +88,33 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     end
   end
 
+  def test_account_history_api_agreed_source_shapes_remain_documented
+    get_transaction = api_method('account_history_api.yml', 'account_history_api.get_transaction')
+    assert_equal %w[id include_reversible], get_transaction['parameter_json'].keys.sort
+    assert_equal %w[
+      block_num
+      expiration
+      extensions
+      operations
+      ref_block_num
+      ref_block_prefix
+      signatures
+      transaction_id
+      transaction_num
+    ], JSON.parse(get_transaction['expected_response_json']).keys.sort
+
+    enum_virtual_ops = api_method('account_history_api.yml', 'account_history_api.enum_virtual_ops')
+    assert_equal %w[next_block_range_begin next_operation_begin ops ops_by_block],
+      JSON.parse(enum_virtual_ops['expected_response_json']).keys.sort
+
+    yaml = File.read(project_path('_data', 'apidefinitions', 'account_history_api.yml'))
+    get_transaction_block = yaml.split(/^    - api_method: /).find do |method_block|
+      method_block.start_with?('account_history_api.get_transaction')
+    end
+    assert_equal 1, get_transaction_block.scan(/^      parameter_json:/).size
+    assert_equal 1, get_transaction_block.scan(/^      expected_response_json:/).size
+  end
+
   def test_database_api_methods_have_single_client_docs_block
     yaml = File.read(project_path('_data', 'apidefinitions', 'database_api.yml'))
     yaml.split(/^  - api_method: /).drop(1).each do |method_block|
