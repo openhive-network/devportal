@@ -1006,12 +1006,6 @@
           "precision": 6,
           "nai": "@@000000037"
         },
-        "total_reward_fund_hive": {
-          "amount": "0",
-          "precision": 3,
-          "nai": "@@000000021"
-        },
-        "total_reward_shares2": "0",
         "pending_rewarded_vesting_shares": {
           "amount": "55809356614",
           "precision": 6,

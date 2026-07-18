@@ -66,6 +66,8 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       sps_fund_percent
       sps_interval_ledger
       target_votes_per_period
+      total_reward_fund_hive
+      total_reward_shares2
     ].each do |field|
       refute_includes dgpo['expected_response_json'], %("#{field}")
     end
@@ -160,6 +162,30 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     assert_equal ['post'], parameters.keys
     assert_includes normalize_post['purpose'], 'live Bridge endpoint expects the post reference under `post`'
     assert_equal get_post_response.keys.sort, normalize_response.keys.sort
+  end
+
+  def test_small_api_schema_fields_remain_synchronized
+    debug_generate = JSON.parse(api_method('debug_node_api.yml', 'debug_node_api.debug_generate_blocks')['parameter_json'])
+    assert_equal %w[count debug_key miss_blocks skip], debug_generate.keys.sort
+
+    debug_hardfork = JSON.parse(api_method('debug_node_api.yml', 'debug_node_api.debug_set_hardfork')['parameter_json'])
+    assert_equal %w[hardfork_id hook_to_tx], debug_hardfork.keys.sort
+
+    debug_vest_price = JSON.parse(api_method('debug_node_api.yml', 'debug_node_api.debug_set_vest_price')['parameter_json'])
+    assert_equal %w[hook_to_tx vest_price], debug_vest_price.keys.sort
+
+    db_head = JSON.parse(api_method('hive.yml', 'hive.db_head_state')['expected_response_json'])
+    assert_equal %w[db_head_block db_head_time], db_head.keys.sort
+
+    reputations = JSON.parse(api_method('reputation_api.yml', 'reputation_api.get_account_reputations')['expected_response_json'])
+    assert_equal ['reputations'], reputations.keys
+    assert_kind_of Array, reputations['reputations']
+
+    search = JSON.parse(api_method('search_api.yml', 'search_api.find_text')['parameter_json'])
+    assert_equal %w[author limit observer pattern sort start_author start_permlink truncate_body], search.keys.sort
+
+    broadcast = JSON.parse(api_method('wallet_bridge_api.yml', 'wallet_bridge_api.broadcast_transaction_synchronous')['expected_response_json'])
+    assert_equal %w[block_num expired id rc_cost trx_num], broadcast.keys.sort
   end
 
   def test_database_api_methods_have_single_client_docs_block
