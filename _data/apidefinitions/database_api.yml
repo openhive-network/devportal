@@ -1032,7 +1032,9 @@
         "min_recurrent_transfers_recurrence": 24,
         "max_open_recurrent_transfers": 255,
         "max_recurrent_transfer_end_date": 730,
-        "max_consecutive_recurrent_transfer_failures": 10
+        "max_consecutive_recurrent_transfer_failures": 10,
+        "total_reward_fund_hive": {"amount": "0", "precision": 3, "nai": "@@000000021"},
+        "total_reward_shares2": "0"
       }
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"database_api.get_dynamic_global_properties", "id":1}'

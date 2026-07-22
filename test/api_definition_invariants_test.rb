@@ -54,10 +54,15 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       next_daily_maintenance_time
       proposal_fund_percent
       vote_power_reserve_rate
+      total_reward_fund_hive
+      total_reward_shares2
     ].each do |field|
       assert_includes dgpo['expected_response_json'], %("#{field}")
     end
 
+    # These are genuinely gone from the response. total_reward_fund_hive and
+    # total_reward_shares2 used to be listed here too, but the node still
+    # returns both (zero valued), so they are documented rather than refuted.
     %w[
       confidential_hbd_supply
       confidential_supply
@@ -66,8 +71,6 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       sps_fund_percent
       sps_interval_ledger
       target_votes_per_period
-      total_reward_fund_hive
-      total_reward_shares2
     ].each do |field|
       refute_includes dgpo['expected_response_json'], %("#{field}")
     end
@@ -175,7 +178,7 @@ class ApiDefinitionInvariantsTest < Minitest::Test
     assert_equal %w[hook_to_tx vest_price], debug_vest_price.keys.sort
 
     db_head = JSON.parse(api_method('hive.yml', 'hive.db_head_state')['expected_response_json'])
-    assert_equal %w[db_head_block db_head_time], db_head.keys.sort
+    assert_equal %w[db_head_age db_head_block db_head_time], db_head.keys.sort
 
     reputations = JSON.parse(api_method('reputation_api.yml', 'reputation_api.get_account_reputations')['expected_response_json'])
     assert_equal ['reputations'], reputations.keys
@@ -230,8 +233,11 @@ class ApiDefinitionInvariantsTest < Minitest::Test
       method['api_method'] == 'wallet_bridge_api.get_dynamic_global_properties'
     end
     dgpo_response = JSON.parse(dgpo.fetch('expected_response_json'))
-    %w[total_reward_fund_hive total_reward_shares2 required_actions_partition_percent].each do |field|
+    %w[required_actions_partition_percent].each do |field|
       refute dgpo_response.key?(field), "Expected Wallet Bridge DGPO to omit retired #{field}"
+    end
+    %w[total_reward_fund_hive total_reward_shares2].each do |field|
+      assert dgpo_response.key?(field), "Expected Wallet Bridge DGPO to document returned #{field}"
     end
 
     version = methods.find { |method| method['api_method'] == 'wallet_bridge_api.get_version' }
