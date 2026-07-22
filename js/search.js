@@ -12,6 +12,22 @@
 		}
 	}
 
+	// The query is attacker-controlled: it arrives from location.search and is
+	// echoed back into the page. Everything derived from it has to be escaped
+	// before it goes anywhere near innerHTML.
+	function escapeHTML(str) {
+		return String(str)
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;")
+			.replace(/"/g, "&quot;")
+			.replace(/'/g, "&#39;");
+	}
+
+	function escapeRegExp(str) {
+		return String(str).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	}
+
 	function getPreview(query, content, previewLength) {
 		previewLength = previewLength || (content.length * 2);
 
@@ -45,11 +61,24 @@
 				preview = preview + "...";
 			}
 
+			// Escape first, then wrap the matches, so the <strong> we add is the
+			// only markup that survives into innerHTML.
+			preview = escapeHTML(preview);
+
+			var alternates = [];
+			for (var j = 0; j < parts.length; j++) {
+				if (parts[j]) {
+					alternates.push(escapeRegExp(escapeHTML(parts[j])));
+				}
+			}
+
 			// Highlight query parts
-			preview = preview.replace(new RegExp("(" + parts.join("|") + ")", "gi"), "<strong>$1</strong>");
+			if (alternates.length) {
+				preview = preview.replace(new RegExp("(" + alternates.join("|") + ")", "gi"), "<strong>$1</strong>");
+			}
 		} else {
 			// Use start of content if no match found
-			preview = content.substring(0, previewLength).trim() + (content.length > previewLength ? "..." : "");
+			preview = escapeHTML(content.substring(0, previewLength).trim()) + (content.length > previewLength ? "..." : "");
 		}
 
 		return preview;
@@ -66,7 +95,7 @@
 					contentPreview = getPreview(query, item.content, 170),
 					titlePreview = getPreview(query, item.title);
 
-				resultsHTML += "<li><h4><a href='.." + item.url + "'>" + titlePreview + "</a></h4><p><small>" + contentPreview + "</small></p></li>";
+				resultsHTML += "<li><h4><a href='.." + escapeHTML(item.url) + "'>" + titlePreview + "</a></h4><p><small>" + contentPreview + "</small></p></li>";
 			});
 
 			searchResultsEl.innerHTML = resultsHTML;
@@ -88,13 +117,28 @@
 		this.field("keywords");
 	});
 
-	var query = decodeURIComponent((getQueryVariable("q") || "").replace(/\+/g, "%20")),
+	var rawQuery = (getQueryVariable("q") || "").replace(/\+/g, "%20"),
+		query,
 		searchQueryContainerEl = document.getElementById("search-query-container"),
 		searchQueryEl = document.getElementById("search-query"),
 		searchInputEl = document.getElementById("search-input");
 
+	// A malformed percent-escape (e.g. ?q=%E0%A4%A) makes decodeURIComponent throw.
+	try {
+		query = decodeURIComponent(rawQuery);
+	} catch (error) {
+		query = rawQuery;
+	}
+
 	searchInputEl.value = query;
-	searchQueryEl.innerHTML = '<a href="https://www.google.com/search?q=site%3Adevelopers.hive.io+' + query + '">' + query + '</a>';
+
+	// Built as DOM nodes rather than an innerHTML string: the query is untrusted.
+	var googleLink = document.createElement("a");
+	googleLink.href = "https://www.google.com/search?q=site%3Adevelopers.hive.io+" + encodeURIComponent(query);
+	googleLink.textContent = query;
+
+	searchQueryEl.textContent = "";
+	searchQueryEl.appendChild(googleLink);
 	searchQueryContainerEl.style.display = "inline";
 
 	for (var key in window.data) {

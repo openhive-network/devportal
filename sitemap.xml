@@ -1,0 +1,63 @@
+---
+layout: null
+sitemap: false
+permalink: /sitemap.xml
+languages: ["en"]
+---
+{%- comment -%}
+  Hand-rolled in place of jekyll-sitemap.
+
+  Jekyll gives collection documents extensionless URLs (/quickstart/fetch_broadcast)
+  but writes them to disk with an extension (fetch_broadcast.html). A server with
+  try_files would paper over the difference; S3 behind CloudFront does not, so every
+  extensionless URL the gem emitted answered 301 -> 403 and the site was advertising
+  a sitemap of dead links.
+
+  Rule: a URL ending in "/" is a directory index, a URL already ending in ".html" is
+  left alone, anything else gets ".html" appended.
+
+  lastmod is deliberately omitted. The gem derived it from file mtime, which in CI is
+  the checkout time, so every page claimed to have changed on every build.
+{%- endcomment -%}
+{%- assign output_urls = '' -%}
+{%- for page in site.pages -%}
+  {%- unless page.sitemap == false or page.url contains '.xml' or page.url contains '.txt' or page.url contains '.json' -%}
+    {%- assign url_path = page.url -%}
+    {%- if url_path contains 'index.html' -%}
+      {%- assign url_path = url_path | replace: 'index.html', '' -%}
+    {%- endif -%}
+    {%- assign output_urls = output_urls | append: '|' | append: url_path -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- for collection in site.collections -%}
+  {%- if collection.output -%}
+    {%- for doc in collection.docs -%}
+      {%- unless doc.sitemap == false -%}
+        {%- assign url_path = doc.url -%}
+        {%- if url_path contains 'index.html' -%}
+          {%- assign url_path = url_path | replace: 'index.html', '' -%}
+        {%- endif -%}
+        {%- assign output_urls = output_urls | append: '|' | append: url_path -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- assign url_list = output_urls | split: '|' | uniq | sort -%}
+{%- for url_path in url_list -%}
+  {%- assign trimmed = url_path | strip -%}
+  {%- if trimmed == '' -%}{%- continue -%}{%- endif -%}
+  {%- assign last_char = trimmed | slice: -1 -%}
+  {%- if last_char == '/' -%}
+    {%- assign final_path = trimmed -%}
+  {%- elsif trimmed contains '.html' -%}
+    {%- assign final_path = trimmed -%}
+  {%- else -%}
+    {%- assign final_path = trimmed | append: '.html' -%}
+  {%- endif %}
+  <url>
+    <loc>{{ final_path | absolute_url | xml_escape }}</loc>
+  </url>
+{%- endfor %}
+</urlset>

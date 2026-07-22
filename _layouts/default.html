@@ -2,16 +2,92 @@
 <html lang="{{ site.lang }}">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-  <meta property="og:image" content="{{ '/images/sticker.png' | relative_url }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
   <meta name="apple-mobile-web-app-title" content="Hive Devportal" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-  <title>{% t page.title %}</title>
-  <meta property="og:title" content="{% t page.title %}" />
-  <meta name="twitter:card" content="summary" />
-  <meta property="twitter:title" content="{% t page.title %}" />
+  {% comment %}
+    Social/SEO metadata. Front matter carries i18n *keys* (titles.x, descriptions.x),
+    so every value has to go through {% t %} before it is emitted. jekyll-seo-tag
+    cannot do that, which is why these tags are built by hand here.
+  {% endcomment %}
+  {% capture page_title %}{% if page.title %}{% t page.title %}{% else %}{{ site.title }}{% endif %}{% endcapture %}
+  {% capture page_description %}{% if page.description %}{% t page.description %}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+  {% assign meta_title = page_title | strip | strip_newlines %}
+  {% assign meta_description = page_description | strip | strip_newlines | markdownify | strip_html | strip | truncate: 200 %}
+
+  {% comment %}
+    Resolve canonical_url. Most pages write it relative to their own directory
+    ("blog_feed.html"), the API pages write it as an anchor on the section index
+    (".#apidefinitions-database-api"), a few write a site-absolute or external URL.
+  {% endcomment %}
+  {% assign url_segments = page.url | split: '/' %}
+  {% assign dir_depth = url_segments.size | minus: 1 %}
+  {% if dir_depth > 0 %}
+    {% assign page_dir = url_segments | slice: 0, dir_depth | join: '/' | append: '/' %}
+  {% else %}
+    {% assign page_dir = '/' %}
+  {% endif %}
+  {% assign canonical_raw = page.canonical_url | default: page.url %}
+  {% assign canonical_head = canonical_raw | slice: 0 %}
+  {% if canonical_raw contains '://' %}
+    {% assign canonical_external = canonical_raw %}
+  {% elsif canonical_head == '/' %}
+    {% assign canonical_path = canonical_raw %}
+  {% elsif canonical_raw == '.' %}
+    {% assign canonical_path = page_dir %}
+  {% elsif canonical_head == '.' %}
+    {% assign canonical_anchor = canonical_raw | remove_first: '.' %}
+    {% assign canonical_path = page_dir | append: canonical_anchor %}
+  {% else %}
+    {% assign canonical_path = page_dir | append: canonical_raw %}
+  {% endif %}
+
+  {% comment %}
+    Localized builds render to /<lang>/... but page.url keeps the default-language
+    path, so the language prefix has to be re-applied. Without it every translated
+    page would canonicalise to its English twin and drop out of the index.
+  {% endcomment %}
+  {% assign default_lang = site.default_lang | default: site.languages.first %}
+  {% if site.lang and site.lang != default_lang %}
+    {% assign lang_prefix = '/' | append: site.lang %}
+  {% else %}
+    {% assign lang_prefix = '' %}
+  {% endif %}
+  {% if canonical_external %}
+    {% assign canonical = canonical_external %}
+  {% else %}
+    {% assign canonical = lang_prefix | append: canonical_path | absolute_url %}
+  {% endif %}
+  {% assign social_image = '/images/social-card.png' | absolute_url %}
+
+  <title>{{ meta_title }}{% unless page.url == '/' %} | {{ site.title }}{% endunless %}</title>
+  <meta name="description" content="{{ meta_description | escape }}" />
+  <link rel="canonical" href="{{ canonical }}" />
+  {% unless canonical_external %}
+    {% for alt_lang in site.languages %}
+      {% if alt_lang == default_lang %}{% assign alt_prefix = '' %}{% else %}{% assign alt_prefix = '/' | append: alt_lang %}{% endif %}
+  <link rel="alternate" hreflang="{{ alt_lang }}" href="{{ alt_prefix | append: canonical_path | absolute_url }}" />
+    {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ canonical_path | absolute_url }}" />
+  {% endunless %}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta property="og:locale" content="{{ site.lang | default: 'en' }}" />
+  <meta property="og:title" content="{{ meta_title | escape }}" />
+  <meta property="og:description" content="{{ meta_description | escape }}" />
+  <meta property="og:url" content="{{ canonical }}" />
+  <meta property="og:image" content="{{ social_image }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ site.title }}" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ meta_title | escape }}" />
+  <meta name="twitter:description" content="{{ meta_description | escape }}" />
+  <meta name="twitter:image" content="{{ social_image }}" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <link rel="shortcut icon" type="image/png" href="{{ '/favicon.png' | relative_url }}" />
@@ -38,7 +114,27 @@
   <script src="{{ '/js/main.js' | relative_url }}"></script>
   <script src="{{ '/js/adjust.js' | relative_url }}"></script>
 
-  {% seo title=false %}
+  {% comment %}
+    jekyll-seo-tag is intentionally NOT used: it reads raw front matter, which here
+    holds untranslated i18n keys, and it emitted "titles.x" / "descriptions.x" into
+    og:title, description and JSON-LD. The equivalent tags are built above.
+  {% endcomment %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": {{ meta_title | jsonify }},
+    "description": {{ meta_description | jsonify }},
+    "url": {{ canonical | jsonify }},
+    "image": {{ social_image | jsonify }},
+    "inLanguage": {{ site.lang | default: 'en' | jsonify }},
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": {{ site.title | jsonify }},
+      "url": {{ site.url | jsonify }}
+    }
+  }
+  </script>
 
   {% if jekyll.environment == 'production' and site.google_analytics_key %}
 <!-- Global site tag (gtag.js) - Google Analytics -->

@@ -29,7 +29,13 @@ languages: ["en"]
           {%- assign sorted_docs = group_col.docs | sort: "position" -%}
           {%- for doc in sorted_docs -%}
             {%- unless doc.sitemap == false or doc.exclude_in_index -%}
-              {%- assign doc_path = doc.url | replace: "index.html", "" | replace: ".html", "" -%}
+              {%- assign raw_path = doc.url | replace: "index.html", "" -%}
+              {%- assign last_char = raw_path | slice: -1 -%}
+              {%- if last_char == '/' or raw_path contains '.html' -%}
+                {%- assign doc_path = raw_path -%}
+              {%- else -%}
+                {%- assign doc_path = raw_path | append: '.html' -%}
+              {%- endif -%}
               {%- assign doc_url = site.url | append: site.baseurl | append: doc_path -%}
               {%- capture doc_title -%}{% t doc.title %}{%- endcapture -%}
               {%- assign llms_content = llms_content | append: '- [' | append: doc_title | append: '](' | append: doc_url | append: ')' | append: newline -%}
@@ -50,7 +56,13 @@ languages: ["en"]
           {%- assign doc_anchor = doc.id | slugify -%}
           {%- assign doc_path = nav.permalink | append: '#' | append: doc_anchor -%}
         {%- else -%}
-          {%- assign doc_path = doc.url | replace: "index.html", "" | replace: ".html", "" -%}
+          {%- assign raw_path = doc.url | replace: "index.html", "" -%}
+          {%- assign last_char = raw_path | slice: -1 -%}
+          {%- if last_char == '/' or raw_path contains '.html' -%}
+            {%- assign doc_path = raw_path -%}
+          {%- else -%}
+            {%- assign doc_path = raw_path | append: '.html' -%}
+          {%- endif -%}
         {%- endif -%}
         {%- assign doc_url = site.url | append: site.baseurl | append: doc_path -%}
         {%- capture doc_title -%}{% t doc.title %}{%- endcapture -%}
