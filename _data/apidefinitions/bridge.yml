@@ -59,7 +59,11 @@
            "max_accepted_payout":"1000000.000 HBD",
            "percent_hbd":10000,
            "url":"/wonderland/@alice/that-march-hare",
-           "blacklists":[]
+           "blacklists":[],
+           "community":"hive-139531",
+           "community_title":"Hive Community",
+           "author_role":"guest",
+           "author_title":""
         }
       ]
     curl_examples:
@@ -358,7 +362,6 @@
           "num_pending": 0,
           "num_authors": 0,
           "created_at": "2021-01-28 18:34:09",
-          "avatar_url": "",
           "context": {},
           "admins": [
             "spitr"
@@ -484,7 +487,6 @@
           "title": "Miss",
           "subscribed": true
         },
-        "avatar_url": "",
         "description": "",
         "flag_text": "",
         "settings": {},

@@ -298,7 +298,10 @@
         "other_history": [],
         "witness_votes": [],
         "tags_usage": [],
-        "guest_bloggers": []
+        "guest_bloggers": [],
+        "governance_vote_expiration_ts": "1969-12-31T23:59:59",
+        "open_recurrent_transfers": 0,
+        "previous_owner_update": "1970-01-01T00:00:00"
       }
       ]
     curl_examples:
@@ -2341,16 +2344,9 @@
           {"time": "2021-03-16T05:54:33", "val": "999978763511"},
           {"time": "2021-03-18T06:06:00", "val": "1000000171317"}
         ],
-        "vesting_balance": "0.000 HIVE",
-        "reputation": "88826789432105",
-        "transfer_history": [],
-        "market_history": [],
-        "post_history": [],
-        "vote_history": [],
-        "other_history": [],
-        "witness_votes": [],
-        "tags_usage": [],
-        "guest_bloggers": []
+        "governance_vote_expiration_ts": "1969-12-31T23:59:59",
+        "open_recurrent_transfers": 0,
+        "previous_owner_update": "1970-01-01T00:00:00"
       }
       ]
     curl_examples:
