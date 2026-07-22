@@ -1858,7 +1858,7 @@
     expected_curl_responses:
       - account_history_api_plugin not enabled
     client_docs:
-      - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_transaction)"
+      - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_transaction)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-transaction)"
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
