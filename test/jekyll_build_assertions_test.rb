@@ -132,8 +132,8 @@ class JekyllBuildAssertionsTest < Minitest::Test
       assert_includes urls, 'https://developers.hive.io/es/'
       assert_includes urls, 'https://developers.hive.io/apidefinitions/'
       assert_includes urls, 'https://developers.hive.io/es/apidefinitions/'
-      assert_includes urls, 'https://developers.hive.io/quickstart/accounts'
-      assert_includes urls, 'https://developers.hive.io/es/quickstart/accounts'
+      assert_includes urls, 'https://developers.hive.io/quickstart/accounts.html'
+      assert_includes urls, 'https://developers.hive.io/es/quickstart/accounts.html'
 
       urls.each do |url|
         assert_match %r{\Ahttps://developers\.hive\.io/}, url
@@ -141,6 +141,8 @@ class JekyllBuildAssertionsTest < Minitest::Test
         refute_match %r{/sitemap\.txt\z}, url
         refute_match %r{\.(css|js|png|svg|ico|gif|jpg|jpeg|xml)\z}, url
       end
+
+      assert_urls_resolve_to_built_files(urls, site_dir, 'sitemap.txt')
 
       assert_equal urls, urls.uniq, 'Expected sitemap.txt URLs to be unique'
 
@@ -178,7 +180,7 @@ class JekyllBuildAssertionsTest < Minitest::Test
       assert_includes content, '[Introduction](https://developers.hive.io/)'
       assert_includes content, '](https://developers.hive.io/quickstart/)'
       assert_includes content, '[JSON-RPC API](https://developers.hive.io/apidefinitions/)'
-      assert_includes content, '[Accounts](https://developers.hive.io/quickstart/accounts)'
+      assert_includes content, '[Accounts](https://developers.hive.io/quickstart/accounts.html)'
       assert_includes content, '[Account By Key API](https://developers.hive.io/apidefinitions/#apidefinitions-account-by-key-api)'
 
       urls.each do |url|
@@ -189,6 +191,8 @@ class JekyllBuildAssertionsTest < Minitest::Test
         refute_match %r{/llms\.txt\z}, url
         refute_match %r{\.(css|js|png|svg|ico|gif|jpg|jpeg|xml)\z}, url
       end
+
+      assert_urls_resolve_to_built_files(urls, site_dir, 'llms.txt')
 
       assert_equal urls, urls.uniq, 'Expected llms.txt URLs to be unique'
 
