@@ -5,7 +5,7 @@ require 'json'
 class MethodsReportTest < Minitest::Test
   include JekyllBuildTestHelper
 
-  def test_compare_method_verifies_docs_that_match_cpp_when_openapi_disagrees
+  def test_compare_method_rejects_docs_when_openapi_and_cpp_disagree
     report = Verify::MethodsReport.new(project_root: project_path)
 
     method = report.compare_method(
@@ -30,7 +30,7 @@ class MethodsReportTest < Minitest::Test
       }
     )
 
-    assert_equal 'verified', method.fetch(:classification)
+    assert_equal 'source_disagreement', method.fetch(:classification)
     assert method.fetch(:source_disagreement)
     assert method.fetch(:notes).any? { |note| note.include?('OpenAPI parameter fields differ') }
     assert method.fetch(:notes).any? { |note| note.include?('OpenAPI and C++ parameter fields differ') }
@@ -55,7 +55,7 @@ class MethodsReportTest < Minitest::Test
         source_references: []
       },
       {
-        args_keys: %w[id include_future],
+        args_keys: %w[id],
         return_keys: %w[value],
         source_references: []
       }
@@ -93,14 +93,216 @@ class MethodsReportTest < Minitest::Test
     assert_empty method.fetch(:notes)
   end
 
+  def test_compare_method_allows_omitted_optional_source_fields
+    report = Verify::MethodsReport.new(project_root: project_path)
+    documented = {
+      status: 'active',
+      obsolete: false,
+      parameter_keys: %w[transaction_id],
+      response_keys: %w[status],
+      parameter_shape: 'object',
+      response_shape: 'object',
+      parameter_value: { 'transaction_id' => '0' * 40 },
+      response_value: { 'status' => 'too_old' }
+    }
+    openapi = {
+      request_keys: %w[expiration transaction_id],
+      response_keys: %w[block_num rc_cost status],
+      request_required_keys: %w[transaction_id],
+      response_required_keys: %w[status],
+      request_shape: 'object',
+      response_shape: 'object',
+      request_validator: ->(_value) { [] },
+      response_validator: ->(_value) { [] },
+      source_references: []
+    }
+    cpp = {
+      args_keys: %w[expiration transaction_id],
+      return_keys: %w[block_num rc_cost status],
+      args_required_keys: %w[transaction_id],
+      return_required_keys: %w[status],
+      args_shape: 'object',
+      return_shape: 'object',
+      source_references: []
+    }
+
+    method = report.compare_method('transaction_status_api.find_transaction', documented, openapi, cpp)
+
+    assert_equal 'verified', method.fetch(:classification)
+    assert_empty method.fetch(:notes)
+  end
+
+  def test_compare_method_rejects_openapi_example_that_fails_nested_validation
+    report = Verify::MethodsReport.new(project_root: project_path)
+
+    method = report.compare_method(
+      'sample_api.create_thing',
+      {
+        status: 'active',
+        obsolete: false,
+        parameter_keys: %w[thing],
+        response_keys: %w[ok],
+        parameter_shape: 'object',
+        response_shape: 'object',
+        parameter_value: { 'thing' => {} },
+        response_value: { 'ok' => true }
+      },
+      {
+        request_keys: %w[thing],
+        response_keys: %w[ok],
+        request_shape: 'object',
+        response_shape: 'object',
+        request_validator: ->(_value) { ['$.thing missing required field(s): id'] },
+        response_validator: ->(_value) { [] },
+        source_references: []
+      },
+      {
+        args_keys: %w[thing],
+        return_keys: %w[ok],
+        args_shape: 'object',
+        return_shape: 'object',
+        source_references: []
+      }
+    )
+
+    assert_equal 'source_disagreement', method.fetch(:classification)
+    assert method.fetch(:notes).any? { |note| note.include?('missing required field(s): id') }
+  end
+
+  def test_openapi_validator_checks_required_fields_array_arity_and_item_types
+    source = Verify::OpenapiSource.new('/tmp/unused-openapi.json', project_root: project_path)
+    schema = {
+      'type' => 'object',
+      'required' => ['items'],
+      'properties' => {
+        'items' => {
+          'type' => 'array',
+          'minItems' => 2,
+          'maxItems' => 2,
+          'items' => { 'type' => 'integer' }
+        }
+      }
+    }
+
+    missing = source.send(:validate_value, {}, schema, {})
+    invalid = source.send(:validate_value, { 'items' => [1, 'two', 3] }, schema, {})
+    valid = source.send(:validate_value, { 'items' => [1, 2] }, schema, {})
+
+    assert_includes missing.join(' | '), 'missing required field(s): items'
+    assert_includes invalid.join(' | '), 'at most 2 item(s)'
+    assert_includes invalid.join(' | '), '$.items[1] must be integer'
+    assert_empty valid
+  end
+
+  def test_cpp_positional_constraints_check_optional_argument_type
+    cpp = Verify::CppSource.new('/tmp/unused-apis', project_root: project_path)
+    implementation = <<~CPP
+      FC_ASSERT(args.size() <= 1, "at most one argument");
+      if(args.size() > 0)
+        args.at(0).as<bool>();
+    CPP
+    constraints = cpp.send(:positional_constraints, implementation, false)
+    report = Verify::MethodsReport.new(project_root: project_path)
+
+    assert_equal({ max_items: 1, prefix_types: ['boolean'] }, constraints)
+    assert_empty report.send(:validate_constraints, [true], constraints)
+    assert_includes report.send(:validate_constraints, ['true'], constraints).join(' | '), 'must be boolean'
+    assert_includes report.send(:validate_constraints, [true, false], constraints).join(' | '), 'at most 1 item(s)'
+  end
+
+  def test_cpp_positional_constraints_parse_nested_collection_types
+    cpp = Verify::CppSource.new('/tmp/unused-apis', project_root: project_path)
+    implementation = <<~CPP
+      FC_ASSERT(args.size() == 2 || args.size() == 3, "expected 2-3 arguments");
+      args.at(0).as<account_name_type>();
+      args.at(1).as<flat_set<public_key_type>>();
+      args.at(2).as<hive::plugins::database_api::authority_level>();
+    CPP
+
+    constraints = cpp.send(:positional_constraints, implementation, false)
+
+    assert_equal 2, constraints.fetch(:min_items)
+    assert_equal 3, constraints.fetch(:max_items)
+    assert_equal %w[string array string], constraints.fetch(:prefix_types)
+  end
+
   def test_documented_shapes_accept_yaml_native_values_and_scalar_examples
     report = Verify::MethodsReport.new(project_root: project_path)
 
     assert_equal %w[id name], report.send(:json_top_level_keys, { 'name' => 'alice', 'id' => 1 })
     assert_equal 'object', report.send(:json_shape, { 'id' => 1 })
-    assert_equal 'array', report.send(:json_shape, [{ 'id' => 1 }])
+    assert_equal 'array[object]', report.send(:json_shape, [{ 'id' => 1 }])
+    assert_equal 'array[array[boolean]]', report.send(:json_shape, [[true]])
     assert_equal 'null', report.send(:json_shape, nil)
     assert_equal 'string', report.send(:json_shape, '')
+    assert_equal 'deprecated', report.send(:documented_status, { 'status' => 'deprecated' })
+  end
+
+  def test_cpp_source_resolves_wallet_bridge_shapes_and_cross_api_aliases
+    Dir.mktmpdir('cpp-source-') do |root|
+      apis_root = File.join(root, 'apis')
+      database_dir = File.join(apis_root, 'database_api')
+      wallet_dir = File.join(apis_root, 'wallet_bridge_api')
+      FileUtils.mkdir_p(database_dir)
+      FileUtils.mkdir_p(wallet_dir)
+
+      File.write(
+        File.join(database_dir, 'database_api.hpp'),
+        <<~CPP
+          struct shared_result
+          {
+            int id;
+            int value;
+            fc::optional<int> future_value;
+          };
+          typedef shared_result get_shared_return;
+          FC_REFLECT(database_api::shared_result, (id)(value)(future_value))
+        CPP
+      )
+      File.write(
+        File.join(wallet_dir, 'wallet_bridge_api.hpp'),
+        <<~CPP
+          typedef variant get_shared_args;
+          typedef database_api::get_shared_return get_shared_return;
+          typedef variant list_items_args;
+          typedef std::vector<database_api::shared_result> list_items_return;
+          typedef variant maybe_item_args;
+          typedef fc::optional<database_api::shared_result> maybe_item_return;
+          DEFINE_API_ARGS(legacy_items, vector< variant >, vector< database_api::shared_result >)
+          struct legacy_items_args {};
+          FC_REFLECT(wallet_bridge_api::legacy_items_args, (query))
+          DECLARE_API((get_shared)(list_items)(maybe_item)(legacy_items));
+          DEFINE_API_IMPL(wallet_bridge_api_impl, get_shared)
+          {
+            verify_args(args, 1);
+            FC_ASSERT(args.get_array().at(0).is_array(), "nested arguments required");
+            const auto arguments = args.get_array().at(0);
+            verify_args(arguments, 2);
+            arguments.at(0).as<bool>();
+          }
+        CPP
+      )
+
+      methods = Verify::CppSource.new(apis_root, project_root: root).load.fetch(:methods)
+      get_shared = methods.fetch('wallet_bridge_api.get_shared')
+      list_items = methods.fetch('wallet_bridge_api.list_items')
+      maybe_item = methods.fetch('wallet_bridge_api.maybe_item')
+      legacy_items = methods.fetch('wallet_bridge_api.legacy_items')
+
+      assert_equal 'array[array]', get_shared.fetch(:args_shape)
+      assert_equal(
+        { min_items: 1, item: { min_items: 2, prefix_types: ['boolean'] } },
+        get_shared.fetch(:args_constraints)
+      )
+      assert_equal 'object', get_shared.fetch(:return_shape)
+      assert_equal %w[future_value id value], get_shared.fetch(:return_keys)
+      assert_equal %w[id value], get_shared.fetch(:return_required_keys)
+      assert_equal 'array', list_items.fetch(:return_shape)
+      assert_equal 'object|null', maybe_item.fetch(:return_shape)
+      assert_equal 'object', legacy_items.fetch(:args_shape)
+      assert_equal ['query'], legacy_items.fetch(:args_keys)
+      assert_equal 'array', legacy_items.fetch(:return_shape)
+    end
   end
 
   def test_compare_method_classifies_source_only_and_docs_only
@@ -139,7 +341,7 @@ class MethodsReportTest < Minitest::Test
               {
                 'api_method' => 'sample_api.get_thing',
                 'parameter_json' => '{"id":0}',
-                'expected_response_json' => '{"thing":null,"extra":true}'
+                'expected_response_json' => '{"thing":{},"extra":true}'
               },
               {
                 'api_method' => 'sample_api.no_params',

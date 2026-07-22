@@ -10,6 +10,7 @@ module Verify
   class MethodsReport
     CLASSIFICATIONS = %w[
       verified
+      source_disagreement
       mismatch
       docs_only
       source_only
@@ -83,8 +84,19 @@ module Verify
       doc_response = doc && doc[:response_keys]
       openapi_param_shape = openapi_method && openapi_method[:request_shape]
       openapi_response_shape = openapi_method && openapi_method[:response_shape]
+      openapi_param_required = openapi_method && openapi_method[:request_required_keys]
+      openapi_response_required = openapi_method && openapi_method[:response_required_keys]
+      cpp_param_shape = cpp_method && cpp_method[:args_shape]
+      cpp_response_shape = cpp_method && cpp_method[:return_shape]
+      cpp_param_required = cpp_method && cpp_method[:args_required_keys]
+      cpp_response_required = cpp_method && cpp_method[:return_required_keys]
       doc_param_shape = doc && doc[:parameter_shape]
       doc_response_shape = doc && doc[:response_shape]
+      doc_param_value = doc && doc[:parameter_value]
+      doc_response_value = doc && doc[:response_value]
+      openapi_param_errors = validation_errors(openapi_method, :request_validator, doc_param_value)
+      openapi_response_errors = validation_errors(openapi_method, :response_validator, doc_response_value)
+      cpp_param_errors = validate_constraints(doc_param_value, cpp_method && cpp_method[:args_constraints])
 
       classification =
         if doc.nil?
@@ -104,8 +116,17 @@ module Verify
             cpp_response: cpp_response,
             doc_param_shape: doc_param_shape,
             openapi_param_shape: openapi_param_shape,
+            cpp_param_shape: cpp_param_shape,
             doc_response_shape: doc_response_shape,
             openapi_response_shape: openapi_response_shape,
+            cpp_response_shape: cpp_response_shape,
+            openapi_param_required: openapi_param_required,
+            openapi_response_required: openapi_response_required,
+            cpp_param_required: cpp_param_required,
+            cpp_response_required: cpp_response_required,
+            openapi_param_errors: openapi_param_errors,
+            openapi_response_errors: openapi_response_errors,
+            cpp_param_errors: cpp_param_errors,
             notes: notes
           )
         end
@@ -121,8 +142,14 @@ module Verify
         doc_status: doc_status,
         classification: classification,
         documented: !!doc,
-        openapi: source_details(openapi_method, openapi_params, openapi_response, openapi_param_shape, openapi_response_shape),
-        cpp: source_details(cpp_method, cpp_params, cpp_response),
+        openapi: source_details(
+          openapi_method, openapi_params, openapi_response, openapi_param_shape, openapi_response_shape,
+          nil, openapi_param_required, openapi_response_required
+        ),
+        cpp: source_details(
+          cpp_method, cpp_params, cpp_response, cpp_param_shape, cpp_response_shape,
+          cpp_method && cpp_method[:args_constraints], cpp_param_required, cpp_response_required
+        ),
         documented_fields: {
           parameters: doc_params || [],
           response: doc_response || []
@@ -131,7 +158,8 @@ module Verify
           parameters: doc_param_shape,
           response: doc_response_shape
         },
-        source_disagreement: notes.any? { |note| note.start_with?('OpenAPI and C++') },
+        source_disagreement: classification == 'source_disagreement' ||
+          notes.any? { |note| note.start_with?('OpenAPI and C++') },
         notes: notes.uniq,
         source_references: source_references(openapi_method, cpp_method)
       }
@@ -192,25 +220,28 @@ module Verify
     private
 
     def compare_fields(name:, doc_params:, openapi_params:, cpp_params:, doc_response:, openapi_response:, cpp_response:,
-      doc_param_shape:, openapi_param_shape:, doc_response_shape:, openapi_response_shape:, notes:)
-      known_source = false
-      matching_source = false
+      doc_param_shape:, openapi_param_shape:, cpp_param_shape:, doc_response_shape:, openapi_response_shape:,
+      cpp_response_shape:, openapi_param_required:, openapi_response_required:, cpp_param_required:,
+      cpp_response_required:, openapi_param_errors:, openapi_response_errors:, cpp_param_errors:, notes:)
+      source_results = {}
 
       [
-        ['OpenAPI', openapi_params, openapi_response, openapi_param_shape, openapi_response_shape],
-        ['C++', cpp_params, cpp_response, nil, nil]
-      ].each do |source_name, params, response, param_shape, response_shape|
+        ['OpenAPI', openapi_params, openapi_response, openapi_param_shape, openapi_response_shape,
+          openapi_param_required, openapi_response_required, openapi_param_errors, openapi_response_errors],
+        ['C++', cpp_params, cpp_response, cpp_param_shape, cpp_response_shape,
+          cpp_param_required, cpp_response_required, cpp_param_errors, []]
+      ].each do |source_name, params, response, param_shape, response_shape, param_required, response_required,
+        param_errors, response_errors|
         source_known = false
         source_matches = true
 
         [
-          ['parameter', doc_params, params, doc_param_shape, param_shape],
-          ['response', doc_response, response, doc_response_shape, response_shape]
-        ].each do |kind, docs, source, docs_shape, source_shape|
+          ['parameter', doc_params, params, doc_param_shape, param_shape, param_required],
+          ['response', doc_response, response, doc_response_shape, response_shape, response_required]
+        ].each do |kind, docs, source, docs_shape, source_shape, required|
           if source
             source_known = true
-            known_source = true
-            missing = source - docs
+            missing = (required || source) - docs
             extra = docs - source
             next if missing.empty? && extra.empty?
 
@@ -222,38 +253,69 @@ module Verify
           next unless source_shape
 
           source_known = true
-          known_source = true
           next if shape_matches?(docs_shape, source_shape)
 
           source_matches = false
           notes << "#{source_name} #{kind} shapes differ; source: #{source_shape}; docs: #{docs_shape || 'unknown'}"
         end
 
-        matching_source ||= source_known && source_matches
+        Array(param_errors).each do |error|
+          source_known = true
+          source_matches = false
+          notes << "#{source_name} parameter example invalid: #{error}"
+        end
+        Array(response_errors).each do |error|
+          source_known = true
+          source_matches = false
+          notes << "#{source_name} response example invalid: #{error}"
+        end
+
+        source_results[source_name] = source_known ? source_matches : nil
       end
 
+      contracts_disagree = false
       if openapi_params && cpp_params && openapi_params != cpp_params
+        contracts_disagree = true
         notes << "OpenAPI and C++ parameter fields differ; OpenAPI: #{openapi_params.join(', ')}; C++: #{cpp_params.join(', ')}"
       end
 
       if openapi_response && cpp_response && openapi_response != cpp_response
+        contracts_disagree = true
         notes << "OpenAPI and C++ response fields differ; OpenAPI: #{openapi_response.join(', ')}; C++: #{cpp_response.join(', ')}"
       end
 
-      return 'verified' if matching_source
-      return 'mismatch' if known_source
+      if openapi_param_shape && cpp_param_shape && !shapes_overlap?(openapi_param_shape, cpp_param_shape)
+        contracts_disagree = true
+        notes << "OpenAPI and C++ parameter shapes differ; OpenAPI: #{openapi_param_shape}; C++: #{cpp_param_shape}"
+      end
+      if openapi_response_shape && cpp_response_shape && !shapes_overlap?(openapi_response_shape, cpp_response_shape)
+        contracts_disagree = true
+        notes << "OpenAPI and C++ response shapes differ; OpenAPI: #{openapi_response_shape}; C++: #{cpp_response_shape}"
+      end
+
+      known_results = source_results.values.compact
+      if contracts_disagree || known_results.uniq.length > 1
+        notes << 'OpenAPI and C++ do not support the same documented contract' if known_results.uniq.length > 1
+        return 'source_disagreement'
+      end
+      return 'verified' if !known_results.empty? && known_results.all?
+      return 'mismatch' unless known_results.empty?
 
       notes << "source method exists but schema fields could not be extracted for #{name}"
       'insufficient_source'
     end
 
-    def source_details(method, params, response, param_shape = nil, response_shape = nil)
+    def source_details(method, params, response, param_shape = nil, response_shape = nil, parameter_constraints = nil,
+      required_params = nil, required_response = nil)
       {
         present: !!method,
         parameter_fields: params || [],
         response_fields: response || [],
         parameter_shape: param_shape,
-        response_shape: response_shape
+        response_shape: response_shape,
+        parameter_constraints: parameter_constraints,
+        required_parameter_fields: required_params || [],
+        required_response_fields: required_response || []
       }
     end
 
@@ -281,7 +343,9 @@ module Verify
               parameter_keys: json_top_level_keys(method['parameter_json']),
               response_keys: json_top_level_keys(method['expected_response_json']),
               parameter_shape: json_shape(method['parameter_json']),
-              response_shape: json_shape(method['expected_response_json'])
+              response_shape: json_shape(method['expected_response_json']),
+              parameter_value: documented_json_value(method['parameter_json']),
+              response_value: documented_json_value(method['expected_response_json'])
             }
           end
         end
@@ -291,7 +355,7 @@ module Verify
 
     def documented_status(method)
       return 'removed' if method['removed']
-      return 'obsolete' if method['status'].to_s == 'obsolete'
+      return method['status'].to_s unless method['status'].to_s.empty?
 
       'active'
     end
@@ -322,7 +386,9 @@ module Verify
       when Hash
         'object'
       when Array
-        'array'
+        return 'array' if value.empty?
+
+        "array[#{value.map { |item| value_shape(item) }.uniq.sort.join('|')}]"
       when String
         'string'
       when Integer
@@ -341,7 +407,48 @@ module Verify
     def shape_matches?(documented, source)
       return false unless documented && source
 
-      source.split('|').include?(documented)
+      source.split('|').any? do |candidate|
+        candidate == documented ||
+          (candidate == 'array' && documented.start_with?('array[')) ||
+          (candidate == 'array[array]' && documented.start_with?('array[array'))
+      end
+    end
+
+    def shapes_overlap?(left, right)
+      left.split('|').any? do |left_shape|
+        right.split('|').any? do |right_shape|
+          left_base = left_shape.split('[', 2).first
+          right_base = right_shape.split('[', 2).first
+          left_base == right_base
+        end
+      end
+    end
+
+    def validation_errors(method, validator_key, value)
+      return [] unless method && method[validator_key]
+
+      method[validator_key].call(value)
+    end
+
+    def validate_constraints(value, constraints, path = '$')
+      return [] unless constraints
+      return ["#{path} must be an array"] unless value.is_a?(Array)
+
+      errors = []
+      min_items = constraints[:min_items]
+      max_items = constraints[:max_items]
+      errors << "#{path} must contain at least #{min_items} item(s)" if min_items && value.length < min_items
+      errors << "#{path} must contain at most #{max_items} item(s)" if max_items && value.length > max_items
+      if constraints[:item] && !value.empty?
+        errors.concat(validate_constraints(value.first, constraints[:item], "#{path}[0]"))
+      end
+      Array(constraints[:prefix_types]).each_with_index do |expected_type, index|
+        next unless expected_type && index < value.length
+        next if shape_matches?(value_shape(value[index]), expected_type)
+
+        errors << "#{path}[#{index}] must be #{expected_type}, got #{value_shape(value[index])}"
+      end
+      errors
     end
 
     def namespace_summary(method_reports)
@@ -440,8 +547,16 @@ module Verify
           {
             request_keys: property_keys(request_schema),
             response_keys: property_keys(response_schema),
+            request_required_keys: required_keys(request_schema),
+            response_required_keys: required_keys(response_schema),
             request_shape: schema_shape(request_schema, schemas),
             response_shape: schema_shape(response_schema, schemas),
+            request_validator: schema_validator(
+              operation.dig('requestBody', 'content', 'application/json', 'schema'), schemas
+            ),
+            response_validator: schema_validator(
+              operation.dig('responses', '200', 'content', 'application/json', 'schema'), schemas
+            ),
             source_references: source_references(name, lines)
           }
         ]
@@ -470,11 +585,12 @@ module Verify
 
       return schema unless schema['allOf']
 
-      schema['allOf'].each_with_object({ 'type' => 'object', 'properties' => {} }) do |item, merged|
+      schema['allOf'].each_with_object({ 'type' => 'object', 'properties' => {}, 'required' => [] }) do |item, merged|
         resolved = resolve_schema(item, schemas, seen.dup)
         next unless resolved
 
         merged['properties'].merge!(resolved.fetch('properties', {}))
+        merged['required'] |= Array(resolved['required'])
       end
     end
 
@@ -486,6 +602,12 @@ module Verify
       return properties.keys.sort unless properties.empty?
 
       nil
+    end
+
+    def required_keys(schema)
+      return nil unless schema
+
+      Array(schema['required']).sort
     end
 
     def schema_shape(schema, schemas)
@@ -503,6 +625,116 @@ module Verify
       return nil unless type
 
       Array(type).map(&:to_s).uniq.sort.join('|')
+    end
+
+    def schema_validator(schema, schemas)
+      return nil unless schema
+
+      ->(value) { validate_value(value, schema, schemas) }
+    end
+
+    def validate_value(value, schema, schemas, path = '$', seen = Set.new)
+      return [] unless schema
+
+      if schema['$ref']
+        key = schema['$ref'].split('/').last
+        marker = [key, value.object_id]
+        return [] if seen.include?(marker)
+
+        return validate_value(value, schemas[key], schemas, path, seen | [marker])
+      end
+
+      if schema['allOf']
+        return schema['allOf'].flat_map { |item| validate_value(value, item, schemas, path, seen) }.uniq
+      end
+
+      alternatives = schema['oneOf'] || schema['anyOf']
+      if alternatives
+        alternatives_errors = alternatives.map { |item| validate_value(value, item, schemas, path, seen) }
+        return [] if alternatives_errors.any?(&:empty?)
+
+        best_errors = alternatives_errors.min_by(&:length)
+        return ["#{path} does not match any allowed schema: #{best_errors.join('; ')}"]
+      end
+
+      types = Array(schema['type']).map(&:to_s)
+      types << 'object' if types.empty? && schema['properties']
+      types << 'array' if types.empty? && (schema['items'] || schema['prefixItems'])
+      unless types.empty? || types.any? { |type| value_matches_type?(value, type) }
+        return ["#{path} must be #{types.join(' or ')}, got #{ruby_type(value)}"]
+      end
+
+      if schema.key?('enum') && !schema['enum'].include?(value)
+        return ["#{path} must be one of #{schema['enum'].inspect}"]
+      end
+
+      errors = []
+      if value.is_a?(Hash) && (types.include?('object') || schema['properties'])
+        required = Array(schema['required'])
+        missing = required - value.keys
+        errors << "#{path} missing required field(s): #{missing.join(', ')}" unless missing.empty?
+
+        properties = schema.fetch('properties', {})
+        properties.each do |key, property_schema|
+          next unless value.key?(key)
+
+          errors.concat(validate_value(value[key], property_schema, schemas, "#{path}.#{key}", seen))
+        end
+        if schema['additionalProperties'] == false
+          extra = value.keys - properties.keys
+          errors << "#{path} has unexpected field(s): #{extra.join(', ')}" unless extra.empty?
+        end
+      end
+
+      if value.is_a?(Array) && (types.include?('array') || schema['items'] || schema['prefixItems'])
+        min_items = schema['minItems']
+        max_items = schema['maxItems']
+        errors << "#{path} must contain at least #{min_items} item(s)" if min_items && value.length < min_items
+        errors << "#{path} must contain at most #{max_items} item(s)" if max_items && value.length > max_items
+
+        Array(schema['prefixItems']).each_with_index do |item_schema, index|
+          next unless index < value.length
+
+          errors.concat(validate_value(value[index], item_schema, schemas, "#{path}[#{index}]", seen))
+        end
+        if schema['items'].is_a?(Hash)
+          start_index = schema['prefixItems'] ? schema['prefixItems'].length : 0
+          value.each_with_index do |item, index|
+            next if index < start_index
+
+            errors.concat(validate_value(item, schema['items'], schemas, "#{path}[#{index}]", seen))
+          end
+        elsif schema['items'] == false && schema['prefixItems'] && value.length > schema['prefixItems'].length
+          errors << "#{path} contains items beyond the positional schema"
+        end
+      end
+      errors.uniq
+    end
+
+    def value_matches_type?(value, type)
+      case type
+      when 'object' then value.is_a?(Hash)
+      when 'array' then value.is_a?(Array)
+      when 'string' then value.is_a?(String)
+      when 'integer' then value.is_a?(Integer)
+      when 'number' then value.is_a?(Numeric)
+      when 'boolean' then value == true || value == false
+      when 'null' then value.nil?
+      else true
+      end
+    end
+
+    def ruby_type(value)
+      case value
+      when Hash then 'object'
+      when Array then 'array'
+      when String then 'string'
+      when Integer then 'integer'
+      when Numeric then 'number'
+      when TrueClass, FalseClass then 'boolean'
+      when NilClass then 'null'
+      else value.class.name
+      end
     end
 
     def source_references(name, lines)
@@ -527,11 +759,14 @@ module Verify
 
     def load
       methods = {}
+      all_files = api_dirs.flat_map { |api_dir| Dir[File.join(api_dir, '**', '*.{hpp,cpp}')].sort }
+      global_reflections, global_aliases, global_optional_fields = reflected_fields(all_files)
 
       api_dirs.each do |api_dir|
         api_name = File.basename(api_dir)
         files = Dir[File.join(api_dir, '**', '*.{hpp,cpp}')].sort
-        reflections, aliases = reflected_fields(files)
+        file_texts = files.to_h { |file_name| [file_name, File.read(file_name)] }
+        reflections, aliases, optional_fields = reflected_fields(files)
         method_names = Set.new
         references = Hash.new { |hash, key| hash[key] = [] }
 
@@ -560,9 +795,30 @@ module Verify
 
         method_names.each do |method_name|
           name = "#{api_name}.#{method_name}"
+          implementation = implementation_body(method_name, file_texts)
+          nested_positional = api_name == 'wallet_bridge_api' &&
+            implementation.to_s.match?(/args\.get_array\(\)\.at\(0\)\.is_array\(\)/)
+          args_type = "#{method_name}_args"
+          return_type = "#{method_name}_return"
+          args_keys = keys_for(args_type, reflections, aliases, global_reflections, global_aliases)
+          return_keys = keys_for(return_type, reflections, aliases, global_reflections, global_aliases)
           methods[name] = {
-            args_keys: keys_for("#{method_name}_args", reflections, aliases),
-            return_keys: keys_for("#{method_name}_return", reflections, aliases),
+            args_keys: args_keys,
+            return_keys: return_keys,
+            args_required_keys: required_keys_for(
+              args_type, args_keys, aliases, global_aliases, optional_fields, global_optional_fields
+            ),
+            return_required_keys: required_keys_for(
+              return_type, return_keys, aliases, global_aliases, optional_fields, global_optional_fields
+            ),
+            args_shape: shape_for(
+              "#{method_name}_args", reflections, aliases, global_reflections, global_aliases,
+              positional_variant: api_name == 'wallet_bridge_api', nested_positional: nested_positional
+            ),
+            return_shape: shape_for(
+              "#{method_name}_return", reflections, aliases, global_reflections, global_aliases
+            ),
+            args_constraints: positional_constraints(implementation, nested_positional),
             source_references: references[method_name].uniq
           }
         end
@@ -582,12 +838,28 @@ module Verify
     def reflected_fields(files)
       reflections = {}
       aliases = {}
+      optional_fields = {}
 
       files.each do |file_name|
         lines = File.readlines(file_name)
+        text = lines.join
+        api_namespace = api_namespace_for(file_name)
+        struct_optional_fields(text).each do |type_name, fields|
+          optional_fields[type_name] = fields
+          optional_fields["#{api_namespace}::#{type_name}"] = fields if api_namespace
+        end
         lines.each_with_index do |line, index|
-          line.scan(/typedef\s+([a-zA-Z_][a-zA-Z0-9_:<>]*)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*;/) do |target, name|
-            aliases[name] = target.split('::').last
+          line.scan(/DEFINE_API_ARGS\s*\(\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*,\s*(.*?)\s*,\s*(.*?)\s*\)/) do |method_name, args_type, return_type|
+            next if method_name == 'api_name'
+
+            aliases["#{method_name}_args"] = qualify_alias_target(normalize_type(args_type), api_namespace)
+            aliases["#{method_name}_return"] = qualify_alias_target(normalize_type(return_type), api_namespace)
+          end
+
+          line.scan(/typedef\s+(.+?)\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*;/) do |target, name|
+            normalized_target = qualify_alias_target(normalize_type(target), api_namespace)
+            aliases[name] = normalized_target
+            aliases["#{api_namespace}::#{name}"] = normalized_target if api_namespace
           end
 
           next unless line.include?('FC_REFLECT(')
@@ -602,31 +874,224 @@ module Verify
           end
 
           text = block.join
-          match = text.match(/FC_REFLECT\s*\(\s*(?:[a-zA-Z_][a-zA-Z0-9_]*::)*([a-zA-Z_][a-zA-Z0-9_]*)\s*,(.*)\)\s*$/m)
+          match = text.match(/FC_REFLECT\s*\(\s*([a-zA-Z_][a-zA-Z0-9_:]*)\s*,(.*)\)\s*$/m)
           next unless match
 
-          reflections[match[1]] = match[2].scan(/\(([a-zA-Z_][a-zA-Z0-9_]*)\)/).flatten.sort
+          fields = match[2].scan(/\(([a-zA-Z_][a-zA-Z0-9_]*)\)/).flatten.sort
+          reflected_type = match[1]
+          reflections[reflected_type] = fields
+          reflections[short_type(reflected_type)] = fields
+          type_parts = reflected_type.split('::')
+          reflections[type_parts.last(2).join('::')] = fields if type_parts.length > 1
         end
       end
 
-      [reflections, aliases]
+      [reflections, aliases, optional_fields]
     end
 
-    def keys_for(name, reflections, aliases)
-      resolved = resolve_alias(name, aliases)
-      return [] if resolved == 'void_type'
-
-      reflections[resolved]
+    def struct_optional_fields(text)
+      text.scan(/struct\s+([a-zA-Z_][a-zA-Z0-9_]*)[^;{]*\{(.*?)^\s*\};/m).to_h do |type_name, body|
+        fields = body.lines.filter_map do |line|
+          match = line.match(/(?:fc::|std::)?optional\s*<.+>\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(?:=[^;]+)?;/)
+          match && match[1]
+        end
+        [type_name, fields.sort]
+      end
     end
 
-    def resolve_alias(name, aliases)
+    def required_keys_for(name, keys, aliases, global_aliases, optional_fields, global_optional_fields)
+      return nil unless keys
+
+      resolved = resolve_alias(name, aliases, global_aliases)
+      optional = optional_fields[resolved] || optional_fields[short_type(resolved)] ||
+        global_optional_fields[resolved] || global_optional_fields[short_type(resolved)] || []
+      keys - optional
+    end
+
+    def keys_for(name, reflections, aliases, global_reflections, global_aliases)
+      return reflections[name] if reflections.key?(name)
+
+      resolved = resolve_alias(name, aliases, global_aliases)
+      return [] if short_type(resolved) == 'void_type'
+      return nil if optional_type?(resolved) || collection_type?(resolved)
+
+      scalar = scalar_shape(resolved)
+      return nil if scalar && scalar != 'object'
+
+      reflections[resolved] || reflections[short_type(resolved)] ||
+        global_reflections[resolved] || global_reflections[short_type(resolved)]
+    end
+
+    def shape_for(name, reflections, aliases, global_reflections, global_aliases, positional_variant: false,
+      nested_positional: false)
+      return 'object' if reflections.key?(name)
+
+      resolved = resolve_alias(name, aliases, global_aliases)
+      normalized = normalize_type(resolved)
+
+      if positional_variant && short_type(normalized) == 'variant'
+        return nested_positional ? 'array[array]' : 'array'
+      end
+      return optional_shape(normalized, reflections, global_reflections) if optional_type?(normalized)
+      return 'array' if collection_type?(normalized)
+
+      scalar = scalar_shape(normalized)
+      return scalar if scalar
+
+      fields = reflections[normalized] || reflections[short_type(normalized)] ||
+        global_reflections[normalized] || global_reflections[short_type(normalized)]
+      fields ? 'object' : nil
+    end
+
+    def implementation_body(method_name, file_texts)
+      pattern = /DEFINE_API_IMPL\s*\([^,]+,\s*#{Regexp.escape(method_name)}\s*\)(.*?)(?=DEFINE_API_IMPL|\z)/m
+      file_texts.each_value do |text|
+        match = text.match(pattern)
+        return match[1] if match
+      end
+      nil
+    end
+
+    def positional_constraints(implementation, nested_positional)
+      return nil unless implementation
+
+      if nested_positional
+        inner_minimum = implementation[/verify_args\s*\(\s*arguments\s*,\s*(\d+)\s*\)/, 1]
+        constraints = { min_items: 1, item: {} }
+        constraints[:item][:min_items] = inner_minimum.to_i if inner_minimum
+        inner_types = argument_types(implementation, 'arguments')
+        constraints[:item][:prefix_types] = inner_types unless inner_types.empty?
+        return constraints
+      end
+
+      exact_size = implementation[/CHECK_ARG_SIZE\s*\(\s*(\d+)\s*\)/, 1]
+      constraints = exact_size ? { min_items: exact_size.to_i, max_items: exact_size.to_i } : {}
+
+      allowed_sizes = implementation.scan(/args\.size\(\)\s*==\s*(\d+)/).flatten.map(&:to_i)
+      unless allowed_sizes.empty?
+        constraints[:min_items] = allowed_sizes.min
+        constraints[:max_items] = allowed_sizes.max
+      end
+
+      minimum = implementation[/verify_args\s*\(\s*args\s*,\s*(\d+)\s*\)/, 1]
+      constraints[:min_items] = minimum.to_i if minimum
+      maximum = implementation[/args\.size\(\)\s*<=\s*(\d+)/, 1]
+      constraints[:max_items] = maximum.to_i if maximum
+      types = argument_types(implementation, 'args')
+      constraints[:prefix_types] = types unless types.empty?
+      constraints.empty? ? nil : constraints
+    end
+
+    def argument_types(implementation, variable_name)
+      types = []
+      pattern = /#{Regexp.escape(variable_name)}\.at\s*\(\s*(\d+)\s*\)\.as\s*</
+      cursor = 0
+      while (match = pattern.match(implementation, cursor))
+        type, cursor = balanced_template_argument(implementation, match.end(0))
+        break unless type
+
+        types[match[1].to_i] = argument_type_shape(type)
+      end
+      types
+    end
+
+    def balanced_template_argument(text, start_index)
+      depth = 1
+      index = start_index
+      while index < text.length
+        case text[index]
+        when '<' then depth += 1
+        when '>'
+          depth -= 1
+          return [text[start_index...index], index + 1] if depth.zero?
+        end
+        index += 1
+      end
+      [nil, text.length]
+    end
+
+    def argument_type_shape(type)
+      normalized = normalize_type(type)
+      return 'object' if normalized.match?(/\A(?:(?:std|fc)::)?map</)
+      return 'array' if collection_type?(normalized)
+
+      scalar_shape(normalized)
+    end
+
+    def resolve_alias(name, aliases, global_aliases)
       seen = Set.new
-      current = name
-      while aliases[current] && !seen.include?(current)
+      current = normalize_type(name)
+      loop do
+        lookup_name = short_type(current)
+        target = aliases[current] || global_aliases[current]
+        unless current.include?('::')
+          target ||= aliases[lookup_name] || global_aliases[lookup_name]
+        end
+        break unless target && !seen.include?(current)
+
         seen << current
-        current = aliases[current]
+        current = normalize_type(target)
       end
       current
+    end
+
+    def optional_shape(type, reflections, global_reflections)
+      inner = type[/\A(?:fc::)?optional<(.+)>\z/, 1]
+      return 'null' unless inner
+
+      normalized = normalize_type(inner)
+      inner_shape = scalar_shape(normalized)
+      inner_shape ||= 'array' if collection_type?(normalized)
+      inner_shape ||= 'object' if reflections[normalized] || reflections[short_type(normalized)] ||
+        global_reflections[normalized] || global_reflections[short_type(normalized)]
+      inner_shape ? "#{inner_shape}|null" : 'null'
+    end
+
+    def optional_type?(type)
+      normalize_type(type).match?(/\A(?:fc::)?optional</)
+    end
+
+    def collection_type?(type)
+      normalize_type(type).match?(/\A(?:(?:std|fc)::)?(?:vector|set|flat_set|map)</)
+    end
+
+    def scalar_shape(type)
+      name = short_type(normalize_type(type))
+      return 'object' if name == 'void_type'
+      return 'object' if %w[variant_object mutable_variant_object].include?(name)
+      return 'object' if name == 'price' || name.end_with?('_object', '_properties', '_transaction')
+      return 'boolean' if name == 'bool'
+      return 'integer' if name.match?(/\A(?:u?int(?:8|16|32|64)_t|size_t|int|long)\z/)
+      return 'number' if %w[float double].include?(name)
+      return 'string' if name == 'string' || name.end_with?('_type', '_version', '_level', '_direction', '_status')
+
+      nil
+    end
+
+    def normalize_type(type)
+      type.to_s.gsub(/\s+/, '').sub(/\Aconst/, '').sub(/&\z/, '')
+    end
+
+    def short_type(type)
+      normalize_type(type).split('::').last
+    end
+
+    def api_namespace_for(file_name)
+      relative = Pathname.new(file_name).relative_path_from(Pathname.new(@apis_root)).to_s
+      relative.split(File::SEPARATOR).first
+    rescue ArgumentError
+      nil
+    end
+
+    def qualify_alias_target(type, api_namespace)
+      return type unless api_namespace
+      return type if type.include?('::') || type.include?('<')
+      return type if %w[
+        bool double float int long size_t string variant void
+        int8_t int16_t int32_t int64_t uint8_t uint16_t uint32_t uint64_t
+      ].include?(type)
+
+      "#{api_namespace}::#{type}"
     end
 
     def relative_path(path)
