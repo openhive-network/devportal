@@ -3,7 +3,7 @@ title: titles.convert_hive_to_hbd
 position: 37
 description: descriptions.convert_hive_to_hbd
 layout: full
-canonical_url: convert_hbd_to_hive.html
+canonical_url: convert_hive_to_hbd.html
 ---
 Full, runnable src of [Convert HIVE to HBD](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript/37_convert_hive_to_hbd) can be downloaded as part of: [tutorials/javascript](https://gitlab.syncad.com/hive/devportal/-/tree/master/tutorials/javascript) (or download just this tutorial: [devportal-master-tutorials-javascript-37_convert_hive_to_hbd.zip](https://gitlab.syncad.com/hive/devportal/-/archive/master/devportal-master.zip?path=tutorials/javascript/37_convert_hive_to_hbd)).
 
