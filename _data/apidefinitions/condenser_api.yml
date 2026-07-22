@@ -59,6 +59,7 @@
       block_num: 0
       trx_num: 0
       expired: false
+      rc_cost: null
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.broadcast_transaction_synchronous",
         "params":[{"ref_block_num":1097,"ref_block_prefix":2181793527,"expiration":"2016-03-24T18:00:21","operations":[["vote",{"voter":"hiveio","author":"alice","permlink":"a-post-by-alice","weight":10000}]],"extensions":[],"signatures":[]}],
@@ -178,6 +179,7 @@
     parameter_json:
       - - ''
     expected_response_json: |
+      [
       {
         "id": 1370484,
         "name": "hiveio",
@@ -301,6 +303,7 @@
         "tags_usage": [],
         "guest_bloggers": []
       }
+      ]
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio"]], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["hiveio", "alice"], true], "id":1}'
@@ -332,7 +335,9 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_active_votes
     purpose: |
-      Returns all votes for the given post.  Parameters: `author:string`; `permlink:string`
+      Returns all votes for the given post. Parameters: `author:string`;
+      `permlink:string`. Both positional `params:[author,permlink]` and named
+      `params:{"author":author,"permlink":permlink}` forms are supported.
 
       | `author` (string) | `permlink` (string) | |
       |----------------------------|---------------|-|
@@ -353,9 +358,7 @@
         "firstpost"], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_votes", "params":["alice",
         "a-post-by-alice"], "id":1}'
-    expected_curl_responses:
-      - Invalid parameters
-      - Invalid parameters
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_votes", "params":{"author":"hiveio","permlink":"firstpost"}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_active_votes)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_active_votes)"
@@ -364,13 +367,15 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_active_witnesses
     purpose: |
-      Returns the list of active witnesses.
+      Returns the list of active witnesses. The optional positional boolean
+      includes the future witness schedule when true; the server inserts an
+      empty-string separator between the active and future lists.
 
       Also see: [database_api.get_active_witnesses]({{ '/apidefinitions/#database_api.get_active_witnesses' | relative_url }})
-    parameter_json: []
+    parameter_json: [true]
     expected_response_json: []
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_witnesses", "params":[],
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_active_witnesses", "params":[true],
       "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_active_witnesses)"
@@ -447,13 +452,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-block-header)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_blog
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_account_posts'
         relationship: 'spiritual_successor'
         note: 'Use `sort: blog` for current Hivemind-backed blog and reblog listings.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind, but new integrations should prefer the
+      Bridge successor below.
       
       Returns the list of blog entries for an account.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
 
@@ -559,13 +566,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-blog-authors)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_blog_entries
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_account_posts'
         relationship: 'spiritual_successor'
         note: 'Use `sort: blog` for current Hivemind-backed blog and reblog listings.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; prefer the successor below for new integrations.
       
       Returns a list of blog entries for an account.  Parameters: `account:string`; `start_entry_id:int`; `limit:int` up to 500
 
@@ -603,7 +611,8 @@
       account_creation_fee: 0.100 HIVE
       maximum_block_size: 131072
       hbd_interest_rate: 1000
-      account_subsidy_limit: 0
+      account_subsidy_budget: 797
+      account_subsidy_decay: 347321
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_chain_properties", "params":[],
         "id":1}'
@@ -614,14 +623,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-chain-properties)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_comment_discussions_by_payout
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_ranked_posts'
         relationship: 'spiritual_successor'
         note: 'Use `sort: payout_comments` for payout-ranked comment discovery.'
     since: HF17
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; prefer the successor below for new integrations.
       
       Returns a list of discussions based on payout.
 
@@ -654,7 +664,7 @@
       Parameters use the discussion query object. `tag` is required and is the
       blog account. `start_author` and `start_permlink` can be used for
       pagination.
-    parameter_json: '{"tag":"hiveio","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -689,7 +699,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_blog", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_blog", "params":[{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_blog)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-blog)"
@@ -702,7 +712,7 @@
 
       `start_author` is required. `start_permlink`, `limit`, `truncate_body`,
       and `observer` are optional.
-    parameter_json: '{"start_author":"hiveio","limit":1,"truncate_body":80}'
+    parameter_json: '{"start_author":"hiveio","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -730,7 +740,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_comments", "params":[{"start_author":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_comments", "params":[{"start_author":"hiveio","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_comments)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-comments)"
@@ -740,7 +750,7 @@
     purpose: |
       Returns discussions ordered by creation time. This is a Hivemind-supported
       compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -775,7 +785,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_created", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_created", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_created)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-created)"
@@ -788,7 +798,7 @@
 
       Parameters use the same object shape as `get_discussions_by_blog`; `tag`
       is required and identifies the account feed.
-    parameter_json: '{"tag":"hiveio","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -812,7 +822,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_feed", "params":[{"tag":"hiveio","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_feed", "params":[{"tag":"hiveio","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_feed)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-feed)"
@@ -822,7 +832,7 @@
     purpose: |
       Returns discussions ordered by recent popularity. This is a
       Hivemind-supported compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -846,7 +856,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_hot", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_hot", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_hot)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-hot)"
@@ -856,7 +866,7 @@
     purpose: |
       Returns discussions ordered by popularity. This is a Hivemind-supported
       compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -880,7 +890,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_trending", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_discussions_by_trending", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_discussions_by_trending)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-trending)"
@@ -890,7 +900,7 @@
     purpose: |
       Returns posts ordered by payout. This is a Hivemind-supported
       compatibility endpoint.
-    parameter_json: '{"tag":"hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: |
       [
         {
@@ -914,7 +924,7 @@
         }
       ]
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_post_discussions_by_payout", "params":[{"tag":"hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_post_discussions_by_payout", "params":[{"tag":"hive","start_author":"","start_permlink":"","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_post_discussions_by_payout)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#get-discussions-by-payout)"
@@ -927,10 +937,10 @@
 
       `start_author` is required. `start_permlink`, `limit`, `truncate_body`,
       and `observer` are optional.
-    parameter_json: '{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"truncate_body":80}'
+    parameter_json: '{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"observer":"","truncate_body":80}'
     expected_response_json: []
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_replies_by_last_update", "params":[{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"truncate_body":80}], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_replies_by_last_update", "params":[{"start_author":"hiveio","start_permlink":"hive-5-celebrating-our-5th-anniversary-as-hive","limit":1,"observer":"","truncate_body":80}], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_replies_by_last_update)"
       - "[hive-js](https://gitlab.syncad.com/hive/hive-js/tree/master/doc#content)"
@@ -953,13 +963,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-config)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_content
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_post'
         relationship: 'spiritual_successor'
         note: 'Use for current Hivemind-backed post or comment lookup by author and permlink.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind, but new integrations should prefer the
+      Bridge successor below.
       
       Returns the content (post or comment).  Parameters: `author:string`; `permlink:string`
 
@@ -1032,13 +1044,14 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/comments)"
   - api_method: condenser_api.get_content_replies
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_discussion'
         relationship: 'spiritual_successor'
         note: 'Use when the caller needs reply or thread context for a post.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; prefer the successor below for new integrations.
       
       Returns a list of replies.  Parameters: `author:string`; `permlink:string`
 
@@ -1114,21 +1127,19 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_conversion_requests
     purpose: |
-      Returns a list of conversion request.  Parameters: `id:integer`
+      Returns the HBD conversion requests for an account. Parameter: `account:string`
 
-      | `id` (int) | |
+      | `account` (string) | |
       |-------------------|-|
-      | `1234` | Queries a conversion request with the id of 1234. |
+      | `"hiveio"` | Queries conversion requests owned by `hiveio`. |
 
       Also see: [database_api.list_hbd_conversion_requests]({{ '/apidefinitions/#database_api.list_hbd_conversion_requests' | relative_url }})
     parameter_json:
-      - 0
+      - hiveio
     expected_response_json: []
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_conversion_requests", "params":[1234],
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_conversion_requests", "params":["hiveio"],
         "id":1}'
-    expected_curl_responses:
-      - Given account does not exist
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_conversion_requests)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_conversion_requests)"
@@ -1151,13 +1162,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-current-median-history-price)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_discussions_by_author_before_date
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_account_posts'
         relationship: 'spiritual_successor'
         note: 'Use `sort: posts` or `sort: replies` with pagination; it is not a 1-to-1 date-before query.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; prefer the successor below for new integrations.
       
       Returns a list of discussions based on author before date.
 
@@ -1188,6 +1200,7 @@
       Also see: [database_api.get_dynamic_global_properties]({{ '/apidefinitions/#database_api.get_dynamic_global_properties' | relative_url }})
     parameter_json: []
     expected_response_json:
+      id: 0
       head_block_number: 0
       head_block_id: '0000000000000000000000000000000000000000'
       time: '1970-01-01T00:00:00'
@@ -1196,23 +1209,40 @@
       num_pow_witnesses: 0
       virtual_supply: 0.000 HIVE
       current_supply: 0.000 HIVE
-      confidential_supply: 0.000 HIVE
+      init_hbd_supply: 0.000 HBD
       current_hbd_supply: 0.000 HIVE
-      confidential_hbd_supply: 0.000 HIVE
       total_vesting_fund_hive: 0.000 HIVE
       total_vesting_shares: 0.000 HIVE
-      total_reward_fund_hive: 0.000 HIVE
-      total_reward_shares2: '0'
-      pending_rewarded_vesting_shares: 0.000 HIVE
+      pending_rewarded_vesting_shares: 0.000000 VESTS
       pending_rewarded_vesting_hive: 0.000 HIVE
       hbd_interest_rate: 0
       hbd_print_rate: 10000
       maximum_block_size: 0
+      current_remove_threshold: 0
       current_aslot: 0
       recent_slots_filled: '0'
       participation_count: 0
       last_irreversible_block_num: 0
+      delegation_return_period: 432000
+      reverse_auction_seconds: 0
+      early_voting_seconds: 0
+      mid_voting_seconds: 0
+      available_account_subsidies: 0
+      hbd_stop_percent: 1000
+      hbd_start_percent: 900
+      next_maintenance_time: '1970-01-01T00:00:00'
+      next_daily_maintenance_time: '1970-01-01T00:00:00'
+      last_budget_time: '1970-01-01T00:00:00'
+      content_reward_percent: 6500
+      vesting_reward_percent: 1500
+      proposal_fund_percent: 1000
+      dhf_interval_ledger: 0.000 HBD
+      downvote_pool_percent: 2500
       vote_power_reserve_rate: 40
+      min_recurrent_transfers_recurrence: 24
+      max_open_recurrent_transfers: 255
+      max_recurrent_transfer_end_date: 730
+      max_consecutive_recurrent_transfer_failures: 10
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_dynamic_global_properties", "params":[],
         "id":1}'
@@ -1279,8 +1309,17 @@
     parameter_json: []
     expected_response_json:
       id: 0
+      current_min_history:
+        base: 0.000 HBD
+        quote: 0.000 HIVE
       current_median_history:
-        base: 0.000 HIVE
+        base: 0.000 HBD
+        quote: 0.000 HIVE
+      current_max_history:
+        base: 0.000 HBD
+        quote: 0.000 HIVE
+      market_median_history:
+        base: 0.000 HBD
         quote: 0.000 HIVE
       price_history: []
     curl_examples:
@@ -1292,14 +1331,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-feed-history)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_follow_count
-    status: obsolete
+    status: deprecated
     successors:
       - api_method: 'bridge.get_profile'
         relationship: 'spiritual_successor'
         note: 'The profile response includes follower and following counts.'
     since: HF9
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; prefer the successor below for new integrations.
       
       Returns the count of followers/following for an account.  Parameters: `account:string`
 
@@ -1326,14 +1366,16 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)"
   - api_method: condenser_api.get_followers
-    status: obsolete
+    status: deprecated
     successors:
       - label: 'No direct documented replacement'
         relationship: 'none'
         note: 'Use indexed Hivemind, HAFSQL, or HiveSQL follower data for full follower lists; `bridge.get_relationship_between_accounts` only answers pairwise relationship questions.'
     since: HF9
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind. Prefer indexed Hivemind/HAFSQL data for new
+      integrations that need follower lists.
       
       Returns the list of followers for an account.  Parameters: `account:string`; `start:string` (account to start from); `type:string` e.g.: `blog`; `limit:int` up to 1000
 
@@ -1369,14 +1411,15 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/followers)"
   - api_method: condenser_api.get_following
-    status: obsolete
+    status: deprecated
     successors:
       - label: 'No direct documented replacement'
         relationship: 'none'
         note: 'Use indexed Hivemind, HAFSQL, or HiveSQL follower data for full following lists; `bridge.get_relationship_between_accounts` only answers pairwise relationship questions.'
     since: HF9
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; use the indexed alternatives below for new integrations.
       
       Returns the list of accounts that are following an account.  Parameters: `account:string`; `start:string` (account to start from); `type:string` e.g.: `blog`; `limit:int` up to 1000
 
@@ -1649,14 +1692,15 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-potential-signatures)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_reblogged_by
-    status: obsolete
+    status: deprecated
     successors:
       - label: 'No direct documented replacement'
         relationship: 'none'
         note: 'Use indexed Hivemind, HAFSQL, or HiveSQL reblog data when you need every account that reblogged a post.'
     since: HF14
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; use the indexed alternatives below for new integrations.
       
       Returns a list of authors that have reblogged a post.  Parameters: `author:string`; `permlink:string`
 
@@ -1925,13 +1969,14 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-transaction-hex)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_trending_tags
-    status: obsolete
+    status: deprecated
     successors:
       - label: 'bridge.get_trending_topics'
         relationship: 'spiritual_successor'
         note: 'Use the Hivemind bridge trending-topics endpoint where available; it is not currently documented as a full method page here.'
     purpose: |
-      **Obsolete.** Current Hive source no longer defines this `hived` endpoint. Historical documentation is retained for compatibility context.
+      **Deprecated compatibility endpoint.** The public Hive API still routes
+      this method through Hivemind; prefer the successor below for new integrations.
       
       Returns the list of trending tags.  Parameter: `start_tag:string`; `limit:int` up to 100
 
@@ -1973,6 +2018,9 @@
       blockchain_version: ''
       hive_revision: ''
       fc_revision: ''
+      chain_id: '0000000000000000000000000000000000000000000000000000000000000000'
+      node_type: hived
+      haf_revision: ''
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.get_version", "params":[], "id":1}'
     client_docs:
@@ -2123,17 +2171,19 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.get_witness_schedule
     purpose: |
-      Returns the current witness schedule.
+      Returns the current witness schedule. Pass the optional positional
+      boolean `true` to include `future_shuffled_witnesses` and any available
+      `future_changes`; those optional fields are omitted by default.
 
       Also see: [database_api.get_witness_schedule]({{ '/apidefinitions/#database_api.get_witness_schedule' | relative_url }})
-    parameter_json: []
+    parameter_json: [true]
     expected_response_json:
       id: 0
       current_virtual_time: '0'
       next_shuffle_block_num: 1
       current_shuffled_witnesses: []
       num_scheduled_witnesses: 1
-      top19_weight: 1
+      elected_weight: 1
       timeshare_weight: 5
       miner_weight: 1
       witness_pay_normalization_factor: 25
@@ -2141,13 +2191,35 @@
         account_creation_fee: 0.000 HIVE
         maximum_block_size: 131072
         hbd_interest_rate: 1000
+        account_subsidy_budget: 797
+        account_subsidy_decay: 347321
       majority_version: 0.0.0
       max_voted_witnesses: 19
       max_miner_witnesses: 1
       max_runner_witnesses: 1
       hardfork_required_witnesses: 17
+      account_subsidy_rd:
+        resource_unit: 10000
+        budget_per_time_unit: 797
+        pool_eq: 157691079
+        max_pool_size: 157691079
+        decay_params:
+          decay_per_time_unit: 347321
+          decay_per_time_unit_denom_shift: 36
+        min_decay: 0
+      account_subsidy_witness_rd:
+        resource_unit: 10000
+        budget_per_time_unit: 996
+        pool_eq: 9384019
+        max_pool_size: 9384019
+        decay_params:
+          decay_per_time_unit: 7293741
+          decay_per_time_unit_denom_shift: 36
+        min_decay: 612
+      min_witness_account_subsidy_decay: 0
+      future_shuffled_witnesses: []
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_schedule", "params":[],
+      - '{"jsonrpc":"2.0", "method":"condenser_api.get_witness_schedule", "params":[true],
         "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_get_witness_schedule)"
@@ -2206,8 +2278,9 @@
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
       - - hiveio
-        - true
+      - true
     expected_response_json: |
+      [
       {
         "id": 1370484,
         "name": "hiveio",
@@ -2331,6 +2404,7 @@
         "tags_usage": [],
         "guest_bloggers": []
       }
+      ]
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"]], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_account_names", "params":[["hiveio"], false], "id":1}'
@@ -2484,6 +2558,10 @@
       | `["alice"]` | 10 | `by_voter_proposal` | `ascending` | `active` | list 10 proposals with active status, ordered by voter, ascending |
       | `[10]` | 1000 | `by_proposal_voter` | `ascending` | `votable` | list 1000 votes on proposal 10, ordered by `proposal.id`, ascending |
 
+      When using `by_proposal_voter`, the API starts at the provided `proposal.id` but does not stop when the result set reaches a different proposal. If the target proposal has fewer votes than `limit`, later rows can belong to higher proposal ids. Filter returned rows by `proposal.id` when you need votes for one proposal only.
+
+      To continue past the 1000 row limit, request the next page with `start` set to the last row's `[proposal.id, voter]`. For example, if the previous page for proposal `10` ended with voter `alice`, use `[10, "alice"]` as the next `start` value.
+
       Also see: [database_api.list_proposals]({{ '/apidefinitions/#database_api.list_proposal_votes' | relative_url }})
     parameter_json: '[[],0,"by_name","ascending","all"]'
     expected_response_json: |
@@ -2570,7 +2648,7 @@
       ]
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[[""], 10, "by_creator", "ascending", "active"], "id":1}'
-      - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[["2019-08-07T16:54:03"], 1000, "order_direction": "ascending", "inactive"], "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[["2019-08-07T16:54:03"], 1000, "by_start_date", "ascending", "inactive"], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[["a"], 1, "by_creator", "ascending", "expired"], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[["alice"], 10, "by_creator", "ascending", "all"], "id":1}'
       - '{"jsonrpc":"2.0", "method":"condenser_api.list_proposals", "params":[[""], 1000, "by_creator", "ascending", "votable"], "id":1}'
@@ -2591,7 +2669,7 @@
     parameter_json: '["0000000000000000000000000000000000000000"]'
     expected_response_json: 'false'
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"condenser_api.is_known_transaction", "params":["0000000000000000000000000000000000000000"]}, "id":1}'
+      - '{"jsonrpc":"2.0", "method":"condenser_api.is_known_transaction", "params":["0000000000000000000000000000000000000000"], "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/condenser_api/condenser_is_known_transaction)"
   - api_method: condenser_api.get_collateralized_conversion_requests

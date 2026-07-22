@@ -617,8 +617,11 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)"
   - api_method: database_api.get_active_witnesses
-    purpose: Returns the list of active witnesses.
-    parameter_json: "{}"
+    purpose: |
+      Returns the list of active witnesses. Set `include_future` to `true` to
+      include `future_witnesses`; that response field is omitted when the
+      parameter is false or absent.
+    parameter_json: '{"include_future":true}'
     expected_response_json: |
       {
         "witnesses": [
@@ -649,7 +652,7 @@
         ]
       }
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"database_api.get_active_witnesses", "id":1}'
+      - '{"jsonrpc":"2.0", "method":"database_api.get_active_witnesses", "params":{"include_future":true}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/database_api/get_active_witnesses)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_active_witnesses)"
@@ -1006,12 +1009,6 @@
           "precision": 6,
           "nai": "@@000000037"
         },
-        "total_reward_fund_hive": {
-          "amount": "0",
-          "precision": 3,
-          "nai": "@@000000021"
-        },
-        "total_reward_shares2": "0",
         "pending_rewarded_vesting_shares": {
           "amount": "55809356614",
           "precision": 6,
@@ -1291,8 +1288,11 @@
       - "[beem](https://beem.readthedocs.io/en/latest/apidefinitions.html#get-version)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: database_api.get_witness_schedule
-    purpose: Returns the current witness schedule.
-    parameter_json: "{}"
+    purpose: |
+      Returns the current witness schedule. Set `include_future` to `true` to
+      include `future_shuffled_witnesses`. `future_changes` is also returned
+      when the future schedule contains pending property changes.
+    parameter_json: '{"include_future":true}'
     expected_response_json: |
       {
         "id": 0,
@@ -1320,6 +1320,9 @@
           "drakos",
           "gtg",
           "init-7"
+        ],
+        "future_shuffled_witnesses": [
+          "future-witness"
         ],
         "num_scheduled_witnesses": 21,
         "elected_weight": 1,
@@ -1367,7 +1370,7 @@
         "min_witness_account_subsidy_decay": 0
       }
     curl_examples:
-      - '{"jsonrpc":"2.0", "method":"database_api.get_witness_schedule", "id":1}'
+      - '{"jsonrpc":"2.0", "method":"database_api.get_witness_schedule", "params":{"include_future":true}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/database_api/get_witness_schedule)"
       - "[hivexplorer](https://hivexplorer.com/api-docs?q=get_witness_schedule)"
@@ -2343,11 +2346,11 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: database_api.verify_signatures
     purpose:
-      This method validates if transaction was signed by person listed in required_owner, required_active or required_posting parameter. `Hash` is a mix of chain_id and transaction data.
-    parameter_json: '{"hash":"0000000000000000000000000000000000000000000000000000000000000000","signatures":[],"required_owner":[],"required_active":[],"required_posting":[],"required_other":[]}'
-    expected_response_json: '{"valid":false}'
+      This method validates whether the supplied signatures satisfy the listed owner, active, posting, witness, and other authorities. `Hash` is a mix of chain_id and transaction data.
+    parameter_json: '{"hash":"0000000000000000000000000000000000000000000000000000000000000000","signatures":[],"required_owner":[],"required_active":[],"required_posting":[],"required_witness":[],"required_other":[]}'
+    expected_response_json: '{"valid":true}'
     curl_examples:
-    - '{"jsonrpc":"2.0", "method":"database_api.verify_signatures", "params":{"hash": "0000000000000000000000000000000000000000000000000000000000000000", "signatures": [], "required_owner": [], "required_active": [], "required_posting": [], "required_other": []}, "id":1}'
+    - '{"jsonrpc":"2.0", "method":"database_api.verify_signatures", "params":{"hash": "0000000000000000000000000000000000000000000000000000000000000000", "signatures": [], "required_owner": [], "required_active": [], "required_posting": [], "required_witness": [], "required_other": []}, "id":1}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/database_api/verify_signatures)"
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
@@ -2404,6 +2407,10 @@
       |-------------------|-|-|-|-|-|
       | `["alice"]` | 10 | `by_voter_proposal` | `ascending` | `active` | list 10 proposals with active status, ordered by voter, ascending |
       | `[10]` | 1000 | `by_proposal_voter` | `ascending` | `votable` | list 1000 votes on proposal 10, ordered by `proposal.id`, ascending |
+
+      When using `by_proposal_voter`, the API starts at the provided `proposal.id` but does not stop when the result set reaches a different proposal. If the target proposal has fewer votes than `limit`, later rows can belong to higher proposal ids. Filter returned rows by `proposal.id` when you need votes for one proposal only.
+
+      To continue past the 1000 row limit, request the next page with `start` set to the last row's `[proposal.id, voter]`. For example, if the previous page for proposal `10` ended with voter `alice`, use `[10, "alice"]` as the next `start` value.
 
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#database_apilist_proposal_votes' | relative_url }})
     parameter_json: '{"start":null,"limit":0,"order":"by_name","order_direction":"ascending","status":"all"}'

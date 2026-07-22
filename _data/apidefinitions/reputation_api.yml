@@ -21,10 +21,14 @@
 
       Also see: [Paginated API Methods]({{ '/tutorials-recipes/paginated-api-methods.html#reputation_apiget_account_reputations' | relative_url }})
     parameter_json: '{"account_lower_bound":"","limit":1000}'
-    expected_response_json: | # TODO - recheck in HF23
+    expected_response_json: |
       {
-        "account": "hive",
-        "reputation": 0
+        "reputations": [
+          {
+            "account": "hive",
+            "reputation": 0
+          }
+        ]
       }
     curl_examples:
     - '{"jsonrpc":"2.0", "method":"reputation_api.get_account_reputations", "params": {"account_lower_bound": "hive"}, "id":1}'
