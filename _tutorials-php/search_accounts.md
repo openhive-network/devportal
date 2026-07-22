@@ -3,7 +3,7 @@ title: titles.search_accounts
 position: 3
 description: descriptions.search_accounts
 layout: full
-canonical_url: get_post_details.html
+canonical_url: search_accounts.html
 ---
 
 ### Introduction

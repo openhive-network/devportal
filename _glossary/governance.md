@@ -1,6 +1,6 @@
 ---
 title: titles.governance
 position: 2
-description: descriptions.dovernance
+description: descriptions.governance
 canonical_url: governance.html
 ---
