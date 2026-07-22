@@ -9,7 +9,7 @@
     parameter_json: "{}"
     expected_response_json: |
       {
-        "db_head_age": 2.433090925216675,
+        "db_head_age": 0.5,
         "db_head_time": "2026-06-06 21:47:45",
         "db_head_block": 107046337
       }

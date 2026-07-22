@@ -9,7 +9,7 @@
   methods:
   - api_method: debug_node_api.debug_generate_blocks
     purpose: Generate blocks locally.
-    parameter_json: '{"debug_key":"","count":0,"skip":0,"miss_blocks":0,"edit_if_needed":true}'
+    parameter_json: '{"debug_key":"","count":0,"skip":0,"miss_blocks":0}'
     expected_response_json: '{"blocks":0}'
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/debug_node_api/debug_generate_blocks)"
@@ -73,7 +73,7 @@
       - '[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)'
   - api_method: debug_node_api.debug_set_hardfork
     purpose: 
-    parameter_json: '{"hardfork_id":0}'
+    parameter_json: '{"hardfork_id":0,"hook_to_tx":""}'
     expected_response_json: "{}"
     client_docs:
       - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/debug_node_api/debug_set_hardfork)"
@@ -188,7 +188,8 @@
             "precision": 3,
             "nai": "@@000000013"
           }
-        }
+        },
+        "hook_to_tx": ""
       }
     expected_response_json: "{}"
     client_docs:

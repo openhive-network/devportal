@@ -382,11 +382,9 @@
     expected_response_json: '{"rc_accounts":[]}'
     client_docs:
     - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/list_rc_accounts)"
-    - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_accounts)"
   - api_method: rc_api.list_rc_direct_delegations
     purpose:
     parameter_json: '{"start":null,"limit":0}'
     expected_response_json: '{"rc_direct_delegations":[]}'
     client_docs:
     - "[openApi](https://api.hive.blog/?urls.primaryName=Legacy+Hive+JSON-RPC+API#/rc_api/list_rc_direct_delegations)"
-    - "[hivexplorer](https://hivexplorer.com/api-docs?q=list_rc_direct_delegations)"

@@ -47,6 +47,21 @@ module JekyllBuildTestHelper
     refute_includes File.read(path), text, "Expected #{path} not to include #{text.inspect}"
   end
 
+  # Jekyll gives collection documents extensionless URLs but writes them to disk
+  # with an extension. S3 does not bridge that gap, so an advertised URL that has
+  # no corresponding file is a 403 for every crawler that follows it.
+  def assert_urls_resolve_to_built_files(urls, site_dir, source)
+    unresolved = urls.reject do |url|
+      path = url.sub(%r{\Ahttps://developers\.hive\.io}, '').sub(/#.*\z/, '')
+      path = "#{path}index.html" if path.end_with?('/')
+      File.exist?(File.join(site_dir, path))
+    end
+
+    assert_empty unresolved,
+                 "#{source} advertises #{unresolved.size} of #{urls.size} URLs with no file in the build: " \
+                 "#{unresolved.first(5).join(', ')}"
+  end
+
   def api_methods(file_name)
     YAML.load_file(project_path('_data', 'apidefinitions', file_name)).first.fetch('methods')
   end
