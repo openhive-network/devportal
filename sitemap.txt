@@ -9,7 +9,13 @@ languages: ["en"]
 {%- assign sitemap_urls = '' -%}
 {%- for page in site.pages -%}
   {%- unless page.sitemap == false or page.url contains '.xml' or page.url contains '.txt' -%}
-    {%- assign url_path = page.url | replace: 'index.html', '' | replace: '.html', '' -%}
+    {%- assign raw_path = page.url | replace: 'index.html', '' -%}
+    {%- assign last_char = raw_path | slice: -1 -%}
+    {%- if last_char == '/' or raw_path contains '.html' -%}
+      {%- assign url_path = raw_path -%}
+    {%- else -%}
+      {%- assign url_path = raw_path | append: '.html' -%}
+    {%- endif -%}
     {%- assign page_root = page.path | split: '/' | first -%}
     {%- assign localize_page = true -%}
     {%- if site.exclude_from_localizations contains page_root -%}
@@ -40,7 +46,13 @@ languages: ["en"]
   {%- if collection.output -%}
     {%- for doc in collection.docs -%}
       {%- unless doc.sitemap == false -%}
-        {%- assign url_path = doc.url | replace: 'index.html', '' | replace: '.html', '' -%}
+        {%- assign raw_path = doc.url | replace: 'index.html', '' -%}
+        {%- assign last_char = raw_path | slice: -1 -%}
+        {%- if last_char == '/' or raw_path contains '.html' -%}
+          {%- assign url_path = raw_path -%}
+        {%- else -%}
+          {%- assign url_path = raw_path | append: '.html' -%}
+        {%- endif -%}
         {%- assign candidate_url = site.url | append: site.baseurl | append: url_path -%}
         {%- if sitemap_urls == '' -%}
           {%- assign sitemap_urls = candidate_url -%}
