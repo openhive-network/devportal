@@ -1,6 +1,6 @@
 ---
 title: titles.getset
-position: 6
+position: 7
 exclude: true
 ---
 #### Fetching data
