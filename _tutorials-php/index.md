@@ -4,6 +4,7 @@ section: titles.php
 exclude: true
 exclude_in_index: true
 canonical_url: .
+permalink: /tutorials-php/
 ---
 {% assign col = site.collections | where:"id", "tutorials-php" | first %}
 {% assign sorted_docs = col.docs | sort: "position" %}

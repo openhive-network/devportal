@@ -4,6 +4,7 @@ section: titles.ruby
 exclude: true
 exclude_in_index: true
 canonical_url: .
+permalink: /tutorials-ruby/
 ---
 {% assign col = site.collections | where:"id", "tutorials-ruby" | first %}
 {% assign sorted_docs = col.docs | sort: "position" %}

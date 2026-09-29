@@ -4,6 +4,7 @@ section: titles.recipes
 exclude: true
 exclude_in_index: true
 canonical_url: .
+permalink: /tutorials-recipes/
 ---
 {% assign col = site.collections | where:"id", "tutorials-recipes" | first %}
 {% assign sorted_docs = col.docs | sort: "position" %}

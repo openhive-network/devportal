@@ -4,6 +4,7 @@ section: titles.javascript
 exclude: true
 exclude_in_index: true
 canonical_url: .
+permalink: /tutorials-javascript/
 ---
 {% assign col = site.collections | where:"id", "tutorials-javascript" | first %}
 {% assign sorted_docs = col.docs | sort: "position" %}
