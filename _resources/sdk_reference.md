@@ -8,8 +8,8 @@ Use this page as a starting point for choosing a Hive SDK or client library. API
 
 | SDK / library | Runtime | Primary use | Package | Source / docs |
 | --- | --- | --- | --- | --- |
-| WAX | TypeScript, C++, Python | Protocol-compatible transaction and object handling | [`@hiveio/wax`](https://www.npmjs.com/package/@hiveio/wax) | [Source](https://gitlab.syncad.com/hive/wax) |
-| Workerbee | JavaScript / TypeScript | Automation helpers built on WAX and Beekeeper | - | [Source](https://gitlab.syncad.com/hive/workerbee) |
+| WAX | TypeScript, C++, Python | Protocol-compatible transaction and object handling | [`@hiveio/wax`](https://www.npmjs.com/package/@hiveio/wax) | [Docs](https://doc.openhive.network/wax/) / [llms.txt](https://mintlify.com/openhive-network/wax/llms.txt) / [Source](https://gitlab.syncad.com/hive/wax) |
+| Workerbee | JavaScript / TypeScript | Automation helpers built on WAX and Beekeeper | [`@hiveio/workerbee`](https://www.npmjs.com/package/@hiveio/workerbee) | [Source](https://gitlab.syncad.com/hive/workerbee) |
 | DHive | JavaScript / TypeScript | API calls, transaction construction, signing, and broadcasting | [`@hiveio/dhive`](https://www.npmjs.com/package/@hiveio/dhive) | [Source](https://gitlab.syncad.com/hive/dhive) |
 | Hive-JS | JavaScript | Browser and Node.js Hive API and transaction helpers | [`@hiveio/hive-js`](https://www.npmjs.com/package/@hiveio/hive-js) | [Source](https://gitlab.syncad.com/hive/hive-js) |
 | Hive-TX | JavaScript | Lightweight transaction creation, signing, and broadcasting | [`hive-tx`](https://www.npmjs.com/package/hive-tx) | [Source](https://github.com/mahdiyari/hive-tx-js) |
