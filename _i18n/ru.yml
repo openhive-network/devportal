@@ -28,7 +28,7 @@ titles:
   accounts: Аккаунты
   hackathon: Хакатоны Hive
   authentication: Аутентификация
-  building_agents: Building agents
+  building_agents: Создание агентов
   sdk: Библиотеки SDK
   sdk_reference: Справочник SDK
   getset: Получить и установить
@@ -181,7 +181,7 @@ descriptions:
   setting_up_testnet: Быстрый старт для установки тестовой сети, основанной на получении.
   tools: Каталог инструментов testnet сообщества
   sdk_reference: _SDK and client library links for building Hive applications._
-  building_agents: _Guide for LLM agents, automation bots, and MCP-style tools building on Hive._
+  building_agents: _Руководство для LLM-агентов, ботов автоматизации и MCP-подобных инструментов на Hive._
   hivesigner: _Понимание основ использования Hivesigner с вашим приложением Hive_
   api: Словарь терминов API
   chain_basics: Словарь базовых терминов Chain
