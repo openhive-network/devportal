@@ -86,23 +86,21 @@ module Export
 
     def openapi_document
       built = build
-      paths = {}
-      built[:methods].each do |method|
-        name = method['api_method'].to_s
-        paths["/#{name}"] = openapi_path(method)
-      end
+      method_catalog = built[:methods].map { |method| openapi_method_entry(method) }
 
       {
         'openapi' => OPENAPI_VERSION,
         'info' => {
           'title' => 'Hive JSON-RPC',
           'version' => '0.0.0',
-          'description' => info_description + "\n\nEach path is a JSON-RPC 2.0 method name. Call it with HTTP POST and a JSON-RPC envelope (`jsonrpc`, `method`, `params`, `id`). This is not a REST API."
+          'description' => info_description + "\n\nHive exposes a single HTTP POST `/` JSON-RPC 2.0 endpoint. Method names live in the request body (`method`), not in the URL path. Per-method parameter shapes are listed under `x-hive-methods` and in `openrpc.json`."
         },
         'servers' => [
           { 'url' => DEFAULT_NODE, 'description' => 'Public HTTPS JSON-RPC node' }
         ],
-        'paths' => paths,
+        'paths' => {
+          '/' => openapi_root_path(built[:methods])
+        },
         'components' => {
           'schemas' => {
             'JsonRpcRequest' => {
@@ -111,7 +109,7 @@ module Export
               'properties' => {
                 'jsonrpc' => { 'type' => 'string', 'enum' => ['2.0'] },
                 'method' => { 'type' => 'string', 'description' => 'Fully qualified method name, for example database_api.get_dynamic_global_properties.' },
-                'params' => { 'description' => 'Named object for AppBase methods, positional array for condenser_api. See the operation example and x-hive-params.' },
+                'params' => { 'description' => 'Named object for AppBase methods, positional array for condenser_api. See x-hive-methods and openrpc.json.' },
                 'id' => { 'description' => 'Client-chosen request id.' }
               }
             },
@@ -137,7 +135,8 @@ module Export
           'description' => 'Hive JSON-RPC API reference',
           'url' => "#{@docs_url}/apidefinitions/"
         },
-        'x-hive-namespaces' => built[:namespaces].map { |namespace| namespace['name'] }
+        'x-hive-namespaces' => built[:namespaces].map { |namespace| namespace['name'] },
+        'x-hive-methods' => method_catalog
       }
     end
 
@@ -167,21 +166,15 @@ module Export
       api, short_name = name.split('.', 2)
       summary = first_line(method['purpose'])
       description = method_description(method)
-      params_schema = params_schema_for(method, api)
+      param_info = params_info_for(method, api)
       result_schema = result_schema_for(method)
 
       entry = {
         'name' => name,
         'summary' => summary,
         'description' => description,
-        'params' => [
-          {
-            'name' => params_schema[:name],
-            'description' => params_schema[:description],
-            'required' => params_schema[:required],
-            'schema' => params_schema[:schema]
-          }
-        ],
+        'paramStructure' => param_info[:structure],
+        'params' => param_info[:descriptors],
         'result' => {
           'name' => 'result',
           'description' => 'JSON-RPC result. Shape is inferred from the documented example when one exists.',
@@ -199,50 +192,81 @@ module Export
       entry['x-hive-disabled'] = true if method['disabled']
       entry['x-hive-since'] = method['since'].to_s if method['since']
       entry['x-hive-successors'] = Array(method['successors']) if method['successors']
-      if method['curl_examples']
-        entry['examples'] = curl_examples(method)
-      end
+      examples = example_pairings(method, param_info)
+      entry['examples'] = examples unless examples.empty?
       entry
     end
 
-    def openapi_path(method)
-      name = method['api_method'].to_s
-      api = name.split('.', 2).first
-      params_schema = params_schema_for(method, api)
-
-      operation = {
-        'operationId' => name.tr('.', '_'),
-        'summary' => first_line(method['purpose']),
-        'description' => method_description(method),
-        'tags' => [api],
-        'requestBody' => {
-          'required' => true,
-          'content' => {
-            'application/json' => {
-              'schema' => { '$ref' => '#/components/schemas/JsonRpcRequest' },
-              'example' => {
-                'jsonrpc' => '2.0',
-                'method' => name,
-                'params' => params_example(method, api),
-                'id' => 1
-              }
-            }
-          }
-        },
-        'responses' => {
-          '200' => {
-            'description' => 'JSON-RPC response. Application errors use HTTP 200 with an `error` object. Result shape is in the OpenRPC document.',
+    def openapi_root_path(methods)
+      examples = openapi_request_examples(methods)
+      {
+        'post' => {
+          'operationId' => 'jsonrpc',
+          'summary' => 'Hive JSON-RPC 2.0',
+          'description' => 'Call any documented Hive JSON-RPC method with HTTP POST to `/`. The method name is in the JSON-RPC body, not the URL. Application errors typically return HTTP 200 with an `error` object. Per-method discovery lives in `x-hive-methods` and in openrpc.json.',
+          'requestBody' => {
+            'required' => true,
             'content' => {
               'application/json' => {
-                'schema' => { '$ref' => '#/components/schemas/JsonRpcResponse' }
+                'schema' => { '$ref' => '#/components/schemas/JsonRpcRequest' },
+                'examples' => examples
+              }
+            }
+          },
+          'responses' => {
+            '200' => {
+              'description' => 'JSON-RPC response. Application errors use HTTP 200 with an `error` object. Result shape is in the OpenRPC document.',
+              'content' => {
+                'application/json' => {
+                  'schema' => { '$ref' => '#/components/schemas/JsonRpcResponse' }
+                }
               }
             }
           }
-        },
-        'x-hive-params' => params_schema[:schema]
+        }
       }
-      operation['deprecated'] = true if obsolete?(method)
-      { 'post' => operation }
+    end
+
+    def openapi_method_entry(method)
+      name = method['api_method'].to_s
+      api = name.split('.', 2).first
+      param_info = params_info_for(method, api)
+      entry = {
+        'name' => name,
+        'summary' => first_line(method['purpose']),
+        'paramStructure' => param_info[:structure],
+        'params' => param_info[:descriptors],
+        'x-hive-api' => api
+      }
+      entry['deprecated'] = true if obsolete?(method)
+      entry['disabled'] = true if method['disabled']
+      entry
+    end
+
+    def openapi_request_examples(methods)
+      preferred = %w[
+        database_api.find_accounts
+        database_api.get_dynamic_global_properties
+        condenser_api.get_dynamic_global_properties
+        condenser_api.get_account_history
+      ]
+      by_name = methods.each_with_object({}) { |method, memo| memo[method['api_method'].to_s] = method }
+      selected = preferred.filter_map { |name| by_name[name] }
+      selected = methods.first(4) if selected.empty?
+
+      selected.each_with_object({}) do |method, memo|
+        name = method['api_method'].to_s
+        api = name.split('.', 2).first
+        memo[name.tr('.', '_')] = {
+          'summary' => name,
+          'value' => {
+            'jsonrpc' => '2.0',
+            'method' => name,
+            'params' => params_example(method, api),
+            'id' => 1
+          }
+        }
+      end
     end
 
     def params_example(method, api)
@@ -252,34 +276,54 @@ module Export
       api == 'condenser_api' ? [] : {}
     end
 
-    def params_schema_for(method, api)
+    # Returns :structure ("by-name" / "by-position"), :descriptors (OpenRPC
+    # Content Descriptor list), and :names (descriptor names in order).
+    def params_info_for(method, api)
       parsed = parse_example(method['parameter_json'])
       positional = api == 'condenser_api' || parsed.is_a?(Array)
+      structure = positional ? 'by-position' : 'by-name'
 
       if parsed.nil?
-        return {
-          name: positional ? 'params' : 'params',
-          description: positional ? 'Positional JSON-RPC params array. No example is documented.' : 'Named JSON-RPC params object. No example is documented.',
-          required: false,
-          schema: positional ? { 'type' => 'array' } : { 'type' => 'object' }
-        }
+        return { structure: structure, descriptors: [], names: [] }
       end
 
       if positional
-        {
-          name: 'params',
-          description: 'Positional JSON-RPC params array. Item schemas are inferred from the documented example.',
-          required: !parsed.empty?,
-          schema: array_schema(parsed)
-        }
+        values = parsed.is_a?(Array) ? parsed : [parsed]
+        return { structure: structure, descriptors: [], names: [] } if values.empty?
+
+        names = positional_param_names(method, values.length)
+        descriptors = values.each_with_index.map do |value, index|
+          {
+            'name' => names[index],
+            'required' => true,
+            'schema' => schema_for(value)
+          }
+        end
+        { structure: structure, descriptors: descriptors, names: names }
       else
-        {
-          name: 'params',
-          description: 'Named JSON-RPC params object. Property schemas are inferred from the documented example.',
-          required: parsed.is_a?(Hash) && !parsed.empty?,
-          schema: schema_for(parsed)
-        }
+        hash = parsed.is_a?(Hash) ? parsed : {}
+        return { structure: structure, descriptors: [], names: [] } if hash.empty?
+
+        names = hash.keys.map(&:to_s)
+        descriptors = hash.map do |key, value|
+          {
+            'name' => key.to_s,
+            'required' => true,
+            'schema' => schema_for(value)
+          }
+        end
+        { structure: structure, descriptors: descriptors, names: names }
       end
+    end
+
+    def positional_param_names(method, count)
+      purpose = method['purpose'].to_s
+      names = purpose.scan(/\*\s*`([A-Za-z_][A-Za-z0-9_]*)\s*:/).flatten
+      if names.length < count
+        table_names = purpose.scan(/\|\s*`([A-Za-z_][A-Za-z0-9_]*)`/).flatten.uniq
+        names = table_names if table_names.length >= count
+      end
+      Array.new(count) { |index| names[index] || "arg#{index}" }
     end
 
     def result_schema_for(method)
@@ -320,22 +364,56 @@ module Export
       if value.empty?
         { 'type' => 'array', 'items' => {} }
       elsif value.all? { |item| item.is_a?(Hash) }
-        merged = {}
-        value.each { |item| merged = deep_merge_example(merged, item) }
-        { 'type' => 'array', 'items' => schema_for(merged) }
+        # Merge per-item object schemas so conflicting scalar field types
+        # become anyOf instead of keeping only the last example value.
+        item_schemas = value.map { |item| schema_for(item) }
+        { 'type' => 'array', 'items' => item_schemas.reduce { |left, right| merge_schemas(left, right) } }
       else
-        { 'type' => 'array', 'items' => schema_for(value.first) }
+        item_schemas = value.map { |item| schema_for(item) }
+        unique = uniq_schemas(item_schemas)
+        if unique.length == 1
+          { 'type' => 'array', 'items' => unique.first }
+        else
+          # Mixed tuples (e.g. [index, operationObject]). anyOf keeps OpenAPI
+          # 3.0.3 compatibility while accepting every observed item type.
+          { 'type' => 'array', 'items' => { 'anyOf' => unique } }
+        end
       end
     end
 
-    def deep_merge_example(left, right)
-      return right unless left.is_a?(Hash) && right.is_a?(Hash)
-
-      merged = left.dup
-      right.each do |key, value|
-        merged[key] = merged.key?(key) ? deep_merge_example(merged[key], value) : value
+    def uniq_schemas(schemas)
+      schemas.each_with_object([]) do |schema, memo|
+        memo << schema unless memo.any? { |existing| existing == schema }
       end
-      merged
+    end
+
+    def merge_schemas(left, right)
+      return right if left.nil? || left.empty?
+      return left if right.nil? || right.empty?
+      return left if left == right
+
+      if left['type'] == 'object' && right['type'] == 'object'
+        keys = left.fetch('properties', {}).keys | right.fetch('properties', {}).keys
+        properties = {}
+        keys.each do |key|
+          properties[key] = merge_schemas(left.dig('properties', key), right.dig('properties', key))
+        end
+        return { 'type' => 'object', 'properties' => properties }
+      end
+
+      if left['type'] == 'array' && right['type'] == 'array'
+        return { 'type' => 'array', 'items' => merge_schemas(left['items'], right['items']) }
+      end
+
+      alternatives = []
+      [left, right].each do |schema|
+        if schema.is_a?(Hash) && schema['anyOf']
+          schema['anyOf'].each { |item| alternatives << item unless alternatives.any? { |existing| existing == item } }
+        elsif schema
+          alternatives << schema unless alternatives.any? { |existing| existing == schema }
+        end
+      end
+      alternatives.length == 1 ? alternatives.first : { 'anyOf' => alternatives }
     end
 
     def parse_example(value)
@@ -363,22 +441,53 @@ module Export
       parts.join("\n\n")
     end
 
-    def curl_examples(method)
+    def example_pairings(method, param_info)
       Array(method['curl_examples']).first(2).each_with_index.filter_map do |example, index|
         text = example.to_s.strip
         next if text.empty?
 
         parsed = parse_example(text)
-        params = parsed.is_a?(Hash) ? parsed['params'] : nil
+        next unless parsed.is_a?(Hash)
+
+        raw_params = parsed.key?('params') ? parsed['params'] : nil
+        param_examples = example_param_values(raw_params, param_info)
+        next if param_examples.nil?
+
         {
           'name' => "documentedExample#{index + 1}",
-          'params' => [
-            {
-              'name' => 'params',
-              'value' => params.nil? ? text : params
-            }
-          ]
+          'params' => param_examples
         }
+      end
+    end
+
+    # Expand a curl JSON-RPC `params` value into OpenRPC Example Objects that
+    # match the per-argument content descriptors (not a nested `params` envelope).
+    def example_param_values(raw_params, param_info)
+      names = param_info[:names]
+      structure = param_info[:structure]
+
+      if structure == 'by-position'
+        values = case raw_params
+                 when Array then raw_params
+                 when nil then []
+                 else [raw_params]
+                 end
+        # Allow shorter curl examples than the documented parameter_json arity.
+        values.each_with_index.map do |value, index|
+          name = names[index] || "arg#{index}"
+          { 'name' => name, 'value' => value }
+        end
+      else
+        hash = case raw_params
+               when Hash then raw_params
+               when nil then {}
+               else nil
+               end
+        return nil if hash.nil?
+
+        hash.map do |key, value|
+          { 'name' => key.to_s, 'value' => value }
+        end
       end
     end
 
