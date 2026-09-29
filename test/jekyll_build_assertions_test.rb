@@ -173,17 +173,41 @@ class JekyllBuildAssertionsTest < Minitest::Test
       assert File.exist?(llms_path), 'Expected llms.txt to be generated'
 
       content = File.read(llms_path)
-      urls = content.scan(%r{https://developers\.hive\.io/[^\)\s]+})
 
-      assert_includes content, '# Hive Developers'
-      assert_includes content, 'Hive Developer Documentation.'
-      assert_includes content, '[Introduction](https://developers.hive.io/)'
-      assert_includes content, '](https://developers.hive.io/quickstart/)'
-      assert_includes content, '[JSON-RPC API](https://developers.hive.io/apidefinitions/)'
-      assert_includes content, '[Accounts](https://developers.hive.io/quickstart/accounts.html)'
-      assert_includes content, '[Account By Key API](https://developers.hive.io/apidefinitions/#apidefinitions-account-by-key-api)'
+      docs_heading = '# Hive Developers'
+      docs_start = content.index(docs_heading)
+      assert docs_start, 'Expected generated Docs index heading after curated preamble'
 
-      urls.each do |url|
+      curated = content[0...docs_start]
+      docs_index = content[docs_start..]
+
+      assert_includes curated, '## For AI / agent developers'
+      assert_includes curated, '[Building agents](https://developers.hive.io/quickstart/building_agents.html)'
+      assert_includes curated, '[https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)'
+
+      assert_includes docs_index, docs_heading
+      assert_includes docs_index, 'Hive Developer Documentation.'
+      assert_includes docs_index, '[Introduction](https://developers.hive.io/)'
+      assert_includes docs_index, '](https://developers.hive.io/quickstart/)'
+      assert_includes docs_index, '[JSON-RPC API](https://developers.hive.io/apidefinitions/)'
+      assert_includes docs_index, '[Accounts](https://developers.hive.io/quickstart/accounts.html)'
+      assert_includes docs_index, '[Account By Key API](https://developers.hive.io/apidefinitions/#apidefinitions-account-by-key-api)'
+
+      curated_urls = markdown_hive_link_destinations(curated)
+      docs_urls = markdown_hive_link_destinations(docs_index)
+
+      curated_urls.each do |url|
+        assert_match %r{\Ahttps://developers\.hive\.io/}, url
+        refute_match %r{/es/}, url
+        refute_match %r{/search/?\z}, url
+        refute_match %r{/sitemap\.txt\z}, url
+        refute_match %r{\.(css|js|png|svg|ico|gif|jpg|jpeg|xml)\z}, url
+      end
+
+      assert_includes curated_urls, 'https://developers.hive.io/llms.txt'
+      assert_urls_resolve_to_built_files(curated_urls, site_dir, 'llms.txt curated section')
+
+      docs_urls.each do |url|
         assert_match %r{\Ahttps://developers\.hive\.io/}, url
         refute_match %r{/es/}, url
         refute_match %r{/search/?\z}, url
@@ -192,14 +216,18 @@ class JekyllBuildAssertionsTest < Minitest::Test
         refute_match %r{\.(css|js|png|svg|ico|gif|jpg|jpeg|xml)\z}, url
       end
 
-      assert_urls_resolve_to_built_files(urls, site_dir, 'llms.txt')
-
-      assert_equal urls, urls.uniq, 'Expected llms.txt URLs to be unique'
+      assert_urls_resolve_to_built_files(docs_urls, site_dir, 'llms.txt Docs index')
+      assert_equal docs_urls, docs_urls.uniq, 'Expected generated Docs index URLs to be unique'
 
       Dir[File.join(site_dir, '*', 'llms.txt')].each do |localized_llms|
         flunk "Expected llms.txt to be generated only at the site root, but found #{localized_llms}"
       end
     end
+  end
+
+  def markdown_hive_link_destinations(text)
+    # Prefer Markdown link destinations so URL-as-label forms like [url](url) are not double-counted.
+    text.scan(%r{\]\((https://developers\.hive\.io/[^\)\s]+)\)}).flatten
   end
 
   def test_production_build_without_analytics_key_omits_gtag
