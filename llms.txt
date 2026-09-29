@@ -9,6 +9,17 @@ languages: ["en"]
 
 *Greetings Program.  The Master Control Program has chosen you to serve your system on the Hive Blockchain.*
 
+## For AI / agent developers
+
+- Start here: [Building agents](https://developers.hive.io/quickstart/building_agents.html)
+- Preferred stack: [WAX](https://doc.openhive.network/wax/) + [Beekeeper](https://gitlab.syncad.com/hive/beekeeper) for signing; [Workerbee](https://gitlab.syncad.com/hive/workerbee) / [@hiveio/workerbee](https://www.npmjs.com/package/@hiveio/workerbee) for observe/fetch/submit
+- WAX agent docs index: [https://mintlify.com/openhive-network/wax/llms.txt](https://mintlify.com/openhive-network/wax/llms.txt) · site: [https://openhive-network-wax.mintlify.app/](https://openhive-network-wax.mintlify.app/)
+- Public HTTPS nodes: [Hive Nodes](https://developers.hive.io/quickstart/#quickstart-hive-full-nodes) (e.g. `api.hive.blog`, `api.deathwing.me`, `anyx.io`)
+- JSON-RPC methods: [https://developers.hive.io/apidefinitions/](https://developers.hive.io/apidefinitions/)
+- Auth safety: posting key / Keychain / Beekeeper; never put active/owner keys in prompts or logs — [Authentication](https://developers.hive.io/quickstart/#quickstart-authentication), [RC API](https://developers.hive.io/apidefinitions/#apidefinitions-rc-api)
+- SDK table: [https://developers.hive.io/resources/#resources-sdk-reference](https://developers.hive.io/resources/#resources-sdk-reference)
+- This file: [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)
+
 {% assign llms_content = '# ' | append: site.title | append: newline | append: newline | append: site.description | append: newline | append: newline | append: '## Docs' | append: newline -%}
 {%- assign sorted_nav = site.data.nav.toc | sort: "position" -%}
 {%- for nav in sorted_nav -%}
@@ -74,4 +85,3 @@ languages: ["en"]
 {{ llms_content }}
 
 *End Of Line*
-

@@ -28,6 +28,7 @@ titles:
   accounts: Konten
   hackathon: Hive Hackathons
   authentication: Authentifizierung
+  building_agents: Building agents
   sdk: SDK Bibliotheken
   sdk_reference: SDK Referenz
   getset: Holen und setzen
@@ -180,6 +181,7 @@ descriptions:
   setting_up_testnet: Schnellstart für die Bereitstellung eines Hive-basierten Testnetzes.
   tools: Verzeichnis der Community-Testnet-Tools
   sdk_reference: _SDK and client library links for building Hive applications._
+  building_agents: _Guide for LLM agents, automation bots, and MCP-style tools building on Hive._
   hivesigner: _Verstehe die Grundlagen des Einsatzes von Hivesigner mit deiner Hive-Anwendung_
   api: Wörterbuch der API-Begriffe
   chain_basics: Wörterbuch der Kettengrundbegriffe
