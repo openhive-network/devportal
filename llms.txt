@@ -13,6 +13,7 @@ languages: ["en"]
 
 - Start here: [Building agents](https://developers.hive.io/quickstart/building_agents.html)
 - Preferred stack: [WAX](https://doc.openhive.network/wax/) + [Beekeeper](https://gitlab.syncad.com/hive/beekeeper) for signing; [Workerbee](https://gitlab.syncad.com/hive/workerbee) / [@hiveio/workerbee](https://www.npmjs.com/package/@hiveio/workerbee) for observe/fetch/submit
+- Workerbee recipes: [getting started](https://developers.hive.io/tutorials-recipes/workerbee-getting-started.html), [subscribe/filter](https://developers.hive.io/tutorials-recipes/workerbee-subscribe-filter.html), [errors/reconnect](https://developers.hive.io/tutorials-recipes/workerbee-errors-reconnect.html)
 - WAX agent docs index: [https://mintlify.com/openhive-network/wax/llms.txt](https://mintlify.com/openhive-network/wax/llms.txt) · site: [https://openhive-network-wax.mintlify.app/](https://openhive-network-wax.mintlify.app/)
 - Public HTTPS nodes: [Hive Nodes](https://developers.hive.io/quickstart/#quickstart-hive-full-nodes) (e.g. `api.hive.blog`, `api.deathwing.me`, `anyx.io`)
 - JSON-RPC methods: [https://developers.hive.io/apidefinitions/](https://developers.hive.io/apidefinitions/)

@@ -9,7 +9,7 @@ Use this page as a starting point for choosing a Hive SDK or client library. API
 | SDK / library | Runtime | Primary use | Package | Source / docs |
 | --- | --- | --- | --- | --- |
 | WAX | TypeScript, C++, Python | Protocol-compatible transaction and object handling | [`@hiveio/wax`](https://www.npmjs.com/package/@hiveio/wax) | [Docs](https://doc.openhive.network/wax/) / [llms.txt](https://mintlify.com/openhive-network/wax/llms.txt) / [Source](https://gitlab.syncad.com/hive/wax) |
-| Workerbee | JavaScript / TypeScript | Automation helpers built on WAX and Beekeeper | [`@hiveio/workerbee`](https://www.npmjs.com/package/@hiveio/workerbee) | [Source](https://gitlab.syncad.com/hive/workerbee) |
+| Workerbee | JavaScript / TypeScript | Automation helpers built on WAX and Beekeeper | [`@hiveio/workerbee`](https://www.npmjs.com/package/@hiveio/workerbee) | [Source](https://gitlab.syncad.com/hive/workerbee) · [Portal recipes]({{ '/tutorials-recipes/workerbee-getting-started.html' | relative_url }}) |
 | DHive | JavaScript / TypeScript | API calls, transaction construction, signing, and broadcasting | [`@hiveio/dhive`](https://www.npmjs.com/package/@hiveio/dhive) | [Source](https://gitlab.syncad.com/hive/dhive) |
 | Hive-JS | JavaScript | Browser and Node.js Hive API and transaction helpers | [`@hiveio/hive-js`](https://www.npmjs.com/package/@hiveio/hive-js) | [Source](https://gitlab.syncad.com/hive/hive-js) |
 | Hive-TX | JavaScript | Lightweight transaction creation, signing, and broadcasting | [`hive-tx`](https://www.npmjs.com/package/hive-tx) | [Source](https://github.com/mahdiyari/hive-tx-js) |
@@ -21,5 +21,7 @@ Use this page as a starting point for choosing a Hive SDK or client library. API
 | Aioha | JavaScript / TypeScript | Authentication provider integration | [`@aioha/aioha`](https://www.npmjs.com/package/@aioha/aioha) | [Source](https://github.com/aioha-hive/aioha) |
 | Hivesigner SDK | JavaScript | Hivesigner login and transaction flows | [`hivesigner`](https://www.npmjs.com/package/hivesigner) | [Source](https://github.com/ecency/hivesigner-sdk) |
 | Hive Keychain SDK | JavaScript | Hive Keychain browser extension integration | [`keychain-sdk`](https://www.npmjs.com/package/keychain-sdk) | [Resource page]({{ '/resources/#resources-hive-keychain' | relative_url }}) |
+
+Workerbee walkthroughs: [getting started]({{ '/tutorials-recipes/workerbee-getting-started.html' | relative_url }}), [subscribe/filter]({{ '/tutorials-recipes/workerbee-subscribe-filter.html' | relative_url }}), [errors/reconnect]({{ '/tutorials-recipes/workerbee-errors-reconnect.html' | relative_url }}).
 
 For language-specific walkthroughs, see the [JavaScript tutorials]({{ '/tutorials/#tutorials-javascript' | relative_url }}), [Python tutorials]({{ '/tutorials/#tutorials-python' | relative_url }}), [Ruby tutorials]({{ '/tutorials/#tutorials-ruby' | relative_url }}), and [PHP tutorials]({{ '/tutorials/#tutorials-php' | relative_url }}).

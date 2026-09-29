@@ -54,6 +54,16 @@ See also [`condenser_api.get_dynamic_global_properties`]({{ '/apidefinitions/#co
 - Use **`custom_json`** operations for application-specific payloads (id + JSON body) instead of overloading posts when you only need structured app state. Example pattern: [Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - For read-heavy analytics agents, prefer **HAF** (Hive Application Framework) SQL/API access over hammering condenser endpoints. See [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+#### Workerbee tutorials
+
+End-to-end portal recipes for [`@hiveio/workerbee`](https://www.npmjs.com/package/@hiveio/workerbee) (current WAX-chain constructor APIs):
+
+- [Workerbee getting started]({{ '/tutorials-recipes/workerbee-getting-started.html' | relative_url }}) — install, start, stream blocks
+- [Subscribe and filter]({{ '/tutorials-recipes/workerbee-subscribe-filter.html' | relative_url }}) — accounts, posts/comments/votes, `custom_json`, `.and` / `.or`
+- [Errors and reconnect]({{ '/tutorials-recipes/workerbee-errors-reconnect.html' | relative_url }}) — observer errors, `iterate(true)`, stop/start/delete, endpoint rotation
+
+Upstream: [Workerbee](https://gitlab.syncad.com/hive/workerbee) · [filter categories](https://gitlab.syncad.com/hive/workerbee/-/blob/main/docs/predefined_filter_categories.md)
+
 #### Portal machine-readable index
 
 This portal publishes an agent-oriented link dump at [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Pair it with the WAX Mintlify `llms.txt` above when scaffolding Hive tooling.

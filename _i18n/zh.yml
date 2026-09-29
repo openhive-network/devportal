@@ -29,6 +29,9 @@ titles:
   hackathon: Hive 黑客松
   authentication: 认证
   building_agents: Building agents
+  workerbee_getting_started: Workerbee getting started
+  workerbee_subscribe_filter: Workerbee subscribe and filter
+  workerbee_errors_reconnect: Workerbee errors and reconnect
   sdk: SDK 库
   sdk_reference: SDK 参考
   getset: 获取并设置
@@ -182,6 +185,9 @@ descriptions:
   tools: 社区测试网工具目录
   sdk_reference: _SDK and client library links for building Hive applications._
   building_agents: _Guide for LLM agents, automation bots, and MCP-style tools building on Hive._
+  workerbee_getting_started: _Install @hiveio/workerbee, connect with WAX, and stream live Hive blocks._
+  workerbee_subscribe_filter: _Subscribe to posts, comments, votes, custom_json, and combined account/type filters._
+  workerbee_errors_reconnect: _Observer errors, iterate(true), stop/start/delete, and API endpoint rotation._
   hivesigner: _理解使用Hivesigner的基本原理与你的 Hive 应用程序_
   api: API 条款词典
   chain_basics: 链条基本条款词典
