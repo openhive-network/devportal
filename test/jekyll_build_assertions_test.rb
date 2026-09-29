@@ -167,6 +167,33 @@ class JekyllBuildAssertionsTest < Minitest::Test
     end
   end
 
+  def test_tutorial_section_roots_have_index_pages
+    # S3/CloudFront returns 403 for directory URLs that lack index.html. These
+    # roots are linked from nav, the tutorials hub, and llms.txt.
+    roots = %w[
+      tutorials
+      tutorials-javascript
+      tutorials-python
+      tutorials-recipes
+      tutorials-ruby
+      tutorials-php
+    ]
+
+    site_dir_for_assertions do |site_dir|
+      roots.each do |root|
+        index = File.join(site_dir, root, 'index.html')
+        assert File.exist?(index),
+               "Expected #{root}/index.html so /#{root}/ is not a 403 on S3"
+      end
+
+      llms = File.read(File.join(site_dir, 'llms.txt'))
+      %w[tutorials-javascript tutorials-python tutorials-recipes tutorials-ruby tutorials-php].each do |root|
+        assert_includes llms, "](https://developers.hive.io/#{root}/)",
+                        "Expected llms.txt to advertise /#{root}/ as the section root"
+      end
+    end
+  end
+
   def test_llms_txt_lists_english_documentation_index
     site_dir_for_assertions do |site_dir|
       llms_path = File.join(site_dir, 'llms.txt')

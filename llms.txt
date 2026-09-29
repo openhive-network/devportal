@@ -32,7 +32,7 @@ languages: ["en"]
     {%- assign sorted_doc_groups = nav.docs | sort: "position" -%}
     {%- for doc_group in sorted_doc_groups -%}
       {%- if doc_group.collection -%}
-        {%- assign group_url = site.url | append: site.baseurl | append: nav.permalink | append: '#' | append: doc_group.collection -%}
+        {%- assign group_url = site.url | append: site.baseurl | append: '/' | append: doc_group.collection | append: '/' -%}
         {%- assign group_col = site.collections | where: "id", doc_group.collection | first -%}
         {%- capture group_title -%}{% t doc_group.title %}{%- endcapture -%}
         {%- assign llms_content = llms_content | append: '- [' | append: group_title | append: '](' | append: group_url | append: ')' | append: newline -%}
