@@ -11,3 +11,6 @@ node_modules/
 .env.*
 !.env.example
 deploy.log
+
+# Local OpenRPC/OpenAPI export (published by the Jekyll build)
+api/

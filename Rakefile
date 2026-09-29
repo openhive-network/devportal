@@ -2,6 +2,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'scrape/api_definitions_job'
 require 'verify/methods_report'
+require 'export/rpc_schema'
 
 require 'rake/testtask'
 require 'net/https'
@@ -600,4 +601,19 @@ task :sample do
   end
   
   puts links.sample.children.first.to_s.gsub('http://localhost:4000', 'https://developers.hive.io')
+end
+
+namespace :export do
+  desc 'Write openrpc.json and openapi.json from _data/apidefinitions.'
+  task :rpc_schema do
+    project_root = File.expand_path(__dir__)
+    destination = ENV['RPC_SCHEMA_DIR'] || File.join(project_root, 'api')
+    result = Export::RpcSchema.new(
+      api_data_path: File.join(project_root, '_data', 'apidefinitions'),
+      docs_url: 'https://developers.hive.io'
+    ).write(destination)
+
+    puts "Wrote #{result[:openrpc]}"
+    puts "Wrote #{result[:openapi]}"
+  end
 end
