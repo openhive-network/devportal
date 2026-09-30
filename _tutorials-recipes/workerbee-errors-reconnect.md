@@ -26,11 +26,21 @@ bot.observe.onBlock().subscribe({
 
 ## Iteration with thrown errors
 
-Default `for await (const block of bot)` **ignores** errors. Pass `true` (or an error callback) to `iterate` when you want failures to surface:
+Default `for await (const block of bot)` **ignores** errors — the bot’s `[Symbol.asyncIterator]` delegates to `iterate()` with no handler.
+
+On published `@hiveio/workerbee@1.28.4-rc1`, `bot.iterate(...)` returns a plain `AsyncIterator` (`next` / `return` only). It does **not** implement `[Symbol.asyncIterator]`, so `for await (... of bot.iterate(...))` fails TypeScript (**TS2504**) and throws at runtime (`TypeError: … is not async iterable`). Upstream type examples that `for await` the `iterate` result directly are ahead of that package build. Wrap the iterator (or call `.next()` yourself):
 
 ```typescript
+function asAsyncIterable<T>(iterator: AsyncIterator<T>): AsyncIterable<T> {
+  return {
+    [Symbol.asyncIterator]() {
+      return iterator;
+    }
+  };
+}
+
 try {
-  for await (const block of bot.iterate(true)) {
+  for await (const block of asAsyncIterable(bot.iterate(true))) {
     console.log(block.number);
   }
 } catch (err) {
@@ -40,7 +50,9 @@ try {
 ```
 
 ```typescript
-for await (const block of bot.iterate((err) => console.error("soft error", err))) {
+for await (const block of asAsyncIterable(
+  bot.iterate((err) => console.error("soft error", err))
+)) {
   console.log(block.number);
 }
 ```
@@ -57,7 +69,7 @@ After a hard failure, prefer creating a **new** WAX chain and Workerbee instance
 
 ## Rotate API endpoints
 
-Do not hard-code a single node in production agents. On timeout or repeated RPC failure, rebuild with the next endpoint:
+Do not hard-code a single node in production agents. On timeout or repeated RPC failure, rebuild with the next endpoint. Share one subscribe helper so the **initial** bot and every replacement both get an `error` observer that can rotate:
 
 ```typescript
 import { createHiveChain } from "@hiveio/wax";
@@ -77,6 +89,18 @@ async function connect(endpointIndex = 0) {
   return { bot, endpointIndex, apiEndpoint };
 }
 
+function subscribeLive(
+  liveBot: InstanceType<typeof WorkerBee>,
+  onError: (err: unknown) => void
+) {
+  liveBot.observe.onBlock().subscribe({
+    next(data) {
+      console.log("block", data.block.number);
+    },
+    error: onError
+  });
+}
+
 let { bot, endpointIndex } = await connect(0);
 
 async function reconnect(reason: unknown) {
@@ -88,15 +112,15 @@ async function reconnect(reason: unknown) {
     /* ignore teardown races */
   }
   ({ bot, endpointIndex } = await connect(endpointIndex + 1));
-  bot.observe.onBlock().subscribe({
-    next(data) {
-      console.log("live again @", data.block.number);
-    },
-    error: (err) => {
-      void reconnect(err);
-    }
+  subscribeLive(bot, (err) => {
+    void reconnect(err);
   });
 }
+
+// Required: initial bot must be subscribed or rotation never starts
+subscribeLive(bot, (err) => {
+  void reconnect(err);
+});
 ```
 
 Higher-level helpers under `@hiveio/workerbee/blog-logic` (`configureEndpoints`, chain reset after timeouts) exist for blog-oriented apps; core bots can stick to the recreate pattern above.
