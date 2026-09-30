@@ -167,6 +167,65 @@ class JekyllBuildAssertionsTest < Minitest::Test
     end
   end
 
+  def test_tutorial_section_roots_have_index_pages
+    # S3/CloudFront returns 403 for directory URLs that lack index.html. These
+    # roots are linked from nav, the tutorials hub, and llms.txt.
+    roots = %w[
+      tutorials
+      tutorials-javascript
+      tutorials-python
+      tutorials-recipes
+      tutorials-ruby
+      tutorials-php
+    ]
+    # New section indexes need permalinks the language selector can serve.
+    # Without permalink: /section/, page.url is /section/index and locale links
+    # point at paths with no corresponding output file (html-proofer masks this
+    # via assume_extension: .html).
+    permalink_roots = %w[
+      tutorials-javascript
+      tutorials-python
+      tutorials-recipes
+      tutorials-ruby
+      tutorials-php
+    ]
+
+    site_dir_for_assertions do |site_dir|
+      roots.each do |root|
+        index = File.join(site_dir, root, 'index.html')
+        assert File.exist?(index),
+               "Expected #{root}/index.html so /#{root}/ is not a 403 on S3"
+      end
+
+      llms = File.read(File.join(site_dir, 'llms.txt'))
+      permalink_roots.each do |root|
+        assert_includes llms, "](https://developers.hive.io/#{root}/)",
+                        "Expected llms.txt to advertise /#{root}/ as the section root"
+      end
+
+      permalink_roots.each do |root|
+        index_html = File.read(File.join(site_dir, root, 'index.html'))
+        lang_block = index_html[/<div class="lang-switch">.*?<\/div>/m]
+        assert lang_block, "Expected language selector on /#{root}/"
+        lang_hrefs = lang_block.scan(/href="([^"]+)"/).flatten
+
+        refute_empty lang_hrefs, "Expected language selector links on /#{root}/"
+
+        lang_hrefs.each do |href|
+          refute_match %r{/#{Regexp.escape(root)}/index\z}, href,
+                       "Language selector must not use bare /#{root}/index " \
+                       "(no matching output file; use trailing-slash permalink)"
+
+          path = href.sub(%r{\Ahttps://developers\.hive\.io}, '')
+          path = path[1..] if path.start_with?('/')
+          path = "#{path}index.html" if path.end_with?('/')
+          assert File.exist?(File.join(site_dir, path)),
+                 "Language selector href #{href.inspect} on /#{root}/ has no built file at #{path.inspect}"
+        end
+      end
+    end
+  end
+
   def test_llms_txt_lists_english_documentation_index
     site_dir_for_assertions do |site_dir|
       llms_path = File.join(site_dir, 'llms.txt')
