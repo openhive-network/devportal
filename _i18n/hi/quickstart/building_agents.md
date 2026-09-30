@@ -65,7 +65,7 @@ npm start
 
 जब तक प्रोडक्शन `/openrpc.json` प्रकाशित नहीं करता, सर्वर `http://developers-staging.hive.io/openrpc.json` पर वापस जाता है।
 
-`network_broadcast_api`, `debug_node_api`, और `broadcast_*` मेथड `HIVE_MCP_ALLOW_BROADCAST=1` के बिना बंद रहते हैं। तब भी प्रक्रिया निजी कुंजी स्वीकार नहीं करती — Beekeeper या Keychain से सर्वर के बाहर साइन करें। डिफ़ॉल्ट सीमा: 60 कॉल प्रति मिनट। डिज़ाइन और Docker: [devportal रिपॉज़िटरी](https://gitlab.syncad.com/hive/devportal) में `mcp/README.md`।
+`network_broadcast_api`, `broadcast_*`, और विशेष लेखन मेथड (जैसे `chain_api.push_transaction`) `HIVE_MCP_ALLOW_BROADCAST=1` के बिना बंद रहते हैं। `debug_node_api` — कुंजी-युक्त `debug_generate_blocks*` सहित — उस ऑप्ट-इन के साथ भी अस्वीकृत रहता है। प्रक्रिया निजी कुंजी स्वीकार नहीं करती — Beekeeper या Keychain से MCP सर्वर के बाहर साइन करें। डिफ़ॉल्ट सीमा: 60 कॉल प्रति मिनट (`HIVE_MCP_RATE_LIMIT`)। डिज़ाइन और Docker: [devportal रिपॉज़िटरी](https://gitlab.syncad.com/hive/devportal) में `mcp/README.md`।
 
 #### पोर्टल मशीन-रीडेबल इंडेक्स
 

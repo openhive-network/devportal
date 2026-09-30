@@ -65,7 +65,7 @@ npm start
 
 Solange Produktion `/openrpc.json` noch nicht ausliefert, fällt der Server auf `http://developers-staging.hive.io/openrpc.json` zurück.
 
-`network_broadcast_api`, `debug_node_api` und `broadcast_*` bleiben gesperrt, außer `HIVE_MCP_ALLOW_BROADCAST=1`. Private Schlüssel nimmt der Prozess trotzdem nie entgegen — signiere mit Beekeeper oder Keychain außerhalb des Servers. Standardlimit: 60 Aufrufe pro Minute. Design und Docker: `mcp/README.md` im [devportal-Repository](https://gitlab.syncad.com/hive/devportal).
+`network_broadcast_api`, `broadcast_*` und spezielle Schreib-APIs (zum Beispiel `chain_api.push_transaction`) bleiben gesperrt, außer `HIVE_MCP_ALLOW_BROADCAST=1`. `debug_node_api` — einschließlich schlüsselbehafteter `debug_generate_blocks*` — bleibt auch mit diesem Opt-in gesperrt. Private Schlüssel nimmt der Prozess nie entgegen — signiere mit Beekeeper oder Keychain außerhalb des MCP-Servers. Standardlimit: 60 Aufrufe pro Minute (`HIVE_MCP_RATE_LIMIT`). Design und Docker: `mcp/README.md` im [devportal-Repository](https://gitlab.syncad.com/hive/devportal).
 
 #### Maschinenlesbarer Portal-Index
 

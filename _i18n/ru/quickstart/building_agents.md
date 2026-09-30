@@ -65,7 +65,7 @@ npm start
 
 Пока production не отдаёт `/openrpc.json`, сервер переходит на `http://developers-staging.hive.io/openrpc.json`.
 
-`network_broadcast_api`, `debug_node_api` и методы `broadcast_*` запрещены без `HIVE_MCP_ALLOW_BROADCAST=1`. Даже тогда процесс не принимает приватные ключи — подписывайте через Beekeeper или Keychain снаружи. Лимит по умолчанию: 60 вызовов в минуту. Дизайн и Docker: `mcp/README.md` в [репозитории devportal](https://gitlab.syncad.com/hive/devportal).
+`network_broadcast_api`, методы `broadcast_*` и специализированные мутаторы (например `chain_api.push_transaction`) запрещены без `HIVE_MCP_ALLOW_BROADCAST=1`. `debug_node_api` — включая методы с ключом `debug_generate_blocks*` — остаётся запрещённым даже с этим opt-in. Процесс не принимает приватные ключи — подписывайте через Beekeeper или Keychain вне MCP-сервера. Лимит по умолчанию: 60 вызовов в минуту (`HIVE_MCP_RATE_LIMIT`). Дизайн и Docker: `mcp/README.md` в [репозитории devportal](https://gitlab.syncad.com/hive/devportal).
 
 #### Машиночитаемый индекс портала
 

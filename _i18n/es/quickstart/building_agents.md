@@ -65,7 +65,7 @@ npm start
 
 Hasta que producción publique `/openrpc.json`, el proceso prueba `https://developers.hive.io/openrpc.json` y, si falla, `http://developers-staging.hive.io/openrpc.json`.
 
-`network_broadcast_api`, `debug_node_api` y los métodos `broadcast_*` quedan bloqueados salvo `HIVE_MCP_ALLOW_BROADCAST=1`. Aun así el proceso no acepta claves privadas: firma con Beekeeper o Keychain fuera del servidor. Límite por defecto: 60 llamadas por minuto. Diseño y Docker: `mcp/README.md` en el [repositorio devportal](https://gitlab.syncad.com/hive/devportal).
+`network_broadcast_api`, los métodos `broadcast_*` y mutadores especializados (por ejemplo `chain_api.push_transaction`) quedan bloqueados salvo `HIVE_MCP_ALLOW_BROADCAST=1`. `debug_node_api` — incluidas las APIs con clave `debug_generate_blocks*` — sigue denegado incluso con esa opción. El proceso no acepta claves privadas: firma con Beekeeper o Keychain fuera del servidor MCP. Límite por defecto: 60 llamadas por minuto (`HIVE_MCP_RATE_LIMIT`). Diseño y Docker: `mcp/README.md` en el [repositorio devportal](https://gitlab.syncad.com/hive/devportal).
 
 #### Índice legible por máquina del portal
 
