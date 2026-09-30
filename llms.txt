@@ -11,16 +11,35 @@ languages: ["en"]
 
 ## For AI / agent developers
 
+Skill pack (these cards only, no generated docs index): [https://developers.hive.io/llms-skill.txt](https://developers.hive.io/llms-skill.txt)
+
+### Read chain state
+- Public HTTPS JSON-RPC, not scraped HTML. Nodes: [Hive Nodes](https://developers.hive.io/quickstart/#quickstart-hive-full-nodes) (`api.hive.blog`, `api.deathwing.me`, `anyx.io`)
+- Prefer `database_api`, `block_api`, `account_history_api`, and `bridge` for structured reads. `condenser_api` is the positional legacy surface.
+- Canonical schemas: [https://developers.hive.io/openrpc.json](https://developers.hive.io/openrpc.json) and [https://developers.hive.io/openapi.json](https://developers.hive.io/openapi.json). Human reference: [JSON-RPC API](https://developers.hive.io/apidefinitions/)
+- Production schema URLs publish when `develop` is released to `master`. Until then the same paths are on staging: http://developers-staging.hive.io/openrpc.json and http://developers-staging.hive.io/openapi.json
+
+### Build, observe, submit
 - Start here: [Building agents](https://developers.hive.io/quickstart/building_agents.html)
 - Preferred stack: [WAX](https://doc.openhive.network/wax/) + [Beekeeper](https://gitlab.syncad.com/hive/beekeeper) for signing; [Workerbee](https://gitlab.syncad.com/hive/workerbee) / [@hiveio/workerbee](https://www.npmjs.com/package/@hiveio/workerbee) for observe/fetch/submit
 - Workerbee recipes: [getting started](https://developers.hive.io/tutorials-recipes/workerbee-getting-started.html), [subscribe/filter](https://developers.hive.io/tutorials-recipes/workerbee-subscribe-filter.html), [errors/reconnect](https://developers.hive.io/tutorials-recipes/workerbee-errors-reconnect.html)
 - WAX agent docs index: [https://mintlify.com/openhive-network/wax/llms.txt](https://mintlify.com/openhive-network/wax/llms.txt) · site: [https://openhive-network-wax.mintlify.app/](https://openhive-network-wax.mintlify.app/)
-- Public HTTPS nodes: [Hive Nodes](https://developers.hive.io/quickstart/#quickstart-hive-full-nodes) (e.g. `api.hive.blog`, `api.deathwing.me`, `anyx.io`)
-- JSON-RPC methods: [https://developers.hive.io/apidefinitions/](https://developers.hive.io/apidefinitions/)
-- OpenRPC export: [https://developers.hive.io/openrpc.json](https://developers.hive.io/openrpc.json) (OpenAPI overlay: [https://developers.hive.io/openapi.json](https://developers.hive.io/openapi.json))
-- Auth safety: posting key / Keychain / Beekeeper; never put active/owner keys in prompts or logs — [Authentication](https://developers.hive.io/quickstart/#quickstart-authentication), [RC API](https://developers.hive.io/apidefinitions/#apidefinitions-rc-api)
 - SDK table: [https://developers.hive.io/resources/#resources-sdk-reference](https://developers.hive.io/resources/#resources-sdk-reference)
-- This file: [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)
+
+### Broadcast do / don't
+- Do sign outside the agent (Keychain, HiveAuth, or Beekeeper). Use the posting key only for social or `custom_json` writes.
+- Don't put active/owner keys, passwords, or secrets in prompts, logs, or source.
+- Don't call `broadcast_transaction`, `network_broadcast_api`, or `debug_node_api` from a read-only tool loop.
+- Do budget resource credits before high-frequency writes: [RC API](https://developers.hive.io/apidefinitions/#apidefinitions-rc-api)
+- Auth overview: [Authentication](https://developers.hive.io/quickstart/#quickstart-authentication)
+
+### MCP (optional, local)
+- Reference server, read-only by default: [Building agents](https://developers.hive.io/quickstart/building_agents.html#reference-mcp-server)
+- Tools: `list_methods`, `get_method_schema`, `hive_rpc_call`, `fetch_doc_page`. No keys in the server; broadcast denied unless `HIVE_MCP_ALLOW_BROADCAST=1`.
+- No public hosted MCP endpoint. The server source is the `mcp/` directory (see the Building agents page).
+
+### This index
+- [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)
 
 {% assign llms_content = '# ' | append: site.title | append: newline | append: newline | append: site.description | append: newline | append: newline | append: '## Docs' | append: newline -%}
 {%- assign sorted_nav = site.data.nav.toc | sort: "position" -%}
