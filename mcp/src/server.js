@@ -1,6 +1,6 @@
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/server";
 import * as z from "zod";
-import { assertAllowedNode, isWriteMethod, normalizeDocUrl, parseNodeAllowlist } from "./policy.js";
+import { assertAllowedNode, isDebugNodeApiMethod, isKeyBearingDebugMethod, isWriteMethod, normalizeDocUrl, parseNodeAllowlist } from "./policy.js";
 import { methodSchemaPayload } from "./catalog.js";
 import { buildRpcRequest, htmlToText } from "./rpc.js";
 
@@ -66,8 +66,8 @@ export function createHiveMcpServer({
     {
       title: "Call a read-only Hive JSON-RPC method",
       description: allowBroadcast
-        ? "POST a JSON-RPC request to an allowlisted Hive HTTPS node. Broadcast opt-in is ON for this process. The server still does not accept or store private keys; sign outside this process."
-        : "POST a JSON-RPC request to an allowlisted Hive HTTPS node. Broadcast, network_broadcast_api, and debug_node_api methods are denied. This server never accepts private keys.",
+        ? "POST a JSON-RPC request to an allowlisted Hive HTTPS node. Broadcast opt-in is ON for this process. Key-bearing debug_node_api methods (debug_generate_blocks*) stay denied. The server still does not accept or store private keys; sign outside this process."
+        : "POST a JSON-RPC request to an allowlisted Hive HTTPS node. Broadcast, network_broadcast_api, debug_node_api, and other mutating APIs are denied. This server never accepts private keys.",
       inputSchema: z.object({
         method: z.string().min(1).describe("OpenRPC method name"),
         params: z
@@ -169,9 +169,18 @@ async function callRpc({ catalog, fetchImpl, allowBroadcast, allowlist, defaultN
       true,
     );
   }
+  // debug_node_api (including key-bearing debug_generate_blocks*) stays closed even with broadcast opt-in.
+  if (isDebugNodeApiMethod(method) || isKeyBearingDebugMethod(method)) {
+    return textResult(
+      isKeyBearingDebugMethod(method)
+        ? `${method} is denied (debug key / block generation). HIVE_MCP_ALLOW_BROADCAST does not unlock key-bearing debug_node_api methods; this server never accepts private keys.`
+        : `${method} is denied (debug_node_api). Broadcast opt-in is for already-signed submissions only; this server never accepts private keys.`,
+      true,
+    );
+  }
   if (!allowBroadcast && isWriteMethod(method)) {
     return textResult(
-      `${method} is denied by default (broadcast / debug). Sign and broadcast outside this MCP process (Beekeeper or Keychain). Set HIVE_MCP_ALLOW_BROADCAST=1 only on a host you control; this server still never accepts private keys.`,
+      `${method} is denied by default (broadcast / mutating APIs). Sign and broadcast outside this MCP process (Beekeeper or Keychain). Set HIVE_MCP_ALLOW_BROADCAST=1 only on a host you control; this server still never accepts private keys.`,
       true,
     );
   }

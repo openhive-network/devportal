@@ -24,8 +24,12 @@ Individual RPC methods are **not** registered as separate MCP tools. A 280-tool 
 Denied unless `HIVE_MCP_ALLOW_BROADCAST=1`:
 
 - `network_broadcast_api.*`
-- `debug_node_api.*`
 - any method whose name contains `.broadcast_` (including `condenser_api.broadcast_transaction` and `wallet_bridge_api.broadcast_transaction`)
+- specialized mutators: `chain_api.push_transaction`, `network_node_api.add_node`, `network_node_api.set_allowed_peers`, `witness_api.enable_fast_confirm`, `witness_api.disable_fast_confirm`
+
+Always denied (broadcast opt-in does not unlock these):
+
+- `debug_node_api.*`, including key-bearing `debug_generate_blocks` and `debug_generate_blocks_until`
 
 The opt-in does not add a signing path. The process has no key parameter. Sign with Beekeeper, Keychain, or HiveAuth in a different process, then pass an already-signed transaction only if you enabled broadcast on a host you trust.
 

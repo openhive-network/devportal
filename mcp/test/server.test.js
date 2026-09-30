@@ -4,7 +4,7 @@ import test from "node:test";
 import { Client } from "@modelcontextprotocol/client";
 import { InMemoryTransport } from "@modelcontextprotocol/server";
 import { createCatalog, loadOpenRpcDocument, parseOpenRpc } from "../src/catalog.js";
-import { isWriteMethod, normalizeDocUrl, normalizeNodeUrl } from "../src/policy.js";
+import { isKeyBearingDebugMethod, isWriteMethod, normalizeDocUrl, normalizeNodeUrl } from "../src/policy.js";
 import { buildRpcRequest } from "../src/rpc.js";
 import { createHiveMcpServer } from "../src/server.js";
 
@@ -17,9 +17,20 @@ test("write methods are denied by name", () => {
   assert.equal(isWriteMethod("condenser_api.broadcast_transaction"), true);
   assert.equal(isWriteMethod("condenser_api.broadcast_transaction_synchronous"), true);
   assert.equal(isWriteMethod("debug_node_api.debug_push_blocks"), true);
+  assert.equal(isWriteMethod("debug_node_api.debug_generate_blocks"), true);
+  assert.equal(isWriteMethod("debug_node_api.debug_generate_blocks_until"), true);
   assert.equal(isWriteMethod("wallet_bridge_api.broadcast_transaction"), true);
+  assert.equal(isWriteMethod("chain_api.push_transaction"), true);
+  assert.equal(isWriteMethod("network_node_api.add_node"), true);
+  assert.equal(isWriteMethod("network_node_api.set_allowed_peers"), true);
+  assert.equal(isWriteMethod("witness_api.enable_fast_confirm"), true);
+  assert.equal(isWriteMethod("witness_api.disable_fast_confirm"), true);
   assert.equal(isWriteMethod("condenser_api.get_dynamic_global_properties"), false);
   assert.equal(isWriteMethod("database_api.get_potential_signatures"), false);
+  assert.equal(isWriteMethod("network_node_api.get_info"), false);
+  assert.equal(isKeyBearingDebugMethod("debug_node_api.debug_generate_blocks"), true);
+  assert.equal(isKeyBearingDebugMethod("debug_node_api.debug_generate_blocks_until"), true);
+  assert.equal(isKeyBearingDebugMethod("debug_node_api.debug_push_blocks"), false);
 });
 
 test("node and doc URLs are pinned to allowlists", () => {
@@ -158,7 +169,7 @@ test("tools map the OpenRPC catalog and refuse broadcast by default", async () =
   assert.equal(calls.some((call) => String(call.url).includes("169.254")), false);
 
   const summary = await client.readResource({ uri: "hive://schema/openrpc" });
-  assert.match(summary.contents[0].text, /"methods": 5/);
+  assert.match(summary.contents[0].text, /"methods": 12/);
   const methodResource = await client.readResource({
     uri: "hive://method/database_api.find_accounts",
   });
@@ -184,6 +195,72 @@ test("broadcast opt-in still does not invent a key field", async () => {
   const parsed = JSON.parse(body);
   assert.equal(parsed.method, "condenser_api.broadcast_transaction");
   assert.deepEqual(Object.keys(parsed).sort(), ["id", "jsonrpc", "method", "params"]);
+  await client.close();
+});
+
+test("allowBroadcast still rejects key-bearing debug_generate_blocks methods", async () => {
+  const calls = [];
+  const fetchImpl = async (url, options = {}) => {
+    calls.push({ url: String(url), options });
+    return response(200, JSON.stringify({ jsonrpc: "2.0", result: { ok: true }, id: 1 }), "application/json");
+  };
+  const client = await connect(createHiveMcpServer({ catalog, fetchImpl, allowBroadcast: true }));
+
+  for (const method of [
+    "debug_node_api.debug_generate_blocks",
+    "debug_node_api.debug_generate_blocks_until",
+  ]) {
+    const denied = await client.callTool({
+      name: "hive_rpc_call",
+      arguments: {
+        method,
+        params:
+          method.endsWith("_until")
+            ? { debug_key: "REVIEW_DUMMY_DEBUG_KEY", head_block_time: "2016-01-01T00:00:00" }
+            : { debug_key: "REVIEW_DUMMY_DEBUG_KEY", count: 1, skip: 0, miss_blocks: 0 },
+      },
+    });
+    assert.equal(denied.isError, true, method);
+    assert.match(denied.content[0].text, /denied|debug key|private keys/i, method);
+  }
+
+  assert.equal(
+    calls.filter((call) => String(call.options.body || "").includes("debug_generate_blocks")).length,
+    0,
+  );
+  await client.close();
+});
+
+test("specialized mutating APIs are denied in the default read-only policy", async () => {
+  const calls = [];
+  const fetchImpl = async (url, options = {}) => {
+    calls.push({ url: String(url), options });
+    return response(200, JSON.stringify({ jsonrpc: "2.0", result: { ok: true }, id: 1 }), "application/json");
+  };
+  const client = await connect(createHiveMcpServer({ catalog, fetchImpl, allowBroadcast: false }));
+
+  const mutating = [
+    ["chain_api.push_transaction", { trx: { signatures: ["already-signed"] } }],
+    ["network_node_api.add_node", { endpoint: "1.2.3.4:2001" }],
+    ["network_node_api.set_allowed_peers", { allowed_peers: [] }],
+    ["witness_api.enable_fast_confirm", {}],
+    ["witness_api.disable_fast_confirm", {}],
+  ];
+
+  for (const [method, params] of mutating) {
+    const denied = await client.callTool({
+      name: "hive_rpc_call",
+      arguments: { method, params },
+    });
+    assert.equal(denied.isError, true, method);
+    assert.match(denied.content[0].text, /denied/i, method);
+  }
+
+  assert.equal(
+    calls.filter((call) => call.options.method === "POST").length,
+    0,
+    "denied mutating calls must never reach fetch",
+  );
   await client.close();
 });
 

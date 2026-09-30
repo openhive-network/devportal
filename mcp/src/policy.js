@@ -3,6 +3,24 @@ const WRITE_API_PREFIXES = ["network_broadcast_api.", "debug_node_api."];
 
 const WRITE_METHOD_RE = /(?:^|\.)broadcast_/i;
 
+/** Specialized mutators present in OpenRPC but outside the broadcast/debug prefixes. */
+const WRITE_METHOD_NAMES = new Set([
+  "chain_api.push_transaction",
+  "network_node_api.add_node",
+  "network_node_api.set_allowed_peers",
+  "witness_api.enable_fast_confirm",
+  "witness_api.disable_fast_confirm",
+]);
+
+/**
+ * debug_node_api methods that take a private signing key (debug_key) or generate
+ * blocks with configured witness keys. Always denied — allowBroadcast must not open them.
+ */
+const KEY_BEARING_DEBUG_METHODS = new Set([
+  "debug_node_api.debug_generate_blocks",
+  "debug_node_api.debug_generate_blocks_until",
+]);
+
 export const DEFAULT_NODE_ORIGINS = [
   "https://api.hive.blog",
   "https://api.deathwing.me",
@@ -14,7 +32,17 @@ export const DOC_HOSTS = new Set(["developers.hive.io", "developers-staging.hive
 export function isWriteMethod(name) {
   const method = String(name || "");
   if (WRITE_API_PREFIXES.some((prefix) => method.startsWith(prefix))) return true;
+  if (WRITE_METHOD_NAMES.has(method)) return true;
   return WRITE_METHOD_RE.test(method);
+}
+
+export function isDebugNodeApiMethod(name) {
+  return String(name || "").startsWith("debug_node_api.");
+}
+
+/** Always denied, including when HIVE_MCP_ALLOW_BROADCAST=1. */
+export function isKeyBearingDebugMethod(name) {
+  return KEY_BEARING_DEBUG_METHODS.has(String(name || ""));
 }
 
 export function parseNodeAllowlist(extraOrigins = []) {
