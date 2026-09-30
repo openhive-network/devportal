@@ -16,6 +16,7 @@ languages: ["en"]
 - WAX agent docs index: [https://mintlify.com/openhive-network/wax/llms.txt](https://mintlify.com/openhive-network/wax/llms.txt) · site: [https://openhive-network-wax.mintlify.app/](https://openhive-network-wax.mintlify.app/)
 - Public HTTPS nodes: [Hive Nodes](https://developers.hive.io/quickstart/#quickstart-hive-full-nodes) (e.g. `api.hive.blog`, `api.deathwing.me`, `anyx.io`)
 - JSON-RPC methods: [https://developers.hive.io/apidefinitions/](https://developers.hive.io/apidefinitions/)
+- OpenRPC export: [https://developers.hive.io/openrpc.json](https://developers.hive.io/openrpc.json) (OpenAPI overlay: [https://developers.hive.io/openapi.json](https://developers.hive.io/openapi.json))
 - Auth safety: posting key / Keychain / Beekeeper; never put active/owner keys in prompts or logs — [Authentication](https://developers.hive.io/quickstart/#quickstart-authentication), [RC API](https://developers.hive.io/apidefinitions/#apidefinitions-rc-api)
 - SDK table: [https://developers.hive.io/resources/#resources-sdk-reference](https://developers.hive.io/resources/#resources-sdk-reference)
 - This file: [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)

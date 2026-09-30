@@ -54,6 +54,17 @@ See also [`condenser_api.get_dynamic_global_properties`]({{ '/apidefinitions/#co
 - Use **`custom_json`** operations for application-specific payloads (id + JSON body) instead of overloading posts when you only need structured app state. Example pattern: [Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - For read-heavy analytics agents, prefer **HAF** (Hive Application Framework) SQL/API access over hammering condenser endpoints. See [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+
+#### Machine-readable JSON-RPC (OpenRPC)
+
+The portal generates an [OpenRPC](https://developers.hive.io/openrpc.json) document (and an [OpenAPI 3 overlay](https://developers.hive.io/openapi.json)) from `_data/apidefinitions` on every site build. Agents and codegen can ingest method names, short descriptions, and example-derived parameter/result shapes without scraping HTML.
+
+- AppBase methods (for example `database_api`) use a **named** `params` object. `condenser_api` uses a **positional** `params` array.
+- Shapes are inferred from documented examples. They are not a complete on-chain type system. Obsolete methods are marked `deprecated`.
+- Call a public HTTPS node (for example `https://api.hive.blog`) with a JSON-RPC 2.0 POST. The HTML reference remains authoritative: [JSON-RPC API]({{ '/apidefinitions/' | relative_url }}).
+
+Regenerate locally with `bundle exec rake export:rpc_schema` (writes `api/openrpc.json` and `api/openapi.json`). The published copies are produced by the Jekyll build at `/openrpc.json` and `/openapi.json`.
+
 #### Portal machine-readable index
 
 This portal publishes an agent-oriented link dump at [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Pair it with the WAX Mintlify `llms.txt` above when scaffolding Hive tooling.
