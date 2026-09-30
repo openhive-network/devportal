@@ -278,10 +278,16 @@ module Export
 
     # Returns :structure ("by-name" / "by-position"), :descriptors (OpenRPC
     # Content Descriptor list), and :names (descriptor names in order).
+    #
+    # Requiredness comes from purpose "(optional)" markers and from curl
+    # examples: an argument omitted by any documented curl is not required.
+    # Schemas are inferred from parameter_json plus every curl argument value
+    # so documented alternatives (string vs int, null, etc.) remain valid.
     def params_info_for(method, api)
       parsed = parse_example(method['parameter_json'])
       positional = api == 'condenser_api' || parsed.is_a?(Array)
       structure = positional ? 'by-position' : 'by-name'
+      curl_params = curl_params_examples(method)
 
       if parsed.nil?
         return { structure: structure, descriptors: [], names: [] }
@@ -293,10 +299,11 @@ module Export
 
         names = positional_param_names(method, values.length)
         descriptors = values.each_with_index.map do |value, index|
+          samples = positional_samples(value, curl_params, index)
           {
             'name' => names[index],
-            'required' => true,
-            'schema' => schema_for(value)
+            'required' => positional_arg_required?(method, names[index], index, curl_params),
+            'schema' => schema_from_samples(samples)
           }
         end
         { structure: structure, descriptors: descriptors, names: names }
@@ -306,14 +313,87 @@ module Export
 
         names = hash.keys.map(&:to_s)
         descriptors = hash.map do |key, value|
+          key_s = key.to_s
+          samples = named_samples(value, curl_params, key_s)
           {
-            'name' => key.to_s,
-            'required' => true,
-            'schema' => schema_for(value)
+            'name' => key_s,
+            'required' => named_arg_required?(method, key_s, curl_params),
+            'schema' => schema_from_samples(samples)
           }
         end
         { structure: structure, descriptors: descriptors, names: names }
       end
+    end
+
+    # Raw `params` payloads from documented curl_examples (Hash or Array).
+    def curl_params_examples(method)
+      Array(method['curl_examples']).filter_map do |example|
+        parsed = parse_example(example.to_s.strip)
+        next unless parsed.is_a?(Hash) && parsed.key?('params')
+
+        parsed['params']
+      end
+    end
+
+    # Include JSON nulls; filter_map would drop them and lose null alternatives.
+    def positional_samples(base, curl_params, index)
+      samples = [base]
+      curl_params.each do |params|
+        values = case params
+                 when Array then params
+                 when nil then []
+                 else [params]
+                 end
+        samples << values[index] if index < values.length
+      end
+      samples
+    end
+
+    def named_samples(base, curl_params, name)
+      samples = [base]
+      curl_params.each do |params|
+        next unless params.is_a?(Hash) && params.key?(name)
+
+        samples << params[name]
+      end
+      samples
+    end
+
+    # Mark optional when purpose says so, or when any documented curl omits it.
+    def named_arg_required?(method, name, curl_params)
+      return false if optional_in_purpose?(method, name)
+
+      named = curl_params.select { |params| params.is_a?(Hash) }
+      return true if named.empty?
+
+      named.all? { |params| params.key?(name) }
+    end
+
+    def positional_arg_required?(method, name, index, curl_params)
+      return false if optional_in_purpose?(method, name)
+
+      arrays = curl_params.select { |params| params.is_a?(Array) }
+      return true if arrays.empty?
+
+      arrays.all? { |params| params.length > index }
+    end
+
+    def optional_in_purpose?(method, name)
+      purpose = method['purpose'].to_s
+      return false if purpose.empty?
+
+      escaped = Regexp.escape(name)
+      # `name` ... (optional) / [optional]
+      # `name:type` (optional)
+      # name (optional) — e.g. "last_id (optional)"
+      purpose.match?(/`#{escaped}(?::[^`]*)?`[^\n`]{0,100}(\(|\[)optional(\)|\])/i) ||
+        purpose.match?(/\b#{escaped}\b[^\n.]{0,80}\(optional\)/i)
+    end
+
+    def schema_from_samples(samples)
+      return {} if samples.nil? || samples.empty?
+
+      samples.map { |sample| schema_for(sample) }.reduce { |left, right| merge_schemas(left, right) }
     end
 
     def positional_param_names(method, count)
@@ -352,7 +432,7 @@ module Export
       when TrueClass, FalseClass
         { 'type' => 'boolean' }
       when NilClass
-        {}
+        { 'type' => 'null' }
       else
         {}
       end

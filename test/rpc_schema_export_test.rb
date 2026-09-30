@@ -55,6 +55,11 @@ class RpcSchemaExportTest < Minitest::Test
         'OpenRPC must describe individual RPC args, not a nested params envelope'
       accounts = database['params'].find { |descriptor| descriptor['name'] == 'accounts' }
       assert_equal 'array', accounts.dig('schema', 'type')
+      assert accounts['required'], 'accounts is present in every documented call'
+      delayed = database['params'].find { |descriptor| descriptor['name'] == 'delayed_votes_active' }
+      assert delayed, 'Expected delayed_votes_active descriptor'
+      refute delayed['required'],
+        'delayed_votes_active is omitted from documented curl examples and must not be required'
 
       example = Array(database['examples']).first
       assert example, 'Expected documented curl examples on database_api.find_accounts'
@@ -121,6 +126,69 @@ class RpcSchemaExportTest < Minitest::Test
       "Parameter examples must satisfy inferred schemas (showing up to 10):\n#{param_failures.take(10).join("\n")}"
     assert_empty result_failures.take(10),
       "Result examples must satisfy inferred schemas (showing up to 10):\n#{result_failures.take(10).join("\n")}"
+  end
+
+  def test_optional_args_and_curl_types_in_descriptors
+    lib = File.expand_path('../lib', __dir__)
+    $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+    require 'export/rpc_schema'
+
+    exporter = Export::RpcSchema.new(
+      api_data_path: project_path('_data', 'apidefinitions')
+    )
+    openrpc = exporter.openrpc_document
+    by_name = openrpc['methods'].each_with_object({}) { |method, memo| memo[method['name']] = method }
+
+    find_accounts = by_name.fetch('database_api.find_accounts')
+    delayed = find_accounts['params'].find { |descriptor| descriptor['name'] == 'delayed_votes_active' }
+    refute delayed['required'], 'find_accounts delayed_votes_active must be optional'
+
+    history = by_name.fetch('account_history_api.get_account_history')
+    start = history['params'].find { |descriptor| descriptor['name'] == 'start' }
+    assert start['required']
+    assert_empty validate_against_schema(1000, start['schema'], '$.params.start'),
+      'get_account_history start must accept documented curl integer 1000'
+    assert_empty validate_against_schema('-1', start['schema'], '$.params.start'),
+      'get_account_history start must still accept the parameter_json string form'
+    %w[include_reversible operation_filter_low operation_filter_high].each do |name|
+      descriptor = history['params'].find { |item| item['name'] == name }
+      refute descriptor['required'], "#{name} is documented optional / omitted from curls"
+    end
+
+    followers = by_name.fetch('condenser_api.get_followers')
+    start_pos = followers['params'].find { |descriptor| descriptor['name'] == 'start' }
+    assert_empty validate_against_schema(nil, start_pos['schema'], '$.params.start'),
+      'get_followers start must accept documented curl null'
+
+    # Every emitted example must satisfy requiredness and descriptor schemas.
+    required_failures = []
+    type_failures = []
+    openrpc['methods'].each do |entry|
+      examples = Array(entry['examples'])
+      descriptors = Array(entry['params'])
+      required_names = descriptors.select { |descriptor| descriptor['required'] }.map { |descriptor| descriptor['name'] }
+
+      examples.each_with_index do |example, index|
+        present = Array(example['params']).map { |item| item['name'] }
+        missing = required_names - present
+        unless missing.empty?
+          required_failures << "#{entry['name']} example#{index + 1} omits required #{missing.join(', ')}"
+        end
+
+        Array(example['params']).each do |item|
+          descriptor = descriptors.find { |candidate| candidate['name'] == item['name'] }
+          next unless descriptor
+
+          errors = validate_against_schema(item['value'], descriptor['schema'], "$.#{item['name']}")
+          type_failures << "#{entry['name']} example#{index + 1}: #{errors.join('; ')}" unless errors.empty?
+        end
+      end
+    end
+
+    assert_empty required_failures.take(10),
+      "Exported examples must include every required argument (showing up to 10):\n#{required_failures.take(10).join("\n")}"
+    assert_empty type_failures.take(10),
+      "Exported example values must satisfy descriptor schemas (showing up to 10):\n#{type_failures.take(10).join("\n")}"
   end
 
   def test_built_site_publishes_schema_and_links_it
