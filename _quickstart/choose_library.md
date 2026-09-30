@@ -28,6 +28,8 @@ Each implementation of Wax incorporates the same code used by the core Hive prot
 
 Hive automation library based on the wax and beekeeper. Library helps to observe, fetch and submit transactions to blockchain with ease.
 
+Portal recipes: [getting started]({{ '/tutorials-recipes/workerbee-getting-started.html' | relative_url }}), [subscribe/filter]({{ '/tutorials-recipes/workerbee-subscribe-filter.html' | relative_url }}), [errors/reconnect]({{ '/tutorials-recipes/workerbee-errors-reconnect.html' | relative_url }}).
+
 ---
 
 **Hive-JS** - [https://github.com/hive/hive-js](https://gitlab.syncad.com/hive/hive-js)

@@ -20,6 +20,8 @@ Multi-language, protocol-compatible library for Hive transactions and objects (T
 
 Hive automation library built on WAX and Beekeeper for observing, fetching, and submitting transactions.
 
+Portal recipes: [getting started]({{ '/tutorials-recipes/workerbee-getting-started.html' | relative_url }}), [subscribe/filter]({{ '/tutorials-recipes/workerbee-subscribe-filter.html' | relative_url }}), [errors/reconnect]({{ '/tutorials-recipes/workerbee-errors-reconnect.html' | relative_url }}).
+
 ---
 
 **Beekeeper** - [https://gitlab.syncad.com/hive/beekeeper](https://gitlab.syncad.com/hive/beekeeper)

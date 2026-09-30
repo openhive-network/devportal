@@ -65,6 +65,16 @@ The portal generates an [OpenRPC](https://developers.hive.io/openrpc.json) docum
 
 Regenerate locally with `bundle exec rake export:rpc_schema` (writes `api/openrpc.json` and `api/openapi.json`). The published copies are produced by the Jekyll build at `/openrpc.json` and `/openapi.json`.
 
+#### Workerbee tutorials
+
+End-to-end portal recipes for [`@hiveio/workerbee`](https://www.npmjs.com/package/@hiveio/workerbee) (current WAX-chain constructor APIs):
+
+- [Workerbee getting started]({{ '/tutorials-recipes/workerbee-getting-started.html' | relative_url }}) — install, start, stream blocks
+- [Subscribe and filter]({{ '/tutorials-recipes/workerbee-subscribe-filter.html' | relative_url }}) — accounts, posts/comments/votes, `custom_json`, `.and` / `.or`
+- [Errors and reconnect]({{ '/tutorials-recipes/workerbee-errors-reconnect.html' | relative_url }}) — observer errors, `iterate(true)`, stop/start/delete, endpoint rotation
+
+Upstream: [Workerbee](https://gitlab.syncad.com/hive/workerbee) · [filter categories](https://gitlab.syncad.com/hive/workerbee/-/blob/main/docs/predefined_filter_categories.md)
+
 #### Portal machine-readable index
 
 This portal publishes an agent-oriented link dump at [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Pair it with the WAX Mintlify `llms.txt` above when scaffolding Hive tooling.
