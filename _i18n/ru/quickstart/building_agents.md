@@ -48,6 +48,25 @@ curl -s --data '{"jsonrpc":"2.0","method":"condenser_api.get_dynamic_global_prop
 - Используйте операции **`custom_json`** для прикладных payload (id + JSON-тело) вместо перегрузки постов, когда нужен только структурированный state. Пример шаблона: [Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - Для аналитических агентов с большим объёмом чтения предпочитайте SQL/API доступ **HAF** (Hive Application Framework), а не нагрузку на condenser endpoints. См. [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+
+#### Эталонный MCP-сервер
+
+Каталог `mcp/` в этом репозитории — сервер [MCP](https://modelcontextprotocol.io) только для чтения. Инструменты строятся из опубликованного документа [OpenRPC](https://developers.hive.io/openrpc.json). Сервер не подписывает транзакции, не хранит ключи и отклоняет broadcast-методы, пока это явно не включено. Публичной точки доступа нет: процесс локальный, через stdio.
+
+- `list_methods` / `get_method_schema` — методы из `/openrpc.json`
+- `hive_rpc_call` — JSON-RPC к разрешённому публичному HTTPS-узлу (по умолчанию `https://api.hive.blog`)
+- `fetch_doc_page` — простой текст страницы developers.hive.io или staging
+
+```bash
+cd mcp
+npm ci
+npm start
+```
+
+Пока production не отдаёт `/openrpc.json`, сервер переходит на `http://developers-staging.hive.io/openrpc.json`.
+
+`network_broadcast_api`, `debug_node_api` и методы `broadcast_*` запрещены без `HIVE_MCP_ALLOW_BROADCAST=1`. Даже тогда процесс не принимает приватные ключи — подписывайте через Beekeeper или Keychain снаружи. Лимит по умолчанию: 60 вызовов в минуту. Дизайн и Docker: `mcp/README.md` в [репозитории devportal](https://gitlab.syncad.com/hive/devportal).
+
 #### Машиночитаемый индекс портала
 
 Этот портал публикует ориентированный на агентов дамп ссылок: [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Сочетайте его с WAX Mintlify `llms.txt` выше при сборке инструментов Hive.

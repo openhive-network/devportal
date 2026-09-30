@@ -45,6 +45,16 @@ html_proofer:
   tags:
     - public-runner-docker
 
+
+mcp_test:
+  image: node:20
+  stage: test
+  dependencies: []
+  script:
+    - cd mcp && npm ci && npm test
+  tags:
+    - public-runner-docker
+
 deploy_staging:
   stage: deploy_staging
   image: python:3.11

@@ -1,0 +1,103 @@
+{
+  "openrpc": "1.3.2",
+  "info": { "title": "Hive JSON-RPC", "version": "test" },
+  "methods": [
+    {
+      "name": "condenser_api.get_dynamic_global_properties",
+      "summary": "Dynamic global properties",
+      "paramStructure": "by-position",
+      "params": [],
+      "x-hive-api": "condenser_api",
+      "result": { "name": "result", "schema": { "type": "object" } }
+    },
+    {
+      "name": "database_api.find_accounts",
+      "summary": "Find accounts by name",
+      "paramStructure": "by-name",
+      "params": [
+        { "name": "accounts", "required": true, "schema": { "type": "array" } }
+      ],
+      "x-hive-api": "database_api",
+      "result": { "name": "result", "schema": { "type": "object" } }
+    },
+    {
+      "name": "network_broadcast_api.broadcast_transaction",
+      "summary": "Broadcast a signed transaction",
+      "paramStructure": "by-name",
+      "params": [{ "name": "trx", "required": true, "schema": { "type": "object" } }],
+      "x-hive-api": "network_broadcast_api"
+    },
+    {
+      "name": "condenser_api.broadcast_transaction",
+      "summary": "Broadcast a signed transaction (positional)",
+      "paramStructure": "by-position",
+      "params": [{ "name": "trx", "required": true, "schema": { "type": "object" } }],
+      "x-hive-api": "condenser_api"
+    },
+    {
+      "name": "debug_node_api.debug_push_blocks",
+      "summary": "Debug-only block push",
+      "paramStructure": "by-name",
+      "params": [],
+      "x-hive-api": "debug_node_api"
+    },
+    {
+      "name": "debug_node_api.debug_generate_blocks",
+      "summary": "Generate blocks with a debug signing key",
+      "paramStructure": "by-name",
+      "params": [
+        { "name": "debug_key", "required": true, "schema": { "type": "string" } },
+        { "name": "count", "required": true, "schema": { "type": "integer" } },
+        { "name": "skip", "required": false, "schema": { "type": "integer" } },
+        { "name": "miss_blocks", "required": false, "schema": { "type": "integer" } }
+      ],
+      "x-hive-api": "debug_node_api"
+    },
+    {
+      "name": "debug_node_api.debug_generate_blocks_until",
+      "summary": "Generate blocks until a head time with a debug signing key",
+      "paramStructure": "by-name",
+      "params": [
+        { "name": "debug_key", "required": true, "schema": { "type": "string" } },
+        { "name": "head_block_time", "required": true, "schema": { "type": "string" } },
+        { "name": "generate_smarter", "required": false, "schema": { "type": "boolean" } }
+      ],
+      "x-hive-api": "debug_node_api"
+    },
+    {
+      "name": "chain_api.push_transaction",
+      "summary": "Push a signed transaction into the chain plugin",
+      "paramStructure": "by-name",
+      "params": [{ "name": "trx", "required": true, "schema": { "type": "object" } }],
+      "x-hive-api": "chain_api"
+    },
+    {
+      "name": "network_node_api.add_node",
+      "summary": "Add a p2p peer",
+      "paramStructure": "by-name",
+      "params": [{ "name": "endpoint", "required": true, "schema": { "type": "string" } }],
+      "x-hive-api": "network_node_api"
+    },
+    {
+      "name": "network_node_api.set_allowed_peers",
+      "summary": "Replace the allowed peer set",
+      "paramStructure": "by-name",
+      "params": [{ "name": "allowed_peers", "required": true, "schema": { "type": "array" } }],
+      "x-hive-api": "network_node_api"
+    },
+    {
+      "name": "witness_api.enable_fast_confirm",
+      "summary": "Enable witness fast confirm",
+      "paramStructure": "by-name",
+      "params": [],
+      "x-hive-api": "witness_api"
+    },
+    {
+      "name": "witness_api.disable_fast_confirm",
+      "summary": "Disable witness fast confirm",
+      "paramStructure": "by-name",
+      "params": [],
+      "x-hive-api": "witness_api"
+    }
+  ]
+}

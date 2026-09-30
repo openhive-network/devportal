@@ -48,6 +48,25 @@ Consulta también [`condenser_api.get_dynamic_global_properties`]({{ '/apidefini
 - Usa operaciones **`custom_json`** para cargas específicas de la aplicación (id + cuerpo JSON) en lugar de sobrecargar publicaciones cuando solo necesitas estado estructurado. Patrón de ejemplo: [Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - Para agentes de analítica con muchas lecturas, prefiere acceso SQL/API de **HAF** (Hive Application Framework) en lugar de saturar los endpoints de condenser. Consulta [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+
+#### Servidor MCP de referencia
+
+El directorio `mcp/` de este repositorio es un servidor [MCP](https://modelcontextprotocol.io) de solo lectura. Expone herramientas a partir del documento [OpenRPC](https://developers.hive.io/openrpc.json). No firma, no guarda claves y rechaza los métodos de broadcast salvo que lo actives. No hay un endpoint público: se ejecuta en local.
+
+- `list_methods` / `get_method_schema` — descubren métodos en `/openrpc.json`
+- `hive_rpc_call` — JSON-RPC contra un nodo HTTPS público permitido (`https://api.hive.blog` por defecto)
+- `fetch_doc_page` — texto de una página de developers.hive.io o de staging
+
+```bash
+cd mcp
+npm ci
+npm start
+```
+
+Hasta que producción publique `/openrpc.json`, el proceso prueba `https://developers.hive.io/openrpc.json` y, si falla, `http://developers-staging.hive.io/openrpc.json`.
+
+`network_broadcast_api`, `debug_node_api` y los métodos `broadcast_*` quedan bloqueados salvo `HIVE_MCP_ALLOW_BROADCAST=1`. Aun así el proceso no acepta claves privadas: firma con Beekeeper o Keychain fuera del servidor. Límite por defecto: 60 llamadas por minuto. Diseño y Docker: `mcp/README.md` en el [repositorio devportal](https://gitlab.syncad.com/hive/devportal).
+
 #### Índice legible por máquina del portal
 
 Este portal publica un volcado de enlaces orientado a agentes en [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Combínalo con el `llms.txt` de WAX Mintlify de arriba al andamiar herramientas Hive.

@@ -48,6 +48,25 @@ Siehe auch [`condenser_api.get_dynamic_global_properties`]({{ '/apidefinitions/#
 - Nutze **`custom_json`**-Operationen für anwendungsspezifische Payloads (id + JSON-Body), statt Posts zu überladen, wenn du nur strukturierten App-State brauchst. Beispielmuster: [Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - Für leseintensive Analyse-Agenten bevorzuge **HAF** (Hive Application Framework) SQL/API-Zugriff statt Condenser-Endpoints zu überlasten. Siehe [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+
+#### Referenz-MCP-Server
+
+Das Verzeichnis `mcp/` in diesem Repository ist ein nur-lesender [MCP](https://modelcontextprotocol.io)-Server. Die Werkzeuge stammen aus dem veröffentlichten [OpenRPC](https://developers.hive.io/openrpc.json)-Dokument. Er signiert nicht, speichert keine Schlüssel und lehnt Broadcast-Methoden ab, solange du sie nicht ausdrücklich einschaltest. Es gibt keinen öffentlichen Endpunkt; der Server läuft lokal über stdio.
+
+- `list_methods` / `get_method_schema` — Methoden aus `/openrpc.json`
+- `hive_rpc_call` — JSON-RPC an einen erlaubten öffentlichen HTTPS-Knoten (`https://api.hive.blog` als Standard)
+- `fetch_doc_page` — Klartext einer Seite auf developers.hive.io oder Staging
+
+```bash
+cd mcp
+npm ci
+npm start
+```
+
+Solange Produktion `/openrpc.json` noch nicht ausliefert, fällt der Server auf `http://developers-staging.hive.io/openrpc.json` zurück.
+
+`network_broadcast_api`, `debug_node_api` und `broadcast_*` bleiben gesperrt, außer `HIVE_MCP_ALLOW_BROADCAST=1`. Private Schlüssel nimmt der Prozess trotzdem nie entgegen — signiere mit Beekeeper oder Keychain außerhalb des Servers. Standardlimit: 60 Aufrufe pro Minute. Design und Docker: `mcp/README.md` im [devportal-Repository](https://gitlab.syncad.com/hive/devportal).
+
 #### Maschinenlesbarer Portal-Index
 
 Dieses Portal veröffentlicht einen agentenorientierten Link-Dump unter [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Kombiniere ihn mit dem WAX-Mintlify-`llms.txt` oben, wenn du Hive-Tooling aufsetzt.

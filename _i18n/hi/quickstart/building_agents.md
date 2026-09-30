@@ -48,6 +48,25 @@ curl -s --data '{"jsonrpc":"2.0","method":"condenser_api.get_dynamic_global_prop
 - जब आपको केवल संरचित ऐप स्टेट चाहिए, पोस्ट पर बोझ डालने के बजाय ऐप-विशिष्ट payload (id + JSON body) के लिए **`custom_json`** ऑपरेशन उपयोग करें। उदाहरण पैटर्न: [Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - रीड-हेवी एनालिटिक्स एजेंट के लिए condenser endpoints पर दबाव डालने के बजाय **HAF** (Hive Application Framework) SQL/API एक्सेस को प्राथमिकता दें। देखें [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+
+#### संदर्भ MCP सर्वर
+
+इस रिपॉज़िटरी की `mcp/` डायरेक्टरी एक रीड-ओनली [MCP](https://modelcontextprotocol.io) सर्वर है। टूल प्रकाशित [OpenRPC](https://developers.hive.io/openrpc.json) दस्तावेज़ से बनते हैं। यह साइन नहीं करता, कुंजियाँ नहीं रखता, और ऑप्ट-इन के बिना broadcast मेथड अस्वीकार करता है। कोई सार्वजनिक एंडपॉइंट नहीं है; इसे लोकल stdio पर चलाएँ।
+
+- `list_methods` / `get_method_schema` — `/openrpc.json` से मेथड खोजें
+- `hive_rpc_call` — अनुमति-सूची वाले सार्वजनिक HTTPS नोड पर JSON-RPC (`https://api.hive.blog` डिफ़ॉल्ट)
+- `fetch_doc_page` — developers.hive.io या staging पृष्ठ का सादा पाठ
+
+```bash
+cd mcp
+npm ci
+npm start
+```
+
+जब तक प्रोडक्शन `/openrpc.json` प्रकाशित नहीं करता, सर्वर `http://developers-staging.hive.io/openrpc.json` पर वापस जाता है।
+
+`network_broadcast_api`, `debug_node_api`, और `broadcast_*` मेथड `HIVE_MCP_ALLOW_BROADCAST=1` के बिना बंद रहते हैं। तब भी प्रक्रिया निजी कुंजी स्वीकार नहीं करती — Beekeeper या Keychain से सर्वर के बाहर साइन करें। डिफ़ॉल्ट सीमा: 60 कॉल प्रति मिनट। डिज़ाइन और Docker: [devportal रिपॉज़िटरी](https://gitlab.syncad.com/hive/devportal) में `mcp/README.md`।
+
 #### पोर्टल मशीन-रीडेबल इंडेक्स
 
 यह पोर्टल एजेंट-उन्मुख लिंक डंप प्रकाशित करता है: [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)। Hive टूलिंग स्कैफ़ोल्ड करते समय इसे ऊपर दिए गए WAX Mintlify `llms.txt` के साथ जोड़ें।
