@@ -18,6 +18,7 @@ languages: ["en"]
 - Public HTTPS nodes: [Hive Nodes](https://developers.hive.io/quickstart/#quickstart-hive-full-nodes) (e.g. `api.hive.blog`, `api.deathwing.me`, `anyx.io`)
 - JSON-RPC methods: [https://developers.hive.io/apidefinitions/](https://developers.hive.io/apidefinitions/)
 - OpenRPC export: [https://developers.hive.io/openrpc.json](https://developers.hive.io/openrpc.json) (OpenAPI overlay: [https://developers.hive.io/openapi.json](https://developers.hive.io/openapi.json))
+- Reference MCP server (local, read-only): tools `list_methods`, `get_method_schema`, `hive_rpc_call`, `fetch_doc_page` — [Building agents](https://developers.hive.io/quickstart/building_agents.html#reference-mcp-server). Source directory `mcp/` in the devportal repo. No keys in the server; broadcast denied unless `HIVE_MCP_ALLOW_BROADCAST=1`.
 - Auth safety: posting key / Keychain / Beekeeper; never put active/owner keys in prompts or logs — [Authentication](https://developers.hive.io/quickstart/#quickstart-authentication), [RC API](https://developers.hive.io/apidefinitions/#apidefinitions-rc-api)
 - SDK table: [https://developers.hive.io/resources/#resources-sdk-reference](https://developers.hive.io/resources/#resources-sdk-reference)
 - This file: [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)

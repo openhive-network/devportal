@@ -69,6 +69,44 @@ End-to-end portal recipes for [`@hiveio/workerbee`](https://www.npmjs.com/packag
 
 Upstream: [Workerbee](https://gitlab.syncad.com/hive/workerbee) · [filter categories](https://gitlab.syncad.com/hive/workerbee/-/blob/main/docs/predefined_filter_categories.md)
 
+
+#### Reference MCP server
+
+A read-only [Model Context Protocol](https://modelcontextprotocol.io) server in this repository (`mcp/`) turns the published [OpenRPC](https://developers.hive.io/openrpc.json) document into tools. It does not sign, does not hold keys, and refuses broadcast methods unless you opt in. There is no public hosted endpoint; run it locally.
+
+Tools:
+
+- `list_methods` / `get_method_schema` — discover calls from `/openrpc.json` (not one MCP tool per RPC method)
+- `hive_rpc_call` — JSON-RPC against an allowlisted public HTTPS node (`https://api.hive.blog` by default)
+- `fetch_doc_page` — plain text of a page on developers.hive.io or developers-staging.hive.io
+
+Resources: `hive://schema/openrpc` (catalog summary) and `hive://method/{name}` (one method descriptor).
+
+```bash
+cd mcp
+npm ci
+npm start
+```
+
+Cursor (stdio):
+
+```json
+{
+  "mcpServers": {
+    "hive": {
+      "command": "node",
+      "args": ["/absolute/path/to/devportal/mcp/src/index.js"]
+    }
+  }
+}
+```
+
+Production `https://developers.hive.io/openrpc.json` is published when `develop` is released to `master`. Until then the server falls back to staging (`http://developers-staging.hive.io/openrpc.json`). Override with `HIVE_OPENRPC_URL` or `HIVE_OPENRPC_PATH`.
+
+`network_broadcast_api`, `debug_node_api`, and `broadcast_*` methods stay denied unless `HIVE_MCP_ALLOW_BROADCAST=1`. Even then the process never accepts private keys — sign with Beekeeper or Keychain outside the MCP server. Default rate limit is 60 calls per minute (`HIVE_MCP_RATE_LIMIT`).
+
+Design, Docker, and the allowlists: `mcp/README.md` in the [devportal repository](https://gitlab.syncad.com/hive/devportal).
+
 #### Portal machine-readable index
 
 This portal publishes an agent-oriented link dump at [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Pair it with the WAX Mintlify `llms.txt` above when scaffolding Hive tooling.

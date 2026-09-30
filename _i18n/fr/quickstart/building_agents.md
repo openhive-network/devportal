@@ -48,6 +48,25 @@ Voir aussi [`condenser_api.get_dynamic_global_properties`]({{ '/apidefinitions/#
 - Utilisez des opérations **`custom_json`** pour des charges utiles spécifiques à l'application (id + corps JSON) au lieu de surcharger les posts quand vous n'avez besoin que d'un état structuré. Motif d'exemple : [Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - Pour des agents d'analytique à forte lecture, préférez l'accès SQL/API **HAF** (Hive Application Framework) plutôt que de marteler les endpoints condenser. Voir [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+
+#### Serveur MCP de référence
+
+Le répertoire `mcp/` de ce dépôt est un serveur [MCP](https://modelcontextprotocol.io) en lecture seule. Les outils sont produits à partir du document [OpenRPC](https://developers.hive.io/openrpc.json). Il ne signe pas, ne conserve pas de clés et refuse les méthodes de broadcast sauf opt-in. Pas d'endpoint public : exécution locale en stdio.
+
+- `list_methods` / `get_method_schema` — découvrir les méthodes de `/openrpc.json`
+- `hive_rpc_call` — JSON-RPC vers un nœud HTTPS public autorisé (`https://api.hive.blog` par défaut)
+- `fetch_doc_page` — texte d'une page developers.hive.io ou staging
+
+```bash
+cd mcp
+npm ci
+npm start
+```
+
+Tant que la production ne publie pas `/openrpc.json`, le serveur se rabat sur `http://developers-staging.hive.io/openrpc.json`.
+
+`network_broadcast_api`, `debug_node_api` et les méthodes `broadcast_*` restent interdites sans `HIVE_MCP_ALLOW_BROADCAST=1`. Même alors, le processus n'accepte jamais de clé privée : signez avec Beekeeper ou Keychain en dehors du serveur. Limite par défaut : 60 appels par minute. Conception et Docker : `mcp/README.md` dans le [dépôt devportal](https://gitlab.syncad.com/hive/devportal).
+
 #### Index lisible par machine du portail
 
 Ce portail publie un dump de liens orienté agents sur [https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt). Associez-le au `llms.txt` WAX Mintlify ci-dessus lors de l'échafaudage d'outils Hive.

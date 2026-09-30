@@ -1,0 +1,45 @@
+{
+  "openrpc": "1.3.2",
+  "info": { "title": "Hive JSON-RPC", "version": "test" },
+  "methods": [
+    {
+      "name": "condenser_api.get_dynamic_global_properties",
+      "summary": "Dynamic global properties",
+      "paramStructure": "by-position",
+      "params": [],
+      "x-hive-api": "condenser_api",
+      "result": { "name": "result", "schema": { "type": "object" } }
+    },
+    {
+      "name": "database_api.find_accounts",
+      "summary": "Find accounts by name",
+      "paramStructure": "by-name",
+      "params": [
+        { "name": "accounts", "required": true, "schema": { "type": "array" } }
+      ],
+      "x-hive-api": "database_api",
+      "result": { "name": "result", "schema": { "type": "object" } }
+    },
+    {
+      "name": "network_broadcast_api.broadcast_transaction",
+      "summary": "Broadcast a signed transaction",
+      "paramStructure": "by-name",
+      "params": [{ "name": "trx", "required": true, "schema": { "type": "object" } }],
+      "x-hive-api": "network_broadcast_api"
+    },
+    {
+      "name": "condenser_api.broadcast_transaction",
+      "summary": "Broadcast a signed transaction (positional)",
+      "paramStructure": "by-position",
+      "params": [{ "name": "trx", "required": true, "schema": { "type": "object" } }],
+      "x-hive-api": "condenser_api"
+    },
+    {
+      "name": "debug_node_api.debug_push_blocks",
+      "summary": "Debug-only block push",
+      "paramStructure": "by-name",
+      "params": [],
+      "x-hive-api": "debug_node_api"
+    }
+  ]
+}

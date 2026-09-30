@@ -48,6 +48,25 @@ curl -s --data '{"jsonrpc":"2.0","method":"condenser_api.get_dynamic_global_prop
 - 当只需结构化应用状态时，使用 **`custom_json`** 操作承载应用专用载荷（id + JSON body），而不是滥用帖子。示例模式：[Tic-Tac-Toe game]({{ '/tutorials-javascript/tic-tac-toe-game.html' | relative_url }})
 - 对于读密集型分析代理，优先使用 **HAF**（Hive Application Framework）SQL/API，而不是频繁冲击 condenser 接口。参见 [Setup HAF API node]({{ '/nodeop/haf-api.html' | relative_url }})
 
+
+#### 参考 MCP 服务器
+
+本仓库的 `mcp/` 目录是只读 [MCP](https://modelcontextprotocol.io) 服务器。工具由已发布的 [OpenRPC](https://developers.hive.io/openrpc.json) 文档生成。它不签名、不保存密钥，并且在未显式开启时拒绝 broadcast 方法。没有公共托管端点；请在本地通过 stdio 运行。
+
+- `list_methods` / `get_method_schema` — 从 `/openrpc.json` 发现方法
+- `hive_rpc_call` — 向允许列表中的公共 HTTPS 节点发送 JSON-RPC（默认 `https://api.hive.blog`）
+- `fetch_doc_page` — 获取 developers.hive.io 或 staging 页面的纯文本
+
+```bash
+cd mcp
+npm ci
+npm start
+```
+
+在生产环境发布 `/openrpc.json` 之前，服务器会回退到 `http://developers-staging.hive.io/openrpc.json`。
+
+除非设置 `HIVE_MCP_ALLOW_BROADCAST=1`，否则 `network_broadcast_api`、`debug_node_api` 和 `broadcast_*` 方法会被拒绝。即便开启，进程也绝不接受私钥——请在服务器之外使用 Beekeeper 或 Keychain 签名。默认限制为每分钟 60 次调用。设计与 Docker：见 [devportal 仓库](https://gitlab.syncad.com/hive/devportal) 中的 `mcp/README.md`。
+
 #### 门户机器可读索引
 
 本门户发布面向代理的链接汇总：[https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)。搭建 Hive 工具时，请与上方的 WAX Mintlify `llms.txt` 搭配使用。

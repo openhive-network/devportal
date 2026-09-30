@@ -136,6 +136,7 @@ exclude:
   - Makefile
   - Rakefile
   - tutorials
+  - mcp
   - Gemfile.lock
   - Gemfile
   - CONTRIBUTING.md
