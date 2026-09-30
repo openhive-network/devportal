@@ -279,27 +279,37 @@ module Export
     # Returns :structure ("by-name" / "by-position"), :descriptors (OpenRPC
     # Content Descriptor list), and :names (descriptor names in order).
     #
+    # Descriptor arity is the max of parameter_json and documented curl
+    # examples, so empty or short parameter_json cannot drop required args.
     # Requiredness comes from purpose "(optional)" markers and from curl
     # examples: an argument omitted by any documented curl is not required.
     # Schemas are inferred from parameter_json plus every curl argument value
     # so documented alternatives (string vs int, null, etc.) remain valid.
     def params_info_for(method, api)
       parsed = parse_example(method['parameter_json'])
-      positional = api == 'condenser_api' || parsed.is_a?(Array)
-      structure = positional ? 'by-position' : 'by-name'
       curl_params = curl_params_examples(method)
-
-      if parsed.nil?
-        return { structure: structure, descriptors: [], names: [] }
-      end
+      positional = positional_params?(api, parsed, curl_params)
+      structure = positional ? 'by-position' : 'by-name'
 
       if positional
-        values = parsed.is_a?(Array) ? parsed : [parsed]
-        return { structure: structure, descriptors: [], names: [] } if values.empty?
+        base_values = case parsed
+                      when Array then parsed
+                      when NilClass then []
+                      else [parsed]
+                      end
+        curl_arrays = curl_params.select { |params| params.is_a?(Array) }
+        arity = [base_values.length, curl_arrays.map(&:length).max || 0].max
+        return { structure: structure, descriptors: [], names: [] } if arity.zero?
 
-        names = positional_param_names(method, values.length)
-        descriptors = values.each_with_index.map do |value, index|
-          samples = positional_samples(value, curl_params, index)
+        names = positional_param_names(method, arity)
+        descriptors = Array.new(arity) do |index|
+          has_base = index < base_values.length
+          samples = positional_samples(
+            has_base ? base_values[index] : nil,
+            curl_params,
+            index,
+            include_base: has_base
+          )
           {
             'name' => names[index],
             'required' => positional_arg_required?(method, names[index], index, curl_params),
@@ -308,13 +318,24 @@ module Export
         end
         { structure: structure, descriptors: descriptors, names: names }
       else
-        hash = parsed.is_a?(Hash) ? parsed : {}
-        return { structure: structure, descriptors: [], names: [] } if hash.empty?
-
+        hash = parsed.is_a?(Hash) ? parsed.transform_keys(&:to_s) : {}
         names = hash.keys.map(&:to_s)
-        descriptors = hash.map do |key, value|
-          key_s = key.to_s
-          samples = named_samples(value, curl_params, key_s)
+        curl_params.select { |params| params.is_a?(Hash) }.each do |params|
+          params.each_key do |key|
+            key_s = key.to_s
+            names << key_s unless names.include?(key_s)
+          end
+        end
+        return { structure: structure, descriptors: [], names: [] } if names.empty?
+
+        descriptors = names.map do |key_s|
+          has_base = hash.key?(key_s)
+          samples = named_samples(
+            has_base ? hash[key_s] : nil,
+            curl_params,
+            key_s,
+            include_base: has_base
+          )
           {
             'name' => key_s,
             'required' => named_arg_required?(method, key_s, curl_params),
@@ -323,6 +344,16 @@ module Export
         end
         { structure: structure, descriptors: descriptors, names: names }
       end
+    end
+
+    def positional_params?(api, parsed, curl_params)
+      return true if api == 'condenser_api'
+      return true if parsed.is_a?(Array)
+      return false if parsed.is_a?(Hash)
+      return true if curl_params.any? { |params| params.is_a?(Array) }
+      return false if curl_params.any? { |params| params.is_a?(Hash) }
+
+      false
     end
 
     # Raw `params` payloads from documented curl_examples (Hash or Array).
@@ -336,8 +367,11 @@ module Export
     end
 
     # Include JSON nulls; filter_map would drop them and lose null alternatives.
-    def positional_samples(base, curl_params, index)
-      samples = [base]
+    # When arity extends past parameter_json, omit the missing base sample so
+    # schema inference comes only from documented curl values.
+    def positional_samples(base, curl_params, index, include_base: true)
+      samples = []
+      samples << base if include_base
       curl_params.each do |params|
         values = case params
                  when Array then params
@@ -349,12 +383,18 @@ module Export
       samples
     end
 
-    def named_samples(base, curl_params, name)
-      samples = [base]
+    def named_samples(base, curl_params, name, include_base: true)
+      samples = []
+      samples << base if include_base
       curl_params.each do |params|
-        next unless params.is_a?(Hash) && params.key?(name)
+        next unless params.is_a?(Hash)
 
-        samples << params[name]
+        # Curl JSON may use string keys only after parse_example.
+        if params.key?(name)
+          samples << params[name]
+        elsif params.key?(name.to_sym)
+          samples << params[name.to_sym]
+        end
       end
       samples
     end
@@ -399,6 +439,10 @@ module Export
     def positional_param_names(method, count)
       purpose = method['purpose'].to_s
       names = purpose.scan(/\*\s*`([A-Za-z_][A-Za-z0-9_]*)\s*:/).flatten
+      if names.length < count
+        inline = purpose.scan(/`([A-Za-z_][A-Za-z0-9_]*)\s*:/).flatten
+        names = inline if inline.length >= count
+      end
       if names.length < count
         table_names = purpose.scan(/\|\s*`([A-Za-z_][A-Za-z0-9_]*)`/).flatten.uniq
         names = table_names if table_names.length >= count

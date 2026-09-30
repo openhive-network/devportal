@@ -177,7 +177,10 @@ class RpcSchemaExportTest < Minitest::Test
 
         Array(example['params']).each do |item|
           descriptor = descriptors.find { |candidate| candidate['name'] == item['name'] }
-          next unless descriptor
+          unless descriptor
+            type_failures << "#{entry['name']} example#{index + 1}: no descriptor for #{item['name']}"
+            next
+          end
 
           errors = validate_against_schema(item['value'], descriptor['schema'], "$.#{item['name']}")
           type_failures << "#{entry['name']} example#{index + 1}: #{errors.join('; ')}" unless errors.empty?
@@ -189,6 +192,25 @@ class RpcSchemaExportTest < Minitest::Test
       "Exported examples must include every required argument (showing up to 10):\n#{required_failures.take(10).join("\n")}"
     assert_empty type_failures.take(10),
       "Exported example values must satisfy descriptor schemas (showing up to 10):\n#{type_failures.take(10).join("\n")}"
+
+    # Curl-documented positional args must become descriptors even when
+    # parameter_json is empty or shorter (review: descriptor coverage).
+    list_rc = by_name.fetch('condenser_api.list_rc_accounts')
+    assert_equal 2, list_rc['params'].length,
+      'list_rc_accounts curl ["ecency", 10] requires two descriptors'
+    assert list_rc['params'].all? { |descriptor| descriptor['required'] },
+      'both list_rc_accounts curl args are present in every documented call'
+
+    find_rc = by_name.fetch('condenser_api.find_rc_accounts')
+    assert_equal 1, find_rc['params'].length
+    assert find_rc['params'].first['required']
+
+    get_accounts = by_name.fetch('condenser_api.get_accounts')
+    assert_equal 2, get_accounts['params'].length,
+      'get_accounts must retain trailing delayed_votes_active from curl'
+    delayed = get_accounts['params'].find { |descriptor| descriptor['name'] == 'delayed_votes_active' }
+    assert delayed, 'Expected delayed_votes_active descriptor name from purpose'
+    refute delayed['required'], 'delayed_votes_active is omitted from the short curl example'
   end
 
   def test_built_site_publishes_schema_and_links_it
