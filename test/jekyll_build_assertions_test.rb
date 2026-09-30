@@ -243,6 +243,26 @@ class JekyllBuildAssertionsTest < Minitest::Test
       assert_includes curated, '## For AI / agent developers'
       assert_includes curated, '[Building agents](https://developers.hive.io/quickstart/building_agents.html)'
       assert_includes curated, '[https://developers.hive.io/llms.txt](https://developers.hive.io/llms.txt)'
+      assert_includes curated, 'https://developers.hive.io/openrpc.json'
+      assert_includes curated, 'https://developers.hive.io/openapi.json'
+      assert_includes curated, 'https://developers.hive.io/llms-skill.txt'
+      assert_includes curated, '@hiveio/workerbee'
+      assert_includes curated, 'active/owner keys'
+      assert_includes curated, 'HIVE_MCP_ALLOW_BROADCAST'
+      assert_includes curated, 'hive_rpc_call'
+
+      skill_path = File.join(site_dir, 'llms-skill.txt')
+      assert File.exist?(skill_path), 'Expected llms-skill.txt skill pack'
+      skill = File.read(skill_path)
+      assert_includes skill, 'https://developers.hive.io/openrpc.json'
+      assert_includes skill, 'https://developers.hive.io/openapi.json'
+      assert_includes skill, '@hiveio/workerbee'
+      assert_includes skill, 'active/owner keys'
+      assert_includes skill, 'hive_rpc_call'
+      refute_includes skill, '# Hive Developers'
+      Dir[File.join(site_dir, '*', 'llms-skill.txt')].each do |localized_skill|
+        flunk "Expected llms-skill.txt only at the site root, but found #{localized_skill}"
+      end
 
       assert_includes docs_index, docs_heading
       assert_includes docs_index, 'Hive Developer Documentation.'

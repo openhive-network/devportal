@@ -1,0 +1,51 @@
+---
+layout: null
+sitemap: false
+permalink: /llms-skill.txt
+languages: ["en"]
+---
+# Hive agent skill pack
+
+Concise capability cards for coding agents. This file is the curated preamble of https://developers.hive.io/llms.txt without the generated documentation index. Canonical site: https://developers.hive.io/
+
+## Read chain state
+
+- Call public HTTPS JSON-RPC. Do not scrape HTML for chain data.
+- Nodes (rotate; do not pin a single host): api.hive.blog, api.deathwing.me, anyx.io. Live list: https://developers.hive.io/quickstart/#quickstart-hive-full-nodes
+- Prefer database_api, block_api, account_history_api, and bridge for structured reads. condenser_api takes a positional params array; AppBase APIs take a named params object.
+- Canonical schemas: https://developers.hive.io/openrpc.json and https://developers.hive.io/openapi.json
+- Human method reference: https://developers.hive.io/apidefinitions/
+- Production schema URLs publish when develop is released to master. Until then the same paths are on staging: http://developers-staging.hive.io/openrpc.json and http://developers-staging.hive.io/openapi.json
+- Minimal read:
+
+```bash
+curl -s --data '{"jsonrpc":"2.0","method":"condenser_api.get_dynamic_global_properties","params":[],"id":1}' https://api.hive.blog
+```
+
+## Build, observe, submit
+
+- Start here: https://developers.hive.io/quickstart/building_agents.html
+- Preferred stack: WAX (https://doc.openhive.network/wax/) plus Beekeeper (https://gitlab.syncad.com/hive/beekeeper) for signing. Workerbee / @hiveio/workerbee (https://www.npmjs.com/package/@hiveio/workerbee) for observe, fetch, and submit.
+- Workerbee recipes: https://developers.hive.io/tutorials-recipes/workerbee-getting-started.html · https://developers.hive.io/tutorials-recipes/workerbee-subscribe-filter.html · https://developers.hive.io/tutorials-recipes/workerbee-errors-reconnect.html
+- WAX agent index: https://mintlify.com/openhive-network/wax/llms.txt
+- SDK table: https://developers.hive.io/resources/#resources-sdk-reference
+
+## Broadcast do / don't
+
+- Do sign outside the agent process (Keychain, HiveAuth, or Beekeeper). Use the posting key only for social or custom_json writes.
+- Don't put active/owner keys, passwords, or secrets in prompts, logs, or source.
+- Don't call broadcast_transaction, network_broadcast_api, or debug_node_api from a read-only tool loop.
+- Do budget resource credits before high-frequency writes: https://developers.hive.io/apidefinitions/#apidefinitions-rc-api
+- Auth overview: https://developers.hive.io/quickstart/#quickstart-authentication
+
+## MCP (optional, local)
+
+- Reference server, read-only by default: https://developers.hive.io/quickstart/building_agents.html#reference-mcp-server
+- Tools: list_methods, get_method_schema, hive_rpc_call, fetch_doc_page.
+- No keys in the server. Broadcast stays denied unless HIVE_MCP_ALLOW_BROADCAST=1.
+- No public hosted MCP endpoint. Source directory: mcp/ in https://gitlab.syncad.com/hive/devportal
+
+## Index
+
+- Full portal index (curated cards plus every doc URL): https://developers.hive.io/llms.txt
+- This skill pack: https://developers.hive.io/llms-skill.txt
