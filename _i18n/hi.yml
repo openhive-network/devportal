@@ -28,7 +28,10 @@ titles:
   accounts: खाते
   hackathon: Hive Hackathons
   authentication: प्रमाणीकरण
-  building_agents: Building agents
+  building_agents: एजेंट बनाना
+  workerbee_getting_started: Workerbee getting started
+  workerbee_subscribe_filter: Workerbee subscribe and filter
+  workerbee_errors_reconnect: Workerbee errors and reconnect
   sdk: SDK Libraries
   sdk_reference: SDK Reference
   getset: Get and Set
@@ -181,7 +184,10 @@ descriptions:
   setting_up_testnet: Quick-start for deploying a Hive-based Testnet.
   tools: Directory of community testnet tools
   sdk_reference: _SDK and client library links for building Hive applications._
-  building_agents: _Guide for LLM agents, automation bots, and MCP-style tools building on Hive._
+  building_agents: _Hive पर निर्माण करने वाले LLM एजेंट, ऑटोमेशन बॉट और MCP-शैली टूल के लिए गाइड._
+  workerbee_getting_started: _Install @hiveio/workerbee, connect with WAX, and stream live Hive blocks._
+  workerbee_subscribe_filter: _Subscribe to posts, comments, votes, custom_json, and combined account/type filters._
+  workerbee_errors_reconnect: _Observer errors, iterate(true), stop/start/delete, and API endpoint rotation._
   hivesigner: _Understand the basics of using Hivesigner with your Hive application_
   api: Dictionary of API Terms
   chain_basics: Dictionary of Chain Basic Terms

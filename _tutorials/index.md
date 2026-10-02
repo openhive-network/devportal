@@ -13,7 +13,7 @@ canonical_url: .
       {% for nav_doc in sorted_nav_docs %}
         {% assign collection = site.collections | where: "id", nav_doc.collection | first %}
         {% if collection %}
-          <h3 id="{{ nav_doc.collection | slugify }}">{% t nav_doc.title %}</h3>
+          <h3 id="{{ nav_doc.collection | slugify }}"><a href="{{ site.baseurl }}/{{ nav_doc.collection }}/">{% t nav_doc.title %}</a></h3>
           <ul>
             {% assign sorted_collection_docs = collection.docs | sort: "position" %}
             {% for doc in sorted_collection_docs %}
