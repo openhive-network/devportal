@@ -62,6 +62,15 @@ devportal/
 └── .gitlab-ci.yml           # CI/CD pipeline
 ```
 
+## Working in an AIDEV workflow
+When AIDEV runs you on an issue, no one is there to answer questions. GitLab CI doesn't run for AIDEV branches; the checks below are the verification.
+
+- **Check your change:** run `aidev test run --slot quick` once, after your last edit. It builds the site with Jekyll and runs the minitest suite (`test/`) and the `mcp/` Node tests. `--slot full` adds `rake test:proof:full` (html-proofer, internal links and anchors).
+- **Iterate:** `.aidev/run-checks.sh dev minitest` (or `build` / `mcp` / `proof`) runs one step.
+- **Toolchain:** Ruby 3.1.6 with bundler 2.3.19 (`Gemfile.lock`); Node 20 with npm (`mcp/package-lock.json`).
+- **Dependencies:** a change to `Gemfile`, `Gemfile.lock` or `mcp/package*.json` needs a new test image. Run `.aidev/runtime/build.sh --push` and put the printed reference in `.aidev/project.yaml` `environment.image` in the same commit (see `.aidev/README.md`).
+- **No network:** the slots run offline. `rake test:curl` and `rake scrape:api_defs` call a live Hive node and are not part of the AIDEV slots.
+
 ## Development Commands
 
 ### Setup

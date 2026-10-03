@@ -132,6 +132,7 @@ exclude:
   - public
   - _site
   - reports
+  - test-results
   - test
   - Makefile
   - Rakefile
