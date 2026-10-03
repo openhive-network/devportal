@@ -63,7 +63,7 @@ npm ci
 npm start
 ```
 
-在生产环境发布 `/openrpc.json` 之前，服务器会回退到 `http://developers-staging.hive.io/openrpc.json`。
+已发布的 schema 位于 [https://developers.hive.io/openrpc.json](https://developers.hive.io/openrpc.json) 和 [https://developers.hive.io/openapi.json](https://developers.hive.io/openapi.json)。可用 `HIVE_OPENRPC_URL` 或 `HIVE_OPENRPC_PATH` 覆盖该请求。
 
 除非设置 `HIVE_MCP_ALLOW_BROADCAST=1`，否则 `network_broadcast_api`、`broadcast_*` 以及专用变更方法（例如 `chain_api.push_transaction`）会被拒绝。即便开启该选项，`debug_node_api`（包括带密钥的 `debug_generate_blocks*`）仍会被拒绝。进程绝不接受私钥——请在 MCP 服务器之外使用 Beekeeper 或 Keychain 签名。默认限制为每分钟 60 次调用（`HIVE_MCP_RATE_LIMIT`）。设计与 Docker：见 [devportal 仓库](https://gitlab.syncad.com/hive/devportal) 中的 `mcp/README.md`。
 

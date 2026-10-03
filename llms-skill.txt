@@ -15,7 +15,6 @@ Concise capability cards for coding agents. This file is the curated preamble of
 - Prefer database_api, block_api, account_history_api, and bridge for structured reads. condenser_api takes a positional params array; AppBase APIs take a named params object.
 - Canonical schemas: https://developers.hive.io/openrpc.json and https://developers.hive.io/openapi.json
 - Human method reference: https://developers.hive.io/apidefinitions/
-- Production schema URLs publish when develop is released to master. Until then the same paths are on staging: http://developers-staging.hive.io/openrpc.json and http://developers-staging.hive.io/openapi.json
 - Minimal read:
 
 ```bash

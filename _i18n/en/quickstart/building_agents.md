@@ -101,7 +101,7 @@ Cursor (stdio):
 }
 ```
 
-Production `https://developers.hive.io/openrpc.json` is published when `develop` is released to `master`. Until then the server falls back to staging (`http://developers-staging.hive.io/openrpc.json`). Override with `HIVE_OPENRPC_URL` or `HIVE_OPENRPC_PATH`.
+The server loads the published schemas at [https://developers.hive.io/openrpc.json](https://developers.hive.io/openrpc.json) and [https://developers.hive.io/openapi.json](https://developers.hive.io/openapi.json). Override that fetch with `HIVE_OPENRPC_URL` or `HIVE_OPENRPC_PATH`.
 
 `network_broadcast_api`, `broadcast_*`, and specialized mutators (for example `chain_api.push_transaction`) stay denied unless `HIVE_MCP_ALLOW_BROADCAST=1`. `debug_node_api` — including key-bearing `debug_generate_blocks*` — stays denied even with that opt-in. The process never accepts private keys — sign with Beekeeper or Keychain outside the MCP server. Default rate limit is 60 calls per minute (`HIVE_MCP_RATE_LIMIT`).
 

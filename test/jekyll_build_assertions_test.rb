@@ -309,6 +309,78 @@ class JekyllBuildAssertionsTest < Minitest::Test
     text.scan(%r{\]\((https://developers\.hive\.io/[^\)\s]+)\)}).flatten
   end
 
+  def test_child_page_canonicals_and_hreflang_use_html
+    # Extensionless collection URLs 403 on S3/CloudFront. Canonical, hreflang,
+    # and the language selector must name the .html file that is actually built.
+    expectations = {
+      'quickstart/building_agents.html' => 'https://developers.hive.io/quickstart/building_agents.html',
+      'introduction/welcome.html' => 'https://developers.hive.io/introduction/welcome.html',
+      'introduction/web3.html' => 'https://developers.hive.io/introduction/web3.html',
+      'layer2/engine.html' => 'https://developers.hive.io/layer2/engine.html',
+      'resources/overview.html' => 'https://developers.hive.io/resources/overview.html',
+      'es/quickstart/building_agents.html' => 'https://developers.hive.io/es/quickstart/building_agents.html',
+      'hi/quickstart/building_agents.html' => 'https://developers.hive.io/hi/quickstart/building_agents.html',
+      'de/quickstart/building_agents.html' => 'https://developers.hive.io/de/quickstart/building_agents.html',
+      'fr/quickstart/building_agents.html' => 'https://developers.hive.io/fr/quickstart/building_agents.html',
+      'ru/quickstart/building_agents.html' => 'https://developers.hive.io/ru/quickstart/building_agents.html',
+      'zh/quickstart/building_agents.html' => 'https://developers.hive.io/zh/quickstart/building_agents.html'
+    }
+
+    site_dir_for_assertions do |site_dir|
+      expectations.each do |rel, canonical|
+        html = File.read(File.join(site_dir, rel))
+        assert_includes html, %(rel="canonical" href="#{canonical}"),
+                        "Expected #{rel} canonical to be the working .html URL"
+        html.scan(/rel="alternate" hreflang="[^"]+" href="([^"]+)"/).flatten.each do |href|
+          path = href.sub(/\Ahttps:\/\/developers\.hive\.io/, '').sub(/#.*\z/, '')
+          assert path.end_with?('.html'),
+                 "Expected hreflang on #{rel} to end in .html, got #{href}"
+          assert File.exist?(File.join(site_dir, path.sub(%r{\A/}, ''))),
+                 "hreflang #{href} on #{rel} has no built file"
+        end
+
+        lang_block = html[/<div class="lang-switch">.*?<\/div>/m]
+        assert lang_block, "Expected language selector on #{rel}"
+        lang_block.scan(/href="([^"]+)"/).flatten.each do |href|
+          path = href.sub(/\Ahttps:\/\/developers\.hive\.io/, '').sub(/#.*\z/, '')
+          assert path.end_with?('.html'),
+                 "Language selector on #{rel} must use .html, got #{href}"
+          assert File.exist?(File.join(site_dir, path.sub(%r{\A/}, ''))),
+                 "Language selector href #{href} on #{rel} has no built file"
+        end
+      end
+
+      quickstart = File.read(File.join(site_dir, 'quickstart/index.html'))
+      assert_includes quickstart,
+                      'rel="canonical" href="https://developers.hive.io/quickstart/"',
+                      'Section index canonical should stay the directory URL'
+
+      api = File.read(File.join(site_dir, 'apidefinitions/database-api.html'))
+      assert_includes api,
+                      'rel="canonical" href="https://developers.hive.io/apidefinitions/#apidefinitions-database-api"'
+
+      ['llms.txt', 'llms-skill.txt'].each do |name|
+        body = File.read(File.join(site_dir, name))
+        refute_includes body, 'developers-staging.hive.io'
+        refute_includes body, 'released to'
+        assert_includes body, 'https://developers.hive.io/openrpc.json'
+        assert_includes body, 'https://developers.hive.io/openapi.json'
+      end
+
+      %w[en es hi de fr ru zh].each do |lang|
+        rel = lang == 'en' ? 'quickstart/building_agents.html' : "#{lang}/quickstart/building_agents.html"
+        body = File.read(File.join(site_dir, rel))
+        refute_includes body, 'developers-staging.hive.io/openrpc.json', rel
+        refute_includes body, 'developers-staging.hive.io/openapi.json', rel
+        assert_includes body, 'https://developers.hive.io/openrpc.json', rel
+        assert_includes body, 'https://developers.hive.io/openapi.json', rel
+      end
+
+      english = File.read(File.join(site_dir, 'quickstart/building_agents.html'))
+      assert_match(/no public hosted endpoint/i, english)
+    end
+  end
+
   def test_production_build_without_analytics_key_omits_gtag
     build_site(env: 'production') do |site_dir|
       index = File.join(site_dir, 'index.html')

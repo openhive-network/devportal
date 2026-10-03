@@ -55,6 +55,14 @@
   {% else %}
     {% assign lang_prefix = '' %}
   {% endif %}
+  {% comment %}
+    Collection URLs are extensionless, but the built file has .html. S3/CloudFront
+    403s the bare path. s3_html_url matches sitemap.xml: keep trailing-slash
+    indexes and fragment URLs, append .html otherwise.
+  {% endcomment %}
+  {% unless canonical_external %}
+    {% assign canonical_path = canonical_path | s3_html_url %}
+  {% endunless %}
   {% if canonical_external %}
     {% assign canonical = canonical_external %}
   {% else %}

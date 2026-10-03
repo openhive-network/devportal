@@ -47,7 +47,7 @@ On startup the server tries, in order:
 2. `HIVE_OPENRPC_URL` if set (no fallback)
 3. `https://developers.hive.io/openrpc.json`, then `http://developers-staging.hive.io/openrpc.json`
 
-Production does not serve `/openrpc.json` until `develop` is released to `master`. Staging already does, so the fallback keeps a checkout working before that release. After production publishes the file, the first URL wins.
+Production serves `https://developers.hive.io/openrpc.json`. The client tries that URL first, then the staging copy.
 
 ## Install
 

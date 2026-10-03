@@ -63,7 +63,7 @@ npm ci
 npm start
 ```
 
-Tant que la production ne publie pas `/openrpc.json`, le serveur se rabat sur `http://developers-staging.hive.io/openrpc.json`.
+Les schémas publiés sont [https://developers.hive.io/openrpc.json](https://developers.hive.io/openrpc.json) et [https://developers.hive.io/openapi.json](https://developers.hive.io/openapi.json). Remplacez ce chargement avec `HIVE_OPENRPC_URL` ou `HIVE_OPENRPC_PATH`.
 
 `network_broadcast_api`, les méthodes `broadcast_*` et les mutateurs spécialisés (par exemple `chain_api.push_transaction`) restent interdits sans `HIVE_MCP_ALLOW_BROADCAST=1`. `debug_node_api` — y compris les méthodes porteuses de clé `debug_generate_blocks*` — reste interdit même avec cette option. Le processus n'accepte jamais de clé privée : signez avec Beekeeper ou Keychain en dehors du serveur MCP. Limite par défaut : 60 appels par minute (`HIVE_MCP_RATE_LIMIT`). Conception et Docker : `mcp/README.md` dans le [dépôt devportal](https://gitlab.syncad.com/hive/devportal).
 
