@@ -28,7 +28,7 @@ branches:
 # How this project's suites execute (#13892): one kind, stated once.
 environment:
   kind: "container"
-  image: "registry.gitlab.syncad.com/hive/devportal/aidev-tests@sha256:c39ca0c57c23526d7ec2865eda74ba458f511fecb0a44536d14583682afbb092"
+  image: "registry.gitlab.syncad.com/hive/devportal/aidev-tests@sha256:def9b55a9f076cc9b1877b039390e0bee9000b76ac4b772b480856a7e4227b19"
   inputs: ["Gemfile.lock", "mcp/package-lock.json"]
 
 issues:
