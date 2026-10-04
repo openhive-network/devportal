@@ -3,10 +3,10 @@
 # is in the image, matching what .gitlab-ci.yml uses today:
 #   - Ruby 3.1.6 (`image: ruby:3.1.6`, .ruby-version) with bundler 2.3.19 and the
 #     gems of Gemfile.lock installed system-wide (jekyll, html-proofer, minitest);
-#   - Node 20 (the `mcp_test` job's `node:20`) and an npm cache filled from
+#   - Node 24.21.0 (the `mcp_test` job's `node:24.21.0`) and an npm cache filled from
 #     mcp/package-lock.json, so `npm ci --offline` can install mcp/node_modules.
 # Build and pin it with .aidev/runtime/build.sh; see .aidev/README.md.
-FROM node:20-bookworm-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS node
+FROM node:24.21.0-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6 AS node
 
 FROM ruby:3.1.6-bookworm@sha256:aaf664741b8de45efe7c5db430430784c11af7d069027b2f008b74a53b8882ae
 

@@ -62,7 +62,7 @@ html_proofer:
 
 
 mcp_test:
-  image: node:20
+  image: node:24.21.0
   stage: test
   dependencies: []
   script:

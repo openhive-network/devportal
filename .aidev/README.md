@@ -31,7 +31,7 @@ with `--network none`. There's no Ruby coverage tool in the Gemfile.
 ## The test runtime image (`runtime/`)
 
 The suites run in a container with `--network none` and your uid. It carries Ruby 3.1.6 with
-bundler 2.3.19 and the gems of `Gemfile.lock` (as CI's `ruby:3.1.6` jobs), Node 20 (as CI's
+bundler 2.3.19 and the gems of `Gemfile.lock` (as CI's `ruby:3.1.6` jobs), Node 24.21.0 (as CI's
 `mcp_test` job) and an npm cache from `mcp/package-lock.json`. `npm-deps.sh` installs
 `mcp/node_modules` offline from it.
 
