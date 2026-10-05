@@ -323,7 +323,10 @@ class JekyllBuildAssertionsTest < Minitest::Test
       'de/quickstart/building_agents.html' => 'https://developers.hive.io/de/quickstart/building_agents.html',
       'fr/quickstart/building_agents.html' => 'https://developers.hive.io/fr/quickstart/building_agents.html',
       'ru/quickstart/building_agents.html' => 'https://developers.hive.io/ru/quickstart/building_agents.html',
-      'zh/quickstart/building_agents.html' => 'https://developers.hive.io/zh/quickstart/building_agents.html'
+      'zh/quickstart/building_agents.html' => 'https://developers.hive.io/zh/quickstart/building_agents.html',
+      # Domain-like collection basenames must still get .html (built as *.html).
+      'services/ecency.com.html' => 'https://developers.hive.io/services/ecency.com.html',
+      'services/hive.blog.html' => 'https://developers.hive.io/services/hive.blog.html'
     }
 
     site_dir_for_assertions do |site_dir|
