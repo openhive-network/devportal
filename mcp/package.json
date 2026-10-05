@@ -5,7 +5,7 @@
   "description": "Read-only reference MCP server for Hive JSON-RPC, generated from the devportal OpenRPC export.",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "bin": {
     "hive-devportal-mcp": "./src/index.js"

@@ -51,7 +51,7 @@ Production does not serve `/openrpc.json` until `develop` is released to `master
 
 ## Install
 
-From a checkout of this repository (Node.js 20+):
+From a checkout of this repository (Node.js 24+):
 
 ```bash
 cd mcp
