@@ -9,374 +9,226 @@ canonical_url: setting-up-a-testnet.html
 
 ### Intro
 
-Running a testnet is ideal for application developers who want to verify their app without broadcasting signed transactions over the mainnet.  It's also a great way for blockchain developers to verify changes to the blockchain and can allow witnesses to get a preview of changes that they are expected to approve.
-
-Setting up a testnet can be as simple as running a single Docker command, such as:
-
-```bash
-docker run -d -P inertia/tintoy:latest
-```
-
-This docker command is useful for rapid testnet deploy because it only creates 2,000 accounts.  See: [inertia/tintoy](https://hub.docker.com/r/inertia/tintoy)
-
-But in this tutorial, we will go over the **no docker** approach which will create all accounts that exist on mainnet.  The idea is to try to mirror the accounts and balances in proportion to the mainnet.
-
-If you want full details on setting up a testnet using Tinman, head over to that github:
-
-[https://gitlab.syncad.com/hive/tinman](https://gitlab.syncad.com/hive/tinman)
-
-Otherwise, let's do the complete Quick Start:
+A local testnet lets you test applications and blockchain changes without broadcasting transactions to mainnet. [Tinman](https://gitlab.syncad.com/hive/tinman) imports account data through the `snapshot → txgen → keysub → submit` pipeline. [Tin Toy](https://hub.docker.com/r/inertia/tintoy) packages that pipeline with Hive and a sample snapshot for a small local testnet.
 
 ### Sections
 
+* [Docker Quickstart](#docker-quickstart)
 * [Minimum Requirements](#minimum-requirements)
 * [Installing Tinman](#installing-tinman)
 * [Building `hived`](#building-hived)
 * [Snapshot](#snapshot)
+* [Configure Bootstrap Node](#configure-bootstrap-node)
 * [Configure Tinman](#configure-tinman)
 * [Actions](#actions)
-* [Configure Bootstrap Node](#configure-bootstrap-node)
 * [Bootstrap Node](#bootstrap-node)
 * [Configure Seed Node](#configure-seed-node)
 * [Seed Node](#seed-node)
 * [Gatling (Optional)](#gatling-optional)
 * [Troubleshooting](#troubleshooting)
 
-### Minimum Requirements<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### Docker Quickstart
 
-This tutorial assumes Ubuntu Server 18.04 LTS 16GB RAM and 300GB SSD/HDD.
+Use a running Docker daemon configured for Linux containers. These commands use a Bash-compatible shell; on Windows, use WSL or Git Bash. The image is AMD64, so ARM hosts need AMD64 emulation, as provided by Docker Desktop.
 
-Running a testnet can be done on minimal hardware, but in order to build a snapshot of accounts, you should already be running your own local Hive node because getting the snapshot is time consuming and if this process is interrupted, you'll have to start over.
+```bash
+docker run -d --rm --platform linux/amd64 --name tintoy \
+  -p 127.0.0.1:8092:8092 \
+  -p 127.0.0.1:2001:2001 \
+  inertia/tintoy:1.29.0
+docker logs -f tintoy
+```
 
-Not only are we going to use `tinman` to build the snapshot, we also need to compile `hived` and configure it to run our testnet.
+Wait for `tintoy: snapshot applied and seed node is producing`, then press Ctrl+C to leave the log viewer. The container keeps running. It imports a 2,000-account sample and starts 21 replacement witnesses. RPC is on port **8092** and p2p is on port **2001**.
 
-### Installing Tinman<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+Check the chain from another terminal:
 
-First, we need python (for `tinman`) and some other libraries:
+```bash
+curl -sS http://127.0.0.1:8092 \
+  -H 'Content-Type: application/json' \
+  --data '{"jsonrpc":"2.0","method":"database_api.get_dynamic_global_properties","params":{},"id":1}'
+```
+
+Repeat the request after a few seconds and check that `result.head_block_number` increases. When finished:
+
+```bash
+docker stop tintoy
+```
+
+This example is ephemeral: stopping the container removes its chain data. The ports are bound to localhost because the image uses deterministic test keys. The current image provides the core Hive node; the old web applications and their ports belong to the `legacy-2021` image. See the [Tin Toy README](https://gist.github.com/inertia/b88e7bfff8862858e54c59392e2bce20) for image versions, building from source, and bootstrap details.
+
+### Minimum Requirements
+
+The remaining sections are for operators customizing a testnet with Tinman. They describe the individual tools and the node state each step needs. For the tested image combinations and the automated bootstrap procedure, use Tinman's [compatibility guide](https://gitlab.syncad.com/hive/tinman/-/blob/master/COMPATIBILITY.md).
+
+Tinman supports CPython 3.12, 3.13, and 3.14. Native Hive builds currently target Linux, with Ubuntu 24.04 LTS as the minimum supported Ubuntu release and at least 16 GB RAM for compilation. Follow the [Hive build guide](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/building.md) for the selected revision. Snapshot size, bootstrap time, and disk requirements depend on how many accounts you import; a full mainnet snapshot needs substantially more resources than Tin Toy's sample.
+
+### Installing Tinman
+
+On Ubuntu 24.04, install Python's virtual-environment support and the command-line tools used below:
 
 ```bash
 sudo apt-get update
-sudo apt-get dist-upgrade
-sudo apt-get install virtualenv python3 libyajl-dev git pv
-virtualenv -p $(which python3) ~/ve/tinman
-source ~/ve/tinman/bin/activate
+sudo apt-get install python3.12-venv git curl jq pv
 mkdir -p ~/src
 cd ~/src
 git clone --branch master https://gitlab.syncad.com/hive/tinman.git
 cd tinman
-pip install pipenv
-pipenv install
-pip install .
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install .
+tinman --help
 ```
 
-### Building `hived`<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+Tinman's optional account-creation web server has separate dependencies, installed with `python -m pip install '.[server]'`. It is not needed for the bootstrap pipeline.
 
-Next, let's build `hived`.  Note, we are using the `develop` branch but you can use whatever branch you want.  To see a list of branches that are currently being worked on, refer to: https://gitlab.syncad.com/hive/hive/-/branches/active
+### Building `hived`
+
+Build `hived`, `get_dev_key`, and `sign_transaction` from the same Hive revision with `BUILD_HIVE_TESTNET=ON`. The signing utilities must agree with the node's network and protocol. This follows the native build procedure in the [Hive build guide](https://gitlab.syncad.com/hive/hive/-/blob/master/doc/building.md):
 
 ```bash
-sudo apt-get install autoconf automake autotools-dev bsdmainutils \
-  build-essential cmake doxygen gdb libboost-all-dev libreadline-dev \
-  libssl-dev libtool liblz4-tool ncurses-dev pkg-config python3-dev \
-  python3-pip nginx fcgiwrap awscli gdb libgflags-dev libsnappy-dev zlib1g-dev \
-  libbz2-dev liblz4-dev libzstd-dev
 cd ~/src
-git clone --branch develop https://gitlab.syncad.com/hive/hive.git
-cd hive
-git submodule update --init --recursive
-mkdir -p build
-cd build
-HIVE_NAME=hive-tn
-cmake \
-  -DCMAKE_INSTALL_PREFIX="~/opt/$HIVE_NAME" \
+git clone --recurse-submodules --branch master https://gitlab.syncad.com/hive/hive.git
+sudo hive/scripts/setup_ubuntu.sh --dev
+cmake -S hive -B hive/build -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
-  -DBUILD_HIVE_TESTNET=ON \
-  -DSKIP_BY_TX_ID=ON \
-  -DHIVE_LINT_LEVEL=OFF \
-  ..
-mkdir -p ~/opt/$HIVE_NAME
-make -j$(nproc) install
+  -DBUILD_HIVE_TESTNET=ON
+cmake --build hive/build --parallel 4 \
+  --target hived get_dev_key sign_transaction
 ```
 
-**A note on `hived` branches:**  Selecting a branch depends on why you're running a testnet.  If you are doing blockchain development, you're likely going to select your own branch where you've done some work that needs to be verified.  If you're a witness, you're likely going to select `develop` or `master` to check stability.  If you're an application developer, you should probably select the `stable` branch because you want to test your app more than test the blockchain.  Application developers might also select `develop` to try out blockchain features that have not been released yet.
+The binaries are `~/src/hive/build/programs/hived/hived` and `~/src/hive/build/programs/util/{get_dev_key,sign_transaction}`. Reduce parallelism if compilation runs out of memory. For repeatable experiments, select a release tag or commit before building and record it alongside the Tinman revision. Building a new revision does not establish compatibility; Tinman's compatibility guide records the combinations actually tested.
 
-### Snapshot<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### Snapshot
 
-The snapshot is a copy of all accounts on the blockchain plus some other properties.  Having a full snapshot allows `tinman` to create a more realistic testnet.  Here's how we generate a snapshot:
+Take account data from your own mainnet node. The source node needs the `database_api` plugin and an HTTP RPC endpoint. Replace the endpoint below with your node's address:
 
 ```bash
 cd ~/src/tinman
-source ~/ve/tinman/bin/activate
-tinman snapshot -s http://mainnet-hive-node:8090 | pv -l > snapshot.json
+source .venv/bin/activate
+set -o pipefail
+tinman snapshot -s http://127.0.0.1:8090 | pv -l > snapshot.json
 ```
 
-In the above example, we assume that `http://mainnet-hive-node:8090` is our Hive node on our local network.  If you use a public node to build the `snapshot.json` file instead (not recommended), just remember that this process could take quite a while and can be interrupted or rate-limited.  You should consider running your own node.
+A snapshot contains account data and chain properties, not the mainnet block log or all historical posts. Public endpoints can rate-limit or interrupt large snapshots. For a smaller experiment, sample the snapshot:
 
-As of August 2020, assuming the Hive mainnet node is local, this process takes approximately 20 minutes to produce a 3.6 GB output file.
+```bash
+tinman sample -i snapshot.json -o sample-snapshot.json
+```
 
-### Configure Tinman<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+Choose the resulting filename when configuring `txgen`. Keep the original snapshot if you need to change the sample later.
 
-We can take all of the defaults in `txgen.conf.example`, assuming you named your snapshot `snapshot.json`.
+### Configure Bootstrap Node
+
+Fast generation needs a **fresh, isolated testnet** with `database_api`, `debug_node_api`, `network_broadcast_api`, and `witness` enabled. A minimal configuration for the supported images is:
+
+```ini
+plugin = database_api
+plugin = debug_node_api
+plugin = network_broadcast_api
+plugin = witness
+shared-file-size = 8G
+enable-stale-production = false
+webserver-http-endpoint = 127.0.0.1:18751
+```
+
+Use an empty data directory dedicated to this testnet. Do not reuse a mainnet directory. The old `rc-account-whitelist`, `rc-start-at-block`, and `rc-skip-reject-not-enough-rc` settings are no longer available in current Hive.
+
+For an automated bootstrap against a supported, digest-pinned Hive image, Tinman's [fastgen runner](https://gitlab.syncad.com/hive/tinman/-/blob/master/scripts/hive_compatibility.py) performs the preflight and runs the core pipeline. It requires a pristine chain at block zero, accepts a snapshot through `--snapshot`, and requires `--hive-image` to identify the actual image by digest. Follow the [fastgen instructions](https://gitlab.syncad.com/hive/tinman/-/blob/master/COMPATIBILITY.md#live-profiles) for the complete invocation and matching signing utilities.
+
+### Configure Tinman
+
+When running the individual commands yourself, copy the example configuration:
 
 ```bash
 cd ~/src/tinman
 cp txgen.conf.example txgen.conf
 ```
 
-We can optionally adjust `total_port_balance` to adjust the supply on the testnet.  But keep in mind, there is a blockchain limit defined by `HIVE_INIT_SUPPLY`.
+Configure these values for the target node before generating actions:
 
-### Actions<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+| Setting | Required value |
+| --- | --- |
+| `snapshot_file` | Your full or sampled snapshot filename. |
+| `existing_account_names` | Accounts already present on the target, obtained through `database_api.list_accounts`, so they are not created again. The fastgen runner discovers them automatically. |
+| `account_creation_fee` | The target's median fee from `database_api.get_witness_schedule`, under `median_props.account_creation_fee`. Preserve the complete asset object. |
+| `hive_genesis_supply` | The liquid HIVE allocated at genesis. Amounts use integer units: with precision 3, `250000000000` means 250,000,000 HIVE. |
+| `hive_max_authority_membership` | The target's `HIVE_MAX_AUTHORITY_MEMBERSHIP` from `database_api.get_config`. |
+| `hive_address_prefix`, `hive_block_interval` | The target's `HIVE_ADDRESS_PREFIX` and `HIVE_BLOCK_INTERVAL`. |
+| `hive_genesis_timestamp` | The timestamp baseline used by the target's block generation. |
 
-Now that we have our `snapshot.json` file, we can generate the actions that will build our testnet.
+**Read the fee after the bootstrap node has applied its initial hardforks.** A node at block zero can report a different fee from the one it will enforce when importing accounts. The fastgen runner generates its preflight block before reading these properties and aligns transaction timestamps with that block. Copying `txgen.conf.example` alone does not perform this preparation.
+
+Zero is a valid fee only when the target reports zero. For example, Tinman's captured Hive 1.29.0 testnet image reported 0.030 HIVE after preflight; this is an example, not a universal default. `total_port_balance`, system-account allocations, and fee reserves must fit within `hive_genesis_supply`. Tinman rejects an over-budget plan. Only submit the action file after `txgen` has completed successfully; a failed run can leave partial output.
+
+### Actions
+
+Once the target is prepared and `txgen.conf` matches it:
 
 ```bash
 cd ~/src/tinman
-source ~/ve/tinman/bin/activate
+source .venv/bin/activate
 tinman txgen -c txgen.conf -o bootstrap-init.actions
 ```
 
-Building the actions is pure data-processing that doesn’t communicate with the outside world.  It only processes the JSON snapshot and config file into more JSON.  As of September 2019, this process takes approximately 90 minutes to produce a 2 GB output file.
+This step processes the snapshot locally. Imported balances are proportional to the snapshot within the configured budget. Tinman adds its manager account (`tnman` by default) to imported authorities and respects the target's combined account-and-key authority limit; excess authority members can be omitted. See the [authority policy](https://gitlab.syncad.com/hive/tinman#generating-actions) before relying on an exact mainnet authority copy.
 
-### Configure Bootstrap Node<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### Bootstrap Node
 
-```bash
-HIVE_NAME=hive-tn
-BOOTSTRAP=~/data/bootstrap
-HIVED=~/opt/$HIVE_NAME/bin/hived
-$HIVED --data-dir=$BOOTSTRAP
-```
-
-At the startup banner, press `^C` (Ctrl+C) to exit `hived`.  As a side effect, a default data-dir is created.  Now we can purge the empty blockchain and create `config.ini` as follows:
+For the manual pipeline, use the signing utilities from the target Hive build. The following assumes the preflight and configuration above are complete, the node is listening on port 18751, and it uses the standard testnet chain ID. For a custom chain, also pass its actual `--chain-id` to `tinman submit`.
 
 ```bash
-rm -Rf $BOOTSTRAP/blockchain
-nano $BOOTSTRAP/config.ini
-```
-
-Then make the following changes to the generated `config.ini`:
-
-* Enable plugins `chain debug_node p2p webserver block_api chain_api database_api debug_node_api network_broadcast_api`
-* Pick a random port for p2p, say `12541`
-* Edit `shared-file-size` down, say `12G`
-* Edit `rc-account-whitelist` down, say `porter tnman`
-* Add `rc-start-at-block` to, say `100000`
-* Pick a random port for `webserver-http-endpoint` and set `webserver-ws-endpoint` to the next-highest port.
-
-To summarize, the *changed* values are:
-
-```ini
-plugin = chain debug_node p2p webserver block_api chain_api database_api debug_node_api network_broadcast_api
-shared-file-size = 12G
-p2p-endpoint = 0.0.0.0:12541
-rc-account-whitelist = porter tnman
-rc-start-at-block = 100000
-webserver-http-endpoint = 0.0.0.0:18751
-webserver-ws-endpoint = 0.0.0.0:18752
-```
-
-Save `config.ini` and start `hived`:
-
-```bash
-$HIVED --data-dir=$BOOTSTRAP
-```
-
-### Bootstrap Node<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Note, the secret can be any string.  In this tutorial, we are using `hive-is-alive` as the secret.  Keep in mind that any person with knowledge of the secret will be able to transact using any account on your testnet.
-
-```bash
-HIVE_NAME=hive-tn
-GET_DEV_KEY=~/opt/$HIVE_NAME/bin/get_dev_key
-SIGN_TRANSACTION=~/opt/$HIVE_NAME/bin/sign_transaction
-
 cd ~/src/tinman
-source ~/ve/tinman/bin/activate
+source .venv/bin/activate
+GET_DEV_KEY=~/src/hive/build/programs/util/get_dev_key
+SIGN_TRANSACTION=~/src/hive/build/programs/util/sign_transaction
+set -o pipefail
 
 ( \
   echo '["set_secret", {"secret":"hive-is-alive"}]' ; \
   cat bootstrap-init.actions \
 ) | \
-tinman keysub --get-dev-key $GET_DEV_KEY | \
+tinman keysub --get-dev-key "$GET_DEV_KEY" | \
 tinman submit -t http://127.0.0.1:18751 \
-    --signer $SIGN_TRANSACTION \
-    -f die \
-    --timeout 600
+  --signer "$SIGN_TRANSACTION" \
+  --fail-file die \
+  --block-timeout 600
 ```
 
-The above command will send `bootstrap-init.actions` to the bootstrap node using "fastgen" (as rapidly as possible).  Fastgen functionality is provided by `debug_node_api`.  Without fastgen, this process would take 3 seconds per 40 action (by default).
+`--block-timeout` controls debug block-generation requests. `--timeout` controls ordinary API requests. The example secret is public; anyone who knows it can derive these test keys. Keep this chain isolated and use the same secret when deriving witness keys.
 
-### Configure Seed Node<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
+### Configure Seed Node
 
-Once the bootstrap is complete and we no longer need fastgen to import actions, we can start a new testnet node without `debug_node_api`.  For simplicity, this new seed node will also run our initial witnesses for block signing.
+After importing accounts, the seed node needs the bootstrap chain and a witness configuration. Tin Toy handles this by stopping the bootstrap node, moving its chain data, and force-replaying it with the seed node. For a custom deployment, use matching Hive binaries and follow the [Tin Toy bootstrap script](https://gist.github.com/inertia/b88e7bfff8862858e54c59392e2bce20#file-bootstrap-sh) or Hive's replay procedure. Do not copy a running node's mutable chain state.
 
-We need to keep the Bootstrap Node running, so do the following in a new shell session:
+The seed node enables `database_api`, `network_broadcast_api`, and `witness`, with `enable-stale-production = true` and `required-participation = 0` for this isolated testnet. Keep RPC on localhost and omit `debug_node_api` once fast generation is finished.
+
+The default `txgen.conf` creates **21 replacement witnesses**, named `init-0` through `init-20`. For a manual pipeline using the example secret above, append their names and keys to the seed configuration once:
 
 ```bash
-HIVE_NAME=hive-tn
 SEED=~/data/seed
-HIVED=~/opt/$HIVE_NAME/bin/hived
-GET_DEV_KEY=~/opt/$HIVE_NAME/bin/get_dev_key
-$HIVED --data-dir=$SEED
-```
-
-Again, at the startup banner, press `^C` (Ctrl+C) to exit `hived`.
-
-```bash
-rm -Rf $SEED/blockchain
-nano $SEED/config.ini
-```
-
-Then make the following changes to the generated `config.ini`:
-
-* Enable plugins `chain p2p webserver witness database_api network_broadcast_api block_api`
-* Pick the Bootstrap ip/port for p2p-seed-node `127.0.0.1:12541`
-* Pick a new port for p2p, say `2541`
-* Edit `shared-file-size` down, say `24G`
-* Pick a new random port for `webserver-http-endpoint` and set `webserver-ws-endpoint` to the next-highest port.
-* Enable stale block production with `enable-stale-production = true`
-* Set required participation with `required-participation = 0`
-* Add whitelist for RC with `rc-account-whitelist = porter tnman`
-* TODO research: `rc-skip-reject-not-enough-rc = true`
-
-Now we need to add the names of all of the witnesses:
-
-```bash
-for N in $(seq 0 21)
-do
-echo "witness = \"init-$N\"" >> $SEED/config.ini
+GET_DEV_KEY=~/src/hive/build/programs/util/get_dev_key
+for N in $(seq 0 20); do
+  printf 'witness = "init-%s"\n' "$N" >> "$SEED/config.ini"
 done
+"$GET_DEV_KEY" hive-is-alive block-init-0:21 \
+  | jq -r '.[] | "private-key = " + .private_key' >> "$SEED/config.ini"
 ```
 
-Add their private keys as well, note we are assuming the secret is `hive-is-alive` for this tutorial:
+Keep the genesis witness `initminer` and its test signing key configured until the replacement schedule activates, as Tin Toy does. If you used the automated fastgen runner, use its key derivation settings rather than the manual example's secret.
 
-```bash
-for K in $($GET_DEV_KEY hive-is-alive block-init-0:21 | cut -d '"' -f 4)
-do
-echo "private-key = $K" >> $SEED/config.ini
-done
-```
+### Seed Node
 
-To summarize, the *changed and new* values are:
+Check the seed node's `database_api.get_dynamic_global_properties` and `database_api.get_witness_schedule` responses. The head block must continue advancing and the replacement witnesses must enter the schedule. A listening RPC port alone does not mean the testnet is producing blocks.
 
-```ini
-plugin = chain p2p webserver witness database_api network_broadcast_api block_api
-shared-file-size = 24G
-p2p-seed-node = 127.0.0.1:12541
-p2p-endpoint = 0.0.0.0:2541
-webserver-http-endpoint = 0.0.0.0:8751
-webserver-ws-endpoint = 0.0.0.0:8752
-enable-stale-production = true
-required-participation = 0
-rc-account-whitelist = porter tnman
-rc-skip-reject-not-enough-rc = true
-witness = "init-0"
-witness = "init-1"
-witness = "init-2"
-witness = "init-3"
-witness = "init-4"
-witness = "init-5"
-witness = "init-6"
-witness = "init-7"
-witness = "init-8"
-witness = "init-9"
-witness = "init-10"
-witness = "init-11"
-witness = "init-12"
-witness = "init-13"
-witness = "init-14"
-witness = "init-15"
-witness = "init-16"
-witness = "init-17"
-witness = "init-18"
-witness = "init-19"
-witness = "init-20"
-witness = "init-21"
-private-key = 5J1giwxi3QwU56N7J4WMaJiRaRmfnp5F27QPZ7itnW4o7ePuUs2
-private-key = 5KV3k9PJzrE6h7gvnZcrfXBjazZZ6UdCQjfePfv7hxbmWMFtZ1r
-private-key = 5JypUTzFq4zuyowWCjUJwsmph2Gwx49hUMVpAYT1PzbnmUDG4sh
-private-key = 5JqvwS7jQDY5wyCeQ9wBKAx6XgoLBf4hZZz6Cd3rb5NCP3pMiZ7
-private-key = 5JWQaGiV8Z9ssNCCTm5Hx2VdhEV8G82nV6RwSwAWBYQWfoM3Dzf
-private-key = 5KW5fY5gpTBYt7YJNBnfPWc2BzE1o6GJiLB8Hc2YaZ7sz71VFtc
-private-key = 5K8aRoTDwELSyZJZLkv6mPQy2tQRQ3p2cqNVxK2tMQZfrZThg2R
-private-key = 5KCVYYBwkDt2TY7Eaw3TJvLRhEdxR3ruMVqyN6RPcbbCSLhDTbu
-private-key = 5Jf1sxJhTo4ZEog5LDxfeA8ZFsFCivtMb2HXmx7ndw7mgq15Qqk
-private-key = 5Ki39i3NL6TyxRXN7d2aJFPD2PEb4WXx1t7KrXc6KQqm5Zfame2
-private-key = 5K2B9RhzdxhpuMxXCPszXgjJYqPD6PC66zmour3cfmGoLLRcNfa
-private-key = 5J2sv5ELyuumaVeXpBJFE92dphvnyjmkLi2AyY28hr2iYPZ7Qh6
-private-key = 5JZjV98gnLGm7AxVdRbiDT5DU6pibmzUUu7bxACR87nxawj1gNC
-private-key = 5JFDyVEEVHAyang92s35cVH7t27GoeBg4uthWghV3yDdvj3GPcX
-private-key = 5KTJe4qmj7jcubLGxKQ4WB52akWkRC98sJGbNRsxjj9yN73GGTy
-private-key = 5KKxuTpqXWRsxzbJKdQCfK3mLJ4wqZ9eTswqtaQQ7bEaqEqGzHh
-private-key = 5KV3ynnzdun28k9kJFxJZYvKUv8rPoq3bNVWajucvkCy9S9bMCv
-private-key = 5JBD9uVVFD6NcRo6nZnAjFKYf2RqfPRZHd8PWGJNzEnfmmcqi8K
-private-key = 5JiT5h3dxmiwUmfserh5yW8fjuc4zSSTkLL7t72SioqWKRJ7Sd3
-private-key = 5JdVzBLVucfHpfh9gupu5j4aQT5oCSuRLhcJSs2bqvNjEVMRmSt
-private-key = 5JogZpTZurEK67skra7YkAJ7hHNBuoyScowDr82nbWoYXndeWRH
-```
+### Gatling (Optional)
 
-Save `config.ini` and start `hived`:
+[`tinman gatling`](https://gitlab.syncad.com/hive/tinman#gatling-transactions-from-mainnet) can replay selected mainnet activity after the testnet is running. It is optional and outside the maintained core bootstrap pipeline. Review its configuration and transaction coverage before using it; operations referencing content absent from your testnet cannot be reproduced just by importing accounts.
 
-```bash
-$HIVED --data-dir=$SEED
-```
+### Troubleshooting
 
-At this point, our Seed Node will sync blocks from the Bootstrap Node.
-
-### Seed Node<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-Once the Seed Node has caught up to the Bootstrap Node, it's safe to shut down the Bootstrap Node.  The Seed Node will now take over block production.
-
-Congratulations!  Your testnet is running!
-
-### Gatling (Optional)<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-If you'd like your testnet to mirror mainnet transactions as they happen, you should run the gatling module.  Make sure your Seed Node is fully sync'd before running gatling.  Also make sure you use the same secret.
-
-```bash
-HIVE_NAME=hive-tn
-GET_DEV_KEY=~/opt/$HIVE_NAME/bin/get_dev_key
-SIGN_TRANSACTION=~/opt/$HIVE_NAME/bin/sign_transaction
-
-cd ~/src/tinman
-source ~/ve/tinman/bin/activate
-
-cp gatling.conf.example gatling.conf
-
-( \
-  echo '["set_secret", {"secret":"hive-is-alive"}]' ; \
-  tinman gatling -c gatling.conf -f 0 -t 0 -o - | tinman prefixsub \
-) | \
-tinman keysub --get-dev-key $GET_DEV_KEY | \
-tinman submit --realtime -t http://127.0.0.1:8751 \
-    --signer $SIGN_TRANSACTION \
-    --timeout 600 \
-    --fail /dev/null
-```
-
-### Troubleshooting<a style="float: right" href="#sections"><i class="fas fa-chevron-up fa-sm" /></a>
-
-**Problem:** Got an error while trying to compile `hived`:
-
-`c++: internal compiler error: Killed (program cc1plus)`
-
--or-
-
-`virtual memory exhausted: Cannot allocate memory`
-
-**Solution:** Add more memory or enable swap.
-
-To enable swap (do not enable swap on a VPS like Digital Ocean):
-
-```bash
-sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=4000
-sudo chmod 600 /var/swap.img
-sudo mkswap /var/swap.img
-sudo swapon /var/swap.img
-```
-
----
-
-**Problem:** Got an error while trying to create `bootstrap-init.actions`:
-
-`ijson.common.IncompleteJSONError: b'parse error: premature EOF`
-
-**Solution:** Re-run `tinman snapshot` in the [Snapshot](#snapshot) section.  The snapshot was likely interrupted or you ran out of disk space while saving the snapshot.  It's also possible you were rate-limited, if you're using a public node, which is one of the pitfalls of using a public node.
+* **Compilation is killed or runs out of memory:** reduce build parallelism and check the Hive build guide's RAM requirements.
+* **Snapshot JSON is incomplete:** check disk space and the source RPC connection, then take a new snapshot. Do not generate actions from a partial file.
+* **Account creation fails with a fee error:** read the target's median fee after hardfork initialization, correct the configuration, and start again with a fresh testnet.
+* **Genesis funding exceeds supply:** reduce imported balances or other allocations, or use an appropriately configured genesis supply. Account-creation fees also consume that supply.
+* **RPC responds but blocks stop:** check witness names, signing keys, and the active schedule. The default replacement set ends at `init-20`.
