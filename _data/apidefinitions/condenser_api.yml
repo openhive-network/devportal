@@ -2225,7 +2225,11 @@
       - "[hivesql](https://docs.hivesql.io/technical-informations/state-tables/witnesses)"
   - api_method: condenser_api.lookup_account_names
     purpose: |
-      Looks up account names.  Parameters: `accounts:[string]`; `delayed_votes_active:boolean`
+      Returns full account objects for the given account names.  Parameters: `accounts:[string]`; `delayed_votes_active:boolean` (optional, default `true`)
+
+      Returns one account object per requested name, in request order, or `null` for a name that does not exist.  When `delayed_votes_active` is `true`, each account object includes its `delayed_votes` array; when `false`, that field is omitted.
+
+      Despite its name, this method returns account objects, not names.  To list account names, use [condenser_api.lookup_accounts]({{ '/apidefinitions/#condenser_api.lookup_accounts' | relative_url }}).
 
       Also see: [database_api.find_accounts]({{ '/apidefinitions/#database_api.find_accounts' | relative_url }})
     parameter_json:
@@ -2360,17 +2364,22 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.lookup_accounts
     purpose: |
-      Looks up accounts starting with name.  Parameters`lower_bound_name:string`; `limit:int` up to 1000
+      Lists account names in order, starting from a lower bound.  Parameters: `lower_bound_name:string`; `limit:int` up to 1000 (both required)
+
+      Returns account names only, not account objects.  For account objects, use [condenser_api.lookup_account_names]({{ '/apidefinitions/#condenser_api.lookup_account_names' | relative_url }}).
+
+      This is a range scan, not a prefix search: results start at the first account name greater than or equal to `lower_bound_name` and continue in name order, so they can include names that do not start with `lower_bound_name`.
 
       | `lower_bound_name` (string) | `limit` (int) | |
       |--------------------|---------------|-|
-      | `"a"` | 10 | Queries up to 10 accounts that start with "a".
+      | `"a"` | 10 | Returns the first 10 account names greater than or equal to "a".
 
       Also see: [database_api.list_accounts]({{ '/apidefinitions/#database_api.list_accounts' | relative_url }})
     parameter_json:
-      - ''
-      - 1
-    expected_response_json: []
+      - hiveio
+      - 10
+    expected_response_json: |
+      ["hiveio", "hiveiohive", "hiveiopool", "hiveiost", "hiveiotestnet", "hiveiowallet", "hiveiq", "hiveisalive", "hiveisamazing", "hiveiscool"]
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_accounts", "params":["a",10],
         "id":1}'
@@ -2381,17 +2390,20 @@
       - "[hive-ruby](https://www.rubydoc.info/gems/hive-ruby/Hive/Api)"
   - api_method: condenser_api.lookup_witness_accounts
     purpose: |
-      Looks up witness accounts starting with name.  Parameters: `lower_bound_name:string`; `limit:int` up to 1000
+      Lists witness account names in order, starting from a lower bound.  Parameters: `lower_bound_name:string`; `limit:int` from 1 to 1000 (both required)
+
+      Returns the account names of registered witnesses only, not witness or account objects.  For witness objects, use [condenser_api.get_witnesses_by_vote]({{ '/apidefinitions/#condenser_api.get_witnesses_by_vote' | relative_url }}) or [database_api.list_witnesses]({{ '/apidefinitions/#database_api.list_witnesses' | relative_url }}).
+
+      This is a range scan, not a prefix search: results start at the first witness name greater than or equal to `lower_bound_name` and continue in name order, so they can include names that do not start with `lower_bound_name`.
 
       | `lower_bound_name` (string) | `limit` (int) | |
       |--------------------|---------------|-|
-      | `"a"` | 10 | Queries up to 10 witnesses that start with "a".
-
-      Also see: [database_api.list_witnesses]({{ '/apidefinitions/#database_api.list_witnesses' | relative_url }})
+      | `"a"` | 10 | Returns the first 10 witness names greater than or equal to "a".
     parameter_json:
-      - ''
-      - 1
-    expected_response_json: []
+      - hiveio
+      - 10
+    expected_response_json: |
+      ["hms818", "hodge", "hodl", "hodorwylis", "hoe", "hokage", "hoke", "holdem", "holden", "holger80"]
     curl_examples:
       - '{"jsonrpc":"2.0", "method":"condenser_api.lookup_witness_accounts", "params":["a",10],
         "id":1}'
