@@ -33,7 +33,7 @@ branches:
 environment:
   kind: "container"
   image: "registry.gitlab.syncad.com/hive/devportal/aidev-tests@sha256:def9b55a9f076cc9b1877b039390e0bee9000b76ac4b772b480856a7e4227b19"
-  inputs: ["Gemfile.lock", "mcp/package-lock.json"]
+  inputs: ["Gemfile.lock", "mcp/package-lock.json", ".aidev/runtime/Dockerfile"]
 
 issues:
   intake_label: todo
