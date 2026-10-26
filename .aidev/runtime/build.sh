@@ -4,7 +4,8 @@
 # `environment.image`. See .aidev/README.md.
 #
 # The tag is `aidev-<hash>`, the hash of the image inputs (the Dockerfile,
-# Gemfile, Gemfile.lock, mcp/package.json, mcp/package-lock.json); the registry cleanup policy keeps `aidev-*` tags. When
+# Gemfile, Gemfile.lock, mcp/package.json, mcp/package-lock.json, and the digest the
+# Node base tag names now); the registry cleanup policy keeps `aidev-*` tags. When
 # <repository>:aidev-<hash> is already in the registry nothing is built: the script
 # prints that image's digest.
 #
@@ -17,9 +18,18 @@ cd "$(dirname "$0")/../.."
 
 REPOSITORY="${AIDEV_RUNTIME_REPOSITORY:-registry.gitlab.syncad.com/hive/devportal/aidev-tests}"
 
+# common-ci-configuration's moving node-test-tools tag, the Dockerfile's default.
+NODE_IMAGE="$(sed -n 's/^ARG NODE_IMAGE=//p' .aidev/runtime/Dockerfile)"
+
 INPUTS=(Gemfile Gemfile.lock mcp/package.json mcp/package-lock.json)
 input_hash() {
-    sha256sum .aidev/runtime/Dockerfile "${INPUTS[@]}" | sha256sum | cut -c1-16
+    local node_digest
+    node_digest="$(docker buildx imagetools inspect "$NODE_IMAGE" --format '{{json .Manifest}}' \
+        | grep -o '"digest": *"sha256:[0-9a-f]*"' | head -1 | grep -o 'sha256:[0-9a-f]*')"
+    {
+        sha256sum .aidev/runtime/Dockerfile "${INPUTS[@]}"
+        echo "${node_digest:?cannot resolve $NODE_IMAGE}"
+    } | sha256sum | cut -c1-16
 }
 TAG="aidev-$(input_hash)"
 
