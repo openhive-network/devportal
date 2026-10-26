@@ -85,8 +85,11 @@ Optional environment on that entry: `HIVE_MCP_ALLOW_BROADCAST`, `HIVE_MCP_NODES`
 
 The image is also stdio-only. Do not publish it without your own auth and network policy.
 
+`NODE_VERSION` is required: use `NODE_IMAGE_VERSION` from hive/common-ci-configuration's
+`templates/base.gitlab-ci.yml`, the Node version every hive app runs.
+
 ```bash
-docker build -t hive-devportal-mcp mcp
+docker build --build-arg NODE_VERSION=<NODE_IMAGE_VERSION> -t hive-devportal-mcp mcp
 docker run -i --rm hive-devportal-mcp
 ```
 

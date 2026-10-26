@@ -3,15 +3,20 @@
 # is in the image, matching what .gitlab-ci.yml uses today:
 #   - Ruby 3.1.6 (`image: ruby:3.1.6`, .ruby-version) with bundler 2.3.19 and the
 #     gems of Gemfile.lock installed system-wide (jekyll, html-proofer, minitest);
-#   - Node 24.21.0 (the `mcp_test` job's `node:24.21.0`) and an npm cache filled from
-#     mcp/package-lock.json, so `npm ci --offline` can install mcp/node_modules.
-# Build and pin it with .aidev/runtime/build.sh; see .aidev/README.md.
-FROM node:24.21.0-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6 AS node
+#   - Node and npm from common-ci-configuration's node-test-tools image (the
+#     `mcp_test` job's `${NODE_TEST_TOOLS_IMAGE}`); this file pins no Node version.
+#     Its official linux-x64 build runs on the Ruby image's bookworm glibc;
+#   - an npm cache filled from mcp/package-lock.json, so `npm ci --offline` can
+#     install mcp/node_modules.
+# .aidev/runtime/build.sh builds it on the digest node-test-tools:develop names at
+# the time and pins the result; see .aidev/README.md.
+ARG NODE_IMAGE=registry.gitlab.syncad.com/hive/common-ci-configuration/node-test-tools:develop
+FROM ${NODE_IMAGE} AS node
 
 FROM ruby:3.1.6-bookworm@sha256:aaf664741b8de45efe7c5db430430784c11af7d069027b2f008b74a53b8882ae
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
-COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/npm
 RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
     && ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
 
