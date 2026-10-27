@@ -31,12 +31,14 @@ with `--network none`. There's no Ruby coverage tool in the Gemfile.
 ## The test runtime image (`runtime/`)
 
 The suites run in a container with `--network none` and your uid. It carries Ruby 3.1.6 with
-bundler 2.3.19 and the gems of `Gemfile.lock` (as CI's `ruby:3.1.6` jobs), Node 24.21.0 (as CI's
-`mcp_test` job) and an npm cache from `mcp/package-lock.json`. `npm-deps.sh` installs
+bundler 2.3.19 and the gems of `Gemfile.lock` (as CI's `ruby:3.1.6` jobs), Node and npm from
+common-ci-configuration's `node-test-tools:develop` (CI's `mcp_test` job image; no Node version
+of this repo's own) and an npm cache from `mcp/package-lock.json`. `npm-deps.sh` installs
 `mcp/node_modules` offline from it.
 
 When `Gemfile`, `Gemfile.lock`, `mcp/package.json`, `mcp/package-lock.json` or
-`runtime/Dockerfile` change, rebuild and re-pin **in the same commit**:
+`runtime/Dockerfile` change, or `node-test-tools:develop` moves to a new Node, rebuild and
+re-pin **in the same commit** (the tag hashes the digest `node-test-tools:develop` names):
 
 ```bash
 .aidev/runtime/build.sh --push   # put the printed repo@sha256:<digest> in project.yaml environment.image
